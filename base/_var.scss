@@ -1,0 +1,26 @@
+//顏色  
+$color:(
+  mainyellow: #FFFAE7,
+  lightbrown: #927858,
+  darkbrown: #573605,
+  orange: #FDBF52,
+  navColor: rgba(255, 250, 231, 0.85),
+
+);
+
+//字級大小
+$fontSize:(
+  webh1: 36px,
+  webh2: 32px,
+  webh3: 28px,
+  webp: 24px,
+  weblp: 18px
+  navfont: 16px
+);
+
+//圖片路徑
+$file: 'bobio/img';
+
+//斷點  
+//版型
+$maxWidth: 1200px;  
