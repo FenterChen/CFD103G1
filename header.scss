@@ -1,2 +1,24 @@
 @import 'base/reset';
-//@import 'base/var';
+@import 'base/var';
+
+@font-face {
+  font-family: NotoSansTC;
+  src: url($normalFont);
+}
+
+@font-face {
+  font-family: RocknRollOne;
+  src: url($slogoFont);
+}
+
+header nav a {
+  font-family: NotoSansTC, serif;
+  font-size: map-get($fontSize, navfont);
+  text-decoration: none;
+  color: map-get($color, darkbrown);
+}
+
+header p {
+  font-family: RocknRollOne, serif;
+
+}

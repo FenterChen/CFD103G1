@@ -1,4 +1,7 @@
-@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -49,5 +52,24 @@ table {
   border-spacing: 0;
 }
 
-/* css註解 */
+@font-face {
+  font-family: NotoSansTC;
+  src: url("../font/NotoSerifTC-Regular.otf");
+}
+
+@font-face {
+  font-family: RocknRollOne;
+  src: url("../font/RocknRollOne-Regular.ttf");
+}
+
+header nav a {
+  font-family: NotoSansTC, serif;
+  font-size: 16px;
+  text-decoration: none;
+  color: #573605;
+}
+
+header p {
+  font-family: RocknRollOne, serif;
+}
 /*# sourceMappingURL=header.css.map */
