@@ -1,21 +1,26 @@
 //顏色  
-$color:(
-  mainyellow: #FFFAE7,
+$color:(mainyellow: #FFFAE7,
   lightbrown: #927858,
   darkbrown: #573605,
   orange: #FDBF52,
   navColor: rgba(255, 250, 231, 0.85),
 
 );
+//常規字體
+$normalFont:'../font/NotoSerifTC-Regular.otf';
+
+// slogon字體
+$slogoFont:'../font/RocknRollOne-Regular.ttf';
+
+
 
 //字級大小
-$fontSize:(
-  webh1: 36px,
+$fontSize:(webh1: 36px,
   webh2: 32px,
   webh3: 28px,
   webp: 24px,
-  weblp: 18px
-  navfont: 16px
+  weblp: 18px,
+  navfont: 16px,
 );
 
 //圖片路徑
@@ -23,4 +28,4 @@ $file: 'bobio/img';
 
 //斷點  
 //版型
-$maxWidth: 1200px;  
+$maxWidth: 1200px;
