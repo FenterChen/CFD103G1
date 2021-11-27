@@ -1,5 +1,6 @@
 //顏色  
-$color:(mainyellow: #FFFAE7,
+$color:(
+  mainyellow: #FFFAE7,
   lightbrown: #927858,
   darkbrown: #573605,
   orange: #FDBF52,
@@ -15,7 +16,8 @@ $slogoFont:'../font/RocknRollOne-Regular.ttf';
 
 
 //字級大小
-$fontSize:(webh1: 36px,
+$fontSize:(
+  webh1: 36px,
   webh2: 32px,
   webh3: 28px,
   webp: 24px,
@@ -23,8 +25,12 @@ $fontSize:(webh1: 36px,
   navfont: 16px,
 );
 
-//圖片路徑
-$file: 'bobio/img';
+//字體
+$fontWeight:(
+  titleWeight: 900,
+  subTitleWeight: 500,
+  pWeight: 400,
+);
 
 //斷點  
 //版型
