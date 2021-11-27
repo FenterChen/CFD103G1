@@ -15,12 +15,15 @@ $fontSize:(
   webh3: 28px,
   webp: 24px,
   weblp: 18px
-  navfont: 16px
+  navfont: 16px,
+);
+
+//字體
+$fontWeight:(
+  titleWeight: 900,
+  subTitleWeight: 500,
+  pWeight: 400,
 );
 
 //圖片路徑
-$file: 'bobio/img';
-
-//斷點  
-//版型
-$maxWidth: 1200px;  
+$file: './img/';
