@@ -1,5 +1,6 @@
 @import 'base/reset';
 @import 'base/var';
+@import 'mixin/modules';
 
 @font-face {
   font-family: NotoSansTC;
@@ -11,14 +12,55 @@
   src: url($slogoFont);
 }
 
+header {
+  @include headerFixed();
+  background-color: map-get($color, navColor);
+  border-top: 3px solid #FDBF52;
+}
+
+.headerWrap {
+  @include flexCenter();
+  @include maxWidth();
+  padding: 10px 0px;
+}
+
+header nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+header nav li a {
+  padding: 0 15px;
+}
+
+
+.logo {
+  width: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+header nav {
+  width: 82%;
+}
+
+.cart {
+  width: 5%;
+  @include flexCenter();
+}
+
+.member {
+  width: 5%;
+  @include flexCenter();
+}
+
+
+
 header nav a {
   font-family: NotoSansTC, serif;
   font-size: map-get($fontSize, navfont);
   text-decoration: none;
   color: map-get($color, darkbrown);
-}
-
-header p {
-  font-family: RocknRollOne, serif;
-
 }

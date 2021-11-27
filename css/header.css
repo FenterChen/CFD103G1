@@ -54,7 +54,7 @@ table {
 
 @font-face {
   font-family: NotoSansTC;
-  src: url("../font/NotoSerifTC-Regular.otf");
+  src: url("../font/NotoSerifTC-Medium.otf");
 }
 
 @font-face {
@@ -62,14 +62,94 @@ table {
   src: url("../font/RocknRollOne-Regular.ttf");
 }
 
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 100%;
+  background-color: rgba(255, 250, 231, 0.85);
+  border-top: 3px solid #FDBF52;
+}
+
+.headerWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px 0px;
+}
+
+header nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+header nav li a {
+  padding: 0 15px;
+}
+
+.logo {
+  width: 8%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+header nav {
+  width: 82%;
+}
+
+.cart {
+  width: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.member {
+  width: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 header nav a {
   font-family: NotoSansTC, serif;
   font-size: 16px;
   text-decoration: none;
   color: #573605;
-}
-
-header p {
-  font-family: RocknRollOne, serif;
 }
 /*# sourceMappingURL=header.css.map */
