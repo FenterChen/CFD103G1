@@ -88,6 +88,22 @@
   width: 100%;
 }
 
+// NotoSansTC
+@mixin NotoSansTC() {
+  @font-face {
+    font-family: NotoSansTC;
+    src: url($normalFont);
+  }
+}
+
+//slogon字體 RocknRollOne
+@mixin RocknRollOne() {
+  @font-face {
+    font-family: RocknRollOne;
+    src: url($slogoFont);
+  }
+}
+
 //RWD
 @mixin phone() {
   @media screen and (max-width:375px) {
