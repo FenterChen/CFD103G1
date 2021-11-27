@@ -1,24 +1,29 @@
 //最寬1200 
-@mixin maxWidth(){
+@mixin maxWidth() {
   max-width: 1200px;
   margin: auto;
 }
+
 //圓角
 @mixin btnBigBorderR() {
   border-radius: 30px;
 }
+
 @mixin smallBorderR() {
   border-radius: 20px;
 }
+
 //按鈕陰影
 @mixin btnShadow {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
+
 //按鈕顏色
 @mixin btnColor() {
   background: map-get($color, orange);
   color: map-get($color, darkbrown);
 }
+
 //主頁的按鈕&開始求籤&開始結緣
 @mixin btnMainPage() {
   width: 200px;
@@ -30,6 +35,7 @@
   @include btnColor();
   @include btnBigBorderR();
 }
+
 //只有祈願供品選擇&求籤輸入名字的確定
 @mixin btnChoose() {
   width: 80px;
@@ -41,6 +47,7 @@
   @include btnColor();
   @include smallBorderR();
 }
+
 //其他頁面：確定&取消&下一步&付款&抽籤&擲筊&查看籤詩&返回首頁
 @mixin btnlocal() {
   width: 120px;
@@ -52,6 +59,7 @@
   @include btnColor();
   @include smallBorderR();
 }
+
 //會員頁面：登入&註冊&FB登入
 @mixin btnLogin() {
   width: 300px;
@@ -63,30 +71,60 @@
   @include btnColor();
   @include BigBorderR();
 }
+
 //橫排垂直＋水平置中
 @mixin flexCenter() {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+//header fixed上方
+@mixin headerFixed() {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 100%;
+}
+
+// NotoSansTC
+@mixin NotoSansTC() {
+  @font-face {
+    font-family: NotoSansTC;
+    src: url($normalFont);
+  }
+}
+
+//slogon字體 RocknRollOne
+@mixin RocknRollOne() {
+  @font-face {
+    font-family: RocknRollOne;
+    src: url($slogoFont);
+  }
+}
+
 //RWD
 @mixin phone() {
-  @media screen and (max-width:375px){
+  @media screen and (max-width:375px) {
     @content;
   }
 }
+
 @mixin tabletV() {
-  @media screen and (max-width:768px){
+  @media screen and (max-width:768px) {
     @content;
   }
 }
+
 @mixin tabletH() {
-  @media screen and (max-width:1024px){
+  @media screen and (max-width:1024px) {
     @content;
   }
 }
+
 @mixin laptop() {
-  @media screen and (max-width:1200px){
+  @media screen and (max-width:1200px) {
     @content;
   }
 }
