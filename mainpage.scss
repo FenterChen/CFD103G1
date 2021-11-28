@@ -1,6 +1,9 @@
 @import 'base/var';
 @import 'mixin/modules';
 
+body{
+  background: map-get($color, mainyellow);
+}
 .slogan{
   width: 100%;
   height: 760px;
@@ -47,12 +50,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 70px;
+    padding-top: 70px;
     @include phone(){
       padding: 0 20px;
     };
     @include tabletV(){
-      margin-top: 100px;
+      padding-top: 100px;
     };
     h2{
       color: map-get($color, darkbrown);
@@ -91,6 +94,7 @@
   }
 }
 .adPray{
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,6 +108,10 @@
   .pray{
     padding: 0 20px;
     position: relative;
+    @include tabletV(){
+      width: 30%;
+      margin: auto;
+    }
     h2{
       color: map-get($color, darkbrown);
       font-size: map-get($fontSize, webh2);
@@ -123,8 +131,8 @@
       margin: auto;
       top: 100px;
       @include tabletV(){
-        align-self: flex-start
-      };
+      margin-right: auto;
+      }
     }
   }
   .prayBg{
@@ -162,8 +170,9 @@
     padding: 0 20px;
     position: relative;
     @include tabletV(){
-      width: 50%;
-    };
+      width: 30%;
+      margin: auto;
+    }
     h2{
       color: map-get($color, darkbrown);
       font-size: map-get($fontSize, webh2);

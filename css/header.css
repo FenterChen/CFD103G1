@@ -213,7 +213,6 @@ header .outerHb {
   display: flex;
 }
 
-<<<<<<< HEAD
 header .hb {
   width: 18px;
   height: 14px;
@@ -262,12 +261,6 @@ header .hb span {
 @media screen and (min-width: 375px) {
   header nav a {
     font-size: 16px;
-=======
-@media screen and (min-width: 1200px) {
-  .headerWrap {
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
->>>>>>> chingyee
   }
   header .cart {
     -webkit-box-pack: right;
@@ -369,7 +362,6 @@ header .hb span {
             flex-grow: 30;
   }
   header nav li a {
-<<<<<<< HEAD
     padding: 0 15px;
   }
   header .logo {
@@ -388,37 +380,6 @@ header .hb span {
     -webkit-box-pack: left;
         -ms-flex-pack: left;
             justify-content: left;
-=======
-    display: block;
-    padding: 20px 20px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .member {
-    -webkit-box-flex: 3;
-        -ms-flex-positive: 3;
-            flex-grow: 3;
-  }
-  .outerHb {
-    -webkit-box-flex: 3;
-        -ms-flex-positive: 3;
-            flex-grow: 3;
-  }
-  .outerHb {
-    -webkit-box-flex: 3;
-        -ms-flex-positive: 3;
-            flex-grow: 3;
-  }
-}
-
-@media screen and (min-width: 375px) {
-  .headerWrap {
-    padding: 5px 0px;
-  }
-  header nav {
-    height: calc(100vh - 41px);
->>>>>>> chingyee
   }
   header .logo img {
     width: 56px;
