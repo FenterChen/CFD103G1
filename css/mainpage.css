@@ -43,18 +43,47 @@
 .memberAd {
   background-image: url(../img/mainpage/memberBg.jpg);
   width: 100%;
-  height: 1000px;
   background-position: center;
   background-size: cover;
 }
 
-.memberAd .advertisement .member {
-  background-image: url(./img/mainpage/memberNoBg.png);
-  height: 300px;
+@media screen and (min-width: 375px) {
+  .memberAd {
+    height: 736px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .memberAd {
+    height: 1000px;
+  }
 }
 
 .memberAd .memberContent {
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 70px;
+}
+
+@media screen and (min-width: 375px) {
+  .memberAd .memberContent {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .memberAd .memberContent {
+    margin-top: 100px;
+  }
 }
 
 .memberAd .memberContent h2 {
@@ -64,5 +93,276 @@
 
 .memberAd .memberContent .memberSubTitle {
   color: #573605;
+  margin: 30px 0;
+  font-size: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .memberAd .memberContent .memberSubTitle {
+    margin: 30px 0 50px 0;
+  }
+}
+
+.memberAd .memberContent .memberP {
+  color: #927858;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.memberAd .memberContent .memberPDetail {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .memberAd .memberContent .memberPDetail {
+    display: block;
+    color: #927858;
+    font-size: 18px;
+    line-height: 30px;
+  }
+}
+
+.memberAd .memberContent button {
+  width: 200px;
+  height: 60px;
+  font-size: 24px;
+  line-height: 35px;
+  text-align: center;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #FDBF52;
+  color: #573605;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 60px;
+}
+
+@media screen and (min-width: 768px) {
+  .memberAd .memberContent button {
+    margin-top: 70px;
+  }
+}
+
+.adPray {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  padding-top: 118px;
+}
+
+@media screen and (min-width: 768px) {
+  .adPray {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    text-align: left;
+    padding-top: 0px;
+  }
+}
+
+.adPray .pray {
+  padding: 0 20px;
+  position: relative;
+}
+
+.adPray .pray h2 {
+  color: #573605;
+  font-size: 32px;
+}
+
+.adPray .pray .paryContent {
+  color: #927858;
+  font-size: 18px;
+  margin-top: 30px;
+  line-height: 30px;
+}
+
+.adPray .pray button {
+  width: 200px;
+  height: 60px;
+  font-size: 24px;
+  line-height: 35px;
+  text-align: center;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #FDBF52;
+  color: #573605;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 100px;
+}
+
+@media screen and (min-width: 768px) {
+  .adPray .pray button {
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+  }
+}
+
+.adPray .prayBg {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .adPray .prayBg {
+    width: 50%;
+  }
+}
+
+.adPray .prayBg .webBg {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .adPray .prayBg .webBg {
+    display: block;
+    width: 100%;
+  }
+}
+
+.adPray .prayBg .phoneBg {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .adPray .prayBg .phoneBg {
+    display: none;
+  }
+}
+
+.adPomes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  padding-top: 118px;
+}
+
+@media screen and (min-width: 768px) {
+  .adPomes {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+    text-align: left;
+    padding-top: 0px;
+  }
+}
+
+.adPomes .pomes {
+  padding: 0 20px;
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .adPomes .pomes {
+    width: 50%;
+  }
+}
+
+.adPomes .pomes h2 {
+  color: #573605;
+  font-size: 32px;
+}
+
+.adPomes .pomes .pomesContent {
+  color: #927858;
+  font-size: 18px;
+  margin-top: 30px;
+  line-height: 30px;
+}
+
+.adPomes .pomes button {
+  width: 200px;
+  height: 60px;
+  font-size: 24px;
+  line-height: 35px;
+  text-align: center;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #FDBF52;
+  color: #573605;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 100px;
+}
+
+.adPomes .pomesBg {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .adPomes .pomesBg {
+    width: 50%;
+  }
+}
+
+.adPomes .pomesBg .webBg {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .adPomes .pomesBg .webBg {
+    display: block;
+    width: 100%;
+  }
+}
+
+.adPomes .pomesBg .phoneBg {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .adPomes .pomesBg .phoneBg {
+    display: none;
+  }
 }
 /*# sourceMappingURL=mainpage.css.map */
