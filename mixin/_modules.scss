@@ -106,25 +106,25 @@
 
 //RWD
 @mixin phone() {
-  @media screen and (max-width:375px) {
+  @media screen and (min-width:375px) {
     @content;
   }
 }
 
 @mixin tabletV() {
-  @media screen and (max-width:768px) {
+  @media screen and (min-width:768px) {
     @content;
   }
 }
 
 @mixin tabletH() {
-  @media screen and (max-width:1024px) {
+  @media screen and (min-width:1024px) {
     @content;
   }
 }
 
 @mixin laptop() {
-  @media screen and (max-width:1200px) {
+  @media screen and (min-width:1200px) {
     @content;
   }
 }
