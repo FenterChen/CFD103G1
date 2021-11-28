@@ -1,0 +1,31 @@
+.slogan {
+  width: 100%;
+  height: 760px;
+  background-image: url(../img/mainpage/sloganBg.jpg);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.slogan .sloganTitle {
+  position: absolute;
+  font-size: 144px;
+}
+
+.member {
+  background-image: url(../img/mainpage/memberBg.jpg);
+  width: 100%;
+  height: 1000px;
+  background-position: center;
+  background-size: cover;
+}
+/*# sourceMappingURL=mainpage.css.map */
