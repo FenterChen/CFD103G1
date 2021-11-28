@@ -1,3 +1,5 @@
+@import 'base/var';
+@import 'mixin/modules';
 
 .slogan{
   width: 100%;
@@ -12,13 +14,41 @@
   
   .sloganTitle{
     position: absolute;
-    font-size: 144px;
+    color: map-get($color, mainyellow);
+    font-size: map-get($fontSize, webh1);
+    @include tabletV(){
+      font-size: 90px;
+    }
+    @include tabletH(){
+      font-size: 100px;
+    }
+    @include laptop(){
+      font-size: 144px;
+    }
   }
 }
-.member{
+
+.memberAd{
   background-image: url(../img/mainpage/memberBg.jpg);
   width: 100%;
   height: 1000px;
   background-position: center;
 	background-size: cover;
+  .advertisement{
+
+    .member{
+      background-image: url(./img/mainpage/memberNoBg.png);
+      height: 300px;
+    }
+  }
+  .memberContent{
+    text-align: center;
+    h2{
+      color: map-get($color, darkbrown);
+      font-size: map-get($fontSize, webh2);
+    }
+    .memberSubTitle{
+      color: map-get($color, darkbrown);
+    }
+  }
 }

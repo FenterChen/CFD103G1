@@ -18,14 +18,51 @@
 
 .slogan .sloganTitle {
   position: absolute;
-  font-size: 144px;
+  color: #FFFAE7;
+  font-size: 36px;
 }
 
-.member {
+@media screen and (min-width: 768px) {
+  .slogan .sloganTitle {
+    font-size: 90px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .slogan .sloganTitle {
+    font-size: 100px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .slogan .sloganTitle {
+    font-size: 144px;
+  }
+}
+
+.memberAd {
   background-image: url(../img/mainpage/memberBg.jpg);
   width: 100%;
   height: 1000px;
   background-position: center;
   background-size: cover;
+}
+
+.memberAd .advertisement .member {
+  background-image: url(./img/mainpage/memberNoBg.png);
+  height: 300px;
+}
+
+.memberAd .memberContent {
+  text-align: center;
+}
+
+.memberAd .memberContent h2 {
+  color: #573605;
+  font-size: 32px;
+}
+
+.memberAd .memberContent .memberSubTitle {
+  color: #573605;
 }
 /*# sourceMappingURL=mainpage.css.map */
