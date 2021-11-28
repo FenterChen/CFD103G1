@@ -1,0 +1,24 @@
+
+.slogan{
+  width: 100%;
+  height: 760px;
+	background-image: url(../img/mainpage/sloganBg.jpg);
+	background-position: center;
+	background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  .sloganTitle{
+    position: absolute;
+    font-size: 144px;
+  }
+}
+.member{
+  background-image: url(../img/mainpage/memberBg.jpg);
+  width: 100%;
+  height: 1000px;
+  background-position: center;
+	background-size: cover;
+}
