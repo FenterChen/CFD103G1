@@ -2,87 +2,19 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -92,17 +24,8 @@ video {
 }
 
 /* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
@@ -110,20 +33,16 @@ body {
   line-height: 1;
 }
 
-ol,
-ul {
+ol, ul {
   list-style: none;
 }
 
-blockquote,
-q {
+blockquote, q {
   quotes: none;
 }
 
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
+blockquote:before, blockquote:after,
+q:before, q:after {
   content: '';
   content: none;
 }
@@ -158,11 +77,11 @@ header {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   max-width: 1200px;
   margin: auto;
   padding: 10px 0px;
@@ -173,11 +92,11 @@ header nav ul {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: left;
-  -ms-flex-pack: left;
-  justify-content: left;
+      -ms-flex-pack: left;
+          justify-content: left;
 }
 
 header nav li a {
@@ -190,11 +109,11 @@ header nav li a {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .logo img {
@@ -211,11 +130,11 @@ header nav {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .cart img {
@@ -228,11 +147,11 @@ header nav {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .member img {
@@ -251,52 +170,47 @@ header nav a {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   display: none;
   -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   width: 5%;
 }
 
 @media screen and (max-width: 1200px) {
   .headerWrap {
     -ms-flex-pack: distribute;
-    justify-content: space-around;
+        justify-content: space-around;
   }
-
   .logo {
     -webkit-box-flex: 30;
-    -ms-flex-positive: 30;
-    flex-grow: 30;
+        -ms-flex-positive: 30;
+            flex-grow: 30;
     -webkit-box-pack: left;
-    -ms-flex-pack: left;
-    justify-content: left;
+        -ms-flex-pack: left;
+            justify-content: left;
     padding-left: 5%;
   }
-
   .cart {
     -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
   }
-
   .member {
     -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
   }
-
   .outerHb {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
   }
-
   .hb {
     width: 30px;
     height: 30px;
@@ -305,16 +219,15 @@ header nav a {
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -ms-flex-flow: column wrap;
-    flex-flow: column wrap;
+        -ms-flex-flow: column wrap;
+            flex-flow: column wrap;
     -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
     -ms-flex-pack: distribute;
-    justify-content: space-around;
+        justify-content: space-around;
     position: relative;
   }
-
   .hb span {
     width: 32px;
     height: 3px;
@@ -326,24 +239,20 @@ header nav a {
     margin: auto;
     position: absolute;
   }
-
   .hb span:first-child {
     -webkit-transform: translateY(10px);
-    transform: translateY(10px);
+            transform: translateY(10px);
   }
-
   .hb span:last-child {
     -webkit-transform: translateY(-10px);
-    transform: translateY(-10px);
+            transform: translateY(-10px);
   }
-
   header nav ul {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
-
   header nav {
     position: absolute;
     background-color: rgba(255, 250, 231, 0.85);
@@ -354,7 +263,6 @@ header nav a {
     border-top: 3px solid #FDBF52;
     opacity: 0.5;
   }
-
   header nav li a {
     display: block;
     padding: 20px 20px;
@@ -364,20 +272,18 @@ header nav a {
 @media screen and (max-width: 768px) {
   .member {
     -webkit-box-flex: 3;
-    -ms-flex-positive: 3;
-    flex-grow: 3;
+        -ms-flex-positive: 3;
+            flex-grow: 3;
   }
-
   .outerHb {
     -webkit-box-flex: 3;
-    -ms-flex-positive: 3;
-    flex-grow: 3;
+        -ms-flex-positive: 3;
+            flex-grow: 3;
   }
-
   .outerHb {
     -webkit-box-flex: 3;
-    -ms-flex-positive: 3;
-    flex-grow: 3;
+        -ms-flex-positive: 3;
+            flex-grow: 3;
   }
 }
 
@@ -385,63 +291,51 @@ header nav a {
   .headerWrap {
     padding: 5px 0px;
   }
-
   header nav {
     height: calc(100vh - 41px);
   }
-
   .logo img {
     width: 35px;
     height: 25px;
   }
-
   .cart {
     -webkit-box-flex: 4;
-    -ms-flex-positive: 4;
-    flex-grow: 4;
+        -ms-flex-positive: 4;
+            flex-grow: 4;
   }
-
   .cart img {
     width: 18.12px;
     height: 20px;
   }
-
   .member {
     -webkit-box-flex: 4;
-    -ms-flex-positive: 4;
-    flex-grow: 4;
+        -ms-flex-positive: 4;
+            flex-grow: 4;
   }
-
   .outerHb {
     -webkit-box-flex: 4;
-    -ms-flex-positive: 4;
-    flex-grow: 4;
+        -ms-flex-positive: 4;
+            flex-grow: 4;
   }
-
   .member img {
     width: 15.75px;
     height: 20px;
   }
-
   .hb {
     width: 18px;
     height: 14px;
   }
-
   .hb span {
     width: 18px;
     height: 2.5px;
   }
-
   .hb span:first-child {
     -webkit-transform: translateY(7px);
-    transform: translateY(7px);
+            transform: translateY(7px);
   }
-
   .hb span:last-child {
     -webkit-transform: translateY(-7px);
-    transform: translateY(-7px);
+            transform: translateY(-7px);
   }
 }
-
 /*# sourceMappingURL=header.css.map */
