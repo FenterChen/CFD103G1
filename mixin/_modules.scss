@@ -1,6 +1,6 @@
 //最寬1200 
 @mixin maxWidth() {
-  max-width: 1200px;
+  max-width: 1312px;
   margin: auto;
 }
 
@@ -8,6 +8,7 @@
 @mixin btnBigBorderR() {
   border-radius: 30px;
 }
+
 //表單圓角
 @mixin smallBorderR() {
   border-radius: 20px;

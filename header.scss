@@ -14,205 +14,250 @@ header {
 .headerWrap {
   @include flexCenter();
   @include maxWidth();
-  padding: 10px 0px;
+  padding: 4.5px 20px;
 }
 
 header nav ul {
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: center;
+}
+
+header nav ul {
+  flex-direction: column;
+}
+
+header .navPostion {
+  position: absolute;
+  background-color: map-get($color, navColor);
+  top: 100%;
+  right: -30%;
+  width: 30%;
+  height: calc(100vh - 40px);
+  border-top: 3px solid map-get($color, orange);
 }
 
 header nav li a {
-  padding: 0 15px;
+  display: block;
+  padding: 20px 20px;
 }
 
 
-.logo {
-  width: 8%;
+header .logo {
   @include flexCenter();
+  flex-grow: 15;
+  justify-content: left;
 }
 
-.logo img {
-  width: 100%;
+header .logo img {
+  width: 35px;
+  height: 25px;
 }
 
-header nav {
-  width: 82%;
-}
-
-.cart {
-  width: 5%;
+header .cart {
   @include flexCenter();
+  flex-grow: 1;
 }
 
-.cart img {
-  width: 100%;
+header .cart img {
+  width: 18.12px;
+  height: 20px;
 }
 
-.member {
-  width: 5%;
+header .member {
   @include flexCenter();
+  flex-grow: 1;
 }
 
-.member img {
-  width: 100%;
+header .outerHb {
+  display: flex;
+  flex-grow: 1;
+}
+
+header .member img {
+  width: 15.75px;
+  height: 20px;
 }
 
 
 header nav a {
   font-family: NotoSansTC, serif;
-  font-size: map-get($fontSize, navfont);
+  font-size: map-get($fontSize, minifont);
   text-decoration: none;
   color: map-get($color, darkbrown);
 }
 
-.outerHb {
+header .outerHb {
   @include flexCenter();
-  display: none;
-  flex-grow: 1;
-  width: 5%;
+  display: flex;
 }
 
-@include laptop() {
-  .headerWrap {
-    justify-content: space-around;
+header .hb {
+  width: 18px;
+  height: 14px;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+
+header .hb span {
+  width: 18px;
+  height: 2.5px;
+}
+
+header .hb span:first-child {
+  transform: translateY(7px);
+}
+
+header .hb span:last-child {
+  transform: translateY(-7px);
+}
+
+header .hb span {
+  width: 18px;
+  height: 2.5px;
+  background-color: map-get($color, darkbrown);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+}
+
+@include phone() {
+  header nav a {
+    font-size: map-get($fontSize, navfont);
   }
 
-  .logo {
-    flex-grow: 30;
-    justify-content: left;
-    padding-left: 5%;
+  header .cart {
+    justify-content: right;
   }
 
-  .cart {
-    flex-grow: 1;
+  header .member {
+    justify-content: right;
   }
 
-  .member {
-    flex-grow: 1;
-  }
-
-  .outerHb {
-    display: flex;
-  }
-
-  .hb {
-    width: 30px;
-    height: 30px;
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    justify-content: space-around;
-    position: relative;
-  }
-
-  .hb span {
-    width: 32px;
-    height: 3px;
-    background-color: map-get($color, darkbrown);
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    position: absolute;
-  }
-
-  .hb span:first-child {
-    transform: translateY(10px);
-  }
-
-  .hb span:last-child {
-    transform: translateY(-10px);
-  }
-
-  header nav ul {
-    flex-direction: column;
-  }
-
-  header nav {
-    position: absolute;
-    background-color: map-get($color, navColor);
-    top: 100%;
-    right: -30%;
-    width: 30%;
-    height: calc(100vh - 66px);
-    border-top: 3px solid map-get($color, orange);
-    opacity: 0.5;
-  }
-
-  header nav li a {
-    display: block;
-    padding: 20px 20px;
+  header .outerHb {
+    justify-content: right;
   }
 }
 
 @include tabletV() {
-  .member {
-    flex-grow: 3;
+  header .logo {
+    flex-grow: 20;
   }
 
-  .outerHb {
-    flex-grow: 3;
+  header .cart {
+    flex-grow: 2;
   }
 
-  .outerHb {
-    flex-grow: 3;
+  header .member {
+    flex-grow: 2;
+  }
+
+  header .outerHb {
+    flex-grow: 2;
   }
 }
 
-@include phone() {
+@include tabletH() {
+  header .logo img {
+    width: 38.5px;
+    height: 27.5px;
+  }
+
+  header .cart img {
+    width: 19.932px;
+    height: 22px;
+  }
+
+  header .member img {
+    width: 17.325px;
+    height: 22px;
+  }
+
+  header .hb {
+    width: 19.8px;
+    height: 15.4px;
+  }
+}
+
+@include laptop() {
+  header {
+    @include headerFixed();
+    background-color: map-get($color, navColor);
+    border-top: 3px solid map-get($color, orange);
+  }
+
   .headerWrap {
-    padding: 5px 0px;
+    @include flexCenter();
+    @include maxWidth();
+    padding: 7px 0px;
+  }
+
+  header nav ul {
+    justify-content: left;
+  }
+
+  header nav ul {
+    flex-direction: row;
   }
 
   header nav {
-    height: calc(100vh - 41px);
+    flex-grow: 30;
   }
 
-  .logo img {
-    width: 35px;
-    height: 25px;
+  header nav li a {
+    padding: 0 15px;
   }
 
-  .cart {
-    flex-grow: 4;
+
+  header .logo {
+    flex-grow: 1;
+    @include flexCenter();
+    justify-content: left;
   }
 
-  .cart img {
-    width: 18.12px;
+  header .logo img {
+    width: 56px;
+    height: 40px;
+  }
+
+  header .cart {
+    @include flexCenter();
+    justify-content: right;
+  }
+
+  header .cart img {
+    width: 20px;
     height: 20px;
   }
 
-  .member {
-    flex-grow: 4;
+  header .member {
+    @include flexCenter();
+    justify-content: right;
   }
 
-  .outerHb {
-    flex-grow: 4;
-  }
-
-  .member img {
-    width: 15.75px;
+  header .member img {
+    width: 15px;
     height: 20px;
   }
 
-  .hb {
-    width: 18px;
-    height: 14px;
+
+  header nav a {
+    font-family: NotoSansTC, serif;
+    font-size: map-get($fontSize, navfont);
+    text-decoration: none;
+    color: map-get($color, darkbrown);
   }
 
-  .hb span {
-    width: 18px;
-    height: 2.5px;
-  }
-
-  .hb span:first-child {
-    transform: translateY(7px);
-  }
-
-  .hb span:last-child {
-    transform: translateY(-7px);
+  header .outerHb {
+    @include flexCenter();
+    display: none;
+    flex-grow: 1;
+    width: 5%;
   }
 }

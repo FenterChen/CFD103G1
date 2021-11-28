@@ -9,23 +9,7 @@
   <link rel="stylesheet" href="css/header.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script>
-    $(function () {
-      $('#hb').click(function () {
-        let place = $("nav").css("right");
-        if (place < "0px") {
-          $("nav").animate({
-            right: 0,
-          }, 1200, 'easeInBounce')
-          console.log(place);
-        } else {
-          $("nav").animate({
-            right: "-30%",
-          }, 1200, 'easeOutBounce')
-        }
-      });
-    });
-  </script>
+  <script src="js/header.js"></script>
 </head>
 
 <body>
@@ -33,10 +17,10 @@
     <div class="headerWrap">
       <div class="logo">
         <a href="#">
-          <img src="img/header/logo.png">
+          <img src="img/header/BOBIO_logo.svg">
         </a>
       </div>
-      <nav>
+      <nav class="navPostion">
         <ul>
           <li>
             <a href="#">立即祈願</a>
@@ -55,8 +39,8 @@
           </li>
         </ul>
       </nav>
-      <div class="cart"><a href="#"><img src="img/header/cart.png"></a></div>
-      <div class="member"><a href="#"><img src="img/header/member.png"></a></div>
+      <div class="cart"><a href="#"><img src="img/header/cart.svg"></a></div>
+      <div class="member"><a href="#"><img src="img/header/member.svg"></a></div>
       <div class="outerHb">
         <div class="hb" id="hb">
           <span></span>
