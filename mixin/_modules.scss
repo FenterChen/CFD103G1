@@ -32,6 +32,7 @@
   font-size: map-get($fontSize, webp);
   line-height: 35px;
   text-align: center;
+  border: 0px;
   @include btnShadow();
   @include btnColor();
   @include btnBigBorderR();
@@ -44,6 +45,7 @@
   font-size: map-get($fontSize, weblp);
   line-height: 21px;
   text-align: center;
+  border: 0px;
   @include btnShadow();
   @include btnColor();
   @include smallBorderR();
@@ -56,6 +58,7 @@
   font-size: map-get($fontSize, weblp);
   line-height: 21px;
   text-align: center;
+  border: 0px;
   @include btnShadow();
   @include btnColor();
   @include smallBorderR();
@@ -68,6 +71,7 @@
   font-size: map-get($fontSize, weblp);
   line-height: 26px;
   text-align: center;
+  border: 0px;
   @include btnShadow();
   @include btnColor();
   @include BigBorderR();
