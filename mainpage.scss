@@ -37,21 +37,93 @@ body{
   width: 100%;
   background-position: center;
 	background-size: cover;
+  padding-top: 90px;
+  font-family: NotoSansTC, serif;
   @include phone(){
     height: 736px;
   }
-  @include tabletV(){
+  @include tabletH(){
     height: 1000px;
+    padding-top: 100px;
   }
   .advertisement{
-  
+    @include flexCenter();
+    background-image: url(../img/mainpage/adNoBgPhone.png);
+    width: 100%;
+    background-position: center;
+	  background-size: cover;
+    font-family: NotoSansTC, serif;
+    @include tabletH(){
+      background-image: none;
+      max-width: 1200px;
+      margin: auto;
+      justify-content: space-between;
+    }
+    .ad{
+      padding: 15px 20px;
+      color: map-get($color, mainyellow);
+      font-weight: map-get($fontWeight, titleWeight);
+      font-size: map-get($fontSize, weblp);
+      width: 33.333333%;
+      box-sizing: border-box;
+      @include tabletH(){
+        text-align: center;
+        padding: 60px 50px;
+        @include smallBorderR();
+      }
+      .adTitle{
+        @include tabletH(){
+          font-weight: map-get($fontWeight, titleWeight);
+          font-size: 44px;
+          margin-bottom: 46px;
+        }
+      }
+      .adContent{
+        @include tabletH(){
+          font-weight: map-get($fontWeight, titleWeight);
+          font-size: 36px;
+        }
+        .number{
+          color: map-get($color, orange);
+          margin: 0 5px;
+          @include tabletH(){
+            font-weight: map-get($fontWeight, titleWeight);
+            font-size: 44px;
+            margin: 0 10px;
+          }
+        }
+      } 
+    }
+    .member{
+      @include tabletH(){
+        background-image: url(../img/mainpage/memberNoBg.png);
+        background-size: 400px 300px;
+        background-position: center;
+      }
+      
+    }
+    .money{
+      @include tabletH(){
+        background-image: url(../img/mainpage/moneyNoBg.png);
+        background-size: 400px 300px;
+        background-position: center;
+      }
+    }
+    .aumlet{
+      @include tabletH(){
+        background-image: url(../img/mainpage/aumletNoBg.png);
+        background-size: 400px 300px;
+        background-position: center;
+      }
+    }
   }
   .memberContent{
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 70px;
+    margin-top: 70px;
+    font-family: NotoSansTC, Serif;
     @include phone(){
       padding: 0 20px;
     };
@@ -61,12 +133,13 @@ body{
     h2{
       color: map-get($color, darkbrown);
       font-size: map-get($fontSize, webh2);
+      font-weight: map-get($fontWeight, titleWeight);
     }
     .memberSubTitle{
       color: map-get($color, darkbrown);
       margin: 30px 0;
       font-size: map-get($fontSize, webp);
-      @include tabletV(){
+      @include tabletH(){
         margin: 30px 0 50px 0;
       }
     }
@@ -88,9 +161,14 @@ body{
       @include btnMainPage();
       @include flexCenter();
       margin-top: 60px;
-      @include tabletV(){
+      border: 0px;
+      font-family: NotoSansTC, Serif;
+      @include tabletH(){
         margin-top: 70px;
       }
+    }
+    .joinUs{
+      margin-right: 10px;
     }
   }
 }
@@ -101,7 +179,8 @@ body{
   align-items: center;
   text-align: center;
   padding-top: 118px;
-  @include tabletV(){
+  font-family: NotoSansTC, Serif;
+  @include tabletH(){
     flex-direction: row;
     text-align: left;
     padding-top: 0px;
@@ -131,26 +210,30 @@ body{
       right: 0;
       margin: auto;
       top: 100px;
-      @include tabletV(){
+      font-family: NotoSansTC, Serif;
+      @include tabletH(){
       margin-right: auto;
       }
+    }
+    .goPray{
+      margin-right: 10px;
     }
   }
   .prayBg{
     width: 100%;
-    @include tabletV(){
+    @include tabletH(){
       width: 50%;
     }
     .webBg{
       display: none;
-      @include tabletV(){
+      @include tabletH(){
         display: block;
         width: 100%;
       };
     }
     .phoneBg{
       width: 100%;
-      @include tabletV(){
+      @include tabletH(){
         display: none;
       };
     }
@@ -162,7 +245,8 @@ body{
   align-items: center;
   text-align: center;
   padding-top: 118px;
-  @include tabletV(){
+  font-family: NotoSansTC, Serif;
+  @include tabletH(){
     flex-direction: row-reverse;
     text-align: left;
     padding-top: 0px;
@@ -170,7 +254,7 @@ body{
   .pomes{
     padding: 0 20px;
     position: relative;
-    @include tabletV(){
+    @include tabletH(){
       width: 30%;
       margin: auto;
     }
@@ -192,26 +276,30 @@ body{
       right: 0;
       margin: auto;
       top: 100px;
-      @include tabletV(){
+      font-family: NotoSansTC, Serif;
+      @include tabletH(){
         
       };
+    }
+    .goPomes{
+      margin-right: 10px;
     }
   }
   .pomesBg{
     width: 100%;
-    @include tabletV(){
+    @include tabletH(){
       width: 50%;
     };
     .webBg{
       display: none;
-      @include tabletV(){
+      @include tabletH(){
         display: block;
         width: 100%;
       };
     }
     .phoneBg{
       width: 100%;
-      @include tabletV(){
+      @include tabletH(){
         display: none;
       };
     }
