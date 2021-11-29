@@ -4,10 +4,9 @@ $color:(mainyellow: #FFFAE7,
   darkbrown: #573605,
   orange: #FDBF52,
   navColor: rgba(255, 250, 231, 0.85),
-
 );
 //常規字體
-$normalFont:'../font/NotoSerifTC-Regular.otf';
+$normalFont:'../font/NotoSerifTC-Medium.otf';
 
 // slogon字體
 $slogoFont:'../font/RocknRollOne-Regular.ttf';
@@ -21,11 +20,16 @@ $fontSize:(webh1: 36px,
   webp: 24px,
   weblp: 18px,
   navfont: 16px,
+  minifont: 14px,
 );
 
-//圖片路徑
-$file: 'bobio/img';
+//字體
+$fontWeight:(titleWeight: 900,
+  titleSmallWeight: 700,
+  subTitleWeight: 500,
+  pWeight: 400,
+);
 
 //斷點  
 //版型
-$maxWidth: 1200px;
+$maxWidth: 1312px;

@@ -1,0 +1,307 @@
+@import 'base/var';
+@import 'mixin/modules';
+
+body{
+  background: map-get($color, mainyellow);
+}
+.slogan{
+  width: 100%;
+  height: 760px;
+	background-image: url(../img/mainpage/sloganBg.jpg);
+	background-position: center;
+	background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: RocknRollOne;
+  
+  .sloganTitle{
+    position: absolute;
+    color: map-get($color, mainyellow);
+    font-size: map-get($fontSize, webh1);
+    @include tabletV(){
+      font-size: 90px;
+    }
+    @include tabletH(){
+      font-size: 100px;
+    }
+    @include laptop(){
+      font-size: 144px;
+    }
+  }
+}
+
+.memberAd{
+  background-image: url(../img/mainpage/memberBg.jpg);
+  width: 100%;
+  background-position: center;
+	background-size: cover;
+  padding-top: 90px;
+  font-family: NotoSansTC, serif;
+  @include phone(){
+    height: 736px;
+  }
+  @include tabletH(){
+    height: 1000px;
+    padding-top: 100px;
+  }
+  .advertisement{
+    @include flexCenter();
+    background-image: url(../img/mainpage/adNoBgPhone.png);
+    width: 100%;
+    background-position: center;
+	  background-size: cover;
+    font-family: NotoSansTC, serif;
+    @include tabletH(){
+      background-image: none;
+      max-width: 1200px;
+      margin: auto;
+      justify-content: space-between;
+    }
+    .ad{
+      padding: 15px 20px;
+      color: map-get($color, mainyellow);
+      font-weight: map-get($fontWeight, titleWeight);
+      font-size: map-get($fontSize, weblp);
+      width: 33.333333%;
+      box-sizing: border-box;
+      @include tabletH(){
+        text-align: center;
+        padding: 60px 50px;
+        @include smallBorderR();
+      }
+      .adTitle{
+        @include tabletH(){
+          font-weight: map-get($fontWeight, titleWeight);
+          font-size: 44px;
+          margin-bottom: 46px;
+        }
+      }
+      .adContent{
+        @include tabletH(){
+          font-weight: map-get($fontWeight, titleWeight);
+          font-size: 36px;
+        }
+        .number{
+          color: map-get($color, orange);
+          margin: 0 5px;
+          @include tabletH(){
+            font-weight: map-get($fontWeight, titleWeight);
+            font-size: 44px;
+            margin: 0 10px;
+          }
+        }
+      } 
+    }
+    .member{
+      @include tabletH(){
+        background-image: url(../img/mainpage/memberNoBg.png);
+        background-size: 400px 300px;
+        background-position: center;
+      }
+      
+    }
+    .money{
+      @include tabletH(){
+        background-image: url(../img/mainpage/moneyNoBg.png);
+        background-size: 400px 300px;
+        background-position: center;
+      }
+    }
+    .aumlet{
+      @include tabletH(){
+        background-image: url(../img/mainpage/aumletNoBg.png);
+        background-size: 400px 300px;
+        background-position: center;
+      }
+    }
+  }
+  .memberContent{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;
+    font-family: NotoSansTC, Serif;
+    @include phone(){
+      padding: 0 20px;
+    };
+    @include tabletV(){
+      padding-top: 100px;
+    };
+    h2{
+      color: map-get($color, darkbrown);
+      font-size: map-get($fontSize, webh2);
+      font-weight: map-get($fontWeight, titleWeight);
+    }
+    .memberSubTitle{
+      color: map-get($color, darkbrown);
+      margin: 30px 0;
+      font-size: map-get($fontSize, webp);
+      @include tabletH(){
+        margin: 30px 0 50px 0;
+      }
+    }
+    .memberP{
+      color: map-get($color, lightbrown);
+      font-size: map-get($fontSize, weblp);
+      line-height: 30px;
+    }
+    .memberPDetail{
+      display: none;
+      @include tabletV(){
+        display: block;
+        color: map-get($color, lightbrown);
+        font-size: map-get($fontSize, weblp);
+        line-height: 30px;
+      }
+    }
+    button{
+      @include btnMainPage();
+      @include flexCenter();
+      margin-top: 60px;
+      border: 0px;
+      font-family: NotoSansTC, Serif;
+      @include tabletH(){
+        margin-top: 70px;
+      }
+    }
+    .joinUs{
+      margin-right: 10px;
+    }
+  }
+}
+.adPray{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 118px;
+  font-family: NotoSansTC, Serif;
+  @include tabletH(){
+    flex-direction: row;
+    text-align: left;
+    padding-top: 0px;
+  };
+  .pray{
+    padding: 0 20px;
+    position: relative;
+    @include tabletV(){
+      width: 30%;
+      margin: auto;
+    }
+    h2{
+      color: map-get($color, darkbrown);
+      font-size: map-get($fontSize, webh2);
+    }
+    .paryContent{
+      color: map-get($color, lightbrown);
+      font-size: map-get($fontSize, weblp);
+      margin-top: 30px;
+      line-height: 30px
+    }
+    button{
+      @include btnMainPage();
+      @include flexCenter();
+      position: relative;
+      left: 0;
+      right: 0;
+      margin: auto;
+      top: 100px;
+      font-family: NotoSansTC, Serif;
+      @include tabletH(){
+      margin-right: auto;
+      }
+    }
+    .goPray{
+      margin-right: 10px;
+    }
+  }
+  .prayBg{
+    width: 100%;
+    @include tabletH(){
+      width: 50%;
+    }
+    .webBg{
+      display: none;
+      @include tabletH(){
+        display: block;
+        width: 100%;
+      };
+    }
+    .phoneBg{
+      width: 100%;
+      @include tabletH(){
+        display: none;
+      };
+    }
+  }
+}
+.adPomes{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 118px;
+  font-family: NotoSansTC, Serif;
+  @include tabletH(){
+    flex-direction: row-reverse;
+    text-align: left;
+    padding-top: 0px;
+  };
+  .pomes{
+    padding: 0 20px;
+    position: relative;
+    @include tabletH(){
+      width: 30%;
+      margin: auto;
+    }
+    h2{
+      color: map-get($color, darkbrown);
+      font-size: map-get($fontSize, webh2);
+    }
+    .pomesContent{
+      color: map-get($color, lightbrown);
+      font-size: map-get($fontSize, weblp);
+      margin-top: 30px;
+      line-height: 30px
+    }
+    button{
+      @include btnMainPage();
+      @include flexCenter();
+      position: relative;
+      left: 0;
+      right: 0;
+      margin: auto;
+      top: 100px;
+      font-family: NotoSansTC, Serif;
+      @include tabletH(){
+        
+      };
+    }
+    .goPomes{
+      margin-right: 10px;
+    }
+  }
+  .pomesBg{
+    width: 100%;
+    @include tabletH(){
+      width: 50%;
+    };
+    .webBg{
+      display: none;
+      @include tabletH(){
+        display: block;
+        width: 100%;
+      };
+    }
+    .phoneBg{
+      width: 100%;
+      @include tabletH(){
+        display: none;
+      };
+    }
+  }
+}
