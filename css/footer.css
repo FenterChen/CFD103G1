@@ -1,0 +1,191 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@font-face {
+  font-family: NotoSansTC;
+  src: url("../font/NotoSerifTC-Medium.otf");
+}
+
+@font-face {
+  font-family: RocknRollOne;
+  src: url("../font/RocknRollOne-Regular.ttf");
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #927858;
+  padding: 2.5% 5%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.footer-logo img {
+  width: 77%;
+}
+
+.footer-slog {
+  color: #FFFAE7;
+  font-size: 36px;
+  font-family: RocknRollOne;
+  display: none;
+}
+
+.footer-info {
+  width: 85%;
+}
+
+.list ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  padding-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: none;
+}
+
+.list ul a {
+  color: #FFFAE7;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.list ul a:hover {
+  color: #FDBF52;
+}
+
+.conn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  padding: 10px 0;
+  margin: 10px 0;
+  border-top: #FFFAE7 1px solid;
+  border-bottom: #FFFAE7 1px solid;
+}
+
+.conn p {
+  color: #FFFAE7;
+  font-size: 14px;
+  line-height: 180%;
+}
+
+.info-icon img {
+  width: 30px;
+  margin-left: 5px;
+}
+
+.copyright {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #573605;
+  padding: 3% 5%;
+}
+
+.copyright p {
+  color: #FFFAE7;
+  font-size: 9px;
+  line-height: 150%;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .list ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .footer-logo img {
+    width: 100%;
+  }
+  .footer-info {
+    width: 40%;
+  }
+  .footer-slog {
+    display: inline-block;
+  }
+  .conn p {
+    font-size: 16px;
+  }
+}
+/*# sourceMappingURL=footer.css.map */
