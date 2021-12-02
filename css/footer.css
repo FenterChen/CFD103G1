@@ -62,7 +62,7 @@ table {
   src: url("../font/RocknRollOne-Regular.ttf");
 }
 
-.container {
+.footer-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -172,6 +172,18 @@ table {
     display: -ms-flexbox;
     display: flex;
   }
+  .conn p {
+    font-size: 16px;
+  }
+  .copyright {
+    padding: 1% 1%;
+  }
+  .footer-info {
+    width: 75%;
+  }
+  .footer-logo img {
+    width: 100%;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -184,7 +196,7 @@ table {
   .footer-slog {
     display: inline-block;
   }
-  .conn p {
+  .copyright p {
     font-size: 16px;
   }
 }

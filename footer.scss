@@ -7,7 +7,7 @@
 
 
 
-.container{
+.footer-wrap{
     @include flexCenter();
     background-color: map-get($color, lightbrown);
     padding: 2.5% 5%;
@@ -88,17 +88,28 @@
 
 @include phone() {
     
+    
 
 }
 
 @include tabletV() {
     .list ul{
         display:flex;
+    } 
+    .conn p{
+        font-size: map-get($fontSize, navfont);
+    }
+    .copyright{
+        padding: 1% 1%;    
+    }
+    .footer-info{
+        width: 75%;
+    }
+    .footer-logo img{
+        width: 100%;
     }
   
-  
-    
-          
+       
 }
   
 @include tabletH() {
@@ -111,9 +122,11 @@
     .footer-slog{
         display:inline-block;
     }
-    .conn p{
+    .copyright p{
         font-size: map-get($fontSize, navfont);
-    }    
+    }
+       
+        
 }
 
 
