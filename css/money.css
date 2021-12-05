@@ -1,0 +1,883 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+section {
+  background-color: #FFFAE7;
+}
+
+.money .lanternL,
+.money .lanternR {
+  display: none;
+}
+
+.money {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 40px;
+  padding-top: 10px;
+}
+
+.money .moneyBox img {
+  width: 100%;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.money .moneyBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.money .moneyBox h1 {
+  font-family: NotoSansTC, serif;
+  font-size: 32px;
+  color: #573605;
+  line-height: 40px;
+}
+
+.money .moneyBox p {
+  font-family: NotoSansTC, serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #573605;
+  line-height: 40px;
+  margin-top: 2px;
+  margin-bottom: -15%;
+}
+
+.money .moneyBox img {
+  width: 100%;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.money .moneyBox #app .btn {
+  text-align: center;
+}
+
+.money .moneyBox #app .moneyBoxBtn {
+  width: 180px;
+  height: 50px;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #FDBF52;
+  color: #573605;
+  border-radius: 30px;
+  font-family: NotoSansTC, serif;
+  font-weight: 500;
+  margin-top: 11px;
+}
+
+::-webkit-input-placeholder {
+  font-family: NotoSansTC, serif;
+  color: #737B7D;
+}
+
+:-ms-input-placeholder {
+  font-family: NotoSansTC, serif;
+  color: #737B7D;
+}
+
+::-ms-input-placeholder {
+  font-family: NotoSansTC, serif;
+  color: #737B7D;
+}
+
+::placeholder {
+  font-family: NotoSansTC, serif;
+  color: #737B7D;
+}
+
+#app .inputboxmoney {
+  background-color: rgba(255, 250, 231, 0.3);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+#app .inputboxmoneywin {
+  border-radius: 20px;
+  background-color: #fff;
+  width: 300px;
+  height: 235px;
+  position: relative;
+  left: calc(50% - 150px);
+  top: calc(50% - 117.5px);
+  border: 1px solid #927858;
+}
+
+#app .inputboxmoneywin h3 {
+  font-size: 18px;
+  color: #573605;
+  font-family: NotoSansTC, serif;
+  text-align: center;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+#app .inputboxmoneywin .moneySelect {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 18px;
+  color: #573605;
+  font-family: NotoSansTC, serif;
+  text-align: center;
+  margin-top: 30px;
+}
+
+#app .inputboxmoneywin select {
+  border-radius: 20px;
+  background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
+  font-size: 18px;
+  font-weight: 400;
+  color: #737B7D;
+  font-family: NotoSansTC, serif;
+  border: 1px solid #927858;
+  background-color: #FFFAE7;
+  width: 170px;
+  padding-left: 10px;
+}
+
+#app .inputboxmoneywin .btn {
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #573605;
+  font-family: NotoSansTC, serif;
+  text-align: center;
+  margin-top: 40px;
+}
+
+#app .inputboxmoneywin .btn button {
+  width: 120px;
+  height: 42px;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #FDBF52;
+  color: #573605;
+  border-radius: 20px;
+  font-family: NotoSansTC, serif;
+}
+
+#app .creditcard {
+  border-radius: 20px;
+  background-color: #fff;
+  width: 300px;
+  height: 375px;
+  position: relative;
+  left: calc(50% - 150px);
+  top: calc(50% - 187.5px);
+  border: 1px solid #927858;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5px;
+}
+
+#app .creditcard h3 {
+  font-size: 18px;
+  color: #573605;
+  font-family: NotoSansTC, serif;
+  text-align: center;
+  margin-top: 20px;
+  line-height: 40px;
+  font-weight: bold;
+}
+
+#app .creditcard ul li {
+  font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  line-height: 40px;
+  padding: 6px 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#app .creditcard #creditcardmoney {
+  width: 189px;
+}
+
+#app .creditcard .cardinfo {
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #573605;
+  font-family: NotoSansTC, serif;
+  text-align: left;
+}
+
+#app .creditcard .cardinfo input {
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #573605;
+  font-family: NotoSansTC, serif;
+  border: 1px solid #927858;
+  background-color: #FFFAE7;
+  width: 170px;
+  padding-left: 15px;
+}
+
+#app .creditcard .btn {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#app .creditcard button {
+  width: 120px;
+  height: 42px;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #FDBF52;
+  color: #573605;
+  border-radius: 20px;
+  font-family: NotoSansTC, serif;
+}
+
+#app .creditcard .cardinfo ul li:nth-child(4) label:first-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  max-width: 99px;
+}
+
+#app .creditcard .cardinfo ul li:nth-child(4) .safetitle {
+  padding: 0px 5px;
+}
+
+#app .creditcard .cardinfo ul li:nth-child(4) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+#app .creditcard .cardinfo ul li:nth-child(4) input {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 65px;
+  height: 30px;
+  padding-left: 5px;
+}
+
+#app .creditcard .cardinfo ul li:nth-child(4) ::-webkit-input-placeholder {
+  font-size: 14px;
+}
+
+#app .creditcard .cardinfo ul li:nth-child(4) :-ms-input-placeholder {
+  font-size: 14px;
+}
+
+#app .creditcard .cardinfo ul li:nth-child(4) ::-ms-input-placeholder {
+  font-size: 14px;
+}
+
+#app .creditcard .cardinfo ul li:nth-child(4) ::placeholder {
+  font-size: 14px;
+}
+
+#app .completed {
+  background-color: #fffae7;
+  width: 100%;
+  position: fixed;
+  top: 40px;
+  left: 0;
+  z-index: 10;
+}
+
+#app .completed h1,
+p {
+  text-align: center;
+}
+
+#app .completed .moneyboxdetail {
+  width: 100%;
+}
+
+#app .completed .btn {
+  text-align: center;
+}
+
+#app .completed .btn button {
+  width: 180px;
+  height: 50px;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #FDBF52;
+  color: #573605;
+  border-radius: 30px;
+  font-family: NotoSansTC, serif;
+  margin-top: 10px;
+}
+
+#app .moneyboxdetail {
+  background-color: rgba(255, 250, 231, 0.3);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+#app .moneyboxdetail .details {
+  border-radius: 20px;
+  background-color: #fff;
+  width: 300px;
+  height: 340px;
+  position: relative;
+  left: calc(50% - 150px);
+  top: calc(50% - 170px);
+  border: 1px solid #927858;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 20px;
+}
+
+#app .moneyboxdetail h3 {
+  font-size: 24px;
+  color: #573605;
+  font-family: NotoSansTC, serif;
+  text-align: center;
+  margin-top: 10px;
+  line-height: 40px;
+  font-weight: bold;
+}
+
+#app .moneyboxdetail table {
+  font-size: 16px;
+  color: #573605;
+  font-family: NotoSansTC, serif;
+  width: 100%;
+  margin-top: 20px;
+  line-height: 40px;
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+#app .moneyboxdetail td:nth-child(1) {
+  width: 35%;
+  text-align: right;
+  padding: 0 10px;
+  background-color: #FDBF52;
+}
+
+#app .moneyboxdetail td:nth-child(2) {
+  text-align: left;
+  padding: 0 10px;
+  background-color: #FFFAE7;
+}
+
+#app .moneyboxdetail .details .btn {
+  text-align: center;
+}
+
+#app .moneyboxdetail .details .btn a {
+  text-decoration: none;
+  color: #573605;
+  font-family: NotoSansTC, serif;
+}
+
+#app .moneyboxdetail .details .btn button {
+  width: 120px;
+  height: 42px;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #FDBF52;
+  color: #573605;
+  border-radius: 20px;
+  font-family: NotoSansTC, serif;
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 375px) {
+  .money {
+    margin-top: 40px;
+    padding-bottom: 76px;
+  }
+  .money .moneyBox p {
+    margin-top: 11px;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+  #app .inputboxmoneywin {
+    width: 335px;
+    height: 235px;
+    left: calc(50% - 167.5px);
+    top: calc(50% - 117.5px);
+  }
+  #app .creditcard {
+    padding: 20px;
+    width: 335px;
+    height: 375px;
+    left: calc(50% - 167.5px);
+    top: calc(50% - 187.5px);
+  }
+  #app .creditcard h3 {
+    font-size: 18px;
+    color: #573605;
+    font-family: NotoSansTC, serif;
+    text-align: center;
+    margin-top: 0;
+    line-height: 50px;
+    font-weight: bold;
+  }
+  #app .creditcard .cardinfo ul li:nth-child(4) label:first-child {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    max-width: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .money .moneyBox h1 {
+    font-family: NotoSansTC, serif;
+    font-size: 36px;
+    color: #573605;
+    line-height: 40px;
+  }
+  .money .moneyBox p {
+    font-family: NotoSansTC, serif;
+    font-weight: 400;
+    font-size: 24px;
+    color: #573605;
+    line-height: 40px;
+    margin-top: 15px;
+    margin-bottom: -20%;
+  }
+  .money .moneyBox #app .moneyBoxBtn {
+    width: 200px;
+    height: 60px;
+    font-size: 24px;
+    line-height: 35px;
+    text-align: center;
+    -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background: #FDBF52;
+    color: #573605;
+    border-radius: 30px;
+    font-family: NotoSansTC, serif;
+    font-weight: 500;
+    margin-top: 11px;
+  }
+  #app .inputboxmoneywin {
+    width: 600px;
+    height: 300px;
+    left: calc(50% - 300px);
+    top: calc(50% - 250px);
+  }
+  #app .inputboxmoneywin h3 {
+    font-size: 28px;
+    margin-top: 30px;
+    font-weight: bold;
+  }
+  #app .inputboxmoneywin .moneySelect {
+    margin-top: 60px;
+  }
+  #app .inputboxmoneywin .btn button {
+    margin: 25px 15px;
+  }
+  #app .creditcard {
+    border-radius: 20px;
+    background-color: #fff;
+    width: 600px;
+    height: 400px;
+    position: relative;
+    left: calc(50% - 300px);
+    top: calc(50% - 200px);
+    border: 1px solid #927858;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 20px 50px;
+  }
+  #app .creditcard h3 {
+    font-size: 28px;
+    margin-top: 10px;
+    line-height: 50px;
+  }
+  #app .creditcard ul li {
+    font-size: 18px;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    line-height: 40px;
+    padding: 6px 0;
+    text-align: left;
+    margin: auto;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #app .creditcard .cardinfo ul li label {
+    width: 100px;
+  }
+  #app .creditcard .cardinfo ul li:nth-child(4) label:first-child {
+    -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+  }
+  #app .creditcard button {
+    margin: 0 10px;
+  }
+  #app .creditcard .cardinfo input {
+    font-size: 18px;
+    width: 80%;
+    padding-left: 15px;
+  }
+  #app .creditcard .cardid input {
+    font-size: 18px;
+    width: 80%;
+    padding-left: 15px;
+  }
+  #app .creditcard .cardinfo ul li:nth-child(4) label:first-child {
+    -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+    max-width: 99px;
+  }
+  #app .creditcard .cardinfo ul li:nth-child(4) .safetitle {
+    padding: 0px 5px;
+  }
+  #app .creditcard .cardinfo ul li:nth-child(4) {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  #app .creditcard .cardinfo ul li:nth-child(4) input {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 150px;
+    height: 30px;
+    padding-left: 5px;
+  }
+  #app .creditcard .cardinfo ul li .safetitle {
+    text-align: center;
+  }
+  #app .creditcard .cardinfo ul li:nth-child(4) ::-webkit-input-placeholder {
+    font-size: 18px;
+  }
+  #app .creditcard .cardinfo ul li:nth-child(4) :-ms-input-placeholder {
+    font-size: 18px;
+  }
+  #app .creditcard .cardinfo ul li:nth-child(4) ::-ms-input-placeholder {
+    font-size: 18px;
+  }
+  #app .creditcard .cardinfo ul li:nth-child(4) ::placeholder {
+    font-size: 18px;
+  }
+  #app .completed .btn button {
+    width: 200px;
+    height: 60px;
+    font-size: 24px;
+    line-height: 35px;
+    text-align: center;
+    -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background: #FDBF52;
+    color: #573605;
+    border-radius: 30px;
+  }
+  #app .moneyboxdetail .details {
+    width: 600px;
+    height: 400px;
+    position: relative;
+    left: calc(50% - 300px);
+    top: calc(50% - 200px);
+    border: 1px solid #927858;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 20px 50px;
+  }
+  #app .moneyboxdetail h3 {
+    font-size: 28px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  #app .moneyboxdetail table {
+    font-size: 18px;
+    margin-top: 20px;
+    line-height: 50px;
+  }
+  #app .moneyboxdetail td:nth-child(1) {
+    padding: 0 20px;
+  }
+  #app .moneyboxdetail td:nth-child(2) {
+    padding: 0 20px;
+  }
+  #app .moneyboxdetail .details .btn {
+    text-align: center;
+  }
+  #app .moneyboxdetail .details .btn a {
+    text-decoration: none;
+    color: #573605;
+    font-family: NotoSansTC, serif;
+  }
+  #app .moneyboxdetail .details .btn button {
+    width: 120px;
+    height: 42px;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background: #FDBF52;
+    color: #573605;
+    border-radius: 20px;
+    font-family: NotoSansTC, serif;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .money {
+    max-width: 1312px;
+    margin: auto;
+    margin-top: 60px;
+    position: relative;
+  }
+  .money .lanternL {
+    display: block;
+    text-align: left;
+    width: 15%;
+  }
+  .money .lanternR {
+    display: block;
+    text-align: right;
+    width: 15%;
+  }
+  .money .lanternL img,
+  .money .lanternR img {
+    width: 100%;
+  }
+  .money .moneyBox {
+    width: 70%;
+  }
+  .money .moneyBox .img {
+    width: 90%;
+    margin: auto;
+  }
+  .money .moneyBox .img img {
+    width: 100%;
+  }
+  .money .moneyBox h1 {
+    font-size: 36px;
+    margin-top: 60px;
+  }
+  .money .moneyBox p {
+    font-size: 24px;
+    margin-top: 20px;
+    font-weight: 500;
+  }
+  .money .moneyBox #app .moneyBoxBtn {
+    width: 200px;
+    height: 60px;
+    font-size: 24px;
+    line-height: 35px;
+    text-align: center;
+    -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background: #FDBF52;
+    color: #573605;
+    border-radius: 30px;
+    font-family: NotoSansTC, serif;
+    font-size: 24px;
+    font-weight: 500;
+    position: absolute;
+    right: calc(50% - 100px);
+  }
+  #app .inputboxmoneywin {
+    width: 600px;
+    height: 275px;
+    position: relative;
+    left: calc(50% - 300px);
+    top: calc(50% - 137.5px);
+  }
+  #app .inputboxmoneywin h3 {
+    font-size: 28px;
+    margin-top: 30px;
+  }
+  #app .inputboxmoneywin p {
+    font-size: 18px;
+  }
+  #app .inputboxmoneywin #inputwin {
+    font-size: 18px;
+    color: #573605;
+    margin-top: 40px;
+  }
+  #app .inputboxmoneywin #inputwin input {
+    font-size: 18px;
+    width: 400px;
+    height: 40px;
+    padding-left: 20px;
+  }
+  #app .inputboxmoneywin .btn button {
+    width: 120px;
+    height: 42px;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background: #FDBF52;
+    color: #573605;
+    border-radius: 20px;
+    font-family: NotoSansTC, serif;
+  }
+  .money .moneyBox > p {
+    margin-bottom: -18%;
+  }
+  .money .completedgif {
+    max-width: 1312px;
+    margin: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding-top: 60px;
+  }
+  .money .moneyBox p {
+    margin-bottom: -200px;
+  }
+  .money .completedgif img {
+    width: 50%;
+  }
+  #app .completed {
+    background-color: #fffae7;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    z-index: 10;
+  }
+}
+/*# sourceMappingURL=money.css.map */
