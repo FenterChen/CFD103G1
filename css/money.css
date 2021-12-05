@@ -120,8 +120,9 @@ section {
           filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-.money .moneyBox #app .btn {
+.money .moneyBox #app > .btn {
   text-align: center;
+  margin-bottom: 5%;
 }
 
 .money .moneyBox #app .moneyBoxBtn {
@@ -137,7 +138,6 @@ section {
   border-radius: 30px;
   font-family: NotoSansTC, serif;
   font-weight: 500;
-  margin-top: 11px;
 }
 
 ::-webkit-input-placeholder {
@@ -384,7 +384,8 @@ section {
   background-color: #fffae7;
   width: 100%;
   position: fixed;
-  top: 40px;
+  padding-top: 40px;
+  top: 0;
   left: 0;
   z-index: 10;
 }
@@ -573,7 +574,6 @@ p {
     border-radius: 30px;
     font-family: NotoSansTC, serif;
     font-weight: 500;
-    margin-top: 11px;
   }
   #app .inputboxmoneywin {
     width: 600px;
@@ -642,13 +642,13 @@ p {
   #app .creditcard .cardid input {
     font-size: 18px;
     width: 80%;
-    padding-left: 15px;
+    padding-left: 16px;
   }
   #app .creditcard .cardinfo ul li:nth-child(4) label:first-child {
     -webkit-box-flex: 0;
         -ms-flex-positive: 0;
             flex-grow: 0;
-    max-width: 99px;
+    width: 100px;
   }
   #app .creditcard .cardinfo ul li:nth-child(4) .safetitle {
     padding: 0px 5px;
@@ -672,7 +672,7 @@ p {
             box-sizing: border-box;
     width: 150px;
     height: 30px;
-    padding-left: 5px;
+    padding-left: 15px;
   }
   #app .creditcard .cardinfo ul li .safetitle {
     text-align: center;
@@ -875,8 +875,8 @@ p {
     width: 100%;
     height: 100%;
     position: fixed;
-    top: 60px;
-    left: 0;
+    padding-top: 60px;
+    top: 0;
     z-index: 10;
   }
 }
