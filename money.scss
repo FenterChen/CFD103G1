@@ -2,6 +2,11 @@
 @import 'base/var';
 @import 'mixin/modules';
 
+
+button {
+  cursor: pointer;
+}
+
 section {
   background-color: map-get($color, mainyellow);
 }
