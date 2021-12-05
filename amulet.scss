@@ -1,0 +1,210 @@
+@import 'base/var';
+@import 'mixin/modules';
+
+body{
+    background: map-get($color, mainyellow);      
+}
+
+section{
+    width: 90%;
+    margin:auto;
+    color: map-get($color, darkbrown);
+}
+
+.prod{
+    margin-top: 60px;
+    
+}
+
+
+
+
+
+
+.prod-bg img{
+    width: 100%;
+}
+
+.prod-sm{
+    display: flex;    
+}
+
+.prod-sm .pic img{
+    width: 70px;
+    padding-right: 15px;
+    padding-top: 15px;
+}
+
+
+.title h1{
+    font-size:map-get($fontSize , webp);
+    margin: 15px 0;
+    font-family: NotoSansTC;
+
+}
+.title span{
+    font-size:map-get($fontSize , weblp);
+}
+
+
+.select-type{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+h4{
+    font-size:map-get($fontSize , weblp);
+}
+
+.select-type select{
+    font-size:map-get($fontSize , weblp);
+    color:map-get($color, darkbrown);
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid map-get($color, darkbrown);
+    margin-left: 15px;
+}
+
+.select-typewrap a{
+    font-size:map-get($fontSize , minifont);
+    color:map-get($color, darkbrown);
+    margin-left: 30px;
+}
+
+
+
+
+
+
+.select-wrap select{
+    font-size:map-get($fontSize , weblp);
+    color:map-get($color, darkbrown);
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid map-get($color, darkbrown);
+    margin-left: 15px;
+}
+
+.select-wrap{
+    display: flex;
+}
+.zodiac{
+    display: flex;
+    align-items:center;
+}
+.amount{
+    margin-left: 20px;
+    display: flex;
+    align-items:center;
+}
+
+textarea{
+    font-size:map-get($fontSize , minifont);
+    color: map-get($color, darkbrown);
+    text-align: center;
+    border: 1px solid map-get($color, darkbrown);
+}
+
+.customiz textarea{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 22px;
+    margin-top: 15px;   
+}
+.shop{
+    width: 100%;
+    max-width: 400px;
+    margin: 30px auto 50px auto;
+    // margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+button{
+    width: 160px;
+    height: 40px;
+    @include btnShadow();
+    @include btnColor();
+    @include btnBigBorderR();
+}
+
+.intro textarea{
+    display: none;
+}
+
+
+//RWD
+
+@include phone() {
+}
+
+
+
+@include tabletV() {
+
+    
+ 
+
+}
+
+  
+@include tabletH() {
+    .wrap{
+        width: 80%;
+        display: flex;
+        margin: 0 auto 100px auto;
+    }
+
+    .container{
+        margin-left: 50px;
+    }
+
+    .prod-bg{
+        width: 420px;
+    }
+    .prod-bg img{
+        width: 100%;
+    }
+
+    .prod-sm .pic{
+        width: 100px;
+        padding-right: 15px;
+    }
+    .prod-sm .pic img{
+        width: 100%;
+    }
+
+    .customiz textarea{
+        width: 100%;
+        max-width: 500px;
+        height: 90px;
+        line-height:90px;
+    }
+
+    .select-typewrap a{
+        display: none;
+    }
+
+    .intro textarea{
+        width: 100%;
+        max-width: 500px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 20px;
+        display: block;
+        margin-bottom: 15px;
+    }
+      
+}
+
+
