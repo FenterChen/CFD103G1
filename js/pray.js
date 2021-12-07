@@ -1,4 +1,60 @@
+var slideIndex = 1;
+var i;
+var slides = document.getElementsByClassName("section");
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+   
+  }
+
+  let display = 'block'
+  if (slideIndex == 1) display = 'flex'
+  slides[slideIndex-1].style.display = display; 
+}
+
+function plusSlides(n) {
+  slideIndex += n;
+  showSlides(slideIndex);
+  if (slideIndex >= slides.length) return;
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.animation = "fadeLeft 1.5s";
+  }
+  hideBtn();
+}
+function minusSlides(n) {
+  slideIndex -= n;
+  showSlides(slideIndex);
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.animation = "fadeRight 1.5s";
+  }
+  hideBtn();
+}
+
+function hideBtn() {
+  if (slideIndex == 1) {
+    $('.btnStep').css('display','none');
+    $('.goMainpage').css('display','none');
+    $('.bobioPray').addClass('no-line')
+  } else if(slideIndex == 5){
+    $('.btnStep').css('display','none');
+    $('.goMainpage').css('display','flex');
+    $('.bobioPray').removeClass('no-line');
+  } else {
+    $('.btnStep').css('display','flex');
+    $('.goMainpage').css('display','none');
+    $('.bobioPray').removeClass('no-line');
+  }
+}
+
 $(function(){
+  hideBtn();
   //愛情
   $('.love').mouseover(function(){
     $('.love').css('background-color', '#FDBF52');
@@ -13,6 +69,12 @@ $(function(){
     $('.godTitle').text('祈願神明');
     $('.love>.cateTitle').css('color','#ffffff');
     $('.love img').attr('src','img/pray/love.svg');
+  });
+
+  $('.love').click(function(){
+    let target = $('#godDisplay');
+    target.attr('src','img/pray/loveGodShadow.png');
+    plusSlides(1);
   });
 
   //學業
@@ -30,6 +92,11 @@ $(function(){
     $('.study>.cateTitle').css('color','#ffffff');
     $('.study img').attr('src','img/pray/study.svg');
   });
+  $('.study').click(function(){
+    let target = $('#godDisplay');
+    target.attr('src','img/pray/studyGodShadow.png');
+    plusSlides(1);
+  });
 
   //健康
   $('.health').mouseover(function(){
@@ -45,6 +112,11 @@ $(function(){
     $('.godTitle').text('祈願神明');
     $('.health>.cateTitle').css('color','#ffffff');
     $('.health img').attr('src','img/pray/health.svg');
+  });
+  $('.health').click(function(){
+    let target = $('#godDisplay');
+    target.attr('src','img/pray/healthGodShadow.png');
+    plusSlides(1);
   });
 
   //平安
@@ -62,6 +134,11 @@ $(function(){
     $('.safety>.cateTitle').css('color','#ffffff');
     $('.safety img').attr('src','img/pray/safety.svg');
   });
+  $('.safety').click(function(){
+    let target = $('#godDisplay');
+    target.attr('src','img/pray/safetyGodShadow.png');
+    plusSlides(1);
+  });
 
   //財富
   $('.wealth').mouseover(function(){
@@ -78,6 +155,11 @@ $(function(){
     $('.wealth>.cateTitle').css('color','#ffffff');
     $('.wealth img').attr('src','img/pray/wealth.svg');
   });
+  $('.wealth').click(function(){
+    let target = $('#godDisplay');
+    target.attr('src','img/pray/moneyGodShadow.png');
+    plusSlides(1);
+  });
 
   //事業
   $('.work').mouseover(function(){
@@ -93,6 +175,11 @@ $(function(){
     $('.godTitle').text('祈願神明');
     $('.work>.cateTitle').css('color','#ffffff');
     $('.work img').attr('src','img/pray/work.svg');
+  });
+  $('.work').click(function(){
+    let target = $('#godDisplay');
+    target.attr('src','img/pray/workGodShadow.png');
+    plusSlides(1);
   });
 
  

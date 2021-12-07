@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BOBIO｜立即祈願</title>
+  <title>BOBIO｜立即祈願｜愛情</title>
   <link rel="stylesheet" href="css/header.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="js/header.js"></script>
-  <link rel="stylesheet" href="css/pray.css">
+  <link rel="stylesheet" href="css/prayStartLove.css">
   <script src="js/pray.js"></script>
 </head>
 <body>
@@ -50,7 +50,8 @@
       </div>
     </div>
   </header>
-  <section class='praySection'>
+  <div class="bobioPray" id="app">
+    <section class='section praySection'>
     <div class="pray">
       <p class="choose">請選擇</p>
       <h2 class="prayCate">祈願種類</h2>
@@ -81,7 +82,7 @@
         <img src="img/pray/study.svg" alt="學業">
         <p class="cateTitle">學業</p>
       </div>
-      <div class="cate health">
+      <div class="cate health" >
         <img src="img/pray/health.svg" alt="健康">
         <p class="cateTitle">健康</p>
       </div>
@@ -98,6 +99,123 @@
         <p class="cateTitle">事業</p>
       </div>
     </div>
-  </section>
+    </section>
+    <section class="section prayIntro">
+        <div class="mainSec">
+          <div class="prayGod">
+            <img id="godDisplay" src="img/pray/loveGodShadow.png" alt="月老">
+          </div>
+          <div class="prayTitle">
+            <div class="prayMethod">
+              <h2 class="methodWeb">祈願<br>方法</h2>
+              <h2 class="methodPhone">祈願方法</h2>
+              <p class="detailWeb">請在心中默念您的名字、欲祈求之事項。<br>完成後請點選下一步。</p>
+              <p class="detailPhone">請在心中默念您的名字、<br>欲祈求之事項。<br>完成後請點選下一步。</p>
+            </div>
+            <div class="praySteps">
+              <p class="step chooseAttr">選擇<br>供品</p>
+              <p class=" step prayStart">默念<br>拜拜</p>
+              <p class="step prayDone">完成<br>祈願</p>
+            </div>
+          </div>
+        </div>
+    </section>
+    <section class="section attrIntro">
+        <div class="attrSec">
+          <div class="stepMethod">
+            <p class=" step prayWay">祈願<br>方法</p>
+          </div>
+          <div class="chooseAttr">
+            <div class="attr meat">
+              <h2>三牲</h2>
+              <div class="detail">
+                <p>豬<br>雞<br>魚</p>
+                <button class="choose" data-hover="選擇">選擇</button>
+              </div>
+            </div>
+            <div class="attr fruit">
+              <h2>鮮果</h2>
+              <div class="detail">
+                <p>香蕉<br>蘋果<br>水梨</p>
+                <button class="choose" data-hover="選擇">選擇</button>
+              </div>
+            </div>
+            <div class="attr sweet">
+              <h2>甜食</h2>
+              <div class="detail">
+                <p>糕餅<br>餅乾<br>糖果</p>
+                <button class="choose" data-hover="選擇">選擇</button>
+              </div>
+            </div>
+          </div>
+          <div class="attrTitle">
+            <div class="attrChoices">
+              <h2 class="choicesWeb">選擇<br>供品</h2>
+              <h2 class="choicesPhone">選擇供品</h2>
+              <p class="choicesDetail">請選擇欲提供之供品。<br>完成後請點選下一步。</p>
+            </div>
+            <div class="chooseSteps">
+              <p class=" step prayStart">默念<br>拜拜</p>
+              <p class="step prayDone">完成<br>祈願</p>
+            </div>
+          </div>
+        </div>
+    </section>
+    <section class="section byeBye">
+        <div class="byeSec">
+          <div class="byeTitle">
+            <div class="byeChoices">
+              <h2 class="byeByeWeb">默念<br>拜拜</h2>
+              <h2 class="byeByePhone">默念拜拜</h2>
+              <p class="byeByeDetail">請雙手合十，進行叩拜。<br>完成後請點選下一步。</p>
+            </div>
+            <div class="byeByeProcess">
+              <p class="step prayStart">祈願<br>方法</p>
+              <p class="step prayDone">選擇<br>貢品</p>
+            </div>
+          </div>
+          <div class="byeByeAnimation">
+            <img src="img/pray/bobioAnimation.gif" alt="默念拜拜">
+          </div>
+          <div class="lastStep">
+            <p class="step prayDone">完成<br>祈願</p>
+          </div>
+        </div>
+    </section>
+    <section class="section Finish">
+        <div class="doneSec">
+          <div class="doneTitle">
+            <div class="doneIntro">
+              <h2 class="prayDoneWeb">完成<br>祈願</h2>
+              <h2 class="prayDonePhone">祈願</h2>
+              <p class="doneDetail">本次祈願步驟已完成。<br>另贈與雞湯小卡一張，庇佑您心想事成。</p>
+            </div>
+            <div class="prayProcess">
+              <p class="step prayMethod">祈願<br>方法</p>
+              <p class="step chooseAttr">選擇<br>貢品</p>
+              <p class="step prayDone">完成<br>祈願</p>
+            </div>
+          </div>
+          <div class="prayCard">
+            <div class="cradDetail">
+              <img src="img/pray/prayCard.png" alt="雞湯小卡">
+            </div>
+          </div>
+        </div>
+    </section>
+    <div class="btnStep">
+        <button class="btn previous" onclick="minusSlides(1)">
+        <img src="img/pray/preArrow.svg" alt="上一步">
+        <p class="previousStep">上一步</p>
+      </button>
+        <button class="btn next" onclick="plusSlides(1)">
+        <p class="nextStep">下一步</p>
+        <img src="img/pray/nextArrow.svg" alt="下一步">
+      </button>
+    </div>
+    <div class="goMainpage">
+    <button data-hover="返回首頁">返回首頁</button>
+    </div>
+  </div>
 </body>
 </html>
