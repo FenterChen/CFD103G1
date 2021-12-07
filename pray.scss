@@ -1,0 +1,218 @@
+@import 'base/var';
+@import 'mixin/modules';
+
+body{
+  background: map-get($color, mainyellow);
+}
+.praySection{
+  margin-top: 120px;
+  @include tabletH(){
+    margin-top: 200px;
+    position: relative;
+  }
+}
+.pray{
+  @include flexCenter();
+  flex-direction: column;
+  font-family: NotoSansTC, sans-serif;
+  color: map-get($color, darkbrown);
+  .choose{
+    font-size: map-get($fontSize, weblp);
+    line-height: 30px;
+    font-weight: map-get($fontWeight, titleSmallWeight);
+  }
+  .prayCate{
+    font-size: map-get($fontSize, webh2);
+    line-height: 40px;
+    font-weight: map-get($fontWeight, titleSmallWeight);
+    margin-bottom: 10px;
+  }
+  .cateSectionPhone{
+    position: relative;
+    @include tabletH(){
+      display: none;
+    }
+    &::after{
+      content:"▼";  
+      padding: 9px 18px;
+      position: absolute; 
+      right: 10px; 
+      top: 0;    
+      z-index: 2;
+      text-align: center;
+      width: 10%;
+      height: 100%;      
+      pointer-events: none;
+      box-sizing: border-box;
+    }
+    .select{
+      margin-bottom: 85px;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid #573605;
+      box-sizing: border-box;
+      border-radius: 20px;
+      width: 100px;
+      height: 30px;
+      font-size: 14px;
+      color: map-get($color, darkbrown);
+      appearance:none;
+      -moz-appearance:none;
+      -webkit-appearance:none;
+      padding-left: 20px;
+      font-family: NotoSansTC, sans-serif;
+    }
+  }
+  .godRepresent{
+    font-size: map-get($fontSize, weblp);
+    line-height: 30px;
+    font-weight: map-get($fontWeight, subTitleWeight);
+    margin-top: 10px;
+    @include tabletH(){
+      display: none;
+    }
+  }
+  .godTitle{
+    font-size: map-get($fontSize, webh2);
+    line-height: 40px;
+    font-weight: map-get($fontWeight, subTitleWeight);
+    @include tabletH(){
+      font-weight: map-get($fontWeight, titleWeight);
+      margin-top: 20px;
+    }
+  }
+  .prayNow{
+    @include btnlocal();
+    margin-top: 40px;
+    margin-bottom: 65px;
+    @include tabletH(){
+      display: none;
+    }
+  }
+  .prayImg{
+    position: relative;
+    @include tabletH(){
+      &::before{
+        content: '';
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        border: 3px solid #927858;
+        position: absolute;
+        left: -130px;
+        top: -150px;
+        z-index: 1;
+      }
+    }
+    img{
+      width: 100%;
+      vertical-align: top;
+    }
+    &::after{
+      content: '';
+      width: 370px;
+      height: 370px;
+      border-radius: 50%;
+      background: rgba(253, 191, 82, 0.5);
+      position: absolute;
+      left: -10px;
+      top: -20px;
+      z-index: -1;
+      @include tabletH(){
+        width: 400px;
+        height: 400px;
+        left: -25px;
+        top: -50px;
+      }
+    }
+  }
+}
+.cateSectionWeb{
+  display: none;
+  @include tabletH(){
+    display: block;
+    .cate{
+      @include flexCenter();
+      flex-direction: column;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: map-get($color, lightbrown);
+      position: absolute;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      z-index: 2;
+      cursor: pointer;
+      &:hover{
+        &::after{
+          background: rgba(253, 191, 82, 0.5);
+          animation: spread infinite 1s ease-in;
+        }
+      }
+      &::after{
+        content: '';
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: rgba(146, 120, 88, 0.5);
+        position: absolute;
+        z-index: -1;
+      }
+      img{
+        vertical-align: top;
+      }
+      .cateTitle{
+        font-family: 
+        Noto Sans TC, serif;
+        color: #ffffff;
+        line-height: 26px;
+        font-size: map-get($fontSize, weblp);
+      }
+    }
+    .love{
+      transform: translate(-190px, -230px);
+    }
+    .study{
+      transform: translate(190px, -230px);
+    }
+    .work{
+      transform: translate(-305px, 0px);
+    }
+    .health{
+      transform: translate(300px, 0px);
+    }
+    .wealth{
+      transform: translate(-190px, 235px);
+    }
+    .safety{
+      transform: translate(190px, 230px);
+    }
+  }
+}
+
+@keyframes spread{
+  0%{
+    transform: scale(.8, .8);
+  }
+  15%{
+    transform: scale(1, 1);
+  }
+  25%{
+    transform: scale(1.1, 1.1);
+  }
+  50%{
+    transform: scale(.8, .8);
+  }
+  65%{
+    transform: scale(1, 1);;
+  }
+  75%{
+    transform: scale(1.1, 1.1);
+  }
+  100%{
+    transform: scale(.8, .8);
+  }
+}

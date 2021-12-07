@@ -1,0 +1,790 @@
+body {
+  background: #FFFAE7;
+}
+
+.prayIntro {
+  height: 735px;
+  width: 100%;
+  position: relative;
+}
+
+@media screen and (min-width: 1024px) {
+  .prayIntro {
+    height: 760px;
+  }
+  .prayIntro::before {
+    content: '';
+    width: 100%;
+    height: 3px;
+    background-color: #927858;
+    position: absolute;
+    z-index: -1;
+  }
+}
+
+@media screen and (min-width: 1024px) and (min-width: 1024px) {
+  .prayIntro::before {
+    bottom: 300px;
+  }
+}
+
+.mainSec {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  padding-top: 120px;
+  text-align: center;
+  font-family: NotoSansTC, sans-serif;
+  color: #573605;
+  margin: auto;
+}
+
+@media screen and (min-width: 1024px) {
+  .mainSec {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    max-width: 1312px;
+    margin: auto;
+    position: relative;
+  }
+}
+
+.mainSec .praySteps {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .mainSec .praySteps {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .mainSec .prayGod {
+    width: 50%;
+    background-color: #fff;
+  }
+}
+
+.mainSec .prayGod img {
+  width: 100%;
+  vertical-align: top;
+}
+
+@media screen and (min-width: 1024px) {
+  .mainSec .prayTitle {
+    height: 300px;
+    margin-left: 5%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .mainSec .prayTitle .prayMethod {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+}
+
+.mainSec .prayTitle .methodWeb {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .mainSec .prayTitle .methodWeb {
+    display: block;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 40px;
+  }
+}
+
+.mainSec .prayTitle .methodPhone {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 40px;
+}
+
+@media screen and (min-width: 1024px) {
+  .mainSec .prayTitle .methodPhone {
+    display: none;
+  }
+}
+
+.mainSec .prayTitle .detailWeb {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .mainSec .prayTitle .detailWeb {
+    display: block;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 40px;
+    margin: 0px 0px 0px 40px;
+    color: #927858;
+  }
+}
+
+.mainSec .prayTitle .detailPhone {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 40px;
+  margin: 15px 0 60px 0;
+  color: #927858;
+}
+
+@media screen and (min-width: 1024px) {
+  .mainSec .prayTitle .detailPhone {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .mainSec .prayTitle .praySteps {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 18px;
+    position: relative;
+  }
+}
+
+.mainSec .prayTitle .praySteps .step {
+  width: 106px;
+  height: 106px;
+  border-radius: 50%;
+  background-color: #927858;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  line-height: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+.mainSec .prayTitle .praySteps .step::after {
+  content: "";
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: rgba(146, 120, 88, 0.5);
+  z-index: -1;
+}
+
+.mainSec .prayTitle .praySteps .prayStart {
+  margin: 0 80px;
+}
+
+.steps {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 70px 20px 50px 20px;
+  max-width: 1312px;
+}
+
+@media screen and (min-width: 1200px) {
+  .steps {
+    margin: 70px auto 50px auto;
+  }
+}
+
+.steps .btn {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1024px) {
+  .steps .btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.steps .btn p {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .steps .btn p {
+    display: inline-block;
+    line-height: 26px;
+    font-family: NotoSansTC, sans-serif;
+    font-size: 18px;
+    color: #573605;
+    padding: 0 10px;
+  }
+}
+
+.attrIntro {
+  height: 735px;
+  width: 100%;
+  position: relative;
+}
+
+@media screen and (min-width: 1024px) {
+  .attrIntro {
+    height: 760px;
+  }
+  .attrIntro::before {
+    content: '';
+    width: 100%;
+    height: 3px;
+    background-color: #927858;
+    position: absolute;
+    z-index: -1;
+    bottom: 260px;
+  }
+}
+
+@media screen and (min-width: 1024px) and (min-width: 1200px) {
+  .attrIntro::before {
+    bottom: 245px;
+  }
+}
+
+.attrSec {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  padding-top: 120px;
+  text-align: center;
+  font-family: NotoSansTC, sans-serif;
+  color: #573605;
+  margin: auto;
+}
+
+@media screen and (min-width: 1024px) {
+  .attrSec {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    max-width: 1312px;
+    padding: 166px 50px 0 50px;
+    position: relative;
+  }
+}
+
+.attrSec .chooseAttr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+  -webkit-transform: translateY(-50px);
+          transform: translateY(-50px);
+}
+
+@media screen and (min-width: 1024px) {
+  .attrSec .chooseAttr {
+    width: 50%;
+  }
+}
+
+.attrSec .chooseAttr .attr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.attrSec .chooseAttr .attr h2 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26px;
+  letter-spacing: 0.05em;
+  margin: 87px 0 60px 0;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #FDBF52;
+  position: relative;
+  z-index: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .attrSec .chooseAttr .attr h2 {
+    width: 120px;
+    height: 120px;
+    font-size: 24px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .attrSec .chooseAttr .attr h2 {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.attrSec .chooseAttr .attr h2::before {
+  content: "";
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background: #FFFAE7;
+  position: absolute;
+  z-index: -1;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+@media screen and (min-width: 768px) {
+  .attrSec .chooseAttr .attr h2::before {
+    width: 105px;
+    height: 105px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .attrSec .chooseAttr .attr h2::before {
+    width: 125px;
+    height: 125px;
+  }
+}
+
+.attrSec .chooseAttr .attr h2::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 15px 12px 0 12px;
+  border-color: #FDBF52 transparent transparent transparent;
+  position: absolute;
+  z-index: -2;
+  bottom: -10px;
+}
+
+.attrSec .chooseAttr .attr .detail {
+  width: 100px;
+  height: 180px;
+  background: #FCDBA3;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .attrSec .chooseAttr .attr .detail {
+    width: 130px;
+    height: 210px;
+  }
+}
+
+.attrSec .chooseAttr .attr .detail::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 20px;
+  background: #FFFAE7;
+  -webkit-box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.attrSec .chooseAttr .attr .detail::after {
+  content: "";
+  width: 2px;
+  height: 75px;
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: -54px;
+  background: #FDBF52;
+}
+
+.attrSec .chooseAttr .attr .detail p {
+  font-size: 14px;
+  line-height: 20px;
+  padding-top: 50px;
+}
+
+@media screen and (min-width: 768px) {
+  .attrSec .chooseAttr .attr .detail p {
+    padding-top: 70px;
+  }
+}
+
+.attrSec .chooseAttr .attr .detail .choose {
+  width: 80px;
+  height: 42px;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  border: 0px;
+  cursor: pointer;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #FDBF52;
+  color: #573605;
+  border-radius: 20px;
+  color: transparent;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  margin: 10px 0 20px 0;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+  color: transparent;
+  position: relative;
+  backface-visibility: hidden;
+}
+
+.attrSec .chooseAttr .attr .detail .choose::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  padding-top: 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: -1em;
+}
+
+.attrSec .chooseAttr .attr .detail .choose::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 12px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+}
+
+.attrSec .chooseAttr .attr .detail .choose:hover::before {
+  opacity: 1;
+  margin-top: 0;
+}
+
+.attrSec .chooseAttr .attr .detail .choose:hover::after {
+  opacity: 0;
+  margin-top: -1em;
+}
+
+@media screen and (min-width: 1200px) {
+  .attrSec .chooseAttr .attr .detail .choose {
+    margin: 25px 0 20px 0;
+  }
+}
+
+.attrSec .chooseAttr .attr .detail .choose:hover::before {
+  opacity: 1;
+  margin-top: 0;
+}
+
+.attrSec .chooseAttr .attr .detail .choose:hover::after {
+  opacity: 0;
+  margin-top: -1em;
+}
+
+.attrSec .chooseAttr .attr .detail .choose::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  padding-top: 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: -1em;
+}
+
+.attrSec .chooseAttr .attr .detail .choose::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 12px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+}
+
+.attrSec .praySteps {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .attrSec .praySteps {
+    display: block;
+  }
+}
+
+.attrSec .stepMethod {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .attrSec .stepMethod {
+    display: block;
+    width: 18%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    margin-top: 100px;
+    color: #ffffff;
+    margin-left: 3%;
+    font-weight: 500;
+    font-size: 18px;
+    position: relative;
+    background-color: #fff;
+  }
+  .attrSec .stepMethod .step {
+    width: 106px;
+    height: 106px;
+    border-radius: 50%;
+    background-color: #927858;
+    -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    line-height: 25px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    position: relative;
+    bottom: -40px;
+  }
+  .attrSec .stepMethod .step::after {
+    content: "";
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: rgba(146, 120, 88, 0.5);
+    z-index: -1;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .attrTitle {
+    width: 35%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin-left: 5%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .attrTitle .attrChoices {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+}
+
+.attrTitle .attrChoices .choicesWeb {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .attrTitle .attrChoices .choicesWeb {
+    display: block;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 40px;
+  }
+}
+
+.attrTitle .attrChoices .choicesPhone {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 40px;
+}
+
+@media screen and (min-width: 1024px) {
+  .attrTitle .attrChoices .choicesPhone {
+    display: none;
+  }
+}
+
+.attrTitle .attrChoices .choicesDetail {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 40px;
+  margin-top: 15px;
+  color: #927858;
+}
+
+@media screen and (min-width: 1024px) {
+  .attrTitle .attrChoices .choicesDetail {
+    margin-left: 40px;
+    margin-top: 0px;
+  }
+}
+
+.attrTitle .chooseSteps {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .attrTitle .chooseSteps {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    margin-top: 100px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 18px;
+    position: relative;
+  }
+  .attrTitle .chooseSteps .step {
+    width: 106px;
+    height: 106px;
+    border-radius: 50%;
+    background-color: #927858;
+    -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    line-height: 25px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    position: relative;
+  }
+  .attrTitle .chooseSteps .step::after {
+    content: "";
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: rgba(146, 120, 88, 0.5);
+    z-index: -1;
+  }
+  .attrTitle .chooseSteps .prayStart {
+    margin-right: 80px;
+  }
+}
+/*# sourceMappingURL=prayStart.css.map */

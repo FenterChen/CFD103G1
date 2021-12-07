@@ -1,0 +1,210 @@
+@import 'base/var';
+@import 'mixin/modules';
+
+body{
+  background: map-get($color, mainyellow);
+}
+.byeBye{
+  width: 100%;
+  position: relative;
+  @include tabletH(){
+    height: 700px;
+    &::before{
+      content: '';
+      width: 100%;
+      height: 3px;
+      background-color: map-get($color, lightbrown);
+      position: absolute;
+      z-index: -1;
+      bottom: 295px;
+      @include laptop(){
+        bottom: 215px;
+      }
+    }
+  }
+}
+.byeSec{
+  @include flexCenter();
+  flex-direction: column;
+  padding-top: 120px;
+  text-align: center;
+  font-family: NotoSansTC, sans-serif;
+  color: map-get($color, darkbrown);
+  margin: auto;
+  @include tabletH(){
+    flex-direction: row;
+    max-width: $maxWidth;
+    box-sizing: border-box;
+    position: relative;
+  }
+  .byeByeAnimation{
+    width: 90%;
+    img{
+      width: 100%;
+    }
+    @include tabletV(){
+      width: 70%;
+    }
+    @include tabletH(){
+      width: 50%;
+      img{
+        width: 100%;
+        transform: translateY(20px);
+      }
+    }
+    @include laptop(){
+      width: 60%;
+    }
+  }
+  .lastStep{
+    display: none;
+    @include tabletH(){
+      display: block;
+      width: 20%;
+      display: flex;
+      color: #ffffff;
+      margin-top: 100px;
+      font-weight: map-get($fontWeight, subTitleWeight);
+      font-size: map-get($fontSize, weblp);
+      position: relative;
+      margin-left: 5%;
+      @include laptop(){
+        width: 15%;
+        margin-left: 3%;
+      }
+      .step{  
+        width: 106px;
+        height: 106px;
+        border-radius: 50%;
+        background-color: map-get($color, lightbrown);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        line-height: 25px;
+        @include flexCenter();
+        position: relative;
+        bottom: -40px;
+        &::after{
+          content: "";
+          width: 125px;
+          height: 125px;
+          border-radius: 50%;
+          position: absolute;
+          background-color:rgba(146, 120, 88, 0.5); 
+          z-index: -1;
+        }
+      }
+    }
+  }
+}
+.byeTitle{
+  margin-bottom: 77px;
+  @include tabletH(){
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-left: 5%;
+    margin-bottom: 0;
+  }
+  @include laptop(){
+    width: 35%;
+  }
+  .byeChoices{
+    @include tabletH(){
+      display: flex;
+      align-self: flex-start;
+      justify-content: flex-start;
+    }
+    .byeByeWeb{
+      display: none;
+      @include tabletH(){
+        display: block;
+        font-size: map-get($fontSize, webh2);
+        font-weight: map-get($fontWeight, titleWeight);
+        line-height: 40px;
+      }
+    }
+    .byeByePhone{
+      font-size: map-get($fontSize, webh2 );
+      font-weight: map-get($fontWeight, titleWeight);
+      line-height: 40px;
+      @include tabletH(){
+        display: none;
+      }
+    }
+    .byeByeDetail{
+      font-size: map-get($fontSize, weblp);
+      font-weight: map-get($fontWeight, pWeight);
+      line-height: 40px;
+      margin-top: 15px;
+      color: map-get($color, lightbrown);
+      @include tabletH(){
+        margin-left: 40px;
+        margin-top: 0px;
+        text-align: left;
+      }
+    }
+  }
+  .byeByeProcess{
+    display: none;
+    @include tabletH(){
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      margin-top: 100px;
+      color: #ffffff;
+      font-weight: map-get($fontWeight, subTitleWeight);
+      font-size: map-get($fontSize, weblp);
+      position: relative;
+      .step{  
+        width: 106px;
+        height: 106px;
+        border-radius: 50%;
+        background-color: map-get($color, lightbrown);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        line-height: 25px;
+        @include flexCenter();
+        position: relative;
+        &::after{
+          content: "";
+          width: 125px;
+          height: 125px;
+          border-radius: 50%;
+          position: absolute;
+          background-color:rgba(146, 120, 88, 0.5); 
+          z-index: -1;
+        }
+      }
+      .prayStart{
+        margin-right:80px;
+      }
+    }
+  }
+}
+.steps{
+  display: flex;
+  justify-content: space-between;
+  margin: 70px 20px 50px 20px;
+  max-width: $maxWidth;
+  @include laptop(){
+    margin: 70px auto 50px auto;
+  }
+  .btn{
+    cursor: pointer;
+    @include tabletH(){
+      display: flex;
+      align-items: center;
+    }
+    p{
+      display: none;
+      @include tabletH(){
+        display: inline-block;
+        line-height: 26px;
+        font-family: NotoSansTC, sans-serif;
+        font-size: map-get($fontSize, weblp);
+        color: map-get($color, darkbrown);
+        padding: 0 10px;
+      }
+    }
+  }
+}
