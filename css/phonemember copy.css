@@ -1,0 +1,345 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@font-face {
+  font-family: NotoSansTC;
+  src: url("../font/NotoSerifTC-Medium.otf");
+}
+
+@font-face {
+  font-family: RocknRollOne;
+  src: url("../font/RocknRollOne-Regular.ttf");
+}
+
+.wrapp {
+  width: 100%;
+  margin: auto;
+  position: relative;
+  background-color: #FFFAE7;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapp {
+    padding-bottom: 120px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .wrapp {
+    padding-bottom: unset;
+  }
+}
+
+.biboLogo {
+  vertical-align: top;
+  margin: 60px 128px;
+  text-align: center;
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .biboLogo {
+    display: none;
+  }
+}
+
+.tempBg {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .tempBg {
+    width: 100%;
+    max-width: 400px;
+    margin-left: 20px;
+    position: relative;
+    display: unset;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .tempBg {
+    margin-left: 80px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .tempBg {
+    margin-left: 110px;
+  }
+}
+
+.tempBg img {
+  width: 50%;
+  margin-top: 40px;
+  vertical-align: top;
+  position: relative;
+  border-radius: 30px;
+}
+
+@media screen and (min-width: 1200px) {
+  .tempBg img {
+    width: 550px;
+  }
+}
+
+.boxContainer, .boxContainer2 {
+  width: 100%;
+  max-width: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 20px;
+  margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .boxContainer, .boxContainer2 {
+    max-width: 320px;
+    border: 1px solid #573605;
+    background-color: white;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .boxContainer, .boxContainer2 {
+    max-width: 400px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .boxContainer {
+    position: absolute;
+    right: 20px;
+    top: 40px;
+  }
+}
+
+.boxContainer2 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 148px;
+}
+
+@media screen and (min-width: 768px) {
+  .boxContainer2 {
+    left: unset;
+    right: 20px;
+    top: 40px;
+  }
+}
+
+.showAdd {
+  display: none;
+}
+
+.showLogin {
+  display: none;
+}
+
+.boxMember {
+  margin: 25px 10px;
+}
+
+.boxMember .boxData {
+  margin: 0 50px;
+}
+
+.boxData .textName, .textPhone, .textEmail, .textPwd {
+  padding: 10px 0px;
+  width: 250px;
+}
+
+@media screen and (min-width: 768px) {
+  .boxData .textName, .textPhone, .textEmail, .textPwd {
+    width: 300px;
+    background-color: white;
+  }
+}
+
+.textPwd p {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  text-align: right;
+  color: #927858;
+  display: none;
+}
+
+.boxData span {
+  padding: 2px;
+  display: block;
+  color: #573605;
+  font-size: 16px;
+}
+
+.boxData input {
+  border: none;
+  background-color: #FFFAE7;
+  border-bottom: 1px solid #573605;
+  width: 250px;
+  font-size: 18px;
+  font-family: NotoSansTC, serif;
+  color: #573605;
+}
+
+@media screen and (min-width: 768px) {
+  .boxData input {
+    background-color: transparent;
+    width: 300px;
+  }
+}
+
+.boxMember .textAdd {
+  text-decoration: none;
+  color: #573605;
+  list-style: none;
+  font-size: 24px;
+  position: relative;
+}
+
+.boxMember .textAdd::before {
+  content: '';
+  width: 2px;
+  height: 23px;
+  background-color: #573605;
+  top: 0px;
+  right: -20px;
+  position: absolute;
+}
+
+.boxMember .textLogin {
+  color: #573605;
+  opacity: 0.5;
+  margin-left: 30px;
+  font-size: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .boxMember .textLogin {
+    margin-left: 40px;
+    font-size: 24px;
+  }
+}
+
+.boxMember .textAdd2 {
+  opacity: 0.5;
+}
+
+.boxMember .textLogin2 {
+  opacity: 1;
+}
+
+.btnAdd, .btnLogin {
+  width: 300px;
+  height: 50px;
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #FDBF52;
+  color: #573605;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  width: 250px;
+}
+
+@media screen and (min-width: 768px) {
+  .btnAdd, .btnLogin {
+    width: 300px;
+  }
+}
+
+.boxBtn .btnAdd {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.boxBtn .btnLogin {
+  margin-bottom: 30px;
+}
+
+.boxBtn .btnLogin img {
+  padding-right: 7px;
+}
+
+.noMember p {
+  color: #573605;
+  font-size: 16px;
+  margin-bottom: 60px;
+  opacity: 1;
+}
+
+.noMember span {
+  color: #573605;
+  opacity: 0.5;
+}
+/*# sourceMappingURL=phonemember copy.css.map */

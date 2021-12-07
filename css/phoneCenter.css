@@ -1,0 +1,351 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@font-face {
+  font-family: NotoSansTC;
+  src: url("../font/NotoSerifTC-Medium.otf");
+}
+
+section {
+  width: 90%;
+  margin: auto;
+}
+
+.wrapp {
+  width: 100%;
+  max-width: 375px;
+  background-color: #FFFAE7;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapp {
+    max-width: 768px;
+    margin-top: 60px;
+    margin-bottom: 80px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .wrapp {
+    max-width: 1024px;
+    margin-top: 80px;
+    margin-bottom: 120px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .wrapp {
+    max-width: 1200px;
+    margin-top: 100px;
+    margin-bottom: 150px;
+  }
+}
+
+.wrapp h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #573605;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.wrapp span {
+  text-align: right;
+  color: #573605;
+  display: block;
+  margin-bottom: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapp span {
+    position: absolute;
+    top: 30px;
+    right: 0px;
+    text-decoration: underline;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .wrapp span {
+    top: 30px;
+    right: 0px;
+  }
+}
+
+.boxRec1,
+.boxRec2,
+.boxRec3 {
+  width: 100%;
+  max-width: 335px;
+  background-color: white;
+  border: 1px solid #573605;
+  border-radius: 20px;
+  margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .boxRec1,
+  .boxRec2,
+  .boxRec3 {
+    max-width: 768px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .boxRec1,
+  .boxRec2,
+  .boxRec3 {
+    max-width: 1024px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .boxRec1,
+  .boxRec2,
+  .boxRec3 {
+    max-width: 1200px;
+  }
+}
+
+.boxRec1 .boxMem,
+.boxRec2 .boxMem,
+.boxRec3 .boxMem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.boxRec1 .boxMem button,
+.boxRec2 .boxMem button,
+.boxRec3 .boxMem button {
+  text-decoration: none;
+  list-style: none;
+  color: #573605;
+  background-color: #FDBF52;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 20px 0;
+  text-align: center;
+  border: 1px solid #573605;
+  font-size: 18px;
+}
+
+.boxRec1 .boxMem .mPray,
+.boxRec2 .boxMem .mPray,
+.boxRec3 .boxMem .mPray {
+  border: none;
+  border-top-left-radius: 20px;
+}
+
+.boxRec1 .boxMem .mPray:hover,
+.boxRec2 .boxMem .mPray:hover,
+.boxRec3 .boxMem .mPray:hover {
+  background-color: #FCDBA3;
+}
+
+.boxRec1 .boxMem .mPomes,
+.boxRec2 .boxMem .mPomes,
+.boxRec3 .boxMem .mPomes {
+  border: none;
+  border-left: 1px solid #573605;
+}
+
+.boxRec1 .boxMem .mPomes:hover,
+.boxRec2 .boxMem .mPomes:hover,
+.boxRec3 .boxMem .mPomes:hover {
+  background-color: #FCDBA3;
+}
+
+.boxRec1 .boxMem .mOrder,
+.boxRec2 .boxMem .mOrder,
+.boxRec3 .boxMem .mOrder {
+  border: none;
+  border-top-right-radius: 20px;
+  border-left: 1px solid #573605;
+}
+
+.boxRec1 .boxMem .mOrder:hover,
+.boxRec2 .boxMem .mOrder:hover,
+.boxRec3 .boxMem .mOrder:hover {
+  background-color: #FCDBA3;
+}
+
+.boxRec1 .boxMem .mBg,
+.boxRec2 .boxMem .mBg,
+.boxRec3 .boxMem .mBg {
+  background-color: #fff;
+}
+
+.showRec1,
+.showRec2,
+.showRec3 {
+  display: none;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.boxItem {
+  width: 100%;
+  max-width: 335px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .boxItem {
+    max-width: 768px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .boxItem {
+    max-width: 1024px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .boxItem {
+    max-width: 1200px;
+  }
+}
+
+.boxItem img {
+  vertical-align: top;
+  padding: 25px 65px;
+}
+
+.boxItem p {
+  padding: 30px 0px;
+  color: #573605;
+  border-top: 1px solid #573605;
+  font-family: NotoSansTC, serif;
+  font-size: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .boxItem p {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    text-align: center;
+    padding: 0px 0px;
+    border-top: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .boxItem .order {
+    position: relative;
+  }
+  .boxItem .order::after {
+    content: '感情-生肖牛';
+    position: absolute;
+    top: 30px;
+    right: 18px;
+    width: 120px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .boxItem .order::after {
+    right: 50px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .boxItem .order::after {
+    right: 72px;
+  }
+}
+
+.arrow {
+  border-top: 1px solid #573605;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (min-width: 768px) {
+  .arrow {
+    display: none;
+  }
+}
+
+.arrow img {
+  padding: 30px 20px;
+}
+
+.arrow img:nth-child(1) {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  margin-right: auto;
+}
+
+.arrow img:nth-child(2) {
+  margin-left: auto;
+}
+/*# sourceMappingURL=phoneCenter.css.map */

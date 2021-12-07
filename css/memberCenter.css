@@ -1,0 +1,192 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@font-face {
+  font-family: NotoSansTC;
+  src: url("../font/NotoSerifTC-Medium.otf");
+}
+
+@font-face {
+  font-family: RocknRollOne;
+  src: url("../font/RocknRollOne-Regular.ttf");
+}
+
+.wrapp {
+  max-width: 1200px;
+  width: 100%;
+  background-color: #FFFAE7;
+  margin: auto;
+}
+
+.wrapp h2 {
+  font-family: NotoSansTC, serif;
+  font-size: 32px;
+  color: #573605;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.wrapp span {
+  font-family: NotoSansTC, serif;
+  font-size: 18px;
+  text-align: right;
+  color: #573605;
+  margin-bottom: 15px;
+  display: block;
+  position: absolute;
+  top: 50px;
+  right: 200px;
+  text-decoration: underline;
+}
+
+.boxRec1, .boxRec2, .boxRec3 {
+  width: 100%;
+  max-width: 1120px;
+  background-color: white;
+  border: 1px solid #573605;
+  border-radius: 20px;
+  margin: auto;
+}
+
+.boxRec1 .boxMem, .boxRec2 .boxMem, .boxRec3 .boxMem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.boxRec1 .boxMem button, .boxRec2 .boxMem button, .boxRec3 .boxMem button {
+  text-decoration: none;
+  list-style: none;
+  color: #573605;
+  background-color: #FDBF52;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 20px 0;
+  text-align: center;
+  border: 1px solid #573605;
+  font-size: 18px;
+}
+
+.boxRec1 .boxMem .mPray, .boxRec2 .boxMem .mPray, .boxRec3 .boxMem .mPray {
+  border-top-left-radius: 20px;
+  border: none;
+  border-bottom: 1px solid #573605;
+}
+
+.boxRec1 .boxMem .mPray:hover, .boxRec2 .boxMem .mPray:hover, .boxRec3 .boxMem .mPray:hover {
+  background-color: #FCDBA3;
+}
+
+.boxRec1 .boxMem .mPomes, .boxRec2 .boxMem .mPomes, .boxRec3 .boxMem .mPomes {
+  border: none;
+  border-bottom: 1px solid #573605;
+  border-left: 1px solid #573605;
+}
+
+.boxRec1 .boxMem .mPomes:hover, .boxRec2 .boxMem .mPomes:hover, .boxRec3 .boxMem .mPomes:hover {
+  background-color: #FCDBA3;
+}
+
+.boxRec1 .boxMem .mOrder, .boxRec2 .boxMem .mOrder, .boxRec3 .boxMem .mOrder {
+  border-top-right-radius: 20px;
+  border: none;
+  border-left: 1px solid #573605;
+  border-bottom: 1px solid #573605;
+}
+
+.boxRec1 .boxMem .mOrder:hover, .boxRec2 .boxMem .mOrder:hover, .boxRec3 .boxMem .mOrder:hover {
+  background-color: #FCDBA3;
+}
+
+.boxRec1 .boxMem .mBg, .boxRec2 .boxMem .mBg, .boxRec3 .boxMem .mBg {
+  background-color: #fff;
+}
+
+.boxItem .order {
+  position: relative;
+}
+
+.boxItem .order::after {
+  content: '感情-生肖牛';
+  position: absolute;
+  top: 30px;
+  right: 81px;
+}
+
+.boxItem {
+  width: 100%;
+  max-width: 1120px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.boxItem img {
+  vertical-align: top;
+  padding: 25px 65px;
+}
+
+.boxItem p {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  text-align: center;
+  color: #573605;
+}
+/*# sourceMappingURL=memberCenter.css.map */
