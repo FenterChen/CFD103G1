@@ -25,6 +25,57 @@
   color: map-get($color, darkbrown);
 }
 
+<<<<<<< HEAD
+//按鈕before
+@mixin btnBefore(){
+  &::before{
+    content : attr(data-hover);
+    width : 100%;
+    position : absolute;
+    top : 0;
+    left : 0px;
+    padding-top: 12px;
+    transition : 0.3s; 
+    opacity : 0;
+    color : rgba(255,255,255,0.9);
+    margin-top: -1em;
+  }
+}
+
+//按鈕after
+@mixin btnAfter(){
+  &::after{
+    content : attr(data-hover);
+    width : 100%;
+    position : absolute;
+    top : 0;
+    left: 0;
+    padding-top: 12px;
+    opacity : 1;
+    transition : 0.3s; 
+    color : map-get($color, darkbrown);
+  }
+}
+
+//按鈕hover後before
+@mixin btnHoverBefore(){
+  &:hover{
+    &::before{
+      opacity : 1;
+      margin-top : 0;
+    }
+  }
+}
+
+//按鈕hover後after
+@mixin btnHoverAfter(){
+  &:hover{
+    &::after{
+      opacity : 0;
+      margin-top : -1em;
+    }
+  }
+=======
 //跳窗底圖
 @mixin jumpBg() {
   background-color: map-get($color, jumpBgc);
@@ -46,6 +97,7 @@
   @include btnShadow();
   @include btnColor();
   @include btnBigBorderR();
+>>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
 }
 
 //主頁的按鈕&開始求籤&開始結緣
@@ -55,9 +107,18 @@
   font-size: map-get($fontSize, webp);
   line-height: 35px;
   text-align: center;
+  border: 0px;
+  cursor: pointer;
   @include btnShadow();
   @include btnColor();
   @include btnBigBorderR();
+  @include btnBefore();
+  @include btnAfter();
+  @include btnHoverBefore();
+  @include btnHoverAfter();
+  color: transparent;
+  position : relative;
+	backface-visibility : hidden;
 }
 
 //只有祈願供品選擇&求籤輸入名字的確定
@@ -67,9 +128,18 @@
   font-size: map-get($fontSize, weblp);
   line-height: 21px;
   text-align: center;
+  border: 0px;
+  cursor: pointer;
   @include btnShadow();
   @include btnColor();
   @include smallBorderR();
+  @include btnBefore();
+  @include btnAfter();
+  @include btnHoverBefore();
+  @include btnHoverAfter();
+  color: transparent;
+  position : relative;
+	backface-visibility : hidden;
 }
 
 //其他頁面：確定&取消&下一步&付款&抽籤&擲筊&查看籤詩&返回首頁
@@ -79,9 +149,18 @@
   font-size: map-get($fontSize, weblp);
   line-height: 21px;
   text-align: center;
+  border: 0px;
+  cursor: pointer;
   @include btnShadow();
   @include btnColor();
   @include smallBorderR();
+  @include btnBefore();
+  @include btnAfter();
+  @include btnHoverBefore();
+  @include btnHoverAfter();
+  color: transparent;
+  position : relative;
+	backface-visibility : hidden;
 }
 
 //會員頁面：登入&註冊&FB登入
@@ -91,9 +170,18 @@
   font-size: map-get($fontSize, weblp);
   line-height: 26px;
   text-align: center;
+  cursor: pointer;
+  border: 0px;
   @include btnShadow();
   @include btnColor();
   @include BigBorderR();
+  @include btnBefore();
+  @include btnAfter();
+  @include btnHoverBefore();
+  @include btnHoverAfter();
+  color: transparent;
+  position : relative;
+	backface-visibility : hidden;
 }
 
 //橫排垂直＋水平置中
