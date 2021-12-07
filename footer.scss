@@ -1,0 +1,141 @@
+@import 'base/reset';
+@import 'base/var';
+@import 'mixin/modules';
+
+@include NotoSansTC();
+@include RocknRollOne();
+
+footer{
+    background-color: map-get($color, lightbrown);
+}
+
+
+
+.footer-wrap{
+    @include flexCenter();
+    width: 90%;
+    padding: 2% 0;
+    justify-content:space-between;
+    margin: auto;
+}
+
+.footer-logo{
+    width: 35%;
+    margin-right: 20px;
+}
+.footer-logo img{
+    width: 100%;
+}
+
+.footer-slog{
+    color: map-get($color, mainyellow);
+    font-size: map-get($fontSize, webh1);
+    font-family: RocknRollOne;
+    display: none;
+}
+
+.footer-info{
+    width: 85%;
+}
+
+
+.list ul{
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    display: none;
+}
+
+.list ul a{
+    color: map-get($color, mainyellow);
+    font-size: map-get($fontSize, navfont);
+    text-decoration: none;
+}
+
+.list ul a:hover{
+    color: map-get($color, orange);
+}
+
+.conn{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding:10px 0;
+    margin: 10px 0;
+    border-top: map-get($color, mainyellow) 1px solid;
+    border-bottom:  map-get($color, mainyellow) 1px solid;
+}
+.conn p{
+    color: map-get($color, mainyellow);
+    font-size: 14px;
+    line-height:180%;
+}
+
+
+.info-icon img{
+    width: 30px;
+    margin-left: 5px;
+}
+
+
+
+.copyright{
+    background: map-get($color, darkbrown);
+    padding: 20px 5%;
+    
+    margin: auto;
+}
+
+
+.copyright p{
+    color: map-get($color, mainyellow);
+    font-size: 9px;
+    line-height: 150%;
+    text-align: center;
+    @include maxWidth(); 
+}
+
+//RWD
+
+@include tabletV() {
+    .list ul{
+        display:flex;
+    } 
+    .conn p{
+        font-size: map-get($fontSize, navfont);
+    }
+
+    .footer-logo{
+        width: 200px;
+    }
+    .footer-logo img{
+        width: 100%;
+    }
+  
+       
+}
+  
+@include tabletH() {
+    .footer-info{
+        width: 40%;
+    }
+    .footer-slog{
+        display:inline-block;
+    }
+    .copyright p{
+        font-size: map-get($fontSize, navfont);
+    }
+
+    .footer-wrap{
+        @include maxWidth();
+        
+    }
+       
+        
+}
+
+
+

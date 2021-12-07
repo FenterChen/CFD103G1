@@ -1,3 +1,13 @@
+@font-face {
+  font-family: NotoSansTC;
+  src: url("../font/NotoSerifTC-Medium.otf");
+}
+
+@font-face {
+  font-family: RocknRollOne;
+  src: url("../font/RocknRollOne-Regular.ttf");
+}
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -52,17 +62,11 @@ table {
   border-spacing: 0;
 }
 
-@font-face {
-  font-family: NotoSansTC;
-  src: url("../font/NotoSerifTC-Medium.otf");
+body {
+  background-color: #FFFAE7;
 }
 
-@font-face {
-  font-family: RocknRollOne;
-  src: url("../font/RocknRollOne-Regular.ttf");
-}
-
-header {
+#mainheader {
   position: fixed;
   top: 0;
   left: 0;
@@ -84,7 +88,7 @@ header {
           justify-content: center;
   max-width: 1312px;
   margin: auto;
-  padding: 4.5px 20px;
+  padding: 6px 20px;
 }
 
 header nav ul {
@@ -322,15 +326,6 @@ header .hb span {
 }
 
 @media screen and (min-width: 1200px) {
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 50;
-    width: 100%;
-    background-color: rgba(255, 250, 231, 0.85);
-    border-top: 3px solid #FDBF52;
-  }
   .headerWrap {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -343,7 +338,7 @@ header .hb span {
             justify-content: center;
     max-width: 1312px;
     margin: auto;
-    padding: 7px 0px;
+    padding: 7px 20px;
   }
   header nav ul {
     -webkit-box-pack: left;

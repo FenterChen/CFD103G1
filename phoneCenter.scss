@@ -1,0 +1,251 @@
+@import 'base/var';
+@import 'base/reset';
+@import 'mixin/modules';
+@include NotoSansTC();
+
+section {
+    width: 90%;
+    margin: auto;
+}
+
+.wrapp {
+    width: 100%;
+    max-width: 375px;
+    background-color: #FFFAE7;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    position: relative;
+
+    @include tabletV() {
+        max-width: 768px;
+        margin-top: 60px;
+        margin-bottom: 80px;
+    }
+
+    @include tabletH() {
+        max-width: 1024px;
+        margin-top: 80px;
+        margin-bottom: 120px;
+    }
+
+    @include laptop() {
+        max-width: 1200px;
+        margin-top: 100px;
+        margin-bottom: 150px;
+    }
+}
+
+//  第一組 Center CSS
+
+.wrapp h2 {
+    font-size: map-get($fontSize, webh2);
+    font-weight: 700;
+    color: #573605;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.wrapp span {
+    text-align: right;
+    color: #573605;
+    display: block;
+    margin-bottom: 15px;
+
+    @include tabletV() {
+        position: absolute;
+        top: 30px;
+        right: 0px;
+        text-decoration: underline;
+    }
+
+    @include laptop() {
+        top: 30px;
+        right: 0px;
+    }
+}
+
+.boxRec1,
+.boxRec2,
+.boxRec3 {
+    width: 100%;
+    max-width: 335px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #573605;
+    @include smallBorderR;
+    margin: auto;
+
+    @include tabletV() {
+        max-width: 768px;
+    }
+
+    @include tabletH() {
+        max-width: 1024px;
+    }
+
+    @include laptop() {
+        max-width: 1200px;
+    }
+
+    .boxMem {
+        display: flex;
+
+        button {
+            text-decoration: none;
+            list-style: none;
+            color: #573605;
+            background-color: #FDBF52;
+            flex-grow: 1;
+            padding: 20px 0;
+            text-align: center;
+            border: 1px solid #573605;
+            font-size: map-get($fontSize, weblp);
+        }
+
+        .mPray {
+            border: none;
+            border-top-left-radius: 20px;
+
+
+            &:hover {
+                background-color: #FCDBA3;
+            }
+
+        }
+
+        .mPomes {
+            border: none;
+            border-left: 1px solid #573605;
+
+            &:hover {
+                background-color: #FCDBA3;
+            }
+        }
+
+        .mOrder {
+            border: none;
+            border-top-right-radius: 20px;
+            border-left: 1px solid #573605;
+
+
+            &:hover {
+                background-color: #FCDBA3;
+            }
+        }
+
+        .mBg {
+            background-color: #fff;
+        }
+    }
+}
+
+.showRec1,
+.showRec2,
+.showRec3 {
+    display: none;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.boxItem {
+    width: 100%;
+    max-width: 335px;
+    text-align: center;
+
+    @include tabletV() {
+        max-width: 768px;
+        display: flex;
+        align-items: center;
+
+    }
+
+    @include tabletH() {
+        max-width: 1024px;
+    }
+
+    @include laptop() {
+        max-width: 1200px;
+    }
+
+
+    img {
+        vertical-align: top;
+        padding: 25px 65px;
+    }
+
+    p {
+        padding: 30px 0px;
+        color: #573605;
+        border-top: 1px solid #573605;
+        font-family: NotoSansTC, serif;
+        font-size: map-get($fontSize, weblp);
+
+        @include tabletV() {
+            flex-grow: 1;
+            text-align: center;
+            padding: 0px 0px;
+            border-top: none;
+
+        }
+
+        @include tabletH() {}
+
+        @include laptop() {}
+    }
+}
+
+.boxItem .order {
+    @include tabletV() {
+        position: relative;
+
+        &::after {
+            content: '感情-生肖牛';
+            position: absolute;
+            top: 30px;
+            right: 18px;
+            width: 120px;
+        }
+    }
+
+    @include tabletH() {
+        &::after {
+            right: 50px;
+        }
+    }
+
+    @include laptop() {
+        &::after {
+            right: 72px;
+        }
+    }
+
+}
+
+.arrow {
+    border-top: 1px solid #573605;
+    display: flex;
+
+    @include tabletV() {
+        display: none;
+    }
+
+    @include tabletH() {}
+
+    @include laptop() {}
+}
+
+.arrow img {
+    padding: 30px 20px;
+}
+
+
+.arrow img:nth-child(1) {
+    transform: rotate(180deg);
+    margin-right: auto;
+}
+
+.arrow img:nth-child(2) {
+    margin-left: auto;
+}
