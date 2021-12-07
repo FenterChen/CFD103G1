@@ -1,0 +1,135 @@
+@import 'base/var';
+@import 'base/reset';
+@import 'mixin/modules';
+
+.wrapp{
+    width: 100%;
+    background-color:#FFFAE7;
+    margin: auto;
+   
+}
+
+.biboLogo{
+    vertical-align: top;
+    margin: 60px 128px;
+    text-align: center;
+}
+
+
+.boxContainer{
+    width: 100%;
+    max-width: 375px;
+    border: 1px solid #573605 ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include smallBorderR;
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+
+ }     
+    .boxMember{
+        margin:25px 60px; 
+      
+    .boxData{
+        margin: 0 50px;
+    
+             }
+    }
+
+    .boxData .textName,.textPhone,.textEmail,.textPwd{
+        padding: 10px 0px;
+        width: 250px;
+        background-color:rgb(255, 255, 255);
+    }
+    /////電腦版才顯示的忘記密碼
+    .textPwd p{
+        margin-top: 10px;
+        margin-bottom: 50px;
+        text-align: right;
+        color: #927858;
+        display: none;
+    }
+   
+    .boxData span{
+        padding: 2px; 
+        display: block;   
+        color:#573605;
+        font-size:map-get($fontSize, navfont);
+    }
+    input{
+        border: none;
+        border-bottom: 1px solid #573605;
+        width: 250px;
+        font-size:map-get($fontSize, weblp);
+        color:#573605;
+        
+    }
+    .boxMember .textAdd{
+        text-decoration: none;
+        color:#573605;
+        list-style: none;
+        font-size:map-get($fontSize, webp);
+        position: relative;
+        &::before{
+            content: '';
+            width: 2px;
+            height: 23px;
+            background-color: #573605;
+            top: 0px;
+            right: -25px;
+            position:absolute;
+            
+        }
+    }
+   
+    .boxMember .textLogin{
+        text-decoration: none;
+        color:#573605;
+        list-style: none;
+        opacity: 0.5;
+        margin-left: 40px;
+        font-size:map-get($fontSize, webp);
+    } 
+    .boxMember  .textAdd2{
+        opacity:0.5;
+    }
+    .boxMember .textLogin2{
+        opacity:1;
+    }
+
+    .boxBtn .btnAdd{
+        margin-top: 15px;
+        margin-bottom: 10px;
+        @include btnLogin  ;
+        @include flexCenter;
+        cursor: pointer;
+        width: 250px;
+        
+    }
+    .boxBtn .btnLogin{
+        margin-bottom: 30px;
+        @include btnLogin ;  
+        @include flexCenter;  
+            cursor: pointer;
+        width: 250px;
+            
+         
+    }
+    .boxBtn .btnLogin img{
+        padding-right: 7px;
+    }
+
+    .noMember p{
+        color:#573605;
+        font-size:map-get($fontSize, navfont);
+        margin-bottom: 60px;
+        opacity: 1;  
+    }
+    .noMember span{
+        color:#573605;
+        opacity: 0.5;
+        
+    }
+    
+    
