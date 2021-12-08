@@ -1,19 +1,18 @@
-var slideIndex = 1;
+let slideIndex = 1;
 var i;
 var slides = document.getElementsByClassName("section");
 
 function currentSlide(n) {
   showSlides(slideIndex = n);
 }
-
+console.log(slides)
 function showSlides(n) {
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
+  // if (n > slides.length) {slideIndex = 1}    
+  // if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";  
    
   }
-
   let display = 'block'
   if (slideIndex == 1) display = 'flex'
   slides[slideIndex-1].style.display = display; 
@@ -21,12 +20,13 @@ function showSlides(n) {
 
 function plusSlides(n) {
   slideIndex += n;
+  console.log(slideIndex)
   showSlides(slideIndex);
-  if (slideIndex >= slides.length) return;
   for (i = 0; i < slides.length; i++) {
     slides[i].style.animation = "fadeLeft 1.5s";
   }
   hideBtn();
+  
 }
 function minusSlides(n) {
   slideIndex -= n;
@@ -42,7 +42,7 @@ function hideBtn() {
     $('.btnStep').css('display','none');
     $('.goMainpage').css('display','none');
     $('.bobioPray').addClass('no-line')
-  } else if(slideIndex == 5){
+  } else if(slideIndex >= 5){
     $('.btnStep').css('display','none');
     $('.goMainpage').css('display','flex');
     $('.bobioPray').removeClass('no-line');
@@ -213,3 +213,7 @@ $(function(){
     }
   });
 });
+
+function goHome(){
+  location.href='mainpage.html';
+}

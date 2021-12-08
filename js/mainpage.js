@@ -64,3 +64,13 @@ const scene2_4 = new ScrollMagic.Scene({
 })
 .setTween(tl2_4)
 .addTo(controller2);
+
+function joinUs(){
+  location.href='frontLogin.html';
+}
+function goPray(){
+  location.href='pray.html';
+}
+function goPomes(){
+  location.href='onlinepomes.html';
+}

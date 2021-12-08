@@ -53,11 +53,8 @@ body {
   background-size: cover;
   padding-top: 90px;
   font-family: NotoSansTC, serif;
-<<<<<<< HEAD
   width: 100%;
   height: 736px;
-=======
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
 }
 
 @media screen and (min-width: 1024px) {
@@ -67,16 +64,6 @@ body {
   }
 }
 
-<<<<<<< HEAD
-=======
-@media screen and (min-width: 1024px) {
-  .memberAd {
-    height: 1000px;
-    padding-top: 100px;
-  }
-}
-
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
 .memberAd .advertisement {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -89,7 +76,6 @@ body {
           justify-content: center;
   background-image: url(../img/mainpage/adNoBgPhone.png);
   width: 100%;
-<<<<<<< HEAD
   padding: 12px 0px;
   background-position: center;
   background-size: cover;
@@ -98,20 +84,11 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-=======
-  background-position: center;
-  background-size: cover;
-  font-family: NotoSansTC, serif;
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
 }
 
 @media screen and (min-width: 1024px) {
   .memberAd .advertisement {
     background-image: none;
-<<<<<<< HEAD
-=======
-    max-width: 1200px;
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
     margin: auto;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
@@ -119,7 +96,6 @@ body {
   }
 }
 
-<<<<<<< HEAD
 .memberAd .advertisement .adPhone {
   color: #FFFAE7;
   font-weight: 900;
@@ -162,28 +138,11 @@ body {
     height: 300px;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-=======
-.memberAd .advertisement .ad {
-  padding: 15px 20px;
-  color: #FFFAE7;
-  font-weight: 900;
-  font-size: 18px;
-  width: 33.333333%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-@media screen and (min-width: 1024px) {
-  .memberAd .advertisement .ad {
-    text-align: center;
-    padding: 60px 50px;
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
     border-radius: 20px;
   }
 }
 
 @media screen and (min-width: 1024px) {
-<<<<<<< HEAD
   .memberAd .advertisement .adWeb .adTitle {
     font-weight: 900;
     font-size: 36px;
@@ -194,17 +153,10 @@ body {
 @media screen and (min-width: 1200px) {
   .memberAd .advertisement .adWeb .adTitle {
     font-size: 44px;
-=======
-  .memberAd .advertisement .ad .adTitle {
-    font-weight: 900;
-    font-size: 44px;
-    margin-bottom: 46px;
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
   }
 }
 
 @media screen and (min-width: 1024px) {
-<<<<<<< HEAD
   .memberAd .advertisement .adWeb .adContent {
     font-weight: 900;
     font-size: 28px;
@@ -213,25 +165,16 @@ body {
 
 @media screen and (min-width: 1200px) {
   .memberAd .advertisement .adWeb .adContent {
-=======
-  .memberAd .advertisement .ad .adContent {
-    font-weight: 900;
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
     font-size: 36px;
   }
 }
 
-<<<<<<< HEAD
 .memberAd .advertisement .adWeb .adContent .number {
-=======
-.memberAd .advertisement .ad .adContent .number {
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
   color: #FDBF52;
   margin: 0 5px;
 }
 
 @media screen and (min-width: 1024px) {
-<<<<<<< HEAD
   .memberAd .advertisement .adWeb .adContent .number {
     font-weight: 900;
     font-size: 36px;
@@ -242,56 +185,35 @@ body {
 @media screen and (min-width: 1200px) {
   .memberAd .advertisement .adWeb .adContent .number {
     font-size: 44px;
-=======
-  .memberAd .advertisement .ad .adContent .number {
-    font-weight: 900;
-    font-size: 44px;
-    margin: 0 10px;
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
   }
 }
 
 @media screen and (min-width: 1024px) {
   .memberAd .advertisement .member {
     background-image: url(../img/mainpage/memberNoBg.png);
-<<<<<<< HEAD
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-=======
-    background-size: 400px 300px;
-    background-position: center;
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
   }
 }
 
 @media screen and (min-width: 1024px) {
   .memberAd .advertisement .money {
     background-image: url(../img/mainpage/moneyNoBg.png);
-<<<<<<< HEAD
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     margin: 0 2%;
-=======
-    background-size: 400px 300px;
-    background-position: center;
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
   }
 }
 
 @media screen and (min-width: 1024px) {
   .memberAd .advertisement .aumlet {
     background-image: url(../img/mainpage/aumletNoBg.png);
-<<<<<<< HEAD
     background-size: cover;
     background-position: center;
     padding: 60px 16px;
     background-repeat: no-repeat;
-=======
-    background-size: 400px 300px;
-    background-position: center;
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
   }
 }
 
@@ -307,19 +229,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-<<<<<<< HEAD
   font-family: NotoSansTC, Serif;
   padding: 70px 20px 0 20px;
-=======
-  margin-top: 70px;
-  font-family: NotoSansTC, Serif;
-}
-
-@media screen and (min-width: 375px) {
-  .memberAd .memberContent {
-    padding: 0 20px;
-  }
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
 }
 
 @media screen and (min-width: 768px) {
@@ -394,7 +305,6 @@ body {
   margin-top: 60px;
   border: 0px;
   font-family: NotoSansTC, Serif;
-<<<<<<< HEAD
   color: transparent;
   position: relative;
   backface-visibility: hidden;
@@ -437,17 +347,12 @@ body {
   margin-top: -1em;
 }
 
-=======
-}
-
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
 @media screen and (min-width: 1024px) {
   .memberAd .memberContent button {
     margin-top: 70px;
   }
 }
 
-<<<<<<< HEAD
 .memberAd .memberContent button::before {
   content: attr(data-hover);
   width: 100%;
@@ -490,9 +395,6 @@ body {
 }
 
 .memberAd .memberContent button .joinUs {
-=======
-.memberAd .memberContent .joinUs {
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
   margin-right: 10px;
 }
 
@@ -511,10 +413,7 @@ body {
   text-align: center;
   padding-top: 118px;
   font-family: NotoSansTC, Serif;
-<<<<<<< HEAD
   background-color: #FFFAE7;
-=======
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
 }
 
 @media screen and (min-width: 1024px) {
@@ -586,7 +485,6 @@ body {
   left: 0;
   right: 0;
   top: 100px;
-<<<<<<< HEAD
   margin: auto;
   color: transparent;
   position: relative;
@@ -630,11 +528,6 @@ body {
   margin-top: -1em;
 }
 
-=======
-  font-family: NotoSansTC, Serif;
-}
-
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
 @media screen and (min-width: 1024px) {
   .adPray .pray button {
     position: static;
@@ -642,7 +535,6 @@ body {
   }
 }
 
-<<<<<<< HEAD
 .adPray .pray button::before {
   content: attr(data-hover);
   width: 100%;
@@ -680,8 +572,6 @@ body {
   margin-left: 1em;
 }
 
-=======
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
 .adPray .pray .goPray {
   margin-right: 10px;
 }
@@ -690,13 +580,10 @@ body {
   width: 100%;
 }
 
-<<<<<<< HEAD
 .adPray .prayBg img {
   width: 100%;
 }
 
-=======
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
 @media screen and (min-width: 1024px) {
   .adPray .prayBg {
     width: 50%;
@@ -738,11 +625,8 @@ body {
   text-align: center;
   padding-top: 118px;
   font-family: NotoSansTC, Serif;
-<<<<<<< HEAD
   width: 100%;
   background-color: #FFFAE7;
-=======
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
 }
 
 @media screen and (min-width: 1024px) {
@@ -822,7 +706,6 @@ body {
   left: 0;
   right: 0;
   margin: auto;
-<<<<<<< HEAD
   font-family: NotoSansTC, Serif;
   color: transparent;
   position: relative;
@@ -908,10 +791,6 @@ body {
 .adPomes .pomes button:hover::after {
   opacity: 0;
   margin-left: 1em;
-=======
-  top: 100px;
-  font-family: NotoSansTC, Serif;
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
 }
 
 .adPomes .pomes .goPomes {
@@ -922,14 +801,11 @@ body {
   width: 100%;
 }
 
-<<<<<<< HEAD
 .adPomes .pomesBg img {
   width: 100%;
   vertical-align: top;
 }
 
-=======
->>>>>>> cf7dfafaeb250187f3eea5bb78faa219423615ff
 @media screen and (min-width: 1024px) {
   .adPomes .pomesBg {
     width: 50%;
