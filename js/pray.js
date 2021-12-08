@@ -213,3 +213,7 @@ $(function(){
     }
   });
 });
+
+function goHome(){
+  location.href = "mainpage.html";
+}
