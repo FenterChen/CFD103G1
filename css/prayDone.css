@@ -1,0 +1,291 @@
+body {
+  background: #FFFAE7;
+}
+
+.Finish {
+  height: 695px;
+  width: 100%;
+  position: relative;
+}
+
+@media screen and (min-width: 1024px) {
+  .Finish {
+    height: 700px;
+  }
+  .Finish::before {
+    content: '';
+    width: 100%;
+    height: 3px;
+    background-color: #927858;
+    position: absolute;
+    z-index: -1;
+    bottom: 250px;
+  }
+}
+
+.doneSec {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-top: 120px;
+  text-align: center;
+  font-family: NotoSansTC, sans-serif;
+  color: #573605;
+  margin: auto;
+}
+
+@media screen and (min-width: 1024px) {
+  .doneSec {
+    padding-top: 150px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    max-width: 1312px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    position: relative;
+  }
+}
+
+.doneSec .prayCard {
+  width: 100%;
+}
+
+.doneSec .prayCard .cardDetail {
+  width: 40%;
+}
+
+.doneSec .prayCard .cardDetail img {
+  width: 100%;
+  vertical-align: top;
+}
+
+@media screen and (min-width: 1024px) {
+  .doneSec .prayCard {
+    width: 45%;
+  }
+}
+
+.doneTitle {
+  margin-bottom: 77px;
+}
+
+@media screen and (min-width: 1024px) {
+  .doneTitle {
+    width: 55%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin-left: 5%;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .doneTitle .doneIntro {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+}
+
+.doneTitle .doneIntro .prayDoneWeb {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .doneTitle .doneIntro .prayDoneWeb {
+    display: block;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 40px;
+  }
+}
+
+.doneTitle .doneIntro .prayDonePhone {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 40px;
+}
+
+@media screen and (min-width: 1024px) {
+  .doneTitle .doneIntro .prayDonePhone {
+    display: none;
+  }
+}
+
+.doneTitle .doneIntro .doneDetail {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 40px;
+  margin-top: 15px;
+  color: #927858;
+}
+
+@media screen and (min-width: 1024px) {
+  .doneTitle .doneIntro .doneDetail {
+    margin-left: 40px;
+    margin-top: 0px;
+    text-align: left;
+  }
+}
+
+.doneTitle .prayProcess {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .doneTitle .prayProcess {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-top: 100px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 18px;
+    position: relative;
+  }
+  .doneTitle .prayProcess .step {
+    width: 106px;
+    height: 106px;
+    border-radius: 50%;
+    background-color: #927858;
+    -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    line-height: 25px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    position: relative;
+  }
+  .doneTitle .prayProcess .step::after {
+    content: "";
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: rgba(146, 120, 88, 0.5);
+    z-index: -1;
+  }
+  .doneTitle .prayProcess .prayDone {
+    margin-right: 80px;
+  }
+}
+
+.goMainpage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 68px auto 40px auto;
+}
+
+@media screen and (min-width: 1024px) {
+  .goMainpage {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    max-width: 1312px;
+  }
+}
+
+.goMainpage button {
+  width: 120px;
+  height: 42px;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  border: 0px;
+  cursor: pointer;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #FDBF52;
+  color: #573605;
+  border-radius: 20px;
+  color: transparent;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  font-family: NotoSansTC, sans-serif;
+  font-size: 18px;
+  color: #573605;
+  line-height: 26px;
+}
+
+.goMainpage button::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  padding-top: 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: -1em;
+}
+
+.goMainpage button::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 12px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+}
+
+.goMainpage button:hover::before {
+  opacity: 1;
+  margin-top: 0;
+}
+
+.goMainpage button:hover::after {
+  opacity: 0;
+  margin-top: -1em;
+}
+/*# sourceMappingURL=prayDone.css.map */

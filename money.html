@@ -5,15 +5,19 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BOBIO</title>
+  <title>BOBIO | 立即結緣 </title>
   <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/money.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
   <script src="js/header.js"></script>
 </head>
 
 <body>
-  <header>
+  <header id="mainheader">
     <div class="headerWrap">
       <div class="logo">
         <a href="#">
@@ -32,7 +36,7 @@
             <a href="#">平安符願</a>
           </li>
           <li>
-            <a href="#">立即結緣</a>
+            <a href="money.html">立即結緣</a>
           </li>
           <li>
             <a href="#">關於我們</a>
@@ -50,8 +54,232 @@
       </div>
     </div>
   </header>
+  <section>
+    <div class="money">
+      <div class="lanternL"><img src="img/money/lanternL.gif"></div>
+      <div class="moneyBox">
+        <h1>功德箱</h1>
+        <p>點擊下方按鈕結緣，完成樂捐!</p>
+        <div id="app">
+          <div class="img" v-if="box"><img src="img/money/moneybox.gif"></div>
+          <div class="btn"><button @click="show" class="moneyBoxBtn">開始結緣</button></div>
+          <div v-if="apear" class="inputboxmoney">
+            <div class="inputboxmoneywin">
+              <h3>請輸入您欲結緣金額</h3>
+              <div class="moneySelect">
+                <label for="money">欲結緣金額:&nbsp</label>
+                <select id="money" v-model="money">
+                  <option value="" selected>請選擇結緣金額</option>
+                  <option value="100">NT$100</option>
+                  <option value="300">NT$300</option>
+                  <option value="500">NT$500</option>
+                  <option value="800">NT$800</option>
+                  <option value="1000">NT$1000</option>
+                </select>
+              </div>
+              <div class="btn">
+                <button @click="close">取消
+                </button>
+                <button @click="confirmMoney">確認</button>
+              </div>
+            </div>
+          </div>
+          <div v-if="creditcard" class="inputboxmoney">
+            <div class="creditcard">
+              <h3>信用卡付款</h3>
+              <form class="cardinfo">
+                <ul>
+                  <li>
+                    <label>捐獻金額:</label>
+                    <div id="creditcardmoney">NT${{money}}</div>
+                  </li>
+                  <li>
+                    <label for="username">持卡人姓名</label>
+                    <input type="text" v-model="name" id="username" placeholder="請輸入中文姓名" maxlength="8">
+                  </li>
+                  <li>
+                    <label for="cardid">信用卡號</label>
+                    <input type="text" class="cardid" v-model="cardid" v-mask="'#### #### #### ####'" maxlength="19"
+                      placeholder="1234 1234 1234 1234">
+                  </li>
+                  <li>
+                    <label for="carddate">有效日期</label>
+                    <input type="text" v-model="carddate" v-mask="'##/##'" id="carddate" maxlength="5"
+                      placeholder="MM/YY">
+                    <label for="cardsafe" class="safetitle">安全碼</label>
+                    <input type="text" v-model="cardsafe" id="cardsafe" maxlength="3" placeholder="後3碼" v-mask="'###'">
+                  </li>
+                </ul>
+              </form>
+              <div class="btn">
+                <button @click="close">取消</button>
+                <button @click="confirmCreditcard">確認</button>
+              </div>
+            </div>
+          </div>
+          <div class="completed" v-if="completed">
+            <h1>功德箱</h1>
+            <p>感謝您的樂捐!<br>請按下方查看捐獻明細!</p>
+            <div class="completedgif">
+              <img src="img/money/movemoneybox.gif">
+            </div>
+            <div class="btn"><button @click="detail">查看捐獻明細</button></div>
+          </div>
+          <div v-if="moneyboxdetail" class="moneyboxdetail">
+            <div class="details">
+              <h3>捐獻完成!</h3>
+              <table>
+                <tr>
+                  <td>捐獻編號</td>
+                  <td>00002021</td>
+                </tr>
+                <tr>
+                  <td>捐獻明細</td>
+                  <td>香油錢</td>
+                </tr>
+                <tr>
+                  <td>捐獻金額</td>
+                  <td>NT${{money}}</td>
+                </tr>
+                <tr>
+                  <td>付款方式</td>
+                  <td>信用卡</td>
+                </tr>
+              </table>
+              <div class="btn">
+                <button @click="close"><a href="money.html">返回首頁</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lanternR"><img src="img/money/lanternR.gif"></div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-logo">
+        <img src="./img/footer/BOBIO_logo.svg" alt="bobio">
+      </div>
+      <div class="footer-slog">
+        <span>用BOBIO就有保佑</span>
+      </div>
+      <div class="footer-info">
+        <div class="list">
+          <ul>
+            <li><a href="#">立即祈願</a></li>
+            <li><a href="#">線上求籤</a></li>
+            <li><a href="#">平安符願</a></li>
+            <li><a href="#">立即結緣</a></li>
+            <li><a href="#">關於我們</a></li>
+          </ul>
+        </div>
+        <div class="conn">
+          <p>
+            bobio@temple.com<br>
+            02-1090-1090
+          </p>
+          <div class="info-icon">
+            <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook"></a>
+            <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram"></a>
+            <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>
+        Copyright © 2021Bobio
+        本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+      </p>
+    </div>
+  </footer>
+  <script>
+    Vue.use(VueMask.VueMaskPlugin);
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          apear: false,
+          creditcard: false,
+          completed: false,
+          moneyboxdetail: false,
+          box: true,
+          money: '',
+          name: '',
+          cardid: '',
+          carddate: '',
+          cardsafe: '',
+        }
+      },
+      methods: {
+        show() {
+          this.apear = true;
+        },
+        close() {
+          this.apear = false;
+          this.creditcard = false;
+          this.moneyboxdetail = false;
+          this.money = '';
+          this.name = '';
+          this.cardid = '';
+          this.carddate = '';
+          this.cardsafe = '';
+          this.completed = false;
+        },
+        confirmMoney() {
+          if (this.money <= 1) {
+            alert('輸入金額不正確');
+            this.money = '';
+          } else {
+            this.apear = false;
+            this.creditcard = true;
+          }
+        },
+        confirmCreditcard() {
+          let val = /^[\u4E00-\u9FA5]+$/;
+          let dateObj = this.carddate.split('/');
+          let cardIdobj = this.cardid.length;
+          this.cardid.innerHTML = cardIdobj;
+          let cardSafeobj = this.cardsafe.length;
+          this.cardsafe.innerHTML = cardSafeobj;
 
-  <div class="test" style="height: 2000px; width:100%; background-color: #fff;"></div>
+          if (val.test(this.name) == false) {
+            alert('請輸入中文姓名');
+            this.name = '';
+            this.cardid = '';
+            this.carddate = '';
+            this.cardsafe = '';
+          } else if (cardIdobj < 19) {
+            alert('請輸入正確的信用卡號');
+            this.name = '';
+            this.cardid = '';
+            this.carddate = '';
+            this.cardsafe = '';
+          } else if (dateObj[0] > 12 || dateObj[0] < 1 || dateObj[1] < 21 || dateObj[1] > 35) {
+            alert('請輸入正確的有效日期');
+            this.name = '';
+            this.cardid = '';
+            this.carddate = '';
+            this.cardsafe = '';
+          } else if (cardSafeobj != 3) {
+            alert('請輸入正確安全碼');
+            this.name = '';
+            this.cardid = '';
+            this.carddate = '';
+            this.cardsafe = '';
+          } else {
+            this.creditcard = false;
+            this.completed = true;
+          }
+        },
+        detail() {
+          this.moneyboxdetail = true;
+          this.completed = false;
+        }
+      },
+    })
+  </script>
 </body>
 
 </html>
