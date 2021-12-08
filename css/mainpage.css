@@ -547,6 +547,7 @@ body {
   opacity: 0;
   color: rgba(255, 255, 255, 0.9);
   margin-left: -1em;
+  margin-top: 0;
 }
 
 .adPray .pray button::after {
@@ -560,16 +561,19 @@ body {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   color: #573605;
+  margin-top: 0;
 }
 
 .adPray .pray button:hover::before {
   opacity: 1;
   margin-left: 0;
+  margin-top: 0;
 }
 
 .adPray .pray button:hover::after {
   opacity: 0;
   margin-left: 1em;
+  margin-top: 0;
 }
 
 .adPray .pray .goPray {
@@ -768,6 +772,7 @@ body {
   opacity: 0;
   color: rgba(255, 255, 255, 0.9);
   margin-left: -1em;
+  margin-top: 0;
 }
 
 .adPomes .pomes button::after {
@@ -781,16 +786,19 @@ body {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   color: #573605;
+  margin-top: 0;
 }
 
 .adPomes .pomes button:hover::before {
   opacity: 1;
   margin-left: 0;
+  margin-top: 0;
 }
 
 .adPomes .pomes button:hover::after {
   opacity: 0;
   margin-left: 1em;
+  margin-top: 0;
 }
 
 .adPomes .pomes .goPomes {

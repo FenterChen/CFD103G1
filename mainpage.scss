@@ -296,6 +296,7 @@ body{
         opacity : 0;
         color : rgba(255,255,255,0.9);
         margin-left: -1em;
+        margin-top: 0;
        } 
        &::after{
          content : attr(data-hover);
@@ -307,17 +308,20 @@ body{
          opacity : 1;
          transition : 0.3s; 
          color : map-get($color, darkbrown);
+         margin-top: 0;
        }
      &:hover{
        &::before{
          opacity : 1;
          margin-left : 0;
+         margin-top: 0;
        }
      }
      &:hover{
        &::after{
          opacity : 0;
          margin-left : 1em;
+         margin-top: 0;
        }
      }
     }
@@ -410,6 +414,7 @@ body{
         opacity : 0;
         color : rgba(255,255,255,0.9);
         margin-left: -1em;
+        margin-top: 0;
        } 
        &::after{
          content : attr(data-hover);
@@ -421,17 +426,20 @@ body{
          opacity : 1;
          transition : 0.3s; 
          color : map-get($color, darkbrown);
+         margin-top: 0;
        }
      &:hover{
        &::before{
          opacity : 1;
          margin-left : 0;
+         margin-top: 0;
        }
      }
      &:hover{
        &::after{
          opacity : 0;
          margin-left : 1em;
+         margin-top: 0;
        }
      }
     }
