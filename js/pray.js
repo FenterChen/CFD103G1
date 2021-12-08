@@ -41,16 +41,26 @@ function hideBtn() {
   if (slideIndex == 1) {
     $('.btnStep').css('display','none');
     $('.goMainpage').css('display','none');
-    $('.bobioPray').addClass('no-line')
+    $('.bobioPray').addClass('no-line');
+    
   } else if(slideIndex >= 5){
     $('.btnStep').css('display','none');
     $('.goMainpage').css('display','flex');
     $('.bobioPray').removeClass('no-line');
-  } else {
+  } else if(slideIndex == 3){
+    $('.next').css('opacity','0');
+  } 
+   else {
     $('.btnStep').css('display','flex');
     $('.goMainpage').css('display','none');
     $('.bobioPray').removeClass('no-line');
+    $('.next').css('opacity','1');
   }
+}
+
+function nextSection(){
+  let clickButton = $('.choose');
+  plusSlides(1);
 }
 
 $(function(){
@@ -190,26 +200,57 @@ $(function(){
     if(selectvalue == '文昌帝君'){
       $('.prayImg img').attr('src','img/pray/studyGod.png');
       $('.godTitle').text('文昌帝君');
+      $('.prayNow').click(function(){
+      let target = $('#godDisplay');
+      target.attr('src','img/pray/studyGodShadow.png');
+      plusSlides(1);
+    });
     }
+   
     if(selectvalue == '保生大帝'){
       $('.prayImg img').attr('src','img/pray/healthGod.png');
       $('.godTitle').text('保生大帝');
+      $('.prayNow').click(function(){
+        let target = $('#godDisplay');
+        target.attr('src','img/pray/healthGodShadow.png');
+        plusSlides(1);
+      });
     }
     if(selectvalue == '媽祖'){
       $('.prayImg img').attr('src','img/pray/safetyGod.png');
       $('.godTitle').text('媽祖');
+      $('.prayNow').click(function(){
+        let target = $('#godDisplay');
+        target.attr('src','img/pray/safetyGodShadow.png');
+        plusSlides(1);
+      });
     }
     if(selectvalue == '財神'){
       $('.prayImg img').attr('src','img/pray/moneyGod.png');
       $('.godTitle').text('財神');
+      $('.prayNow').click(function(){
+        let target = $('#godDisplay');
+        target.attr('src','img/pray/moneyGodShadow.png');
+        plusSlides(1);
+      });
     }
     if(selectvalue == '關公'){
       $('.prayImg img').attr('src','img/pray/workGod.png');
       $('.godTitle').text('關公');
+      $('.prayNow').click(function(){
+        let target = $('#godDisplay');
+        target.attr('src','img/pray/workGodShadow.png');
+        plusSlides(1);
+      });
     }
     if(selectvalue == '月老'){
       $('.prayImg img').attr('src','img/pray/loveGod.png');
       $('.godTitle').text('月老');
+      $('.prayNow').click(function(){
+        let target = $('#godDisplay');
+        target.attr('src','img/pray/loveGodShadow.png');
+        plusSlides(1);
+      });
     }
   });
 });

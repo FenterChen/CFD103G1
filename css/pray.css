@@ -135,6 +135,7 @@ body {
           backface-visibility: hidden;
   margin-top: 40px;
   margin-bottom: 65px;
+  font-family: NotoSansTC, sans-serif;
 }
 
 .pray .prayNow::before {
