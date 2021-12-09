@@ -8,10 +8,11 @@
   <title>BOBIO|線上求籤</title>
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/onlinepomes.css">
+  <link rel="stylesheet" href="css/onlinepomes2.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="js/header.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
 </head>
 
 <body>
@@ -56,19 +57,22 @@
         </div>
       </div>
     </header>
+
   <section>
     <div class="onlinepomesWrap">
-      <div class="onlineTitle">
-        <h1>人生中遇到了什麼煩惱?</h1>
+      <div class="onlinePic">
+        <img src="img/onlinepomes/lickbox.png" alt="">
       </div> 
-      <div class="onlineText">
-        <h3>靜下心，獲得指引</h3>
-        <p>Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam no suscipit quaerendum.At nam minimum ponderum. Est audiam animal molestiae te.</p>
-      </div>
-
-      <a href="onlinepomes1.html" class="onlineBtn ">
-        <button class="startPomes"data-hover="開始求籤">開始求籤</button>
-      </a>     
+      <div class="onlineContent">
+        <div class="onlineText" id="app">
+          <h2>{{believer}}，<br>請在心中默念想問之事</h2>
+          <p>誠心的說出心中所煩的事，讓其好好為您解析，人生的挑戰。</p>
+        </div>
+          <a href="onlinepomes3.html" class="onlineBtn ">
+            <button @click="nextBtn" class="next"data-hover="下一步">下一步</button>
+          </a>
+        </div> 
+      </div>  
     </div>
   </section>
     <footer>
@@ -119,5 +123,17 @@
         </p>
       </div>
     </footer>
-</body>
+  <script>
+      new Vue({
+        el: '#app',
+        data:{
+          believer:'',
+        },
+        mounted() {
+    
+        this.believer = localStorage.onlinename;
+      },
+        })
+  </script>
+</body>  
 </html>

@@ -8,10 +8,11 @@
   <title>BOBIO|線上求籤</title>
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/onlinepomes.css">
+  <link rel="stylesheet" href="css/onlinepomes1.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="js/header.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
 </head>
 
 <body>
@@ -58,17 +59,24 @@
     </header>
   <section>
     <div class="onlinepomesWrap">
-      <div class="onlineTitle">
-        <h1>人生中遇到了什麼煩惱?</h1>
+      <div class="onlinePic">
+        <img src="img/onlinepomes/lickbox.png" alt="">
       </div> 
-      <div class="onlineText">
-        <h3>靜下心，獲得指引</h3>
-        <p>Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam no suscipit quaerendum.At nam minimum ponderum. Est audiam animal molestiae te.</p>
-      </div>
-
-      <a href="onlinepomes1.html" class="onlineBtn ">
-        <button class="startPomes"data-hover="開始求籤">開始求籤</button>
-      </a>     
+      <div class="onlineContent">
+        <div class="onlineText">
+          <h2>最近有煩心的事嗎？<br>
+            生活的憂愁，讓你我共享</h2>
+          <p>請在心中默念您的姓名、年齡、住址。</p>
+        </div>
+        <div class="onlineBtn" id="app">
+          <input type="text" v-model="believer" placeholder="輸入姓名">
+          <button @click="sureBtn" class="sure"data-hover="確定" >確定</button>
+        </div> 
+        <div class="onlineEx">
+          <span>舉例:<br>我的名字叫做小明，家住台北縣...<br>
+            生日為民國82年5月10日...等</span>
+        </div>
+      </div>  
     </div>
   </section>
     <footer>
@@ -119,5 +127,23 @@
         </p>
       </div>
     </footer>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        believer: '',
+      },
+      methods: {
+        sureBtn() {
+          if (this.believer == "") {
+            alert("請輸入名稱");
+          } else {
+            localStorage.onlinename = this.believer;
+            location.href = 'onlinepomes2.html';
+          }
+        }
+      }
+    })
+  </script>
 </body>
 </html>
