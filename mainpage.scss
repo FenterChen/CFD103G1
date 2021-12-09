@@ -30,6 +30,20 @@ body{
       font-size: 144px;
     }
   }
+  .scrollDown{
+    position: absolute;
+    bottom: 40px;
+    @include flexCenter();
+    flex-direction: column;
+    .arrow{
+      width: 60%;
+      animation: scrollDown 1.5s infinite;
+    }
+    img{
+      width: 100%;
+      vertical-align: top;
+    }
+  }
 }
 
 .memberAd{
@@ -48,6 +62,7 @@ body{
     @include flexCenter();
     background-image: url(../img/mainpage/adNoBgPhone.png);
     width: 100%;
+    max-width: $maxWidth;
     padding: 12px 0px;
     background-position: center;
 	  background-size: cover;
@@ -487,5 +502,19 @@ body{
   100% {
     letter-spacing: 0px;
     filter: blur(0px);
+  }
+}
+
+@keyframes scrollDown{
+  0%{
+    transform: translateY(0);
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    transform: translateY(20px);
+    opacity: 0;
   }
 }
