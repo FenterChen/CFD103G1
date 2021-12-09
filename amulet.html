@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOBIO｜平安符願</title>
+    <title>BOBIO</title>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/amulet.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="js/header.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
 
 </head>
-
 <body>
-    <header id="mainheader">
+    <header>
         <div class="headerWrap">
           <div class="logo">
             <a href="#">
@@ -27,24 +24,24 @@
           <nav class="navPostion">
             <ul>
               <li>
-                <a href="https://fenterchen.github.io/CFD103G1/pray">立即祈願</a>
+                <a href="#">立即祈願</a>
               </li>
               <li>
-                <a href="https://fenterchen.github.io/CFD103G1/onlinepomes">線上求籤</a>
+                <a href="#">線上求籤</a>
               </li>
               <li>
-                <a href="https://fenterchen.github.io/CFD103G1/amulet">平安符願</a>
+                <a href="#">平安符願</a>
               </li>
               <li>
-                <a href="https://fenterchen.github.io/CFD103G1/money">立即結緣</a>
+                <a href="#">立即結緣</a>
               </li>
               <li>
-                <a href="https://fenterchen.github.io/CFD103G1/Abouts">關於我們</a>
+                <a href="#">關於我們</a>
               </li>
             </ul>
           </nav>
           <div class="cart"><a href="#"><img src="img/header/cart.svg"></a></div>
-          <div class="member"><a href="https://fenterchen.github.io/CFD103G1/memberAdd"><img src="img/header/member.svg"></a></div>
+          <div class="member"><a href="#"><img src="img/header/member.svg"></a></div>
           <div class="outerHb">
             <div class="hb" id="hb">
               <span></span>
@@ -54,35 +51,17 @@
           </div>
         </div>
     </header>
-    <div class="wrap" id="app">
+    <div class="wrap">
         <section class="prod">
             <div class="prod-bg">
-                <div class="basicImage">
-                    <img :src="imageSrcAnimal" alt="amulet">
-                </div>
-                <div class="frontImage">
-                    <img v-if="front" :src="imageSrc" alt="god">
-                </div>                
-                <div class="animalImage">
-                    <img v-if="front" :src="imageSrcAnimal" alt="animal">
-                </div>                
-                <div class="backImage" v-if="back" >
-                    <!--背面文字部分-->
-                    <div class="diy">
-                        <p>{{message}}</p>
-                    </div>
-                </div>
+                <img src="./img/amulet/amulet_bg_f.png" alt="amulet">
             </div>
             <div class="prod-sm">
-                <div class="pic front" @click="frontclick">
-                    <div class="pic frontType"><img :src="imageSrc" alt="amulet"></div>
-                    <div class="pic frontAnimal"><img :src="imageSrcAnimal" alt="amulet"></div>
+                <div class="pic">
+                    <img src="./img/amulet/amulet_sm_f 1.png" alt="amulet">
                 </div>
-                <div class="pic back" @click="backclick">
-                    <div class="frontAnimal"><img :src="imageSrcAnimal" alt="amulet"></div>
-                    <div class="diySm">
-                        <p>{{message}}</p>
-                    </div>
+                <div class="pic">
+                    <img src="./img/amulet/amulet_sm_b 1.png" alt="amulet">
                 </div>
             </div>
         </section>
@@ -95,64 +74,68 @@
                 <div class="select-typewrap">
                     <div class="select-type">
                         <h4>種類</h4>
-                        <select name="種類" id="" v-model="type" @click="typeClick">
-                            <option value="感情" selected>感情</option>
-                            <option value="事業">事業</option>
-                            <option value="財富">財富</option>
-                            <option value="平安">平安</option>
-                            <option value="健康">健康</option>
-                            <option value="學業">學業</option>
+                        <select name="種類" id="">
+                            <option value="">感情</option>
+                            <option value="">事業</option>
+                            <option value="">財富</option>
+                            <option value="">平安</option>
+                            <option value="">健康</option>
+                            <option value="">學業</option>
                         </select>
                         <a href="#">簡介</a>
                     </div>
                     <div class="intro">
-                        <textarea name="簡介" id="" v-model="typeIntro" cols="30" rows="5">
-                            <p v-text="typeIntro"></p>
-                        </textarea>
+                        <textarea name="" id="" cols="30" rows="5">簡介內容</textarea>
                     </div>
                 </div>
                 <div class="select-wrap">
                     <div class="zodiac">
                         <h4>生肖</h4>
-                        <select name="種類" id="" v-model="animal" @click="animalClick">
-                            <option value="鼠" selected>鼠</option>
-                            <option value="牛">牛</option>
-                            <option value="虎">虎</option>
-                            <option value="兔">兔</option>
-                            <option value="龍">龍</option>
-                            <option value="馬">馬</option>
-                            <option value="羊">羊</option>
-                            <option value="猴">猴</option>
-                            <option value="雞">雞</option>
-                            <option value="狗">狗</option>
-                            <option value="豬">豬</option>
+                        <select name="種類" id="">
+                            <option value="">鼠</option>
+                            <option value="">牛</option>
+                            <option value="">虎</option>
+                            <option value="">兔</option>
+                            <option value="">龍</option>
+                            <option value="">馬</option>
+                            <option value="">羊</option>
+                            <option value="">猴</option>
+                            <option value="">雞</option>
+                            <option value="">狗</option>
+                            <option value="">豬</option>
                         </select>
                     </div>
                     <div class="amount">
                         <h4>數量</h4>
-                        <div class="many">
-                            <input type="button" value="-" class="modify del" @click="count -=1">
-                            <input type="text" value="1" v-model="count" min="1" class="num">
-                            <input type="button" value="+" class="modify add" @click="count +=1">
-                        </div>
+                        <select name="種類" id="">
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                            <option value="">4</option>
+                            <option value="">5</option>
+                            <option value="">6</option>
+                            <option value="">7</option>
+                            <option value="">8</option>
+                            <option value="">9</option>
+                        </select>
                     </div>
                 </div>
                 <div class="customiz">
-                    <textarea v-model="message" @click="diyclick" cols="30" rows="5" placeholder="請輸入客製化文字（最多8字）"
-                        maxlength="8"></textarea>
+                    <textarea name="" id="" cols="30" rows="5">請輸入客製化文字（最多8字）</textarea>
                 </div>
                 <div class="shop">
-                    <button data-hover="立即購買">立即購買</button>
-                    <button data-hover="加入購物車" @click="add">加入購物車</button>
+                    <button class="buy">立即購買</button>
+                    <button class="join">加入購物車</button>
                 </div>
             </div>
         </section> 
-    </div>
 
+    </div>
+      
     <footer>
         <div class="footer-wrap">
             <div class="footer-logo">
-                <img src="./img/footer/BOBIO_logo.svg" alt="bobio">
+                <img src="./img/header/BOBIO_logo.svg" alt="bobio">
             </div>
             <div class="footer-slog">
                 <span>用BOBIO就有保佑</span>
@@ -160,160 +143,32 @@
             <div class="footer-info">
                 <div class="list">
                     <ul>
-                        <li><a href="https://fenterchen.github.io/CFD103G1/pray">立即祈願</a></li>
-                        <li><a href="https://fenterchen.github.io/CFD103G1/onlinepomes">線上求籤</a></li>
-                        <li><a href="https://fenterchen.github.io/CFD103G1/amulet">平安符願</a></li>
-                        <li><a href="https://fenterchen.github.io/CFD103G1/money">立即結緣</a></li>
-                        <li><a href="https://fenterchen.github.io/CFD103G1/Abouts">關於我們</a></li>
+                        <li><a href="#">立即祈願</a></li>
+                        <li><a href="#">線上求籤</a></li>
+                        <li><a href="#">平安符願</a></li>
+                        <li><a href="#">立即結緣</a></li>
+                        <li><a href="#">關於我們</a></li>
                     </ul>
                 </div>
                 <div class="conn">
                     <p>
                         bobio@temple.com<br>
-                        02-1090-1090
+                        02-1090-1090                    
                     </p>
                     <div class="info-icon">
                         <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook"></a>
                         <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram"></a>
-                        <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube"></a>
+                        <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube"></a>                      
                     </div>
                 </div>
             </div>
         </div>
         <div class="copyright">
             <p>
-                Copyright © 2021Bobio
-                本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+                Copyright © 2021Bobio 本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
             </p>
         </div>
     </footer>
-
+    
 </body>
-<script>
-    new Vue({
-        el: "#app",
-        data() {
-            return {
-                front: true,
-                back: false,
-                typeIntro:"月下老人，簡稱月老，為掌管男女姻緣之神，幫助痴男怨女獲得真愛。",
-                imageSrc: "./img/amulet/1.png",
-                imageSrcAnimal:"./img/amulet/amulet_2.jpg",
-                imagebackSrc: "img/amulet/amulet_bg.jpg",
-                message: '功德圓滿平安喜樂',
-                cart: [],
-                type: '感情',
-                animal: '鼠',
-                count: 1,
-            }
-        },
-        mounted() {
-            if (localStorage.productno) {
-                this.cart = JSON.parse(localStorage.getItem("productno"));
-            }
-        },
-        methods: {
-            typeClick() {
-                this.front = true;
-                this.back = false;
-                if (this.type == "感情") {
-                    this.typeIntro = "月下老人，簡稱月老，為掌管男女姻緣之神，幫助痴男怨女獲得真愛。";
-                    this.imageSrc = "./img/amulet/1.png";
-                }
-                if (this.type == "事業") {
-                    this.typeIntro = "關公講究義氣、信守承諾的形象，貴為五文昌之一守護各行各業的人工作順利。";
-                    this.imageSrc = "./img/amulet/2.png";
-                }
-                if (this.type == "財富") {
-                    this.typeIntro = "財神爺，負責迎祥納福，庇佑財源滾滾，為生活帶來財富。";
-                    this.imageSrc = "./img/amulet/3.png";
-                }
-                if (this.type == "平安") {
-                    this.typeIntro = "媽祖保佑平安順利，生活中遇見難題時的信仰守護。";
-                    this.imageSrc = "./img/amulet/4.png";
-                }
-                if (this.type == "健康") {
-                    this.typeIntro = "保生大帝，尊稱為「醫神」，保佑身體健康防疫安全。";
-                    this.imageSrc = "./img/amulet/5.png";
-                }
-                if (this.type == "學業") {
-                    this.typeIntro = "文昌帝君，主管考試，保佑各路學子應考順利取得佳績。";
-                    this.imageSrc = "./img/amulet/6.png";
-                }
-            },
-
-            
-
-            animalClick() {
-                // this.front = true;
-                // this.back = false;
-                if (this.animal == "鼠") {
-                    return this.imageSrcAnimal = "./img/amulet/amulet_2.jpg";
-                }
-                if (this.animal == "牛") {
-                    return this.imageSrcAnimal = "./img/amulet/amulet_3.jpg";
-                }
-                if (this.animal == "虎") {
-                    return this.imageSrcAnimal = "./img/amulet/amulet_4.jpg";
-                }
-                if (this.animal == "兔") {
-                    return this.imageSrcAnimal = "./img/amulet/amulet_5.jpg";
-                }
-                if (this.animal == "龍") {
-                    return this.imageSrcAnimal = "./img/amulet/amulet_6.jpg";
-                }
-                if (this.animal == "蛇") {
-                    return this.imageSrcAnimal = "./img/amulet/amulet_7.jpg";
-                }
-                if (this.animal == "馬") {
-                    return this.imageSrcAnimal = "./img/amulet/amulet_8.jpg";
-                }
-                if (this.animal == "羊") {
-                    return this.imageSrcAnimal = "./img/amulet/amulet_9.jpg";
-                }
-                if (this.animal == "猴") {
-                    return this.imageSrcAnimal = "./img/amulet/amulet_10.jpg";
-                }
-                if (this.animal == "雞") {
-                    return this.imageSrcAnimal = "./img/amulet/amulet_11.jpg";
-                }
-                if (this.animal == "狗") {
-                    return this.imageSrcAnimal = "./img/amulet/amulet_12.jpg";
-                }
-                if (this.animal == "豬") {
-                    return this.imageSrcAnimal = "./img/amulet/amulet_13.jpg";
-                }
-            },
-
-            setMessage() {
-                this.message = e.target.value;
-            },
-            add() {
-                let no = this.type + '|' + this.animal + '|' + this.message + '|' + this.count;
-                let arr = no.split('|');
-                this.cart.push(arr);
-                localStorage.setItem("productno", JSON.stringify(this.cart));
-                this.type = "";
-                this.animal = "";
-                this.word = "";
-                this.count = "";
-            },
-            backclick() {
-                this.front = false;
-                this.back = true;
-            },
-            frontclick() {
-                this.front = true;
-                this.back = false;
-            },
-            diyclick() {
-                this.front = false;
-                this.back = true;
-            }
-
-        },
-    })
-
-</script>
-
 </html>
