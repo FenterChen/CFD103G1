@@ -338,6 +338,7 @@ body {
   color: transparent;
   position: relative;
   backface-visibility: hidden;
+  padding-top: 12px;
 }
 
 .memberAd .memberContent button::before {
@@ -346,7 +347,7 @@ body {
   position: absolute;
   top: 0;
   left: 0px;
-  padding-top: 12px;
+  padding-top: 10px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   opacity: 0;
@@ -360,7 +361,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  padding-top: 12px;
+  padding-top: 10px;
   opacity: 1;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -520,6 +521,7 @@ body {
   position: relative;
   backface-visibility: hidden;
   z-index: 3;
+  padding-top: 12px;
 }
 
 .adPray .pray button::before {
@@ -528,7 +530,7 @@ body {
   position: absolute;
   top: 0;
   left: 0px;
-  padding-top: 12px;
+  padding-top: 10px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   opacity: 0;
@@ -542,7 +544,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  padding-top: 12px;
+  padding-top: 10px;
   opacity: 1;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -746,6 +748,7 @@ body {
   position: relative;
   backface-visibility: hidden;
   z-index: 3;
+  padding-top: 12px;
 }
 
 .adPomes .pomes button::before {
@@ -754,7 +757,7 @@ body {
   position: absolute;
   top: 0;
   left: 0px;
-  padding-top: 12px;
+  padding-top: 10px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   opacity: 0;
@@ -768,7 +771,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  padding-top: 12px;
+  padding-top: 10px;
   opacity: 1;
   -webkit-transition: 0.3s;
   transition: 0.3s;

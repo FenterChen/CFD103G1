@@ -6,12 +6,13 @@
 
 .wrapp {
     display: flex;
-    width: 100%;
-    background-color: #FFFAE7;
+    width: 95%;
     margin: auto;
+    margin-top: 50px;
+    background-color: #FFFAE7;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+
 
     @include tabletV() {
         flex-direction: row;
@@ -19,7 +20,11 @@
 
     @include tabletH() {}
 
-    @include laptop() {}
+    @include laptop() {
+
+        max-width: 1200px;
+        justify-content: space-between;
+    }
 }
 
 .biboLogo {
@@ -28,6 +33,7 @@
     text-align: center;
     position: relative;
 
+
     @include tabletV() {
         display: none;
     }
@@ -35,13 +41,13 @@
 
 .tempBg {
     display: none;
-    width: 60%;
-    max-width: 700px;
-    text-align: center;
+    width: 700px;
+    height: 100%;
     padding-left: 5px;
     margin: auto;
     margin-top: 50px;
     margin-bottom: 50px;
+
 
     @include tabletV() {
         display: unset;
@@ -50,7 +56,7 @@
 
 .tempBg img {
     width: 100%;
-    vertical-align: top;
+
     @include btnBigBorderR;
 
 }
@@ -66,18 +72,18 @@
     margin: auto;
     @include smallBorderR;
 
+
     @include tabletV() {
         max-width: 350px;
         border: 1px solid #573605;
         background-color: rgb(255, 255, 255);
         margin: 30px 10px;
-
-
     }
 
     @include tabletH() {
         max-width: 400px;
-        margin: 40px 20px;
+        margin: 40px 10px;
+        padding-left: 20px;
     }
 
     @include laptop() {}
@@ -100,15 +106,17 @@
 
 .boxMember {
     margin: 15px 10px;
+    text-align: center;
 
-    @include tabletV() {
+    @include tabletV() {}
+
+    @include tabletH() {
         margin: 25px 50px;
     }
 
-    @include tabletH() {}
-
     @include laptop() {}
 }
+
 
 
 
@@ -118,6 +126,7 @@
 .textPwd {
     padding: 10px 0px;
     width: 250px;
+
 
 }
 
@@ -187,7 +196,7 @@
     margin-left: 30px;
     font-size: map-get($fontSize, webp);
 
-    @include tabletV() {
+    @include tabletH() {
         margin-left: 40px;
         font-size: map-get($fontSize, webp);
     }
@@ -225,6 +234,7 @@
 
     @include tabletV() {
         width: 300px;
+
     }
 }
 
@@ -236,6 +246,8 @@
     @include flexCenter;
     cursor: pointer;
     width: 250px;
+    text-align: center;
+    padding-left: 1px;
 
     @include tabletV() {
         width: 300px;
@@ -245,8 +257,15 @@
 }
 
 .boxBtn .btnLogin img {
-    padding-right: 7px;
+    display: none;
+
+    @include tabletV() {
+        display: unset;
+        padding-right: 30px;
+    }
 }
+
+
 
 .noMember p {
     color: #573605;

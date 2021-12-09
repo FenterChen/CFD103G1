@@ -398,32 +398,6 @@ section {
   }
 }
 
-.boxItem .order {
-  @include tabletV() {
-    position: relative;
-
-    &::after {
-      content: '感情-生肖牛';
-      position: absolute;
-      top: 30px;
-      right: 18px;
-      width: 120px;
-    }
-  }
-
-  @include tabletH() {
-    &::after {
-      right: 50px;
-    }
-  }
-
-  @include laptop() {
-    &::after {
-      right: 72px;
-    }
-  }
-
-}
 
 .arrow {
   border-top: 1px solid #573605;

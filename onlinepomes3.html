@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOBIO|線上求籤</title>
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/onlinepomes3.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="js/header.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
+</head>
+
+<body>
+    <header id="mainheader">
+      <div class="headerWrap">
+        <div class="logo">
+          <a href="https://fenterchen.github.io/CFD103G1/mainpage.html">
+            <img src="img/header/BOBIO_logo.svg" />
+          </a>
+        </div>
+        <nav class="navPostion">
+          <ul>
+            <li>
+              <a href="https://fenterchen.github.io/CFD103G1/pray">立即祈願</a>
+            </li>
+            <li>
+              <a href="https://fenterchen.github.io/CFD103G1/onlinepomes">線上求籤</a>
+            </li>
+            <li>
+              <a href="https://fenterchen.github.io/CFD103G1/amulet">平安符願</a>
+            </li>
+            <li>
+              <a href="https://fenterchen.github.io/CFD103G1/money">立即結緣</a>
+            </li>
+            <li>
+              <a href="https://fenterchen.github.io/CFD103G1/Abouts">關於我們</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="cart">
+          <a href="#"><img src="img/header/cart.svg" /></a>
+        </div>
+        <div class="member">
+          <a href="https://fenterchen.github.io/CFD103G1/memberAdd"><img src="img/header/member.svg" /></a>
+        </div>
+        <div class="outerHb">
+          <div class="hb" id="hb">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+  <section>
+    <div class="onlinepomesWrap">
+      <div class="onlinePic">
+        <img src="img/onlinepomes/lickbox.png" alt="">
+      </div> 
+      <div class="onlineContent" id="app">
+        <div class="onlineText">
+          <h2>{{believer}}，請示神明是否賜籤</h2>
+          <p>靜候片刻，擲筊請示神明是否應允賜籤，若獲得聖筊即可去抽籤。若無，可能是神明尚在查案，或是問題問得不清楚，後者請返回上一步重新操作。</p>
+        </div>
+        <!-- <div class="throwPic">
+            <div class="thowFirst">
+              <p v-if="type == 0"><img src="./img/onlinepomes/throw.png" alt=""></p>
+            </div>
+            <div class="thowScond">
+              <p v-if="first == 1"><img src="./img/onlinepomes/agree.png" alt=""><span>聖筊</span></p>
+            </div>
+            <div class="thowThird">
+              <p v-else-if="second == 2"><img src="./img/onlinepomes/smile.png" alt=""><span>笑筊</span></p>
+            </div>
+            <div class="fourth">
+              <p v-else-if="third == 3"><img src="./img/onlinepomes/not.png" alt=""><span>蓋筊</span></p>
+            </div>
+        </div> -->
+        <div class="throwPic">
+          <p v-if="type == 0"><img src="./img/onlinepomes/throw.png" alt=""></p>
+          <p v-if="type == 1"><img src="./img/onlinepomes/agree.png" alt=""><span>聖筊</span></p>
+          <p v-else-if="type == 2"><img src="./img/onlinepomes/smile.png" alt=""><span>笑筊</span></p>
+          <p v-else-if="type == 3"><img src="./img/onlinepomes/not.png" alt=""><span>蓋筊</span></p>
+        </div>
+        <div class="onlineBtn">      
+          <button @click="loadNum" class="throw" data-hover="擲筊">擲筊</button>
+        </div> 
+      </div>  
+    </div>
+  </section>
+    <footer>
+      <div class="footer-wrap">
+        <div class="footer-logo">
+          <img src="./img/header/BOBIO_logo.svg" alt="bobio" />
+        </div>
+        <div class="footer-slog">
+          <span>用BOBIO就有保佑</span>
+        </div>
+        <div class="footer-info">
+          <div class="list">
+            <ul>
+              <li>
+                <a href="https://fenterchen.github.io/CFD103G1/pray">立即祈願</a>
+              </li>
+              <li>
+                <a href="https://fenterchen.github.io/CFD103G1/onlinepomes">線上求籤</a>
+              </li>
+              <li>
+                <a href="https://fenterchen.github.io/CFD103G1/amulet">平安符願</a>
+              </li>
+              <li>
+                <a href="https://fenterchen.github.io/CFD103G1/money">立即結緣</a>
+              </li>
+              <li>
+                <a href="https://fenterchen.github.io/CFD103G1/Abouts">關於我們</a>
+              </li>
+            </ul>
+          </div>
+          <div class="conn">
+            <p>
+              bobio@temple.com<br />
+              02-1090-1090
+            </p>
+            <div class="info-icon">
+              <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook" /></a>
+              <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram" /></a>
+              <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube" /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>
+          Copyright © 2021Bobio
+          本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+        </p>
+      </div>
+    </footer>
+ 
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        believer:'',
+        type: 0,
+      },
+      mounted() {
+        this.believer = localStorage.onlinename;
+      },
+      methods: {
+        loadNum: function () {
+          let min = 1;
+          let max = 4;
+          let num= Math.floor(Math.random() * (max - min) + min);
+          console.log(num); 
+          if (num == 1){
+            // alert("聖筊");
+            location.href = "onlinepomes4.html";
+          }
+          //條件不成立
+          if (num == 2) {
+            // alert("蓋筊");
+            location.href = "onlinepomes2-1.html";
+          }if (num == 3){
+            // alert("笑筊");
+            location.href="onlinepomes2-1.html";
+          }
+
+          return this.type = num;
+        },
+        
+      }
+  })
+  </script>
+
+</body>
+</html>
+
+
