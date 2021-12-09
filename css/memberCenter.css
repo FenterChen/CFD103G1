@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 @charset "UTF-8";
+=======
+>>>>>>> dev
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -58,6 +61,7 @@ table {
   src: url("../font/NotoSerifTC-Medium.otf");
 }
 
+<<<<<<< HEAD
 @font-face {
   font-family: RocknRollOne;
   src: url("../font/RocknRollOne-Regular.ttf");
@@ -94,19 +98,134 @@ table {
 .boxRec1, .boxRec2, .boxRec3 {
   width: 100%;
   max-width: 1120px;
+=======
+section {
+  width: 90%;
+  margin: auto;
+}
+
+.wrapp {
+  width: 100%;
+  max-width: 375px;
+  background-color: #FFFAE7;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapp {
+    max-width: 768px;
+    margin-top: 60px;
+    margin-bottom: 80px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .wrapp {
+    max-width: 1024px;
+    margin-top: 80px;
+    margin-bottom: 120px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .wrapp {
+    max-width: 1200px;
+    margin-top: 100px;
+    margin-bottom: 150px;
+  }
+}
+
+.wrapp h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #573605;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.wrapp span {
+  text-align: right;
+  color: #573605;
+  display: block;
+  margin-bottom: 15px;
+  padding-right: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapp span {
+    position: absolute;
+    top: 30px;
+    right: 0px;
+    text-decoration: underline;
+    padding-right: 0px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .wrapp span {
+    top: 30px;
+    right: 0px;
+  }
+}
+
+.boxRec1,
+.boxRec2,
+.boxRec3 {
+  width: 100%;
+  max-width: 335px;
+>>>>>>> dev
   background-color: white;
   border: 1px solid #573605;
   border-radius: 20px;
   margin: auto;
 }
 
+<<<<<<< HEAD
 .boxRec1 .boxMem, .boxRec2 .boxMem, .boxRec3 .boxMem {
+=======
+@media screen and (min-width: 768px) {
+  .boxRec1,
+  .boxRec2,
+  .boxRec3 {
+    max-width: 768px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .boxRec1,
+  .boxRec2,
+  .boxRec3 {
+    max-width: 1024px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .boxRec1,
+  .boxRec2,
+  .boxRec3 {
+    max-width: 1200px;
+  }
+}
+
+.boxRec1 .boxMem,
+.boxRec2 .boxMem,
+.boxRec3 .boxMem {
+>>>>>>> dev
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
+<<<<<<< HEAD
 .boxRec1 .boxMem button, .boxRec2 .boxMem button, .boxRec3 .boxMem button {
+=======
+.boxRec1 .boxMem button,
+.boxRec2 .boxMem button,
+.boxRec3 .boxMem button {
+>>>>>>> dev
   text-decoration: none;
   list-style: none;
   color: #573605;
@@ -120,6 +239,7 @@ table {
   font-size: 18px;
 }
 
+<<<<<<< HEAD
 .boxRec1 .boxMem .mPray, .boxRec2 .boxMem .mPray, .boxRec3 .boxMem .mPray {
   border-top-left-radius: 20px;
   border: none;
@@ -164,10 +284,67 @@ table {
   position: absolute;
   top: 30px;
   right: 81px;
+=======
+.boxRec1 .boxMem .mPray,
+.boxRec2 .boxMem .mPray,
+.boxRec3 .boxMem .mPray {
+  border: none;
+  border-top-left-radius: 20px;
+}
+
+.boxRec1 .boxMem .mPray:hover,
+.boxRec2 .boxMem .mPray:hover,
+.boxRec3 .boxMem .mPray:hover {
+  background-color: #FCDBA3;
+}
+
+.boxRec1 .boxMem .mPomes,
+.boxRec2 .boxMem .mPomes,
+.boxRec3 .boxMem .mPomes {
+  border: none;
+  border-left: 1px solid #573605;
+}
+
+.boxRec1 .boxMem .mPomes:hover,
+.boxRec2 .boxMem .mPomes:hover,
+.boxRec3 .boxMem .mPomes:hover {
+  background-color: #FCDBA3;
+}
+
+.boxRec1 .boxMem .mOrder,
+.boxRec2 .boxMem .mOrder,
+.boxRec3 .boxMem .mOrder {
+  border: none;
+  border-top-right-radius: 20px;
+  border-left: 1px solid #573605;
+}
+
+.boxRec1 .boxMem .mOrder:hover,
+.boxRec2 .boxMem .mOrder:hover,
+.boxRec3 .boxMem .mOrder:hover {
+  background-color: #FCDBA3;
+}
+
+.boxRec1 .boxMem .mBg,
+.boxRec2 .boxMem .mBg,
+.boxRec3 .boxMem .mBg {
+  background-color: #fff;
+}
+
+.showRec1,
+.showRec2,
+.showRec3 {
+  display: none;
+}
+
+.bold {
+  font-weight: 700;
+>>>>>>> dev
 }
 
 .boxItem {
   width: 100%;
+<<<<<<< HEAD
   max-width: 1120px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -175,6 +352,34 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+=======
+  max-width: 335px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .boxItem {
+    max-width: 768px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .boxItem {
+    max-width: 1024px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .boxItem {
+    max-width: 1200px;
+  }
+>>>>>>> dev
 }
 
 .boxItem img {
@@ -183,10 +388,56 @@ table {
 }
 
 .boxItem p {
+<<<<<<< HEAD
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
   text-align: center;
   color: #573605;
+=======
+  padding: 30px 0px;
+  color: #573605;
+  border-top: 1px solid #573605;
+  font-family: NotoSansTC, serif;
+  font-size: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .boxItem p {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    text-align: center;
+    padding: 0px 0px;
+    border-top: none;
+  }
+}
+
+.arrow {
+  border-top: 1px solid #573605;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (min-width: 768px) {
+  .arrow {
+    display: none;
+  }
+}
+
+.arrow img {
+  padding: 30px 20px;
+}
+
+.arrow img:nth-child(1) {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  margin-right: auto;
+}
+
+.arrow img:nth-child(2) {
+  margin-left: auto;
+>>>>>>> dev
 }
 /*# sourceMappingURL=memberCenter.css.map */

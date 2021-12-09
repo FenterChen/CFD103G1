@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 @charset "UTF-8";
+=======
+>>>>>>> dev
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -58,6 +61,7 @@ table {
   src: url("../font/NotoSerifTC-Medium.otf");
 }
 
+<<<<<<< HEAD
 @font-face {
   font-family: RocknRollOne;
   src: url("../font/RocknRollOne-Regular.ttf");
@@ -74,6 +78,44 @@ table {
   width: 100%;
   max-width: 400px;
   border: 1px solid #573605;
+=======
+.containerId,
+.containerId2 {
+  max-width: 375px;
+  width: 100%;
+  background-color: #FFFAE7;
+  margin: auto;
+  margin-top: 150px;
+  margin-bottom: 65px;
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .containerId,
+  .containerId2 {
+    max-width: 768px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .containerId,
+  .containerId2 {
+    max-width: 1024px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .containerId,
+  .containerId2 {
+    max-width: 1200px;
+  }
+}
+
+.boxContainer,
+.boxContainer2 {
+  width: 100%;
+  max-width: 250px;
+>>>>>>> dev
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -85,6 +127,7 @@ table {
       -ms-flex-align: center;
           align-items: center;
   border-radius: 20px;
+<<<<<<< HEAD
   background-color: white;
   margin: auto;
   margin-top: 150px;
@@ -93,35 +136,154 @@ table {
 
 .boxMember {
   margin: 25px 70px;
+=======
+  margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .boxContainer,
+  .boxContainer2 {
+    max-width: 400px;
+    border: 1px solid #573605;
+    background-color: white;
+  }
+}
+
+.showAdd {
+  display: none;
+}
+
+.showLogin {
+  display: none;
+}
+
+.boxMember {
+  margin: 15px 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .boxMember {
+    margin: 25px 70px;
+  }
+}
+
+.boxMember P {
+  color: #573605;
+  font-family: NotoSansTC, serif;
+  font-size: 24px;
+  margin-right: 150px;
+  width: 100px;
+}
+
+@media screen and (min-width: 768px) {
+  .boxMember P {
+    margin-right: 200px;
+  }
+>>>>>>> dev
 }
 
 .boxMember .boxData {
   margin: 0 50px;
 }
 
+<<<<<<< HEAD
 .boxData .textName, .textPhone, .textEmail, .textPwd {
   padding: 10px 0px;
   width: 300px;
   background-color: white;
+=======
+.boxMember .textId {
+  color: #573605;
+  font-size: 24px;
+  font-family: NotoSansTC, serif;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .boxMember .textId {
+    font-size: 24px;
+  }
+}
+
+.boxMember .textId2 {
+  opacity: 0.5;
+}
+
+.boxMember .textFixpwd {
+  color: #573605;
+  opacity: 0.5;
+  font-size: 24px;
+  font-family: NotoSansTC, serif;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .boxMember .textFixpwd {
+    margin-left: 40px;
+    font-size: 24px;
+  }
+}
+
+.boxMember .textFixpwd2 {
+  opacity: 1;
+}
+
+.boxData .textName,
+.textPhone,
+.textEmail,
+.textPwd {
+  padding: 10px 0px;
+  width: 250px;
+}
+
+@media screen and (min-width: 768px) {
+  .boxData .textName,
+  .textPhone,
+  .textEmail,
+  .textPwd {
+    width: 300px;
+    background-color: white;
+  }
+>>>>>>> dev
 }
 
 .boxData span {
   padding: 2px;
   display: block;
   color: #573605;
+<<<<<<< HEAD
+=======
+  background-color: #FFFAE7;
+>>>>>>> dev
   font-size: 16px;
   font-family: NotoSansTC, serif;
 }
 
+<<<<<<< HEAD
 .boxData input {
   border: none;
   border-bottom: 1px solid #573605;
   width: 300px;
+=======
+@media screen and (min-width: 768px) {
+  .boxData span {
+    background-color: transparent;
+  }
+}
+
+.boxData input {
+  border: none;
+  background-color: #FFFAE7;
+  border-bottom: 1px solid #573605;
+  width: 250px;
+>>>>>>> dev
   font-size: 18px;
   font-family: NotoSansTC, serif;
   color: #573605;
 }
 
+<<<<<<< HEAD
 .boxMember p {
   color: #573605;
   font-family: NotoSansTC, serif;
@@ -131,6 +293,16 @@ table {
 }
 
 .boxBtn .btnAdd {
+=======
+@media screen and (min-width: 768px) {
+  .boxData input {
+    background-color: transparent;
+    width: 300px;
+  }
+}
+
+.boxBtn .btnSave {
+>>>>>>> dev
   margin-top: 15px;
   margin-bottom: 10px;
   width: 300px;
@@ -138,11 +310,23 @@ table {
   font-size: 18px;
   line-height: 26px;
   text-align: center;
+<<<<<<< HEAD
+=======
+  cursor: pointer;
+  border: 0px;
+>>>>>>> dev
   -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
           filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #FDBF52;
   color: #573605;
   border-radius: 30px;
+<<<<<<< HEAD
+=======
+  color: transparent;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+>>>>>>> dev
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -152,21 +336,84 @@ table {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+<<<<<<< HEAD
   cursor: pointer;
 }
 
 .boxBtn .btnLogin {
+=======
+  width: 250px;
+  cursor: pointer;
+}
+
+.boxBtn .btnSave::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  padding-top: 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: -1em;
+}
+
+.boxBtn .btnSave::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 12px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+}
+
+.boxBtn .btnSave:hover::before {
+  opacity: 1;
+  margin-top: 0;
+}
+
+.boxBtn .btnSave:hover::after {
+  opacity: 0;
+  margin-top: -1em;
+}
+
+@media screen and (min-width: 768px) {
+  .boxBtn .btnSave {
+    width: 300px;
+  }
+}
+
+.boxBtn .btnCancel {
+>>>>>>> dev
   margin-bottom: 30px;
   width: 300px;
   height: 50px;
   font-size: 18px;
   line-height: 26px;
   text-align: center;
+<<<<<<< HEAD
+=======
+  cursor: pointer;
+  border: 0px;
+>>>>>>> dev
   -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
           filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #FDBF52;
   color: #573605;
   border-radius: 30px;
+<<<<<<< HEAD
+=======
+  color: transparent;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+>>>>>>> dev
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -176,54 +423,207 @@ table {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+<<<<<<< HEAD
   cursor: pointer;
 }
 
 .boxBtn .btnLogin img {
   padding-right: 7px;
+=======
+  width: 250px;
+  cursor: pointer;
+}
+
+.boxBtn .btnCancel::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  padding-top: 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: -1em;
+}
+
+.boxBtn .btnCancel::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 12px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+}
+
+.boxBtn .btnCancel:hover::before {
+  opacity: 1;
+  margin-top: 0;
+}
+
+.boxBtn .btnCancel:hover::after {
+  opacity: 0;
+  margin-top: -1em;
+}
+
+@media screen and (min-width: 768px) {
+  .boxBtn .btnCancel {
+    width: 300px;
+  }
+}
+
+section {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+.wrapp {
+  width: 100%;
+  max-width: 375px;
+  background-color: #FFFAE7;
+  margin: auto;
+  position: relative;
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapp {
+    max-width: 768px;
+    display: unset;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .wrapp {
+    max-width: 1024px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .wrapp {
+    max-width: 1200px;
+  }
+>>>>>>> dev
 }
 
 .wrapp h2 {
   font-size: 32px;
+<<<<<<< HEAD
+=======
+  font-weight: 700;
+>>>>>>> dev
   color: #573605;
   text-align: center;
   margin-bottom: 30px;
 }
 
+<<<<<<< HEAD
 .boxRec {
   width: 100%;
   max-width: 335px;
   background-color: white;
+=======
+.wrapp span {
+  text-align: right;
+  color: #573605;
+  display: block;
+  margin-bottom: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapp span {
+    position: absolute;
+    top: 30px;
+    right: 0px;
+    text-decoration: underline;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .wrapp span {
+    top: 30px;
+    right: 0px;
+  }
+}
+
+.boxRec1,
+.boxRec2,
+.boxRec3 {
+  width: 100%;
+  max-width: 335px;
+>>>>>>> dev
   border: 1px solid #573605;
   border-radius: 20px;
   margin: auto;
 }
 
 @media screen and (min-width: 768px) {
+<<<<<<< HEAD
   .boxRec {
+=======
+  .boxRec1,
+  .boxRec2,
+  .boxRec3 {
+>>>>>>> dev
     max-width: 768px;
   }
 }
 
 @media screen and (min-width: 1024px) {
+<<<<<<< HEAD
   .boxRec {
+=======
+  .boxRec1,
+  .boxRec2,
+  .boxRec3 {
+>>>>>>> dev
     max-width: 1024px;
   }
 }
 
 @media screen and (min-width: 1200px) {
+<<<<<<< HEAD
   .boxRec {
+=======
+  .boxRec1,
+  .boxRec2,
+  .boxRec3 {
+>>>>>>> dev
     max-width: 1200px;
   }
 }
 
+<<<<<<< HEAD
 .boxRec .boxMem {
+=======
+.boxRec1 .bold,
+.boxRec2 .bold,
+.boxRec3 .bold {
+  font-weight: 700;
+}
+
+.boxRec1 .boxMem,
+.boxRec2 .boxMem,
+.boxRec3 .boxMem {
+>>>>>>> dev
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
+<<<<<<< HEAD
 .boxRec .boxMem button {
+=======
+.boxRec1 .boxMem button,
+.boxRec2 .boxMem button,
+.boxRec3 .boxMem button {
+>>>>>>> dev
   text-decoration: none;
   list-style: none;
   color: #573605;
@@ -237,6 +637,7 @@ table {
   font-size: 18px;
 }
 
+<<<<<<< HEAD
 .boxRec .boxMem #mPray {
   border-top-left-radius: 20px;
   border: none;
@@ -276,6 +677,66 @@ table {
   width: 100%;
   max-width: 335px;
   text-align: center;
+=======
+.boxRec1 .boxMem .mPray,
+.boxRec2 .boxMem .mPray,
+.boxRec3 .boxMem .mPray {
+  border-top-left-radius: 20px;
+  border: none;
+}
+
+.boxRec1 .boxMem .mPray:hover,
+.boxRec2 .boxMem .mPray:hover,
+.boxRec3 .boxMem .mPray:hover {
+  background-color: #FCDBA3;
+}
+
+.boxRec1 .boxMem .mPomes,
+.boxRec2 .boxMem .mPomes,
+.boxRec3 .boxMem .mPomes {
+  border: none;
+  border-left: 1px solid #573605;
+}
+
+.boxRec1 .boxMem .mPomes:hover,
+.boxRec2 .boxMem .mPomes:hover,
+.boxRec3 .boxMem .mPomes:hover {
+  background-color: #FCDBA3;
+}
+
+.boxRec1 .boxMem .mOrder,
+.boxRec2 .boxMem .mOrder,
+.boxRec3 .boxMem .mOrder {
+  border: none;
+  border-top-right-radius: 20px;
+  border-left: 1px solid #573605;
+}
+
+.boxRec1 .boxMem .mOrder:hover,
+.boxRec2 .boxMem .mOrder:hover,
+.boxRec3 .boxMem .mOrder:hover {
+  background-color: #FCDBA3;
+}
+
+.boxRec1 .boxMem .mBg,
+.boxRec2 .boxMem .mBg,
+.boxRec3 .boxMem .mBg {
+  background-color: #fff;
+}
+
+.showRec1,
+.showRec2,
+.showRec3 {
+  display: none;
+}
+
+.boxItem {
+  width: 100%;
+  max-width: 335px;
+  background-color: #fff;
+  text-align: center;
+  border-radius: 20px;
+>>>>>>> dev
 }
 
 @media screen and (min-width: 768px) {
@@ -304,7 +765,11 @@ table {
 
 .boxItem img {
   vertical-align: top;
+<<<<<<< HEAD
   padding: 25px 65px;
+=======
+  padding: 25px 50px;
+>>>>>>> dev
 }
 
 .boxItem p {
@@ -326,6 +791,7 @@ table {
   }
 }
 
+<<<<<<< HEAD
 @media screen and (min-width: 768px) {
   .boxItem .order {
     position: relative;
@@ -351,6 +817,8 @@ table {
   }
 }
 
+=======
+>>>>>>> dev
 .arrow {
   border-top: 1px solid #573605;
   display: -webkit-box;

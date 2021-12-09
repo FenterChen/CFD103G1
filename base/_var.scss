@@ -1,0 +1,37 @@
+//顏色  
+$color:(mainyellow: #FFFAE7,
+  lightbrown: #927858,
+  darkbrown: #573605,
+  orange: #FDBF52,
+  navColor: rgba(255, 250, 231, 0.85),
+  jumpBgc:rgba(255, 250, 231, 0.30),
+  placeholder: #737B7D,
+);
+//常規字體
+$normalFont:'../font/NotoSerifTC-Medium.otf';
+
+// slogon字體
+$slogoFont:'../font/RocknRollOne-Regular.ttf';
+
+
+
+//字級大小
+$fontSize:(webh1: 36px,
+  webh2: 32px,
+  webh3: 28px,
+  webp: 24px,
+  weblp: 18px,
+  navfont: 16px,
+  minifont: 14px,
+);
+
+//字體
+$fontWeight:(titleWeight: 900,
+  titleSmallWeight: 700,
+  subTitleWeight: 500,
+  pWeight: 400,
+);
+
+//斷點  
+//版型
+$maxWidth: 1312px;

@@ -1,0 +1,1000 @@
+@import 'base/var';
+@import 'mixin/modules';
+
+body{
+  background: map-get($color, mainyellow);
+}
+.praySection{
+  margin-top: 120px;
+  height: 735px;
+  @include tabletH(){
+    margin-top: 50px;
+    position: relative;
+  }
+}
+.pray{
+  @include flexCenter();
+  flex-direction: column;
+  font-family: NotoSansTC, sans-serif;
+  color: map-get($color, darkbrown);
+  margin: auto;
+  .choose{
+    font-size: map-get($fontSize, weblp);
+    line-height: 30px;
+    font-weight: map-get($fontWeight, titleSmallWeight);
+  }
+  .prayCate{
+    font-size: map-get($fontSize, webh2);
+    line-height: 40px;
+    font-weight: map-get($fontWeight, titleSmallWeight);
+    margin-bottom: 10px;
+  }
+  .cateSectionPhone{
+    position: relative;
+    @include tabletH(){
+      display: none;
+    }
+    &::after{
+      content:"▼";  
+      padding: 9px 18px;
+      position: absolute; 
+      right: 10px; 
+      top: 0;    
+      z-index: 2;
+      text-align: center;
+      width: 10%;
+      height: 100%;      
+      pointer-events: none;
+      box-sizing: border-box;
+    }
+    .select{
+      margin-bottom: 85px;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid #573605;
+      box-sizing: border-box;
+      border-radius: 20px;
+      width: 100px;
+      height: 30px;
+      font-size: 14px;
+      color: map-get($color, darkbrown);
+      appearance:none;
+      -moz-appearance:none;
+      -webkit-appearance:none;
+      padding-left: 20px;
+      font-family: NotoSansTC, sans-serif;
+    }
+  }
+  .godRepresent{
+    font-size: map-get($fontSize, weblp);
+    line-height: 30px;
+    font-weight: map-get($fontWeight, subTitleWeight);
+    margin-top: 10px;
+    @include tabletH(){
+      display: none;
+    }
+  }
+  .godTitle{
+    font-size: map-get($fontSize, webh2);
+    line-height: 40px;
+    font-weight: map-get($fontWeight, subTitleWeight);
+    @include tabletH(){
+      font-weight: map-get($fontWeight, titleWeight);
+      margin-top: 20px;
+    }
+  }
+  .prayNow{
+    @include btnlocal();
+    margin-top: 40px;
+    margin-bottom: 65px;
+    font-family: NotoSansTC, sans-serif;
+    @include tabletH(){
+      display: none;
+    }
+  }
+  .prayImg{
+    position: relative;
+    @include tabletH(){
+      &::before{
+        content: '';
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        border: 3px solid #927858;
+        position: absolute;
+        left: -130px;
+        top: -150px;
+        z-index: 1;
+      }
+    }
+    img{
+      width: 100%;
+      vertical-align: top;
+    }
+    &::after{
+      content: '';
+      width: 370px;
+      height: 370px;
+      border-radius: 50%;
+      background: rgba(253, 191, 82, 0.5);
+      position: absolute;
+      left: -10px;
+      top: -20px;
+      z-index: -1;
+      @include tabletH(){
+        width: 400px;
+        height: 400px;
+        left: -25px;
+        top: -50px;
+      }
+    }
+  }
+}
+.cateSectionWeb{
+  display: none;
+  @include tabletH(){
+    display: block;
+    .cate{
+      @include flexCenter();
+      flex-direction: column;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: map-get($color, lightbrown);
+      position: absolute;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      z-index: 2;
+      cursor: pointer;
+      &:hover{
+        &::after{
+          background: rgba(253, 191, 82, 0.5);
+          animation: spread infinite 1s ease-in;
+        }
+      }
+      &::after{
+        content: '';
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: rgba(146, 120, 88, 0.5);
+        position: absolute;
+        z-index: -1;
+      }
+      img{
+        vertical-align: top;
+      }
+      .cateTitle{
+        font-family: 
+        Noto Sans TC, serif;
+        color: #ffffff;
+        line-height: 26px;
+        font-size: map-get($fontSize, weblp);
+      }
+    }
+    .love{
+      transform: translate(-190px, -230px);
+    }
+    .study{
+      transform: translate(190px, -230px);
+    }
+    .work{
+      transform: translate(-305px, 0px);
+    }
+    .health{
+      transform: translate(300px, 0px);
+    }
+    .wealth{
+      transform: translate(-190px, 235px);
+    }
+    .safety{
+      transform: translate(190px, 230px);
+    }
+  }
+}
+
+@keyframes spread{
+  0%{
+    transform: scale(.8, .8);
+  }
+  15%{
+    transform: scale(1, 1);
+  }
+  25%{
+    transform: scale(1.1, 1.1);
+  }
+  50%{
+    transform: scale(.8, .8);
+  }
+  65%{
+    transform: scale(1, 1);;
+  }
+  75%{
+    transform: scale(1.1, 1.1);
+  }
+  100%{
+    transform: scale(.8, .8);
+  }
+}
+.bobioPray{
+  position: relative;
+  @include tabletH(){
+    &::before{
+      content: '';
+      width: 100%;
+      height: 3px;
+      background-color: map-get($color, lightbrown);
+      position: absolute;
+      z-index: -1;
+      bottom: 340px;
+    }
+  }
+  &.no-line {
+    &::before{
+      display: none;
+    }
+  }
+
+}
+.prayIntro{
+  height: 735px;
+  width: 100%;
+  position: relative;
+  @include flexCenter();
+  @include tabletH(){
+    height: 760px;
+  }
+}
+.mainSec{
+  @include flexCenter();
+  width: 100%;
+  flex-direction: column-reverse;
+  padding-top: 120px;
+  text-align: center;
+  font-family: NotoSansTC, sans-serif;
+  color: map-get($color, darkbrown);
+  margin: auto;
+  overflow: hidden;
+  @include tabletH(){
+    flex-direction: row;
+    max-width: $maxWidth;
+    margin: auto;
+    position: relative;
+    transform: translateY(-100px);
+    padding-top: 240px;
+    overflow: initial;
+  }
+  .praySteps{
+    display: none;
+    @include tabletH(){
+      display: block;
+    }
+  }
+  .prayGod{
+    transform: translate(43px, 0px);
+    @include tabletH(){
+      width: 50%;
+      transform: translate(0px, 0px);
+    }
+    img{
+      width: 100%;
+      vertical-align: top;
+    }
+  }
+  .prayTitle{
+    @include tabletH(){
+      height: 300px;
+      margin-left: 5%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 50%;
+    }
+    .prayMethod{
+      @include tabletH(){
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+    }
+    .methodWeb{
+      display: none;
+      @include tabletH(){
+        display: block;
+        font-size: map-get($fontSize, webh2 );
+        font-weight: map-get($fontWeight, titleWeight);
+        line-height: 40px;
+      }
+    }
+    .methodPhone{
+      font-size: map-get($fontSize, webh2 );
+      font-weight: map-get($fontWeight, titleWeight);
+      line-height: 40px;
+      @include tabletH(){
+        display: none;
+      }
+    }
+    .detailWeb{
+      display: none;
+      @include tabletH(){
+        display: block;
+        text-align: left;
+        font-size: map-get($fontSize, weblp);
+        font-weight: map-get($fontWeight, pWeight);
+        line-height: 40px;
+        margin: 0px 0px 0px 40px;
+        color: map-get($color, lightbrown);
+      }
+    }
+    .detailPhone{
+      font-size: map-get($fontSize, weblp);
+      font-weight: map-get($fontWeight, pWeight);
+      line-height: 40px;
+      margin: 15px 0 60px 0;
+      color: map-get($color, lightbrown);
+      @include tabletH(){
+        display: none;
+      }
+    }
+    .praySteps{
+      @include tabletH(){
+        width: 100%;
+        display: flex;
+        color: #ffffff;
+        font-weight: map-get($fontWeight, subTitleWeight);
+        font-size: map-get($fontSize, weblp);
+        position: relative;
+      }
+      .step{  
+        width: 106px;
+        height: 106px;
+        border-radius: 50%;
+        background-color: map-get($color, lightbrown);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        line-height: 25px;
+        @include flexCenter();
+        position: relative;
+        &::after{
+          content: "";
+          width: 125px;
+          height: 125px;
+          border-radius: 50%;
+          position: absolute;
+          background-color:rgba(146, 120, 88, 0.5); 
+          z-index: -1;
+        }
+      }
+      .prayStart{
+        margin: 0 80px;
+      }
+    }
+  }
+}
+.steps{
+  display: flex;
+  justify-content: space-between;
+  margin: 70px 20px 50px 20px;
+  max-width: $maxWidth;
+  @include laptop(){
+    margin: 70px auto 50px auto;
+  }
+}
+.attrIntro{
+  height: 735px;
+  width: 100%;
+  position: relative;
+  @include tabletH(){
+    height: 760px;
+  }
+}
+.attrSec{
+  @include flexCenter();
+  flex-direction: column-reverse;
+  padding-top: 120px;
+  text-align: center;
+  font-family: NotoSansTC, sans-serif;
+  color: map-get($color, darkbrown);
+  margin: auto;
+  @include tabletH(){
+    flex-direction: row;
+    max-width: $maxWidth;
+    padding: 170px 50px 0 50px;
+    position: relative;
+  }
+  .chooseAttr{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    transform: translateY(-50px);
+    @include tabletH(){
+      width: 50%;
+    }
+    .attr{
+      @include flexCenter();
+      flex-direction: column;
+      h2{
+        font-size: map-get($fontSize, weblp);
+        font-weight: map-get($fontWeight, subTitleWeight);
+        line-height: 26px;
+        letter-spacing: 0.05em;
+        margin: 87px 0 60px 0;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background-color: map-get($color, orange);
+        position: relative;
+        z-index: 3;
+        @include tabletV(){
+          width: 120px;
+          height: 120px;
+          font-size: map-get($fontSize, webp);
+        }
+        @include laptop(){
+          width: 150px;
+          height: 150px;
+        };
+        @include flexCenter();
+        &::before{
+          content: "";
+          width: 75px;
+          height: 75px;
+          border-radius: 50%;
+          background: map-get($color, mainyellow);
+          position: absolute;
+          z-index: -1;
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          @include tabletV(){
+            width: 105px;
+            height: 105px;
+          }
+          @include laptop(){
+            width: 125px;
+            height: 125px;
+          }
+        }
+        &::after{
+          content: "";
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 15px 12px 0 12px;
+          border-color: #FDBF52 transparent transparent transparent;
+          position: absolute;
+          z-index: -2;
+          bottom: -10px;
+        }
+      }
+      .detail{
+        width: 100px;
+        height: 180px;
+        background: #FCDBA3;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        position: relative;
+        @include tabletV(){
+          width: 130px;
+          height: 210px;
+        }
+        &::before{
+          content: "";
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin: auto;
+          top: 20px;
+          background: #FFFAE7;
+          box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+        } 
+        &::after{
+          content: "";
+          width: 2px;
+          height: 75px;
+          border-radius: 2px;
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin: auto;
+          top: -54px;
+          background: map-get($color, orange);
+        } 
+        p{
+          font-size: 14px;
+          line-height: 20px;
+          padding-top: 50px; 
+          @include tabletV(){
+            padding-top: 70px;
+          } 
+        }
+        .choose{
+          @include btnChoose();
+          margin: 10px 0 20px 0;
+          font-size: 14px;
+          line-height: 20px;
+          cursor: pointer;
+          @include laptop(){
+            margin: 25px 0 20px 0;
+          }
+        }
+      }
+    }
+  }
+  .stepMethod{
+    display: none;
+    @include tabletH(){
+      display: block;
+      width: 18%;
+      display: flex;
+      justify-content: center;
+      margin-top: 100px;
+      color: #ffffff;
+      font-weight: map-get($fontWeight, subTitleWeight);
+      font-size: map-get($fontSize, weblp);
+      position: relative;
+      .step{  
+        width: 106px;
+        height: 106px;
+        border-radius: 50%;
+        background-color: map-get($color, lightbrown);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        line-height: 25px;
+        @include flexCenter();
+        position: relative;
+        bottom: -40px;
+        &::after{
+          content: "";
+          width: 125px;
+          height: 125px;
+          border-radius: 50%;
+          position: absolute;
+          background-color:rgba(146, 120, 88, 0.5); 
+          z-index: -1;
+        }
+      }
+    }
+  }
+}
+.attrTitle{
+  @include tabletH(){
+    width: 32%;
+    display: flex;
+    flex-direction: column;
+  }
+  .attrChoices{
+    @include tabletH(){
+      display: flex;
+      justify-content: center;
+    }
+    .choicesWeb{
+      display: none;
+      @include tabletH(){
+        display: block;
+        font-size: map-get($fontSize, webh2);
+        font-weight: map-get($fontWeight, titleWeight);
+        line-height: 40px;
+      }
+    }
+    .choicesPhone{
+      font-size: map-get($fontSize, webh2 );
+      font-weight: map-get($fontWeight, titleWeight);
+      line-height: 40px;
+      @include tabletH(){
+        display: none;
+      }
+    }
+    .choicesDetail{
+      font-size: map-get($fontSize, weblp);
+      font-weight: map-get($fontWeight, pWeight);
+      line-height: 40px;
+      margin-top: 15px;
+      color: map-get($color, lightbrown);
+      @include tabletH(){
+        margin-left: 40px;
+        margin-top: 0px;
+      }
+    }
+  }
+  .chooseSteps{
+    display: none;
+    @include tabletH(){
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 100px;
+      color: #ffffff;
+      font-weight: map-get($fontWeight, subTitleWeight);
+      font-size: map-get($fontSize, weblp);
+      position: relative;
+      .step{  
+        width: 106px;
+        height: 106px;
+        border-radius: 50%;
+        background-color: map-get($color, lightbrown);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        line-height: 25px;
+        @include flexCenter();
+        position: relative;
+        &::after{
+          content: "";
+          width: 125px;
+          height: 125px;
+          border-radius: 50%;
+          position: absolute;
+          background-color:rgba(146, 120, 88, 0.5); 
+          z-index: -1;
+        }
+      }
+      .prayStart{
+        margin-right:80px;
+      }
+    }
+  }
+}
+.byeBye{
+  @include flexCenter();
+  width: 100%;
+  height: 735px;
+  position: relative;
+  @include tabletH(){
+    height: 760px;
+  }
+}
+.byeSec{
+  @include flexCenter();
+  width: 100%;
+  flex-direction: column;
+  padding-top: 120px;
+  text-align: center;
+  font-family: NotoSansTC, sans-serif;
+  color: map-get($color, darkbrown);
+  margin: auto;
+  @include tabletH(){
+    flex-direction: row;
+    max-width: $maxWidth;
+    box-sizing: border-box;
+    position: relative;
+    padding-top: 265px;
+    transform: translateY(-65px);
+  }
+  .byeByeAnimation{
+    width: 80%;
+    img{
+      width: 100%;
+      vertical-align: top;
+    }
+    @include tabletV(){
+      width: 60%;
+    }
+    @include tabletH(){
+      width: 50%;
+      img{
+        width: 100%;
+        transform: translate(0px, 20px);
+      }
+    }
+    @include laptop(){
+      width: 500px;
+      height: 452px;
+    }
+  }
+  .lastStep{
+    display: none;
+    @include tabletH(){
+      display: block;
+      width: 20%;
+      display: flex;
+      color: #ffffff;
+      margin-top: 100px;
+      font-weight: map-get($fontWeight, subTitleWeight);
+      font-size: map-get($fontSize, weblp);
+      position: relative;
+      @include flexCenter();
+      @include laptop(){
+        width: 15%;
+        margin-left: 2%;
+      }
+      .step{  
+        width: 106px;
+        height: 106px;
+        border-radius: 50%;
+        background-color: map-get($color, lightbrown);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        line-height: 25px;
+        @include flexCenter();
+        position: relative;
+        bottom: -40px;
+        &::after{
+          content: "";
+          width: 125px;
+          height: 125px;
+          border-radius: 50%;
+          position: absolute;
+          background-color:rgba(146, 120, 88, 0.5); 
+          z-index: -1;
+        }
+      }
+    }
+  }
+}
+.byeTitle{
+  margin-bottom: 77px;
+  @include tabletH(){
+    width: 40%;
+    margin-bottom: 0;
+  }
+  @include laptop(){
+    width: 35%;
+  }
+  .byeChoices{
+    @include tabletH(){
+      display: flex;
+      justify-content: center;
+    }
+    .byeByeWeb{
+      display: none;
+      @include tabletH(){
+        display: block;
+        font-size: map-get($fontSize, webh2);
+        font-weight: map-get($fontWeight, titleWeight);
+        line-height: 40px;
+      }
+    }
+    .byeByePhone{
+      font-size: map-get($fontSize, webh2 );
+      font-weight: map-get($fontWeight, titleWeight);
+      line-height: 40px;
+      @include tabletH(){
+        display: none;
+      }
+    }
+    .byeByeDetail{
+      font-size: map-get($fontSize, weblp);
+      font-weight: map-get($fontWeight, pWeight);
+      line-height: 40px;
+      margin-top: 15px;
+      color: map-get($color, lightbrown);
+      @include tabletH(){
+        margin-left: 40px;
+        margin-top: 0px;
+        text-align: left;
+      }
+    }
+  }
+  .byeByeProcess{
+    display: none;
+    @include tabletH(){
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 100px;
+      color: #ffffff;
+      font-weight: map-get($fontWeight, subTitleWeight);
+      font-size: map-get($fontSize, weblp);
+      position: relative;
+      .step{  
+        width: 106px;
+        height: 106px;
+        border-radius: 50%;
+        background-color: map-get($color, lightbrown);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        line-height: 25px;
+        @include flexCenter();
+        position: relative;
+        &::after{
+          content: "";
+          width: 125px;
+          height: 125px;
+          border-radius: 50%;
+          position: absolute;
+          background-color:rgba(146, 120, 88, 0.5); 
+          z-index: -1;
+        }
+      }
+      .prayStart{
+        margin-right:80px;
+      }
+    }
+  }
+}
+.btnStep{
+  display: flex;
+  justify-content: space-between;
+  margin: 70px 20px 50px 20px;
+  max-width: $maxWidth;
+  @include laptop(){
+    margin: 70px auto 50px auto;
+  }
+  .btn{
+    cursor: pointer;
+    background-color: transparent;
+    border-style: none;
+    @include tabletH(){
+      display: flex;
+      align-items: center;
+    }
+    p{
+      display: none;
+      @include tabletH(){
+        display: inline-block;
+        line-height: 26px;
+        font-family: NotoSansTC, sans-serif;
+        font-size: map-get($fontSize, weblp);
+        color: map-get($color, darkbrown);
+        padding: 0 10px;
+      }
+    }
+  }
+}
+.Finish{
+  height: 735px;
+  width: 100%;
+  position: relative;
+  @include tabletH(){
+    height: 760px;
+  }
+}
+.doneSec{
+  @include flexCenter();
+  flex-direction: column;
+  padding-top: 120px;
+  text-align: center;
+  font-family: NotoSansTC, sans-serif;
+  color: map-get($color, darkbrown);
+  margin: auto;
+  @include tabletH(){
+    padding-top: 220px;
+    flex-direction: row;
+    max-width: $maxWidth;
+    box-sizing: border-box;
+    position: relative;
+  }
+  .prayCard{
+    width: 100%;
+    .cardDetail{
+      img{
+        width: 100%;
+        vertical-align: top;
+      }
+    }
+    @include tabletH(){
+      width: 45%;
+      .cardDetail{
+        img{
+          width: auto;
+        }
+      }
+    }
+  }
+}
+.doneTitle{
+  margin-bottom: 77px;
+  @include tabletH(){
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-left: 5%;
+    margin-bottom: 0;
+  }
+  .doneIntro{
+    @include tabletH(){
+      display: flex;
+      align-self: flex-start;
+      justify-content: flex-start;
+    }
+    .prayDoneWeb{
+      display: none;
+      @include tabletH(){
+        display: block;
+        font-size: map-get($fontSize, webh2);
+        font-weight: map-get($fontWeight, titleWeight);
+        line-height: 40px;
+      }
+    }
+    .prayDonePhone{
+      font-size: map-get($fontSize, webh2 );
+      font-weight: map-get($fontWeight, titleWeight);
+      line-height: 40px;
+      @include tabletH(){
+        display: none;
+      }
+    }
+    .doneDetail{
+      font-size: map-get($fontSize, weblp);
+      font-weight: map-get($fontWeight, pWeight);
+      line-height: 40px;
+      margin-top: 15px;
+      color: map-get($color, lightbrown);
+      @include tabletH(){
+        margin-left: 40px;
+        margin-top: 0px;
+        text-align: left;
+      }
+    }
+  }
+  .prayProcess{
+    display: none;
+    @include tabletH(){
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-top: 100px;
+      color: #ffffff;
+      font-weight: map-get($fontWeight, subTitleWeight);
+      font-size: map-get($fontSize, weblp);
+      position: relative;
+      .step{  
+        width: 106px;
+        height: 106px;
+        border-radius: 50%;
+        background-color: map-get($color, lightbrown);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        line-height: 25px;
+        @include flexCenter();
+        position: relative;
+        &::after{
+          content: "";
+          width: 125px;
+          height: 125px;
+          border-radius: 50%;
+          position: absolute;
+          background-color:rgba(146, 120, 88, 0.5); 
+          z-index: -1;
+        }
+      }
+      .prayDone{
+        margin-right:80px;
+      }
+    }
+  }
+}
+.section{
+  display: none;
+}
+.praySection{
+  display: flex;
+}
+.goMainpage{
+  display: flex;
+  justify-content: center;
+  margin: 68px auto 40px auto;
+  @include tabletH(){
+    justify-content: flex-end;
+    max-width: $maxWidth;
+  }
+  button{
+    font-family: NotoSansTC, sans-serif;
+    font-size: map-get($fontSize, weblp);
+    color: map-get($color, darkbrown);
+    line-height: 26px;
+    @include btnlocal();
+  }
+}
+
+@keyframes fadeLeft {
+  0%{
+    left: 100%;
+  } 
+  100%{
+    left: 0%;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeRight {
+  0%{
+    right: 100%;
+  } 
+  100%{
+    right: 0%;
+    transform: scale(1);
+  }
+}
