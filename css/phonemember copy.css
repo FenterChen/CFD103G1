@@ -63,29 +63,21 @@ table {
 }
 
 .wrapp {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   width: 100%;
-  background-color: #FFFAE7;
   margin: auto;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  position: relative;
+  background-color: #FFFAE7;
 }
 
 @media screen and (min-width: 768px) {
   .wrapp {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
+    padding-bottom: 120px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .wrapp {
+    padding-bottom: unset;
   }
 }
 
@@ -104,28 +96,45 @@ table {
 
 .tempBg {
   display: none;
-  width: 60%;
-  max-width: 700px;
-  text-align: center;
-  margin: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
 }
 
 @media screen and (min-width: 768px) {
   .tempBg {
+    width: 100%;
+    max-width: 400px;
+    margin-left: 20px;
+    position: relative;
     display: unset;
   }
 }
 
+@media screen and (min-width: 1024px) {
+  .tempBg {
+    margin-left: 80px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .tempBg {
+    margin-left: 110px;
+  }
+}
+
 .tempBg img {
-  width: 100%;
+  width: 50%;
+  margin-top: 40px;
   vertical-align: top;
+  position: relative;
   border-radius: 30px;
 }
 
-.boxContainer,
-.boxContainer2 {
+@media screen and (min-width: 1200px) {
+  .tempBg img {
+    width: 550px;
+  }
+}
+
+.boxContainer, .boxContainer2 {
   width: 100%;
   max-width: 250px;
   display: -webkit-box;
@@ -138,28 +147,44 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: auto;
   border-radius: 20px;
+  margin: auto;
 }
 
 @media screen and (min-width: 768px) {
-  .boxContainer,
-  .boxContainer2 {
-    max-width: 350px;
+  .boxContainer, .boxContainer2 {
+    max-width: 320px;
     border: 1px solid #573605;
     background-color: white;
-    margin: 30px 10px;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .boxContainer,
-  .boxContainer2 {
+  .boxContainer, .boxContainer2 {
     max-width: 400px;
-    margin: 40px 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .boxContainer {
+    position: absolute;
+    right: 20px;
+    top: 40px;
+  }
+}
+
+.boxContainer2 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 148px;
+}
+
+@media screen and (min-width: 768px) {
+  .boxContainer2 {
+    left: unset;
+    right: 20px;
+    top: 40px;
   }
 }
 
@@ -171,55 +196,46 @@ table {
   display: none;
 }
 
-@media screen and (min-width: 768px) {
-  .boxData {
-    width: 300px;
-  }
-}
-
 .boxMember {
-  margin: 15px 10px;
+  margin: 25px 10px;
 }
 
-@media screen and (min-width: 768px) {
-  .boxMember {
-    margin: 25px 50px;
-  }
+.boxMember .boxData {
+  margin: 0 50px;
 }
 
-.boxData .textName,
-.textPhone,
-.textEmail,
-.textPwd {
+.boxData .textName, .textPhone, .textEmail, .textPwd {
   padding: 10px 0px;
   width: 250px;
 }
 
 @media screen and (min-width: 768px) {
-  width: 300px;
-  background-color: white;
+  .boxData .textName, .textPhone, .textEmail, .textPwd {
+    width: 300px;
+    background-color: white;
+  }
+}
+
+.textPwd p {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  text-align: right;
+  color: #927858;
+  display: none;
 }
 
 .boxData span {
-  padding: 4px 2px;
+  padding: 2px;
   display: block;
   color: #573605;
   font-size: 16px;
-  font-family: NotoSansTC, serif;
-  background-color: #FFFAE7;
-}
-
-@media screen and (min-width: 768px) {
-  .boxData span {
-    background-color: transparent;
-  }
 }
 
 .boxData input {
   border: none;
+  background-color: #FFFAE7;
   border-bottom: 1px solid #573605;
   width: 250px;
-  background-color: #FFFAE7;
   font-size: 18px;
   font-family: NotoSansTC, serif;
   color: #573605;
@@ -272,83 +288,43 @@ table {
   opacity: 1;
 }
 
-.textPwd p {
-  margin-top: 10px;
-  margin-bottom: 50px;
-  text-align: right;
-  color: #927858;
-  font-family: NotoSansTC, serif;
+.btnAdd, .btnLogin {
+  width: 300px;
+  height: 50px;
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #FDBF52;
+  color: #573605;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  width: 250px;
 }
 
 @media screen and (min-width: 768px) {
-  .textPwd p {
+  .btnAdd, .btnLogin {
     width: 300px;
   }
 }
 
 .boxBtn .btnAdd {
-  font-family: NotoSansTC, serif;
   margin-top: 15px;
   margin-bottom: 10px;
-  width: 300px;
-  height: 50px;
-  font-size: 18px;
-  line-height: 26px;
-  text-align: center;
-  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  background: #FDBF52;
-  color: #573605;
-  border-radius: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  cursor: pointer;
-  width: 250px;
-}
-
-@media screen and (min-width: 768px) {
-  .boxBtn .btnAdd {
-    width: 300px;
-  }
 }
 
 .boxBtn .btnLogin {
-  font-family: NotoSansTC, serif;
   margin-bottom: 30px;
-  width: 300px;
-  height: 50px;
-  font-size: 18px;
-  line-height: 26px;
-  text-align: center;
-  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  background: #FDBF52;
-  color: #573605;
-  border-radius: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  cursor: pointer;
-  width: 250px;
-}
-
-@media screen and (min-width: 768px) {
-  .boxBtn .btnLogin {
-    width: 300px;
-  }
 }
 
 .boxBtn .btnLogin img {
@@ -366,4 +342,4 @@ table {
   color: #573605;
   opacity: 0.5;
 }
-/*# sourceMappingURL=member--phone.css.map */
+/*# sourceMappingURL=phonemember copy.css.map */

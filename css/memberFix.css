@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+@charset "UTF-8";
+=======
+>>>>>>> dev
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -57,6 +61,24 @@ table {
   src: url("../font/NotoSerifTC-Medium.otf");
 }
 
+<<<<<<< HEAD
+@font-face {
+  font-family: RocknRollOne;
+  src: url("../font/RocknRollOne-Regular.ttf");
+}
+
+.containerId {
+  max-width: 1440px;
+  width: 100%;
+  background-color: #FFFAE7;
+  margin: auto;
+}
+
+.boxContainer {
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #573605;
+=======
 .containerId,
 .containerId2 {
   max-width: 375px;
@@ -93,6 +115,7 @@ table {
 .boxContainer2 {
   width: 100%;
   max-width: 250px;
+>>>>>>> dev
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -104,6 +127,16 @@ table {
       -ms-flex-align: center;
           align-items: center;
   border-radius: 20px;
+<<<<<<< HEAD
+  background-color: white;
+  margin: auto;
+  margin-top: 150px;
+  margin-bottom: 65px;
+}
+
+.boxMember {
+  margin: 25px 70px;
+=======
   margin: auto;
 }
 
@@ -146,12 +179,19 @@ table {
   .boxMember P {
     margin-right: 200px;
   }
+>>>>>>> dev
 }
 
 .boxMember .boxData {
   margin: 0 50px;
 }
 
+<<<<<<< HEAD
+.boxData .textName, .textPhone, .textEmail, .textPwd {
+  padding: 10px 0px;
+  width: 300px;
+  background-color: white;
+=======
 .boxMember .textId {
   color: #573605;
   font-size: 24px;
@@ -205,17 +245,27 @@ table {
     width: 300px;
     background-color: white;
   }
+>>>>>>> dev
 }
 
 .boxData span {
   padding: 2px;
   display: block;
   color: #573605;
+<<<<<<< HEAD
+=======
   background-color: #FFFAE7;
+>>>>>>> dev
   font-size: 16px;
   font-family: NotoSansTC, serif;
 }
 
+<<<<<<< HEAD
+.boxData input {
+  border: none;
+  border-bottom: 1px solid #573605;
+  width: 300px;
+=======
 @media screen and (min-width: 768px) {
   .boxData span {
     background-color: transparent;
@@ -227,11 +277,23 @@ table {
   background-color: #FFFAE7;
   border-bottom: 1px solid #573605;
   width: 250px;
+>>>>>>> dev
   font-size: 18px;
   font-family: NotoSansTC, serif;
   color: #573605;
 }
 
+<<<<<<< HEAD
+.boxMember p {
+  color: #573605;
+  font-family: NotoSansTC, serif;
+  font-size: 24px;
+  margin-right: 200px;
+  width: 100px;
+}
+
+.boxBtn .btnAdd {
+=======
 @media screen and (min-width: 768px) {
   .boxData input {
     background-color: transparent;
@@ -240,6 +302,7 @@ table {
 }
 
 .boxBtn .btnSave {
+>>>>>>> dev
   margin-top: 15px;
   margin-bottom: 10px;
   width: 300px;
@@ -247,17 +310,23 @@ table {
   font-size: 18px;
   line-height: 26px;
   text-align: center;
+<<<<<<< HEAD
+=======
   cursor: pointer;
   border: 0px;
+>>>>>>> dev
   -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
           filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #FDBF52;
   color: #573605;
   border-radius: 30px;
+<<<<<<< HEAD
+=======
   color: transparent;
   position: relative;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
+>>>>>>> dev
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -267,6 +336,12 @@ table {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+<<<<<<< HEAD
+  cursor: pointer;
+}
+
+.boxBtn .btnLogin {
+=======
   width: 250px;
   cursor: pointer;
 }
@@ -315,23 +390,30 @@ table {
 }
 
 .boxBtn .btnCancel {
+>>>>>>> dev
   margin-bottom: 30px;
   width: 300px;
   height: 50px;
   font-size: 18px;
   line-height: 26px;
   text-align: center;
+<<<<<<< HEAD
+=======
   cursor: pointer;
   border: 0px;
+>>>>>>> dev
   -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
           filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #FDBF52;
   color: #573605;
   border-radius: 30px;
+<<<<<<< HEAD
+=======
   color: transparent;
   position: relative;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
+>>>>>>> dev
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -341,6 +423,13 @@ table {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+<<<<<<< HEAD
+  cursor: pointer;
+}
+
+.boxBtn .btnLogin img {
+  padding-right: 7px;
+=======
   width: 250px;
   cursor: pointer;
 }
@@ -420,16 +509,26 @@ section {
   .wrapp {
     max-width: 1200px;
   }
+>>>>>>> dev
 }
 
 .wrapp h2 {
   font-size: 32px;
+<<<<<<< HEAD
+=======
   font-weight: 700;
+>>>>>>> dev
   color: #573605;
   text-align: center;
   margin-bottom: 30px;
 }
 
+<<<<<<< HEAD
+.boxRec {
+  width: 100%;
+  max-width: 335px;
+  background-color: white;
+=======
 .wrapp span {
   text-align: right;
   color: #573605;
@@ -458,35 +557,51 @@ section {
 .boxRec3 {
   width: 100%;
   max-width: 335px;
+>>>>>>> dev
   border: 1px solid #573605;
   border-radius: 20px;
   margin: auto;
 }
 
 @media screen and (min-width: 768px) {
+<<<<<<< HEAD
+  .boxRec {
+=======
   .boxRec1,
   .boxRec2,
   .boxRec3 {
+>>>>>>> dev
     max-width: 768px;
   }
 }
 
 @media screen and (min-width: 1024px) {
+<<<<<<< HEAD
+  .boxRec {
+=======
   .boxRec1,
   .boxRec2,
   .boxRec3 {
+>>>>>>> dev
     max-width: 1024px;
   }
 }
 
 @media screen and (min-width: 1200px) {
+<<<<<<< HEAD
+  .boxRec {
+=======
   .boxRec1,
   .boxRec2,
   .boxRec3 {
+>>>>>>> dev
     max-width: 1200px;
   }
 }
 
+<<<<<<< HEAD
+.boxRec .boxMem {
+=======
 .boxRec1 .bold,
 .boxRec2 .bold,
 .boxRec3 .bold {
@@ -496,14 +611,19 @@ section {
 .boxRec1 .boxMem,
 .boxRec2 .boxMem,
 .boxRec3 .boxMem {
+>>>>>>> dev
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
+<<<<<<< HEAD
+.boxRec .boxMem button {
+=======
 .boxRec1 .boxMem button,
 .boxRec2 .boxMem button,
 .boxRec3 .boxMem button {
+>>>>>>> dev
   text-decoration: none;
   list-style: none;
   color: #573605;
@@ -517,6 +637,47 @@ section {
   font-size: 18px;
 }
 
+<<<<<<< HEAD
+.boxRec .boxMem #mPray {
+  border-top-left-radius: 20px;
+  border: none;
+  border-bottom: 1px solid #573605;
+}
+
+.boxRec .boxMem #mPray:hover {
+  background-color: #FCDBA3;
+}
+
+.boxRec .boxMem #mPomes {
+  border: none;
+  border-bottom: 1px solid #573605;
+  border-left: 1px solid #573605;
+}
+
+.boxRec .boxMem #mPomes:hover {
+  background-color: #FCDBA3;
+}
+
+.boxRec .boxMem #mOrder {
+  border-top-right-radius: 20px;
+  border: none;
+  border-left: 1px solid #573605;
+  border-bottom: 1px solid #573605;
+}
+
+.boxRec .boxMem #mOrder:hover {
+  background-color: #FCDBA3;
+}
+
+.boxRec .boxMem .mBg {
+  background-color: #fff;
+}
+
+.boxItem {
+  width: 100%;
+  max-width: 335px;
+  text-align: center;
+=======
 .boxRec1 .boxMem .mPray,
 .boxRec2 .boxMem .mPray,
 .boxRec3 .boxMem .mPray {
@@ -575,6 +736,7 @@ section {
   background-color: #fff;
   text-align: center;
   border-radius: 20px;
+>>>>>>> dev
 }
 
 @media screen and (min-width: 768px) {
@@ -603,7 +765,11 @@ section {
 
 .boxItem img {
   vertical-align: top;
+<<<<<<< HEAD
+  padding: 25px 65px;
+=======
   padding: 25px 50px;
+>>>>>>> dev
 }
 
 .boxItem p {
@@ -625,6 +791,34 @@ section {
   }
 }
 
+<<<<<<< HEAD
+@media screen and (min-width: 768px) {
+  .boxItem .order {
+    position: relative;
+  }
+  .boxItem .order::after {
+    content: '感情-生肖牛';
+    position: absolute;
+    top: 30px;
+    right: 18px;
+    width: 120px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .boxItem .order::after {
+    right: 50px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .boxItem .order::after {
+    right: 72px;
+  }
+}
+
+=======
+>>>>>>> dev
 .arrow {
   border-top: 1px solid #573605;
   display: -webkit-box;

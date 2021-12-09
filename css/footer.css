@@ -62,10 +62,13 @@ table {
   src: url("../font/RocknRollOne-Regular.ttf");
 }
 
+<<<<<<< HEAD
+=======
 footer {
   background-color: #927858;
 }
 
+>>>>>>> dev
 .footer-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -76,6 +79,17 @@ footer {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+<<<<<<< HEAD
+  background-color: #927858;
+  padding: 2.5% 5%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.footer-logo img {
+  width: 77%;
+=======
   width: 90%;
   padding: 2% 0;
   -webkit-box-pack: justify;
@@ -91,6 +105,7 @@ footer {
 
 .footer-logo img {
   width: 100%;
+>>>>>>> dev
 }
 
 .footer-slog {
@@ -156,9 +171,23 @@ footer {
 }
 
 .copyright {
+<<<<<<< HEAD
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #573605;
+  padding: 3% 5%;
+=======
   background: #573605;
   padding: 20px 5%;
   margin: auto;
+>>>>>>> dev
 }
 
 .copyright p {
@@ -166,8 +195,11 @@ footer {
   font-size: 9px;
   line-height: 150%;
   text-align: center;
+<<<<<<< HEAD
+=======
   max-width: 1312px;
   margin: auto;
+>>>>>>> dev
 }
 
 @media screen and (min-width: 768px) {
@@ -179,8 +211,16 @@ footer {
   .conn p {
     font-size: 16px;
   }
+<<<<<<< HEAD
+  .copyright {
+    padding: 1% 1%;
+  }
+  .footer-info {
+    width: 75%;
+=======
   .footer-logo {
     width: 200px;
+>>>>>>> dev
   }
   .footer-logo img {
     width: 100%;
@@ -188,6 +228,12 @@ footer {
 }
 
 @media screen and (min-width: 1024px) {
+<<<<<<< HEAD
+  .footer-logo img {
+    width: 100%;
+  }
+=======
+>>>>>>> dev
   .footer-info {
     width: 40%;
   }
@@ -197,9 +243,12 @@ footer {
   .copyright p {
     font-size: 16px;
   }
+<<<<<<< HEAD
+=======
   .footer-wrap {
     max-width: 1312px;
     margin: auto;
   }
+>>>>>>> dev
 }
 /*# sourceMappingURL=footer.css.map */

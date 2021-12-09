@@ -57,16 +57,10 @@ table {
   src: url("../font/NotoSerifTC-Medium.otf");
 }
 
-@font-face {
-  font-family: RocknRollOne;
-  src: url("../font/RocknRollOne-Regular.ttf");
-}
-
 .wrapp {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  max-width: 375px;
   width: 100%;
   background-color: #FFFAE7;
   margin: auto;
@@ -81,6 +75,15 @@ table {
       justify-content: space-around;
 }
 
+@media screen and (min-width: 768px) {
+  .wrapp {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
 .biboLogo {
   vertical-align: top;
   margin: 60px 128px;
@@ -88,12 +91,27 @@ table {
   position: relative;
 }
 
+@media screen and (min-width: 768px) {
+  .biboLogo {
+    display: none;
+  }
+}
+
 .tempBg {
   display: none;
   width: 60%;
-  background-color: #927858;
+  max-width: 700px;
   text-align: center;
-  margin-right: 10px;
+  padding-left: 5px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+@media screen and (min-width: 768px) {
+  .tempBg {
+    display: unset;
+  }
 }
 
 .tempBg img {
@@ -102,7 +120,8 @@ table {
   border-radius: 30px;
 }
 
-.boxContainer, .boxContainer2 {
+.boxContainer,
+.boxContainer2 {
   width: 100%;
   max-width: 250px;
   display: -webkit-box;
@@ -115,17 +134,28 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: auto;
   border-radius: 20px;
 }
 
 @media screen and (min-width: 768px) {
-  .boxContainer, .boxContainer2 {
-    max-width: 400px;
+  .boxContainer,
+  .boxContainer2 {
+    max-width: 350px;
     border: 1px solid #573605;
     background-color: white;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin: 30px 10px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .boxContainer,
+  .boxContainer2 {
+    max-width: 400px;
+    margin: 40px 20px;
   }
 }
 
@@ -137,21 +167,26 @@ table {
   display: none;
 }
 
+@media screen and (min-width: 768px) {
+  .boxData {
+    width: 300px;
+  }
+}
+
 .boxMember {
   margin: 15px 10px;
 }
 
 @media screen and (min-width: 768px) {
   .boxMember {
-    margin: 25px 70px;
+    margin: 25px 50px;
   }
 }
 
-.boxMember .boxData {
-  margin: 0 50px;
-}
-
-.boxData .textName, .textPhone, .textEmail, .textPwd {
+.boxData .textName,
+.textPhone,
+.textEmail,
+.textPwd {
   padding: 10px 0px;
   width: 250px;
 }
@@ -159,14 +194,6 @@ table {
 @media screen and (min-width: 768px) {
   width: 300px;
   background-color: white;
-}
-
-.textPwd p {
-  margin-top: 10px;
-  margin-bottom: 50px;
-  text-align: right;
-  color: #927858;
-  font-family: NotoSansTC, serif;
 }
 
 .boxData span {
@@ -190,6 +217,7 @@ table {
   width: 250px;
   background-color: #FFFAE7;
   font-size: 18px;
+  font-family: NotoSansTC, serif;
   color: #573605;
 }
 
@@ -238,6 +266,20 @@ table {
 
 .boxMember .textLogin2 {
   opacity: 1;
+}
+
+.textPwd p {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  text-align: right;
+  color: #927858;
+  font-family: NotoSansTC, serif;
+}
+
+@media screen and (min-width: 768px) {
+  .textPwd p {
+    width: 300px;
+  }
 }
 
 .boxBtn .btnAdd {
@@ -314,10 +356,11 @@ table {
   font-size: 16px;
   margin-bottom: 60px;
   opacity: 1;
+  text-align: center;
 }
 
 .noMember span {
   color: #573605;
   opacity: 0.5;
 }
-/*# sourceMappingURL=member--phone copy.css.map */
+/*# sourceMappingURL=phoneLogin.css.map */
