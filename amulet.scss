@@ -2,7 +2,8 @@
 @import 'mixin/modules';
 
 body{
-    background: map-get($color, mainyellow);      
+    background: map-get($color, mainyellow);
+    font-family: NotoSansTC, serif;      
 }
 
 section{
@@ -11,12 +12,60 @@ section{
     color: map-get($color, darkbrown);
 }
 
-.prod{
-    margin-top: 60px;
-    
+//雙向綁定
+
+
+
+
+.diy p{
+    writing-mode: vertical-rl;
+    height: 4em;
+    font-size: 2em;
+    color: rgba(248, 248, 248, 0.8);
+    line-height:140%;
+    position: absolute;
+    top: 35%;
+    left: 37%;
 }
 
 
+
+.prod-bg{
+    position: relative;
+}
+
+
+.prod{
+    margin-top: 60px;    
+    position: relative;
+}
+
+.basicImage img{
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid map-get($color, darkbrown);
+}
+
+.frontImage{
+    position: absolute;
+    top: 31%;
+    left: 29%;
+    width: 43.5%;
+    z-index: 10;
+}
+
+.animalImage{
+    width: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+
+.animalImage img{
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid map-get($color, darkbrown);
+}
 
 
 
@@ -26,14 +75,67 @@ section{
 }
 
 .prod-sm{
-    display: flex;    
+    display: flex; 
+    margin-top: 15px;   
 }
 
-.prod-sm .pic img{
-    width: 70px;
-    padding-right: 15px;
-    padding-top: 15px;
+.front{
+    position: relative;
 }
+
+
+.pic{
+    border-radius: 10px;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    position: relative;
+    margin-right: 15px;
+}
+
+
+.frontType{
+    position: absolute;
+    top:32.5%;
+    left:27.5%;
+    z-index: 2;
+    width: 38px;
+}
+
+.frontType img{
+    width: 100%;
+}
+
+.frontAnimal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border: 1px solid map-get($color, darkbrown);
+    border-radius: 10px;
+}
+
+.frontAnimal img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.back{
+    position: relative;
+}
+
+.diySm{
+    color: rgba(248, 248, 248, 0.8);
+    position: absolute; 
+    top: 17%;
+    left: 22%;
+    z-index: 1; 
+    writing-mode:vertical-rl;
+    transform: scale(.5);
+    height: 4em;
+    line-height:140%;
+}
+
 
 
 .title h1{
@@ -63,22 +165,20 @@ h4{
     color:map-get($color, darkbrown);
     width: 100px;
     height: 40px;
-    line-height: 40px;
+    line-height: 36px;
     text-align: center;
     border-radius: 20px;
     border: 1px solid map-get($color, darkbrown);
     margin-left: 15px;
+    font-family: NotoSansTC, serif;
 }
 
 .select-typewrap a{
     font-size:map-get($fontSize , minifont);
     color:map-get($color, darkbrown);
     margin-left: 30px;
+    font-family: NotoSansTC, serif;
 }
-
-
-
-
 
 
 .select-wrap select{
@@ -88,9 +188,10 @@ h4{
     height: 40px;
     line-height: 40px;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 40px;
     border: 1px solid map-get($color, darkbrown);
     margin-left: 15px;
+    font-family: NotoSansTC, serif;
 }
 
 .select-wrap{
@@ -101,9 +202,30 @@ h4{
     align-items:center;
 }
 .amount{
-    margin-left: 20px;
+    margin-left: 40px;
     display: flex;
     align-items:center;
+}
+
+.many{
+    display: flex;
+    margin-left: 10px;
+    align-items: center;
+}
+
+.modify{
+    font-size: 24px;
+    color: map-get($color, darkbrown);
+    background-color: transparent;
+    border: none;
+}
+.num{
+    color: map-get($color, darkbrown);
+    width: 60px;
+    height: 36px;
+    border-radius: 19px;
+    border: 1px #573605 solid;
+    text-align: center;
 }
 
 textarea{
@@ -111,6 +233,7 @@ textarea{
     color: map-get($color, darkbrown);
     text-align: center;
     border: 1px solid map-get($color, darkbrown);
+    font-family: NotoSansTC, serif;
 }
 
 .customiz textarea{
@@ -118,24 +241,20 @@ textarea{
     height: 40px;
     line-height: 40px;
     border-radius: 22px;
-    margin-top: 15px;   
+    margin-top: 15px;
 }
 .shop{
     width: 100%;
-    max-width: 400px;
-    margin: 30px auto 50px auto;
-    // margin: auto;
+    max-width: 500px;
+    margin: 50px auto 40px auto;
     display: flex;
     justify-content: space-between;
 }
 
 
 button{
-    width: 160px;
-    height: 40px;
-    @include btnShadow();
-    @include btnColor();
-    @include btnBigBorderR();
+    @include btnlocal();
+    font-family: NotoSansTC, serif;
 }
 
 .intro textarea{
@@ -145,50 +264,48 @@ button{
 
 //RWD
 
-@include phone() {
-}
-
-
-
 @include tabletV() {
-
-    
- 
-
+    .diy p{
+        font-size:4em;
+    }
 }
+
+
 
   
 @include tabletH() {
     .wrap{
-        width:1200px;
+        width: 90%;
         display: flex;
-        margin: 120px auto 120px auto;
+        padding-top: 100px;
+        padding-bottom: 100px;
+        @include maxWidth();
     }
-
-    .container{
-        margin-left: 50px;
+    .prod{
+        margin-right: 30px;
     }
+  
 
     .prod-bg{
-        width: 420px;
+        width: 480px;
     }
     .prod-bg img{
         width: 100%;
     }
 
-    .prod-sm .pic{
-        width: 100px;
-        padding-right: 15px;
+    .title {
+        font-size: map-get($fontSize, webh3);
     }
-    .prod-sm .pic img{
-        width: 100%;
+    .title span{
+        font-size: map-get($fontSize, webh3);
     }
 
     .customiz textarea{
+        font-size: map-get($fontSize, navfont);
         width: 100%;
-        max-width: 500px;
         height: 90px;
         line-height:90px;
+        margin-top: 20px;
     }
 
     .select-typewrap a{
@@ -196,15 +313,28 @@ button{
     }
 
     .intro textarea{
+        font-size: map-get($fontSize, navfont);
         width: 100%;
-        max-width: 500px;
-        height: 50px;
-        line-height: 50px;
+        height: 70px;
+        line-height: 70px;
         border-radius: 20px;
         display: block;
-        margin-bottom: 15px;
+        margin-top: 20px;
+        margin-bottom: 50px;
     }
-      
+
+    button{
+        @include btnAmulet();
+        font-family: NotoSansTC, serif;
+        
+    }
+
+    .diy p{
+        font-size:2.8em;
+    }
+
+  
+ 
 }
 
 
