@@ -837,8 +837,8 @@ body {
 }
 
 .container-fpage .pgod3 {
-  -webkit-animation-name: moveTxt;
-          animation-name: moveTxt;
+  -webkit-animation-name: DtoU;
+          animation-name: DtoU;
   -webkit-animation-duration: 1s;
           animation-duration: 1s;
   -webkit-animation-delay: 0s;

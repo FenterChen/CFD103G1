@@ -385,7 +385,7 @@ cursor: pointer;
 }
 
 .container-fpage .pgod3{
-    animation-name: moveTxt;
+    animation-name: DtoU;
     animation-duration: 1s;
     animation-delay: 0s;
 }
@@ -471,7 +471,13 @@ cursor: pointer;
     animation-delay: 0s;
 }
 
-.container-Spage .pgod8,.pgod9{
+.container-Spage .pgod8{
+    animation-name: roll;
+    animation-duration: 1s;
+    animation-delay: 0s;
+}
+
+.container-Spage .pgod9{
     animation-name: roll;
     animation-duration: 1s;
     animation-delay: 0s;
