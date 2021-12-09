@@ -338,7 +338,6 @@ body {
   color: transparent;
   position: relative;
   backface-visibility: hidden;
-  padding-top: 12px;
 }
 
 .memberAd .memberContent button::before {
@@ -521,7 +520,6 @@ body {
   position: relative;
   backface-visibility: hidden;
   z-index: 3;
-  padding-top: 12px;
 }
 
 .adPray .pray button::before {
@@ -748,7 +746,6 @@ body {
   position: relative;
   backface-visibility: hidden;
   z-index: 3;
-  padding-top: 12px;
 }
 
 .adPomes .pomes button::before {
