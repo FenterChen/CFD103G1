@@ -296,6 +296,7 @@ body{
       color: transparent;
       position : relative;
 			backface-visibility : hidden;
+      z-index: 3;
       @include tabletH(){
       position: static;
       margin: 100px 0px 0px 0px;
@@ -414,6 +415,7 @@ body{
       color: transparent;
       position : relative;
 			backface-visibility : hidden;
+      z-index: 3;
       @include tabletH(){
         position: static;
         margin: 100px 0px 0px 0px;

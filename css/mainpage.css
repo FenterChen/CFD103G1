@@ -519,6 +519,7 @@ body {
   color: transparent;
   position: relative;
   backface-visibility: hidden;
+  z-index: 3;
 }
 
 .adPray .pray button::before {
@@ -744,6 +745,7 @@ body {
   color: transparent;
   position: relative;
   backface-visibility: hidden;
+  z-index: 3;
 }
 
 .adPomes .pomes button::before {
