@@ -160,6 +160,26 @@
   backface-visibility: hidden;
 }
 
+//客製化平安符按鈕
+@mixin btnAmulet() {
+  width: 180px;
+  height: 50px;
+  font-size: map-get($fontSize, weblp);
+  text-align: center;
+  border: 0px;
+  cursor: pointer;
+  @include btnShadow();
+  @include btnColor();
+  @include btnBigBorderR();
+  @include btnBefore();
+  @include btnAfter();
+  @include btnHoverBefore();
+  @include btnHoverAfter();
+  color: transparent;
+  position : relative;
+	backface-visibility : hidden;
+}
+
 //橫排垂直＋水平置中
 @mixin flexCenter() {
   display: flex;
