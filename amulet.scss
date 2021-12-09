@@ -161,6 +161,7 @@ button{
 @include tabletH() {
     .wrap{
 <<<<<<< HEAD
+<<<<<<< HEAD
         width: 80%;
         display: flex;
         margin: 0 auto 100px auto;
@@ -169,6 +170,11 @@ button{
         display: flex;
         margin: 120px auto 120px auto;
 >>>>>>> parent of 5e61aac (modify amulet and add button type)
+=======
+        width:1200px;
+        display: flex;
+        margin: 120px auto 120px auto;
+>>>>>>> 2b85780286456bbf1907db8e4e4a307df4312e06
     }
 
     .container{
