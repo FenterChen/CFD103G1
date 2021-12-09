@@ -150,14 +150,23 @@
   border: 0px;
   @include btnShadow();
   @include btnColor();
+<<<<<<< HEAD
   @include btnBigBorderR();
+=======
+  @include BigBorderR();
+>>>>>>> parent of 5e61aac (modify amulet and add button type)
   @include btnBefore();
   @include btnAfter();
   @include btnHoverBefore();
   @include btnHoverAfter();
   color: transparent;
+<<<<<<< HEAD
   position: relative;
   backface-visibility: hidden;
+=======
+  position : relative;
+	backface-visibility : hidden;
+>>>>>>> parent of 5e61aac (modify amulet and add button type)
 }
 
 //橫排垂直＋水平置中

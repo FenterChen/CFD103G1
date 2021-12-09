@@ -151,11 +151,19 @@ button {
 
 @media screen and (min-width: 1024px) {
   .wrap {
+<<<<<<< HEAD
     width: 80%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     margin: 0 auto 100px auto;
+=======
+    width: 1200px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 120px auto 120px auto;
+>>>>>>> parent of 5e61aac (modify amulet and add button type)
   }
   .container {
     margin-left: 50px;
