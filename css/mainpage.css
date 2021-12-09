@@ -229,7 +229,7 @@ body {
 
 @media screen and (min-width: 1024px) {
   .memberAd .advertisement .money {
-    background-image: url(../img/mainpage/MoneyNoBg.png);
+    background-image: url(../img/mainpage/moneyNoBg.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
