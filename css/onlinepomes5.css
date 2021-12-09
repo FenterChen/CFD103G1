@@ -1,0 +1,297 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  background: #FFFAE7;
+}
+
+section {
+  max-width: 1400px;
+  margin: auto;
+}
+
+.onlinepomesWrap {
+  padding-top: 120px;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 335px;
+  width: 100%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .onlinepomesWrap {
+    padding-top: 210px;
+    padding-left: 0px;
+    padding-right: 0px;
+    max-width: 768px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .onlinepomesWrap {
+    max-width: 1000px;
+  }
+}
+
+.onlinePic {
+  max-width: 370px;
+  width: 100%;
+}
+
+.onlinePic img {
+  max-width: 263px;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .onlinePic img {
+    margin-top: -130px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .onlinePic img {
+    max-width: 370px;
+  }
+}
+
+.onlineContent {
+  width: 100%;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .onlineContent {
+    text-align: left;
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .onlineContent {
+    padding-left: 100px;
+  }
+}
+
+.onlineText h2 {
+  margin-bottom: 10px;
+  width: 100%;
+  font-family: NotoSansTC;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 40px;
+  letter-spacing: 0.05em;
+  color: #573605;
+}
+
+@media screen and (min-width: 1024px) {
+  .onlineText h2 {
+    font-size: 32px;
+  }
+}
+
+.onlineText p {
+  width: 100%;
+  margin-bottom: 10px;
+  font-family: NotoSansTC;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 40px;
+  letter-spacing: 0.1px;
+  color: #927858;
+}
+
+.onlineBtn button {
+  font-family: NotoSansTC;
+  width: 120px;
+  height: 42px;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  width: 120px;
+  height: 42px;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  border: 0px;
+  cursor: pointer;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #FDBF52;
+  color: #573605;
+  border-radius: 20px;
+  color: transparent;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.onlineBtn button::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  padding-top: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: -1em;
+}
+
+.onlineBtn button::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 10px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+}
+
+.onlineBtn button:hover::before {
+  opacity: 1;
+  margin-top: 0;
+}
+
+.onlineBtn button:hover::after {
+  opacity: 0;
+  margin-top: -1em;
+}
+
+@media screen and (min-width: 768px) {
+  .onlineBtn button {
+    margin-bottom: 20px;
+  }
+}
+
+.onlineNotice {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .onlineNotice {
+    display: unset;
+    margin: auto;
+    text-align: left;
+    max-width: 300px;
+    width: 100%;
+    font-family: NotoSansTC;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 150%;
+    /* or 21px */
+    letter-spacing: 0.2px;
+    color: #927858;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .onlineNotice {
+    margin: 0;
+  }
+}
+
+.throwPic {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .throwPic {
+    margin: 0;
+  }
+}
+
+.throwPic img {
+  width: 100px;
+}
+/*# sourceMappingURL=onlinepomes5.css.map */

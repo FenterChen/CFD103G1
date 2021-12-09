@@ -251,11 +251,12 @@ body{
 .container-fpage .phone_aboutus_title {
     padding-left: 40px;
     font-size: map-get($fontSize,minifont );
-    color: map-get($color, darkbrown );
+    color: map-get($color, darkbrown);
     @include tabletH(){
         display: none;
     }
 }
+
 .container-fpage .phone_content{
     font-family: NotoSansTC;
     height: 600px;
@@ -265,6 +266,9 @@ body{
         font-size: map-get($fontSize, webh1);
         font-weight: 700px;
         @include flexCenter();
+    }
+    h1{
+        color: map-get($color, darkbrown );
     }
     .pic{
         @include flexCenter();
@@ -294,11 +298,11 @@ body{
     .title{
         display: flex;
         justify-content: start;
-        h1{
+            h1{
             font-family: NotoSansTC;
             font-size: map-get($fontSize,webh1);
             padding-bottom: 40px;
-            color: map-get($color, darkbrown );
+            color: map-get($color,darkbrown);
         }
     }
     .content{
@@ -365,9 +369,27 @@ cursor: pointer;
 }
 .container-fpage .picitem .col-6 .god3{
     animation-name:  moveTxt;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-delay: 0s;
 }
+
+.container-fpage .pgod1{
+    animation-name: moveTxt;
+    animation-duration: 1s;
+    animation-delay: 0s;
+}
+.container-fpage .pgod2{
+    animation-name: movePic;
+    animation-duration: 1s;
+    animation-delay: 0s;
+}
+
+.container-fpage .pgod3{
+    animation-name: DtoU;
+    animation-duration: 1s;
+    animation-delay: 0s;
+}
+
 // .container-fpage end
 
 
@@ -437,6 +459,35 @@ cursor: pointer;
         display: none;
     }
 }
+.container-Spage .pgod4,.pgod5{
+    animation-name: flip;
+    animation-duration: 1s;
+    animation-delay: 0s;
+}
+
+.container-Spage .pgod6,.pgod7{
+    animation-name: jump;
+    animation-duration: 1s;
+    animation-delay: 0s;
+}
+
+.container-Spage .pgod8{
+    animation-name: roll;
+    animation-duration: 1s;
+    animation-delay: 0s;
+}
+
+.container-Spage .pgod9{
+    animation-name: roll;
+    animation-duration: 1s;
+    animation-delay: 0s;
+}
+.container-Spage .pgod10{
+    animation-name:TxtLeft;
+    animation-duration: 1s;
+    animation-delay: 0s;
+}
+
 // <!-- phone_page_end -->
 
 .container-Spage .aboutus{

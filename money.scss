@@ -60,7 +60,7 @@ section {
 }
 
 .money .moneyBox #app .moneyBoxBtn {
-  @include btnMini();
+  @include btnlocal();
   font-family: NotoSansTC, serif;
   font-weight: map-get($fontWeight, subTitleWeight);
 }
@@ -253,7 +253,7 @@ p {
 }
 
 #app .completed .btn button {
-  @include btnMini();
+  @include btnlocal();
   font-family: NotoSansTC, serif;
   margin-top: 10px;
 }

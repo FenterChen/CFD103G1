@@ -25,53 +25,64 @@
   color: map-get($color, darkbrown);
 }
 
+//跳窗底圖
+@mixin jumpBg() {
+  background-color: map-get($color, jumpBgc);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
 //按鈕before
-@mixin btnBefore(){
-  &::before{
-    content : attr(data-hover);
-    width : 100%;
-    position : absolute;
-    top : 0;
-    left : 0px;
-    padding-top: 12px;
-    transition : 0.3s; 
-    opacity : 0;
-    color : rgba(255,255,255,0.9);
+@mixin btnBefore() {
+  &::before {
+    content: attr(data-hover);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    padding-top: 10px;
+    transition: 0.3s;
+    opacity: 0;
+    color: rgba(255, 255, 255, 0.9);
     margin-top: -1em;
   }
 }
 
 //按鈕after
-@mixin btnAfter(){
-  &::after{
-    content : attr(data-hover);
-    width : 100%;
-    position : absolute;
-    top : 0;
+@mixin btnAfter() {
+  &::after {
+    content: attr(data-hover);
+    width: 100%;
+    position: absolute;
+    top: 0;
     left: 0;
-    padding-top: 12px;
-    opacity : 1;
-    transition : 0.3s; 
-    color : map-get($color, darkbrown);
+    padding-top: 10px;
+    opacity: 1;
+    transition: 0.3s;
+    color: map-get($color, darkbrown);
   }
 }
 
 //按鈕hover後before
-@mixin btnHoverBefore(){
-  &:hover{
-    &::before{
-      opacity : 1;
-      margin-top : 0;
+@mixin btnHoverBefore() {
+  &:hover {
+    &::before {
+      opacity: 1;
+      margin-top: 0;
     }
   }
 }
 
 //按鈕hover後after
-@mixin btnHoverAfter(){
-  &:hover{
-    &::after{
-      opacity : 0;
-      margin-top : -1em;
+@mixin btnHoverAfter() {
+  &:hover {
+    &::after {
+      opacity: 0;
+      margin-top: -1em;
     }
   }
 }
@@ -93,8 +104,8 @@
   @include btnHoverBefore();
   @include btnHoverAfter();
   color: transparent;
-  position : relative;
-	backface-visibility : hidden;
+  position: relative;
+  backface-visibility: hidden;
 }
 
 //只有祈願供品選擇&求籤輸入名字的確定
@@ -114,8 +125,8 @@
   @include btnHoverBefore();
   @include btnHoverAfter();
   color: transparent;
-  position : relative;
-	backface-visibility : hidden;
+  position: relative;
+  backface-visibility: hidden;
 }
 
 //其他頁面：確定&取消&下一步&付款&抽籤&擲筊&查看籤詩&返回首頁
@@ -135,8 +146,8 @@
   @include btnHoverBefore();
   @include btnHoverAfter();
   color: transparent;
-  position : relative;
-	backface-visibility : hidden;
+  position: relative;
+  backface-visibility: hidden;
 }
 
 //會員頁面：登入&註冊&FB登入
@@ -166,6 +177,7 @@
   color: transparent;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   position: relative;
   backface-visibility: hidden;
 =======
@@ -176,6 +188,10 @@
   position : relative;
 	backface-visibility : hidden;
 >>>>>>> 2b85780286456bbf1907db8e4e4a307df4312e06
+=======
+  position: relative;
+  backface-visibility: hidden;
+>>>>>>> 8c24d402663bbfad9bcb47868e242143c19a08dd
 }
 
 //橫排垂直＋水平置中
@@ -218,6 +234,7 @@
     @content;
   }
 }
+
 @mixin tabletV() {
   @media screen and (min-width:768px) {
     @content;

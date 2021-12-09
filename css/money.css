@@ -130,18 +130,61 @@ section {
 }
 
 .money .moneyBox #app .moneyBoxBtn {
-  width: 180px;
-  height: 50px;
+  width: 120px;
+  height: 42px;
   font-size: 18px;
   line-height: 21px;
   text-align: center;
+  border: 0px;
+  cursor: pointer;
   -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
           filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #FDBF52;
   color: #573605;
-  border-radius: 30px;
+  border-radius: 20px;
+  color: transparent;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   font-family: NotoSansTC, serif;
   font-weight: 500;
+}
+
+.money .moneyBox #app .moneyBoxBtn::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  padding-top: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: -1em;
+}
+
+.money .moneyBox #app .moneyBoxBtn::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 10px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+}
+
+.money .moneyBox #app .moneyBoxBtn:hover::before {
+  opacity: 1;
+  margin-top: 0;
+}
+
+.money .moneyBox #app .moneyBoxBtn:hover::after {
+  opacity: 0;
+  margin-top: -1em;
 }
 
 ::-webkit-input-placeholder {
@@ -240,12 +283,55 @@ section {
   font-size: 18px;
   line-height: 21px;
   text-align: center;
+  border: 0px;
+  cursor: pointer;
   -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
           filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #FDBF52;
   color: #573605;
   border-radius: 20px;
+  color: transparent;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   font-family: NotoSansTC, serif;
+}
+
+#app .inputboxmoneywin .btn button::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  padding-top: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: -1em;
+}
+
+#app .inputboxmoneywin .btn button::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 10px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+}
+
+#app .inputboxmoneywin .btn button:hover::before {
+  opacity: 1;
+  margin-top: 0;
+}
+
+#app .inputboxmoneywin .btn button:hover::after {
+  opacity: 0;
+  margin-top: -1em;
 }
 
 #app .creditcard {
@@ -323,12 +409,55 @@ section {
   font-size: 18px;
   line-height: 21px;
   text-align: center;
+  border: 0px;
+  cursor: pointer;
   -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
           filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #FDBF52;
   color: #573605;
   border-radius: 20px;
+  color: transparent;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   font-family: NotoSansTC, serif;
+}
+
+#app .creditcard button::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  padding-top: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: -1em;
+}
+
+#app .creditcard button::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 10px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+}
+
+#app .creditcard button:hover::before {
+  opacity: 1;
+  margin-top: 0;
+}
+
+#app .creditcard button:hover::after {
+  opacity: 0;
+  margin-top: -1em;
 }
 
 #app .creditcard .cardinfo ul li:nth-child(4) label:first-child {
@@ -408,18 +537,61 @@ p {
 }
 
 #app .completed .btn button {
-  width: 180px;
-  height: 50px;
+  width: 120px;
+  height: 42px;
   font-size: 18px;
   line-height: 21px;
   text-align: center;
+  border: 0px;
+  cursor: pointer;
   -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
           filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #FDBF52;
   color: #573605;
-  border-radius: 30px;
+  border-radius: 20px;
+  color: transparent;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   font-family: NotoSansTC, serif;
   margin-top: 10px;
+}
+
+#app .completed .btn button::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  padding-top: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: -1em;
+}
+
+#app .completed .btn button::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 10px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+}
+
+#app .completed .btn button:hover::before {
+  opacity: 1;
+  margin-top: 0;
+}
+
+#app .completed .btn button:hover::after {
+  opacity: 0;
+  margin-top: -1em;
 }
 
 #app .moneyboxdetail {
@@ -497,13 +669,56 @@ p {
   font-size: 18px;
   line-height: 21px;
   text-align: center;
+  border: 0px;
+  cursor: pointer;
   -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
           filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #FDBF52;
   color: #573605;
   border-radius: 20px;
+  color: transparent;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   font-family: NotoSansTC, serif;
   margin-top: 20px;
+}
+
+#app .moneyboxdetail .details .btn button::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  padding-top: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: -1em;
+}
+
+#app .moneyboxdetail .details .btn button::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 10px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+}
+
+#app .moneyboxdetail .details .btn button:hover::before {
+  opacity: 1;
+  margin-top: 0;
+}
+
+#app .moneyboxdetail .details .btn button:hover::after {
+  opacity: 0;
+  margin-top: -1em;
 }
 
 @media screen and (min-width: 375px) {
@@ -571,13 +786,52 @@ p {
     font-size: 24px;
     line-height: 35px;
     text-align: center;
+    border: 0px;
+    cursor: pointer;
     -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
             filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     background: #FDBF52;
     color: #573605;
     border-radius: 30px;
+    color: transparent;
+    position: relative;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
     font-family: NotoSansTC, serif;
     font-weight: 500;
+  }
+  .money .moneyBox #app .moneyBoxBtn::before {
+    content: attr(data-hover);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    padding-top: 10px;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    opacity: 0;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: -1em;
+  }
+  .money .moneyBox #app .moneyBoxBtn::after {
+    content: attr(data-hover);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 10px;
+    opacity: 1;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    color: #573605;
+  }
+  .money .moneyBox #app .moneyBoxBtn:hover::before {
+    opacity: 1;
+    margin-top: 0;
+  }
+  .money .moneyBox #app .moneyBoxBtn:hover::after {
+    opacity: 0;
+    margin-top: -1em;
   }
   #app .inputboxmoneywin {
     width: 600px;
@@ -699,11 +953,50 @@ p {
     font-size: 24px;
     line-height: 35px;
     text-align: center;
+    border: 0px;
+    cursor: pointer;
     -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
             filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     background: #FDBF52;
     color: #573605;
     border-radius: 30px;
+    color: transparent;
+    position: relative;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+  }
+  #app .completed .btn button::before {
+    content: attr(data-hover);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    padding-top: 10px;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    opacity: 0;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: -1em;
+  }
+  #app .completed .btn button::after {
+    content: attr(data-hover);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 10px;
+    opacity: 1;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    color: #573605;
+  }
+  #app .completed .btn button:hover::before {
+    opacity: 1;
+    margin-top: 0;
+  }
+  #app .completed .btn button:hover::after {
+    opacity: 0;
+    margin-top: -1em;
   }
   #app .moneyboxdetail .details {
     width: 600px;
@@ -746,13 +1039,52 @@ p {
     font-size: 18px;
     line-height: 21px;
     text-align: center;
+    border: 0px;
+    cursor: pointer;
     -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
             filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     background: #FDBF52;
     color: #573605;
     border-radius: 20px;
+    color: transparent;
+    position: relative;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
     font-family: NotoSansTC, serif;
     margin-top: 20px;
+  }
+  #app .moneyboxdetail .details .btn button::before {
+    content: attr(data-hover);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    padding-top: 10px;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    opacity: 0;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: -1em;
+  }
+  #app .moneyboxdetail .details .btn button::after {
+    content: attr(data-hover);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 10px;
+    opacity: 1;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    color: #573605;
+  }
+  #app .moneyboxdetail .details .btn button:hover::before {
+    opacity: 1;
+    margin-top: 0;
+  }
+  #app .moneyboxdetail .details .btn button:hover::after {
+    opacity: 0;
+    margin-top: -1em;
   }
 }
 
@@ -802,16 +1134,55 @@ p {
     font-size: 24px;
     line-height: 35px;
     text-align: center;
+    border: 0px;
+    cursor: pointer;
     -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
             filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     background: #FDBF52;
     color: #573605;
     border-radius: 30px;
+    color: transparent;
+    position: relative;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
     font-family: NotoSansTC, serif;
     font-size: 24px;
     font-weight: 500;
     position: absolute;
     right: calc(50% - 100px);
+  }
+  .money .moneyBox #app .moneyBoxBtn::before {
+    content: attr(data-hover);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    padding-top: 10px;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    opacity: 0;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: -1em;
+  }
+  .money .moneyBox #app .moneyBoxBtn::after {
+    content: attr(data-hover);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 10px;
+    opacity: 1;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    color: #573605;
+  }
+  .money .moneyBox #app .moneyBoxBtn:hover::before {
+    opacity: 1;
+    margin-top: 0;
+  }
+  .money .moneyBox #app .moneyBoxBtn:hover::after {
+    opacity: 0;
+    margin-top: -1em;
   }
   #app .inputboxmoneywin {
     width: 600px;
@@ -844,12 +1215,51 @@ p {
     font-size: 18px;
     line-height: 21px;
     text-align: center;
+    border: 0px;
+    cursor: pointer;
     -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
             filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     background: #FDBF52;
     color: #573605;
     border-radius: 20px;
+    color: transparent;
+    position: relative;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
     font-family: NotoSansTC, serif;
+  }
+  #app .inputboxmoneywin .btn button::before {
+    content: attr(data-hover);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    padding-top: 10px;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    opacity: 0;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: -1em;
+  }
+  #app .inputboxmoneywin .btn button::after {
+    content: attr(data-hover);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 10px;
+    opacity: 1;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    color: #573605;
+  }
+  #app .inputboxmoneywin .btn button:hover::before {
+    opacity: 1;
+    margin-top: 0;
+  }
+  #app .inputboxmoneywin .btn button:hover::after {
+    opacity: 0;
+    margin-top: -1em;
   }
   .money .moneyBox > p {
     margin-bottom: -18%;

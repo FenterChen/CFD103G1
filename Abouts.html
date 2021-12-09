@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AboutUs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bobio|關於我們</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
@@ -12,32 +13,34 @@
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/header.css">
     <script src="./js/header.js"></script>
+
+    
 </head>
 <body>
 
     <header id="mainheader">
         <div class="headerWrap">
           <div class="logo">
-            <a href="#">
+            <a href="mainpage.html">
               <img src="img/header/BOBIO_logo.svg">
             </a>
           </div>
           <nav class="navPostion">
             <ul>
               <li>
-                <a href="#">立即祈願</a>
+                <a href="pray.html">立即祈願</a>
               </li>
               <li>
-                <a href="#">線上求籤</a>
+                <a href="onlinepomes.html">線上求籤</a>
               </li>
               <li>
-                <a href="#">平安符願</a>
+                <a href="amulet.html">平安符願</a>
               </li>
               <li>
                 <a href="money.html">立即結緣</a>
               </li>
               <li>
-                <a href="#">關於我們</a>
+                <a href="Abouts.html">關於我們</a>
               </li>
             </ul>
           </nav>
@@ -76,17 +79,6 @@
         <section class="timeline">
             <ul>
                 <li v-for="(item, idx) in list" :key="idx" @click="currentIdx=idx" :class="{'active': currentIdx ==  idx}">{{item.name}}</li> 
-                <!-- <li @click="content='page1'">關於我們</li> 
-                <li @click="content='page2'">創立理念</li>
-                <li @click="content='page3'">緣起</li>
-                <li @click="content='page4'">發展</li>    
-                <li @click="content='page5'">感情</li>    
-                <li @click="content='page6'">學業</li>    
-                <li @click="content='page7'">健康</li>    
-                <li @click="content='page8'">平安</li>    
-                <li @click="content='page9'">財富</li>    
-                <li @click="content='page10'">事業</li>    
-                <li @click="content='page11'">籤詩</li>     -->
             </ul>       
         </section>
     </div>
@@ -273,7 +265,7 @@
         <span>關於我們</span>
     </section>
 
-    <section class="phone_content">
+    <section class="phone_content pgod1">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -282,7 +274,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="pic">
+                    <div class="pic ">
                         <img src="./img/./Aboutus/phone/phone1.png" alt="">
                     
                     </div>
@@ -400,7 +392,7 @@
         <span>關於我們</span>
     </section>
 
-    <section class="phone_content">
+    <section class="phone_content pgod2">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -528,7 +520,7 @@
         <span>關於我們</span>
     </section>
 
-    <section class="phone_content">
+    <section class="phone_content pgod3">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -544,11 +536,13 @@
                 <div class="col-12">
                     <div class="txt">
                         <p> 
-                            透過網路的方式傳播出去<br>
-                            滿足自己的同時,也能為他人祝福。 <br>
-                            將這份自利利人的善念,成就自身的功德， <br>
-                            化成對全世界的祝福,希望世人處處心有神<br>
-                            為己、為人、為世界祈願祝福！ <br>
+                            神明信仰在不同階段的意涵 <br>
+                            相關的組織變革、對社會的影響與主導<br>
+                            廟宇供奉着不同的神明<br>
+                            並建在都市的各種地方 <br>
+                            大街旁、小巷弄中、橋下等等<br>
+                            都可以看得到廟宇的身影<br>
+                            藉由方便的網路,讓大家更了解廟宇的特色<br>
                         </p>
                     </div>
                 </div>
@@ -601,11 +595,12 @@
                         </div>
                         <div class="content">
                             <p>
-                                透過網路的方式傳播出去，<br>
-                                滿足自己的同時，也能為他人祝福。 <br>
-                                將這份自利利人的善念、成就自身的功德， <br>
-                                化成對全世界的祝福，希望世人處處心有神明， <br>
-                                為己、為人、為世界祈願祝福！ <br>
+                            神明信仰在不同階段的意涵 <br>
+                            相關的組織變革、對社會的影響與主導<br>
+                            廟宇供奉着不同的神明<br>
+                            並建在都市的各種地方, 大街旁、小巷弄中、橋下等等<br>
+                            都可以看得到廟宇的身影，廟宇變得愈來愈多<br>
+                            藉由方便的網路,讓大家更了解廟宇的特色<br>
                             </p>
                         </div>
                     </div>
@@ -654,7 +649,7 @@
         <span>關於我們</span>
     </section>
 
-    <section class="phone_content">
+    <section class="phone_content ">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -663,18 +658,19 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="pic">
-                        <img src="/img/./Aboutus/phone/1love.png" alt="">
+                    <div class="pic pgod4">
+                        <img src="./img/./Aboutus/phone/1love.png" alt="">
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="txt">
                         <p> 
                             月下老人，簡稱月老<br>
-                            尊稱為月老公、月老爺、月老星君、月老神君<br>
                             是道教的神祇之一<br>
-                            為掌管男女姻緣（關於婚姻之緣分）之神<br>
-                            形象常被塑造成白鬍長鬚，臉泛紅光的慈祥老者<br>
+                            為掌管男女姻緣之神<br>
+                            （關於婚姻之緣分）<br>
+                            形象常被塑造成白鬍長鬚<br>
+                            臉泛紅光的慈祥老者<br>
                             左手持著姻緣簿，右手拄著拐杖。<br>
                         </p>
                     </div>
@@ -748,7 +744,7 @@
         <span>關於我們</span>
     </section>
 
-    <section class="phone_content">
+    <section class="phone_content ">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -757,17 +753,19 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="pic">
+                    <div class="pic pgod5 ">
                         <img src="./img/./Aboutus/phone/2.png" alt="">
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="txt">
                         <p> 
-                            民間信仰將梓潼帝君、文魁星君、朱衣神君、<br>
+                            民間信仰將梓潼帝君、<br>
+                            文魁星君、朱衣神君、<br>
                             孚佑帝君及文衡聖帝合稱「五文昌」<br>
                             民間認為文昌帝君是主管考試、命運的神明，向來為讀書人所崇奉<br>
-                            臺灣許多廟宇常附祀文昌帝君，可見其信仰極為盛行。<br>
+                            臺灣許多廟宇常附祀文昌帝君<br>
+                            可見其信仰極為盛行。<br>
                         </p>
                     </div>
                 </div>
@@ -851,7 +849,7 @@
         <span>關於我們</span>
     </section>
 
-    <section class="phone_content">
+    <section class="phone_content ">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -860,7 +858,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="pic">
+                    <div class="pic pgod6">
                         <img src="./img/./Aboutus/phone/3.png" alt="">
                     </div>
                 </div>
@@ -868,7 +866,8 @@
                     <div class="txt">
                         <p> 
                             保生大帝本名吳夲，俗稱「大道公」<br>
-                            是主掌醫藥的神祇，精通天文地理，醫術高超 <br>
+                            是主掌醫藥的神祇<br>
+                            精通天文地理，醫術高超 <br>
                             專門醫療惡疾、救人無數，據說十分靈驗<br>
                             後世尊稱為「醫神」<br>
                             是祈求身體健康的神祇。<br>
@@ -952,19 +951,22 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="pic">
+                    <div class="pic pgod7">
                         <img src="./img/./Aboutus/phone/4.png" alt="">
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="txt">
                         <p> 
-                            媽祖是古時候的宋朝人，她的本名叫「林默娘」<br>
+                            媽祖是古時候的宋朝人 <br>
+                            她的本名叫「林默娘」<br>
                             從小就相當相當聰明，讀經書過目不忘<br>
-                            媽祖二十八歲的時後，祂的父親出海補魚遇到船難<br>
+                            媽祖二十八歲的時後<br>
+                            祂的父親出海補魚遇到船難<br>
                             媽祖為了救她父親而喪身，死後升天得道<br>
                             時常在漆黑的海上拯救遭遇海難的漁民<br>
-                            漸漸成為大陸沿海及台灣一帶人民普遍信仰神<br>
+                            漸漸成為大陸沿海及 <br>
+                            台灣一帶人民普遍信仰神<br>
                             更成為航海人的守護神。<br>
                         </p>
                     </div>
@@ -1056,16 +1058,19 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="pic">
+                    <div class="pic pgod8">
                         <img src="./img/./Aboutus/phone/5.png" alt="">
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="txt">
                         <p> 
-                            元始天尊命姜子牙封趙公明為正一金龍如意玄壇真君<br>
-                            負責迎祥納福，趙公明神通廣大，能呼風喚雨、驅雷役電等<br>
-                            最重要的是能執掌眾生財運，所以民間尊稱祂為武財神<br>
+                            元始天尊命姜子牙封趙公明<br>
+                            為正一金龍如意玄壇真君<br>
+                            負責迎祥納福，趙公明神通廣大<br>
+                            能呼風喚雨、驅雷役電等<br>
+                            最重要的是能執掌眾生財運 <br>
+                            所以民間尊稱祂為武財神<br>
                             部下四大神祇皆有招財進寶的法力<br>
                             故稱五路財神，趙公明是五路財神之首。 <br>
                         </p>
@@ -1157,19 +1162,20 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="pic">
+                    <div class="pic pgod9">
                         <img src="./img/./Aboutus/phone/6.png" alt="">
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="txt">
                         <p> 
-                            關羽信仰、或稱關公信仰、關帝信仰、關公信俗<br>
-                            是指把漢末三國時劉備的將領關羽神化的人物神信仰<br>
+                            關羽信仰、或稱關公信仰<br>
+                            是指把漢末三國時<br>
+                            劉備的將領關羽神化的人物神信仰<br>
                             關羽從北宋開始在民間藝術形象<br>
                             及各統治政權對其推崇的不斷提高<br>
-                            故也俗稱為（關）聖帝、（關）帝君、<br>
-                            （關）聖帝君、關帝、關帝爺等而流傳至今。<br>
+                            故也俗稱為（關）聖帝、（關）聖帝君、<br>
+                            關帝、關帝爺等而流傳至今。<br>
                         </p>
                     </div>
                 </div>
@@ -1251,7 +1257,7 @@
         <span>關於我們</span>
     </section>
 
-    <section class="phone_content">
+    <section class="phone_content pgod10">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -1260,19 +1266,20 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="pic">
+                    <div class="pic ">
                         <img src="./img/./Aboutus/phone/phone4.png" alt="">
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="txt">
-                        <p> 
+                        <p>
                             求籤詩是象徵著神明在對信眾說話 <br>
-                            為求籤後得到相對應的籤文 <br>
+                            為求籤後得到相對應的籤文，<br>
                             就是由神佛給予的「答案」<br>
-                            籤文是指信徒求籤後得到解惑用的文句 <br>
-                            由於常以詩歌形式表達 <br>
-                            又稱籤詩-俗稱聖籤、神籤、屬於廟宇文化。<br>
+                            藉由籤文解惑人生中遇到的疑惑及答案 <br>
+                            由於常以詩歌形式表達籤詩<br>
+                            所以又稱籤詩,俗稱聖籤、神籤、<br>
+                            屬於廟宇文化。<br>
                         </p>
                     </div>
                 </div>
@@ -1304,10 +1311,12 @@
                         <div class="content">
                             <p>
                             求籤詩是象徵著神明在對信眾說話 <br>
-                            為求籤後得到相對應的籤文，就是由神佛給予的「答案」<br>
+                            為求籤後得到相對應的籤文<br>
+                            就是由神佛給予的「答案」<br>
                             藉由籤文解惑人生中遇到的疑惑及答案 <br>
-                            由於常以詩歌形式表達<br>
-                            又稱籤詩,俗稱聖籤、神籤、屬於廟宇文化。<br>
+                            由於常以詩歌形式表達籤詩<br>
+                            所以又稱籤詩,俗稱聖籤、神籤、<br>
+                            屬於廟宇文化。<br>
                             </p>
                         </div>
                     </div>
@@ -1405,11 +1414,11 @@
         <div class="footer-info">
             <div class="list">
                 <ul>
-                    <li><a href="#">立即祈願</a></li>
-                    <li><a href="#">線上求籤</a></li>
-                    <li><a href="#">平安符願</a></li>
-                    <li><a href="#">立即結緣</a></li>
-                    <li><a href="#">關於我們</a></li>
+                  <li><a href="pray.html">立即祈願</a></li>
+                  <li><a href="onlinepomes.html">線上求籤</a></li>
+                  <li><a href="amulet.html">平安符願</a></li>
+                  <li><a href="money.html">立即結緣</a></li>
+                  <li><a href="Abouts.html">關於我們</a></li>
                 </ul>
             </div>
             <div class="conn">
@@ -1430,8 +1439,7 @@
             Copyright © 2021Bobio 本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
         </p>
     </div>
-</footer>
-
+  </footer>
 
 </body>
 </html>
