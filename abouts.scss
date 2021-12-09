@@ -1,0 +1,923 @@
+@import './base/reset';
+@import './mixin/modules';
+@import'./base/var';
+@include NotoSansTC();
+
+body{
+    font-style:$normalFont ;
+    background-color: map-get($color, mainyellow);
+    background-repeat: inherit;
+}
+.timeline{
+    display: none;
+    height: 50px;
+    background-color: map-get($color , orange );
+    font-family: NotoSansTC;
+    @include tabletH(){
+        display: block;
+    }
+        ul{
+            display: flex;
+            justify-content: space-around;
+            justify-items: center;  
+            
+                li{
+                    line-height: 50px;
+                    font-size: map-get($fontSize, weblp);
+                    color: map-get($color, darkbrown );
+                    cursor: pointer;
+                    }
+                    .active{
+                        color: map-get($color, mainyellow);
+                    } 
+    }
+}
+.arrow{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px 20px 20px;
+    margin-top: 25px;
+    @include tabletH(){
+        transform: translateY(-130px)
+    
+    }
+}
+
+//animation使用
+@keyframes moveTxt{
+    from{
+    transform: translateX(-300px);
+    }
+    to{
+    transform:translateX(0px);
+    }
+}
+@keyframes moveTxt2{
+    from{
+    transform: translateX(700px);
+    }
+    to{
+    transform:translateY(0px);
+    }
+}
+@keyframes movePic{
+    from{
+        transform: translateX(400px);
+    }
+    to{
+        transform:translateX(0px);
+    }
+}
+@keyframes one {
+    0%{
+        transform:rotateY(-700deg);
+    }
+    50%{
+        transform:rotateY(-500deg);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}   
+@keyframes two {
+    from{
+        transform: translateX(-550px);
+    }
+    to{
+        transform: translateX(0px);
+    }
+}  
+
+@keyframes three {
+    from{
+        transform: translateX(-550px);
+        
+    }
+    to{
+        transform: translateX(0px);
+        display: block;
+    }
+}
+
+@keyframes roll {
+    0% {
+
+    transform: translateX(-800px) rotate(-540deg);
+    opacity: 0;
+    }
+    100% {
+
+        transform: translateX(0) rotate(0deg);
+    opacity: 1;
+    }
+}
+@keyframes jump{
+    0% {
+    transform: translateY(-500px);
+    animation-timing-function: ease-in;
+    opacity: 0;
+    }
+    38% {
+            transform: translateY(0);
+            animation-timing-function: ease-out;
+            opacity: 1;
+    }
+    55% {
+    
+            transform: translateY(-65px);
+            animation-timing-function: ease-in;
+    }
+    72% {
+            transform: translateY(0);
+    
+            animation-timing-function: ease-out;
+    }
+    81% {
+        transform: translateY(-28px);
+
+        animation-timing-function: ease-in;
+    }
+    90% {
+        transform: translateY(0);
+
+        animation-timing-function: ease-out;
+    }
+    95% {
+        transform: translateY(-8px);
+        animation-timing-function: ease-in;
+    }
+    100% {
+        transform: translateY(0);
+        animation-timing-function: ease-out;
+    }
+}
+@keyframes flip{
+    from{
+        transform:rotateY(180deg) ;
+    }
+    to{
+        transform: translateZ(0px);
+    }
+}
+
+@keyframes TxtLeft{
+    from{
+        transform: translateX(700px);
+    }
+    to{
+        transform: translateX(0px);
+    }
+}
+
+@keyframes DtoU {
+    from{
+        transform: translateY(700px);
+    }
+    to{
+        transform: translateY(0px);
+    }
+}
+
+@keyframes slide-in {
+    0% {
+    transform: translateY(600px) rotateX(30deg) scale(0);
+    transform-origin: 50% 100%;opacity: 0;
+    }
+    100% {
+
+    transform: translateY(0) rotateX(0) scale(1);
+    transform-origin: 50% -1400px;
+    opacity: 1;
+    }
+}
+@keyframes swirl-in {
+    0% {
+    transform: rotate(540deg) scale(5);
+    opacity: 0;
+    }
+    100% {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+    }
+}
+@keyframes vertical {
+    0% {
+    transform: translateZ(0) rotateY(0);
+    }
+    100% {
+    transform: translateZ(160px) rotateY(180deg);
+    }
+}
+@keyframes roll-in {
+    0% {
+    transform: translateY(-800px) rotate(-720deg);
+    filter: blur(50px);
+    opacity: 0;
+    }
+    100% {
+    transform: translateY(0) rotate(0deg);
+    filter: blur(0);
+    opacity: 1;
+    }
+}
+
+
+// .container-fpage start
+// <!-- phone_page_start -->
+
+.container-fpage .phone_aboutus_page{
+    padding-top: 60px;
+    @include tabletH(){
+        display: none;
+    }
+}
+.container-fpage .phone_aboutus_page ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.container-fpage .phone_aboutus_page ul li{
+    width: 29px;
+    height: 3px;
+    background-color: map-get($color, lightbrown )
+}
+.container-fpage .phone_aboutus_arrow {
+    margin-top: 7px;
+    padding-left: 15px;
+    @include laptop(){
+        display: none;
+    }
+}
+.container-fpage .phone_aboutus_title {
+    padding-left: 40px;
+    font-size: map-get($fontSize,minifont );
+    color: map-get($color, darkbrown);
+    @include tabletH(){
+        display: none;
+    }
+}
+
+.container-fpage .phone_content{
+    font-family: NotoSansTC;
+    height: 600px;
+    position: relative;
+    .title{
+        font-family: NotoSansTC;
+        font-size: map-get($fontSize, webh1);
+        font-weight: 700px;
+        @include flexCenter();
+    }
+    h1{
+        color: map-get($color, darkbrown );
+    }
+    .pic{
+        @include flexCenter();
+    }
+    .txt{
+        font-size: map-get($fontSize, weblp);
+        line-height: 40px;
+        color: map-get($color, darkbrown );
+        text-align: center;
+        @include flexCenter();
+    }
+    @include flexCenter();
+    @include tabletH(){
+        display: none;
+    }
+}
+    // <!-- phone_page_end -->
+.container-fpage .aboutus{
+    animation: moveTxt 2s;
+    display: none;
+    @include tabletH(){
+        height:700px;
+        display: flex;
+        padding-top: 60px;
+        position: relative;
+    }    
+    .title{
+        display: flex;
+        justify-content: start;
+            h1{
+            font-family: NotoSansTC;
+            font-size: map-get($fontSize,webh1);
+            padding-bottom: 40px;
+            color: map-get($color,darkbrown);
+        }
+    }
+    .content{
+    p{
+        line-height: 40px;
+        font-size: map-get($fontSize, weblp);
+        color: map-get($color, darkbrown );
+        font-family: NotoSansTC;
+        }
+    }
+}
+.container-fpage .maincontent{
+    align-items: center;
+    justify-content: center;
+}
+.container-fpage .picitem{
+    padding-right: 30px;
+    justify-content: flex-end;
+            img{
+                width: 100%;
+                vertical-align: bottom;
+                cursor: pointer;
+            }
+}
+.container-fpage .picitem .pic{
+    position: relative;
+}
+.container-fpage .picitem .textcover{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0.6;
+    font-size: map-get($fontSize ,webh2);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-fpage .picitem .col-6{
+font-family: NotoSansTC;
+width: 250px;
+height: 250px;
+padding-left: 0px;
+padding-right: 0px;
+margin-left: 0px;
+margin-bottom: 0px;
+cursor: pointer;
+}
+.container-fpage .picitem .hide img{
+    display: none;
+}
+.container-fpage .picitem .col-6 .god1{
+    animation-name: DtoU;
+    animation-duration: 2s;
+    animation-delay: 0s;
+}
+.container-fpage .picitem .col-6 .god2{
+    animation-name: flip;
+    animation-duration: 2s;
+    animation-delay: 0s;
+}
+.container-fpage .picitem .col-6 .god3{
+    animation-name:  moveTxt;
+    animation-duration: 2s;
+    animation-delay: 0s;
+}
+// .container-fpage end
+
+
+
+// container-Spage start
+// <!-- phone_page_start -->
+.container-Spage .phone_aboutus_page{
+    padding-top: 60px;
+    @include tabletH(){
+        display: none;
+    }
+}
+.container-Spage .phone_aboutus_page ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.container-Spage .phone_aboutus_page ul li{
+    width: 29px;
+    height: 3px;
+    background-color: map-get($color, lightbrown )
+}
+.container-Spage .phone_aboutus_arrow {
+    margin-top: 7px;
+    padding-left: 15px;
+    @include laptop(){
+        display: none;
+    }
+}
+.container-Spage .phone_aboutus_title {
+    font-family: NotoSansTC;
+    padding-left: 40px;
+    font-size: map-get($fontSize,minifont);
+    color: map-get($color, darkbrown);
+    @include tabletH(){
+        display: none;
+    }
+}
+.container-Spage .phone_content{
+    font-family: NotoSansTC;
+    position: relative;
+    .col-12{
+        width: 100%;
+        
+    }
+    .title{
+        font-family: NotoSansTC;
+        font-size: map-get($fontSize, webh1);
+        color: map-get($color, darkbrown);
+        @include flexCenter();
+    }
+    .pic{
+        
+        @include flexCenter();
+    }
+
+    .txt{
+        font-family: NotoSansTC;
+        font-size: map-get($fontSize, weblp);
+        line-height: 40px;
+        color: map-get($color, darkbrown );
+        text-align: center;
+        @include flexCenter();
+    }
+    @include flexCenter();
+    @include tabletH(){
+        display: none;
+    }
+}
+// <!-- phone_page_end -->
+
+.container-Spage .aboutus{
+    font-family: NotoSansTC;
+    animation: moveTxt 2s;
+    display: none;
+    @include tabletH(){
+        height:700px;
+        display: flex;
+        padding-top: 60px;
+        position: relative;
+    }    
+    .title{
+        font-family: NotoSansTC;
+        display: flex;
+        justify-content: start;
+        h1{
+            font-size: map-get($fontSize,webh1);
+            font-family: NotoSansTC;
+            padding-bottom: 40px;
+            color: map-get($color, darkbrown );
+            animation: moveTxt 2s;
+        }
+    }
+    .content{
+        p{
+        font-family: NotoSansTC;
+        line-height: 40px;
+        font-size: map-get($fontSize, weblp);
+        color: map-get($color, darkbrown );
+        }
+    }
+}
+.container-Spage .maincontent{
+    font-family: NotoSansTC;
+    align-items: center;
+    justify-content: center;
+}
+.container-Spage .picitem{
+    padding-right: 30px;
+    justify-content: flex-end;
+            img{
+                width: 100%;
+                vertical-align: bottom;
+                cursor: pointer;
+            }
+}
+.container-Spage .picitem .pic{
+
+    position: relative;
+}
+.container-Spage .picitem .col-6{
+    font-family: NotoSansTC;
+    width: 500px;
+    height: 500px;
+padding-left: 0px;
+padding-right: 0px;
+margin-left: 0px;
+margin-bottom: 0px;
+cursor: pointer;
+}
+.container-Spage .picitem .col-6 .god4{
+    animation-name: flip;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+.container-Spage .picitem .col-6 .god5{
+    animation-name: jump;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+.container-Spage .picitem .col-6 .god6{
+    animation-name: roll;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+.container-Spage .picitem .col-6 .god7{
+    // border: rgb(9, 89, 22) 2px solid;
+    animation-name: slide-in;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    // border: blue 2px solid;
+}
+.container-Spage .picitem .col-6 .god8{
+    // border: rgb(8, 13, 168) 2px solid;
+    animation-name: swirl-in;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    // border: blue 2px solid;
+}
+.container-Spage .picitem .col-6 .god9{
+    // border: rgb(168, 8, 69) 2px solid;
+    animation-name: roll-in;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    // border: blue 2px solid;
+}
+.container-Spage .picitem .col-6 .pomes{
+    // border: rgb(15, 17, 94) 2px solid;
+    animation-name: moveTxt2;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+}
+.container-Spage .text {
+    // border: rgb(15, 17, 94) 2px solid;
+    animation-name: moveTxt;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+}
+// container-Spage end
+
+
+
+// container-third start
+// <!-- phone_page_start -->
+.container-third .phone-ablist{
+    font-family: NotoSansTC;
+    padding-top: 60px;
+    height: 858px;
+    @include tabletV(){
+        display: none;
+    }
+    li{
+        // box-sizing: border-box;
+        position: relative;
+        &::after{
+            content: '';
+            right: 0;
+            left: 0;
+            margin: auto;
+            width: 1px;
+            height: 850px;
+            background-color:map-get($color, darkbrown);
+            position: absolute;
+        }
+    }   
+}
+.container-third .li-1{position: relative;
+    &::before{
+        content: '';
+            right: 0;
+            left: 90px;
+            top: 90px;
+            margin: auto;
+            position: absolute;
+            width: 90px;
+            height: 1px;
+            background-color:map-get($color, darkbrown);
+            z-index: -1;
+        }
+    }
+.container-third .li-2{
+    &::before{
+        content: '';
+            right: 0;
+            left: 45px;
+            top: 185px;
+            margin: auto;
+            position: absolute;
+            width: 45px;
+            height: 1px;
+            background-color:map-get($color, darkbrown);
+            z-index: -1;
+        }
+    }
+.container-third .li-3{
+    &::before{
+        content: '';
+            right: 0;
+            left: 135px;
+            top: 245px;
+            margin: auto;
+            position: absolute;
+            width: 135px;
+            height: 1px;
+            background-color:map-get($color, darkbrown);
+            z-index: -1;
+        }
+    }
+.container-third .li-4{
+    &::before{
+        content: '';
+            right: 0;
+            left: -90px;
+            top: 305px;
+            margin: auto;
+            position: absolute;
+            width: 90px;
+            height: 1px;
+            background-color:map-get($color, darkbrown);
+            z-index: -1;
+        }
+    }
+.container-third .li-5{
+    &::before{
+        content: '';
+            right: 0;
+            left: -45px;
+            top: 400px;
+            margin: auto;
+            position: absolute;
+            width: 45px;
+            height: 1px;
+            background-color:map-get($color, darkbrown);
+            z-index: -1;
+        }
+    }
+.container-third .li-6{
+    &::before{
+        content: '';
+            right: 0;
+            left: -135px;
+            top: 460px;
+            margin: auto;
+            position: absolute;
+            width: 135px;
+            height: 1px;
+            background-color:map-get($color, darkbrown);
+            z-index: -1;
+        }
+    }
+.container-third .li-7{
+    &::before{
+        content: '';
+            right: 0;
+            left: -90px;
+            top: 520px;
+            margin: auto;
+            position: absolute;
+            width: 90px;
+            height: 1px;
+            background-color:map-get($color, darkbrown);
+            z-index: -1;
+        }
+    }
+.container-third .li-8{
+    &::before{
+        content: '';
+            right: 0;
+            left: -135px;
+            top: 580px;
+            margin: auto;
+            position: absolute;
+            width: 135px;
+            height: 1px;
+            background-color:map-get($color, darkbrown);
+            z-index: -1;
+        }
+    }
+.container-third .li-9{
+    &::before{
+        content: '';
+            right: 0;
+            left: -45px;
+            top: 640px;
+            margin: auto;
+            position: absolute;
+            width: 45px;
+            height: 1px;
+            background-color:map-get($color, darkbrown);
+            z-index: -1;
+        }
+    }
+.container-third .li-10{
+    &::before{
+        content: '';
+            right: 0;
+            left: -90px;
+            top: 700px;
+            margin: auto;
+            position: absolute;
+            width: 90px;
+            height: 1px;
+            background-color:map-get($color, darkbrown);
+            z-index: -1;
+        }
+    }
+.container-third .li-11{
+    &::before{
+        content: '';
+            right: 0;
+            left: 90px;
+            top: 760px;
+            margin: auto;
+            position: absolute;
+            width: 90px;
+            height: 1px;
+            background-color:map-get($color, darkbrown);
+            z-index: -1;
+        }
+    }
+//phone-img
+.container-third .No-1{
+    position: absolute;
+    right: 12px;
+    top: 30px;
+}
+.container-third .No-2{
+    position: absolute;
+    right:97px;
+    top: 149px;
+    
+}
+.container-third .No-3{
+    position: absolute;
+    right: 7px;
+    top: 209px;
+}
+.container-third .No-4{
+    position: absolute;
+    left:28px;
+    top: 244px;
+}
+.container-third .No-5{
+    position: absolute;
+    left:98px;
+    top: 363px;
+}
+.container-third .No-6{
+    position: absolute;
+    left:8px;
+    top: 423px;
+}
+.container-third .No-7{
+    position: absolute;
+    left:53px;
+    top: 482px;
+}
+.container-third .No-8{
+    position: absolute;
+    left:8px;
+    top: 542px;
+}
+.container-third .No-9{
+    position: absolute;
+    left:98px;
+    top: 602px;
+}
+.container-third .No-10{
+    position: absolute;
+    left:53px;
+    top: 671px;
+}
+.container-third .No-11{
+    position: absolute;
+    right: 37px;
+    top: 696px;
+}
+
+//  <!-- phone_page_end -->
+
+.container-third .aboutus-list{
+    font-family: NotoSansTC;
+    animation: moveTxt 2s;
+    padding-top: 60px;
+    height: 700px;
+    display: none;
+    @include tabletV{
+        display: flex;
+    }
+}
+.container-third .title{
+    h1{
+        font-family: NotoSansTC;
+        font-size: map-get($fontSize,webh1);
+        padding-bottom: 40px;
+        color: map-get($color, darkbrown );
+        
+        }
+    }
+.container-third .content{
+        p{
+            line-height: 40px;
+            font-size: map-get($fontSize, weblp);
+            color: map-get($color, darkbrown );
+            font-family: NotoSansTC;
+            }
+        }
+.container-third .maincontent{
+    font-family: NotoSansTC;
+    align-items: center;
+    justify-content: center;
+    }
+
+.container-third .control-pic{
+    justify-content: flex-end;
+    display: flex;
+}
+.container-third .picitem{
+    font-family: NotoSansTC;
+    padding-right: 30px;
+    width: 73%;
+            img{
+                width: 100%;
+                vertical-align: bottom;
+                cursor: pointer;
+            
+            }
+}
+.container-third .picitem .col-4{
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    }
+.container-third .picitem .one{
+transform: translateX(-2000px);
+// border: lime 4px solid;
+animation-name: one ;
+animation-duration: 1.5s;
+animation-delay: 2s;
+animation-fill-mode: forwards;
+}
+.container-third .picitem .eight{
+    transform: translateY(-2000px);
+    animation: one 1.5s;
+    animation-delay: 2s;
+    // border: lime 1px solid;
+    animation-fill-mode: forwards;
+    }
+.container-third .picitem .two{
+transform: translateX(-2000px);
+// border: rgb(15, 103, 219) 1px solid;
+animation: one 1s;
+animation-delay: 1s;
+animation-fill-mode: forwards;
+}
+.container-third .picitem .six{
+    transform: translateX(-2000px);
+    // border: rgb(15, 103, 219) 1px solid;
+    animation: one 1s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    }
+    .container-third .picitem .seven{
+    transform: translateX(-2000px);
+    // border: rgb(15, 103, 219) 1px solid;
+    animation: one 1s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    }
+.container-third .picitem .three{
+transform: translateX(-2000px);
+// border: rgb(168, 8, 69) 1px solid;
+animation: one 1.5s;
+animation-delay: 2s;
+animation-fill-mode: forwards;
+}
+.container-third .picitem .four{
+transform: translateX(-2000px);
+// border: rgb(168, 8, 69) 1px solid;
+animation: one 1.5s;
+animation-delay: 2s;
+animation-fill-mode: forwards;
+
+}
+.container-third .picitem .five{
+transform: translateX(-2000px);
+// border: rgb(22, 23, 24) 3px solid;
+animation: one 1.5s;
+animation-delay: 2s;
+animation-fill-mode: forwards;
+}
+
+.container-third .picitem .nine{
+transform: translateX(-2000px);
+// border: rgb(22, 23, 24) 3px solid;
+animation: one 1.5s;
+animation-delay: 2s;
+animation-fill-mode: forwards;
+
+}
+
+// container-third end
+
+
+
+
+
