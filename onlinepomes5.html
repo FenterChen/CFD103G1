@@ -8,10 +8,11 @@
   <title>BOBIO|線上求籤</title>
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/onlinepomes.css">
+  <link rel="stylesheet" href="css/onlinepomes5.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="js/header.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
 </head>
 
 <body>
@@ -56,19 +57,40 @@
         </div>
       </div>
     </header>
+
   <section>
     <div class="onlinepomesWrap">
-      <div class="onlineTitle">
-        <h1>人生中遇到了什麼煩惱?</h1>
+      <div class="onlinePic">
+        <img src="img/onlinepomes/lickbox1.png" alt="">
       </div> 
-      <div class="onlineText">
-        <h3>靜下心，獲得指引</h3>
-        <p>Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam no suscipit quaerendum.At nam minimum ponderum. Est audiam animal molestiae te.</p>
-      </div>
-
-      <a href="onlinepomes1.html" class="onlineBtn ">
-        <button class="startPomes"data-hover="開始求籤">開始求籤</button>
-      </a>     
+      <div class="onlineContent" id="app">
+        <div class="onlineText" >
+          <h2>{{believer}}，您抽到第{{pomesNum}}號籤</h2>
+          <p>請誠心詢問擲出三個聖筊，<br>向神明確定籤意。</p>
+        </div>
+        <div class="throwPic" >
+            <div class="throwPic">
+              <div class="throwFirst">
+                <p v-if="first == 1"><img src="./img/onlinepomes/throw.png" alt=""></p>
+              </div>
+              <!-- <div class="throwScond">
+                <p v-if="second == 2"><img src="./img/onlinepomes/agree.png" alt=""></p><span>聖筊</span>
+              </div>
+              <div class="throwThird">
+                <p v-else-if="third == 3"><img src="./img/onlinepomes/smile.png" alt=""></p><span>笑筊</span>
+              </div> -->
+            </div>
+        </div>
+        <div class="onlineBtn">
+          <button @click="loadNum" class="throw"data-hover="擲筊" >擲筊</button>
+        </div> 
+        <div class="onlineNotice">
+          <ol>
+            <li>1.一事一籤。一件事情只能求取一支籤，不可以一籤求多事；求到籤詩後請休息5-10分鐘再請示下一件事。</li>
+            <li>2.擲筊會出現三種情況：聖筊是一正一反，表示神明同意你的請求；笑筊是兩個平面向上表示神明在笑，並沒有表示同意；而陰筊則是平面朝下，表示請求駁回。</li>
+          </ol>
+        </div>
+      </div>  
     </div>
   </section>
     <footer>
@@ -119,5 +141,46 @@
         </p>
       </div>
     </footer>
-</body>
+  <script>
+    new Vue({
+      el: '#app',
+      data:{
+        a:false,
+        believer:'',
+        pomesNum:0,
+        start:'0',
+        first:'1',
+        second:'2',
+        third:'3'
+      },
+      mounted() {
+        this.believer = localStorage.onlinename;  
+        this.pomesNum = localStorage.onlinedraw;   
+      },
+       methods: {
+        loadNum: function () {
+          let min = 1;
+          let max = 4;
+          let num = Math.floor(Math.random() * (max - min) + min);
+          console.log(num);
+          if (num == 1) {
+             // alert("聖筊");
+             location.href = "onlinepomes6.html";
+           }
+           //條件不成立
+           if (num == 2) {
+             // alert("蓋筊");
+             location.href = "onlinepomes4-1.html";
+           } if (num == 3) {
+             // alert("笑筊");
+             location.href = "onlinepomes4-1.html";
+           }
+
+          return this.type = num;
+        },
+
+      }
+      })
+  </script>
+</body>  
 </html>

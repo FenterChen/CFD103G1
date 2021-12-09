@@ -1,15 +1,11 @@
+@import 'base/reset';
 @import 'base/var';
 @import 'mixin/modules';
 
 @include NotoSansTC();
 @include RocknRollOne();
-@import 'base/reset';
 
-body {
-  background-color: map-get($color, mainyellow);
-}
-
-#mainheader {
+header {
   @include headerFixed();
   background-color: map-get($color, navColor);
   border-top: 3px solid map-get($color, orange);
@@ -18,7 +14,7 @@ body {
 .headerWrap {
   @include flexCenter();
   @include maxWidth();
-  padding: 6px 20px;
+  padding: 4.5px 20px;
 }
 
 header nav ul {
@@ -190,10 +186,16 @@ header .hb span {
 }
 
 @include laptop() {
+  header {
+    @include headerFixed();
+    background-color: map-get($color, navColor);
+    border-top: 3px solid map-get($color, orange);
+  }
+
   .headerWrap {
     @include flexCenter();
     @include maxWidth();
-    padding: 7px 20px;
+    padding: 7px 0px;
   }
 
   header nav ul {
