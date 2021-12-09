@@ -160,9 +160,9 @@ button{
   
 @include tabletH() {
     .wrap{
-        width: 80%;
+        width:1200px;
         display: flex;
-        margin: 0 auto 100px auto;
+        margin: 120px auto 120px auto;
     }
 
     .container{

@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AboutUs</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+    <link rel="stylesheet" href="./css/abouts.css">
+    <link rel="stylesheet" href="./css/grid-2.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <script src="./js/header.js"></script>
+</head>
+<body>
+
+    <header id="mainheader">
+        <div class="headerWrap">
+          <div class="logo">
+            <a href="#">
+              <img src="img/header/BOBIO_logo.svg">
+            </a>
+          </div>
+          <nav class="navPostion">
+            <ul>
+              <li>
+                <a href="https://fenterchen.github.io/CFD103G1/pray">立即祈願</a>
+              </li>
+              <li>
+                <a href="https://fenterchen.github.io/CFD103G1/onlinepomes">線上求籤</a>
+              </li>
+              <li>
+                <a href="https://fenterchen.github.io/CFD103G1/amulet">平安符願</a>
+              </li>
+              <li>
+                <a href="https://fenterchen.github.io/CFD103G1/money">立即結緣</a>
+              </li>
+              <li>
+                <a href="https://fenterchen.github.io/CFD103G1/Abouts">關於我們</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="cart"><a href="#"><img src="img/header/cart.svg"></a></div>
+          <div class="member"><a href="https://fenterchen.github.io/CFD103G1/memberAdd"><img src="img/header/member.svg"></a></div>
+          <div class="outerHb">
+            <div class="hb" id="hb">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+    <div id="app"> <!-- HTML DOM template -->
+
+        <!-- 組件出現在這裡！！ -->
+        <keep-alive>
+        <!-- <component :is="content"></component> -->
+        <component :is="list[currentIdx].comp" @update="updateIdx"></component>
+        </keep-alive>
+
+        <!-- 一樣被點擊之後會換下一頁跟上一頁 -->
+        <section class="arrow">
+            <div  class="arrow-right" @click="currentIdx--">
+                <img src="./img/./Aboutus/arrow2.png" alt="">
+        
+            </div>
+            <div  class="arrow-left" @click="currentIdx++">
+                <img  src="./img/./Aboutus/arrow1.png" alt="">
+            </div>
+        </section>
+
+        <!-- 時間軸被點擊之後會換對應的本頁 -->
+        <section class="timeline">
+            <ul>
+                <li v-for="(item, idx) in list" :key="idx" @click="currentIdx=idx" :class="{'active': currentIdx ==  idx}">{{item.name}}</li> 
+                <!-- <li @click="content='page1'">關於我們</li> 
+                <li @click="content='page2'">創立理念</li>
+                <li @click="content='page3'">緣起</li>
+                <li @click="content='page4'">發展</li>    
+                <li @click="content='page5'">感情</li>    
+                <li @click="content='page6'">學業</li>    
+                <li @click="content='page7'">健康</li>    
+                <li @click="content='page8'">平安</li>    
+                <li @click="content='page9'">財富</li>    
+                <li @click="content='page10'">事業</li>    
+                <li @click="content='page11'">籤詩</li>     -->
+            </ul>       
+        </section>
+    </div>
+
+    <script>
+        Vue.component('page1',{
+            template: `<div class="container-third">
+        <!-- phone_page_start -->
+        <section class="phone-ablist">
+        <div class="container">
+                <ul>
+            <li class="li-1">
+                <div class="pic-reverse pic No-1" @click="updateIdx(1)">
+            <img src="./img/./Aboutus/phone/1.svg" alt="">
+                </div>
+            </li>
+            <li class="li-2">
+                <div class="pic-reverse pic No-2" @click="updateIdx(2)" >
+                    <img src="./img/./Aboutus/phone/2.svg" alt="">
+                </div>
+            </li>
+            <li class="li-3">
+                <div class="pic-reverse pic No-3" @click="updateIdx(3)">
+                    <img src="./img/./Aboutus/phone/3.svg" alt="">
+                </div>
+            </li>
+            <li class="li-4">
+                <div class="pic No-4" @click="updateIdx(4)">
+                    <img src="./img/./Aboutus/phone/4.svg" alt="">
+                </div>
+            </li>
+            <li class="li-5">
+                <div class="pic No-5"  @click="updateIdx(4)" >
+                    <img src="./img/./Aboutus/phone/5.svg" alt="">
+                </div>
+            </li>
+            <li class="li-6">
+                <div class="pic No-6" @click="updateIdx(5)">
+                    <img src="./img/./Aboutus/phone/6.svg" alt="">
+                </div>
+            </li>
+            <li class="li-7">
+                <div class="pic No-7" @click="updateIdx(6)">
+                    <img src="./img/./Aboutus/phone/7.svg" alt="">
+                </div>
+            </li>
+            <li class="li-8">
+                <div class="pic No-8" @click="updateIdx(7)">
+                    <img src="./img/./Aboutus/phone/8.svg" alt="">
+                </div>
+            </li>
+            <li class="li-9">
+                <div class="pic No-9" @click="updateIdx(8)">
+                    <img src="./img/./Aboutus/phone/9.svg" alt="">
+                </div>
+            </li>
+            <li class="li-10">
+                <div class="pic No-10" @click="updateIdx(9)">
+                    <img src="./img/./Aboutus/phone/10.svg" alt="">
+                </div>
+            </li>
+            <li class="li-11" @click="updateIdx(10)">
+                <div class="pic No-11 pic-reverse" >
+                    <img src="./img/./Aboutus/phone/11.svg" alt="">
+                </div>
+            </li>
+            </ul>
+        </div>
+    </section>
+    <!-- phone_page_end -->
+
+    <section class="aboutus-list">
+        <div class="container">
+            <div class="row maincontent">
+                <div class="col-7 control-pic">
+                    <div class="row picitem">
+                        <div class="col-4 one ">
+                            <div class="pic">
+                                <img src="./img/./Aboutus/aboutF/1.svg" alt="">
+                                
+                            </div>
+                        </div>
+                        <div class="col-4 two" >
+                            <div class="pic">
+                                <img  src="./img/./Aboutus/aboutF/2.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-4 three">
+                            <div class="pic">
+                                <img src="./img/./Aboutus/aboutF/3.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-4 four" >
+                            <div class="pic">
+                                <img src="./img/./Aboutus/aboutF/4.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-4 five" >
+                            <div class="pic">
+                                <img src="./img/./Aboutus/aboutF/5.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-4 six" >
+                            <div class="pic">
+                                <img src="./img/./Aboutus/aboutF/6.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-4 seven">
+                            <div class="pic">
+                                <img src="./img/./Aboutus/aboutF/7.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-4 eight">
+                            <div class="pic">
+                                <img src="./img/./Aboutus/aboutF/8.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-4 nine">
+                            <div class="pic">
+                                <img src="./img/./Aboutus/aboutF/9.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="text">
+                        <div class="title">
+                            <h1>關於我們</h1>
+                        </div>
+                        <div class="content" >
+                            <p> 
+                                Bobio 來自於我們的保佑之意 <br>
+                                由懷有信仰的六位信眾 <br>
+                                透過心底真誠的祈願和傳統的抽籤儀式 <br>
+                                繼續延續傳統之美 <br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+            `,
+            data(){ //放資料綁定
+                return {
+                    // move:'/img/aboutF/2.svg'
+                }
+            },
+            methods: { //資料做事情的方式
+                updateIdx(idx) {
+                    this.$emit('update', idx);
+                },
+            mounted(){
+            },
+        }, 
+    });
+
+        Vue.component('page2',{
+            template: `
+    <div class="container-fpage">
+    <!-- phone_page_start -->
+    <section class="phone_aboutus_page">
+        <ul>
+            <li style="background:#FDBF52;"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>  
+    </section>
+
+    <section class="phone_aboutus_arrow" @click="updateIdx(0)">
+        <img src="./img/./Aboutus/phone/Arrow4.png" alt="">
+        
+    </section>
+
+    <section class="phone_aboutus_title">
+        <span>關於我們</span>
+    </section>
+
+    <section class="phone_content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <h1>創立理念</h1>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="pic">
+                        <img src="./img/./Aboutus/phone/phone1.png" alt="">
+                    
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="txt">
+                        <p> 
+                            透過網路的方式傳播出去<br>
+                            滿足自己的同時,也能為他人祝福<br>
+                            將這份自利利人的善念,成就自身的功德<br>
+                            化成對全世界的祝福,希望世人處處心有神<br>
+                            為己、為人、為世界祈願祝福！ <br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- phone_page_end -->
+
+    <section class="aboutus">
+        <div class="container">
+            <div class="row maincontent">
+                <div class="col-7">
+                    <div class="row picitem">
+                        <div class="col-6 hide" >
+                            <div class="pic">
+                                <img src="./img/Reason2.png" alt="">
+                                <div class="textcover">
+                                    <h3>緣起</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="pic god1">
+                                <img src="./img/./Aboutus/Rectangle2.png" alt=""> 
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="pic">
+                                <img src="./img/./Aboutus/Rectangle.png" alt="">
+                                <div class="textcover">
+                                    <h3>發展</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="pic">
+                                <img src="./img/./Aboutus/Rectangle1.png" alt="">
+                                <div class="textcover">
+                                    <h3>緣起</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="text">
+                        <div class="title">
+                            <h1>創立理念</h1>
+                        </div>
+                        <div class="content">
+                            <p>
+                                透過網路的方式傳播出去<br>
+                            滿足自己的同時,也能為他人祝福<br>
+                            將這份自利利人的善念,成就自身的功德<br>
+                            化成對全世界的祝福,希望世人處處心有神<br>
+                            為己、為人、為世界祈願祝福！ <br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>  `,
+
+        data(){ //放資料綁定
+                return {
+                }
+            },
+            methods: { //資料做事情的方式
+                updateIdx(idx) {
+                    this.$emit('update', idx);
+                },
+            mounted(){
+            },
+        },
+    });
+        Vue.component('page3',{
+            template: `<div class="container-fpage">
+    <!-- phone_page_start -->
+    <section class="phone_aboutus_page">
+        <ul>
+            <li></li>
+            <li style="background:#FDBF52;"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>  
+    </section>
+
+    <section class="phone_aboutus_arrow" @click="updateIdx(0)" >
+        <img src="./img/./Aboutus/phone/Arrow4.png" alt="">
+    </section>
+
+    <section class="phone_aboutus_title">
+        <span>關於我們</span>
+    </section>
+
+    <section class="phone_content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <h1>緣起</h1>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="pic">
+                        <img src="./img/./Aboutus/phone/phone2.png" alt="">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="txt">
+                        <p> 
+                            生活步調繁忙壓力大 <br>
+                            常在不知不覺間積累煩惱<br>
+                            有時透過祈求順利,也許能為現況帶來改變<br>
+                            因為疫情影響,透過線上的方式<br>
+                            讓使用者可以便利安全的<br>
+                            為自我與家人帶來保庇。<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- phone_page_end -->
+
+    <section class="aboutus">
+        <div class="container">
+            <div class="row maincontent">
+                <div class="col-7">
+                    <div class="row picitem">
+                        <div class="col-6" >
+                            <div class="pic">
+                                <img src="./img/./Aboutus/Reason2.png" alt="">
+                                <div class="textcover">
+                                    <h3>創立理念</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 hide">
+                            <div class="pic">
+                                <img src="./img/Reason2.png" alt=""> 
+                            </div>
+                        </div>
+                        <div class="col-6 ">
+                            <div class="pic">
+                                <img src="./img/./Aboutus/Reason3.png" alt="">
+                                <div class="textcover">
+                                    <h3>發展</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 ">
+                            <div class="pic god2">
+                                <img src="./img/./Aboutus/Reason1.png" alt="">
+                                <!-- <div class="textcover"> -->
+                                    <h3></h3>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="text">
+                        <div class="title">
+                            <h1>緣起</h1>
+                        </div>
+                        <div class="content">
+                            <p>
+                            生活步調繁忙壓力大 <br>
+                            常在不知不覺間積累煩惱<br>
+                            有時透過祈求順利,也許能為現況帶來改變<br>
+                            因為疫情影響,透過線上的方式<br>
+                            讓使用者可以便利安全的<br>
+                            為自我與家人帶來保庇。<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+            `,
+        data(){ //放資料綁定
+                return {
+                }
+            },
+            methods: { //資料做事情的方式
+                updateIdx(idx) {
+                    this.$emit('update', idx);
+                },
+            mounted(){
+            },
+        },
+    });
+        Vue.component('page4',{
+            template: `
+            <div class="container-fpage">
+    <!-- phone_page_start -->
+    <section class="phone_aboutus_page">
+        <ul>
+            <li></li>
+            <li></li>
+            <li style="background:#FDBF52;"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>  
+    </section>
+
+    <section class="phone_aboutus_arrow" @click="updateIdx(0)">
+        <img src="./img/./Aboutus/phone/Arrow4.png" alt="">
+    </section>
+
+    <section class="phone_aboutus_title">
+        <span>關於我們</span>
+    </section>
+
+    <section class="phone_content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <h1>發展</h1>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="pic">
+                        <img src="./img/./Aboutus/phone/phone3.png" alt="">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="txt">
+                        <p> 
+                            透過網路的方式傳播出去<br>
+                            滿足自己的同時,也能為他人祝福。 <br>
+                            將這份自利利人的善念,成就自身的功德， <br>
+                            化成對全世界的祝福,希望世人處處心有神<br>
+                            為己、為人、為世界祈願祝福！ <br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- phone_page_end -->
+
+    <section class="aboutus">
+        <div class="container">
+            <div class="row maincontent">
+                <div class="col-7">
+                    <div class="row picitem">
+                        <div class="col-6" >
+                            <div class="pic">
+                                <img src="./img/./Aboutus/delov1.png" alt="">
+                                <div class="textcover">
+                                    <h3>緣起</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="pic god3">
+                                <img src="./img/./Aboutus/delov2.png" alt=""> 
+                            </div>
+                        </div>
+                        <div class="col-6 ">
+                            <div class="pic">
+                                <img src="./img/./Aboutus/delov3.png" alt="">
+                                <div class="textcover">
+                                    <h3>創立理念</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 ">
+                            <div class="pic hide">
+                                <img src="./img/Reason1.png" alt="">
+                                <div class="textcover">
+                                    <h3></h3>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="text">
+                        <div class="title">
+                            <h1>發展</h1>
+                        </div>
+                        <div class="content">
+                            <p>
+                                透過網路的方式傳播出去，<br>
+                                滿足自己的同時，也能為他人祝福。 <br>
+                                將這份自利利人的善念、成就自身的功德， <br>
+                                化成對全世界的祝福，希望世人處處心有神明， <br>
+                                為己、為人、為世界祈願祝福！ <br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+            `,
+            data(){ //放資料綁定
+                return {
+                }
+            },
+            methods: { //資料做事情的方式
+                updateIdx(idx) {
+                    this.$emit('update', idx);
+                },
+            mounted(){
+            },
+        },
+    });
+        Vue.component('page5',{
+            template: `
+            <div class="container-Spage">
+    <!-- phone_page_start -->
+    <section class="phone_aboutus_page">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li style="background:#FDBF52;"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>  
+    </section>
+
+    <section class="phone_aboutus_arrow" @click="updateIdx(0)">
+        <img src="/img/./Aboutus/phone/Arrow4.png" alt="">
+    </section>
+
+    <section class="phone_aboutus_title">
+        <span>關於我們</span>
+    </section>
+
+    <section class="phone_content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <h1>感情</h1>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="pic">
+                        <img src="/img/./Aboutus/phone/1love.png" alt="">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="txt">
+                        <p> 
+                            月下老人，簡稱月老<br>
+                            尊稱為月老公、月老爺、月老星君、月老神君<br>
+                            是道教的神祇之一<br>
+                            為掌管男女姻緣（關於婚姻之緣分）之神<br>
+                            形象常被塑造成白鬍長鬚，臉泛紅光的慈祥老者<br>
+                            左手持著姻緣簿，右手拄著拐杖。<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- phone_page_end -->
+
+    <section class="aboutus">
+        <div class="container">
+            <div class="row maincontent">
+                <div class="col-6">
+                    <div class="row picitem">
+                        
+                        <div class="col-6 ">
+                            <div class="pic god4">
+                                <img src="./img/./Aboutus/lovelap.png" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="text">
+                        <div class="title">
+                            <h1>祈願介紹-感情</h1>
+                        </div>
+                        <div class="content">
+                            <p>
+                            月下老人，簡稱月老<br>
+                            尊稱為月老公、月老爺、月老星君、月老神君<br>
+                            是道教的神祇之一<br>
+                            為掌管男女姻緣（關於婚姻之緣分）之神<br>
+                            形象常被塑造成白鬍長鬚，臉泛紅光的慈祥老者<br>
+                            左手持著姻緣簿，右手拄著拐杖。<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+            `,
+        });
+        Vue.component('page6',{
+            template: `<div class="container-Spage"> 
+    <!-- phone_page_start -->
+    <section class="phone_aboutus_page">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li style="background:#FDBF52;"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>  
+    </section>
+
+    <section class="phone_aboutus_arrow" @click="updateIdx(0)">
+        <img src="./img/./Aboutus/phone/Arrow4.png" alt="">
+    </section>
+
+    <section class="phone_aboutus_title">
+        <span>關於我們</span>
+    </section>
+
+    <section class="phone_content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <h1>學業</h1>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="pic">
+                        <img src="./img/./Aboutus/phone/2.png" alt="">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="txt">
+                        <p> 
+                            民間信仰將梓潼帝君、文魁星君、朱衣神君、<br>
+                            孚佑帝君及文衡聖帝合稱「五文昌」<br>
+                            民間認為文昌帝君是主管考試、命運的神明，向來為讀書人所崇奉<br>
+                            臺灣許多廟宇常附祀文昌帝君，可見其信仰極為盛行。<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- phone_page_end -->
+
+    <section class="aboutus">
+        <div class="container">
+            <div class="row maincontent">
+                <div class="col-6">
+                    <div class="row picitem">
+                        
+                        <div class="col-6 ">
+                            <div class="pic god5">
+                                <img src="./img/./Aboutus/2.1.png" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="text">
+                        <div class="title">
+                            <h1>祈願介紹-學業</h1>
+                        </div>
+                        <div class="content">
+                            <p>
+                            民間信仰將梓潼帝君、文魁星君、朱衣神君、<br>
+                            孚佑帝君及文衡聖帝合稱「五文昌」<br>
+                            民間認為文昌帝君是主管考試、命運的神明<br>
+                            向來為讀書人所崇奉 <br>
+                            臺灣許多廟宇常附祀文昌帝君，可見其信仰極為盛行。<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+            `,
+            data(){ //放資料綁定
+                return {
+                }
+            },
+            methods: { //資料做事情的方式
+                updateIdx(idx) {
+                    this.$emit('update', idx);
+                },
+            mounted(){
+            },
+        },
+        });
+        Vue.component('page7',{
+            template: `
+            <div class="container-Spage"> 
+    <!-- phone_page_start -->
+    <section class="phone_aboutus_page">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li style="background:#FDBF52;"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>  
+    </section>
+
+    <section class="phone_aboutus_arrow" @click="updateIdx(0)">
+        <img src="./img/./Aboutus/phone/Arrow4.png" alt="">
+    </section>
+
+    <section class="phone_aboutus_title">
+        <span>關於我們</span>
+    </section>
+
+    <section class="phone_content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <h1>健康</h1>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="pic">
+                        <img src="./img/./Aboutus/phone/3.png" alt="">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="txt">
+                        <p> 
+                            保生大帝本名吳夲，俗稱「大道公」<br>
+                            是主掌醫藥的神祇，精通天文地理，醫術高超 <br>
+                            專門醫療惡疾、救人無數，據說十分靈驗<br>
+                            後世尊稱為「醫神」<br>
+                            是祈求身體健康的神祇。<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- phone_page_end -->
+
+    <section class="aboutus">
+        <div class="container">
+            <div class="row maincontent">
+                <div class="col-6">
+                    <div class="row picitem">
+                        
+                        <div class="col-6 ">
+                            <div class="pic god6">
+                                <img src="./img/./Aboutus/3.1.png" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-6 ">
+                    <div class="text">
+                        <div class="title">
+                            <h1>祈願介紹-健康</h1>
+                        </div>
+                        <div class="content">
+                            <p>
+                                保生大帝本名吳夲，俗稱「大道公」<br>
+                                是主掌醫藥的神祇，精通天文地理，醫術高超 <br>
+                                專門醫療惡疾、救人無數，據說十分靈驗<br>
+                                後世尊稱為「醫神」<br>
+                                是祈求身體健康的神祇。<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+            `,
+        });
+        Vue.component('page8',{
+            template: `
+    <div class="container-Spage"> 
+    <!-- phone_page_start -->
+    <section class="phone_aboutus_page">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li style="background:#FDBF52;"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>  
+    </section>
+
+    <section class="phone_aboutus_arrow" @click="updateIdx(0)">
+        <img src="./img/./Aboutus/phone/Arrow4.png" alt="">
+    </section>
+
+    <section class="phone_aboutus_title">
+        <span>關於我們</span>
+    </section>
+
+    <section class="phone_content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <h1>平安</h1>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="pic">
+                        <img src="./img/./Aboutus/phone/4.png" alt="">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="txt">
+                        <p> 
+                            媽祖是古時候的宋朝人，她的本名叫「林默娘」<br>
+                            從小就相當相當聰明，讀經書過目不忘<br>
+                            媽祖二十八歲的時後，祂的父親出海補魚遇到船難<br>
+                            媽祖為了救她父親而喪身，死後升天得道<br>
+                            時常在漆黑的海上拯救遭遇海難的漁民<br>
+                            漸漸成為大陸沿海及台灣一帶人民普遍信仰神<br>
+                            更成為航海人的守護神。<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- phone_page_end -->
+
+    <section class="aboutus">
+        <div class="container">
+            <div class="row maincontent">
+                <div class="col-6">
+                    <div class="row picitem">
+                        
+                        <div class="col-6 ">
+                            <div class="pic god7">
+                                <img src="./img/./Aboutus/4.1.png" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-6 ">
+                    <div class="text ">
+                        <div class="title">
+                            <h1>祈願介紹-平安</h1>
+                        </div>
+                        <div class="content">
+                            <p>
+                            媽祖是古時候的宋朝人，她的本名叫「林默娘」<br>
+                            從小就相當相當聰明，讀經書過目不忘<br>
+                            媽祖二十八歲的時後，祂的父親出海補魚遇到船難<br>
+                            媽祖為了救她父親而喪身，死後升天得道<br>
+                            時常在漆黑的海上拯救遭遇海難的漁民<br>
+                            漸漸成為大陸沿海及台灣一帶人民普遍信仰神<br>
+                            更成為航海人的守護神。<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+            `,
+            data(){ //放資料綁定
+                return {
+                }
+            },
+            methods: { //資料做事情的方式
+                updateIdx(idx) {
+                    this.$emit('update', idx);
+                },
+            mounted(){
+            },
+        },
+    });
+        Vue.component('page9',{
+            template: `<div class="container-Spage"> 
+        <!-- phone_page_start -->
+        <section class="phone_aboutus_page">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li style="background:#FDBF52;"></li>
+            <li></li>
+            <li></li>
+        </ul>  
+    </section>
+    <section class="phone_aboutus_arrow" @click="updateIdx(0)">
+        <img src="./img/./Aboutus/phone/Arrow4.png" alt="">
+    </section>
+    <section class="phone_aboutus_title">
+        <span>關於我們</span>
+    </section>
+    <section class="phone_content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <h1>財富</h1>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="pic">
+                        <img src="./img/./Aboutus/phone/5.png" alt="">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="txt">
+                        <p> 
+                            元始天尊命姜子牙封趙公明為正一金龍如意玄壇真君<br>
+                            負責迎祥納福，趙公明神通廣大，能呼風喚雨、驅雷役電等<br>
+                            最重要的是能執掌眾生財運，所以民間尊稱祂為武財神<br>
+                            部下四大神祇皆有招財進寶的法力<br>
+                            故稱五路財神，趙公明是五路財神之首。 <br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- phone_page_end -->
+    <section class="aboutus">
+        <div class="container">
+            <div class="row maincontent">
+                <div class="col-6">
+                    <div class="row picitem">
+                        
+                        <div class="col-6">
+                            <div class="pic god8">
+                                <img src="./img/./Aboutus/5.1.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="text">
+                        <div class="title">
+                            <h1>祈願介紹-財富</h1>
+                        </div>
+                        <div class="content">
+                            <p>
+                                元始天尊命姜子牙封趙公明為正一金龍如意玄壇真君<br>
+                                負責迎祥納福，趙公明神通廣大，能呼風喚雨、驅雷役電等 <br>
+                                最重要的是能執掌眾生財運，所以民間尊稱祂為武財神<br>
+                                部下四大神祇皆有招財進寶的法力<br>
+                                故稱五路財神，趙公明是五路財神之首。 <br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+            `,
+            data(){ //放資料綁定
+                return {
+                }
+            },
+            methods: { //資料做事情的方式
+                updateIdx(idx) {
+                    this.$emit('update', idx);
+                },
+            mounted(){
+            },
+        },
+    });
+
+        Vue.component('page10',{
+            template: `<div class="container-Spage"> 
+    <!-- phone_page_start -->
+    <section class="phone_aboutus_page">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li style="background:#FDBF52;"></li>
+            <li></li>
+        </ul>  
+    </section>
+
+    <section class="phone_aboutus_arrow" @click="updateIdx(0)">
+        <img src="./img/./Aboutus/phone/Arrow4.png" alt="">
+    </section>
+
+    <section class="phone_aboutus_title">
+        <span>關於我們</span>
+    </section>
+
+    <section class="phone_content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <h1>事業</h1>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="pic">
+                        <img src="./img/./Aboutus/phone/6.png" alt="">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="txt">
+                        <p> 
+                            關羽信仰、或稱關公信仰、關帝信仰、關公信俗<br>
+                            是指把漢末三國時劉備的將領關羽神化的人物神信仰<br>
+                            關羽從北宋開始在民間藝術形象<br>
+                            及各統治政權對其推崇的不斷提高<br>
+                            故也俗稱為（關）聖帝、（關）帝君、<br>
+                            （關）聖帝君、關帝、關帝爺等而流傳至今。<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- phone_page_end -->
+
+    <section class="aboutus">
+        <div class="container">
+            <div class="row maincontent">
+                <div class="col-6">
+                    <div class="row picitem">
+                        
+                        <div class="col-6 ">
+                            <div class="pic god9">
+                                <img src="./img/./Aboutus/6.1.png" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="text">
+                        <div class="title">
+                            <h1>祈願介紹-事業</h1>
+                        </div>
+                        <div class="content">
+                            <p>
+                            關羽信仰、或稱關公信仰、關帝信仰、關公信俗<br>
+                            是指把漢末三國時劉備的將領關羽神化的人物神信仰<br>
+                            關羽從北宋開始在民間藝術形象及各統治政權對其推崇的不斷提高<br>
+                            故也俗稱為（關）聖帝、（關）帝君、（關）聖帝君、關帝、關帝爺等而流傳至今。<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>     
+            `,
+            data(){ //放資料綁定
+                return {
+                }
+            },
+            methods: { //資料做事情的方式
+                updateIdx(idx) {
+                    this.$emit('update', idx);
+                },
+            mounted(){
+            },
+        },
+        });
+        Vue.component('page11',{
+            template: `<div class="container-Spage">
+        <!-- phone_page_start -->
+        <section class="phone_aboutus_page">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li style="background:#FDBF52;"></li>
+        </ul>  
+    </section>
+
+    <section class="phone_aboutus_arrow" @click="updateIdx(0)">
+        <img src="./img/./Aboutus/phone/Arrow4.png" alt="">
+    </section>
+
+    <section class="phone_aboutus_title">
+        <span>關於我們</span>
+    </section>
+
+    <section class="phone_content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title">
+                        <h1>籤詩</h1>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="pic">
+                        <img src="./img/./Aboutus/phone/phone4.png" alt="">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="txt">
+                        <p> 
+                            求籤詩是象徵著神明在對信眾說話 <br>
+                            為求籤後得到相對應的籤文 <br>
+                            就是由神佛給予的「答案」<br>
+                            籤文是指信徒求籤後得到解惑用的文句 <br>
+                            由於常以詩歌形式表達 <br>
+                            又稱籤詩-俗稱聖籤、神籤、屬於廟宇文化。<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- phone_page_end -->
+
+    <section class="aboutus">
+        <div class="container">
+            <div class="row maincontent">
+                <div class="col-6">
+                    <div class="row picitem">
+                        
+                        <div class="col-6 ">
+                            <div class="pic pomes">
+                                <img src="./img/./Aboutus/3p.png" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="text">
+                        <div class="title">
+                            <h1>籤詩</h1>
+                        </div>
+                        <div class="content">
+                            <p>
+                            求籤詩是象徵著神明在對信眾說話 <br>
+                            為求籤後得到相對應的籤文，就是由神佛給予的「答案」<br>
+                            藉由籤文解惑人生中遇到的疑惑及答案 <br>
+                            由於常以詩歌形式表達<br>
+                            又稱籤詩,俗稱聖籤、神籤、屬於廟宇文化。<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+            `,
+            data(){ //放資料綁定
+                return {
+                }
+            },
+            methods: { //資料做事情的方式
+                updateIdx(idx) {
+                    this.$emit('update', idx);
+                },
+            mounted(){
+            },
+        },
+        });
+
+
+        new Vue({
+            el: '#app',
+            data:{
+                content: `page1`,
+                currentIdx: 0,
+                list: [
+                    {
+                        name: '關於我們',
+                        comp: 'page1',
+                    },
+                    {
+                        name: '創立理念',
+                        comp: 'page2',
+                    },
+                    {
+                        name: '緣起',
+                        comp: 'page3',
+                    },
+                    {
+                        name: '發展',
+                        comp: 'page4',
+                    },
+                    {
+                        name: '感情',
+                        comp: 'page5',
+                    },
+                    {
+                        name: '學業',
+                        comp: 'page6',
+                    },
+                    {
+                        name: '健康',
+                        comp: 'page7',
+                    },
+                    {
+                        name: '平安',
+                        comp: 'page8',
+                    },
+                    {
+                        name: '財富',
+                        comp: 'page9',
+                    },
+                    {
+                        name: '事業',
+                        comp: 'page10',
+                    },
+                    {
+                        name: '籤詩',
+                        comp: 'page11',
+                    },
+                ],
+                
+            },
+            methods: {
+                updateIdx(idx) {
+                    console.log(idx)
+                    this.currentIdx = idx;
+                },
+            },
+        });
+    </script>
+<!-- 統一footer -->
+
+<footer>
+    <div class="footer-wrap">
+        <div class="footer-logo">
+            <img src="./img/header/BOBIO_logo.svg" alt="bobio">
+        </div>
+        <div class="footer-slog">
+            <span>用BOBIO就有保佑</span>
+        </div>
+        <div class="footer-info">
+            <div class="list">
+                <ul>
+                    <li><a href="#">立即祈願</a></li>
+                    <li><a href="#">線上求籤</a></li>
+                    <li><a href="#">平安符願</a></li>
+                    <li><a href="#">立即結緣</a></li>
+                    <li><a href="#">關於我們</a></li>
+                </ul>
+            </div>
+            <div class="conn">
+                <p>
+                    bobio@temple.com<br>
+                    02-1090-1090                    
+                </p>
+                <div class="info-icon">
+                    <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook"></a>
+                    <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram"></a>
+                    <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube"></a>                      
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>
+            Copyright © 2021Bobio 本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+        </p>
+    </div>
+</footer>
+
+
+</body>
+</html>

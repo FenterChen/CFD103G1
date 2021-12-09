@@ -25,6 +25,8 @@ body {
   position: absolute;
   color: #FFFAE7;
   font-size: 36px;
+  -webkit-animation: move-letter 2.5s linear forwards;
+          animation: move-letter 2.5s linear forwards;
 }
 
 @media screen and (min-width: 768px) {
@@ -45,19 +47,43 @@ body {
   }
 }
 
+.slogan .scrollDown {
+  position: absolute;
+  bottom: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.slogan .scrollDown .arrow {
+  width: 60%;
+  -webkit-animation: scrollDown 1.5s infinite;
+          animation: scrollDown 1.5s infinite;
+}
+
+.slogan .scrollDown img {
+  width: 100%;
+  vertical-align: top;
+}
+
 .memberAd {
   background-image: url(../img/mainpage/memberBg.jpg);
-  width: 100%;
   background-position: center;
   background-size: cover;
   padding-top: 90px;
   font-family: NotoSansTC, serif;
-}
-
-@media screen and (min-width: 375px) {
-  .memberAd {
-    height: 736px;
-  }
+  width: 100%;
+  height: 736px;
 }
 
 @media screen and (min-width: 1024px) {
@@ -79,15 +105,20 @@ body {
           justify-content: center;
   background-image: url(../img/mainpage/adNoBgPhone.png);
   width: 100%;
+  max-width: 1312px;
+  padding: 12px 0px;
   background-position: center;
   background-size: cover;
   font-family: NotoSansTC, serif;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 @media screen and (min-width: 1024px) {
   .memberAd .advertisement {
     background-image: none;
-    max-width: 1200px;
     margin: auto;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
@@ -95,73 +126,124 @@ body {
   }
 }
 
-.memberAd .advertisement .ad {
-  padding: 15px 20px;
+.memberAd .advertisement .adPhone {
   color: #FFFAE7;
   font-weight: 900;
   font-size: 18px;
-  width: 33.333333%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+}
+
+.memberAd .advertisement .adPhone .number {
+  color: #FDBF52;
 }
 
 @media screen and (min-width: 1024px) {
-  .memberAd .advertisement .ad {
-    text-align: center;
-    padding: 60px 50px;
+  .memberAd .advertisement .adPhone {
+    display: none;
+  }
+}
+
+.memberAd .advertisement .adWeb {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .memberAd .advertisement .adWeb {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    color: #FFFAE7;
+    font-weight: 900;
+    font-size: 18px;
+    width: 400px;
+    height: 300px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     border-radius: 20px;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .memberAd .advertisement .ad .adTitle {
+  .memberAd .advertisement .adWeb .adTitle {
     font-weight: 900;
-    font-size: 44px;
+    font-size: 36px;
     margin-bottom: 46px;
   }
 }
 
+@media screen and (min-width: 1200px) {
+  .memberAd .advertisement .adWeb .adTitle {
+    font-size: 44px;
+  }
+}
+
 @media screen and (min-width: 1024px) {
-  .memberAd .advertisement .ad .adContent {
+  .memberAd .advertisement .adWeb .adContent {
     font-weight: 900;
+    font-size: 28px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .memberAd .advertisement .adWeb .adContent {
     font-size: 36px;
   }
 }
 
-.memberAd .advertisement .ad .adContent .number {
+.memberAd .advertisement .adWeb .adContent .number {
   color: #FDBF52;
   margin: 0 5px;
 }
 
 @media screen and (min-width: 1024px) {
-  .memberAd .advertisement .ad .adContent .number {
+  .memberAd .advertisement .adWeb .adContent .number {
     font-weight: 900;
-    font-size: 44px;
+    font-size: 36px;
     margin: 0 10px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .memberAd .advertisement .adWeb .adContent .number {
+    font-size: 44px;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .memberAd .advertisement .member {
     background-image: url(../img/mainpage/memberNoBg.png);
-    background-size: 400px 300px;
+    background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .memberAd .advertisement .money {
     background-image: url(../img/mainpage/moneyNoBg.png);
-    background-size: 400px 300px;
+    background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 2%;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .memberAd .advertisement .aumlet {
     background-image: url(../img/mainpage/aumletNoBg.png);
-    background-size: 400px 300px;
+    background-size: cover;
     background-position: center;
+    padding: 60px 16px;
+    background-repeat: no-repeat;
   }
 }
 
@@ -177,14 +259,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 70px;
   font-family: NotoSansTC, Serif;
-}
-
-@media screen and (min-width: 375px) {
-  .memberAd .memberContent {
-    padding: 0 20px;
-  }
+  padding: 70px 20px 0 20px;
 }
 
 @media screen and (min-width: 768px) {
@@ -214,19 +290,19 @@ body {
 .memberAd .memberContent .memberP {
   color: #927858;
   font-size: 18px;
-  line-height: 30px;
+  line-height: 40px;
 }
 
 .memberAd .memberContent .memberPDetail {
   display: none;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 500px) {
   .memberAd .memberContent .memberPDetail {
     display: block;
     color: #927858;
     font-size: 18px;
-    line-height: 30px;
+    line-height: 40px;
   }
 }
 
@@ -236,11 +312,17 @@ body {
   font-size: 24px;
   line-height: 35px;
   text-align: center;
+  border: 0px;
+  cursor: pointer;
   -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
           filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #FDBF52;
   color: #573605;
   border-radius: 30px;
+  color: transparent;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -253,6 +335,46 @@ body {
   margin-top: 60px;
   border: 0px;
   font-family: NotoSansTC, Serif;
+  color: transparent;
+  position: relative;
+  backface-visibility: hidden;
+}
+
+.memberAd .memberContent button::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  padding-top: 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: -1em;
+}
+
+.memberAd .memberContent button::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 12px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+}
+
+.memberAd .memberContent button:hover::before {
+  opacity: 1;
+  margin-top: 0;
+}
+
+.memberAd .memberContent button:hover::after {
+  opacity: 0;
+  margin-top: -1em;
 }
 
 @media screen and (min-width: 1024px) {
@@ -261,7 +383,48 @@ body {
   }
 }
 
-.memberAd .memberContent .joinUs {
+.memberAd .memberContent button::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: -20px;
+  padding-top: 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-left: -1em;
+  margin-top: 0;
+}
+
+.memberAd .memberContent button::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: -20px;
+  padding-top: 12px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+  margin-top: 0;
+}
+
+.memberAd .memberContent button:hover::before {
+  opacity: 1;
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.memberAd .memberContent button:hover::after {
+  opacity: 0;
+  margin-left: 1em;
+  margin-top: 0;
+}
+
+.memberAd .memberContent button .joinUs {
   margin-right: 10px;
 }
 
@@ -280,6 +443,7 @@ body {
   text-align: center;
   padding-top: 118px;
   font-family: NotoSansTC, Serif;
+  background-color: #FFFAE7;
 }
 
 @media screen and (min-width: 1024px) {
@@ -295,14 +459,17 @@ body {
 
 .adPray .pray {
   padding: 0 20px;
-  position: relative;
-}
-
-@media screen and (min-width: 768px) {
-  .adPray .pray {
-    width: 30%;
-    margin: auto;
-  }
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .adPray .pray h2 {
@@ -323,11 +490,17 @@ body {
   font-size: 24px;
   line-height: 35px;
   text-align: center;
+  border: 0px;
+  cursor: pointer;
   -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
           filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #FDBF52;
   color: #573605;
   border-radius: 30px;
+  color: transparent;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -337,18 +510,101 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  font-family: NotoSansTC, Serif;
   position: relative;
   left: 0;
   right: 0;
-  margin: auto;
   top: 100px;
-  font-family: NotoSansTC, Serif;
+  margin: auto;
+  color: transparent;
+  position: relative;
+  backface-visibility: hidden;
+  z-index: 3;
+}
+
+.adPray .pray button::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  padding-top: 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: -1em;
+}
+
+.adPray .pray button::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 12px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+}
+
+.adPray .pray button:hover::before {
+  opacity: 1;
+  margin-top: 0;
+}
+
+.adPray .pray button:hover::after {
+  opacity: 0;
+  margin-top: -1em;
 }
 
 @media screen and (min-width: 1024px) {
   .adPray .pray button {
-    margin-right: auto;
+    position: static;
+    margin: 100px 0px 0px 0px;
   }
+}
+
+.adPray .pray button::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: -20px;
+  padding-top: 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-left: -1em;
+  margin-top: 0;
+}
+
+.adPray .pray button::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: -20px;
+  padding-top: 12px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+  margin-top: 0;
+}
+
+.adPray .pray button:hover::before {
+  opacity: 1;
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.adPray .pray button:hover::after {
+  opacity: 0;
+  margin-left: 1em;
+  margin-top: 0;
 }
 
 .adPray .pray .goPray {
@@ -356,6 +612,10 @@ body {
 }
 
 .adPray .prayBg {
+  width: 100%;
+}
+
+.adPray .prayBg img {
   width: 100%;
 }
 
@@ -400,6 +660,8 @@ body {
   text-align: center;
   padding-top: 118px;
   font-family: NotoSansTC, Serif;
+  width: 100%;
+  background-color: #FFFAE7;
 }
 
 @media screen and (min-width: 1024px) {
@@ -414,7 +676,18 @@ body {
 }
 
 .adPomes .pomes {
+  width: 50%;
   padding: 0 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: relative;
 }
 
@@ -443,11 +716,17 @@ body {
   font-size: 24px;
   line-height: 35px;
   text-align: center;
+  border: 0px;
+  cursor: pointer;
   -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
           filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #FDBF52;
   color: #573605;
   border-radius: 30px;
+  color: transparent;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -458,11 +737,100 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
+  top: 100px;
   left: 0;
   right: 0;
   margin: auto;
-  top: 100px;
   font-family: NotoSansTC, Serif;
+  color: transparent;
+  position: relative;
+  backface-visibility: hidden;
+  z-index: 3;
+}
+
+.adPomes .pomes button::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  padding-top: 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: -1em;
+}
+
+.adPomes .pomes button::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 12px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+}
+
+.adPomes .pomes button:hover::before {
+  opacity: 1;
+  margin-top: 0;
+}
+
+.adPomes .pomes button:hover::after {
+  opacity: 0;
+  margin-top: -1em;
+}
+
+@media screen and (min-width: 1024px) {
+  .adPomes .pomes button {
+    position: static;
+    margin: 100px 0px 0px 0px;
+  }
+}
+
+.adPomes .pomes button::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: -20px;
+  padding-top: 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-left: -1em;
+  margin-top: 0;
+}
+
+.adPomes .pomes button::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: -20px;
+  padding-top: 12px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+  margin-top: 0;
+}
+
+.adPomes .pomes button:hover::before {
+  opacity: 1;
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.adPomes .pomes button:hover::after {
+  opacity: 0;
+  margin-left: 1em;
+  margin-top: 0;
 }
 
 .adPomes .pomes .goPomes {
@@ -471,6 +839,11 @@ body {
 
 .adPomes .pomesBg {
   width: 100%;
+}
+
+.adPomes .pomesBg img {
+  width: 100%;
+  vertical-align: top;
 }
 
 @media screen and (min-width: 1024px) {
@@ -497,6 +870,80 @@ body {
 @media screen and (min-width: 1024px) {
   .adPomes .pomesBg .phoneBg {
     display: none;
+  }
+}
+
+@-webkit-keyframes move-letter {
+  0% {
+    opacity: 0;
+    letter-spacing: -100px;
+    -webkit-filter: blur(30px);
+            filter: blur(30px);
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    -webkit-filter: blur(10px);
+            filter: blur(10px);
+  }
+  100% {
+    letter-spacing: 0px;
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+  }
+}
+
+@keyframes move-letter {
+  0% {
+    opacity: 0;
+    letter-spacing: -100px;
+    -webkit-filter: blur(30px);
+            filter: blur(30px);
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    -webkit-filter: blur(10px);
+            filter: blur(10px);
+  }
+  100% {
+    letter-spacing: 0px;
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+  }
+}
+
+@-webkit-keyframes scrollDown {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(20px);
+            transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes scrollDown {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(20px);
+            transform: translateY(20px);
+    opacity: 0;
   }
 }
 /*# sourceMappingURL=mainpage.css.map */

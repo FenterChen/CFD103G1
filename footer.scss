@@ -5,17 +5,26 @@
 @include NotoSansTC();
 @include RocknRollOne();
 
+footer{
+    background-color: map-get($color, lightbrown);
+}
+
 
 
 .footer-wrap{
     @include flexCenter();
-    background-color: map-get($color, lightbrown);
-    padding: 2.5% 5%;
+    width: 90%;
+    padding: 2% 0;
     justify-content:space-between;
+    margin: auto;
 }
 
+.footer-logo{
+    width: 35%;
+    margin-right: 20px;
+}
 .footer-logo img{
-    width: 77%;
+    width: 100%;
 }
 
 .footer-slog{
@@ -71,26 +80,25 @@
     margin-left: 5px;
 }
 
+
+
 .copyright{
-    @include flexCenter();           
     background: map-get($color, darkbrown);
-    padding: 3% 5%;    
+    padding: 20px 5%;
+    
+    margin: auto;
 }
+
 
 .copyright p{
     color: map-get($color, mainyellow);
     font-size: 9px;
     line-height: 150%;
     text-align: center;
+    @include maxWidth(); 
 }
 
 //RWD
-
-@include phone() {
-    
-    
-
-}
 
 @include tabletV() {
     .list ul{
@@ -99,11 +107,9 @@
     .conn p{
         font-size: map-get($fontSize, navfont);
     }
-    .copyright{
-        padding: 1% 1%;    
-    }
-    .footer-info{
-        width: 75%;
+
+    .footer-logo{
+        width: 200px;
     }
     .footer-logo img{
         width: 100%;
@@ -113,9 +119,6 @@
 }
   
 @include tabletH() {
-    .footer-logo img{
-        width: 100%;
-    }
     .footer-info{
         width: 40%;
     }
@@ -124,6 +127,11 @@
     }
     .copyright p{
         font-size: map-get($fontSize, navfont);
+    }
+
+    .footer-wrap{
+        @include maxWidth();
+        
     }
        
         
