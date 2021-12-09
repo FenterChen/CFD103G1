@@ -251,11 +251,12 @@ body{
 .container-fpage .phone_aboutus_title {
     padding-left: 40px;
     font-size: map-get($fontSize,minifont );
-    color: map-get($color, darkbrown );
+    color: map-get($color, darkbrown);
     @include tabletH(){
         display: none;
     }
 }
+
 .container-fpage .phone_content{
     font-family: NotoSansTC;
     height: 600px;
@@ -265,6 +266,9 @@ body{
         font-size: map-get($fontSize, webh1);
         font-weight: 700px;
         @include flexCenter();
+    }
+    h1{
+        color: map-get($color, darkbrown );
     }
     .pic{
         @include flexCenter();
@@ -294,11 +298,11 @@ body{
     .title{
         display: flex;
         justify-content: start;
-        h1{
+            h1{
             font-family: NotoSansTC;
             font-size: map-get($fontSize,webh1);
             padding-bottom: 40px;
-            color: map-get($color, darkbrown );
+            color: map-get($color,darkbrown);
         }
     }
     .content{

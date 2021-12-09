@@ -651,6 +651,10 @@ body {
           justify-content: center;
 }
 
+.container-fpage .phone_content h1 {
+  color: #573605;
+}
+
 .container-fpage .phone_content .pic {
   display: -webkit-box;
   display: -ms-flexbox;
