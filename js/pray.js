@@ -23,7 +23,7 @@ function plusSlides(n) {
   console.log(slideIndex)
   showSlides(slideIndex);
   for (i = 0; i < slides.length; i++) {
-    slides[i].style.animation = "fadeLeft 1.5s";
+    slides[i].style.animation = "fadeLeft 1.8s";
   }
   hideBtn();
   
@@ -32,7 +32,7 @@ function minusSlides(n) {
   slideIndex -= n;
   showSlides(slideIndex);
   for (i = 0; i < slides.length; i++) {
-    slides[i].style.animation = "fadeRight 1.5s";
+    slides[i].style.animation = "fadeRight 1.8s";
   }
   hideBtn();
 }
