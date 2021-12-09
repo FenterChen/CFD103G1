@@ -274,10 +274,10 @@ body{
     }
   }
   .prayGod{
-    transform: translate(43px, 0px);
+    transform: translateX(40px);
     @include tabletH(){
       width: 50%;
-      transform: translate(0px, 0px);
+      transform: translate(0px);
     }
     img{
       width: 100%;
