@@ -1,0 +1,469 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@font-face {
+  font-family: NotoSansTC;
+  src: url("../font/NotoSerifTC-Medium.otf");
+}
+
+.wrapp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 95%;
+  margin: auto;
+  margin-top: 50px;
+  background-color: #FFFAE7;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapp {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .wrapp {
+    max-width: 1200px;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+.biboLogo {
+  vertical-align: top;
+  margin: 60px 128px;
+  text-align: center;
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .biboLogo {
+    display: none;
+  }
+}
+
+.tempBg {
+  display: none;
+  width: 700px;
+  height: 100%;
+  padding-left: 5px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+@media screen and (min-width: 768px) {
+  .tempBg {
+    display: unset;
+  }
+}
+
+.tempBg img {
+  width: 100%;
+  border-radius: 30px;
+}
+
+.boxContainer,
+.boxContainer2 {
+  width: 100%;
+  max-width: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: auto;
+  border-radius: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .boxContainer,
+  .boxContainer2 {
+    max-width: 350px;
+    border: 1px solid #573605;
+    background-color: white;
+    margin: 30px 10px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .boxContainer,
+  .boxContainer2 {
+    max-width: 400px;
+    margin: 40px 10px;
+    padding-left: 20px;
+  }
+}
+
+.showAdd {
+  display: none;
+}
+
+.showLogin {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .boxData {
+    width: 300px;
+  }
+}
+
+.boxMember {
+  margin: 15px 10px;
+  text-align: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .boxMember {
+    margin: 25px 50px;
+  }
+}
+
+.boxData .textName,
+.textPhone,
+.textEmail,
+.textPwd {
+  padding: 10px 0px;
+  width: 250px;
+}
+
+@media screen and (min-width: 768px) {
+  width: 300px;
+  background-color: white;
+}
+
+.boxData span {
+  padding: 4px 2px;
+  display: block;
+  color: #573605;
+  font-size: 16px;
+  font-family: NotoSansTC, serif;
+  background-color: #FFFAE7;
+}
+
+@media screen and (min-width: 768px) {
+  .boxData span {
+    background-color: transparent;
+  }
+}
+
+.boxData input {
+  border: none;
+  border-bottom: 1px solid #573605;
+  width: 250px;
+  background-color: #FFFAE7;
+  font-size: 18px;
+  font-family: NotoSansTC, serif;
+  color: #573605;
+}
+
+@media screen and (min-width: 768px) {
+  .boxData input {
+    background-color: transparent;
+    width: 300px;
+  }
+}
+
+.boxMember .textAdd {
+  text-decoration: none;
+  color: #573605;
+  list-style: none;
+  font-size: 24px;
+  position: relative;
+}
+
+.boxMember .textAdd::before {
+  content: '';
+  width: 2px;
+  height: 23px;
+  background-color: #573605;
+  top: 0px;
+  right: -20px;
+  position: absolute;
+}
+
+.boxMember .textLogin {
+  color: #573605;
+  opacity: 0.5;
+  margin-left: 30px;
+  font-size: 24px;
+}
+
+@media screen and (min-width: 1024px) {
+  .boxMember .textLogin {
+    margin-left: 40px;
+    font-size: 24px;
+  }
+}
+
+.boxMember .textAdd2 {
+  opacity: 0.5;
+}
+
+.boxMember .textLogin2 {
+  opacity: 1;
+}
+
+.textPwd p {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  text-align: right;
+  color: #927858;
+  font-family: NotoSansTC, serif;
+}
+
+@media screen and (min-width: 768px) {
+  .textPwd p {
+    width: 300px;
+  }
+}
+
+.boxBtn .btnAdd {
+  font-family: NotoSansTC, serif;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  width: 300px;
+  height: 50px;
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+  cursor: pointer;
+  border: 0px;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #FDBF52;
+  color: #573605;
+  border-radius: 30px;
+  color: transparent;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  width: 250px;
+}
+
+.boxBtn .btnAdd::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  padding-top: 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: -1em;
+}
+
+.boxBtn .btnAdd::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 12px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+}
+
+.boxBtn .btnAdd:hover::before {
+  opacity: 1;
+  margin-top: 0;
+}
+
+.boxBtn .btnAdd:hover::after {
+  opacity: 0;
+  margin-top: -1em;
+}
+
+@media screen and (min-width: 768px) {
+  .boxBtn .btnAdd {
+    width: 300px;
+  }
+}
+
+.boxBtn .btnLogin {
+  font-family: NotoSansTC, serif;
+  margin-bottom: 30px;
+  width: 300px;
+  height: 50px;
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+  cursor: pointer;
+  border: 0px;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #FDBF52;
+  color: #573605;
+  border-radius: 30px;
+  color: transparent;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  width: 250px;
+  text-align: center;
+  padding-left: 1px;
+}
+
+.boxBtn .btnLogin::before {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  padding-top: 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: -1em;
+}
+
+.boxBtn .btnLogin::after {
+  content: attr(data-hover);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 12px;
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #573605;
+}
+
+.boxBtn .btnLogin:hover::before {
+  opacity: 1;
+  margin-top: 0;
+}
+
+.boxBtn .btnLogin:hover::after {
+  opacity: 0;
+  margin-top: -1em;
+}
+
+@media screen and (min-width: 768px) {
+  .boxBtn .btnLogin {
+    width: 300px;
+  }
+}
+
+.boxBtn .btnLogin img {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .boxBtn .btnLogin img {
+    display: unset;
+    padding-right: 30px;
+  }
+}
+
+.noMember p {
+  color: #573605;
+  font-size: 16px;
+  margin-bottom: 60px;
+  opacity: 1;
+  text-align: center;
+}
+
+.noMember span {
+  color: #573605;
+  opacity: 0.5;
+}
+/*# sourceMappingURL=memberAdd.css.map */
