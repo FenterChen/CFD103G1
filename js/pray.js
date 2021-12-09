@@ -85,6 +85,9 @@ $(function(){
     let target = $('#godDisplay');
     target.attr('src','img/pray/loveGodShadow.png');
     plusSlides(1);
+    let godimg = $('.prayGod');
+    godimg.css('transform','translateX(43px);');
+    plusSlides(1);
   });
 
   //學業
@@ -105,6 +108,8 @@ $(function(){
   $('.study').click(function(){
     let target = $('#godDisplay');
     target.attr('src','img/pray/studyGodShadow.png');
+    let godimg = $('.prayGod');
+    godimg.css('transform','translateX(20px);');
     plusSlides(1);
   });
 
@@ -126,6 +131,8 @@ $(function(){
   $('.health').click(function(){
     let target = $('#godDisplay');
     target.attr('src','img/pray/healthGodShadow.png');
+    let godimg = $('.prayGod');
+    godimg.css('transform','translateX(38px);');
     plusSlides(1);
   });
 
@@ -147,6 +154,8 @@ $(function(){
   $('.safety').click(function(){
     let target = $('#godDisplay');
     target.attr('src','img/pray/safetyGodShadow.png');
+    let godimg = $('.prayGod');
+    godimg.css('transform','translateX(38px);');
     plusSlides(1);
   });
 
@@ -168,6 +177,8 @@ $(function(){
   $('.wealth').click(function(){
     let target = $('#godDisplay');
     target.attr('src','img/pray/moneyGodShadow.png');
+    let godimg = $('.prayGod');
+    godimg.css('transform','translateX(20px);');
     plusSlides(1);
   });
 
@@ -189,6 +200,8 @@ $(function(){
   $('.work').click(function(){
     let target = $('#godDisplay');
     target.attr('src','img/pray/workGodShadow.png');
+    let godimg = $('.prayGod');
+    godimg.css('transform','translateX(38px);');
     plusSlides(1);
   });
 
