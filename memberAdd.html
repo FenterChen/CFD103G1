@@ -1,48 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/member.css">
-    <title>Document</title>
-</head>
-<body>
-    <div class="wrapp">
-    <div class="tempBg">
-        <img src="./img/member/temp.png" alt="">
-    </div>
-    <div class="boxContainer">
-        <div class="boxMember">
-            <a href="" class="textAdd">
-                <b>註冊會員</b></a>
-            <a href="" class="textLogin">會員登入</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="./css/memberAdd.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="./js/member.js"></script>
+    <title>BOBIO|會員加入</title>
+  </head>
+  <body>
+    <header id="mainheader">
+      <div class="headerWrap">
+        <div class="logo">
+          <a href="mainpage.html">
+            <img src="img/header/BOBIO_logo.svg" />
+          </a>
         </div>
-       <div class="boxData">
-           <div class="textName">
+        <nav class="navPostion">
+          <ul>
+            <li>
+              <a href="pray.html">立即祈願</a>
+            </li>
+            <li>
+              <a href="onlinepomes.html">線上求籤</a>
+            </li>
+            <li>
+              <a href="amulet.html">平安符願</a>
+            </li>
+            <li>
+              <a href="money.html">立即結緣</a>
+            </li>
+            <li>
+              <a href="Abouts.html">關於我們</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="cart">
+          <a href="#"><img src="img/header/cart.svg" /></a>
+        </div>
+        <div class="member">
+          <a href="https://fenterchen.github.io/CFD103G1/memberAdd"
+            ><img src="img/header/member.svg"
+          /></a>
+        </div>
+        <div class="outerHb">
+          <div class="hb" id="hb">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapp">
+      <div class="biboLogo">
+        <img src="./img/member/bobioLogo.svg" alt="" />
+      </div>
+      <div class="tempBg">
+        <img src="./img/member/bobioTemp.png" alt="" />
+      </div>
+      <!-- 註冊頁面 -->
+
+      <div class="boxContainer">
+        <form action="addmember.php" method="post">
+          <div class="boxMember">
+            <a class="textAdd"> <b>註冊會員</b></a>
+            <a class="textLogin">會員登入</a>
+          </div>
+          <div class="boxData">
+            <div class="textName">
               <span>姓名</span>
-              <input type="text" placeholder="王小明" >
-           </div>
-           <div class="textPhone">
+              <input type="text" placeholder="請輸入姓名" />
+            </div>
+            <div class="textPhone">
               <span>手機</span>
-              <input type="number" placeholder="0910936832"  >
-           </div>
-           <div class="textEmail">
+              <input type="number" placeholder="請輸入手機" />
+            </div>
+            <div class="textEmail">
               <span>信箱</span>
-              <input type="email" placeholder="egg8833@gmail.com" width="300" >
-           </div>
-           <div class="textPwd">
+              <input type="email" placeholder="請輸入信箱" />
+            </div>
+            <div class="textPwd">
               <span>密碼</span>
-              <input type="password" placeholder="*******" >
-           </div>  
-       </div>
-       <div class="boxBtn">
-           <button class="btnAdd">註冊</button>
-           <button class="btnLogin"><img src="./img/member/iconFb.svg" alt="">使用Facebook快速登入
-               
-           </button>
-       </div>
+              <input type="password" />
+            </div>
+            <div class="textPwd">
+              <span>確認密碼</span>
+              <input type="password" />
+            </div>
+          </div>
+          <div class="boxBtn">
+            <button class="btnAdd" data-hover="註冊">註冊</button>
+            <button class="btnLogin" data-hover=" 使用Facebook快速登入">
+              <img src="./img/member/iconFb.svg" alt="" />使用Facebook快速登入
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!--   登入頁面 -->
+      <div class="boxContainer2 showLogin">
+        <!-- <form action="login.php" method="post"> -->
+        <div class="boxMember">
+          <a class="textAdd textAdd2">註冊會員</a>
+          <a class="textLogin textLogin2">會員登入</a>
+        </div>
+        <div class="boxData">
+          <div class="textEmail">
+            <span>信箱</span>
+            <input type="email" placeholder="egg8833@gmail.com" width="300" />
+          </div>
+          <div class="textPwd">
+            <span>密碼</span>
+            <input type="password" placeholder="*******" />
+            <p>忘記密碼</p>
+          </div>
+        </div>
+        <div class="boxBtn">
+          <a href="/memberCenter.html"
+            ><button class="btnAdd" data-hover="登入">登入</button></a
+          >
+          <button class="btnLogin" data-hover=" 使用Facebook快速登入">
+            <img src="./img/member/iconFb.svg" />
+            使用Facebook快速登入
+          </button>
+        </div>
+        <div class="noMember">
+          <p><span>還不是會員嗎？</span>註冊會員</p>
+        </div>
+      </div>
+      <!-- </form> -->
     </div>
-</div>
-</body>
+
+    <footer>
+      <div class="footer-wrap">
+        <div class="footer-logo">
+          <img src="./img/header/BOBIO_logo.svg" alt="bobio" />
+        </div>
+        <div class="footer-slog">
+          <span>用BOBIO就有保佑</span>
+        </div>
+        <div class="footer-info">
+          <div class="list">
+            <ul>
+              <li>
+                <a href="pray.html">立即祈願</a>
+              </li>
+              <li>
+                <a href="onlinepomes.html">線上求籤</a>
+              </li>
+              <li>
+                <a href="amulet.html">平安符願</a>
+              </li>
+              <li>
+                <a href="money.html">立即結緣</a>
+              </li>
+              <li>
+                <a href="Abouts.html">關於我們</a>
+              </li>
+            </ul>
+          </div>
+          <div class="conn">
+            <p>
+              bobio@temple.com<br />
+              02-1090-1090
+            </p>
+            <div class="info-icon">
+              <a href="#"
+                ><img src="./img/footer/Group 415.svg" alt="facebook"
+              /></a>
+              <a href="#"
+                ><img src="./img/footer/Group 295.svg" alt="instagram"
+              /></a>
+              <a href="#"
+                ><img src="./img/footer/Group 296.svg" alt="youtube"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>
+          Copyright © 2021Bobio
+          本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+        </p>
+      </div>
+    </footer>
+    <script src="js/header.js"></script>
+  </body>
 </html>
