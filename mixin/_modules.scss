@@ -161,38 +161,43 @@
   border: 0px;
   @include btnShadow();
   @include btnColor();
-<<<<<<< HEAD
-<<<<<<< HEAD
   @include btnBigBorderR();
-=======
   @include BigBorderR();
->>>>>>> parent of 5e61aac (modify amulet and add button type)
-=======
   @include BigBorderR();
->>>>>>> 2b85780286456bbf1907db8e4e4a307df4312e06
   @include btnBefore();
   @include btnAfter();
   @include btnHoverBefore();
   @include btnHoverAfter();
   color: transparent;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   position: relative;
   backface-visibility: hidden;
-=======
-  position : relative;
-	backface-visibility : hidden;
->>>>>>> parent of 5e61aac (modify amulet and add button type)
-=======
-  position : relative;
-	backface-visibility : hidden;
->>>>>>> 2b85780286456bbf1907db8e4e4a307df4312e06
-=======
-  position: relative;
-  backface-visibility: hidden;
->>>>>>> 8c24d402663bbfad9bcb47868e242143c19a08dd
 }
+
+//客製化平安符
+@mixin btnAmulet() {
+  width: 180px;
+  height: 42px;
+  font-size: map-get($fontSize, weblp);
+  line-height: 21px;
+  text-align: center;
+  border: 0px;
+  cursor: pointer;
+  @include btnShadow();
+  @include btnColor();
+  @include smallBorderR();
+  @include btnBefore();
+  @include btnAfter();
+  @include btnHoverBefore();
+  @include btnHoverAfter();
+  color: transparent;
+  position: relative;
+  backface-visibility: hidden;
+}
+
+
+
+
+
 
 //橫排垂直＋水平置中
 @mixin flexCenter() {

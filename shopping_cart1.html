@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOBIO</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/shopping_cart1.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
+    <script src="js/header.js"></script>
+</head>
+
+<body>
+    <header id="mainheader">
+        <div class="headerWrap">
+            <div class="logo">
+                <a href="#">
+                    <img src="img/header/BOBIO_logo.svg">
+                </a>
+            </div>
+            <nav class="navPostion">
+                <ul>
+                    <li>
+                        <a href="#">立即祈願</a>
+                    </li>
+                    <li>
+                        <a href="#">線上求籤</a>
+                    </li>
+                    <li>
+                        <a href="#">平安符願</a>
+                    </li>
+                    <li>
+                        <a href="money.html">立即結緣</a>
+                    </li>
+                    <li>
+                        <a href="#">關於我們</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="cart"><a href="#"><img src="img/header/cart.svg"></a></div>
+            <div class="member"><a href="#"><img src="img/header/member.svg"></a></div>
+            <div class="outerHb">
+                <div class="hb" id="hb">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="process">
+        <div class="step">
+            <p class="num">1</p>
+            <p class="state">查看購物車</p>
+        </div>
+        <div class="step">
+            <p class="num">2</p>
+            <p class="state">填寫收件資料</p>
+        </div>
+        <div class="step">
+            <p class="num">3</p>
+            <p class="state">線上付款</p>
+        </div>
+        <div class="step">
+            <p class="num">4</p>
+            <p class="state">訂單確認</p>
+        </div>
+    </section>
+    <section class="order" id="app" v-if="cartwindow">
+        <div class="wrap">
+            <table class="lgTable">
+                <thead>
+                    <tr>
+                        <td colspan="2">商品資料</td>
+                        <td>單件價格</td>
+                        <td>數量</td>
+                        <td>小計</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item,index) in carts" :key="index">
+                        <td dataTitle="商品資料">
+                            <div class="pic"><img src="./img/amulet/amulet_sm_f 1.png" alt=""></div>
+                        </td>
+                        <td>
+                            <div class="picMd"><img src="./img/amulet/amulet_sm_f 1.png" alt=""></div>
+                            <div class="prodTitle">
+                                <p>客製化平安符</p>
+                                <p>{{item[0]}}／生肖{{item[1]}}</p>
+                                <p>{{item[2]}}</p>
+                            </div>
+                        </td>
+                        <td class="aaaaaaa">NT${{price}}</td>
+                        <td>
+                            <div class="many">
+                                <input type="button" value="-" class="modify" @click="countreduce(index)">
+                                <input type="text" v-model="item[3]" class="amount" min="1" :change="count(index)">
+                                <input type="button" value="+" class="modify" @click="countplus(index)">
+                                <div class="trushMd"><img src="./img/shopping-cart/trush.svg" alt="trush"></div>
+                            </div>
+                        </td>
+                        <td dataTitle="小計">NT${{price*item[3]}}</td>
+                        <td>
+                            <div class="trush"><img src="./img/shopping-cart/trush.svg" alt="" @click="trash(index)">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="total">
+                <div class="item">
+                    <span>小計:</span>
+                    <span id="sum">NT${{sum}}</span>
+                </div>
+                <div class="item">
+                    <span>運費:</span>
+                    <span>NT${{freight}}</span>
+                </div>
+                <div class="item">
+                    <span>配送方式:</span>
+                    <span>宅配配送</span>
+                </div>
+                <div class="item">
+                    <span>合計:</span>
+                    <span>NT${{sum+freight}}</span>
+                </div>
+            </div>
+            <div class="btn">
+                <input type="submit" value="立即結帳" @click="send">
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-wrap">
+            <div class="footer-logo">
+                <img src="./img/footer/BOBIO_logo.svg" alt="bobio">
+            </div>
+            <div class="footer-slog">
+                <span>用BOBIO就有保佑</span>
+            </div>
+            <div class="footer-info">
+                <div class="list">
+                    <ul>
+                        <li><a href="#">立即祈願</a></li>
+                        <li><a href="#">線上求籤</a></li>
+                        <li><a href="#">平安符願</a></li>
+                        <li><a href="#">立即結緣</a></li>
+                        <li><a href="#">關於我們</a></li>
+                    </ul>
+                </div>
+                <div class="conn">
+                    <p>
+                        bobio@temple.com<br>
+                        02-1090-1090
+                    </p>
+                    <div class="info-icon">
+                        <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook"></a>
+                        <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram"></a>
+                        <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>
+                Copyright © 2021Bobio
+                本網站為緯育TibaMe_前端設計工程師班第71期學題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人張害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵疑慮您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+            </p>
+        </div>
+    </footer>
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    cartwindow: true,
+                    carts: [],
+                    price: 399,
+                    sum: null,
+                    freight: 60,
+                };
+            },
+            mounted() {
+                let array = JSON.parse(localStorage.getItem('productno'));
+                this.carts = array;
+                for (let i = 0; i < this.carts.length; i++) {
+                    this.sum += (parseFloat(this.carts[i][3]) * this.price);
+                }
+                if (this.carts.length == 0) {
+                    this.cartwindow = false;
+                }
+                return this.sum;
+            },
+            methods: {
+                count(index) {
+                    var total = null;
+                    for (let i = 0; i < this.carts.length; i++) {
+                        total += parseInt(this.carts[i][3]);
+                    }
+                    total = total * this.price;
+                    this.sum = total;
+                    return this.carts;
+                },
+                countplus(index) {
+                    this.carts[index][3]++;
+                    var total = null;
+                    for (let i = 0; i < this.carts.length; i++) {
+                        total += parseInt(this.carts[i][3]);
+                    }
+                    total = total * this.price;
+                    this.sum = total;
+                    return this.carts;
+                },
+                countreduce(index) {
+                    if (this.carts[index][3] >= 2) {
+                        this.carts[index][3]--;
+                        var total = null;
+                        for (let i = 0; i < this.carts.length; i++) {
+                            total += parseInt(this.carts[i][3]);
+                        }
+                        total = total * this.price;
+                        this.sum = total;
+                        return this.carts;
+                    } else {
+                        total = total * this.price;
+                        this.sum = total;
+                        return this.carts;
+                    }
+                },
+                trash(index) {
+                    this.carts.splice(index, 1);
+                    localStorage.setItem("productno", JSON.stringify(this.carts));
+                    if (this.carts.length == 0) {
+                        this.sum = 0;
+                        this.freight = 0;
+                        this.cartwindow = false;
+                    }
+                },
+                send() {
+                    if (this.carts.length != 0) {
+                        localStorage.setItem("productno", JSON.stringify(this.carts));
+                        location.href = "shopping_cart2.html";
+                    }
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

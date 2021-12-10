@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOBIO</title>
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/shopping_cart3.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+  <script src="js/header.js"></script>
+</head>
+
+<body>
+  <header id="mainheader">
+    <div class="headerWrap">
+      <div class="logo">
+        <a href="#">
+          <img src="img/header/BOBIO_logo.svg">
+        </a>
+      </div>
+      <nav class="navPostion">
+        <ul>
+          <li>
+            <a href="#">立即祈願</a>
+          </li>
+          <li>
+            <a href="#">線上求籤</a>
+          </li>
+          <li>
+            <a href="#">平安符願</a>
+          </li>
+          <li>
+            <a href="money.html">立即結緣</a>
+          </li>
+          <li>
+            <a href="#">關於我們</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="cart"><a href="#"><img src="img/header/cart.svg"></a></div>
+      <div class="member"><a href="#"><img src="img/header/member.svg"></a></div>
+      <div class="outerHb">
+        <div class="hb" id="hb">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="process">
+    <div class="step">
+      <p class="num">1</p>
+      <p class="state">查看購物車</p>
+    </div>
+    <div class="step">
+      <p class="num">2</p>
+      <p class="state">填寫收件資料</p>
+    </div>
+    <div class="step">
+      <p class="num">3</p>
+      <p class="state">線上付款</p>
+    </div>
+    <div class="step">
+      <p class="num">4</p>
+      <p class="state">訂單確認</p>
+    </div>
+  </section>
+  <section class="info">
+    <div id="app">
+      <div class="title">
+        <h1>信用卡付款</h1>
+      </div>
+      <div class="row">
+        <ul>
+          <li>
+            <label for="username">持卡人姓名</label>
+            <input type="text" v-model="name" id="username" placeholder="請輸入中文姓名" maxlength="8">
+          </li>
+          <li>
+            <label for="cardid">信用卡號</label>
+            <input type="text" class="cardid" v-model="cardid" v-mask="'#### #### #### ####'" maxlength="19"
+              placeholder="1234 1234 1234 1234">
+          </li>
+          <li>
+            <label for="carddate">有效日期</label>
+            <input type="text" v-model="carddate" v-mask="'##/##'" id="carddate" maxlength="5" placeholder="MM/YY">
+            <label for="cardsafe" class="safetitle">安全碼</label>
+            <input type="text" v-model="cardsafe" id="cardsafe" maxlength="3" placeholder="後3碼" v-mask="'###'">
+          </li>
+        </ul>
+        <div class="btn">
+          <button @click="close">取消</button>
+          <button @click="confirmCreditcard">確認</button>
+        </div>
+        </form>
+  </section>
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-logo">
+        <img src="./img/footer/BOBIO_logo.svg" alt="bobio">
+      </div>
+      <div class="footer-slog">
+        <span>用BOBIO就有保佑</span>
+      </div>
+      <div class="footer-info">
+        <div class="list">
+          <ul>
+            <li><a href="#">立即祈願</a></li>
+            <li><a href="#">線上求籤</a></li>
+            <li><a href="#">平安符願</a></li>
+            <li><a href="#">立即結緣</a></li>
+            <li><a href="#">關於我們</a></li>
+          </ul>
+        </div>
+        <div class="conn">
+          <p>
+            bobio@temple.com<br>
+            02-1090-1090
+          </p>
+          <div class="info-icon">
+            <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook"></a>
+            <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram"></a>
+            <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>
+        Copyright © 2021Bobio
+        本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+      </p>
+    </div>
+  </footer>
+  <script>
+    Vue.use(VueMask.VueMaskPlugin);
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          name: '',
+          cardid: '',
+          carddate: '',
+          cardsafe: '',
+        }
+      },
+      methods: {
+        confirmCreditcard() {
+          let val = /^[\u4E00-\u9FA5]+$/;
+          let dateObj = this.carddate.split('/');
+          let cardIdobj = this.cardid.length;
+          this.cardid.innerHTML = cardIdobj;
+          let cardSafeobj = this.cardsafe.length;
+          this.cardsafe.innerHTML = cardSafeobj;
+
+          if (val.test(this.name) == false) {
+            alert('請輸入中文姓名');
+            this.name = '';
+            this.cardid = '';
+            this.carddate = '';
+            this.cardsafe = '';
+          } else if (cardIdobj < 19) {
+            alert('請輸入正確的信用卡號');
+            this.name = '';
+            this.cardid = '';
+            this.carddate = '';
+            this.cardsafe = '';
+          } else if (dateObj[0] > 12 || dateObj[0] < 1 || dateObj[1] < 21 || dateObj[1] > 35) {
+            alert('請輸入正確的有效日期');
+            this.name = '';
+            this.cardid = '';
+            this.carddate = '';
+            this.cardsafe = '';
+          } else if (cardSafeobj != 3) {
+            alert('請輸入正確安全碼');
+            this.name = '';
+            this.cardid = '';
+            this.carddate = '';
+            this.cardsafe = '';
+          } else {
+            location.href = "shopping_cart4.html";
+          }
+        },
+        close() {
+          location.href = "shopping_cart4.html";
+        },
+      },
+    })
+  </script>
+
+</body>
+
+</html>
