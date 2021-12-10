@@ -1,12 +1,12 @@
 body {
   background: #FFFAE7;
-  font-family: NotoSansTC, serif;
 }
 
 section {
   width: 90%;
   margin: auto;
   color: #573605;
+  font-family: NotoSansTC, serif;
 }
 
 .diy p {

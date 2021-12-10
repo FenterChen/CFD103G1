@@ -2,14 +2,14 @@
 @import 'mixin/modules';
 
 body{
-    background: map-get($color, mainyellow);
-    font-family: NotoSansTC, serif;      
+    background: map-get($color, mainyellow);    
 }
 
 section{
     width: 90%;
     margin:auto;
     color: map-get($color, darkbrown);
+    font-family: NotoSansTC, serif;   
 }
 
 //雙向綁定
