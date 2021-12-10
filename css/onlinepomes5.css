@@ -135,6 +135,7 @@ section {
 
 @media screen and (min-width: 768px) {
   .onlineContent {
+    margin-top: -130px;
     text-align: left;
     width: 60%;
   }
@@ -142,6 +143,7 @@ section {
 
 @media screen and (min-width: 1024px) {
   .onlineContent {
+    margin-top: 0px;
     padding-left: 100px;
   }
 }
@@ -292,6 +294,7 @@ section {
 }
 
 .throwPic img {
+  padding-right: 5px;
   width: 100px;
 }
 /*# sourceMappingURL=onlinepomes5.css.map */
