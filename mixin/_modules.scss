@@ -161,6 +161,8 @@
   border: 0px;
   @include btnShadow();
   @include btnColor();
+  @include btnBigBorderR();
+  @include BigBorderR();
   @include BigBorderR();
   @include btnBefore();
   @include btnAfter();
@@ -170,6 +172,32 @@
   position: relative;
   backface-visibility: hidden;
 }
+
+//客製化平安符
+@mixin btnAmulet() {
+  width: 180px;
+  height: 42px;
+  font-size: map-get($fontSize, weblp);
+  line-height: 21px;
+  text-align: center;
+  border: 0px;
+  cursor: pointer;
+  @include btnShadow();
+  @include btnColor();
+  @include smallBorderR();
+  @include btnBefore();
+  @include btnAfter();
+  @include btnHoverBefore();
+  @include btnHoverAfter();
+  color: transparent;
+  position: relative;
+  backface-visibility: hidden;
+}
+
+
+
+
+
 
 //橫排垂直＋水平置中
 @mixin flexCenter() {

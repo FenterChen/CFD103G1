@@ -130,17 +130,24 @@ section {
 }
 
 .onlineText p {
+  max-width: 315px;
   width: 100%;
   font-family: NotoSansTC;
   font-style: normal;
   font-weight: normal;
-  padding: 20px;
   margin-bottom: 50px;
   font-size: 16px;
   line-height: 22px;
   text-align: center;
   letter-spacing: 0.3px;
   color: #927858;
+}
+
+@media screen and (min-width: 768px) {
+  .onlineText p {
+    max-width: 730px;
+    width: 100%;
+  }
 }
 
 .onlineBtn {

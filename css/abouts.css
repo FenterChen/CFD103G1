@@ -983,7 +983,16 @@ body {
           animation-delay: 0s;
 }
 
-.container-Spage .pgod8, .pgod9 {
+.container-Spage .pgod8 {
+  -webkit-animation-name: roll;
+          animation-name: roll;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+.container-Spage .pgod9 {
   -webkit-animation-name: roll;
           animation-name: roll;
   -webkit-animation-duration: 1s;
