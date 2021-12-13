@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -197,4 +198,252 @@
   <script src="js/mainpage.js"></script>
 </body>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOBIO｜主頁</title>
+  <link rel="stylesheet" href="css/mainpage.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
+  </script>
+  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js?r=5426"></script>
+  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/animation.gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TimelineMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/animation.gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
+</head>
+
+<body>
+  <header id="mainheader">
+    <div class="headerWrap">
+      <div class="logo">
+        <a href="mainpage.html">
+          <img src="img/header/BOBIO_logo.svg">
+        </a>
+      </div>
+      <nav class="navPostion">
+        <ul>
+          <li>
+            <a href="pray.html">立即祈願</a>
+          </li>
+          <li>
+            <a href="onlinepomes.html">線上求籤</a>
+          </li>
+          <li>
+            <a href="amulet.html">平安符願</a>
+          </li>
+          <li>
+            <a href="money.html">立即結緣</a>
+          </li>
+          <li>
+            <a href="Abouts.html">關於我們</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="cart"><a href="shopping_cart1.html"><img src="img/header/cart.svg"></a></div>
+      <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
+      <div class="outerHb">
+        <div class="hb" @click="hb">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="mainpageSec">
+    <section class="mainpage slogan">
+      <h1 class="sloganTitle">用BOBIO就有保庇</h1>
+      <div class="scrollDown">
+        <img class="mouse" src="img/mainpage/mouse.svg" alt="滑鼠">
+        <img class="arrow" src="img/mainpage/scrollArrow.svg" alt="箭頭">
+      </div>
+    </section>
+    <section class="mainpage memberAd">
+      <div class="advertisement">
+        <div class="adWeb member">
+          <div class="adTitle">累積信眾人數</div>
+          <div class="adContent">
+            已達<span class="number">20,210</span>人
+          </div>
+        </div>
+        <div class="adPhone member">
+          <div class="adTitle">信眾已達 <span class="number">20,210</span>人
+          </div>
+        </div>
+        <div class="adWeb money">
+          <div class="adTitle">累積結緣人數</div>
+          <div class="adContent">
+            已達<span class="number">12,020</span>人
+          </div>
+        </div>
+        <div class="adPhone money">
+          <div class="adTitle">結緣已達<span class="number">12,020</span>人</div>
+        </div>
+        <div class="adWeb aumlet">
+          <div class="adTitle">平安符願結緣人數</div>
+          <div class="adContent">
+            已達<span class="number">9,210</span>人
+          </div>
+        </div>
+        <div class="adPhone aumlet">
+          <div class="adTitle">平安符願結緣已達<span class="number">9,210</span>人</div>
+        </div>
+      </div>
+      <div class="memberContent">
+        <h2>成為BOBIO信眾</h2>
+        <p class="memberSubTitle">讓您安心又放心，用BOBIO就有保庇</p>
+        <p class="memberP">
+          當今盛極一時的線上服務風潮下，BOBIO自許提供信眾最完善的線上廟宇服務，<br>
+          服務種類包羅萬象，同時囊括感情、學業、健康、平安、財富、事業六大面向，涵蓋您全方位的煩惱。
+        </p>
+        <p class="memberPDetail">
+          無論是想祈求家人朋友安康順心，或是生活上遇到了難題需要解惑，您絕對都可以在BOBIO找到適合您的服務。<br>
+          點選下方加入成為BOBIO的會員，即刻體驗完整的服務！
+        </p>
+        <button data-hover="加入會員" onclick="joinUs()">
+          <p class="joinUs">加入會員</p>
+          <div class="arrow"><img src="img/mainpage/arrow.svg" alt="箭頭"></div>
+        </button>
+      </div>
+    </section>
+    <section class="advertise adPray">
+      <div class="pray">
+        <div class="prayTitle">
+          <h2>祈願</h2>
+          <p class="paryContent">
+            祈福，是人類與生俱來的本能與渴求。<br>
+            隨著科技日新月異，線上服務蔚然成風，<br>
+            您將可以在線上向神明祈願留下內容。
+          </p>
+          <button data-hover="立即祈願" onclick="goPray()">
+            <p class="goPray">立即祈願</p>
+            <div class="arrow"><img src="img/mainpage/arrow.svg" alt="箭頭"></div>
+          </button>
+        </div>
+      </div>
+      <div class="prayBg">
+        <img class='webBg' src="img/mainpage/prayBg.png" alt="祈願背景">
+        <img class='phoneBg' src="img/mainpage/prayBgPhone.png" alt="祈願背景">
+      </div>
+    </section>
+    <section class="advertise adPomes">
+      <div class="pomes">
+        <div class="pomesTitle">
+          <h2>線上求籤</h2>
+          <p class="pomesContent">
+            人生遇到了難關或感到迷惘嗎？<br>
+            不妨求籤請神明為您指點迷津，<br>
+            心誠則靈，即便是線上服務也一樣靈驗！
+          </p>
+          <button data-hover="前往求籤" onclick="goPomes()">
+            <p class="goPomes">前往求籤</p>
+            <div class="arrow"><img src="img/mainpage/arrow.svg" alt="箭頭"></div>
+          </button>
+        </div>
+      </div>
+      <div class="pomesBg">
+        <img class='webBg' src="img/mainpage/pomesBg.png" alt="求籤背景">
+        <img class='phoneBg' src="img/mainpage/pomesBgPhone.png" alt="求籤背景">
+      </div>
+    </section>
+  </div>
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-logo">
+        <img src="./img/header/BOBIO_logo.svg" alt="bobio">
+      </div>
+      <div class="footer-slog">
+        <span>用BOBIO就有保佑</span>
+      </div>
+      <div class="footer-info">
+        <div class="list">
+          <ul>
+            <li><a href="pray.html">立即祈願</a></li>
+            <li><a href="onlinepomes.html">線上求籤</a></li>
+            <li><a href="amulet.html">平安符願</a></li>
+            <li><a href="money.html">立即結緣</a></li>
+            <li><a href="Abouts.html">關於我們</a></li>
+          </ul>
+        </div>
+        <div class="conn">
+          <p>
+            bobio@temple.com<br>
+            02-1090-1090
+          </p>
+          <div class="info-icon">
+            <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook"></a>
+            <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram"></a>
+            <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>
+        Copyright © 2021Bobio
+        本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+      </p>
+    </div>
+  </footer>
+  <script src="js/mainpage.js"></script>
+  <script>
+    //headerVue
+    new Vue({
+      el: '#mainheader',
+      data() {
+        return {
+          screenWidth: null,
+        }
+      },
+      mounted() {
+        this.screenWidth = document.body.clientWidth;
+        window.onresize = () => {
+          return (() => {
+            this.screenWidth = document.body.clientWidth;
+          })()
+        }
+      },
+      watch: {
+        screenWidth: {
+          handler: function (newval, oldval) {
+            if (newval >= 1200) {
+              $(`header>.headerWrap>nav`).removeClass('navPostion');
+            } else if (newval < 1200) {
+              $(`header>.headerWrap>nav`).addClass('navPostion');
+            }
+          },
+          immediate: true,
+        }
+      },
+      methods: {
+        hb() {
+          let place = $("nav").css("right");
+          if (place < "0px") {
+            $("nav").animate({
+              right: 0,
+            }, 1200, 'easeInBounce')
+          } else {
+            $("nav").animate({
+              right: "-30%",
+            }, 1200, 'easeOutBounce')
+          }
+        }
+      },
+    });
+  </script>
+
+</body>
+
+>>>>>>> dev
 </html>

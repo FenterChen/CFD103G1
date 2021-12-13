@@ -209,7 +209,7 @@ header .hb span {
   }
 
   header nav li a {
-    padding: 0 15px;
+    padding: 0px 15px;
   }
 
 
@@ -257,5 +257,34 @@ header .hb span {
     display: none;
     flex-grow: 1;
     width: 5%;
+  }
+
+  //hover 效果
+  header nav li a {
+    display: block;
+    padding: 10px 20px;
+    position: relative;
+  }
+
+  header nav li a::before {
+    transition: all 0.8s cubic-bezier(0.7, -0.5, 0.2, 2);
+    content: '';
+    width: 0;
+    height: 2px;
+    background: map-get($color, orange);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  header nav li a:hover:before {
+    background: map-get($color, orange);
+    width: 60%;
+  }
+
+  .bottomnavline:before {
+    background: map-get($color, orange);
+    width: 60%;
   }
 }

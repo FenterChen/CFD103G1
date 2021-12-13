@@ -274,7 +274,6 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
     h2{
       color: map-get($color, darkbrown);
       font-size: map-get($fontSize, webh2);
@@ -370,13 +369,13 @@ body{
   }
 }
 .adPomes{
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   padding-top: 118px;
   font-family: NotoSansTC, Serif;
+  width: 100%;
   background-color: map-get($color, mainyellow);
   @include tabletH(){
     flex-direction: row-reverse;
