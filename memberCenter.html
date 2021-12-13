@@ -45,7 +45,7 @@
       <div class="cart"><a href="shopping_cart1.html"><img src="img/header/cart.svg"></a></div>
       <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
       <div class="outerHb">
-        <div class="hb" id="hb">
+        <div class="hb" @click="hb">
           <span></span>
           <span></span>
           <span></span>
@@ -167,7 +167,51 @@
       </p>
     </div>
   </footer>
-  <script src="js/header.js"></script>
+  <script>
+    //headerVue
+    new Vue({
+      el: '#mainheader',
+      data() {
+        return {
+          screenWidth: null,
+        }
+      },
+      mounted() {
+        this.screenWidth = document.body.clientWidth;
+        window.onresize = () => {
+          return (() => {
+            this.screenWidth = document.body.clientWidth;
+          })()
+        }
+      },
+      watch: {
+        screenWidth: {
+          handler: function (newval, oldval) {
+            if (newval >= 1200) {
+              $(`header>.headerWrap>nav`).removeClass('navPostion');
+            } else if (newval < 1200) {
+              $(`header>.headerWrap>nav`).addClass('navPostion');
+            }
+          },
+          immediate: true,
+        }
+      },
+      methods: {
+        hb() {
+          let place = $("nav").css("right");
+          if (place < "0px") {
+            $("nav").animate({
+              right: 0,
+            }, 1200, 'easeInBounce')
+          } else {
+            $("nav").animate({
+              right: "-30%",
+            }, 1200, 'easeOutBounce')
+          }
+        }
+      },
+    });
+  </script>
 </body>
 
 </html>
