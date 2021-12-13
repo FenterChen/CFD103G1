@@ -357,7 +357,7 @@ header .hb span {
             flex-grow: 30;
   }
   header nav li a {
-    padding: 0px 15px;
+    padding: 0 15px;
   }
   header .logo {
     -webkit-box-flex: 1;
@@ -437,32 +437,6 @@ header .hb span {
         -ms-flex-positive: 1;
             flex-grow: 1;
     width: 5%;
-  }
-  header nav li a {
-    display: block;
-    padding: 10px 20px;
-    position: relative;
-  }
-  header nav li a::before {
-    -webkit-transition: all 0.8s cubic-bezier(0.7, -0.5, 0.2, 2);
-    transition: all 0.8s cubic-bezier(0.7, -0.5, 0.2, 2);
-    content: '';
-    width: 0;
-    height: 2px;
-    background: #FDBF52;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-  }
-  header nav li a:hover:before {
-    background: #FDBF52;
-    width: 60%;
-  }
-  .bottomnavline:before {
-    background: #FDBF52;
-    width: 60%;
   }
 }
 /*# sourceMappingURL=header.css.map */

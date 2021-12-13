@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,10 +10,9 @@
   <link rel="stylesheet" href="css/footer.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="js/header.js"></script>
   <script src="js/pray.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
 </head>
-
 <body>
   <header id="mainheader">
     <div class="headerWrap">
@@ -45,7 +43,7 @@
       <div class="cart"><a href="shopping_cart1.html"><img src="img/header/cart.svg"></a></div>
       <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
       <div class="outerHb">
-        <div class="hb" @click="hb">
+        <div class="hb" id="hb">
           <span></span>
           <span></span>
           <span></span>
@@ -55,255 +53,207 @@
   </header>
   <div class="bobioPray" id="app">
     <section class='section praySection'>
-      <div class="pray">
-        <p class="choose">請選擇</p>
-        <h2 class="prayCate">祈願種類</h2>
-        <div class="cateSectionPhone">
-          <select name="cateTitle" class="select">
-            <option class="choosePhone" value="" selected disabled>種類</option>
-            <option class="lovePhone" value="月老">感情</option>
-            <option class="studyPhone" value="文昌帝君">學業</option>
-            <option class="healthPhone" value="保生大帝">健康</option>
-            <option class="safetyPhone" value="媽祖">平安</option>
-            <option class="wealthPhone" value="財神">財富</option>
-            <option class="workPhone" value="關公">事業</option>
-          </select>
-        </div>
-        <div class="prayImg">
-          <img src="img/pray/unknownGod.png" alt="月老">
-        </div>
-        <p class="godRepresent">掌管神明</p>
-        <h3 class="godTitle">掌管神明</h3>
-        <button class="prayNow" data-hover="開始祈願">開始祈願</button>
+    <div class="pray">
+      <p class="choose">請選擇</p>
+      <h2 class="prayCate">祈願種類</h2>
+      <div class="cateSectionPhone">
+        <select name="cateTitle" class="select">
+          <option class="choosePhone" value="" selected disabled>種類</option>
+          <option class="lovePhone" value="月老">感情</option>
+          <option class="studyPhone" value="文昌帝君">學業</option>
+          <option class="healthPhone" value="保生大帝">健康</option>
+          <option class="safetyPhone" value="媽祖">平安</option>
+          <option class="wealthPhone" value="財神">財富</option>
+          <option class="workPhone" value="關公">事業</option>
+        </select>
       </div>
-      <div class="cateSectionWeb">
-        <div class="cate love">
-          <img src="img/pray/love.svg" alt="感情">
-          <p class="cateTitle">感情</p>
-        </div>
-        <div class="cate study">
-          <img src="img/pray/study.svg" alt="學業">
-          <p class="cateTitle">學業</p>
-        </div>
-        <div class="cate health">
-          <img src="img/pray/health.svg" alt="健康">
-          <p class="cateTitle">健康</p>
-        </div>
-        <div class="cate safety">
-          <img src="img/pray/safety.svg" alt="平安">
-          <p class="cateTitle">平安</p>
-        </div>
-        <div class="cate wealth">
-          <img src="img/pray/wealth.svg" alt="財富">
-          <p class="cateTitle">財富</p>
-        </div>
-        <div class="cate work">
-          <img src="img/pray/work.svg" alt="事業">
-          <p class="cateTitle">事業</p>
-        </div>
+      <div class="prayImg">
+        <img src="img/pray/unknownGod.png" alt="月老">
       </div>
+      <p class="godRepresent">掌管神明</p>
+      <h3 class="godTitle">掌管神明</h3>
+      <button class="prayNow" data-hover="開始祈願">開始祈願</button>
+    </div>
+    <div class="cateSectionWeb">
+      <div class="cate love">
+        <img src="img/pray/love.svg" alt="感情">
+        <p class="cateTitle">感情</p>
+      </div>
+      <div class="cate study">
+        <img src="img/pray/study.svg" alt="學業">
+        <p class="cateTitle">學業</p>
+      </div>
+      <div class="cate health" >
+        <img src="img/pray/health.svg" alt="健康">
+        <p class="cateTitle">健康</p>
+      </div>
+      <div class="cate safety">
+        <img src="img/pray/safety.svg" alt="平安">
+        <p class="cateTitle">平安</p>
+      </div>
+      <div class="cate wealth">
+        <img src="img/pray/wealth.svg" alt="財富">
+        <p class="cateTitle">財富</p>
+      </div>
+      <div class="cate work">
+        <img src="img/pray/work.svg" alt="事業">
+        <p class="cateTitle">事業</p>
+      </div>
+    </div>
     </section>
     <section class="section prayIntro">
-      <div class="mainSec">
-        <div class="prayGod">
-          <img id="godDisplay" src="img/pray/loveGodShadow.png" alt="月老">
-        </div>
-        <div class="prayTitle">
-          <div class="prayMethod">
-            <h2 class="methodWeb">祈願<br>方法</h2>
-            <h2 class="methodPhone">祈願方法</h2>
-            <p class="detailWeb">請在心中默念您的名字、欲祈求之事項。<br>完成後請點選下一步。</p>
-            <p class="detailPhone">請在心中默念您的名字、<br>欲祈求之事項。<br>完成後請點選下一步。</p>
+        <div class="mainSec">
+          <div class="prayGod">
+            <img id="godDisplay" src="img/pray/loveGodShadow.png" alt="月老">
           </div>
-          <div class="praySteps">
-            <p class="step chooseAttr">選擇<br>供品</p>
-            <p class=" step prayStart">默念<br>拜拜</p>
-            <p class="step prayDone">完成<br>祈願</p>
+          <div class="prayTitle">
+            <div class="prayMethod">
+              <h2 class="methodWeb">祈願<br>方法</h2>
+              <h2 class="methodPhone">祈願方法</h2>
+              <p class="detailWeb">請在心中默念您的名字、欲祈求之事項。<br>完成後請點選下一步。</p>
+              <p class="detailPhone">請在心中默念您的名字、<br>欲祈求之事項。<br>完成後請點選下一步。</p>
+            </div>
+            <div class="praySteps">
+              <p class="step chooseAttr">選擇<br>供品</p>
+              <p class=" step prayStart">默念<br>拜拜</p>
+              <p class="step prayDone">完成<br>祈願</p>
+            </div>
           </div>
         </div>
-      </div>
     </section>
     <section class="section attrIntro">
-      <div class="attrSec">
-        <div class="stepMethod">
-          <p class=" step prayWay">祈願<br>方法</p>
-        </div>
-        <div class="chooseAttr">
-          <div class="attr meat">
-            <h2>三牲</h2>
-            <div class="detail">
-              <p>豬<br>雞<br>魚</p>
-              <button class="choose" data-hover="選擇" onclick="nextSection()">選擇</button>
+        <div class="attrSec">
+          <div class="stepMethod">
+            <p class=" step prayWay">祈願<br>方法</p>
+          </div>
+          <div class="chooseAttr">
+            <div class="attr meat">
+              <h2>三牲</h2>
+              <div class="detail">
+                <p>豬<br>雞<br>魚</p>
+                <button class="choose" data-hover="選擇" onclick="nextSection()">選擇</button>
+              </div>
+            </div>
+            <div class="attr fruit">
+              <h2>鮮果</h2>
+              <div class="detail">
+                <p>香蕉<br>蘋果<br>水梨</p>
+                <button class="choose" data-hover="選擇" onclick="nextSection()">選擇</button>
+              </div>
+            </div>
+            <div class="attr sweet">
+              <h2>甜食</h2>
+              <div class="detail">
+                <p>糕餅<br>餅乾<br>糖果</p>
+                <button class="choose" data-hover="選擇" onclick="nextSection()">選擇</button>
+              </div>
             </div>
           </div>
-          <div class="attr fruit">
-            <h2>鮮果</h2>
-            <div class="detail">
-              <p>香蕉<br>蘋果<br>水梨</p>
-              <button class="choose" data-hover="選擇" onclick="nextSection()">選擇</button>
+          <div class="attrTitle">
+            <div class="attrChoices">
+              <h2 class="choicesWeb">選擇<br>供品</h2>
+              <h2 class="choicesPhone">選擇供品</h2>
+              <p class="choicesDetail">請選擇欲提供之供品。<br>完成後請點選下一步。</p>
             </div>
-          </div>
-          <div class="attr sweet">
-            <h2>甜食</h2>
-            <div class="detail">
-              <p>糕餅<br>餅乾<br>糖果</p>
-              <button class="choose" data-hover="選擇" onclick="nextSection()">選擇</button>
+            <div class="chooseSteps">
+              <p class=" step prayStart">默念<br>拜拜</p>
+              <p class="step prayDone">完成<br>祈願</p>
             </div>
           </div>
         </div>
-        <div class="attrTitle">
-          <div class="attrChoices">
-            <h2 class="choicesWeb">選擇<br>供品</h2>
-            <h2 class="choicesPhone">選擇供品</h2>
-            <p class="choicesDetail">請選擇欲提供之供品。<br>完成後請點選下一步。</p>
-          </div>
-          <div class="chooseSteps">
-            <p class=" step prayStart">默念<br>拜拜</p>
-            <p class="step prayDone">完成<br>祈願</p>
-          </div>
-        </div>
-      </div>
     </section>
     <section class="section byeBye">
-      <div class="byeSec">
-        <div class="byeTitle">
-          <div class="byeChoices">
-            <h2 class="byeByeWeb">默念<br>拜拜</h2>
-            <h2 class="byeByePhone">默念拜拜</h2>
-            <p class="byeByeDetail">請雙手合十，進行叩拜。<br>完成後請點選下一步。</p>
+        <div class="byeSec">
+          <div class="byeTitle">
+            <div class="byeChoices">
+              <h2 class="byeByeWeb">默念<br>拜拜</h2>
+              <h2 class="byeByePhone">默念拜拜</h2>
+              <p class="byeByeDetail">請雙手合十，進行叩拜。<br>完成後請點選下一步。</p>
+            </div>
+            <div class="byeByeProcess">
+              <p class="step prayStart">祈願<br>方法</p>
+              <p class="step prayDone">選擇<br>貢品</p>
+            </div>
           </div>
-          <div class="byeByeProcess">
-            <p class="step prayStart">祈願<br>方法</p>
-            <p class="step prayDone">選擇<br>貢品</p>
+          <div class="byeByeAnimation">
+            <img src="img/pray/bobioAnimation.gif" alt="默念拜拜">
           </div>
-        </div>
-        <div class="byeByeAnimation">
-          <img src="img/pray/bobioAnimation.gif" alt="默念拜拜">
-        </div>
-        <div class="lastStep">
-          <p class="step prayDone">完成<br>祈願</p>
-        </div>
-      </div>
-    </section>
-    <section class="section Finish">
-      <div class="doneSec">
-        <div class="doneTitle">
-          <div class="doneIntro">
-            <h2 class="prayDoneWeb">完成<br>祈願</h2>
-            <h2 class="prayDonePhone">祈願</h2>
-            <p class="doneDetail">本次祈願步驟已完成。<br>另贈與雞湯小卡一張，庇佑您心想事成。</p>
-          </div>
-          <div class="prayProcess">
-            <p class="step prayMethod">祈願<br>方法</p>
-            <p class="step chooseAttr">選擇<br>貢品</p>
+          <div class="lastStep">
             <p class="step prayDone">完成<br>祈願</p>
           </div>
         </div>
-        <div class="prayCard">
-          <div class="cradDetail">
-            <img src="img/pray/prayCard.png" alt="雞湯小卡">
+    </section>
+    <section class="section Finish">
+        <div class="doneSec">
+          <div class="doneTitle">
+            <div class="doneIntro">
+              <h2 class="prayDoneWeb">完成<br>祈願</h2>
+              <h2 class="prayDonePhone">祈願</h2>
+              <p class="doneDetail">本次祈願步驟已完成。<br>另贈與雞湯小卡一張，庇佑您心想事成。</p>
+            </div>
+            <div class="prayProcess">
+              <p class="step prayMethod">祈願<br>方法</p>
+              <p class="step chooseAttr">選擇<br>貢品</p>
+              <p class="step prayDone">完成<br>祈願</p>
+            </div>
+          </div>
+          <div class="prayCard">
+            <div class="cradDetail">
+              <img src="img/pray/prayCard.png" alt="雞湯小卡">
+            </div>
           </div>
         </div>
-      </div>
     </section>
     <div class="btnStep">
-      <button class="btn previous" onclick="minusSlides(1)">
+        <button class="btn previous" onclick="minusSlides(1)">
         <img src="img/pray/preArrow.svg" alt="上一步">
         <p class="previousStep">上一步</p>
       </button>
-      <button class="btn next" onclick="plusSlides(1)">
+        <button class="btn next" onclick="plusSlides(1)">
         <p class="nextStep">下一步</p>
         <img src="img/pray/nextArrow.svg" alt="下一步">
       </button>
     </div>
     <div class="goMainpage">
-      <button data-hover="返回首頁" onclick="goHome()">返回首頁</button>
+    <button data-hover="返回首頁" onclick="goHome()">返回首頁</button>
     </div>
   </div>
   <footer>
     <div class="footer-wrap">
-      <div class="footer-logo">
-        <img src="./img/header/BOBIO_logo.svg" alt="bobio">
-      </div>
-      <div class="footer-slog">
-        <span>用BOBIO就有保佑</span>
-      </div>
-      <div class="footer-info">
-        <div class="list">
-          <ul>
-            <li><a href="pray.html">立即祈願</a></li>
-            <li><a href="onlinepomes.html">線上求籤</a></li>
-            <li><a href="amulet.html">平安符願</a></li>
-            <li><a href="money.html">立即結緣</a></li>
-            <li><a href="Abouts.html">關於我們</a></li>
-          </ul>
+        <div class="footer-logo">
+            <img src="./img/header/BOBIO_logo.svg" alt="bobio">
         </div>
-        <div class="conn">
-          <p>
-            bobio@temple.com<br>
-            02-1090-1090
-          </p>
-          <div class="info-icon">
-            <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook"></a>
-            <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram"></a>
-            <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube"></a>
+        <div class="footer-slog">
+            <span>用BOBIO就有保佑</span>
+        </div>
+        <div class="footer-info">
+          <div class="list">
+            <ul>
+              <li><a href="pray.html">立即祈願</a></li>
+              <li><a href="onlinepomes.html">線上求籤</a></li>
+              <li><a href="amulet.html">平安符願</a></li>
+              <li><a href="money.html">立即結緣</a></li>
+              <li><a href="Abouts.html">關於我們</a></li>
+            </ul>
           </div>
+            <div class="conn">
+                <p>
+                    bobio@temple.com<br>
+                    02-1090-1090                    
+                </p>
+                <div class="info-icon">
+                    <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook"></a>
+                    <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram"></a>
+                    <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube"></a>                      
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <div class="copyright">
-      <p>
-        Copyright © 2021Bobio
-        本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
-      </p>
+        <p>
+            Copyright © 2021Bobio 本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+        </p>
     </div>
   </footer>
-  <script>
-    //headerVue
-    new Vue({
-      el: '#mainheader',
-      data() {
-        return {
-          screenWidth: null,
-        }
-      },
-      mounted() {
-        this.screenWidth = document.body.clientWidth;
-        window.onresize = () => {
-          return (() => {
-            this.screenWidth = document.body.clientWidth;
-          })()
-        },
-          $(`header .headerWrap ul li:first-child a`).addClass('bottomnavline');
-      },
-      watch: {
-        screenWidth: {
-          handler: function (newval, oldval) {
-            if (newval >= 1200) {
-              $(`header>.headerWrap>nav`).removeClass('navPostion');
-            } else if (newval < 1200) {
-              $(`header>.headerWrap>nav`).addClass('navPostion');
-            }
-          },
-          immediate: true,
-        }
-      },
-      methods: {
-        hb() {
-          let place = $("nav").css("right");
-          if (place < "0px") {
-            $("nav").animate({
-              right: 0,
-            }, 1200, 'easeInBounce')
-          } else {
-            $("nav").animate({
-              right: "-30%",
-            }, 1200, 'easeOutBounce')
-          }
-        }
-      },
-    });
-  </script>
 </body>
-
 </html>

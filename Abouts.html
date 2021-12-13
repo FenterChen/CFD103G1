@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,9 +12,10 @@
     <link rel="stylesheet" href="./css/grid-2.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/header.css">
+    <script src="./js/header.js"></script>
 
+    
 </head>
-
 <body>
 
     <header id="mainheader">
@@ -47,7 +47,7 @@
             <div class="cart"><a href="shopping_cart1.html"><img src="img/header/cart.svg"></a></div>
             <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
             <div class="outerHb">
-                <div class="hb" @click="hb">
+                <div class="hb" id="hb">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -56,83 +56,35 @@
         </div>
     </header>
 
-    <div id="app">
-        <!-- HTML DOM template -->
+    <div id="app"> <!-- HTML DOM template -->
 
         <!-- 組件出現在這裡！！ -->
         <keep-alive>
-            <!-- <component :is="content"></component> -->
-            <component :is="list[currentIdx].comp" @update="updateIdx"></component>
+        <!-- <component :is="content"></component> -->
+        <component :is="list[currentIdx].comp" @update="updateIdx"></component>
         </keep-alive>
 
         <!-- 一樣被點擊之後會換下一頁跟上一頁 -->
         <section class="arrow">
-            <div class="arrow-right" @click="currentIdx--">
+            <div  class="arrow-right" @click="currentIdx--">
                 <img src="./img/./Aboutus/arrow2.png" alt="">
-
+        
             </div>
-            <div class="arrow-left" @click="currentIdx++">
-                <img src="./img/./Aboutus/arrow1.png" alt="">
+            <div  class="arrow-left" @click="currentIdx++">
+                <img  src="./img/./Aboutus/arrow1.png" alt="">
             </div>
         </section>
 
         <!-- 時間軸被點擊之後會換對應的本頁 -->
         <section class="timeline">
             <ul>
-                <li v-for="(item, idx) in list" :key="idx" @click="currentIdx=idx"
-                    :class="{'active': currentIdx ==  idx}">{{item.name}}</li>
-            </ul>
+                <li v-for="(item, idx) in list" :key="idx" @click="currentIdx=idx" :class="{'active': currentIdx ==  idx}">{{item.name}}</li> 
+            </ul>       
         </section>
     </div>
 
     <script>
-        //headerVue
-        new Vue({
-            el: '#mainheader',
-            data() {
-                return {
-                    screenWidth: null,
-                }
-            },
-            mounted() {
-                this.screenWidth = document.body.clientWidth;
-                window.onresize = () => {
-                    return (() => {
-                        this.screenWidth = document.body.clientWidth;
-                    })()
-                },
-                    $(`header .headerWrap ul li:nth-child(5) a`).addClass('bottomnavline');
-            },
-            watch: {
-                screenWidth: {
-                    handler: function (newval, oldval) {
-                        if (newval >= 1200) {
-                            $(`header>.headerWrap>nav`).removeClass('navPostion');
-                        } else if (newval < 1200) {
-                            $(`header>.headerWrap>nav`).addClass('navPostion');
-                        }
-                    },
-                    immediate: true,
-                }
-            },
-            methods: {
-                hb() {
-                    let place = $("nav").css("right");
-                    if (place < "0px") {
-                        $("nav").animate({
-                            right: 0,
-                        }, 1200, 'easeInBounce')
-                    } else {
-                        $("nav").animate({
-                            right: "-30%",
-                        }, 1200, 'easeOutBounce')
-                    }
-                }
-            },
-        });
-
-
-        Vue.component('page1', {
+        Vue.component('page1',{
             template: `<div class="container-third">
         <!-- phone_page_start -->
         <section class="phone-ablist">
@@ -271,7 +223,7 @@
     </section>
 </div>
             `,
-            data() { //放資料綁定
+            data(){ //放資料綁定
                 return {
                     // move:'/img/aboutF/2.svg'
                 }
@@ -280,12 +232,12 @@
                 updateIdx(idx) {
                     this.$emit('update', idx);
                 },
-                mounted() {
-                },
+            mounted(){
             },
-        });
+        }, 
+    });
 
-        Vue.component('page2', {
+        Vue.component('page2',{
             template: `
     <div class="container-fpage">
     <!-- phone_page_start -->
@@ -402,7 +354,7 @@
 
 </div>  `,
 
-            data() { //放資料綁定
+        data(){ //放資料綁定
                 return {
                 }
             },
@@ -410,11 +362,11 @@
                 updateIdx(idx) {
                     this.$emit('update', idx);
                 },
-                mounted() {
-                },
+            mounted(){
             },
-        });
-        Vue.component('page3', {
+        },
+    });
+        Vue.component('page3',{
             template: `<div class="container-fpage">
     <!-- phone_page_start -->
     <section class="phone_aboutus_page">
@@ -529,7 +481,7 @@
     </section>
 
             `,
-            data() { //放資料綁定
+        data(){ //放資料綁定
                 return {
                 }
             },
@@ -537,11 +489,11 @@
                 updateIdx(idx) {
                     this.$emit('update', idx);
                 },
-                mounted() {
-                },
+            mounted(){
             },
-        });
-        Vue.component('page4', {
+        },
+    });
+        Vue.component('page4',{
             template: `
             <div class="container-fpage">
     <!-- phone_page_start -->
@@ -658,7 +610,7 @@
     </section>
     </div>
             `,
-            data() { //放資料綁定
+            data(){ //放資料綁定
                 return {
                 }
             },
@@ -666,11 +618,11 @@
                 updateIdx(idx) {
                     this.$emit('update', idx);
                 },
-                mounted() {
-                },
+            mounted(){
             },
-        });
-        Vue.component('page5', {
+        },
+    });
+        Vue.component('page5',{
             template: `
             <div class="container-Spage">
     <!-- phone_page_start -->
@@ -766,7 +718,7 @@
 </div>
             `,
         });
-        Vue.component('page6', {
+        Vue.component('page6',{
             template: `<div class="container-Spage"> 
     <!-- phone_page_start -->
     <section class="phone_aboutus_page">
@@ -858,7 +810,7 @@
     </section>
     </div>
             `,
-            data() { //放資料綁定
+            data(){ //放資料綁定
                 return {
                 }
             },
@@ -866,11 +818,11 @@
                 updateIdx(idx) {
                     this.$emit('update', idx);
                 },
-                mounted() {
-                },
+            mounted(){
             },
+        },
         });
-        Vue.component('page7', {
+        Vue.component('page7',{
             template: `
             <div class="container-Spage"> 
     <!-- phone_page_start -->
@@ -963,7 +915,7 @@
     </section>
             `,
         });
-        Vue.component('page8', {
+        Vue.component('page8',{
             template: `
     <div class="container-Spage"> 
     <!-- phone_page_start -->
@@ -1062,7 +1014,7 @@
     </section>
     </div>
             `,
-            data() { //放資料綁定
+            data(){ //放資料綁定
                 return {
                 }
             },
@@ -1070,11 +1022,11 @@
                 updateIdx(idx) {
                     this.$emit('update', idx);
                 },
-                mounted() {
-                },
+            mounted(){
             },
-        });
-        Vue.component('page9', {
+        },
+    });
+        Vue.component('page9',{
             template: `<div class="container-Spage"> 
         <!-- phone_page_start -->
         <section class="phone_aboutus_page">
@@ -1162,7 +1114,7 @@
     </section>
 </div>
             `,
-            data() { //放資料綁定
+            data(){ //放資料綁定
                 return {
                 }
             },
@@ -1170,12 +1122,12 @@
                 updateIdx(idx) {
                     this.$emit('update', idx);
                 },
-                mounted() {
-                },
+            mounted(){
             },
-        });
+        },
+    });
 
-        Vue.component('page10', {
+        Vue.component('page10',{
             template: `<div class="container-Spage"> 
     <!-- phone_page_start -->
     <section class="phone_aboutus_page">
@@ -1267,7 +1219,7 @@
     </section>
     </div>     
             `,
-            data() { //放資料綁定
+            data(){ //放資料綁定
                 return {
                 }
             },
@@ -1275,11 +1227,11 @@
                 updateIdx(idx) {
                     this.$emit('update', idx);
                 },
-                mounted() {
-                },
+            mounted(){
             },
+        },
         });
-        Vue.component('page11', {
+        Vue.component('page11',{
             template: `<div class="container-Spage">
         <!-- phone_page_start -->
         <section class="phone_aboutus_page">
@@ -1374,7 +1326,7 @@
     </section>
 </div>
             `,
-            data() { //放資料綁定
+            data(){ //放資料綁定
                 return {
                 }
             },
@@ -1382,15 +1334,15 @@
                 updateIdx(idx) {
                     this.$emit('update', idx);
                 },
-                mounted() {
-                },
+            mounted(){
             },
+        },
         });
 
 
         new Vue({
             el: '#app',
-            data: {
+            data:{
                 content: `page1`,
                 currentIdx: 0,
                 list: [
@@ -1439,7 +1391,7 @@
                         comp: 'page11',
                     },
                 ],
-
+                
             },
             methods: {
                 updateIdx(idx) {
@@ -1449,47 +1401,45 @@
             },
         });
     </script>
-    <!-- 統一footer -->
+<!-- 統一footer -->
 
-    <footer>
-        <div class="footer-wrap">
-            <div class="footer-logo">
-                <img src="./img/header/BOBIO_logo.svg" alt="bobio">
+<footer>
+    <div class="footer-wrap">
+        <div class="footer-logo">
+            <img src="./img/header/BOBIO_logo.svg" alt="bobio">
+        </div>
+        <div class="footer-slog">
+            <span>用BOBIO就有保佑</span>
+        </div>
+        <div class="footer-info">
+            <div class="list">
+                <ul>
+                  <li><a href="pray.html">立即祈願</a></li>
+                  <li><a href="onlinepomes.html">線上求籤</a></li>
+                  <li><a href="amulet.html">平安符願</a></li>
+                  <li><a href="money.html">立即結緣</a></li>
+                  <li><a href="Abouts.html">關於我們</a></li>
+                </ul>
             </div>
-            <div class="footer-slog">
-                <span>用BOBIO就有保佑</span>
-            </div>
-            <div class="footer-info">
-                <div class="list">
-                    <ul>
-                        <li><a href="pray.html">立即祈願</a></li>
-                        <li><a href="onlinepomes.html">線上求籤</a></li>
-                        <li><a href="amulet.html">平安符願</a></li>
-                        <li><a href="money.html">立即結緣</a></li>
-                        <li><a href="Abouts.html">關於我們</a></li>
-                    </ul>
-                </div>
-                <div class="conn">
-                    <p>
-                        bobio@temple.com<br>
-                        02-1090-1090
-                    </p>
-                    <div class="info-icon">
-                        <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook"></a>
-                        <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram"></a>
-                        <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube"></a>
-                    </div>
+            <div class="conn">
+                <p>
+                    bobio@temple.com<br>
+                    02-1090-1090                    
+                </p>
+                <div class="info-icon">
+                    <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook"></a>
+                    <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram"></a>
+                    <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube"></a>                      
                 </div>
             </div>
         </div>
-        <div class="copyright">
-            <p>
-                Copyright © 2021Bobio
-                本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
-            </p>
-        </div>
-    </footer>
+    </div>
+    <div class="copyright">
+        <p>
+            Copyright © 2021Bobio 本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+        </p>
+    </div>
+  </footer>
 
 </body>
-
 </html>

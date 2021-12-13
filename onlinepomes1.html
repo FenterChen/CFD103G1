@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/onlinepomes1.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="js/header.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
 </head>
 
@@ -123,51 +124,6 @@
     </div>
   </footer>
   <script>
-    //headerVue
-    new Vue({
-      el: '#mainheader',
-      data() {
-        return {
-          screenWidth: null,
-        }
-      },
-      mounted() {
-        this.screenWidth = document.body.clientWidth;
-        window.onresize = () => {
-          return (() => {
-            this.screenWidth = document.body.clientWidth;
-          })()
-        }
-        $(`header .headerWrap ul li:nth-child(2) a`).addClass('bottomnavline');
-      },
-      watch: {
-        screenWidth: {
-          handler: function (newval, oldval) {
-            if (newval >= 1200) {
-              $(`header>.headerWrap>nav`).removeClass('navPostion');
-            } else if (newval < 1200) {
-              $(`header>.headerWrap>nav`).addClass('navPostion');
-            }
-          },
-          immediate: true,
-        }
-      },
-      methods: {
-        hb() {
-          let place = $("nav").css("right");
-          if (place < "0px") {
-            $("nav").animate({
-              right: 0,
-            }, 1200, 'easeInBounce')
-          } else {
-            $("nav").animate({
-              right: "-30%",
-            }, 1200, 'easeOutBounce')
-          }
-        }
-      },
-    });
-
     new Vue({
       el: '#app',
       data: {
