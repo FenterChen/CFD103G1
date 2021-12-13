@@ -1,0 +1,191 @@
+@import 'base/var';
+@import 'mixin/modules';
+
+body {
+    background: map-get($color, mainyellow);
+}
+
+
+
+.process {
+    display: flex;
+    margin: 80px auto;
+}
+
+.step {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step:nth-child(4) .num {
+    background-color: map-get($color, darkbrown);
+}
+
+.step:nth-child(4) .state {
+    color: map-get($color, darkbrown);
+}
+
+.step .num {
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    color: map-get($color, mainyellow);
+    line-height: 16px;
+    background-color: #D0B38F;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.step .state {
+    font-size: map-get($fontSize, minifont);
+    color: #D0B38F;
+    margin-top: 10px;
+}
+
+.info {
+    width: 90%;
+    margin: auto;
+}
+
+.wrap {
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.mdTable {
+    color: map-get($color, darkbrown);
+    font-size: map-get($fontSize, navfont);
+    background-color: #fff;
+    border-radius: 20px;
+    border: 1px solid map-get($color, darkbrown);
+    border-collapse: separate;
+    // display: block;
+}
+
+.mdTable tr td {
+    padding: 10px 0 0 8px;
+}
+
+
+.mdTable tr:nth-child(1) td {
+    background-color: map-get($color, orange);
+    height: 40px;
+    line-height: 40px;
+    border-radius: 20px 20px 0 0;
+    padding-left: 8px;
+}
+
+.mdTable tr:nth-child(4) td {
+    vertical-align: middle;
+}
+
+
+.mdTable tr:last-child td {
+    padding-bottom: 20px;
+}
+
+.mdTable a {
+    color: map-get($color, darkbrown);
+    padding-left: 20px;
+    font-size: 14px;
+}
+
+.mdTable h3 {
+    font-size: map-get($fontSize, webp);
+    font-weight: 600;
+}
+
+
+
+button {
+    margin: 50px auto 0 auto;
+    @include btnlocal();
+}
+
+.lgTable {
+    display: none;
+}
+
+
+
+
+
+
+//RWD
+@include phone() {}
+
+
+
+@include tabletV() {
+    .step .state {
+        font-size: map-get($fontSize, weblp);
+    }
+
+
+}
+
+@include tabletH() {
+    section {
+        @include maxWidth();
+    }
+
+    .mdTable {
+        display: none;
+    }
+
+
+    .lgTable {
+        font-size: map-get($fontSize, welp);
+        color: map-get($color, darkbrown);
+        display: block;
+        border: 1px solid map-get($color, darkbrown);
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+
+    .lgTable thead td {
+        height: 40px;
+        line-height: 40px;
+        padding: 10px 0 10px 20px;
+        background-color: map-get($color, orange);
+        border-radius: 20px 20px 0 0 ;
+    }
+
+
+
+
+    .lgTable tbody td {
+        width: 230px;
+        vertical-align: middle;
+        border-bottom: 0.5px solid #e0d4b2;
+        padding: 20px 0 20px 20px;
+        background-color: #fff;;
+    }
+
+
+    .title{
+        line-height:12px;
+    }
+
+ 
+
+ 
+
+    .type {
+        padding: 10px 0;
+    }
+
+    .pic {
+        margin-right: 30px;
+        margin-bottom: 10px;
+    }
+
+
+
+}

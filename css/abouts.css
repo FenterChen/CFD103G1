@@ -812,8 +812,35 @@ body {
 .container-fpage .picitem .col-6 .god3 {
   -webkit-animation-name: moveTxt;
           animation-name: moveTxt;
-  -webkit-animation-duration: 2s;
-          animation-duration: 2s;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+.container-fpage .pgod1 {
+  -webkit-animation-name: moveTxt;
+          animation-name: moveTxt;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+.container-fpage .pgod2 {
+  -webkit-animation-name: movePic;
+          animation-name: movePic;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+.container-fpage .pgod3 {
+  -webkit-animation-name: DtoU;
+          animation-name: DtoU;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 }
@@ -936,6 +963,51 @@ body {
   .container-Spage .phone_content {
     display: none;
   }
+}
+
+.container-Spage .pgod4, .pgod5 {
+  -webkit-animation-name: flip;
+          animation-name: flip;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+.container-Spage .pgod6, .pgod7 {
+  -webkit-animation-name: jump;
+          animation-name: jump;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+.container-Spage .pgod8 {
+  -webkit-animation-name: roll;
+          animation-name: roll;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+.container-Spage .pgod9 {
+  -webkit-animation-name: roll;
+          animation-name: roll;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+.container-Spage .pgod10 {
+  -webkit-animation-name: TxtLeft;
+          animation-name: TxtLeft;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }
 
 .container-Spage .aboutus {

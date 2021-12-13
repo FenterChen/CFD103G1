@@ -1,7 +1,7 @@
 $(function () {
+  var winWidth = $(window).width();
   $(window).on('load scroll resize', function () {
-    let winWidth = $(window).innerWidth();
-
+    winWidth = $(window).width();
     if (winWidth >= 1200) {
       $(`header>.headerWrap>nav`).removeClass('navPostion');
     }

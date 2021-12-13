@@ -67,12 +67,11 @@ section {
 }
 
 .onlineText p {
-  // max-width: 315px;
+  max-width: 315px;
   width: 100%;
   font-family: NotoSansTC;
   font-style: normal;
   font-weight: normal;
-  padding: 20px;
   margin-bottom: 50px;
   font-size: 16px;
   line-height: 22px;
@@ -80,10 +79,10 @@ section {
   letter-spacing: 0.3px;
   color: #927858;
 
-  // @include tabletV() {
-  //   max-width: 730px;
-  //   width: 100%;
-  // }
+  @include tabletV() {
+    max-width: 730px;
+    width: 100%;
+  }
 
 }
 

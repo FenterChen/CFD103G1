@@ -135,6 +135,7 @@ section {
 
 @media screen and (min-width: 768px) {
   .onlineContent {
+    margin-top: -130px;
     text-align: left;
     width: 60%;
   }
@@ -142,6 +143,7 @@ section {
 
 @media screen and (min-width: 1024px) {
   .onlineContent {
+    margin-top: 0px;
     padding-left: 100px;
   }
 }
@@ -207,7 +209,7 @@ section {
   position: absolute;
   top: 0;
   left: 0px;
-  padding-top: 12px;
+  padding-top: 10px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   opacity: 0;
@@ -221,7 +223,7 @@ section {
   position: absolute;
   top: 0;
   left: 0;
-  padding-top: 12px;
+  padding-top: 10px;
   opacity: 1;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -292,6 +294,7 @@ section {
 }
 
 .throwPic img {
+  padding-right: 5px;
   width: 100px;
 }
 /*# sourceMappingURL=onlinepomes5.css.map */
