@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <link rel="stylesheet" href="css/backheader.css" />
+    <link href="./css/sidebars.css" rel="stylesheet" />
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+
+    <title>後台管理</title>
+    
+  </head>
+
+  <body>
+    <header id="mainheader">
+      <div class="headerWrap">
+        <div class="logo">
+          <a href="#">
+            <img src="img/header/BOBIO_logo.svg" />
+          </a>
+        </div>
+        <div class="member">
+         <a href="backweb7_adminList.html"><img src="img/header/member.svg"
+          /></a>
+        </div>
+        <span>登出</span>
+        </div>
+     
+    </header>
+
+    <div class="wrapp">
+      <!-- sidebar -->
+      <div class="sidebar flex-shrink-0 p-3">
+        <ul class="list-unstyled ps-0">
+          <!-- 祈願項目 -->
+          <li class="mb-1">
+            <button
+              class="btn btn-toggle align-items-center rounded collapsed"
+              data-bs-toggle="collapse"
+              data-bs-target="#home-collapse"
+              aria-expanded="true"
+            >
+              祈願
+            </button>
+            <div class="collapse" id="home-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li><a href="backweb1-1_prayrecorder.html" class="link-dark rounded" id="bpray">祈願紀錄</a></li>
+                <li><a href="backweb1-2_cardManage.html" class="link-dark rounded"id="bcard">小卡管理</a></li>
+                <li><a href="backweb1-3_supplyManage.html" class="link-dark rounded"id="bsupply">供品管理</a></li>
+              </ul>
+            </div>
+          </li>
+          <!-- 求籤管理 -->
+          <li class="mb-1">
+            <button
+              class="btn btn-toggle align-items-center rounded collapsed"
+              data-bs-toggle="collapse"
+              data-bs-target="#dashboard-collapse"
+              aria-expanded="false"
+            >
+            求籤
+          </button>
+          <div class="collapse" id="dashboard-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li>
+                <a href="backweb2-1_pomes.html" class="link-dark rounded" id="bpomes">籤詩管理</a>
+              </li>
+              <li>
+                <a href="backweb2-2_pomeDetail.html" class="link-dark rounded" id="brecorder"
+                  >解籤內容管理</a
+                >
+              </li>
+              <li>
+                <a href="backweb2-3_pomeRecorder.html" class="link-dark rounded" id="pomecontent"
+                  >求籤紀錄</a
+                >
+              </li>
+            </ul>
+          </div>
+        </li>
+
+          <!-- 平安符管理 -->
+          <li class="mb-1">
+            <button
+              class="btn btn-toggle align-items-center rounded collapsed"
+              data-bs-toggle="collapse"
+              data-bs-target="#orders-collapse"
+              aria-expanded="false"
+            >
+              平安符
+            </button>
+            <div class="collapse" id="orders-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li>
+                  <a href="backweb3-1_amuletManage.html" class="link-dark rounded">平安符願管理</a>
+                </li>
+                <li><a href="backweb3-2_ZodiacManage.html" class="link-dark rounded">生肖管理</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="mb-1">
+            <button
+              class="btn btn-toggle align-items-center rounded collapsed"
+              data-bs-toggle="collapse"
+              data-bs-target="#account-collapse"
+              aria-expanded="false"
+            >
+              訂單管理
+            </button>
+            <div class="collapse" id="account-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li><a href="backweb4-1_productOrders.html" class="link-dark rounded">商品訂單</a></li>
+                <li><a href="backweb4-2_orderDetails.html" class="link-dark rounded">訂單明細</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="mb-1"><a href="backweb5_memberDetails.html">
+            <button class="btn" style="padding-left: 30px">會員資料</button></a>
+          </li>
+          <li class="mb-1"><a href="backweb6_moneyRecord.html">
+            <button class="btn" style="padding-left: 30px">結緣紀錄</button></a>
+          </li>
+        </ul>
+      </div>
+      <div class="containerbox1">
+        <div class="supply">
+          <span>祈願紀錄</span>
+          
+        </div>
+        <div class="searchbox">
+          <div class="search">
+            <input type="text" />
+            <button><img src="img/backweb/backData/search.svg" alt="" /></button>
+          </div>
+          <div class="page">
+            <span class="each">每頁顯示</span>
+              <select>
+                <option value="" style="color: #927858;">10</option>
+                <option value="" style="color: #927858;" >20</option>
+                <option value="" style="color: #927858;">30</option>
+              </select>
+            <span class="each">頁</span>
+          </div>
+        </div>
+        <!-- 表格內容 -->
+        
+        <table class="table table-hover table-pray">
+          <thead>
+            <tr>
+              <th scope="col">祈願紀錄編號</th>
+              <th scope="col">會員編號</th>
+              <th scope="col">供品</th>
+              <th scope="col">小卡</th>
+              <th scope="col">祈願日期</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>00000001a-1</th>
+              <td >00000001</td>
+              <td>組合三-甜食</td>
+              <td>感情-小卡一</td>
+              <td>2021.11.18</td>
+            </tr>
+            <tr>
+              <th>00000001a-1</th>
+              <td >00000001</td>
+              <td>組合三-甜食</td>
+              <td>感情-小卡一</td>
+              <td>2021.11.18</td>
+            </tr>
+            <tr>
+              <th>00000001a-1</th>
+              <td >00000001</td>
+              <td>組合三-甜食</td>
+              <td>感情-小卡一</td>
+              <td>2021.11.18</td>
+            </tr>
+            <tr>
+              <th scope="row">00000001a-1</th>
+              <td>00000001</td>
+              <td>組合三-甜食</td>
+              <td>感情-小卡一</td>
+              <td>2021.11.18</td>
+            </tr>
+            <tr>
+              <th scope="row">00000001a-1</th>
+              <td>00000001</td>
+              <td>組合三-甜食</td>
+              <td>感情-小卡一</td>
+              <td>2021.11.18</td>
+            </tr>
+            <tr>
+              <th scope="row">00000001a-1</th>
+              <td>00000001</td>
+              <td>組合三-甜食</td>
+              <td>感情-小卡一</td>
+              <td>2021.11.18</td>
+            </tr>
+            <tr>
+              <th scope="row">00000001a-1</th>
+              <td>00000001</td>
+              <td>組合三-甜食</td>
+              <td>感情-小卡一</td>
+              <td>2021.11.18</td>
+            </tr>
+            <tr>
+              <th scope="row">00000001a-1</th>
+              <td>00000001</td>
+              <td>組合三-甜食</td>
+              <td>感情-小卡一</td>
+              <td>2021.11.18</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- 表格內容結束 -->
+
+        <!-- 頁簽 -->
+        <div class="pagelist">
+          <a href=""> < </a>
+          <a href="">1</a>
+          <a href="">2</a>
+          <a href="">3</a>
+          <a href="">4</a>
+          <a href="">5</a>
+          <a href=""> > </a>
+        
+        </div>
+      </div>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/sidebars.js"></script>
+  </body>
+</html>
