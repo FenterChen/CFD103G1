@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <link rel="stylesheet" href="css/backheader.css" />
+    <link href="./css/3-2ZodiacManage.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/sidebar.css">
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="./js/prayRecorder.js"></script>
+    <script src="./js/vue.js"></script>
+    <title>生肖紀錄</title>
+  </head>
+<body>
+  <header id="mainheader">
+    <div class="headerWrap">
+      <div class="logo">
+        <a href="#">
+          <img src="img/header/BOBIO_logo.svg" />
+        </a>
+      </div>
+      <div class="member">
+       <a href="backweb7_adminList.html"><img src="img/header/member.svg"
+        /></a>
+      </div>
+      <span>登出</span>
+      </div>
+   
+  </header>
+
+<section>
+    <div class="wrapp">
+        <!-- sidebar -->
+        <div class="sidebar flex-shrink-0 p-3">
+          <ul class="list-unstyled ps-0">
+            <!-- 祈願項目 -->
+            <li class="mb-1">
+              <button
+                class="btn btn-toggle align-items-center rounded collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#home-collapse"
+                aria-expanded="true"
+              >
+                祈願
+              </button>
+              <div class="collapse" id="home-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="backweb1-1_prayrecorder.html" class="link-dark rounded" id="bpray">祈願紀錄</a></li>
+                  <li><a href="backweb1-2_cardManage.html" class="link-dark rounded"id="bcard">小卡管理</a></li>
+                  <li><a href="backweb1-3_supplyManage.html" class="link-dark rounded"id="bsupply">供品管理</a></li>
+                </ul>
+              </div>
+            </li>
+            <!-- 求籤管理 -->
+            <li class="mb-1">
+              <button
+                class="btn btn-toggle align-items-center rounded collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#dashboard-collapse"
+                aria-expanded="false"
+              >
+              求籤
+            </button>
+            <div class="collapse" id="dashboard-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li>
+                  <a href="backweb2-1_pomes.html" class="link-dark rounded" id="bpomes">籤詩管理</a>
+                </li>
+                <li>
+                  <a href="backweb2-2_pomeDetail.html" class="link-dark rounded" id="brecorder"
+                    >解籤內容管理</a
+                  >
+                </li>
+                <li>
+                  <a href="backweb2-3_pomeRecorder.html" class="link-dark rounded" id="pomecontent"
+                    >求籤紀錄</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </li>
+  
+            <!-- 平安符管理 -->
+            <li class="mb-1">
+              <button
+                class="btn btn-toggle align-items-center rounded collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#orders-collapse"
+                aria-expanded="false"
+              >
+                平安符
+              </button>
+              <div class="collapse" id="orders-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li>
+                    <a href="backweb3-1_amuletManage.html" class="link-dark rounded">平安符願管理</a>
+                  </li>
+                  <li><a href="backweb3-2_ZodiacManage.html" class="link-dark rounded">生肖管理</a></li>
+                </ul>
+              </div>
+            </li>
+  
+            <li class="mb-1">
+              <button
+                class="btn btn-toggle align-items-center rounded collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#account-collapse"
+                aria-expanded="false"
+              >
+                訂單管理
+              </button>
+              <div class="collapse" id="account-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="backweb4-1_productOrders.html" class="link-dark rounded">商品訂單</a></li>
+                  <li><a href="backweb4-2_orderDetails.html" class="link-dark rounded">訂單明細</a></li>
+                </ul>
+              </div>
+            </li>
+  
+            <li class="mb-1"><a href="backweb5_memberDetails.html">
+              <button class="btn" style="padding-left: 30px">會員資料</button></a>
+            </li>
+            <li class="mb-1"><a href="backweb6_moneyRecord.html">
+              <button class="btn" style="padding-left: 30px">結緣紀錄</button></a>
+            </li>
+          </ul>
+        </div>
+
+
+<!-- first-row_start---------- -->
+      <section class="zodiac-Manage-second">
+            <div class="products-man">
+                  <span class="order">生肖管理</span>
+                <div class="icon1">
+                  <img src="./img/backweb/backData/backFix.svg"   class=" showBtn" alt="">
+                </div>
+            </div>
+            
+            
+            <div class="zodiac-list-second">
+              <h1 class="type-txt-second">種類</h1>
+              <div class="type">鼠</div>
+              <div class="type">牛</div>
+              <div class="type">虎</div>
+              <div class="type">兔</div>
+              <div class="type">龍</div>
+              <div class="type">蛇</div>
+              <div class="type">馬</div>
+              <div class="type">羊</div>
+              <div class="type">猴</div>
+              <div class="type">雞</div>
+              <div class="type">狗</div>
+              <div class="type">豬</div>
+            </div>
+
+            <div class="txt-area">
+            <div class="zodiac-one">
+              <h1>圖檔</h1>
+              
+            </div>
+
+            <div class="zodiac-two">
+              <h2>原圖檔</h2>
+              <div class="pic">
+                <img src="">
+              </div>
+            <!-- <input type="file" class="old-pic"> -->
+
+          </div>
+
+          <div class="zodiac-three">
+          <h1 class="new">新圖檔</h1>
+          <div class="pic">
+            <img src="">
+          </div>
+          <input type="file" class="new-pic">
+          
+          </div>
+        </div>
+
+
+
+        <div class="saveBtn showbtnbox">
+          <button class="cancle" data-hover="取消">取消</button>
+          <button class="save" data-hover="確認">確認</button>
+        </div>
+
+            
+
+  
+        
+
+</section>
+
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/sidebars.js"></script>
+  </body>
+</html>

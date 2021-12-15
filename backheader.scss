@@ -1,0 +1,151 @@
+@import 'base/var';
+@import 'mixin/modules';
+
+@include NotoSansTC();
+@include RocknRollOne();
+@import 'base/reset';
+
+
+
+#mainheader {
+  @include headerFixed();
+  background-color: map-get($color, navColor);
+  border-bottom: 3px solid map-get($color, orange);
+  position: relative;
+
+}
+
+.headerWrap {
+  @include flexCenter();
+  @include maxWidth();
+  padding: 6px 20px;
+  position: relative;
+}
+
+
+
+
+header .logo {
+  @include flexCenter();
+  flex-grow: 15;
+  justify-content: left;
+}
+
+header .logo img {
+  width: 35px;
+  height: 25px;
+}
+
+header .member {
+  @include flexCenter();
+  flex-grow: 1;
+}
+
+
+header .member img {
+  width: 15.75px;
+  height: 20px;
+}
+
+.headerWrap>span {
+  padding-top: 2px;
+  padding-left: 10px;
+  cursor: pointer;
+
+}
+
+header nav a {
+  font-family: NotoSansTC, serif;
+  font-size: map-get($fontSize, minifont);
+  text-decoration: none;
+  color: map-get($color, darkbrown);
+}
+
+
+@include tabletH() {
+  header .logo img {
+    width: 38.5px;
+    height: 27.5px;
+  }
+
+  header .cart img {
+    width: 19.932px;
+    height: 22px;
+  }
+
+  header .member img {
+    width: 17.325px;
+    height: 22px;
+  }
+
+  header .hb {
+    width: 19.8px;
+    height: 15.4px;
+  }
+}
+
+@include laptop() {
+  .headerWrap {
+    @include flexCenter();
+    @include maxWidth();
+    padding: 7px 20px;
+  }
+
+  header nav ul {
+    justify-content: left;
+  }
+
+  header nav ul {
+    flex-direction: row;
+  }
+
+  header nav {
+    flex-grow: 30;
+  }
+
+  header nav li a {
+    padding: 0 15px;
+  }
+
+
+  header .logo {
+    flex-grow: 1;
+    @include flexCenter();
+    justify-content: left;
+  }
+
+  header .logo img {
+    width: 56px;
+    height: 40px;
+  }
+
+  header .cart {
+    @include flexCenter();
+    justify-content: right;
+  }
+
+  header .cart img {
+    width: 20px;
+    height: 20px;
+  }
+
+  header .member {
+    @include flexCenter();
+    justify-content: right;
+  }
+
+  header .member img {
+    width: 15px;
+    height: 20px;
+  }
+
+
+  header nav a {
+    font-family: NotoSansTC, serif;
+    font-size: map-get($fontSize, navfont);
+    text-decoration: none;
+    color: map-get($color, darkbrown);
+  }
+
+
+}
