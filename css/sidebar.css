@@ -72,13 +72,20 @@ table {
   background-color: #FDBF52;
 }
 
-.containerbox1,
-.containerbox2,
-.containerbox3,
-.pomescontainerbox1,
-.pomescontainerbox2,
-.pomescontainerbox3 {
+.prayRecorder,
+.cardManage,
+.supplyManage,
+.pomes,
+.pomeDetail,
+.pomeRecorder,
+.amuletManage,
+.zodiac-Manage-second,
+.memberDetail,
+.productOrders,
+.moneyRecorder,
+.adminList {
   margin: 20px auto;
+  padding-left: 20px;
   width: 80%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -176,7 +183,7 @@ table {
   border: 0px;
   border-radius: 20px;
   background-color: #fcdba3;
-  width: 100px;
+  width: 150px;
   padding-left: 10px;
   font-family: NotoSansTC, serif;
   color: #573605;
