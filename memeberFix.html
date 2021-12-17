@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="./css/memberFix.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
   <script src="./js/member.js"></script>
   <title>BOBIO|會員資料修改</title>
 </head>
@@ -53,7 +55,7 @@
     </div>
   </header>
 
-  <div class="containerId">
+  <div class="containerId" id="app">
     <form action="member.php" method="post">
       <div class="boxContainer">
         <div class="boxMember">
@@ -63,19 +65,15 @@
         <div class="boxData">
           <div class="textName">
             <span>姓名</span>
-            <input type="text" placeholder="請輸入姓名" />
+            <input type="text" v-model="personaldata.mem_name" />
           </div>
           <div class="textPhone">
             <span>手機</span>
-            <input type="number" placeholder="請輸入手機" />
+            <input type="number" v-model="personaldata.phone" />
           </div>
           <div class="textEmail">
             <span>信箱</span>
-            <input type="email" placeholder="請輸入信箱" />
-          </div>
-          <div class="textPwd">
-            <span>密碼</span>
-            <input type="password" />
+            <input type="email" v-model="personaldata.email" />
           </div>
         </div>
         <div class="boxBtn">
@@ -267,6 +265,31 @@
             }, 1200, 'easeOutBounce')
           }
         }
+      },
+    });
+
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          personaldata: {},
+        }
+      },
+      created() {
+        let array = JSON.parse(localStorage.getItem('personallogin'));
+        axios.post('phps/memberExist.php', {
+          mem_no: array[0].mem_no,
+          mem_id: array[0].mem_id,
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((res) => {
+          if (res.data == "erro") {
+            location.href = "memeberAdd.html";
+          } else {
+            this.personaldata = res.data[0];
+          }
+        }).catch(error => this.personaldata = res.data);
       },
     });
   </script>
