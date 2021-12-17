@@ -11,7 +11,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
-  <script src="./js/member.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
   <title>BOBIO|會員加入</title>
 </head>
 
@@ -54,7 +54,7 @@
     </div>
   </header>
 
-  <div class="wrapp">
+  <div class="wrapp" id="app">
     <div class="biboLogo">
       <img src="./img/member/bobioLogo.svg" alt="" />
     </div>
@@ -63,63 +63,63 @@
     </div>
     <!-- 註冊頁面 -->
 
-    <div class="boxContainer">
-      <form action="addmember.php" method="post">
+    <div class="boxContainer" v-if="registerframe">
+      <div>
         <div class="boxMember">
           <a class="textAdd"> <b>註冊會員</b></a>
-          <a class="textLogin">會員登入</a>
+          <a class="textLogin" @click="logi">會員登入</a>
         </div>
         <div class="boxData">
           <div class="textName">
             <span>姓名</span>
-            <input type="text" placeholder="請輸入姓名" />
+            <input type="text" v-model="name" placeholder="請輸入姓名" />
           </div>
           <div class="textPhone">
             <span>手機</span>
-            <input type="number" placeholder="請輸入手機" />
+            <input type="text" v-model="phone" placeholder="請輸入手機" />
           </div>
           <div class="textEmail">
             <span>信箱</span>
-            <input type="email" placeholder="請輸入信箱" />
+            <input type="email" v-model="email" placeholder="請輸入信箱" />
           </div>
           <div class="textPwd">
             <span>密碼</span>
-            <input type="password" />
+            <input type="password" v-model="psw" />
           </div>
           <div class="textPwd">
             <span>確認密碼</span>
-            <input type="password" />
+            <input type="password" v-model="confirmpsw" />
           </div>
         </div>
         <div class="boxBtn">
-          <button class="btnAdd" data-hover="註冊">註冊</button>
+          <button class="btnAdd" data-hover="註冊" type="submit" @click="btnAdd">註冊</button>
           <button class="btnLogin" data-hover=" 使用Facebook快速登入">
             <img src="./img/member/iconFb.svg" alt="" />使用Facebook快速登入
           </button>
         </div>
-      </form>
+      </div>
     </div>
 
     <!--   登入頁面 -->
-    <div class="boxContainer2 showLogin">
+    <div class="boxContainer2" v-if="loginframe">
       <!-- <form action="login.php" method="post"> -->
       <div class="boxMember">
-        <a class="textAdd textAdd2">註冊會員</a>
+        <a class="textAdd textAdd2" @click="regist">註冊會員</a>
         <a class="textLogin textLogin2">會員登入</a>
       </div>
       <div class="boxData">
         <div class="textEmail">
           <span>信箱</span>
-          <input type="email" placeholder="egg8833@gmail.com" width="300" />
+          <input type="email" v-model="email" placeholder=" egg8833@gmail.com" width="300" />
         </div>
         <div class="textPwd">
           <span>密碼</span>
-          <input type="password" placeholder="*******" />
+          <input type="password" v-model="psw" placeholder="*******" />
           <p>忘記密碼</p>
         </div>
       </div>
       <div class="boxBtn">
-        <a href="memberCenter.html"><button class="btnAdd" data-hover="登入">登入</button></a>
+        <button class="btnAdd" data-hover="登入" @click="logincheck">登入</button>
         <button class="btnLogin" data-hover=" 使用Facebook快速登入">
           <img src="./img/member/iconFb.svg" />
           使用Facebook快速登入
@@ -215,13 +215,93 @@
           if (place < "0px") {
             $("nav").animate({
               right: 0,
-            }, 1200, 'easeInBounce')
+            }, 600, 'easeInBounce')
           } else {
             $("nav").animate({
               right: "-30%",
             }, 1200, 'easeOutBounce')
           }
         }
+      },
+    });
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          registerframe: true,
+          loginframe: false,
+          name: null,
+          phone: null,
+          email: null,
+          psw: null,
+          confirmpsw: null,
+          addtime: null,
+          personaldata: [],
+        }
+      },
+      created() {
+        let array = JSON.parse(localStorage.getItem('personallogin'));
+        axios.post('phps/memberExist.php', {
+          mem_no: array[0].mem_no,
+          mem_id: array[0].mem_id,
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((res) => {
+          if (res.data == "erro") {
+            location.href = "mainpage.html";
+          } else {
+            location.href = "memeberFix.html";
+          }
+        }).catch(error => this.personaldata = res.data);
+      },
+      methods: {
+        logi() {
+          this.registerframe = false;
+          this.loginframe = true;
+        },
+        regist() {
+          this.loginframe = false;
+          this.registerframe = true;
+        },
+        btnAdd() {
+          var m = new Date();
+          this.addtime = m.getFullYear() + "-" + (m.getMonth() + 1) + "-" + m.getDate() + " " + m.getHours() + ":" + m.getMinutes() + ":" + m.getSeconds();
+
+          axios.post('phps/memberAdd.php', {
+            mem_name: this.name,
+            mem_id: this.email,
+            mem_psw: this.psw,
+            phone: this.phone,
+            email: this.email,
+            mem_date: this.addtime,
+            mem_status: '0',
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }).then(function (response) {
+            console.log(response);
+          }).catch(function (error) {
+            console.log(error);
+          });
+        },
+        logincheck() {
+          axios.post('phps/memberCheck.php', {
+            mem_id: this.email,
+            mem_psw: this.psw,
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }).then((res) => {
+            this.personaldata = res.data;
+            if (res.data == "erro") {
+              alert("輸入錯誤");
+            } else {
+              location.href = "mainpage.html";
+              localStorage.setItem("personallogin", JSON.stringify(res.data));
+            }
+          }).catch(error => this.personaldata = res.data);
+        },
       },
     });
   </script>
