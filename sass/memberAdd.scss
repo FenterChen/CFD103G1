@@ -1,0 +1,282 @@
+@import 'base/var';
+@import 'base/reset';
+@import 'mixin/modules';
+@include NotoSansTC();
+
+
+.wrapp {
+    display: flex;
+    width: 95%;
+    margin: auto;
+    margin-top: 50px;
+    background-color: #FFFAE7;
+    flex-direction: column;
+    align-items: center;
+
+
+    @include tabletV() {
+        flex-direction: row;
+    }
+
+    @include tabletH() {}
+
+    @include laptop() {
+
+        max-width: 1200px;
+        justify-content: space-between;
+    }
+}
+
+.biboLogo {
+    vertical-align: top;
+    margin: 60px 128px;
+    text-align: center;
+    position: relative;
+
+
+    @include tabletV() {
+        display: none;
+    }
+}
+
+.tempBg {
+    display: none;
+    width: 700px;
+    height: 100%;
+    padding-left: 5px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+
+    @include tabletV() {
+        display: unset;
+    }
+}
+
+.tempBg img {
+    width: 100%;
+
+    @include btnBigBorderR;
+
+}
+
+.boxContainer,
+.boxContainer2 {
+    width: 100%;
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    @include smallBorderR;
+
+
+    @include tabletV() {
+        max-width: 350px;
+        border: 1px solid #573605;
+        background-color: rgb(255, 255, 255);
+        margin: 30px 10px;
+    }
+
+    @include tabletH() {
+        max-width: 400px;
+        margin: 40px 10px;
+        padding-left: 20px;
+    }
+
+    @include laptop() {}
+
+}
+
+.showAdd {
+    display: none;
+}
+
+.showLogin {
+    display: none;
+}
+
+.boxData {
+    @include tabletV() {
+        width: 300px;
+    }
+}
+
+.boxMember {
+    margin: 15px 10px;
+    text-align: center;
+
+    @include tabletV() {}
+
+    @include tabletH() {
+        margin: 25px 50px;
+    }
+
+    @include laptop() {}
+}
+
+
+
+
+.boxData .textName,
+.textPhone,
+.textEmail,
+.textPwd {
+    padding: 10px 0px;
+    width: 250px;
+
+
+}
+
+@include tabletV() {
+    width: 300px;
+    background-color: rgb(255, 255, 255);
+}
+
+@include tabletH() {}
+
+@include laptop() {}
+
+
+
+.boxData span {
+    padding: 4px 2px;
+    display: block;
+    color: #573605;
+    font-size: map-get($fontSize, navfont);
+    font-family: NotoSansTC, serif;
+    background-color: #FFFAE7;
+
+    @include tabletV() {
+        background-color: transparent;
+    }
+
+
+}
+
+.boxData input {
+    border: none;
+    border-bottom: 1px solid #573605;
+    width: 250px;
+    background-color: #FFFAE7;
+    font-size: map-get($fontSize, weblp);
+    font-family: NotoSansTC, serif;
+    color: #573605;
+
+    @include tabletV() {
+        background-color: transparent;
+        width: 300px;
+    }
+}
+
+.boxMember .textAdd {
+    text-decoration: none;
+    color: #573605;
+    list-style: none;
+    font-size: map-get($fontSize, webp);
+    position: relative;
+
+    &::before {
+        content: '';
+        width: 2px;
+        height: 23px;
+        background-color: #573605;
+        top: 0px;
+        right: -20px;
+        position: absolute;
+
+    }
+}
+
+.boxMember .textLogin {
+    color: #573605;
+    opacity: 0.5;
+    margin-left: 30px;
+    font-size: map-get($fontSize, webp);
+
+    @include tabletH() {
+        margin-left: 40px;
+        font-size: map-get($fontSize, webp);
+    }
+}
+
+.boxMember .textAdd2 {
+    opacity: 0.5;
+}
+
+.boxMember .textLogin2 {
+    opacity: 1;
+}
+
+//忘記密碼的文字
+.textPwd p {
+    margin-top: 10px;
+    margin-bottom: 50px;
+    text-align: right;
+    color: #927858;
+    font-family: NotoSansTC, serif;
+
+    @include tabletV() {
+        width: 300px;
+    }
+}
+
+.boxBtn .btnAdd {
+    font-family: NotoSansTC, serif;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    @include btnLogin;
+    @include flexCenter;
+    cursor: pointer;
+    width: 250px;
+
+    @include tabletV() {
+        width: 300px;
+
+    }
+}
+
+
+.boxBtn .btnLogin {
+    font-family: NotoSansTC, serif;
+    margin-bottom: 30px;
+    @include btnLogin;
+    @include flexCenter;
+    cursor: pointer;
+    width: 250px;
+    text-align: center;
+    padding-left: 1px;
+
+    @include tabletV() {
+        width: 300px;
+    }
+
+
+}
+
+.boxBtn .btnLogin img {
+    display: none;
+
+    @include tabletV() {
+        display: unset;
+        padding-right: 30px;
+    }
+}
+
+
+
+.noMember p {
+    color: #573605;
+    font-size: map-get($fontSize, navfont);
+    margin-bottom: 60px;
+    opacity: 1;
+    text-align: center;
+}
+
+.noMember span {
+    color: #573605;
+    opacity: 0.5;
+
+}

@@ -1,0 +1,290 @@
+@import 'base/var';
+@import 'mixin/modules';
+
+@include NotoSansTC();
+@include RocknRollOne();
+@import 'base/reset';
+
+body {
+  background-color: map-get($color, mainyellow);
+}
+
+#mainheader {
+  @include headerFixed();
+  background-color: map-get($color, navColor);
+  border-top: 3px solid map-get($color, orange);
+}
+
+.headerWrap {
+  @include flexCenter();
+  @include maxWidth();
+  padding: 6px 20px;
+}
+
+header nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header nav ul {
+  flex-direction: column;
+}
+
+header .navPostion {
+  position: absolute;
+  background-color: map-get($color, navColor);
+  top: 100%;
+  right: -30%;
+  width: 30%;
+  height: calc(100vh - 40px);
+  border-top: 3px solid map-get($color, orange);
+}
+
+header nav li a {
+  display: block;
+  padding: 20px 20px;
+}
+
+
+header .logo {
+  @include flexCenter();
+  flex-grow: 15;
+  justify-content: left;
+}
+
+header .logo img {
+  width: 35px;
+  height: 25px;
+}
+
+header .cart {
+  @include flexCenter();
+  flex-grow: 1;
+}
+
+header .cart img {
+  width: 18.12px;
+  height: 20px;
+}
+
+header .member {
+  @include flexCenter();
+  flex-grow: 1;
+}
+
+header .outerHb {
+  display: flex;
+  flex-grow: 1;
+}
+
+header .member img {
+  width: 15.75px;
+  height: 20px;
+}
+
+
+header nav a {
+  font-family: NotoSansTC, serif;
+  font-size: map-get($fontSize, minifont);
+  text-decoration: none;
+  color: map-get($color, darkbrown);
+}
+
+header .outerHb {
+  @include flexCenter();
+  display: flex;
+}
+
+header .hb {
+  width: 18px;
+  height: 14px;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+
+header .hb span {
+  width: 18px;
+  height: 2.5px;
+}
+
+header .hb span:first-child {
+  transform: translateY(7px);
+}
+
+header .hb span:last-child {
+  transform: translateY(-7px);
+}
+
+header .hb span {
+  width: 18px;
+  height: 2.5px;
+  background-color: map-get($color, darkbrown);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+}
+
+@include phone() {
+  header nav a {
+    font-size: map-get($fontSize, navfont);
+  }
+
+  header .cart {
+    justify-content: right;
+  }
+
+  header .member {
+    justify-content: right;
+  }
+
+  header .outerHb {
+    justify-content: right;
+  }
+}
+
+@include tabletV() {
+  header .logo {
+    flex-grow: 20;
+  }
+
+  header .cart {
+    flex-grow: 2;
+  }
+
+  header .member {
+    flex-grow: 2;
+  }
+
+  header .outerHb {
+    flex-grow: 2;
+  }
+}
+
+@include tabletH() {
+  header .logo img {
+    width: 38.5px;
+    height: 27.5px;
+  }
+
+  header .cart img {
+    width: 19.932px;
+    height: 22px;
+  }
+
+  header .member img {
+    width: 17.325px;
+    height: 22px;
+  }
+
+  header .hb {
+    width: 19.8px;
+    height: 15.4px;
+  }
+}
+
+@include laptop() {
+  .headerWrap {
+    @include flexCenter();
+    @include maxWidth();
+    padding: 7px 20px;
+  }
+
+  header nav ul {
+    justify-content: left;
+  }
+
+  header nav ul {
+    flex-direction: row;
+  }
+
+  header nav {
+    flex-grow: 30;
+  }
+
+  header nav li a {
+    padding: 0px 15px;
+  }
+
+
+  header .logo {
+    flex-grow: 1;
+    @include flexCenter();
+    justify-content: left;
+  }
+
+  header .logo img {
+    width: 56px;
+    height: 40px;
+  }
+
+  header .cart {
+    @include flexCenter();
+    justify-content: right;
+  }
+
+  header .cart img {
+    width: 20px;
+    height: 20px;
+  }
+
+  header .member {
+    @include flexCenter();
+    justify-content: right;
+  }
+
+  header .member img {
+    width: 15px;
+    height: 20px;
+  }
+
+
+  header nav a {
+    font-family: NotoSansTC, serif;
+    font-size: map-get($fontSize, navfont);
+    text-decoration: none;
+    color: map-get($color, darkbrown);
+  }
+
+  header .outerHb {
+    @include flexCenter();
+    display: none;
+    flex-grow: 1;
+    width: 5%;
+  }
+
+  //hover 效果
+  header nav li a {
+    display: block;
+    padding: 10px 20px;
+    position: relative;
+  }
+
+  header nav li a::before {
+    transition: all 0.8s cubic-bezier(0.7, -0.5, 0.2, 2);
+    content: '';
+    width: 0;
+    height: 2px;
+    background: map-get($color, orange);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  header nav li a:hover:before {
+    background: map-get($color, orange);
+    width: 60%;
+  }
+
+  .bottomnavline:before {
+    background: map-get($color, orange);
+    width: 60%;
+  }
+}

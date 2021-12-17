@@ -1,0 +1,259 @@
+//最寬1200 
+@mixin maxWidth() {
+  max-width: 1312px;
+  margin: auto;
+}
+
+//圓角
+@mixin btnBigBorderR() {
+  border-radius: 30px;
+}
+
+//表單圓角
+@mixin smallBorderR() {
+  border-radius: 20px;
+}
+
+//按鈕陰影
+@mixin btnShadow {
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+//按鈕顏色
+@mixin btnColor() {
+  background: map-get($color, orange);
+  color: map-get($color, darkbrown);
+}
+
+//跳窗底圖
+@mixin jumpBg() {
+  background-color: map-get($color, jumpBgc);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+//按鈕before
+@mixin btnBefore() {
+  &::before {
+    content: attr(data-hover);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    padding-top: 10px;
+    transition: 0.3s;
+    opacity: 0;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: -1em;
+  }
+}
+
+//按鈕after
+@mixin btnAfter() {
+  &::after {
+    content: attr(data-hover);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 10px;
+    opacity: 1;
+    transition: 0.3s;
+    color: map-get($color, darkbrown);
+  }
+}
+
+//按鈕hover後before
+@mixin btnHoverBefore() {
+  &:hover {
+    &::before {
+      opacity: 1;
+      margin-top: 0;
+    }
+  }
+}
+
+//按鈕hover後after
+@mixin btnHoverAfter() {
+  &:hover {
+    &::after {
+      opacity: 0;
+      margin-top: -1em;
+    }
+  }
+}
+
+//主頁的按鈕&開始求籤&開始結緣
+@mixin btnMainPage() {
+  width: 200px;
+  height: 60px;
+  font-size: map-get($fontSize, webp);
+  line-height: 35px;
+  text-align: center;
+  border: 0px;
+  cursor: pointer;
+  @include btnShadow();
+  @include btnColor();
+  @include btnBigBorderR();
+  @include btnBefore();
+  @include btnAfter();
+  @include btnHoverBefore();
+  @include btnHoverAfter();
+  color: transparent;
+  position: relative;
+  backface-visibility: hidden;
+}
+
+//只有祈願供品選擇&求籤輸入名字的確定
+@mixin btnChoose() {
+  width: 80px;
+  height: 42px;
+  font-size: map-get($fontSize, weblp);
+  line-height: 21px;
+  text-align: center;
+  border: 0px;
+  cursor: pointer;
+  @include btnShadow();
+  @include btnColor();
+  @include smallBorderR();
+  @include btnBefore();
+  @include btnAfter();
+  @include btnHoverBefore();
+  @include btnHoverAfter();
+  color: transparent;
+  position: relative;
+  backface-visibility: hidden;
+}
+
+//其他頁面：確定&取消&下一步&付款&抽籤&擲筊&查看籤詩&返回首頁
+@mixin btnlocal() {
+  width: 120px;
+  height: 42px;
+  font-size: map-get($fontSize, weblp);
+  line-height: 21px;
+  text-align: center;
+  border: 0px;
+  cursor: pointer;
+  @include btnShadow();
+  @include btnColor();
+  @include smallBorderR();
+  @include btnBefore();
+  @include btnAfter();
+  @include btnHoverBefore();
+  @include btnHoverAfter();
+  color: transparent;
+  position: relative;
+  backface-visibility: hidden;
+}
+
+//會員頁面：登入&註冊&FB登入
+@mixin btnLogin() {
+  width: 300px;
+  height: 50px;
+  font-size: map-get($fontSize, weblp);
+  line-height: 26px;
+  text-align: center;
+  cursor: pointer;
+  border: 0px;
+  @include btnShadow();
+  @include btnColor();
+  @include btnBigBorderR();
+  @include BigBorderR();
+  @include BigBorderR();
+  @include btnBefore();
+  @include btnAfter();
+  @include btnHoverBefore();
+  @include btnHoverAfter();
+  color: transparent;
+  position: relative;
+  backface-visibility: hidden;
+}
+
+//客製化平安符
+@mixin btnAmulet() {
+  width: 180px;
+  height: 42px;
+  font-size: map-get($fontSize, weblp);
+  line-height: 21px;
+  text-align: center;
+  border: 0px;
+  cursor: pointer;
+  @include btnShadow();
+  @include btnColor();
+  @include smallBorderR();
+  @include btnBefore();
+  @include btnAfter();
+  @include btnHoverBefore();
+  @include btnHoverAfter();
+  color: transparent;
+  position: relative;
+  backface-visibility: hidden;
+}
+
+
+
+
+
+
+//橫排垂直＋水平置中
+@mixin flexCenter() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+//header fixed上方
+@mixin headerFixed() {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 100%;
+}
+
+// NotoSansTC
+@mixin NotoSansTC() {
+  @font-face {
+    font-family: NotoSansTC;
+    src: url($normalFont);
+    @content;
+  }
+}
+
+//slogon字體 RocknRollOne
+@mixin RocknRollOne() {
+  @font-face {
+    font-family: RocknRollOne;
+    src: url($slogoFont);
+    @content;
+  }
+}
+
+//RWD
+@mixin phone() {
+  @media screen and (min-width:375px) {
+    @content;
+  }
+}
+
+@mixin tabletV() {
+  @media screen and (min-width:768px) {
+    @content;
+  }
+}
+
+@mixin tabletH() {
+  @media screen and (min-width:1024px) {
+    @content;
+  }
+}
+
+@mixin laptop() {
+  @media screen and (min-width:1200px) {
+    @content;
+  }
+}
