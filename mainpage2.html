@@ -11,13 +11,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
-  <!-- <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js?r=5426"></script>
+  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js?r=5426"></script>
   <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/animation.gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TimelineMax.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script>
 </head>
 <body>
   <header id="mainheader">
@@ -157,7 +156,7 @@
             無論是想祈求家人朋友安康順心，或是生活上遇到了難題需要解惑，您絕對都可以在BOBIO找到適合您的服務。<br>
             點選下方加入成為BOBIO的會員，即刻體驗完整的服務！
           </p>
-          <button data-hover="加入會員" @click="joinUs">
+          <button data-hover="加入會員" onclick="joinUs()">
             <p class="joinUs">加入會員</p>
             <div class="arrow"><img src="img/mainpage/arrow.svg" alt="箭頭"></div>
           </button>
@@ -166,7 +165,7 @@
     `,
     methods: {
       joinUs(){
-        location.href = "memberAdd.html";
+        
       },
     },
   })
@@ -181,7 +180,7 @@
               隨著科技日新月異，線上服務蔚然成風，<br>
               您將可以在線上向神明祈願留下內容。
             </p>
-            <button data-hover="立即祈願" @click="goPray">
+            <button data-hover="立即祈願" onclick="goPray()">
               <p class="goPray">立即祈願</p>
               <div class="arrow"><img src="img/mainpage/arrow.svg" alt="箭頭"></div>
             </button>
@@ -193,11 +192,6 @@
         </div>
       </section>
     `,
-    methods: {
-      goPray(){
-        location.href = "pray.html";
-      },
-    },
   })
   Vue.component('section4',{
     template:`
@@ -210,7 +204,7 @@
               不妨求籤請神明為您指點迷津，<br>
               心誠則靈，即便是線上服務也一樣靈驗！
             </p>
-            <button data-hover="前往求籤" @click="goPomes">
+            <button data-hover="前往求籤" onclick="goPomes()">
               <p class="goPomes">前往求籤</p>
               <div class="arrow"><img src="img/mainpage/arrow.svg" alt="箭頭"></div>
             </button>
@@ -222,11 +216,6 @@
         </div>
       </section>
     `,
-    methods: {
-      goPomes() {
-        location.href = "onlinepomes.html";
-      },
-    },
   })
   new Vue({
     el:"#app",

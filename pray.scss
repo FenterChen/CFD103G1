@@ -272,6 +272,9 @@ body{
     @include tabletH(){
       display: block;
     }
+    .chooseAttr{
+      cursor: pointer;
+    }
   }
   .prayGod{
     transform: translateX(40px);
@@ -537,6 +540,7 @@ body{
       font-weight: map-get($fontWeight, subTitleWeight);
       font-size: map-get($fontSize, weblp);
       position: relative;
+      cursor: pointer;
       .step{  
         width: 106px;
         height: 106px;
@@ -694,6 +698,7 @@ body{
       font-weight: map-get($fontWeight, subTitleWeight);
       font-size: map-get($fontSize, weblp);
       position: relative;
+      cursor: pointer;
       @include flexCenter();
       @include laptop(){
         width: 15%;
@@ -798,6 +803,9 @@ body{
       }
       .prayStart{
         margin-right:80px;
+      }
+      .prayDone{
+        cursor: pointer;
       }
     }
   }
@@ -956,9 +964,6 @@ body{
     }
   }
 }
-.section{
-  display: none;
-}
 .praySection{
   display: flex;
 }
@@ -978,23 +983,36 @@ body{
     @include btnlocal();
   }
 }
-
-@keyframes fadeLeft {
-  0%{
-    left: 100%;
-  } 
-  100%{
-    left: 0%;
-    transform: scale(1);
-  }
+.slide-enter{
+  left: 0%;
 }
-
-@keyframes fadeRight {
-  0%{
-    right: 100%;
-  } 
-  100%{
-    right: 0%;
-    transform: scale(1);
-  }
+.slide-enter-to{
+  left: 100%;
 }
+.slide-leave-to{
+  left: 100%;
+}
+.slide-leave{
+  left: 0%;
+}
+.slide-leave-active,
+.slide-enter-active{
+  transition: 1.8s;
+}
+// @keyframes fadeLeft {
+//   0%{
+//     left: 100%;
+//   } 
+//   100%{
+//     left: 0%;
+//   }
+// }
+
+// @keyframes fadeRight {
+//   0%{
+//     right: 100%;
+//   } 
+//   100%{
+//     right: 0%;
+//   }
+// }
