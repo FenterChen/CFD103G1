@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/amulet.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="js/header.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
 
 </head>
@@ -45,7 +46,7 @@
             <div class="cart"><a href="shopping_cart1.html"><img src="img/header/cart.svg"></a></div>
             <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
             <div class="outerHb">
-                <div class="hb" @click="hb">
+                <div class="hb" id="hb">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -85,6 +86,7 @@
                 </div>
             </div>
         </section>
+        
         <section class="container">
             <div class="content-wrap">
                 <div class="title">
@@ -92,18 +94,41 @@
                     <span>NT$399</span>
                 </div>
                 <div class="select-typewrap">
-                    <div class="select-type">
-                        <h4>種類</h4>
-                        <select name="種類" id="" v-model="type" @click="typeClick">
-                            <option value="感情" selected>感情</option>
-                            <option value="事業">事業</option>
-                            <option value="財富">財富</option>
-                            <option value="平安">平安</option>
-                            <option value="健康">健康</option>
-                            <option value="學業">學業</option>
-                        </select>
-                        <a href="#">簡介</a>
+                    <div class="introWrap">
+                        <div class="select-type">
+                            <h4>種類</h4>
+                            <select name="種類" id="" v-model="type" @change="typeClick">
+                                <option value="感情" selected>感情</option>
+                                <option value="事業">事業</option>
+                                <option value="財富">財富</option>
+                                <option value="平安">平安</option>
+                                <option value="健康">健康</option>
+                                <option value="學業">學業</option>
+                            </select>
+                        </div>
+                        <div class="mdIntro">
+                            <button class="typeIntro" @click="introClick = true">
+                                簡介
+                            </button>
+                            <transition name="fade" appear>
+                                <div class="modal-overlay" v-if="introClick"  @click="introClick = false"></div>
+                            </transition>
+                    
+                            <transition name="slide" appear>
+                                <div class="modal" v-if="introClick">
+                                    <h1 v-text="type"></h1>
+                                    <p v-text="typeIntro"></p>
+                                    <div class="typeIntro-back">
+                                        <button data-hover="返回" @click="introClick = false">
+                                            返回
+                                        </button>
+                                    </div>
+                                   
+                                </div>
+                            </transition>
+                        </div>
                     </div>
+                    
                     <div class="intro">
                         <textarea name="簡介" id="" v-model="typeIntro" cols="30" rows="5">
                             <p v-text="typeIntro"></p>
@@ -113,7 +138,7 @@
                 <div class="select-wrap">
                     <div class="zodiac">
                         <h4>生肖</h4>
-                        <select name="種類" id="" v-model="animal" @click="animalClick">
+                        <select name="種類" id="" v-model="animal" @change="animalClick">
                             <option value="鼠" selected>鼠</option>
                             <option value="牛">牛</option>
                             <option value="虎">虎</option>
@@ -137,6 +162,7 @@
                     </div>
                 </div>
                 <div class="customiz">
+                    <h3>客製化文字</h3>
                     <textarea v-model="message" @click="diyclick" cols="30" rows="5" placeholder="請輸入客製化文字（最多8字）"
                         maxlength="8"></textarea>
                 </div>
@@ -159,82 +185,35 @@
             <div class="footer-info">
                 <div class="list">
                     <ul>
-                        <li><a href="pray.html">立即祈願</a></li>
-                        <li><a href="onlinepomes.html">線上求籤</a></li>
-                        <li><a href="amulet.html">平安符願</a></li>
-                        <li><a href="money.html">立即結緣</a></li>
-                        <li><a href="Abouts.html">關於我們</a></li>
+                      <li><a href="pray.html">立即祈願</a></li>
+                      <li><a href="onlinepomes.html">線上求籤</a></li>
+                      <li><a href="amulet.html">平安符願</a></li>
+                      <li><a href="money.html">立即結緣</a></li>
+                      <li><a href="Abouts.html">關於我們</a></li>
                     </ul>
                 </div>
                 <div class="conn">
                     <p>
                         bobio@temple.com<br>
-                        02-1090-1090
+                        02-1090-1090                    
                     </p>
                     <div class="info-icon">
                         <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook"></a>
                         <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram"></a>
-                        <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube"></a>
+                        <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube"></a>                      
                     </div>
                 </div>
             </div>
         </div>
         <div class="copyright">
             <p>
-                Copyright © 2021Bobio
-                本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+                Copyright © 2021Bobio 本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
             </p>
         </div>
     </footer>
 
 </body>
 <script>
-    //headerVue
-    new Vue({
-        el: '#mainheader',
-        data() {
-            return {
-                screenWidth: null,
-                loname: null,
-            }
-        },
-        mounted() {
-            this.screenWidth = document.body.clientWidth;
-            window.onresize = () => {
-                return (() => {
-                    this.screenWidth = document.body.clientWidth;
-                })()
-            },
-                $(`header .headerWrap ul li:nth-child(3) a`).addClass('bottomnavline');
-        },
-        watch: {
-            screenWidth: {
-                handler: function (newval, oldval) {
-                    if (newval >= 1200) {
-                        $(`header>.headerWrap>nav`).removeClass('navPostion');
-                    } else if (newval < 1200) {
-                        $(`header>.headerWrap>nav`).addClass('navPostion');
-                    }
-                },
-                immediate: true,
-            }
-        },
-        methods: {
-            hb() {
-                let place = $("nav").css("right");
-                if (place < "0px") {
-                    $("nav").animate({
-                        right: 0,
-                    }, 1200, 'easeInBounce')
-                } else {
-                    $("nav").animate({
-                        right: "-30%",
-                    }, 1200, 'easeOutBounce')
-                }
-            }
-        },
-    });
-
     new Vue({
         el: "#app",
         data() {
@@ -245,11 +224,13 @@
                 imageSrc: "./img/amulet/1.png",
                 imageSrcAnimal: "./img/amulet/amulet_2.jpg",
                 imagebackSrc: "img/amulet/amulet_bg.jpg",
-                message: '功德圓滿平安喜樂',
+                message: '',
                 cart: [],
                 type: '感情',
                 animal: '鼠',
                 count: 1,
+                introClick:false,
+                
             }
         },
         mounted() {
@@ -258,6 +239,10 @@
             }
         },
         methods: {
+            introClick(){
+                this.intro= true;
+                this.close= false;
+            },
             typeClick() {
                 this.front = true;
                 this.back = false;
@@ -287,8 +272,9 @@
                 }
             },
 
-
-
+            showModel(){
+                this.showModal=true;
+            },
             animalClick() {
                 // this.front = true;
                 // this.back = false;
