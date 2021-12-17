@@ -11,11 +11,11 @@
   <link rel="stylesheet" href="css/footer.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="js/pray.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 </head>
 
 <body>
+
   <header id="mainheader">
     <div class="headerWrap">
       <div class="logo">
@@ -54,170 +54,22 @@
     </div>
   </header>
   <div class="bobioPray" id="app">
-    <section class='section praySection'>
-      <div class="pray">
-        <p class="choose">請選擇</p>
-        <h2 class="prayCate">祈願種類</h2>
-        <div class="cateSectionPhone">
-          <select name="cateTitle" class="select">
-            <option class="choosePhone" value="" selected disabled>種類</option>
-            <option class="lovePhone" value="月老">感情</option>
-            <option class="studyPhone" value="文昌帝君">學業</option>
-            <option class="healthPhone" value="保生大帝">健康</option>
-            <option class="safetyPhone" value="媽祖">平安</option>
-            <option class="wealthPhone" value="財神">財富</option>
-            <option class="workPhone" value="關公">事業</option>
-          </select>
-        </div>
-        <div class="prayImg">
-          <img src="img/pray/unknownGod.png" alt="月老">
-        </div>
-        <p class="godRepresent">掌管神明</p>
-        <h3 class="godTitle">掌管神明</h3>
-        <button class="prayNow" data-hover="開始祈願">開始祈願</button>
-      </div>
-      <div class="cateSectionWeb">
-        <div class="cate love">
-          <img src="img/pray/love.svg" alt="感情">
-          <p class="cateTitle">感情</p>
-        </div>
-        <div class="cate study">
-          <img src="img/pray/study.svg" alt="學業">
-          <p class="cateTitle">學業</p>
-        </div>
-        <div class="cate health">
-          <img src="img/pray/health.svg" alt="健康">
-          <p class="cateTitle">健康</p>
-        </div>
-        <div class="cate safety">
-          <img src="img/pray/safety.svg" alt="平安">
-          <p class="cateTitle">平安</p>
-        </div>
-        <div class="cate wealth">
-          <img src="img/pray/wealth.svg" alt="財富">
-          <p class="cateTitle">財富</p>
-        </div>
-        <div class="cate work">
-          <img src="img/pray/work.svg" alt="事業">
-          <p class="cateTitle">事業</p>
-        </div>
-      </div>
-    </section>
-    <section class="section prayIntro">
-      <div class="mainSec">
-        <div class="prayGod">
-          <img id="godDisplay" src="img/pray/loveGodShadow.png" alt="月老">
-        </div>
-        <div class="prayTitle">
-          <div class="prayMethod">
-            <h2 class="methodWeb">祈願<br>方法</h2>
-            <h2 class="methodPhone">祈願方法</h2>
-            <p class="detailWeb">請在心中默念您的名字、欲祈求之事項。<br>完成後請點選下一步。</p>
-            <p class="detailPhone">請在心中默念您的名字、<br>欲祈求之事項。<br>完成後請點選下一步。</p>
-          </div>
-          <div class="praySteps">
-            <p class="step chooseAttr">選擇<br>供品</p>
-            <p class=" step prayStart">默念<br>拜拜</p>
-            <p class="step prayDone">完成<br>祈願</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section attrIntro">
-      <div class="attrSec">
-        <div class="stepMethod">
-          <p class=" step prayWay">祈願<br>方法</p>
-        </div>
-        <div class="chooseAttr">
-          <div class="attr meat">
-            <h2>三牲</h2>
-            <div class="detail">
-              <p>豬<br>雞<br>魚</p>
-              <button class="choose" data-hover="選擇" onclick="nextSection()">選擇</button>
-            </div>
-          </div>
-          <div class="attr fruit">
-            <h2>鮮果</h2>
-            <div class="detail">
-              <p>香蕉<br>蘋果<br>水梨</p>
-              <button class="choose" data-hover="選擇" onclick="nextSection()">選擇</button>
-            </div>
-          </div>
-          <div class="attr sweet">
-            <h2>甜食</h2>
-            <div class="detail">
-              <p>糕餅<br>餅乾<br>糖果</p>
-              <button class="choose" data-hover="選擇" onclick="nextSection()">選擇</button>
-            </div>
-          </div>
-        </div>
-        <div class="attrTitle">
-          <div class="attrChoices">
-            <h2 class="choicesWeb">選擇<br>供品</h2>
-            <h2 class="choicesPhone">選擇供品</h2>
-            <p class="choicesDetail">請選擇欲提供之供品。<br>完成後請點選下一步。</p>
-          </div>
-          <div class="chooseSteps">
-            <p class=" step prayStart">默念<br>拜拜</p>
-            <p class="step prayDone">完成<br>祈願</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section byeBye">
-      <div class="byeSec">
-        <div class="byeTitle">
-          <div class="byeChoices">
-            <h2 class="byeByeWeb">默念<br>拜拜</h2>
-            <h2 class="byeByePhone">默念拜拜</h2>
-            <p class="byeByeDetail">請雙手合十，進行叩拜。<br>完成後請點選下一步。</p>
-          </div>
-          <div class="byeByeProcess">
-            <p class="step prayStart">祈願<br>方法</p>
-            <p class="step prayDone">選擇<br>貢品</p>
-          </div>
-        </div>
-        <div class="byeByeAnimation">
-          <img src="img/pray/bobioAnimation.gif" alt="默念拜拜">
-        </div>
-        <div class="lastStep">
-          <p class="step prayDone">完成<br>祈願</p>
-        </div>
-      </div>
-    </section>
-    <section class="section Finish">
-      <div class="doneSec">
-        <div class="doneTitle">
-          <div class="doneIntro">
-            <h2 class="prayDoneWeb">完成<br>祈願</h2>
-            <h2 class="prayDonePhone">祈願</h2>
-            <p class="doneDetail">本次祈願步驟已完成。<br>另贈與雞湯小卡一張，庇佑您心想事成。</p>
-          </div>
-          <div class="prayProcess">
-            <p class="step prayMethod">祈願<br>方法</p>
-            <p class="step chooseAttr">選擇<br>貢品</p>
-            <p class="step prayDone">完成<br>祈願</p>
-          </div>
-        </div>
-        <div class="prayCard">
-          <div class="cradDetail">
-            <img src="img/pray/prayCard.png" alt="雞湯小卡">
-          </div>
-        </div>
-      </div>
-    </section>
+    <component :is="section[currentIdx -1]" @plus-slides="plusSlides" @minus-slides="minusSlides" :cate="cate"
+      :god="god" :focus-img="focusImg" :god-img="godImg" @update-cate="cate = $event" @update-god="god = $event"
+      @add-slide="plusSlides(1)" :class="{fadeRight:rightActivated}" :class="{fadeLeft:leftActivated}">
+    </component>
     <div class="btnStep">
-      <button class="btn previous" onclick="minusSlides(1)">
+      <button class="btn previous" @click="minusSlides(1)">
         <img src="img/pray/preArrow.svg" alt="上一步">
         <p class="previousStep">上一步</p>
       </button>
-      <button class="btn next" onclick="plusSlides(1)">
+      <button class="btn next" @click="plusSlides(1)">
         <p class="nextStep">下一步</p>
         <img src="img/pray/nextArrow.svg" alt="下一步">
       </button>
     </div>
     <div class="goMainpage">
-      <button data-hover="返回首頁" onclick="goHome()">返回首頁</button>
+      <button data-hover="返回首頁" @click="goHome">返回首頁</button>
     </div>
   </div>
   <footer>
@@ -259,50 +111,434 @@
     </div>
   </footer>
   <script>
-    //headerVue
+    Vue.component('pray', {
+      props: ['cate', 'focusImg', 'godImg'],
+      template: `
+          <section class='section praySection'>
+          <div class="pray">
+            <p class="choose">請選擇</p>
+            <h2 class="prayCate">祈願種類</h2>
+            <div class="cateSectionPhone">
+              <select name="cateTitle" class="select" v-model="cateModel">
+                <option class="choosePhone" value="種類" selected disabled>種類</option>
+                <option class="lovePhone" value="感情">感情</option>
+                <option class="studyPhone" value="學業">學業</option>
+                <option class="healthPhone" value="健康">健康</option>
+                <option class="safetyPhone" value="平安">平安</option>
+                <option class="wealthPhone" value="財富">財富</option>
+                <option class="workPhone" value="事業">事業</option>
+              </select>
+            </div>
+            <div class="prayImg">
+              <img :src="focusImg" alt="月老">
+            </div>
+            <p class="godRepresent">掌管神明</p>
+            <h3 class="godTitle">掌管神明</h3>
+            <button class="prayNow" data-hover="開始祈願" @click="$emit('add-slide')">開始祈願</button>
+          </div>
+          <div class="cateSectionWeb">
+            <div class="cate love" @mouseout="loveMouseOut" @mouseover="loveMouseOver" @click="loveClick">
+              <img src="img/pray/love.svg" alt="感情">
+              <p class="cateTitle">感情</p>
+            </div>
+            <div class="cate study" @mouseout="studyMouseOut" @mouseover="studyMouseOver" @click="studyClick">
+              <img src="img/pray/study.svg" alt="學業">
+              <p class="cateTitle">學業</p>
+            </div>
+            <div class="cate health" @mouseout="healthMouseOut" @mouseover="healthMouseOver" @click="healthClick">
+              <img src="img/pray/health.svg" alt="健康">
+              <p class="cateTitle">健康</p>
+            </div>
+            <div class="cate safety" @mouseout="safetyMouseOut" @mouseover="safetyMouseOver" @click="safetyClick">
+              <img src="img/pray/safety.svg" alt="平安">
+              <p class="cateTitle">平安</p>
+            </div>
+            <div class="cate wealth" @mouseout="wealthMouseOut" @mouseover="wealthMouseOver" @click="wealthClick">
+              <img src="img/pray/wealth.svg" alt="財富">
+              <p class="cateTitle">財富</p>
+            </div>
+            <div class="cate work" @mouseout="workMouseOut" @mouseover="workMouseOver" @click="workClick">
+              <img src="img/pray/work.svg" alt="事業">
+              <p class="cateTitle">事業</p>
+            </div>
+          </div>
+        </section>
+      `,
+      computed: {
+        cateModel: {
+          get() { return this.cate },
+          set(value) {
+            this.$emit('update-cate', value);
+            this.$emit('update-god', value);
+          },
+        },
+      },
+      methods: {
+        loveMouseOver() {
+          $('.love').css('background-color', '#FDBF52');
+          $('.prayImg img').attr('src', 'img/pray/loveGod.png');
+          $('.godTitle').text('月老');
+          $('.love>.cateTitle').css('color', '#573605');
+          $('.love img').attr('src', 'img/pray/loveBrown.svg');
+        },
+        loveMouseOut() {
+          $('.love').css('background-color', '#927858');
+          $('.prayImg img').attr('src', 'img/pray/unknownGod.png');
+          $('.godTitle').text('祈願神明');
+          $('.love>.cateTitle').css('color', '#ffffff');
+          $('.love img').attr('src', 'img/pray/love.svg');
+        },
+        loveClick() {
+          let godimg = $('.prayGod');
+          godimg.css('transform', 'translateX(43px);');
+          this.$emit('plus-slides', 1);
+          this.$emit('update-god', '感情');
+          this.$emit('update-cate', '感情');
+        },
+        studyMouseOver() {
+          $('.study').css('background-color', '#FDBF52');
+          $('.prayImg img').attr('src', 'img/pray/studyGod.png');
+          $('.godTitle').text('文昌帝君');
+          $('.study>.cateTitle').css('color', '#573605');
+          $('.study img').attr('src', 'img/pray/studyBrown.svg');
+        },
+        studyMouseOut() {
+          $('.study').css('background-color', '#927858');
+          $('.prayImg img').attr('src', 'img/pray/unknownGod.png');
+          $('.godTitle').text('祈願神明');
+          $('.study>.cateTitle').css('color', '#ffffff');
+          $('.study img').attr('src', 'img/pray/study.svg');
+        },
+        studyClick() {
+          let godimg = $('.prayGod');
+          godimg.css('transform', 'translateX(20px);');
+          this.$emit('plus-slides', 1)
+          this.$emit('update-god', '學業');
+          this.$emit('update-cate', '學業');
+        },
+        healthMouseOver() {
+          $('.health').css('background-color', '#FDBF52');
+          $('.prayImg img').attr('src', 'img/pray/healthGod.png');
+          $('.godTitle').text('保生大帝');
+          $('.health>.cateTitle').css('color', '#573605');
+          $('.health img').attr('src', 'img/pray/healthBrown.svg');
+        },
+        healthMouseOut() {
+          $('.health').css('background-color', '#927858');
+          $('.prayImg img').attr('src', 'img/pray/unknownGod.png');
+          $('.godTitle').text('祈願神明');
+          $('.health>.cateTitle').css('color', '#ffffff');
+          $('.health img').attr('src', 'img/pray/health.svg');
+        },
+        healthClick() {
+          let godimg = $('.prayGod');
+          godimg.css('transform', 'translateX(38px);');
+          this.$emit('plus-slides', 1);
+          this.$emit('update-god', '健康');
+          this.$emit('update-cate', '健康');
+        },
+        safetyMouseOver() {
+          $('.safety').css('background-color', '#FDBF52');
+          $('.prayImg img').attr('src', 'img/pray/safetyGod.png');
+          $('.godTitle').text('媽祖');
+          $('.safety>.cateTitle').css('color', '#573605');
+          $('.safety img').attr('src', 'img/pray/safetyBrown.svg');
+        },
+        safetyMouseOut() {
+          $('.safety').css('background-color', '#927858');
+          $('.prayImg img').attr('src', 'img/pray/unknownGod.png');
+          $('.godTitle').text('祈願神明');
+          $('.safety>.cateTitle').css('color', '#ffffff');
+          $('.safety img').attr('src', 'img/pray/safety.svg');
+        },
+        safetyClick() {
+          let godimg = $('.prayGod');
+          godimg.css('transform', 'translateX(38px);');
+          this.$emit('plus-slides', 1);
+          this.$emit('update-god', '平安');
+          this.$emit('update-cate', '平安');
+        },
+        wealthMouseOver() {
+          $('.wealth').css('background-color', '#FDBF52');
+          $('.prayImg img').attr('src', 'img/pray/moneyGod.png');
+          $('.godTitle').text('財神');
+          $('.wealth>.cateTitle').css('color', '#573605');
+          $('.wealth img').attr('src', 'img/pray/moneyBrown.svg');
+        },
+        wealthMouseOut() {
+          $('.wealth').css('background-color', '#927858');
+          $('.prayImg img').attr('src', 'img/pray/unknownGod.png');
+          $('.godTitle').text('祈願神明');
+          $('.wealth>.cateTitle').css('color', '#ffffff');
+          $('.wealth img').attr('src', 'img/pray/wealth.svg');
+        },
+        wealthClick() {
+          let godimg = $('.prayGod');
+          godimg.css('transform', 'translateX(20px);');
+          this.$emit('plus-slides', 1);
+          this.$emit('update-god', '財富');
+          this.$emit('update-cate', '財富');
+        },
+        workMouseOver() {
+          $('.work').css('background-color', '#FDBF52');
+          $('.prayImg img').attr('src', 'img/pray/workGod.png');
+          $('.godTitle').text('關公');
+          $('.work>.cateTitle').css('color', '#573605');
+          $('.work img').attr('src', 'img/pray/workBrown.svg');
+        },
+        workMouseOut() {
+          $('.work').css('background-color', '#927858');
+          $('.prayImg img').attr('src', 'img/pray/unknownGod.png');
+          $('.godTitle').text('祈願神明');
+          $('.work>.cateTitle').css('color', '#ffffff');
+          $('.work img').attr('src', 'img/pray/work.svg');
+        },
+        workClick() {
+          let godimg = $('.prayGod');
+          godimg.css('transform', 'translateX(38px);');
+          this.$emit('plus-slides', 1);
+          this.$emit('update-god', '事業');
+          this.$emit('update-cate', '事業');
+        },
+      },
+    })
+    Vue.component('prayintro', {
+      props: ['focusImg', 'god', 'godImg'],
+      template: `
+          <section class="section prayIntro">
+          <div class="mainSec">
+            <div class="prayGod">
+              <img id="godDisplay" :src="godImg" alt="月老">
+            </div>
+            <div class="prayTitle">
+              <div class="prayMethod">
+                <h2 class="methodWeb">祈願<br>方法</h2>
+                <h2 class="methodPhone">祈願方法</h2>
+                <p class="detailWeb">請在心中默念您的名字、欲祈求之事項。<br>完成後請點選下一步。</p>
+                <p class="detailPhone">請在心中默念您的名字、<br>欲祈求之事項。<br>完成後請點選下一步。</p>
+              </div>
+              <div class="praySteps">
+                <p class="step chooseAttr" @click="plusSlides">選擇<br>供品</p>
+                <p class=" step prayStart">默念<br>拜拜</p>
+                <p class="step prayDone">完成<br>祈願</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      `,
+      computed: {
+        godModel: {
+          get() { return this.god },
+          set(value) {
+            this.$emit('update-god', value);
+            this.$emit('update-cate', value);
+          },
+        },
+        // imgWithDifWidth() {
+        //   return window.innerWidth < 1024 ? this.focusImg : this.godImg
+        // },
+      },
+      methods: {
+        plusSlides() {
+          this.$emit('plus-slides', 1);
+        },
+      },
+    })
+    Vue.component('prayattr', {
+      template: `
+          <section class="section attrIntro">
+          <div class="attrSec">
+            <div class="stepMethod" @click="minusSlides">
+              <p class=" step prayWay">祈願<br>方法</p>
+            </div>
+            <div class="chooseAttr">
+              <div class="attr meat">
+                <h2>三牲</h2>
+                <div class="detail">
+                  <p>豬<br>雞<br>魚</p>
+                  <button class="choose" data-hover="選擇" @click="plusSlides">選擇</button>
+                </div>
+              </div>
+              <div class="attr fruit">
+                <h2>鮮果</h2>
+                <div class="detail">
+                  <p>香蕉<br>蘋果<br>水梨</p>
+                  <button class="choose" data-hover="選擇" @click="plusSlides">選擇</button>
+                </div>
+              </div>
+              <div class="attr sweet">
+                <h2>甜食</h2>
+                <div class="detail">
+                  <p>糕餅<br>餅乾<br>糖果</p>
+                  <button class="choose" data-hover="選擇" @click="plusSlides">選擇</button>
+                </div>
+              </div>
+            </div>
+            <div class="attrTitle">
+              <div class="attrChoices">
+                <h2 class="choicesWeb">選擇<br>供品</h2>
+                <h2 class="choicesPhone">選擇供品</h2>
+                <p class="choicesDetail">請選擇欲提供之供品。<br>完成後請點選下一步。</p>
+              </div>
+              <div class="chooseSteps">
+                <p class=" step prayStart">默念<br>拜拜</p>
+                <p class="step prayDone">完成<br>祈願</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      `,
+      methods: {
+        plusSlides() {
+          this.$emit('plus-slides', 1);
+        },
+        minusSlides() {
+          this.$emit('minus-slides', 1);
+        },
+      },
+    })
+    Vue.component('praystart', {
+      template: `
+          <section class="section byeBye">
+          <div class="byeSec">
+            <div class="byeTitle">
+              <div class="byeChoices">
+                <h2 class="byeByeWeb">默念<br>拜拜</h2>
+                <h2 class="byeByePhone">默念拜拜</h2>
+                <p class="byeByeDetail">請雙手合十，進行叩拜。<br>完成後請點選下一步。</p>
+              </div>
+              <div class="byeByeProcess">
+                <p class="step prayStart">祈願<br>方法</p>
+                <p class="step prayDone" @click="minusSlides">選擇<br>貢品</p>
+              </div>
+            </div>
+            <div class="byeByeAnimation">
+              <img src="img/pray/bobioAnimation.gif" alt="默念拜拜">
+            </div>
+            <div class="lastStep" @click="plusSlides">
+              <p class="step prayDone">完成<br>祈願</p>
+            </div>
+          </div>
+        </section>
+      `,
+      methods: {
+        plusSlides() {
+          this.$emit('plus-slides', 1);
+        },
+        minusSlides() {
+          this.$emit('minus-slides', 1);
+        },
+      },
+    })
+    Vue.component('praydone', {
+      template: `
+          <section class="section Finish">
+          <div class="doneSec">
+            <div class="doneTitle">
+              <div class="doneIntro">
+                <h2 class="prayDoneWeb">完成<br>祈願</h2>
+                <h2 class="prayDonePhone">祈願</h2>
+                <p class="doneDetail">本次祈願步驟已完成。<br>另贈與雞湯小卡一張，庇佑您心想事成。</p>
+              </div>
+              <div class="prayProcess">
+                <p class="step prayMethod">祈願<br>方法</p>
+                <p class="step chooseAttr">選擇<br>貢品</p>
+                <p class="step prayDone">完成<br>祈願</p>
+              </div>
+            </div>
+            <div class="prayCard">
+              <div class="cradDetail">
+                <img src="img/pray/prayCard.png" alt="雞湯小卡">
+              </div>
+            </div>
+          </div>
+        </section>
+      `,
+      methods: {
+      },
+    })
     new Vue({
-      el: '#mainheader',
-      data() {
-        return {
-          screenWidth: null,
+      el: "#app",
+      data: {
+        currentIdx: 1,
+        section: ['pray', 'prayintro', 'prayattr', 'praystart', 'praydone'],
+        cate: "種類",
+        god: "",
+        leftActivated: false,
+        rightActivated: false,
+        imgList: [
+          { key: "種類", img: "img/pray/unknownGod.png" },
+          { key: "學業", img: "img/pray/studyGod.png" },
+          { key: "健康", img: "img/pray/healthGod.png" },
+          { key: "平安", img: "img/pray/safetyGod.png" },
+          { key: "財富", img: "img/pray/moneyGod.png" },
+          { key: "事業", img: "img/pray/workGod.png" },
+          { key: "感情", img: "img/pray/loveGod.png" },
+        ],
+        godList: [
+          { key: "學業", img: "img/pray/studyGodShadow.png" },
+          { key: "健康", img: "img/pray/healthGodShadow.png" },
+          { key: "平安", img: "img/pray/safetyGodShadow.png" },
+          { key: "財富", img: "img/pray/moneyGodShadow.png" },
+          { key: "事業", img: "img/pray/workGodShadow.png" },
+          { key: "感情", img: "img/pray/loveGodShadow.png" },
+        ],
+      },
+      computed: {
+        focusImg() {
+          const focusObj = this.imgList.find(item => item.key == this.cate);
+          return focusObj?.img || "img/pray/unknownGod.png";
+        },
+        godImg() {
+          const focusObj = this.godList.find(item => item.key == this.god);
+          return focusObj?.img || "img/pray/unknownGod.png";
         }
       },
-      mounted() {
-        this.screenWidth = document.body.clientWidth;
-        window.onresize = () => {
-          return (() => {
-            this.screenWidth = document.body.clientWidth;
-          })()
-        },
-          $(`header .headerWrap ul li:first-child a`).addClass('bottomnavline');
-      },
       watch: {
-        screenWidth: {
-          handler: function (newval, oldval) {
-            if (newval >= 1200) {
-              $(`header>.headerWrap>nav`).removeClass('navPostion');
-            } else if (newval < 1200) {
-              $(`header>.headerWrap>nav`).addClass('navPostion');
-            }
-          },
-          immediate: true,
+        currentIdx() {
+          this.btnHandler();
         }
       },
       methods: {
-        hb() {
-          let place = $("nav").css("right");
-          if (place < "0px") {
-            $("nav").animate({
-              right: 0,
-            }, 1200, 'easeInBounce')
+        goHome() {
+          location.href = 'mainpage.html';
+        },
+        plusSlides(n) {
+          this.currentIdx += n;
+          this.rightActivated = false;
+          this.leftActivated = true;
+        },
+        minusSlides(n) {
+          this.currentIdx -= n;
+          this.rightActivated = true;
+          this.leftActivated = false;
+        },
+        currentSlide(n) {
+          this.showSlides(this.currentIdx = n);
+        },
+        btnHandler() {
+          if (this.currentIdx == 1) {
+            $('.btnStep').css('display', 'none');
+            $('.goMainpage').css('display', 'none');
+            $('.bobioPray').addClass('no-line');
+          } else if (this.currentIdx >= 5) {
+            $('.btnStep').css('display', 'none');
+            $('.goMainpage').css('display', 'flex');
+            $('.bobioPray').removeClass('no-line');
+          } else if (this.currentIdx == 3) {
+            $('.next').css('opacity', '0');
           } else {
-            $("nav").animate({
-              right: "-30%",
-            }, 1200, 'easeOutBounce')
+            $('.btnStep').css('display', 'flex');
+            $('.goMainpage').css('display', 'none');
+            $('.bobioPray').removeClass('no-line');
+            $('.next').css('opacity', '1');
           }
-        }
+        },
       },
-    });
+      mounted() {
+        this.btnHandler();
+      },
+    })
   </script>
 </body>
 
