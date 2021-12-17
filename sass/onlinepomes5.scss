@@ -42,6 +42,7 @@ section {
 }
 
 .onlinePic {
+  position: relative;
   max-width: 370px;
   width: 100%;
 }
@@ -51,7 +52,7 @@ section {
   width: 100%;
 
   @include tabletV() {
-    margin-top: -130px;
+    // margin-top: 100px;
   }
 
   @include tabletH() {
@@ -60,8 +61,119 @@ section {
   }
 }
 
+.lick p {
+  position: absolute;
+  top: 60px;
+  right: 113px;
+  font-family: NotoSansTC;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 40px;
+  letter-spacing: 0.1px;
+  color: #573605;
+  text-shadow: 0em 0em 0.1em rgb(187, 130, 64);
+  -webkit-animation: jump 1s ease-out;
+  -moz-animation: jump 1s ease-out;
+  animation: jump 1s ease-out;
+  transform: rotate(5deg);
+
+  @-webkit-keyframes jump {
+    0% {
+      transform: translateY(1000px);
+    }
+
+    100% {
+      transform: translateY(500px);
+    }
+  }
+
+  @keyframes jump {
+    0% {
+      transform: translateY(100px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  @include tabletV() {
+    top: 20px;
+    right: 123px;
+
+  }
+
+  @include tabletH() {
+    font-size: 25px;
+    top: 60px;
+    right: 107px;
+
+  }
+}
+
+.lick img {
+  position: absolute;
+  top: -60px;
+  right: 85px;
+  max-width: 75px;
+  width: 100%;
+  -webkit-animation: jump 1s ease-out;
+  -moz-animation: jump 1s ease-out;
+  animation: jump 1s ease-out;
+
+  @-webkit-keyframes jump {
+    0% {
+      transform: translateY(1000px);
+    }
+
+    100% {
+      transform: translateY(500px);
+    }
+  }
+
+  @keyframes jump {
+    0% {
+      transform: translateY(100px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  @include tabletV() {
+    right: 95px;
+    top: -100px;
+
+  }
+
+  @include tabletH() {
+    max-width: 100px;
+    width: 100%;
+    right: 70px;
+
+  }
+}
+
+.lickboxPic img {
+  position: absolute;
+  top: 145px;
+  left: 36px;
+
+  @include tabletV() {
+    left: 53px;
+  }
+
+  @include tabletH() {
+    top: 205px;
+    left: 1px;
+
+  }
+}
+
 .onlineContent {
-  // max-width: 400px;
+
   width: 100%;
   text-align: center;
 
@@ -146,6 +258,18 @@ section {
 
 }
 
+.throwPlace {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+
+  @include tabletV() {
+    justify-content: start;
+    align-items: center;
+  }
+}
+
 .throwPic {
 
   margin: auto;
@@ -160,7 +284,10 @@ section {
 }
 
 .throwPic img {
-  padding-right: 5px;
+  padding-right: 10px;
   width: 100px;
 
+  @include tabletV() {
+    padding-right: 10px;
+  }
 }

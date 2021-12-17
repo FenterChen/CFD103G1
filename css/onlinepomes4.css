@@ -114,6 +114,52 @@ section {
   width: 100%;
 }
 
+.onlinePic .pomesLots {
+  max-width: 370px;
+  width: 100%;
+}
+
+@-webkit-keyframes shake {
+  0%,
+  80% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  15% {
+    -webkit-transform: translate3d(-5px, 0, 0);
+    transform: translate3d(-5px, 0, 0);
+  }
+  30% {
+    -webkit-transform: translate3d(5px, 0, 0);
+    transform: translate3d(5px, 0, 0);
+  }
+  40% {
+    -webkit-transform: translate3d(-5px, 0, 0);
+    transform: translate3d(-5px, 0, 0);
+  }
+  50% {
+    -webkit-transform: translate3d(5px, 0, 0);
+    transform: translate3d(5px, 0, 0);
+  }
+  60% {
+    -webkit-transform: translate3d(-5px, 0, 0);
+    transform: translate3d(-5px, 0, 0);
+  }
+  70% {
+    -webkit-transform: translate3d(5px, 0, 0);
+    transform: translate3d(5px, 0, 0);
+  }
+}
+
+.onlinePic {
+  -webkit-animation: shake;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  background: none;
+}
+
 .onlinePic img {
   margin-top: 20px;
   max-width: 263px;
@@ -129,6 +175,26 @@ section {
 @media screen and (min-width: 1024px) {
   .onlinePic img {
     max-width: 370px;
+  }
+}
+
+.onlinePic .pomesLots .lots img {
+  max-width: 370px;
+  width: 100%;
+  margin-top: 20px;
+  max-width: 263px;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .onlinePic .pomesLots .lots img {
+    margin-top: 0px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .onlinePic .pomesLots .lots img {
+    max-width: 100px;
   }
 }
 
