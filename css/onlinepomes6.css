@@ -107,8 +107,41 @@ section {
 }
 
 .onlinePic {
+  position: relative;
   max-width: 370px;
   width: 100%;
+  z-index: -1;
+}
+
+.onlinePic p {
+  position: absolute;
+  right: 106px;
+  top: -25px;
+  font-family: NotoSansTC;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 40px;
+  letter-spacing: 0.1px;
+  color: #573605;
+  text-shadow: 0em 0em 0.1em #bb8240;
+  -webkit-transform: rotate(5deg);
+          transform: rotate(5deg);
+}
+
+@media screen and (min-width: 768px) {
+  .onlinePic p {
+    top: 105px;
+    right: 125px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .onlinePic p {
+    font-size: 25px;
+    top: 30px;
+    right: 100px;
+  }
 }
 
 .onlinePic img {
@@ -117,9 +150,16 @@ section {
   width: 100%;
 }
 
+@media screen and (min-width: 768px) {
+  .onlinePic img {
+    margin-top: 0px;
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .onlinePic img {
     max-width: 370px;
+    margin-top: -130px;
   }
 }
 
@@ -130,7 +170,7 @@ section {
 
 @media screen and (min-width: 768px) {
   .onlineContent {
-    margin-top: -100px;
+    margin-top: -20px;
     text-align: left;
     width: 60%;
   }
@@ -138,6 +178,7 @@ section {
 
 @media screen and (min-width: 1024px) {
   .onlineContent {
+    margin-top: -70px;
     padding-left: 100px;
     text-align: left;
     width: 60%;
@@ -164,12 +205,18 @@ section {
 
 @media screen and (min-width: 768px) {
   .onlineBtn {
-    max-width: 330px;
+    max-width: 257px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: distribute;
         justify-content: space-around;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .onlineBtn {
+    max-width: 330px;
   }
 }
 
@@ -242,7 +289,7 @@ section {
   margin-bottom: 20px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .pomesPic img {
     max-width: 330px;
   }
