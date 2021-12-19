@@ -56,7 +56,7 @@
   <div class="bobioPray" id="app">
     <component :is="section[currentIdx -1]" @plus-slides="plusSlides" @minus-slides="minusSlides" :cate="cate"
       :god="god" :focus-img="focusImg" :god-img="godImg" @update-cate="cate = $event" @update-god="god = $event"
-      @add-slide="plusSlides(1)" :class="{fadeRight:rightActivated}" :class="{fadeLeft:leftActivated}">
+      @add-slide="plusSlides(1)" :class="{fadeRight:rightActivated, fadeLeft:leftActivated}">
     </component>
     <div class="btnStep">
       <button class="btn previous" @click="minusSlides(1)">
