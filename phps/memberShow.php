@@ -1,7 +1,7 @@
 <!-- 撈資料出來 -->
 <?php 
 try {
-	require_once("connectBOBIO.php");
+	require_once("connectPray.php");
 	//執行sql指令
 	$sql = "select * from member";
   $member=$pdo->query($sql);
