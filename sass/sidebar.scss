@@ -1,0 +1,276 @@
+@import 'base/var';
+@import 'base/reset';
+@import 'mixin/modules';
+@include NotoSansTC();
+
+
+
+.wrapp {
+    width: 100%;
+    display: flex;
+    background-color: #FFFAE7;
+    position: relative;
+}
+
+.sidebar {
+    width: 17%;
+    height: 100vh;
+    background-color: #FDBF52;
+}
+
+.prayRecorder,
+.cardManage,
+.supplyManage,
+.pomes,
+.pomeDetail,
+.pomeRecorder,
+.amuletManage,
+.zodiac-Manage-second,
+.product-orders,
+.productOrders,
+.memberDetail,
+.moneyRecorder,
+.adminList {
+    margin: 20px auto;
+    width: 80%;
+    flex-direction: column;
+    background-color: #FFFAE7;
+    position: relative;
+}
+
+.showbox1,
+.showbox2,
+.showbox3 {
+    display: none;
+}
+
+.showbtnbox {
+    visibility: hidden;
+}
+
+
+//   各項標題(祈願、小卡、供品管理)
+.supply {
+    margin-bottom: 20px;
+
+
+    span {
+        font-family: NotoSansTC, serif;
+        font-size: map-get($fontSize, webp);
+        font-weight: 700;
+        color: #573605;
+    }
+
+    img {
+        vertical-align: top;
+        padding-top: 7px;
+        padding-left: 5px;
+    }
+}
+
+// 搜尋
+.searchbox {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+    input {
+        background-color: #FCDBA3;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border: 0px;
+        padding-left: 10px;
+    }
+
+    button {
+        background-color: #927858;
+        border: 0px;
+        padding-left: 10px;
+        padding-right: 5px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        position: relative;
+        right: 5px;
+
+
+        img {
+            vertical-align: middle;
+            padding-bottom: 2px;
+            padding-right: 5px;
+        }
+    }
+
+    .page {
+        padding: 0px 70px 0px 0px;
+    }
+
+    .page .each {
+        color: #927858;
+        font-size: 18px;
+    }
+
+    select {
+        border-radius: 10px;
+        background-color: #FCDBA3;
+        border: none;
+        width: 50px;
+        height: 25px;
+    }
+}
+
+
+
+//祈願紀錄表格
+.table-pray>tbody>tr:nth-of-type(odd)>* {
+    background-color: white;
+}
+
+//祈願紀錄表格
+
+//小卡管理表格
+.table-card>tbody>tr>td>input {
+    border: 0px;
+    border-radius: 20px;
+    background-color: #fcdba3;
+    width: 150px;
+    padding-left: 10px;
+    font-family: NotoSansTC, serif;
+    color: #573605;
+}
+
+//小卡管理表格
+//供品管理表格
+.table-supply>tbody>tr>td>input {
+    border: 0px;
+    border-radius: 20px;
+    background-color: #fcdba3;
+    width: 80px;
+    padding-left: 10px;
+    font-family: NotoSansTC, serif;
+    color: #573605;
+}
+
+//供品管理表格
+
+
+.table>:not(caption)>*>* {
+    border-bottom: 0px;
+}
+
+.table>* {
+    color: #573605;
+}
+
+.table>tbody>tr>* {
+    padding: 10px 10px;
+}
+
+.picbox {
+    display: flex;
+    margin: 20px;
+    justify-content: space-evenly;
+
+}
+
+.firstpic,
+.firstpic2 {
+    display: flex;
+    flex-direction: column;
+    margin: 0 30px;
+
+}
+
+
+.saveBtn {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+
+
+    .cancle {
+        margin-right: 50px;
+        @include btnlocal();
+
+        width: 80px;
+    }
+
+    .save {
+        margin-right: 50px;
+
+        @include btnlocal();
+        width: 80px;
+    }
+}
+
+
+
+.pagelist {
+
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 60px;
+    border: none;
+    padding-top: 60px;
+
+    a {
+        text-decoration: none;
+        background-color: #FCDBA3;
+        color: #573605;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 40px;
+        font-size: 16px;
+
+
+        &:first-child {
+            border-radius: 20px 0px 0px 20px;
+        }
+
+        &:last-child {
+            border-radius: 0px 20px 20px 0px;
+        }
+
+        &:hover {
+            background-color: #FDBF52;
+        }
+    }
+}
+
+// 籤詩管理表格
+.table-pomemange>tbody>tr>td>textarea {
+    // width: 170px;
+    width: 380px;
+    height: 120px;
+    // height: 120px;
+    padding: 10px 5px 0 10px;
+    overflow: hidden;
+    background-color: #FDBF52;
+    border: 0px;
+    border-radius: 20px;
+    text-align: left;
+
+}
+
+.table-pomemange>tbody>tr>td>select {
+    background-color: #FDBF52;
+    border-radius: 20px;
+}
+
+.table-unpomes>tbody>tr>td>textarea {
+    width: 380px;
+    height: 120px;
+    padding: 10px 5px 0 10px;
+    overflow: hidden;
+    background-color: #fdbf52;
+    border: 0px;
+    border-radius: 20px;
+    text-align: left;
+}
+
+.table-unpomes>tbody>tr>td>select {
+    background-color: #fdbf52;
+    border-radius: 20px;
+}

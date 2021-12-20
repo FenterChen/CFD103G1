@@ -385,6 +385,31 @@
         //以上為個人紀錄
       }
     });
+
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          personaldata: {},
+        }
+      },
+      created() {
+        let array = JSON.parse(localStorage.getItem('personallogin'));
+        axios.post('phps/memberExist.php', {
+          mem_no: array[0].mem_no,
+          mem_id: array[0].mem_id,
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((res) => {
+          if (res.data == "erro") {
+            location.href = "memeberAdd.html";
+          } else {
+            this.personaldata = res.data[0];
+          }
+        }).catch(error => this.personaldata = res.data);
+      },
+    });
   </script>
 </body>
 

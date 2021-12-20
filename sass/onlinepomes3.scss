@@ -67,12 +67,13 @@ section {
   text-align: center;
 
   @include tabletV() {
-    // padding-left: 100px;
+    margin-top: -10px;
     text-align: left;
     width: 60%;
   }
 
   @include tabletH() {
+    margin-top: 0px;
     padding-left: 100px;
   }
 
@@ -119,5 +120,28 @@ section {
 .throwPic img {
   max-width: 100px;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+.result {
+  margin-bottom: 10px;
+}
+
+.throwPic .result p {
+  max-width: 375px;
+  width: 100%;
+  // text-align: center;  
+  font-family: NotoSansTC;
+  font-size: 18px;
+  line-height: 40px;
+  letter-spacing: 0.05em;
+  color: #573605;
+
+  @include tabletV() {
+    width: 100px;
+    text-align: center;
+  }
+
+  @include tabletH() {}
+
 }

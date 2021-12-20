@@ -463,6 +463,10 @@ body {
   }
 }
 
+.mainSec .praySteps .chooseAttr {
+  cursor: pointer;
+}
+
 .mainSec .prayGod {
   -webkit-transform: translateX(40px);
           transform: translateX(40px);
@@ -932,6 +936,7 @@ body {
     font-weight: 500;
     font-size: 18px;
     position: relative;
+    cursor: pointer;
   }
   .attrSec .stepMethod .step {
     width: 106px;
@@ -1188,6 +1193,7 @@ body {
     font-weight: 500;
     font-size: 18px;
     position: relative;
+    cursor: pointer;
     display: flex;
     -webkit-box-align: center;
         -ms-flex-align: center;
@@ -1355,6 +1361,9 @@ body {
   }
   .byeTitle .byeByeProcess .prayStart {
     margin-right: 80px;
+  }
+  .byeTitle .byeByeProcess .prayDone {
+    cursor: pointer;
   }
 }
 
@@ -1605,10 +1614,6 @@ body {
   }
 }
 
-.section {
-  display: none;
-}
-
 .praySection {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1700,8 +1705,6 @@ body {
   }
   100% {
     left: 0%;
-    -webkit-transform: scale(1);
-            transform: scale(1);
   }
 }
 
@@ -1711,8 +1714,6 @@ body {
   }
   100% {
     left: 0%;
-    -webkit-transform: scale(1);
-            transform: scale(1);
   }
 }
 
@@ -1722,8 +1723,6 @@ body {
   }
   100% {
     right: 0%;
-    -webkit-transform: scale(1);
-            transform: scale(1);
   }
 }
 
@@ -1733,8 +1732,16 @@ body {
   }
   100% {
     right: 0%;
-    -webkit-transform: scale(1);
-            transform: scale(1);
   }
+}
+
+.fadeLeft {
+  -webkit-animation: fadeLeft 1.8s;
+          animation: fadeLeft 1.8s;
+}
+
+.fadeRight {
+  -webkit-animation: fadeRight 1.8s;
+          animation: fadeRight 1.8s;
 }
 /*# sourceMappingURL=pray.css.map */
