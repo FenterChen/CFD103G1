@@ -983,36 +983,27 @@ body{
     @include btnlocal();
   }
 }
-.slide-enter{
-  left: 0%;
-}
-.slide-enter-to{
-  left: 100%;
-}
-.slide-leave-to{
-  left: 100%;
-}
-.slide-leave{
-  left: 0%;
-}
-.slide-leave-active,
-.slide-enter-active{
-  transition: 1.8s;
-}
-// @keyframes fadeLeft {
-//   0%{
-//     left: 100%;
-//   } 
-//   100%{
-//     left: 0%;
-//   }
-// }
 
-// @keyframes fadeRight {
-//   0%{
-//     right: 100%;
-//   } 
-//   100%{
-//     right: 0%;
-//   }
-// }
+@keyframes fadeLeft {
+  0%{
+    left: 100%;
+  } 
+  100%{
+    left: 0%;
+  }
+}
+
+@keyframes fadeRight {
+  0%{
+    right: 100%;
+  } 
+  100%{
+    right: 0%;
+  }
+}
+.fadeLeft{
+  animation: fadeLeft 1.8s;
+}
+.fadeRight{
+  animation: fadeRight 1.8s;
+}
