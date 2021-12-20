@@ -31,6 +31,17 @@ header nav ul {
   flex-direction: column;
 }
 
+header nav ul li:first-child {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+header nav ul li:first-child a {
+  padding-right: 15px;
+  padding-left: 5px;
+}
+
 header .navPostion {
   position: absolute;
   background-color: map-get($color, navColor);
@@ -45,7 +56,6 @@ header nav li a {
   display: block;
   padding: 20px 20px;
 }
-
 
 header .logo {
   @include flexCenter();
@@ -72,6 +82,20 @@ header .member {
   @include flexCenter();
   flex-grow: 1;
 }
+
+header .logout {
+  text-align: center;
+  flex-grow: 2;
+  font-family: NotoSansTC, serif;
+  font-size: map-get($fontSize, navfont);
+  text-decoration: none;
+  color: map-get($color, darkbrown);
+}
+
+header .logout span:hover {
+  cursor: pointer;
+}
+
 
 header .outerHb {
   display: flex;

@@ -110,6 +110,21 @@ header nav ul {
           flex-direction: column;
 }
 
+header nav ul li:first-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 5px;
+}
+
+header nav ul li:first-child a {
+  padding-right: 15px;
+  padding-left: 5px;
+}
+
 header .navPostion {
   position: absolute;
   background-color: rgba(255, 250, 231, 0.85);
@@ -181,6 +196,21 @@ header .member {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+}
+
+header .logout {
+  text-align: center;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  font-family: NotoSansTC, serif;
+  font-size: 16px;
+  text-decoration: none;
+  color: #573605;
+}
+
+header .logout span:hover {
+  cursor: pointer;
 }
 
 header .outerHb {
