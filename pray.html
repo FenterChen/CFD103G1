@@ -457,6 +457,50 @@
       methods: {
       },
     })
+    //header 
+    new Vue({
+      el: '#mainheader',
+      data() {
+        return {
+          screenWidth: null,
+        }
+      },
+      mounted() {
+        this.screenWidth = document.body.clientWidth;
+        window.onresize = () => {
+          return (() => {
+            this.screenWidth = document.body.clientWidth;
+          })()
+        },
+          $(`header .headerWrap ul li:nth-child(4) a`).addClass('bottomnavline');
+      },
+      watch: {
+        screenWidth: {
+          handler: function (newval, oldval) {
+            if (newval >= 1200) {
+              $(`header>.headerWrap>nav`).removeClass('navPostion');
+            } else if (newval < 1200) {
+              $(`header>.headerWrap>nav`).addClass('navPostion');
+            }
+          },
+          immediate: true,
+        }
+      },
+      methods: {
+        hb() {
+          let place = $("nav").css("right");
+          if (place < "0px") {
+            $("nav").animate({
+              right: 0,
+            }, 1200, 'easeInBounce')
+          } else {
+            $("nav").animate({
+              right: "-30%",
+            }, 1200, 'easeOutBounce')
+          }
+        }
+      },
+    });
     new Vue({
       el: "#app",
       data: {
