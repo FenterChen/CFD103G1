@@ -15,7 +15,8 @@ try {
 	echo "erro";
   exit();
   }else{
-	$memRow = $member ->fetchAll(PDO::FETCH_ASSOC);
+    $memRow = $member ->fetchAll(PDO::FETCH_ASSOC);
+  unset($memRow[0]['mem_psw'],$memRow[0]['mem_date'],$memRow[0]['mem_status']);
 	echo(json_encode($memRow));
   }
 } catch (PDOException $e) {

@@ -204,7 +204,7 @@
         let array = JSON.parse(localStorage.getItem('personallogin'));
         this.losituation = null;
         if (array != null) {
-          axios.post('phps/memberExist.php', {
+          axios.post('phps/memberExbody.php', {
             mem_no: array[0].mem_no,
             mem_id: array[0].mem_id,
             headers: {
