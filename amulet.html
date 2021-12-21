@@ -85,7 +85,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="container">
             <div class="content-wrap">
                 <div class="title">
@@ -110,9 +110,9 @@
                                 簡介
                             </button>
                             <transition name="fade" appear>
-                                <div class="modal-overlay" v-if="introClick"  @click="introClick = false"></div>
+                                <div class="modal-overlay" v-if="introClick" @click="introClick = false"></div>
                             </transition>
-                    
+
                             <transition name="slide" appear>
                                 <div class="modal" v-if="introClick">
                                     <h1 v-text="type"></h1>
@@ -122,12 +122,12 @@
                                             返回
                                         </button>
                                     </div>
-                                   
+
                                 </div>
                             </transition>
                         </div>
                     </div>
-                    
+
                     <div class="intro">
                         <textarea name="簡介" id="" v-model="typeIntro" cols="30" rows="5">
                             <p v-text="typeIntro"></p>
@@ -162,8 +162,8 @@
                 </div>
                 <div class="customiz">
                     <h3>客製化文字</h3>
-                    <textarea v-model="message" @click="diyclick" cols="30" rows="5" placeholder="請輸入客製化文字（8字），如:吉祥如意萬事安康"
-                        maxlength="8"></textarea>
+                    <textarea v-model="message" @click="diyclick" cols="30" rows="5"
+                        placeholder="請輸入客製化文字（8字），如:吉祥如意萬事安康" maxlength="8"></textarea>
                 </div>
                 <div class="shop">
                     <button data-hover="立即購買" @click="add">立即購買</button>
@@ -184,29 +184,30 @@
             <div class="footer-info">
                 <div class="list">
                     <ul>
-                      <li><a href="pray.html">立即祈願</a></li>
-                      <li><a href="onlinepomes.html">線上求籤</a></li>
-                      <li><a href="amulet.html">平安符願</a></li>
-                      <li><a href="money.html">立即結緣</a></li>
-                      <li><a href="Abouts.html">關於我們</a></li>
+                        <li><a href="pray.html">立即祈願</a></li>
+                        <li><a href="onlinepomes.html">線上求籤</a></li>
+                        <li><a href="amulet.html">平安符願</a></li>
+                        <li><a href="money.html">立即結緣</a></li>
+                        <li><a href="Abouts.html">關於我們</a></li>
                     </ul>
                 </div>
                 <div class="conn">
                     <p>
                         bobio@temple.com<br>
-                        02-1090-1090                    
+                        02-1090-1090
                     </p>
                     <div class="info-icon">
                         <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook"></a>
                         <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram"></a>
-                        <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube"></a>                      
+                        <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube"></a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="copyright">
             <p>
-                Copyright © 2021Bobio 本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+                Copyright © 2021Bobio
+                本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
             </p>
         </div>
     </footer>
@@ -214,51 +215,51 @@
 </body>
 <script>
     new Vue({
-    el: '#mainheader',
-    data() {
-      return {
-        screenWidth: null,
-        loname: null,
-      }
-    },
-    mounted() {
-      this.screenWidth = document.body.clientWidth;
-      window.onresize = () => {
-        return (() => {
-          this.screenWidth = document.body.clientWidth;
-        })()
-      },
-        $(`header .headerWrap ul li:nth-child(3) a`).addClass('bottomnavline');
-    },
-    watch: {
-      screenWidth: {
-        handler: function (newval, oldval) {
-          if (newval >= 1200) {
-            $(`header>.headerWrap>nav`).removeClass('navPostion');
-          } else if (newval < 1200) {
-            $(`header>.headerWrap>nav`).addClass('navPostion');
-          }
+        el: '#mainheader',
+        data() {
+            return {
+                screenWidth: null,
+                loname: null,
+            }
         },
-        immediate: true,
-      }
-    },
-    methods: {
-      hb() {
-        let place = $("nav").css("right");
-        if (place < "0px") {
-          $("nav").animate({
-            right: 0,
-          }, 1200, 'easeInBounce')
-        } else {
-          $("nav").animate({
-            right: "-30%",
-          }, 1200, 'easeOutBounce')
-        }
-      }
-    },
-  });
-    
-    
+        mounted() {
+            this.screenWidth = document.body.clientWidth;
+            window.onresize = () => {
+                return (() => {
+                    this.screenWidth = document.body.clientWidth;
+                })()
+            },
+                $(`header .headerWrap ul li:nth-child(3) a`).addClass('bottomnavline');
+        },
+        watch: {
+            screenWidth: {
+                handler: function (newval, oldval) {
+                    if (newval >= 1200) {
+                        $(`header>.headerWrap>nav`).removeClass('navPostion');
+                    } else if (newval < 1200) {
+                        $(`header>.headerWrap>nav`).addClass('navPostion');
+                    }
+                },
+                immediate: true,
+            }
+        },
+        methods: {
+            hb() {
+                let place = $("nav").css("right");
+                if (place < "0px") {
+                    $("nav").animate({
+                        right: 0,
+                    }, 1200, 'easeInBounce')
+                } else {
+                    $("nav").animate({
+                        right: "-30%",
+                    }, 1200, 'easeOutBounce')
+                }
+            }
+        },
+    });
+
+
     new Vue({
         el: "#app",
         data() {
@@ -274,8 +275,7 @@
                 type: '感情',
                 animal: '鼠',
                 count: 1,
-                introClick:false,
-                
+                introClick: false,
             }
         },
         mounted() {
@@ -317,8 +317,8 @@
                 }
             },
 
-            showModel(){
-                this.showModal=true;
+            showModel() {
+                this.showModal = true;
             },
             animalClick() {
                 // this.front = true;
