@@ -13,12 +13,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
-  <!-- <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js?r=5426"></script>
-  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/animation.gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TimelineMax.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/animation.gsap.min.js"></script>
 </head>
 
 <body>
@@ -108,16 +106,21 @@
       </p>
     </div>
   </footer>
+
   <script>
     Vue.component('section1', {
       template: `
+<<<<<<< HEAD
       <section class="mainpage slogan">
+=======
+    <section class="mainpage slogan">
+>>>>>>> chingyee
         <h1 class="sloganTitle">用BOBIO就有保庇</h1>
         <div class="scrollDown">
           <img class="mouse" src="img/mainpage/mouse.svg" alt="滑鼠">
           <img class="arrow" src="img/mainpage/scrollArrow.svg" alt="箭頭">
-        </div>
-      </section>
+          </div>
+          </section>
     `,
     })
     Vue.component('section2', {
@@ -236,7 +239,7 @@
       },
     })
     //header 
-    new Vue({
+    let header = new Vue({
       el: '#mainheader',
       data() {
         return {
@@ -292,17 +295,83 @@
             }, 1200, 'easeOutBounce')
           }
         },
-        logout() {
-          localStorage.removeItem('personallogin');
-          location.href = "mainpage.html";
-        },
+        
       },
     });
-
-    new Vue({
+    let app =  new Vue({
       el: "#app",
+      methods: {
+        ani() {
+          // gsap.set(".mainpage", { zIndex: (i, target, targets) => targets.length - i });
+
+          var tl = new TimelineMax({ onUpdate: updatePercentage });
+          var tl2 = new TimelineMax();
+          const controller = new ScrollMagic.Controller();
+
+          tl.from('.prayTitle>h2', .5, { x: 200, opacity: 0 });
+          tl.from('.paryContent', .5, { x: 200, opacity: 0 });
+          tl.from('.prayTitle>button', .5, { y: -500, opacity: 0 });
+          tl.from('.prayBg', 1, { x: -200, opacity: 0, ease: Power4.easeInOut }, "=-1");
+          console.log(new ScrollMagic.Scene())
+          console.log('1234')
+          const scene = new ScrollMagic.Scene({
+            triggerElement: ".adPray",
+            // start: '+=100',
+            triggerHook: "onLeave",
+            duration: "100%"
+          }).setPin(".adPray").setTween(tl).addTo(controller);
+
+          console.log('123')
+          console.log(new ScrollMagic)
+
+          const scene2 = new ScrollMagic.Scene({
+            triggerElement: ".prayTitle"
+          })
+            .setTween(tl2)
+            .addTo(controller);
+
+
+          function updatePercentage() {
+            //percent.innerHTML = (tl.progress() *100 ).toFixed();
+            tl.progress();
+            console.log(tl.progress());
+          }
+
+          function updatePercentage_4() {
+            //percent.innerHTML = (tl.progress() *100 ).toFixed();
+            tl_4.progress();
+          }
+
+
+          var tl_4 = new TimelineMax({ onUpdate: updatePercentage_4 });
+          var tl2_4 = new TimelineMax();
+          const controller2 = new ScrollMagic.Controller();
+
+          tl_4.from('.pomesTitle>h2', .5, { x: 200, opacity: 0 });
+          tl_4.from('.pomesContent', .5, { x: 200, opacity: 0 });
+          tl_4.from('.pomesTitle>button', .5, { y: -500, opacity: 0 });
+          tl_4.from('.pomesBg', 1, { x: -200, opacity: 0, ease: Power4.easeInOut }, "=-1");
+
+
+          const scene_4 = new ScrollMagic.Scene({
+            triggerElement: ".adPomes",
+            // start: '+=100',
+            triggerHook: "onLeave",
+            duration: "100%"
+          }).setPin(".adPomes").setTween(tl_4).addTo(controller);
+
+          const scene2_4 = new ScrollMagic.Scene({
+            triggerElement: ".pomesTitle"
+          }).setTween(tl2_4).addTo(controller2);
+
+        },
+      },
+      mounted() {
+        this.$nextTick(this.ani)
+      },
     })
   </script>
+  <!-- <script src="js/mainpage.js"></script> -->
 </body>
 
 </html>

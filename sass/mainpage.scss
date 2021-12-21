@@ -3,6 +3,7 @@
 
 body{
   background: map-get($color, mainyellow);
+  overflow-x: hidden;
 }
 .slogan{
   width: 100%;
