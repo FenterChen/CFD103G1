@@ -27,10 +27,6 @@
       <nav class="navPostion">
         <ul>
           <li>
-            <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
-            <div class="logout"><span v-text="losituation" @click="logout"></span></div>
-          </li>
-          <li>
             <a href="pray.html">立即祈願</a>
           </li>
           <li>
@@ -49,7 +45,7 @@
       </nav>
       <div class="cart"><a href="shopping_cart1.html"><img src="img/header/cart.svg"></a></div>
       <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
-      <div class="logout"><span v-text="losituation" @click="logout"></span></div>
+      <!-- <div class="logout"><span>登出</span></div> -->
       <div class="outerHb">
         <div class="hb" @click="hb">
           <span></span>
@@ -60,8 +56,8 @@
     </div>
   </header>
 
-  <div id="app">
-    <div class="containerId">
+  <div class="containerId" id="app">
+    <form action="member.php" method="post">
       <div class="boxContainer">
         <div class="boxMember">
           <a class="textId bold"> 會員資料</a>
@@ -74,7 +70,7 @@
           </div>
           <div class="textPhone">
             <span>手機</span>
-            <input type="text" v-model="personaldata.phone" />
+            <input type="number" v-model="personaldata.phone" />
           </div>
           <div class="textEmail">
             <span>信箱</span>
@@ -82,12 +78,15 @@
           </div>
         </div>
         <div class="boxBtn">
-          <button class="btnSave" data-hover=" 儲存變更" @click="changedata">儲存變更</button>
-          <button class="btnCancel" data-hover=" 取消" @click="resetdata">取消</button>
+          <button class="btnSave" data-hover=" 儲存變更">儲存變更</button>
+          <button class="btnCancel" data-hover=" 取消">取消</button>
         </div>
-      </div>
-    </div>
-    <div class="containerId2">
+    </form>
+  </div>
+  </div>
+
+  <div class="containerId2">
+    <form action="member.php" method="post">
       <div class="boxContainer2 showAdd">
         <div class="boxMember">
           <a class="textId textId2">會員資料</a>
@@ -96,23 +95,23 @@
         <div class="boxData">
           <div class="textPwd">
             <span>目前密碼</span>
-            <input type="password" v-model="oldpsw" />
+            <input type="password" />
           </div>
           <div class="textPwd">
             <span>修改密碼</span>
-            <input type="password" v-model="currentpsw" />
+            <input type="password" />
           </div>
           <div class="textPwd">
             <span>確認密碼</span>
-            <input type="password" v-model="confirmppsw" />
+            <input type="password" />
           </div>
         </div>
         <div class="boxBtn">
-          <button class="btnSave" data-hover=" 儲存變更" @click="changepsw">儲存變更</button>
-          <button class="btnCancel" data-hover=" 取消" @click="cancellpsw">取消</button>
+          <button class="btnSave" data-hover=" 儲存變更">儲存變更</button>
+          <button class="btnCancel" data-hover=" 取消">取消</button>
         </div>
-      </div>
-    </div>
+    </form>
+  </div>
   </div>
   <section>
     <div class="wrapp">
@@ -232,29 +231,10 @@
       data() {
         return {
           screenWidth: null,
-          personaldata: [],
-          losituation: "",
         }
       },
-      created() {
+      mounted() {
         this.screenWidth = document.body.clientWidth;
-        let array = JSON.parse(localStorage.getItem('personallogin'));
-        this.losituation = null;
-        if (array != null) {
-          axios.post('phps/memberExbody.php', {
-            mem_no: array[0].mem_no,
-            mem_id: array[0].mem_id,
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          }).then((res) => {
-            if (res) {
-              this.losituation = "登出";
-              this.personaldata = res.data[0];
-            }
-          }).catch(error => this.personaldata = res.data);
-        };
-
         window.onresize = () => {
           return (() => {
             this.screenWidth = document.body.clientWidth;
@@ -266,14 +246,8 @@
           handler: function (newval, oldval) {
             if (newval >= 1200) {
               $(`header>.headerWrap>nav`).removeClass('navPostion');
-              $(`header>.headerWrap>nav li:first-child`).css('display', 'none');
-              $(`header>.headerWrap>.member`).css('display', 'flex');
-              $(`header>.headerWrap>.logout`).css('display', 'block');
             } else if (newval < 1200) {
               $(`header>.headerWrap>nav`).addClass('navPostion');
-              $(`header>.headerWrap>nav li:first-child`).css('display', 'flex');
-              $(`header>.headerWrap>.member`).css('display', 'none');
-              $(`header>.headerWrap>.logout`).css('display', 'none');
             }
           },
           immediate: true,
@@ -291,11 +265,7 @@
               right: "-30%",
             }, 1200, 'easeOutBounce')
           }
-        },
-        logout() {
-          localStorage.removeItem('personallogin');
-          location.href = "mainpage.html";
-        },
+        }
       },
     });
 
@@ -303,87 +273,25 @@
       el: '#app',
       data() {
         return {
-          personaldata: [],
-          oldpsw: '',
-          currentpsw: '',
-          confirmppsw: '',
+          personaldata: {},
         }
       },
       created() {
         let array = JSON.parse(localStorage.getItem('personallogin'));
-        if (array != null) {
-          axios.post('phps/memberExist.php', {
-            mem_no: array[0].mem_no,
-            mem_id: array[0].mem_id,
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          }).then((res) => {
-            if (res.data == "erro") {
-              location.href = "memeberAdd.html";
-            } else {
-              this.personaldata = res.data[0];
-            }
-          }).catch(error => this.personaldata = res.data);
-        }
-        //以上為確認登入狀態
-      },
-      methods: {
-        changedata() {
-          axios.post('phps/memberUpdate.php', {
-            mem_no: this.personaldata.mem_no,
-            mem_name: this.personaldata.mem_name,
-            phone: this.personaldata.phone,
-            email: this.personaldata.email,
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          }).then(function (response) {
-            alert(response.data);
-            localStorage.removeItem('personallogin');
-            location.href = "mainpage.html";
-          }).catch(function (error) {
-            console.log(error);
-          });
-        },
-        resetdata() {
-          let array = JSON.parse(localStorage.getItem('personallogin'));
-          if (array != null) {
-            axios.post('phps/memberExist.php', {
-              mem_no: array[0].mem_no,
-              mem_id: array[0].mem_id,
-              headers: {
-                'Content-Type': 'multipart/form-data'
-              }
-            }).then((res) => {
-              this.personaldata = res.data[0];
-            }).catch(error => this.personaldata = res.data);
+        axios.post('phps/memberExist.php', {
+          mem_no: array[0].mem_no,
+          mem_id: array[0].mem_id,
+          headers: {
+            'Content-Type': 'multipart/form-data'
           }
-        },
-        changepsw() {
-          if (this.currentpsw == this.confirmppsw) {
-            axios.post('phps/memberPswcheck.php', {
-              mem_no: this.personaldata.mem_no,
-              memPsw: this.oldpsw,
-              confirmPsw: this.confirmppsw,
-              headers: {
-                'Content-Type': 'multipart/form-data'
-              }
-            }).then((res) => {
-              alert(res.data);
-              location.href = "mainpage.html";
-            }).catch(error => this.personaldata = res.data);
+        }).then((res) => {
+          if (res.data == "erro") {
+            location.href = "memeberAdd.html";
           } else {
-            alert("請確認密碼");
+            this.personaldata = res.data[0];
           }
-        },
-        cancellpsw() {
-          this.oldpsw = '';
-          this.currentpsw = '';
-          this.confirmppsw = '';
-        },
-        //以上為個人紀錄
-      }
+        }).catch(error => this.personaldata = res.data);
+      },
     });
   </script>
 </body>

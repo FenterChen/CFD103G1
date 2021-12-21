@@ -1,147 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="./css/memberAdd.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
+    <title>BOBIO|會員加入</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/header.css" />
-  <link rel="stylesheet" href="css/footer.css" />
-  <link rel="stylesheet" href="./css/memberAdd.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
-  <title>BOBIO|會員加入</title>
-</head>
-
-<body>
-  <header id="mainheader">
-    <div class="headerWrap">
-      <div class="logo">
-        <a href="mainpage.html">
-          <img src="img/header/BOBIO_logo.svg">
-        </a>
-      </div>
-      <nav class="navPostion">
-        <ul>
-          <li>
-            <a href="pray.html">立即祈願</a>
-          </li>
-          <li>
-            <a href="onlinepomes.html">線上求籤</a>
-          </li>
-          <li>
-            <a href="amulet.html">平安符願</a>
-          </li>
-          <li>
-            <a href="money.html">立即結緣</a>
-          </li>
-          <li>
-            <a href="Abouts.html">關於我們</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="cart"><a href="shopping_cart1.html"><img src="img/header/cart.svg"></a></div>
-      <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
-      <div class="logout"><span></span></div>
-      <div class="outerHb">
-        <div class="hb" @click="hb">
-          <span></span>
-          <span></span>
-          <span></span>
+  <body>
+    <header id="mainheader">
+      <div class="headerWrap">
+        <div class="logo">
+          <a href="mainpage.html">
+            <img src="img/header/BOBIO_logo.svg" />
+          </a>
         </div>
-      </div>
-    </div>
-  </header>
-
-  <div class="wrapp" id="app">
-    <div class="biboLogo">
-      <img src="./img/member/bobioLogo.svg" alt="" />
-    </div>
-    <div class="tempBg">
-      <img src="./img/member/bobioTemp.png" alt="" />
-    </div>
-    <!-- 註冊頁面 -->
-
-    <div class="boxContainer" v-if="registerframe">
-      <div>
-        <div class="boxMember">
-          <a class="textAdd"> <b>註冊會員</b></a>
-          <a class="textLogin" @click="logi">會員登入</a>
-        </div>
-        <div class="boxData">
-          <div class="textName">
-            <span>姓名</span>
-            <input type="text" v-model="name" placeholder="請輸入姓名" />
-          </div>
-          <div class="textPhone">
-            <span>手機</span>
-            <input type="text" v-model="phone" placeholder="請輸入手機" />
-          </div>
-          <div class="textEmail">
-            <span>信箱</span>
-            <input type="email" v-model="email" placeholder="請輸入信箱" />
-          </div>
-          <div class="textPwd">
-            <span>密碼</span>
-            <input type="password" v-model="psw" />
-          </div>
-          <div class="textPwd">
-            <span>確認密碼</span>
-            <input type="password" v-model="confirmpsw" />
-          </div>
-        </div>
-        <div class="boxBtn">
-          <button class="btnAdd" data-hover="註冊" type="submit" @click="btnAdd">註冊</button>
-          <button class="btnLogin" data-hover=" 使用Facebook快速登入">
-            <img src="./img/member/iconFb.svg" alt="" />使用Facebook快速登入
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!--   登入頁面 -->
-    <div class="boxContainer2" v-if="loginframe">
-      <div class="boxMember">
-        <a class="textAdd textAdd2" @click="regist">註冊會員</a>
-        <a class="textLogin textLogin2">會員登入</a>
-      </div>
-      <div class="boxData">
-        <div class="textEmail">
-          <span>信箱</span>
-          <input type="email" v-model="email" placeholder=" egg8833@gmail.com" width="300" />
-        </div>
-        <div class="textPwd">
-          <span>密碼</span>
-          <input type="password" v-model="psw" placeholder="*******" />
-          <p>忘記密碼</p>
-        </div>
-      </div>
-      <div class="boxBtn">
-        <button class="btnAdd" data-hover="登入" @click="logincheck">登入</button>
-        <button class="btnLogin" data-hover=" 使用Facebook快速登入">
-          <img src="./img/member/iconFb.svg" />
-          使用Facebook快速登入
-        </button>
-      </div>
-      <div class="noMember">
-        <p><span>還不是會員嗎？</span>註冊會員</p>
-      </div>
-    </div>
-    <!-- </form> -->
-  </div>
-
-  <footer>
-    <div class="footer-wrap">
-      <div class="footer-logo">
-        <img src="./img/header/BOBIO_logo.svg" alt="bobio" />
-      </div>
-      <div class="footer-slog">
-        <span>用BOBIO就有保佑</span>
-      </div>
-      <div class="footer-info">
-        <div class="list">
+        <nav class="navPostion">
           <ul>
             <li>
               <a href="pray.html">立即祈願</a>
@@ -159,172 +40,325 @@
               <a href="Abouts.html">關於我們</a>
             </li>
           </ul>
+        </nav>
+        <div class="cart">
+          <a href="shopping_cart1.html"><img src="img/header/cart.svg" /></a>
         </div>
-        <div class="conn">
-          <p>
-            bobio@temple.com<br />
-            02-1090-1090
-          </p>
-          <div class="info-icon">
-            <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook" /></a>
-            <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram" /></a>
-            <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube" /></a>
+        <div class="member">
+          <a href="memberAdd.html"><img src="img/header/member.svg" /></a>
+        </div>
+        <!-- <div class="logout"><span>登出</span></div> -->
+        <div class="outerHb">
+          <div class="hb" @click="hb">
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
       </div>
+    </header>
+
+    <div class="wrapp" id="app">
+      <div class="biboLogo">
+        <img src="./img/member/bobioLogo.svg" alt="" />
+      </div>
+      <div class="tempBg">
+        <img src="./img/member/bobioTemp.png" alt="" />
+      </div>
+      <!-- 註冊頁面 -->
+
+      <div class="boxContainer" v-if="registerframe">
+        <div>
+          <div class="boxMember">
+            <a class="textAdd"> <b>註冊會員</b></a>
+            <a class="textLogin" @click="logi">會員登入</a>
+          </div>
+          <div class="boxData">
+            <div class="textName">
+              <span>姓名</span>
+              <input type="text" v-model="name" placeholder="請輸入姓名" />
+            </div>
+            <div class="textPhone">
+              <span>手機</span>
+              <input type="text" v-model="phone" placeholder="請輸入手機" />
+            </div>
+            <div class="textEmail">
+              <span>信箱</span>
+              <input type="email" v-model="email" placeholder="請輸入信箱" />
+            </div>
+            <div class="textPwd">
+              <span>密碼</span>
+              <input type="password" v-model="psw" />
+            </div>
+            <div class="textPwd">
+              <span>確認密碼</span>
+              <input type="password" v-model="confirmpsw" />
+            </div>
+          </div>
+          <div class="boxBtn">
+            <button
+              class="btnAdd"
+              data-hover="註冊"
+              type="submit"
+              @click="btnAdd"
+            >
+              註冊
+            </button>
+            <button class="btnLogin" data-hover=" 使用Facebook快速登入">
+              <img src="./img/member/iconFb.svg" alt="" />使用Facebook快速登入
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!--   登入頁面 -->
+      <div class="boxContainer2" v-if="loginframe">
+        <!-- <form action="login.php" method="post"> -->
+        <div class="boxMember">
+          <a class="textAdd textAdd2" @click="regist">註冊會員</a>
+          <a class="textLogin textLogin2">會員登入</a>
+        </div>
+        <div class="boxData">
+          <div class="textEmail">
+            <span>信箱</span>
+            <input
+              type="email"
+              v-model="email"
+              placeholder=" egg8833@gmail.com"
+              width="300"
+            />
+          </div>
+          <div class="textPwd">
+            <span>密碼</span>
+            <input type="password" v-model="psw" placeholder="*******" />
+            <p>忘記密碼</p>
+          </div>
+        </div>
+        <div class="boxBtn">
+          <button class="btnAdd" data-hover="登入" @click="logincheck">
+            登入
+          </button>
+          <button class="btnLogin" data-hover=" 使用Facebook快速登入">
+            <img src="./img/member/iconFb.svg" />
+            使用Facebook快速登入
+          </button>
+        </div>
+        <div class="noMember">
+          <p><span>還不是會員嗎？</span>註冊會員</p>
+        </div>
+      </div>
+      <!-- </form> -->
     </div>
-    <div class="copyright">
-      <p>
-        Copyright © 2021Bobio
-        本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
-      </p>
-    </div>
-  </footer>
-  <script>
-    //headerVue
-    new Vue({
-      el: '#mainheader',
-      data() {
-        return {
-          screenWidth: null,
-          personaldata: [],
-        }
-      },
-      created() {
-        this.screenWidth = document.body.clientWidth;
-        let array = JSON.parse(localStorage.getItem('personallogin'));
-        if (array != null) {
-          axios.post('phps/memberExbody.php', {
-            mem_no: array[0].mem_no,
-            mem_id: array[0].mem_id,
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          }).then((res) => {
-            if (res.data == "erro") {
-              $(`header>.logout span`).text("");
+
+    <footer>
+      <div class="footer-wrap">
+        <div class="footer-logo">
+          <img src="./img/header/BOBIO_logo.svg" alt="bobio" />
+        </div>
+        <div class="footer-slog">
+          <span>用BOBIO就有保佑</span>
+        </div>
+        <div class="footer-info">
+          <div class="list">
+            <ul>
+              <li>
+                <a href="pray.html">立即祈願</a>
+              </li>
+              <li>
+                <a href="onlinepomes.html">線上求籤</a>
+              </li>
+              <li>
+                <a href="amulet.html">平安符願</a>
+              </li>
+              <li>
+                <a href="money.html">立即結緣</a>
+              </li>
+              <li>
+                <a href="Abouts.html">關於我們</a>
+              </li>
+            </ul>
+          </div>
+          <div class="conn">
+            <p>
+              bobio@temple.com<br />
+              02-1090-1090
+            </p>
+            <div class="info-icon">
+              <a href="#"
+                ><img src="./img/footer/Group 415.svg" alt="facebook"
+              /></a>
+              <a href="#"
+                ><img src="./img/footer/Group 295.svg" alt="instagram"
+              /></a>
+              <a href="#"
+                ><img src="./img/footer/Group 296.svg" alt="youtube"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>
+          Copyright © 2021Bobio
+          本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+        </p>
+      </div>
+    </footer>
+    <script>
+      //headerVue
+      new Vue({
+        el: "#mainheader",
+        data() {
+          return {
+            screenWidth: null,
+          };
+        },
+        mounted() {
+          this.screenWidth = document.body.clientWidth;
+          window.onresize = () => {
+            return (() => {
+              this.screenWidth = document.body.clientWidth;
+            })();
+          };
+        },
+        watch: {
+          screenWidth: {
+            handler: function (newval, oldval) {
+              if (newval >= 1200) {
+                $(`header>.headerWrap>nav`).removeClass("navPostion");
+              } else if (newval < 1200) {
+                $(`header>.headerWrap>nav`).addClass("navPostion");
+              }
+            },
+            immediate: true,
+          },
+        },
+        methods: {
+          hb() {
+            let place = $("nav").css("right");
+            if (place < "0px") {
+              $("nav").animate(
+                {
+                  right: 0,
+                },
+                1200,
+                "easeInBounce"
+              );
             } else {
-              $(`header>.logout span`).text("登出");
-            }
-          }).catch(error => this.personaldata = res.data);
-        };
-        window.onresize = () => {
-          return (() => {
-            this.screenWidth = document.body.clientWidth;
-          })()
-        };
-      },
-      watch: {
-        screenWidth: {
-          handler: function (newval, oldval) {
-            if (newval >= 1200) {
-              $(`header>.headerWrap>nav`).removeClass('navPostion');
-            } else if (newval < 1200) {
-              $(`header>.headerWrap>nav`).addClass('navPostion');
+              $("nav").animate(
+                {
+                  right: "-30%",
+                },
+                1200,
+                "easeOutBounce"
+              );
             }
           },
-          immediate: true,
-        }
-      },
-      methods: {
-        hb() {
-          let place = $("nav").css("right");
-          if (place < "0px") {
-            $("nav").animate({
-              right: 0,
-            }, 600, 'easeInBounce')
-          } else {
-            $("nav").animate({
-              right: "-30%",
-            }, 1200, 'easeOutBounce')
-          }
-        }
-      },
-    });
-    new Vue({
-      el: '#app',
-      data() {
-        return {
-          registerframe: true,
-          loginframe: false,
-          name: null,
-          phone: null,
-          email: null,
-          psw: null,
-          confirmpsw: null,
-          addtime: null,
-          personaldata: [],
-        }
-      },
-      created() {
-        let array = JSON.parse(localStorage.getItem('personallogin'));
-        if (array != null) {
-          axios.post('phps/memberExist.php', {
-            mem_no: array[0].mem_no,
-            mem_id: array[0].mem_id,
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          }).then((res) => {
-            if (res.data == "erro") {
-              location.href = "mainpage.html";
-            } else {
-              location.href = "memberCenter.html";
-            }
-          }).catch(error => this.personaldata = res.data);
-        }
-      },
-      methods: {
-        logi() {
-          this.registerframe = false;
-          this.loginframe = true;
         },
-        regist() {
-          this.loginframe = false;
-          this.registerframe = true;
+      });
+      new Vue({
+        el: "#app",
+        data() {
+          return {
+            registerframe: true,
+            loginframe: false,
+            name: null,
+            phone: null,
+            email: null,
+            psw: null,
+            confirmpsw: null,
+            addtime: null,
+            personaldata: [],
+          };
         },
-        btnAdd() {
-          var m = new Date();
-          this.addtime = m.getFullYear() + "-" + (m.getMonth() + 1) + "-" + m.getDate() + " " + m.getHours() + ":" + m.getMinutes() + ":" + m.getSeconds();
+        created() {
+          let array = JSON.parse(localStorage.getItem("personallogin"));
+          axios
+            .post("phps/memberExist.php", {
+              mem_no: array[0].mem_no,
+              mem_id: array[0].mem_id,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              if (res.data == "erro") {
+                location.href = "mainpage.html";
+              } else {
+                location.href = "memeberFix.html";
+              }
+            })
+            .catch((error) => (this.personaldata = res.data));
+        },
+        methods: {
+          logi() {
+            this.registerframe = false;
+            this.loginframe = true;
+          },
+          regist() {
+            this.loginframe = false;
+            this.registerframe = true;
+          },
+          btnAdd() {
+            var m = new Date();
+            this.addtime =
+              m.getFullYear() +
+              "-" +
+              (m.getMonth() + 1) +
+              "-" +
+              m.getDate() +
+              " " +
+              m.getHours() +
+              ":" +
+              m.getMinutes() +
+              ":" +
+              m.getSeconds();
 
-          axios.post('phps/memberAdd.php', {
-            mem_name: this.name,
-            mem_id: this.email,
-            mem_psw: this.psw,
-            phone: this.phone,
-            email: this.email,
-            mem_date: this.addtime,
-            mem_status: '0',
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          }).then(function (response) {
-            console.log(response);
-          }).catch(function (error) {
-            console.log(error);
-          });
+            axios
+              .post("phps/memberAdd.php", {
+                mem_name: this.name,
+                mem_id: this.email,
+                mem_psw: this.psw,
+                phone: this.phone,
+                email: this.email,
+                mem_date: this.addtime,
+                mem_status: "0",
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then(function (response) {
+                console.log(response);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          },
+          logincheck() {
+            axios
+              .post("phps/memberCheck.php", {
+                mem_id: this.email,
+                mem_psw: this.psw,
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
+                this.personaldata = res.data;
+                if (res.data == "erro") {
+                  alert("輸入錯誤");
+                } else {
+                  location.href = "mainpage.html";
+                  localStorage.setItem(
+                    "personallogin",
+                    JSON.stringify(res.data)
+                  );
+                }
+              })
+              .catch((error) => (this.personaldata = res.data));
+          },
         },
-        logincheck() {
-          axios.post('phps/memberCheck.php', {
-            mem_id: this.email,
-            mem_psw: this.psw,
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          }).then((res) => {
-            this.personaldata = res.data;
-            if (res.data == "erro") {
-              alert("輸入錯誤");
-            } else {
-              location.href = "mainpage.html";
-              localStorage.setItem("personallogin", JSON.stringify(res.data));
-            }
-          }).catch(error => this.personaldata = res.data);
-        },
-      },
-    });
-  </script>
-
-</body>
-
+      });
+    </script>
+  </body>
 </html>
