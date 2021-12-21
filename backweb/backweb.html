@@ -47,17 +47,26 @@
             <div class="collapse" id="home-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li>
-                  <a href="#" class="link-dark rounded" @click="go1"
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    @click="show = 'showbox01'"
                     >祈願紀錄</a
                   >
                 </li>
                 <li>
-                  <a href="#" class="link-dark rounded" @click="go2"
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    @click="show = 'showbox02'"
                     >小卡管理</a
                   >
                 </li>
                 <li>
-                  <a href="#" class="link-dark rounded" @click="go3"
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    @click="show = 'showbox03'"
                     >供品管理</a
                   >
                 </li>
@@ -77,7 +86,11 @@
             <div class="collapse" id="dashboard-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li>
-                  <a href="#" class="link-dark rounded" id="bpomes" @click="go4"
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    id="bpomes"
+                    @click="show = 'showbox04'"
                     >籤詩管理</a
                   >
                 </li>
@@ -86,7 +99,7 @@
                     href="#"
                     class="link-dark rounded"
                     id="brecorder"
-                    @click="go5"
+                    @click="show = 'showbox05'"
                     >解籤內容管理</a
                   >
                 </li>
@@ -95,7 +108,7 @@
                     href="#"
                     class="link-dark rounded"
                     id="pomecontent"
-                    @click="go6"
+                    @click="show = 'showbox06'"
                     >求籤紀錄</a
                   >
                 </li>
@@ -116,12 +129,18 @@
             <div class="collapse" id="orders-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li>
-                  <a href="#" class="link-dark rounded" @click="go7"
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    @click="show = 'showbox07'"
                     >平安符願管理</a
                   >
                 </li>
                 <li>
-                  <a href="#" class="link-dark rounded" @click="go8"
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    @click="show = 'showbox08'"
                     >生肖管理</a
                   >
                 </li>
@@ -141,12 +160,18 @@
             <div class="collapse" id="account-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li>
-                  <a href="#" class="link-dark rounded" @click="go9"
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    @click="show = 'showbox09'"
                     >商品訂單</a
                   >
                 </li>
                 <li>
-                  <a href="#" class="link-dark rounded" @click="go10"
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    @click="show = 'showbox10'"
                     >訂單明細</a
                   >
                 </li>
@@ -155,14 +180,14 @@
           </li>
 
           <li class="mb-1">
-            <a href="#" @click="go11">
+            <a href="#" @click="show = 'showbox11'">
               <button class="btn" style="padding-left: 30px">
                 會員資料
               </button></a
             >
           </li>
           <li class="mb-1">
-            <a href="#" @click="go12">
+            <a href="#" @click="show = 'showbox12'">
               <button class="btn" style="padding-left: 30px">
                 結緣紀錄
               </button></a
@@ -171,7 +196,7 @@
         </ul>
       </div>
       <!-- 管理員頁面 -->
-      <div class="adminList" v-if="showbox0">
+      <div class="adminList" v-if="show =='showbox0'">
         <div class="supply">
           <span>管理員</span>
           <img src="/img/backweb/backFix.svg" class="showBtn" alt="" />
@@ -206,7 +231,7 @@
       </div>
 
       <!-- 祈願紀錄 -->
-      <div class="prayRecorder" v-if="showbox1">
+      <div class="prayRecorder" v-if="show =='showbox01'">
         <div class="supply">
           <span>祈願紀錄</span>
         </div>
@@ -309,7 +334,7 @@
         </div>
       </div>
       <!-- 小卡管理 -->
-      <div class="cardManage" v-if="showbox2">
+      <div class="cardManage" v-if="show =='showbox02'">
         <div class="supply">
           <span>小卡管理</span>
           <img src="img/backData/backFix.svg" @click="showButton" />
@@ -365,7 +390,7 @@
         </div>
       </div>
       <!-- 供品管理 -->
-      <div class="supplyManage" v-if="showbox3">
+      <div class="supplyManage" v-if="show =='showbox03'">
         <div class="supply">
           <span>供品管理</span>
           <img src="img/backData/backFix.svg" @click="showButton" alt="" />
@@ -419,7 +444,7 @@
         </div>
       </div>
       <!-- 籤詩 -->
-      <div class="pomes" v-if="showbox4">
+      <div class="pomes" v-if="show =='showbox04'">
         <div class="supply">
           <span>籤詩管理</span>
           <img src="img/backData/backFix.svg" @click="showButton" />
@@ -445,8 +470,8 @@
             <tr>
               <th scope="col">種類</th>
               <th scope="col">編號</th>
-              <th scope="col">籤詩本文</th>
-              <th scope="col">聖意/解曰/詩解</th>
+              <th scope="col">籤詩圖檔</th>
+              <th scope="col">新籤詩圖檔</th>
             </tr>
           </thead>
           <tbody>
@@ -461,19 +486,11 @@
                   <option value="" style="color: #927858">1</option>
                 </select>
               </td>
-              <td>
-                <textarea name="" id="" cols="10" rows="10">
-耕耘只可在鄉邦
-何用求謀向外方
-見說今年新運好
-門闌喜氣事雙雙
-
-                </textarea>
+              <td style="vertical-align: middle">
+                <input type="file" @change="fileChange" />
               </td>
-              <td>
-                <textarea name="" id="" cols="10" rows="10">
-病即安 訟即決 財漸豐 名高揭 行人回 婚可結 莫外求 福儘得
-                </textarea>
+              <td style="vertical-align: middle">
+                <input type="file" @change="fileChange2" />
               </td>
             </tr>
           </tbody>
@@ -485,11 +502,11 @@
           <span>圖檔</span>
           <div class="firstpic">
             <span>原圖檔</span>
-            <img src="https://picsum.photos/300/200/?random=1" />
+            <img :src="image" alt="原圖檔" />
           </div>
           <div class="firstpic2" v-if="button">
             <span>新圖檔</span>
-            <img src="https://picsum.photos/300/200/?random=1" />
+            <img :src="image2" alt="新圖檔" />
           </div>
         </div>
         <div class="saveBtn" v-if="button">
@@ -498,7 +515,7 @@
         </div>
       </div>
       <!-- 解籤管理 -->
-      <div class="pomeDetail" v-if="showbox5">
+      <div class="pomeDetail" v-if="show =='showbox05'">
         <div class="supply">
           <span>解籤內容管理</span>
           <img src="img/backData/backFix.svg" @click="showButton" alt="" />
@@ -543,7 +560,7 @@
         </div>
       </div>
       <!-- 籤詩紀錄 -->
-      <div class="pomeRecorder" v-if="showbox6">
+      <div class="pomeRecorder" v-if="show =='showbox06'">
         <div class="supply">
           <span>求籤紀錄</span>
         </div>
@@ -607,7 +624,7 @@
         </div>
       </div>
       <!-- 平安符管理 -->
-      <div class="amuletManage" v-if="showbox7">
+      <div class="amuletManage" v-if="show =='showbox07'">
         <div class="supply">
           <span>平安符願管理</span>
           <img src="img/backData/backFix.svg" @click="showButton" alt="" />
@@ -652,7 +669,7 @@
         </div>
       </div>
       <!-- 生肖管理 -->
-      <div class="zodiac-Manage-second" v-if="showbox8">
+      <div class="zodiac-Manage-second" v-if="show =='showbox08'">
         <div class="products-man">
           <span class="order">生肖管理</span>
           <div class="icon1">
@@ -704,7 +721,7 @@
         </div>
       </div>
       <!-- 商品訂單 -->
-      <div class="product-orders" v-if="showbox9">
+      <div class="product-orders" v-if="show =='showbox09'">
         <div class="products-man">
           <span class="order">商品訂單</span>
           <div class="icon1">
@@ -855,7 +872,7 @@
         </div>
       </div>
       <!-- 訂單明細 -->
-      <div class="productOrders" v-if="showbox10">
+      <div class="productOrders" v-if="show =='showbox10'">
         <div class="supply">
           <span>訂單明細</span>
         </div>
@@ -925,7 +942,7 @@
         </div>
       </div>
       <!-- 會員資料 -->
-      <div class="memberDetail" v-if="showbox11">
+      <div class="memberDetail" v-if="show =='showbox11'">
         <div class="supply">
           <span>會員資料</span>
         </div>
@@ -998,7 +1015,7 @@
         </div>
       </div>
       <!-- 結緣紀錄 -->
-      <div class="moneyRecorder" v-if="showbox12">
+      <div class="moneyRecorder" v-if="show =='showbox12'">
         <div class="supply">
           <span>結緣紀錄</span>
         </div>
@@ -1067,19 +1084,7 @@
           numbers: ["A", "B", "C", "D", "E", "F"],
           types: ["感情", "平安", "健康", "財富", "事業", "學業"],
           button: false,
-          showbox0: true,
-          showbox1: false,
-          showbox2: false,
-          showbox3: false,
-          showbox4: false,
-          showbox5: false,
-          showbox6: false,
-          showbox7: false,
-          showbox8: false,
-          showbox9: false,
-          showbox10: false,
-          showbox11: false,
-          showbox12: false,
+          show: "showbox01",
         },
         methods: {
           showButton() {
@@ -1088,201 +1093,6 @@
             } else {
               this.button = false;
             }
-          },
-          go1() {
-            this.showbox0 = false;
-            this.showbox1 = true;
-            this.showbox2 = false;
-            this.showbox3 = false;
-            this.showbox4 = false;
-            this.showbox5 = false;
-            this.showbox6 = false;
-            this.showbox7 = false;
-            this.showbox8 = false;
-            this.showbox9 = false;
-            this.showbox10 = false;
-            this.showbox11 = false;
-            this.showbox12 = false;
-          },
-          go2() {
-            this.showbox0 = false;
-            this.showbox1 = false;
-            this.showbox2 = true;
-            this.showbox3 = false;
-            this.showbox4 = false;
-            this.showbox5 = false;
-            this.showbox6 = false;
-            this.showbox7 = false;
-            this.showbox8 = false;
-            this.showbox9 = false;
-            this.showbox10 = false;
-            this.showbox11 = false;
-            this.showbox12 = false;
-          },
-          go3() {
-            this.showbox0 = false;
-            this.showbox1 = false;
-            this.showbox2 = false;
-            this.showbox3 = true;
-            this.showbox4 = false;
-            this.showbox5 = false;
-            this.showbox6 = false;
-            this.showbox7 = false;
-            this.showbox8 = false;
-            this.showbox9 = false;
-            this.showbox10 = false;
-            this.showbox11 = false;
-            this.showbox12 = false;
-          },
-          go4() {
-            this.showbox0 = false;
-            this.showbox1 = false;
-            this.showbox2 = false;
-            this.showbox3 = false;
-            this.showbox4 = true;
-            this.showbox5 = false;
-            this.showbox6 = false;
-            this.showbox7 = false;
-            this.showbox8 = false;
-            this.showbox9 = false;
-            this.showbox10 = false;
-            this.showbox11 = false;
-            this.showbox12 = false;
-          },
-          go5() {
-            this.showbox0 = false;
-            this.showbox1 = false;
-            this.showbox2 = false;
-            this.showbox3 = false;
-            this.showbox4 = false;
-            this.showbox5 = true;
-            this.showbox6 = false;
-            this.showbox7 = false;
-            this.showbox8 = false;
-            this.showbox9 = false;
-            this.showbox10 = false;
-            this.showbox11 = false;
-            this.showbox12 = false;
-          },
-          go6() {
-            this.showbox0 = false;
-            this.showbox1 = false;
-            this.showbox2 = false;
-            this.showbox3 = false;
-            this.showbox4 = false;
-            this.showbox5 = false;
-            this.showbox6 = true;
-            this.showbox7 = false;
-            this.showbox8 = false;
-            this.showbox9 = false;
-            this.showbox10 = false;
-            this.showbox11 = false;
-            this.showbox12 = false;
-          },
-          go7() {
-            this.showbox0 = false;
-            this.showbox1 = false;
-            this.showbox2 = false;
-            this.showbox3 = false;
-            this.showbox4 = false;
-            this.showbox5 = false;
-            this.showbox6 = false;
-            this.showbox7 = true;
-            this.showbox8 = false;
-            this.showbox9 = false;
-            this.showbox10 = false;
-            this.showbox11 = false;
-            this.showbox12 = false;
-          },
-          go8() {
-            this.showbox0 = false;
-            this.showbox1 = false;
-            this.showbox2 = false;
-            this.showbox3 = false;
-            this.showbox4 = false;
-            this.showbox5 = false;
-            this.showbox6 = false;
-            this.showbox7 = false;
-            this.showbox8 = true;
-            this.showbox9 = false;
-            this.showbox10 = false;
-            this.showbox11 = false;
-            this.showbox12 = false;
-          },
-          go9() {
-            this.showbox0 = false;
-            this.showbox1 = false;
-            this.showbox2 = false;
-            this.showbox3 = false;
-            this.showbox4 = false;
-            this.showbox5 = false;
-            this.showbox6 = false;
-            this.showbox7 = false;
-            this.showbox8 = false;
-            this.showbox9 = true;
-            this.showbox10 = false;
-            this.showbox11 = false;
-            this.showbox12 = false;
-          },
-          go10() {
-            this.showbox0 = false;
-            this.showbox1 = false;
-            this.showbox2 = false;
-            this.showbox3 = false;
-            this.showbox4 = false;
-            this.showbox5 = false;
-            this.showbox6 = false;
-            this.showbox7 = false;
-            this.showbox8 = false;
-            this.showbox9 = false;
-            this.showbox10 = true;
-            this.showbox11 = false;
-            this.showbox12 = false;
-          },
-          go11() {
-            this.showbox0 = false;
-            this.showbox1 = false;
-            this.showbox2 = false;
-            this.showbox3 = false;
-            this.showbox4 = false;
-            this.showbox5 = false;
-            this.showbox6 = false;
-            this.showbox7 = false;
-            this.showbox8 = false;
-            this.showbox9 = false;
-            this.showbox10 = false;
-            this.showbox11 = true;
-            this.showbox12 = false;
-          },
-          go12() {
-            this.showbox0 = false;
-            this.showbox1 = false;
-            this.showbox2 = false;
-            this.showbox3 = false;
-            this.showbox4 = false;
-            this.showbox5 = false;
-            this.showbox6 = false;
-            this.showbox7 = false;
-            this.showbox8 = false;
-            this.showbox9 = false;
-            this.showbox10 = false;
-            this.showbox11 = false;
-            this.showbox12 = true;
-          },
-          go13() {
-            this.showbox0 = true;
-            this.showbox1 = false;
-            this.showbox2 = false;
-            this.showbox3 = false;
-            this.showbox4 = false;
-            this.showbox5 = false;
-            this.showbox6 = false;
-            this.showbox7 = false;
-            this.showbox8 = false;
-            this.showbox9 = false;
-            this.showbox10 = false;
-            this.showbox11 = false;
-            this.showbox12 = false;
           },
         },
       });
