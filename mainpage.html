@@ -233,9 +233,9 @@
           location.href = "onlinepomes.html";
         },
       },
-    })
+    });
     //header 
-    let header = new Vue({
+    new Vue({
       el: '#mainheader',
       data() {
         return {
@@ -245,9 +245,10 @@
         }
       },
       created() {
-        this.screenWidth = document.body.clientWidth;
-        let array = JSON.parse(localStorage.getItem('personallogin'));
-        this.losituation = null;
+        this.screenWidth = document.body.clientWidth;//營幕寬
+        //以下讀取會員資料
+        let array = JSON.parse(localStorage.getItem('personallogin'));//抓localStorage存入變數
+        this.losituation = null;//登入登出狀態
         if (array != null) {
           axios.post('phps/memberExist.php', {
             mem_no: array[0].mem_no,
@@ -257,12 +258,12 @@
             }
           }).then((res) => {
             if (res) {
-              this.losituation = "登出";
+              this.losituation = "登出";//登入登出狀態
               this.personaldata = res.data[0];
             }
           }).catch(error => this.personaldata = res.data);
         };
-
+        //以上讀取會員資料
         window.onresize = () => {
           return (() => {
             this.screenWidth = document.body.clientWidth;
@@ -377,7 +378,7 @@
       mounted() {
         this.$nextTick(this.ani)
       },
-    })
+    });
   </script>
 </body>
 
