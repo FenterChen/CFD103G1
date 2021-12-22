@@ -1,971 +1,1171 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/sidebar.css" />
+    <link rel="stylesheet" href="../css/backheader.css" />
+    <link rel="stylesheet" href="../css/3-2ZodiacManage.css" />
+    <link rel="stylesheet" href="../css/4-1_productOrders.css" />
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/sidebars.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="../js/prayRecorder.js"></script>
+    <script src="../js/vue.js"></script>
+    <style>
+      img {
+        max-width: 300px;
+        max-height: 400px;
+      }
+    </style>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../css/sidebar.css" />
-  <link rel="stylesheet" href="../css/backheader.css" />
-  <link rel="stylesheet" href="../css/3-2ZodiacManage.css" />
-  <link rel="stylesheet" href="../css/4-1_productOrders.css" />
-  <link href="../css/bootstrap.min.css" rel="stylesheet" />
-  <script src="../js/bootstrap.bundle.min.js"></script>
-  <script src="../js/sidebars.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-  <script src="../js/prayRecorder.js"></script>
-  <script src="../js/vue.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
-</head>
-
-<body>
-  <header id="mainheader">
-    <div class="headerWrap">
-      <div class="logo">
-        <a href="#">
-          <img src="../img/header/BOBIO_logo.svg" />
-        </a>
-      </div>
-      <div class="member">
-        <img src="../img/header/member.svg" @click="go13" />
-      </div>
-      <span>登出</span>
-    </div>
-  </header>
-  <div class="wrapp" id="app">
-    <!-- sidebar -->
-    <div class="sidebar flex-shrink-0 p-3">
-      <ul class="list-unstyled ps-0">
-        <!-- 祈願項目 -->
-        <li class="mb-1">
-          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-            data-bs-target="#home-collapse" aria-expanded="true">
-            祈願
-          </button>
-          <div class="collapse" id="home-collapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li>
-                <a href="#" class="link-dark rounded" @click="show = 'showbox01'">祈願紀錄</a>
-              </li>
-              <li>
-                <a href="#" class="link-dark rounded" @click="show = 'showbox02'">小卡管理</a>
-              </li>
-              <li>
-                <a href="#" class="link-dark rounded" @click="show = 'showbox03'">供品管理</a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <!-- 求籤管理 -->
-        <li class="mb-1">
-          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-            data-bs-target="#dashboard-collapse" aria-expanded="false">
-            求籤
-          </button>
-          <div class="collapse" id="dashboard-collapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li>
-                <a href="#" class="link-dark rounded" id="bpomes" @click="show = 'showbox04'">籤詩管理</a>
-              </li>
-              <li>
-                <a href="#" class="link-dark rounded" id="brecorder" @click="show = 'showbox05'">解籤內容管理</a>
-              </li>
-              <li>
-                <a href="#" class="link-dark rounded" id="pomecontent" @click="show = 'showbox06'">求籤紀錄</a>
-              </li>
-            </ul>
-          </div>
-        </li>
-
-        <!-- 平安符管理 -->
-        <li class="mb-1">
-          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-            data-bs-target="#orders-collapse" aria-expanded="false">
-            平安符
-          </button>
-          <div class="collapse" id="orders-collapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li>
-                <a href="#" class="link-dark rounded" @click="show = 'showbox07'">平安符願管理</a>
-              </li>
-              <li>
-                <a href="#" class="link-dark rounded" @click="show = 'showbox08'">生肖管理</a>
-              </li>
-            </ul>
-          </div>
-        </li>
-
-        <li class="mb-1">
-          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-            data-bs-target="#account-collapse" aria-expanded="false">
-            訂單管理
-          </button>
-          <div class="collapse" id="account-collapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li>
-                <a href="#" class="link-dark rounded" @click="show = 'showbox09'">商品訂單</a>
-              </li>
-              <li>
-                <a href="#" class="link-dark rounded" @click="show = 'showbox10'">訂單明細</a>
-              </li>
-            </ul>
-          </div>
-        </li>
-
-        <li class="mb-1">
-          <a href="#" @click="show = 'showbox11'">
-            <button class="btn" style="padding-left: 30px">
-              會員資料
-            </button></a>
-        </li>
-        <li class="mb-1">
-          <a href="#" @click="show = 'showbox12'">
-            <button class="btn" style="padding-left: 30px">
-              結緣紀錄
-            </button></a>
-        </li>
-      </ul>
-    </div>
-    <!-- 管理員頁面 -->
-    <div class="adminList" v-if="show =='showbox0'">
-      <div class="supply">
-        <span>管理員</span>
-        <img src="/img/backweb/backFix.svg" class="showBtn" alt="" />
-      </div>
-
-      <!-- 表格內容 -->
-      <table class="table table-hover table-pray">
-        <thead>
-          <tr>
-            <th>編號</th>
-            <th>名稱</th>
-            <th>密碼</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>01</td>
-            <td>李小龍</td>
-            <td>imbrucelee</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>02</td>
-            <td>李小龍</td>
-            <td>imbrucelee</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- 表格內容結束 -->
-    </div>
-
-    <!-- 祈願紀錄 -->
-    <div class="prayRecorder" v-if="show =='showbox01'">
-      <div class="supply">
-        <span>祈願紀錄</span>
-      </div>
-      <div class="searchbox">
-        <div class="search">
-          <input type="text" placeholder="搜尋關鍵字" />
-          <button><img src="img/backData/search.svg" alt="" /></button>
+  <body>
+    <header id="mainheader">
+      <div class="headerWrap">
+        <div class="logo">
+          <a href="#">
+            <img src="../img/header/BOBIO_logo.svg" />
+          </a>
         </div>
-        <div class="page">
-          <span class="each">每頁顯示</span>
-          <select>
-            <option value="" style="color: #927858">10</option>
-            <option value="" style="color: #927858">20</option>
-            <option value="" style="color: #927858">30</option>
-          </select>
-          <span class="each">頁</span>
+        <div class="member">
+          <img src="../img/header/member.svg" @click="go13" />
         </div>
+        <span>登出</span>
       </div>
-      <!-- 表格內容 -->
-      <table class="table table-hover table-pray">
-        <thead>
-          <tr>
-            <th scope="col">祈願紀錄編號</th>
-            <th scope="col">會員編號</th>
-            <th scope="col">供品</th>
-            <th scope="col">小卡</th>
-            <th scope="col">祈願日期</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>00000001a-1</th>
-            <td>00000001</td>
-            <td>組合三-甜食</td>
-            <td>感情-小卡一</td>
-            <td>2021.11.18</td>
-          </tr>
-          <tr>
-            <th>00000001a-1</th>
-            <td>00000001</td>
-            <td>組合三-甜食</td>
-            <td>感情-小卡一</td>
-            <td>2021.11.18</td>
-          </tr>
-          <tr>
-            <th>00000001a-1</th>
-            <td>00000001</td>
-            <td>組合三-甜食</td>
-            <td>感情-小卡一</td>
-            <td>2021.11.18</td>
-          </tr>
-          <tr>
-            <th scope="row">00000001a-1</th>
-            <td>00000001</td>
-            <td>組合三-甜食</td>
-            <td>感情-小卡一</td>
-            <td>2021.11.18</td>
-          </tr>
-          <tr>
-            <th scope="row">00000001a-1</th>
-            <td>00000001</td>
-            <td>組合三-甜食</td>
-            <td>感情-小卡一</td>
-            <td>2021.11.18</td>
-          </tr>
-          <tr>
-            <th scope="row">00000001a-1</th>
-            <td>00000001</td>
-            <td>組合三-甜食</td>
-            <td>感情-小卡一</td>
-            <td>2021.11.18</td>
-          </tr>
-          <tr>
-            <th scope="row">00000001a-1</th>
-            <td>00000001</td>
-            <td>組合三-甜食</td>
-            <td>感情-小卡一</td>
-            <td>2021.11.18</td>
-          </tr>
-          <tr>
-            <th scope="row">00000001a-1</th>
-            <td>00000001</td>
-            <td>組合三-甜食</td>
-            <td>感情-小卡一</td>
-            <td>2021.11.18</td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- 表格內容結束 -->
+    </header>
+    <div class="wrapp" id="app">
+      <!-- sidebar -->
+      <div class="sidebar flex-shrink-0 p-3">
+        <ul class="list-unstyled ps-0">
+          <!-- 祈願項目 -->
+          <li class="mb-1">
+            <button
+              class="btn btn-toggle align-items-center rounded collapsed"
+              data-bs-toggle="collapse"
+              data-bs-target="#home-collapse"
+              aria-expanded="true"
+            >
+              祈願
+            </button>
+            <div class="collapse" id="home-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li>
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    @click="show = 'showbox01'"
+                    >祈願紀錄</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    @click="show = 'showbox02'"
+                    >小卡管理</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    @click="show = 'showbox03'"
+                    >供品管理</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </li>
+          <!-- 求籤管理 -->
+          <li class="mb-1">
+            <button
+              class="btn btn-toggle align-items-center rounded collapsed"
+              data-bs-toggle="collapse"
+              data-bs-target="#dashboard-collapse"
+              aria-expanded="false"
+            >
+              求籤
+            </button>
+            <div class="collapse" id="dashboard-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li>
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    id="bpomes"
+                    @click="show = 'showbox04'"
+                    >籤詩管理</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    id="brecorder"
+                    @click="show = 'showbox05'"
+                    >解籤內容管理</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    id="pomecontent"
+                    @click="show = 'showbox06'"
+                    >求籤紀錄</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </li>
 
-      <!-- 頁簽 -->
-      <div class="pagelist">
-        <a href="">
-           </a>
-            <a href="">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">4</a>
-            <a href="">5</a>
-            <a href=""> > </a>
+          <!-- 平安符管理 -->
+          <li class="mb-1">
+            <button
+              class="btn btn-toggle align-items-center rounded collapsed"
+              data-bs-toggle="collapse"
+              data-bs-target="#orders-collapse"
+              aria-expanded="false"
+            >
+              平安符
+            </button>
+            <div class="collapse" id="orders-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li>
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    @click="show = 'showbox07'"
+                    >平安符願管理</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    @click="show = 'showbox08'"
+                    >生肖管理</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="mb-1">
+            <button
+              class="btn btn-toggle align-items-center rounded collapsed"
+              data-bs-toggle="collapse"
+              data-bs-target="#account-collapse"
+              aria-expanded="false"
+            >
+              訂單管理
+            </button>
+            <div class="collapse" id="account-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li>
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    @click="show = 'showbox09'"
+                    >商品訂單</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    @click="show = 'showbox10'"
+                    >訂單明細</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="mb-1">
+            <a href="#" @click="show = 'showbox11'">
+              <button class="btn" style="padding-left: 30px">
+                會員資料
+              </button></a
+            >
+          </li>
+          <li class="mb-1">
+            <a href="#" @click="show = 'showbox12'">
+              <button class="btn" style="padding-left: 30px">
+                結緣紀錄
+              </button></a
+            >
+          </li>
+        </ul>
       </div>
-    </div>
-    <!-- 小卡管理 -->
-    <div class="cardManage" v-if="show =='showbox02'">
-      <div class="supply">
-        <span>小卡管理</span>
-        <img src="img/backData/backFix.svg" @click="showButton" />
-      </div>
-      <div class="prayTable">
-        <table class="table table-card">
+      <!-- 管理員頁面 -->
+      <div class="adminList" v-if="show =='showbox0'">
+        <div class="supply">
+          <span>管理員</span>
+          <img src="/img/backweb/backFix.svg" class="showBtn" alt="" />
+        </div>
+
+        <!-- 表格內容 -->
+        <table class="table table-hover table-pray">
           <thead>
             <tr>
-              <th scope="col">種類</th>
-              <th scope="col">感情</th>
-              <th scope="col">學業</th>
-              <th scope="col">健康</th>
-              <th scope="col">平安</th>
-              <th scope="col">財富</th>
-              <th scope="col">事業</th>
+              <th>編號</th>
+              <th>名稱</th>
+              <th>密碼</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">卡片一內容</th>
-              <td><input value="美滿婚姻" /></td>
-              <td><input value="金榜題名" /></td>
-              <td><input value="健康長壽" /></td>
-              <td><input value="吉祥如意" /></td>
-              <td><input value="財源廣進" /></td>
-              <td><input value="錦繡前程" /></td>
+              <td>01</td>
+              <td>李小龍</td>
+              <td>imbrucelee</td>
+              <td></td>
             </tr>
             <tr>
-              <th scope="row">卡片二內容</th>
-              <td><input value="美滿婚姻" /></td>
-              <td><input value="金榜題名" /></td>
-              <td><input value="健康長壽" /></td>
-              <td><input value="吉祥如意" /></td>
-              <td><input value="財源廣進" /></td>
-              <td><input value="錦繡前程" /></td>
+              <td>02</td>
+              <td>李小龍</td>
+              <td>imbrucelee</td>
+              <td></td>
             </tr>
-            <tr>
-              <th scope="row">卡片三內容</th>
-              <td><input value="美滿婚姻" /></td>
-              <td><input value="金榜題名" /></td>
-              <td><input value="健康長壽" /></td>
-              <td><input value="吉祥如意" /></td>
-              <td><input value="財源廣進" /></td>
-              <td><input value="錦繡前程" /></td>
-            </tr>
-            <tr></tr>
           </tbody>
         </table>
-      </div>
-      <div class="saveBtn" v-if="button">
-        <button class="cancle" data-hover="取消">取消</button>
-        <button class="save" data-hover="確認">確認</button>
-      </div>
-    </div>
-    <!-- 供品管理 -->
-    <div class="supplyManage" v-if="show =='showbox03'">
-      <div class="supply">
-        <span>供品管理</span>
-        <img src="img/backData/backFix.svg" @click="showButton" alt="" />
+        <!-- 表格內容結束 -->
       </div>
 
-      <table class="table table-supply">
-        <thead>
-          <tr>
-            <th scope="col">組合</th>
-            <th scope="col">組合一</th>
-            <th scope="col">組合二</th>
-            <th scope="col">組合三</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>種類</th>
-            <td>
-              <input type="text" value="三牲" />
-            </td>
-            <td>
-              <input type="text" value="鮮果" />
-            </td>
-            <td><input type="text" value="甜食" /></td>
-          </tr>
-          <tr>
-            <th>內容</th>
-            <td>
-              <input type="text" value="1. 豬" />
-            </td>
-            <td><input type="text" value="1. 香蕉" /></td>
-            <td><input type="text" value="1. 糕餅" /></td>
-          </tr>
-          <tr>
-            <th></th>
-            <td><input type="text" value="2. 雞" /></td>
-            <td><input type="text" value="2. 蔬果" /></td>
-            <td><input type="text" value="2. 餅乾" /></td>
-          </tr>
-          <tr>
-            <th></th>
-            <td><input type="text" value="3. 魚" /></td>
-            <td><input type="text" value="3. 水梨" /></td>
-            <td><input type="text" value="3. 糖果" /></td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="saveBtn" v-if="button">
-        <button class="cancle" data-hover="取消">取消</button>
-        <button class="save" data-hover="確認">確認</button>
-      </div>
-    </div>
-    <!-- 籤詩 -->
-    <div class="pomes" v-if="show =='showbox04'">
-      <div class="supply">
-        <span>籤詩管理</span>
-        <img src="img/backData/backFix.svg" @click="showButton" />
-      </div>
-      <div class="searchbox">
-        <div class="search">
-          <input type="text" placeholder="搜尋關鍵字" />
-          <button><img src="img/backData/search.svg" alt="" /></button>
+      <!-- 祈願紀錄 -->
+      <div class="prayRecorder" v-if="show =='showbox01'">
+        <div class="supply">
+          <span>祈願紀錄</span>
         </div>
-        <div class="page">
-          <span class="each">每頁顯示</span>
-          <select>
-            <option value="" style="color: #927858">10</option>
-            <option value="" style="color: #927858">20</option>
-            <option value="" style="color: #927858">30</option>
-          </select>
-          <span class="each">頁</span>
+        <div class="searchbox">
+          <div class="search">
+            <input type="text" placeholder="搜尋關鍵字" />
+            <button><img src="img/backData/search.svg" alt="" /></button>
+          </div>
+          <div class="page">
+            <span class="each">每頁顯示</span>
+            <select>
+              <option value="" style="color: #927858">10</option>
+              <option value="" style="color: #927858">20</option>
+              <option value="" style="color: #927858">30</option>
+            </select>
+            <span class="each">頁</span>
+          </div>
         </div>
-      </div>
-      <!-- 表格內容 -->
-      <table class="table table-pomemange">
-        <thead>
-          <tr>
-            <th scope="col">種類</th>
-            <th scope="col">編號</th>
-            <th scope="col">籤詩圖檔</th>
-            <th scope="col">新籤詩圖檔</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="vertical-align: middle">
-              <select name="籤詩" id="">
-                <option value="" style="color: #927858">六十甲子籤</option>
-              </select>
-            </td>
-            <td style="vertical-align: middle">
-              <select name="編號" id="">
-                <option value="" style="color: #927858">1</option>
-              </select>
-            </td>
-            <td style="vertical-align: middle">
-              <input type="file" @change="fileChange" />
-            </td>
-            <td style="vertical-align: middle">
-              <input type="file" @change="fileChange2" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- 表格內容結束 -->
+        <!-- 表格內容 -->
+        <table class="table table-hover table-pray">
+          <thead>
+            <tr>
+              <th scope="col">祈願紀錄編號</th>
+              <th scope="col">會員編號</th>
+              <th scope="col">供品</th>
+              <th scope="col">小卡</th>
+              <th scope="col">祈願日期</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>00000001a-1</th>
+              <td>00000001</td>
+              <td>組合三-甜食</td>
+              <td>感情-小卡一</td>
+              <td>2021.11.18</td>
+            </tr>
+            <tr>
+              <th>00000001a-1</th>
+              <td>00000001</td>
+              <td>組合三-甜食</td>
+              <td>感情-小卡一</td>
+              <td>2021.11.18</td>
+            </tr>
+            <tr>
+              <th>00000001a-1</th>
+              <td>00000001</td>
+              <td>組合三-甜食</td>
+              <td>感情-小卡一</td>
+              <td>2021.11.18</td>
+            </tr>
+            <tr>
+              <th scope="row">00000001a-1</th>
+              <td>00000001</td>
+              <td>組合三-甜食</td>
+              <td>感情-小卡一</td>
+              <td>2021.11.18</td>
+            </tr>
+            <tr>
+              <th scope="row">00000001a-1</th>
+              <td>00000001</td>
+              <td>組合三-甜食</td>
+              <td>感情-小卡一</td>
+              <td>2021.11.18</td>
+            </tr>
+            <tr>
+              <th scope="row">00000001a-1</th>
+              <td>00000001</td>
+              <td>組合三-甜食</td>
+              <td>感情-小卡一</td>
+              <td>2021.11.18</td>
+            </tr>
+            <tr>
+              <th scope="row">00000001a-1</th>
+              <td>00000001</td>
+              <td>組合三-甜食</td>
+              <td>感情-小卡一</td>
+              <td>2021.11.18</td>
+            </tr>
+            <tr>
+              <th scope="row">00000001a-1</th>
+              <td>00000001</td>
+              <td>組合三-甜食</td>
+              <td>感情-小卡一</td>
+              <td>2021.11.18</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- 表格內容結束 -->
 
-      <!-- 圖檔 -->
-      <div class="picbox">
-        <span>圖檔</span>
-        <div class="firstpic">
-          <span>原圖檔</span>
-          <img :src="image" alt="原圖檔" />
-        </div>
-        <div class="firstpic2" v-if="button">
-          <span>新圖檔</span>
-          <img :src="image2" alt="新圖檔" />
+        <!-- 頁簽 -->
+        <div class="pagelist">
+          <a href=""> < </a>
+          <a href="">1</a>
+          <a href="">2</a>
+          <a href="">3</a>
+          <a href="">4</a>
+          <a href="">5</a>
+          <a href=""> > </a>
         </div>
       </div>
-      <div class="saveBtn" v-if="button">
-        <button class="cancle" data-hover="取消">取消</button>
-        <button class="save" data-hover="確認">確認</button>
-      </div>
-    </div>
-    <!-- 解籤管理 -->
-    <div class="pomeDetail" v-if="show =='showbox05'">
-      <div class="supply">
-        <span>解籤內容管理</span>
-        <img src="img/backData/backFix.svg" @click="showButton" alt="" />
-      </div>
-
-      <!-- 表格內容 -->
-      <table class="table table-unpomes">
-        <thead>
-          <tr>
-            <th scope="col">種類</th>
-            <th scope="col">編號</th>
-            <th scope="col">解籤內容</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="vertical-align: middle">
-              <select name="籤詩" id="">
-                <option value="" style="color: #927858">六十甲子籤</option>
-              </select>
-            </td>
-            <td style="vertical-align: middle">
-              <select name="編號" id="">
-                <option value="" style="color: #927858">1</option>
-              </select>
-            </td>
-            <td>
-              <textarea name="" id="" cols="10" rows="10">
-此籤不宜遠行。只宜守舊。自有超達。時運漸亨。
-財祿俱發。訟不宜。財自至。婚可求。名利高。
-病獲安。孕生貴子。風水利順。家宅昌隆也。
-
-                </textarea>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- 表格內容結束 -->
-      <div class="saveBtn" v-if="button">
-        <button class="cancle" data-hover="取消">取消</button>
-        <button class="save" data-hover="確認">確認</button>
-      </div>
-    </div>
-    <!-- 籤詩紀錄 -->
-    <div class="pomeRecorder" v-if="show =='showbox06'">
-      <div class="supply">
-        <span>求籤紀錄</span>
-      </div>
-      <div class="searchbox">
-        <div class="search">
-          <input type="text" placeholder="搜尋關鍵字" />
-          <button><img src="img/backData/search.svg" alt="" /></button>
+      <!-- 小卡管理 -->
+      <div class="cardManage" v-if="show =='showbox02'">
+        <div class="supply">
+          <span>小卡管理</span>
+          <img src="img/backData/backFix.svg" @click="showButton" />
         </div>
-        <div class="page">
-          <span class="each">每頁顯示</span>
-          <select>
-            <option value="" style="color: #927858">10</option>
-            <option value="" style="color: #927858">20</option>
-            <option value="" style="color: #927858">30</option>
-          </select>
-          <span class="each">頁</span>
+        <div class="prayTable">
+          <table class="table table-card">
+            <thead>
+              <tr>
+                <th scope="col">種類</th>
+                <th scope="col">感情</th>
+                <th scope="col">學業</th>
+                <th scope="col">健康</th>
+                <th scope="col">平安</th>
+                <th scope="col">財富</th>
+                <th scope="col">事業</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">卡片一內容</th>
+                <td><input value="美滿婚姻" /></td>
+                <td><input value="金榜題名" /></td>
+                <td><input value="健康長壽" /></td>
+                <td><input value="吉祥如意" /></td>
+                <td><input value="財源廣進" /></td>
+                <td><input value="錦繡前程" /></td>
+              </tr>
+              <tr>
+                <th scope="row">卡片二內容</th>
+                <td><input value="美滿婚姻" /></td>
+                <td><input value="金榜題名" /></td>
+                <td><input value="健康長壽" /></td>
+                <td><input value="吉祥如意" /></td>
+                <td><input value="財源廣進" /></td>
+                <td><input value="錦繡前程" /></td>
+              </tr>
+              <tr>
+                <th scope="row">卡片三內容</th>
+                <td><input value="美滿婚姻" /></td>
+                <td><input value="金榜題名" /></td>
+                <td><input value="健康長壽" /></td>
+                <td><input value="吉祥如意" /></td>
+                <td><input value="財源廣進" /></td>
+                <td><input value="錦繡前程" /></td>
+              </tr>
+              <tr></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="saveBtn" v-if="button">
+          <button class="cancle" data-hover="取消">取消</button>
+          <button class="save" data-hover="確認">確認</button>
         </div>
       </div>
-      <!-- 表格內容 -->
-      <table class="table table-pray table-hover">
-        <thead>
-          <tr>
-            <th scope="col">求籤紀錄編號</th>
-            <th scope="col">會員編號</th>
-            <th scope="col">籤詩</th>
-            <th scope="col">求籤日期</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">00000001b-1</th>
-            <td>00000001</td>
-            <td>六十甲子籤-第十籤</td>
-            <td>2021.11.18</td>
-          </tr>
-          <tr>
-            <th scope="row">00000001b-1</th>
-            <td>00000001</td>
-            <td>六十甲子籤-第十籤</td>
-            <td>2021.11.18</td>
-          </tr>
-          <tr>
-            <th scope="row">00000001b-1</th>
-            <td>00000001</td>
-            <td>六十甲子籤-第十籤</td>
-            <td>2021.11.18</td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- 表格內容結束 -->
-
-      <!-- 頁簽 -->
-      <div class="pagelist">
-        <a href="">
-          < </a>
-            <a href="">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">4</a>
-            <a href="">5</a>
-            <a href=""> > </a>
-      </div>
-    </div>
-    <!-- 平安符管理 -->
-    <div class="amuletManage" v-if="show =='showbox07'">
-      <div class="supply">
-        <span>平安符願管理</span>
-        <img src="img/backData/backFix.svg" @click="showButton" alt="" />
-      </div>
-
-      <!-- 表格內容 -->
-      <table class="table table-unpomes">
-        <thead>
-          <tr>
-            <th scope="col">編號</th>
-            <th scope="col">種類</th>
-            <th scope="col">簡介</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="vertical-align: middle">
-              <select name="編號" id="">
-                <option v-for="number in numbers">{{number}}</option>
-              </select>
-            </td>
-            <td style="vertical-align: middle">
-              <select name="種類" id="">
-                <option v-for="type in types ">{{type}}</option>
-              </select>
-            </td>
-            <td>
-              <textarea name="" id="" cols="10" rows="10">
-此籤不宜遠行。只宜守舊。自有超達。時運漸亨。
-財祿俱發。訟不宜。財自至。婚可求。名利高。
-病獲安。孕生貴子。風水利順。家宅昌隆也。
-
-                </textarea>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- 表格內容結束 -->
-      <div class="saveBtn" v-if="button">
-        <button class="cancle" data-hover="取消">取消</button>
-        <button class="save" data-hover="確認">確認</button>
-      </div>
-    </div>
-    <!-- 生肖管理 -->
-    <div class="zodiac-Manage-second" v-if="show =='showbox08'">
-      <div class="products-man">
-        <span class="order">生肖管理</span>
-        <div class="icon1">
+      <!-- 供品管理 -->
+      <div class="supplyManage" v-if="show =='showbox03'">
+        <div class="supply">
+          <span>供品管理</span>
           <img src="img/backData/backFix.svg" @click="showButton" alt="" />
         </div>
-      </div>
 
-      <div class="zodiac-list-second">
-        <h1 class="type-txt-second">種類</h1>
-        <div class="type">鼠</div>
-        <div class="type">牛</div>
-        <div class="type">虎</div>
-        <div class="type">兔</div>
-        <div class="type">龍</div>
-        <div class="type">蛇</div>
-        <div class="type">馬</div>
-        <div class="type">羊</div>
-        <div class="type">猴</div>
-        <div class="type">雞</div>
-        <div class="type">狗</div>
-        <div class="type">豬</div>
+        <table class="table table-supply">
+          <thead>
+            <tr>
+              <th scope="col">組合</th>
+              <th scope="col">組合一</th>
+              <th scope="col">組合二</th>
+              <th scope="col">組合三</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>種類</th>
+              <td>
+                <input type="text" value="三牲" />
+              </td>
+              <td>
+                <input type="text" value="鮮果" />
+              </td>
+              <td><input type="text" value="甜食" /></td>
+            </tr>
+            <tr>
+              <th>內容</th>
+              <td>
+                <input type="text" value="1. 豬" />
+              </td>
+              <td><input type="text" value="1. 香蕉" /></td>
+              <td><input type="text" value="1. 糕餅" /></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td><input type="text" value="2. 雞" /></td>
+              <td><input type="text" value="2. 蔬果" /></td>
+              <td><input type="text" value="2. 餅乾" /></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td><input type="text" value="3. 魚" /></td>
+              <td><input type="text" value="3. 水梨" /></td>
+              <td><input type="text" value="3. 糖果" /></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="saveBtn" v-if="button">
+          <button class="cancle" data-hover="取消">取消</button>
+          <button class="save" data-hover="確認">確認</button>
+        </div>
       </div>
-
-      <div class="txt-area">
-        <div class="zodiac-one">
-          <h1>圖檔</h1>
+      <!-- 籤詩 -->
+      <div class="pomes" v-if="show =='showbox04'">
+        <my-pomes></my-pomes>
+      </div>
+      <!-- 解籤管理 -->
+      <div class="pomeDetail" v-if="show =='showbox05'">
+        <my-pomedetail></my-pomedetail>
+      </div>
+      <!-- 籤詩紀錄 -->
+      <div class="pomeRecorder" v-if="show =='showbox06'">
+        <my-pomerecorder></my-pomerecorder>
+      </div>
+      <!-- 平安符管理 -->
+      <div class="amuletManage" v-if="show =='showbox07'">
+        <div class="supply">
+          <span>平安符願管理</span>
+          <img src="img/backData/backFix.svg" @click="showButton" alt="" />
         </div>
 
-        <div class="zodiac-two">
-          <h2>原圖檔</h2>
-          <div class="pic">
-            <img src="" />
+        <!-- 表格內容 -->
+        <table class="table table-unpomes">
+          <thead>
+            <tr>
+              <th scope="col">編號</th>
+              <th scope="col">種類</th>
+              <th scope="col">簡介</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="vertical-align: middle">
+                <select name="編號" id="">
+                  <option v-for="number in numbers">{{number}}</option>
+                </select>
+              </td>
+              <td style="vertical-align: middle">
+                <select name="種類" id="">
+                  <option v-for="type in types ">{{type}}</option>
+                </select>
+              </td>
+              <td>
+                <textarea name="" id="" cols="10" rows="10">
+此籤不宜遠行。只宜守舊。自有超達。時運漸亨。
+財祿俱發。訟不宜。財自至。婚可求。名利高。
+病獲安。孕生貴子。風水利順。家宅昌隆也。
+
+                </textarea>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- 表格內容結束 -->
+        <div class="saveBtn">
+          <button class="cancle" data-hover="取消">取消</button>
+          <button class="save" data-hover="確認">確認</button>
+        </div>
+      </div>
+      <!-- 生肖管理 -->
+      <div class="zodiac-Manage-second" v-if="show =='showbox08'">
+        <div class="products-man">
+          <span class="order">生肖管理</span>
+          <div class="icon1">
+            <img src="img/backData/backFix.svg" @click="showButton" alt="" />
           </div>
-          <!-- <input type="file" class="old-pic"> -->
         </div>
 
-        <div class="zodiac-three" v-if="button">
-          <h1 class="new">新圖檔</h1>
-          <div class="pic">
-            <img src="" />
+        <div class="zodiac-list-second">
+          <h1 class="type-txt-second">種類</h1>
+          <div class="type">鼠</div>
+          <div class="type">牛</div>
+          <div class="type">虎</div>
+          <div class="type">兔</div>
+          <div class="type">龍</div>
+          <div class="type">蛇</div>
+          <div class="type">馬</div>
+          <div class="type">羊</div>
+          <div class="type">猴</div>
+          <div class="type">雞</div>
+          <div class="type">狗</div>
+          <div class="type">豬</div>
+        </div>
+
+        <div class="txt-area">
+          <div class="zodiac-one">
+            <h1>圖檔</h1>
           </div>
-          <input type="file" class="new-pic" />
+
+          <div class="zodiac-two">
+            <h2>原圖檔</h2>
+            <div class="pic">
+              <img src="" />
+            </div>
+            <!-- <input type="file" class="old-pic"> -->
+          </div>
+
+          <div class="zodiac-three" v-if="button">
+            <h1 class="new">新圖檔</h1>
+            <div class="pic">
+              <img src="" />
+            </div>
+            <input type="file" class="new-pic" />
+          </div>
+        </div>
+
+        <div class="saveBtn showbtnbox">
+          <button class="cancle" data-hover="取消">取消</button>
+          <button class="save" data-hover="確認">確認</button>
         </div>
       </div>
+      <!-- 商品訂單 -->
+      <div class="product-orders" v-if="show =='showbox09'">
+        <div class="products-man">
+          <span class="order">商品訂單</span>
+          <div class="icon1">
+            <img src="img/backData/backFix.svg" alt="" />
+          </div>
+        </div>
 
-      <div class="saveBtn showbtnbox">
-        <button class="cancle" data-hover="取消">取消</button>
-        <button class="save" data-hover="確認">確認</button>
+        <div class="second">
+          <div class="search">
+            <input type="search" placeholder="搜尋關鍵字" />
+            <button>
+              <img src="img/backData/search.svg" alt="" />
+            </button>
+          </div>
+          <div class="page">
+            <span class="each">每頁顯示</span>
+            <select>
+              <option value="" style="color: #927858">10</option>
+              <option value="" style="color: #927858">20</option>
+              <option value="" style="color: #927858">30</option>
+            </select>
+            <span class="each">頁</span>
+          </div>
+        </div>
+
+        <!-- first-row_end---------- -->
+        <!-- table_start---------- -->
+        <table class="table" rules="all" cellpadding="5">
+          <thead>
+            <tr>
+              <th>訂單編號</th>
+              <th>會員編號</th>
+              <th>訂單時間</th>
+              <th>訂單總金額</th>
+              <th>配送方式</th>
+              <th>訂單狀態</th>
+            </tr>
+          </thead>
+
+          <tbody class="white whiteline">
+            <tr>
+              <td class="arrow">
+                <div class="up">▲</div>
+                00002021
+              </td>
+              <td>00000001</td>
+              <td>2021.11.18</td>
+              <td>NT$459</td>
+              <td>宅配</td>
+              <td>已出貨</td>
+            </tr>
+          </tbody>
+
+          <tfoot>
+            <tr>
+              <td colspan="2">
+                <div class="name">收件人姓名 : 王小明</div>
+                <div class="email">信箱 : wang3ming@gmail.com</div>
+              </td>
+              <td colspan="2">
+                <div class="mobile">收件人電話 : 0900155979</div>
+                <div class="address">
+                  收件人地址 : 新北市中和區中山路二段347號
+                </div>
+              </td>
+
+              <td></td>
+              <td><a href="">訂單明細</a></td>
+            </tr>
+          </tfoot>
+        </table>
+        <!-- table_end---------- -->
+        <!-- table2_start---------- -->
+        <table rules="all" cellpadding="5">
+          <tbody class="yellow">
+            <tr>
+              <td class="arrow">
+                <div class="left">▶</div>
+                00002021
+              </td>
+              <td>00000001</td>
+              <td>2021.11.18</td>
+              <td>NT$459</td>
+              <td>宅配</td>
+              <td>已出貨</td>
+            </tr>
+          </tbody>
+          <tfoot style="display: none">
+            <tr>
+              <td colspan="2">
+                <div class="name"></div>
+                <div class="email"></div>
+              </td>
+              <td colspan="2">
+                <div class="mobile"></div>
+                <div class="address"></div>
+              </td>
+
+              <td></td>
+              <td><a href=""></a></td>
+            </tr>
+          </tfoot>
+        </table>
+        <!-- table2_end---------- -->
+        <!-- table3_start---------- -->
+        <table rules="all" cellpadding="5">
+          <tbody class="white">
+            <tr>
+              <td class="arrow">
+                <div class="left">▶</div>
+                00002021
+              </td>
+              <td>00000001</td>
+              <td>2021.11.18</td>
+              <td>NT$459</td>
+              <td>宅配</td>
+              <td>已出貨</td>
+            </tr>
+          </tbody>
+
+          <tfoot style="display: none">
+            <tr>
+              <td colspan="2">
+                <div class="name"></div>
+                <div class="email"></div>
+              </td>
+              <td colspan="2">
+                <div class="mobile"></div>
+                <div class="address"></div>
+              </td>
+
+              <td></td>
+              <td><a href=""></a></td>
+            </tr>
+          </tfoot>
+        </table>
+        <!-- table3_end---------- -->
+
+        <!-- ------pages -->
+        <div class="pagelist">
+          <a href=""> < </a>
+          <a href="">1</a>
+          <a href="">2</a>
+          <a href="">3</a>
+          <a href="">4</a>
+          <a href="">5</a>
+          <a href=""> > </a>
+        </div>
+      </div>
+      <!-- 訂單明細 -->
+      <div class="productOrders" v-if="show =='showbox10'">
+        <div class="supply">
+          <span>訂單明細</span>
+        </div>
+        <div class="searchbox">
+          <div class="search">
+            <input type="text" placeholder="搜尋關鍵字" />
+            <button>
+              <img src="img/backData/search.svg" alt="" />
+            </button>
+          </div>
+          <div class="page">
+            <span class="each">每頁顯示</span>
+            <select>
+              <option value="" style="color: #927858">10</option>
+              <option value="" style="color: #927858">20</option>
+              <option value="" style="color: #927858">30</option>
+            </select>
+            <span class="each">頁</span>
+          </div>
+        </div>
+        <!-- 表格內容 -->
+
+        <table class="table table-hover table-pray">
+          <thead>
+            <tr>
+              <th>訂單明細編號</th>
+              <th>訂單編號</th>
+              <th>平安符種類</th>
+              <th>生肖名稱</th>
+              <th>客製化文字</th>
+              <th>數量</th>
+              <th>單價</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>00000001</td>
+              <td>00002021</td>
+              <td>感情</td>
+              <td>牛</td>
+              <td>早生貴子平安幸福</td>
+              <td>1</td>
+              <td>NT$399</td>
+            </tr>
+            <tr>
+              <td>00000001</td>
+              <td>00002021</td>
+              <td>感情</td>
+              <td>牛</td>
+              <td>早生貴子平安幸福</td>
+              <td>1</td>
+              <td>NT$399</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- 表格內容結束 -->
+
+        <!-- 頁簽 -->
+        <div class="pagelist">
+          <a href=""> < </a>
+          <a href="">1</a>
+          <a href="">2</a>
+          <a href="">3</a>
+          <a href="">4</a>
+          <a href="">5</a>
+          <a href=""> > </a>
+        </div>
+      </div>
+      <!-- 會員資料 -->
+      <div class="memberDetail" v-if="show =='showbox11'">
+        <div class="supply">
+          <span>會員資料</span>
+        </div>
+        <div class="searchbox">
+          <div class="search">
+            <input type="text" placeholder="搜尋關鍵字" />
+            <button>
+              <img src="img/backData/search.svg" alt="" />
+            </button>
+          </div>
+          <div class="page">
+            <span class="each">每頁顯示</span>
+            <select>
+              <option value="" style="color: #927858">10</option>
+              <option value="" style="color: #927858">20</option>
+              <option value="" style="color: #927858">30</option>
+            </select>
+            <span class="each">頁</span>
+          </div>
+        </div>
+        <!-- 表格內容 -->
+
+        <table class="table table-hover table-pray">
+          <thead>
+            <tr>
+              <th>編號</th>
+              <th>姓名</th>
+              <th>會員帳號</th>
+              <th>會員密碼</th>
+              <th>手機號碼</th>
+              <th>信箱</th>
+              <th>加入日期</th>
+              <th>會員狀態</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>00000001</td>
+              <td>王小明</td>
+              <td>wang3ming</td>
+              <td>birthday1207</td>
+              <td>0900155979</td>
+              <td>wang3ming@gmail.com</td>
+              <td>2021.11.18</td>
+              <td>正常</td>
+            </tr>
+            <tr>
+              <td>00000001</td>
+              <td>王小明</td>
+              <td>wang3ming</td>
+              <td>birthday1207</td>
+              <td>0900155979</td>
+              <td>wang3ming@gmail.com</td>
+              <td>2021.11.18</td>
+              <td>正常</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- 表格內容結束 -->
+
+        <!-- 頁簽 -->
+        <div class="pagelist">
+          <a href=""> < </a>
+          <a href="">1</a>
+          <a href="">2</a>
+          <a href="">3</a>
+          <a href="">4</a>
+          <a href="">5</a>
+          <a href=""> > </a>
+        </div>
+      </div>
+      <!-- 結緣紀錄 -->
+      <div class="moneyRecorder" v-if="show =='showbox12'">
+        <donate-record></donate-record>
       </div>
     </div>
-    <!-- 商品訂單 -->
-    <div class="product-orders" v-if="show =='showbox09'">
-      <div class="products-man">
-        <span class="order">商品訂單</span>
-        <div class="icon1">
-          <img src="img/backData/backFix.svg" alt="" />
+
+    <script>
+      Vue.component("my-pomes", {
+        data() {
+          return {
+            pomeNumber: "1",
+            pomeDetailNumber: "1",
+            image: "",
+            image2: "",
+            image3: "",
+            image4: "",
+            button: false,
+          };
+        },
+        methods: {
+          //籤詩管理
+          fileChange(e) {
+            let file = e.target.files[0];
+            let readFile = new FileReader();
+            readFile.readAsDataURL(file);
+            readFile.addEventListener("load", this.loadImage);
+          },
+          loadImage(e) {
+            this.image2 = e.target.result;
+          },
+
+          changeNum() {
+            this.image = `img/pomes/pomes${this.pomeNumber}.jpg`;
+          },
+          showButton() {
+            if (this.button == false) {
+              this.button = true;
+            } else {
+              this.button = false;
+            }
+          },
+        },
+        created() {
+          this.image = `img/pomes/pomes${this.pomeNumber}.jpg`;
+        },
+        template: `
+        <div>
+          <div class="supply">
+            <span>籤詩管理</span>
+            <img src="img/backData/backFix.svg" @click=" showButton"  />
+          </div>
+          <div class="searchbox">
+            <div class="search">
+              <input type="text" placeholder="搜尋關鍵字" />
+              <button><img src="img/backData/search.svg" alt="" /></button>
+            </div>
+            <div class="page">
+              <span class="each">每頁顯示</span>
+              <select>
+                <option value="" style="color: #927858">10</option>
+                <option value="" style="color: #927858">20</option>
+                <option value="" style="color: #927858">30</option>
+              </select>
+              <span class="each">頁</span>
+            </div>
+          </div>
+          <!-- 表格內容 -->
+          <table class="table table-pomemange">
+            <thead>
+              <tr>
+                <th scope="col">種類</th>
+                <th scope="col">編號</th>
+                <th scope="col">新籤詩圖檔</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="vertical-align: middle">
+                  <select name="籤詩" id="">
+                    <option value="">六十甲子籤</option>
+                  </select>
+                </td>
+                <td style="vertical-align: middle">
+                  <select
+                    v-model="pomeNumber"
+                    name="編號"
+                    @change="changeNum"
+                    id=""
+                  >
+                    <option v-for="number in 60">{{number}}</option>
+                  </select>
+                </td>
+
+                <td style="vertical-align: middle">
+                  <input type="file" @change="fileChange" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- 表格內容結束 -->
+
+          <!-- 圖檔 -->
+          <div class="picbox">
+            <span>圖檔</span>
+            <div class="firstpic">
+              <span>原圖檔</span>
+              <img :src="image" alt="原圖檔" />
+            </div>
+
+            <div class="firstpic2">
+              <span>新圖檔</span>
+              <img :src="image2" alt="新圖檔" />
+            </div>
+          </div>
+          <div class="saveBtn" v-if="button">
+            <button class="cancle" data-hover="取消">取消</button>
+            <button class="save" data-hover="確認">確認</button>
+          </div>
         </div>
-      </div>
+        `,
+      });
 
-      <div class="second">
-        <div class="search">
-          <input type="search" placeholder="搜尋關鍵字" />
-          <button>
-            <img src="img/backData/search.svg" alt="" />
-          </button>
+      Vue.component("my-pomedetail", {
+        data() {
+          return {
+            pomeDetailNumber: "1",
+            image3: "",
+            image4: "",
+            button: false,
+          };
+        },
+        methods: {
+          //解籤內容管理
+          fileChange2(e2) {
+            let file2 = e2.target.files[0];
+            let readFile2 = new FileReader();
+            readFile2.readAsDataURL(file2);
+            readFile2.addEventListener("load", this.loadImage2);
+          },
+          loadImage2(e2) {
+            this.image4 = e2.target.result;
+          },
+
+          changeNum2() {
+            this.image3 = `img/pomesdetail/pomesdetail${this.pomeDetailNumber}.jpg`;
+          },
+          showButton() {
+            if (this.button == false) {
+              this.button = true;
+            } else {
+              this.button = false;
+            }
+          },
+        },
+        created() {
+          this.image3 = `img/pomesdetail/pomesdetail${this.pomeDetailNumber}.jpg`;
+        },
+        template: `
+        <div>
+          <div class="supply">
+            <span>解籤內容管理</span>
+            <img src="img/backData/backFix.svg" @click=" showButton" />
+          </div>
+          <div class="searchbox">
+            <div class="search">
+              <input type="text" placeholder="搜尋關鍵字" />
+              <button><img src="img/backData/search.svg" alt="" /></button>
+            </div>
+            <div class="page">
+              <span class="each">每頁顯示</span>
+              <select>
+                <option value="" style="color: #927858">10</option>
+                <option value="" style="color: #927858">20</option>
+                <option value="" style="color: #927858">30</option>
+              </select>
+              <span class="each">頁</span>
+            </div>
+          </div>
+          <!-- 表格內容 -->
+          <table class="table table-pomemange">
+            <thead>
+              <tr>
+                <th scope="col">種類</th>
+                <th scope="col">編號</th>
+                <th scope="col">新籤詩圖檔</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="vertical-align: middle">
+                  <select name="籤詩" id="">
+                    <option value="">六十甲子籤</option>
+                  </select>
+                </td>
+                <td style="vertical-align: middle">
+                  <select
+                    v-model="pomeDetailNumber"
+                    name="編號"
+                    @change="changeNum2"
+                    id=""
+                  >
+                    <option v-for="number in 60">{{number}}</option>
+                  </select>
+                </td>
+
+                <td style="vertical-align: middle">
+                  <input type="file" @change="fileChange2" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- 表格內容結束 -->
+
+          <!-- 圖檔 -->
+          <div class="picbox">
+            <span>圖檔</span>
+            <div class="firstpic">
+              <span>原圖檔</span>
+              <img :src="image3" alt="原圖檔" />
+            </div>
+
+            <div class="firstpic2">
+              <span>新圖檔</span>
+              <img :src="image4" alt="新圖檔" />
+            </div>
+          </div>
+          <div class="saveBtn" v-if="button">
+            <button class="cancle" data-hover="取消">取消</button>
+            <button class="save" data-hover="確認">確認</button>
+          </div>
         </div>
-        <div class="page">
-          <span class="each">每頁顯示</span>
-          <select>
-            <option value="" style="color: #927858">10</option>
-            <option value="" style="color: #927858">20</option>
-            <option value="" style="color: #927858">30</option>
-          </select>
-          <span class="each">頁</span>
-        </div>
-      </div>
+        `,
+      });
 
-      <!-- first-row_end---------- -->
-      <!-- table_start---------- -->
-      <table class="table" rules="all" cellpadding="5">
-        <thead>
-          <tr>
-            <th>訂單編號</th>
-            <th>會員編號</th>
-            <th>訂單時間</th>
-            <th>訂單總金額</th>
-            <th>配送方式</th>
-            <th>訂單狀態</th>
-          </tr>
-        </thead>
+      Vue.component("my-pomerecorder", {
+        data() {
+          return {};
+        },
+        methods: {},
+        template: `
+        <div>
+          <div class="supply">
+            <span>求籤紀錄</span>
+          </div>
+          <div class="searchbox">
+            <div class="search">
+              <input type="text" placeholder="搜尋關鍵字" />
+              <button><img src="img/backData/search.svg" alt="" /></button>
+            </div>
+            <div class="page">
+              <span class="each">每頁顯示</span>
+              <select>
+                <option value="" style="color: #927858">10</option>
+                <option value="" style="color: #927858">20</option>
+                <option value="" style="color: #927858">30</option>
+              </select>
+              <span class="each">頁</span>
+            </div>
+          </div>
+          <!-- 表格內容 -->
+          <table class="table table-pray table-hover">
+            <thead>
+              <tr>
+                <th scope="col">求籤紀錄編號</th>
+                <th scope="col">會員編號</th>
+                <th scope="col">籤詩</th>
+                <th scope="col">求籤日期</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">00000001b-1</th>
+                <td>00000001</td>
+                <td>六十甲子籤-第十籤</td>
+                <td>2021.11.18</td>
+              </tr>
+              <tr>
+                <th scope="row">00000001b-1</th>
+                <td>00000001</td>
+                <td>六十甲子籤-第十籤</td>
+                <td>2021.11.18</td>
+              </tr>
+              <tr>
+                <th scope="row">00000001b-1</th>
+                <td>00000001</td>
+                <td>六十甲子籤-第十籤</td>
+                <td>2021.11.18</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- 表格內容結束 -->
 
-        <tbody class="white whiteline">
-          <tr>
-            <td class="arrow">
-              <div class="up">▲</div>
-              00002021
-            </td>
-            <td>00000001</td>
-            <td>2021.11.18</td>
-            <td>NT$459</td>
-            <td>宅配</td>
-            <td>已出貨</td>
-          </tr>
-        </tbody>
-
-        <tfoot>
-          <tr>
-            <td colspan="2">
-              <div class="name">收件人姓名 : 王小明</div>
-              <div class="email">信箱 : wang3ming@gmail.com</div>
-            </td>
-            <td colspan="2">
-              <div class="mobile">收件人電話 : 0900155979</div>
-              <div class="address">
-                收件人地址 : 新北市中和區中山路二段347號
-              </div>
-            </td>
-
-            <td></td>
-            <td><a href="">訂單明細</a></td>
-          </tr>
-        </tfoot>
-      </table>
-      <!-- table_end---------- -->
-      <!-- table2_start---------- -->
-      <table rules="all" cellpadding="5">
-        <tbody class="yellow">
-          <tr>
-            <td class="arrow">
-              <div class="left">▶</div>
-              00002021
-            </td>
-            <td>00000001</td>
-            <td>2021.11.18</td>
-            <td>NT$459</td>
-            <td>宅配</td>
-            <td>已出貨</td>
-          </tr>
-        </tbody>
-        <tfoot style="display: none">
-          <tr>
-            <td colspan="2">
-              <div class="name"></div>
-              <div class="email"></div>
-            </td>
-            <td colspan="2">
-              <div class="mobile"></div>
-              <div class="address"></div>
-            </td>
-
-            <td></td>
-            <td><a href=""></a></td>
-          </tr>
-        </tfoot>
-      </table>
-      <!-- table2_end---------- -->
-      <!-- table3_start---------- -->
-      <table rules="all" cellpadding="5">
-        <tbody class="white">
-          <tr>
-            <td class="arrow">
-              <div class="left">▶</div>
-              00002021
-            </td>
-            <td>00000001</td>
-            <td>2021.11.18</td>
-            <td>NT$459</td>
-            <td>宅配</td>
-            <td>已出貨</td>
-          </tr>
-        </tbody>
-
-        <tfoot style="display: none">
-          <tr>
-            <td colspan="2">
-              <div class="name"></div>
-              <div class="email"></div>
-            </td>
-            <td colspan="2">
-              <div class="mobile"></div>
-              <div class="address"></div>
-            </td>
-
-            <td></td>
-            <td><a href=""></a></td>
-          </tr>
-        </tfoot>
-      </table>
-      <!-- table3_end---------- -->
-
-      <!-- ------pages -->
-      <div class="pagelist">
-        <a href="">
-          < </a>
+          <!-- 頁簽 -->
+          <div class="pagelist">
+            <a href=""> < </a>
             <a href="">1</a>
             <a href="">2</a>
             <a href="">3</a>
             <a href="">4</a>
             <a href="">5</a>
             <a href=""> > </a>
-      </div>
-    </div>
-    <!-- 訂單明細 -->
-    <div class="productOrders" v-if="show =='showbox10'">
-      <div class="supply">
-        <span>訂單明細</span>
-      </div>
-      <div class="searchbox">
-        <div class="search">
-          <input type="text" placeholder="搜尋關鍵字" />
-          <button>
-            <img src="img/backData/search.svg" alt="" />
-          </button>
+          </div>
         </div>
-        <div class="page">
-          <span class="each">每頁顯示</span>
-          <select>
-            <option value="" style="color: #927858">10</option>
-            <option value="" style="color: #927858">20</option>
-            <option value="" style="color: #927858">30</option>
-          </select>
-          <span class="each">頁</span>
-        </div>
-      </div>
-      <!-- 表格內容 -->
+        `,
+      });
 
-      <table class="table table-hover table-pray">
-        <thead>
-          <tr>
-            <th>訂單明細編號</th>
-            <th>訂單編號</th>
-            <th>平安符種類</th>
-            <th>生肖名稱</th>
-            <th>客製化文字</th>
-            <th>數量</th>
-            <th>單價</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>00000001</td>
-            <td>00002021</td>
-            <td>感情</td>
-            <td>牛</td>
-            <td>早生貴子平安幸福</td>
-            <td>1</td>
-            <td>NT$399</td>
-          </tr>
-          <tr>
-            <td>00000001</td>
-            <td>00002021</td>
-            <td>感情</td>
-            <td>牛</td>
-            <td>早生貴子平安幸福</td>
-            <td>1</td>
-            <td>NT$399</td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- 表格內容結束 -->
-
-      <!-- 頁簽 -->
-      <div class="pagelist">
-        <a href="">
-          < </a>
-            <a href="">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">4</a>
-            <a href="">5</a>
-            <a href=""> > </a>
-      </div>
-    </div>
-    <!-- 會員資料 -->
-    <div class="memberDetail" v-if="show =='showbox11'">
-      <div class="supply">
-        <span>會員資料</span>
-      </div>
-      <div class="searchbox">
-        <div class="search">
-          <input type="text" placeholder="搜尋關鍵字" />
-          <button>
-            <img src="img/backData/search.svg" alt="" />
-          </button>
-        </div>
-        <div class="page">
-          <span class="each">每頁顯示</span>
-          <select>
-            <option value="" style="color: #927858">10</option>
-            <option value="" style="color: #927858">20</option>
-            <option value="" style="color: #927858">30</option>
-          </select>
-          <span class="each">頁</span>
-        </div>
-      </div>
-      <!-- 表格內容 -->
-
-      <table class="table table-hover table-pray">
-        <thead>
-          <tr>
-            <th>編號</th>
-            <th>姓名</th>
-            <th>會員帳號</th>
-            <th>會員密碼</th>
-            <th>手機號碼</th>
-            <th>信箱</th>
-            <th>加入日期</th>
-            <th>會員狀態</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>00000001</td>
-            <td>王小明</td>
-            <td>wang3ming</td>
-            <td>birthday1207</td>
-            <td>0900155979</td>
-            <td>wang3ming@gmail.com</td>
-            <td>2021.11.18</td>
-            <td>正常</td>
-          </tr>
-          <tr>
-            <td>00000001</td>
-            <td>王小明</td>
-            <td>wang3ming</td>
-            <td>birthday1207</td>
-            <td>0900155979</td>
-            <td>wang3ming@gmail.com</td>
-            <td>2021.11.18</td>
-            <td>正常</td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- 表格內容結束 -->
-
-      <!-- 頁簽 -->
-      <div class="pagelist">
-        <a href="">
-          < </a>
-            <a href="">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">4</a>
-            <a href="">5</a>
-            <a href=""> > </a>
-      </div>
-    </div>
-    <!-- 結緣紀錄 -->
-    <div class="moneyRecorder" v-if="show =='showbox12'">
-      <donate-record></donate-record>
-    </div>
-  </div>
-
-  <script>
-    //結緣紀錄
-    Vue.component('donate-record', {
-      data() {
-        return {
-          donateList: [],
-        };
-      },
-      template:
-        ` <div>
+      //結緣紀錄
+      Vue.component("donate-record", {
+        data() {
+          return {
+            donateList: [],
+          };
+        },
+        template: ` <div>
             <div class="supply">
               <span>結緣紀錄</span>
             </div>
@@ -1020,30 +1220,34 @@
             </div>
           </div>
       `,
-      created() {
-        //donate-money
-        axios.get('../phps/donatephp.php').then(res => this.donateList = res.data);
-      },
-    }),
-      new Vue({
-        el: "#app",
-        data: {
-          numbers: ["A", "B", "C", "D", "E", "F"],
-          types: ["感情", "平安", "健康", "財富", "事業", "學業"],
-          button: false,
-          show: "showbox01",
+        created() {
+          //donate-money
+          axios
+            .get("../phps/donatephp.php")
+            .then((res) => (this.donateList = res.data));
         },
-        methods: {
-          showButton() {
-            if (this.button == false) {
-              this.button = true;
-            } else {
-              this.button = false;
-            }
+      }),
+        new Vue({
+          el: "#app",
+          data: {
+            numbers: ["A", "B", "C", "D", "E", "F"],
+            types: ["感情", "平安", "健康", "財富", "事業", "學業"],
+            button: false,
+            show: "showbox04",
           },
-        },
-      });
-  </script>
-</body>
-
+          methods: {
+            showButton() {
+              if (this.button == false) {
+                this.button = true;
+              } else {
+                this.button = false;
+              }
+            },
+          },
+          created() {
+            this.image3 = `img/pomesdetail/pomesdetail${this.pomeDetailNumber}.jpg`;
+          },
+        });
+    </script>
+  </body>
 </html>
