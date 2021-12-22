@@ -139,10 +139,11 @@
         el: "#app",
         data: {
           pomesNum: 0,
-          orcode: "img/onlinepomes/pomes60.png",
+          orcode: `./backweb/img/pomes/pomes01.jpg`,
         },
         mounted() {
           this.pomesNum = localStorage.onlinedraw;
+          this.orcode = `./backweb/img/pomes/pomes${this.pomesNum}.jpg`;
         },
         methods: {
           pomesApp() {
