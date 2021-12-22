@@ -1,4 +1,3 @@
-<!-- 撈資料出來 -->
 <?php 
 try {
 	require_once("connectBOBIO.php");
