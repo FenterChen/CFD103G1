@@ -129,9 +129,8 @@
               已達<span class="number">{{memberList.length}}</span>人
             </div>
           </div>
-          <marquee class="adPhone" direction="right">
+          <marquee class="adPhone direction="right">
             <span class="adTitle">信眾已達 <span class="number">{{memberList.length}}</span>人
-            </span>
             <span class="adTitle">結緣已達<span class="number">{{donateList.length}}</span>人</span>
             <span class="adTitle">平安符願結緣已達<span class="number">{{amuletList.length}}</span>人</span>
           </marquee>
@@ -168,39 +167,18 @@
     `,
       data() {
         return {
-          screenWidth: null,
-          donateList:[],
-          memberList:[],
-          amuletList:[],
+          donateList: [],
+          memberList: [],
+          amuletList: [],
         }
       },
-      created(){
+      created() {
         //donate-money
         axios.get('../phps/donate.php').then(res => this.donateList = res.data);
         //total-member
-        axios.get('../phps/memberShow.php').then(res => this.memberList = res.data);
+        axios.get('../phps/donate.php').then(res => this.memberList = res.data);
         //amulet-number
-        axios.get('../phps/donate.php').then(res => this.amuletList = res.data);
-      },
-      mounted() {
-        this.screenWidth = document.body.clientWidth;
-        window.onresize = () => {
-          return (() => {
-            this.screenWidth = document.body.clientWidth;
-          })()
-        }
-      },
-      watch: {
-        screenWidth: {
-          handler: function (newval, oldval) {
-            if (this.screenWidth >= 1024) {
-              $('.adPhone').removeClass('animate');
-            } else if (this.screenWidth < 1024) {
-              $('.adPhone').addClass('animate');
-            }
-          },
-          immediate: true,
-        }
+        axios.get('../phps/memberAdd.php').then(res => this.amuletList = res.data);
       },
       methods: {
         joinUs() {

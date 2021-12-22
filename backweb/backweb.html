@@ -256,7 +256,7 @@
       <!-- 頁簽 -->
       <div class="pagelist">
         <a href="">
-          < </a>
+           </a>
             <a href="">1</a>
             <a href="">2</a>
             <a href="">3</a>
@@ -952,87 +952,97 @@
     </div>
     <!-- 結緣紀錄 -->
     <div class="moneyRecorder" v-if="show =='showbox12'">
-      <div class="supply">
-        <span>結緣紀錄</span>
-      </div>
-      <div class="searchbox">
-        <div class="search">
-          <input type="text" placeholder="搜尋關鍵字" />
-          <button>
-            <img src="img/backData/search.svg" alt="" />
-          </button>
-        </div>
-        <div class="page">
-          <span class="each">每頁顯示</span>
-          <select>
-            <option value="" style="color: #927858">10</option>
-            <option value="" style="color: #927858">20</option>
-            <option value="" style="color: #927858">30</option>
-          </select>
-          <span class="each">頁</span>
-        </div>
-      </div>
-      <!-- 表格內容 -->
-
-      <table class="table table-hover table-pray">
-        <thead>
-          <tr>
-            <th>結緣編號</th>
-            <th>會員編號</th>
-            <th>結緣日期</th>
-            <th>結緣金額</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>00002021</td>
-            <td>00000001</td>
-            <td>2021.11.18</td>
-            <td>NT$100</td>
-          </tr>
-          <tr>
-            <td>00002021</td>
-            <td>00000001</td>
-            <td>2021.11.18</td>
-            <td>NT$100</td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- 表格內容結束 -->
-
-      <!-- 頁簽 -->
-      <div class="pagelist">
-        <a href="">
-          < </a>
-            <a href="">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">4</a>
-            <a href="">5</a>
-            <a href=""> > </a>
-      </div>
+      <donate-record></donate-record>
     </div>
   </div>
 
   <script>
-    new Vue({
-      el: "#app",
-      data: {
-        numbers: ["A", "B", "C", "D", "E", "F"],
-        types: ["感情", "平安", "健康", "財富", "事業", "學業"],
-        button: false,
-        show: "showbox01",
+    //結緣紀錄
+    Vue.component('donate-record', {
+      data() {
+        return {
+          donateList: [],
+        };
       },
-      methods: {
-        showButton() {
-          if (this.button == false) {
-            this.button = true;
-          } else {
-            this.button = false;
-          }
+      template:
+        ` <div>
+            <div class="supply">
+              <span>結緣紀錄</span>
+            </div>
+            <div class="searchbox">
+              <div class="search">
+                <input type="text" placeholder="搜尋關鍵字" />
+                <button>
+                  <img src="img/backData/search.svg" alt="" />
+                </button>
+              </div>
+              <div class="page">
+                <span class="each">每頁顯示</span>
+                <select>
+                  <option value="" style="color: #927858">10</option>
+                  <option value="" style="color: #927858">20</option>
+                  <option value="" style="color: #927858">30</option>
+                </select>
+                <span class="each">頁</span>
+              </div>
+            </div>
+            <!-- 表格內容 -->
+
+            <table class="table table-hover table-pray">
+              <thead>
+                <tr>
+                  <th>結緣編號</th>
+                  <th>會員編號</th>
+                  <th>結緣日期</th>
+                  <th>結緣金額</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(donate, index) in donateList" :key="donate.donate_no">
+                  <td>{{donate.donate_no}}</td>
+                  <td>{{donate.mem_no}}</td>
+                  <td>{{donate.donate_date}}</td>
+                  <td>{{donate.donate_total}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- 表格內容結束 -->
+
+            <!-- 頁簽 -->
+            <div class="pagelist">
+              <a href=""> < </a>
+              <a href="">1</a>
+              <a href="">2</a>
+              <a href="">3</a>
+              <a href="">4</a>
+              <a href="">5</a>
+              <a href=""> > </a>
+            </div>
+          </div>
+      `,
+      created() {
+        //donate-money
+        axios.get('../phps/donatephp.php').then(res => this.donateList = res.data);
+      },
+    }),
+      new Vue({
+        el: "#app",
+        data: {
+          numbers: ["A", "B", "C", "D", "E", "F"],
+          types: ["感情", "平安", "健康", "財富", "事業", "學業"],
+          button: false,
+          show: "showbox01",
         },
-      },
-    });
+        methods: {
+          showButton() {
+            if (this.button == false) {
+              this.button = true;
+            } else {
+              this.button = false;
+            }
+          },
+        },
+      });
   </script>
 </body>
 
