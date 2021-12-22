@@ -31,6 +31,10 @@
       <nav class="navPostion">
         <ul>
           <li>
+            <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
+            <div class="logout"><span v-text="losituation" @click="logout"></span></div>
+          </li>
+          <li>
             <a href="pray.html">立即祈願</a>
           </li>
           <li>
@@ -49,18 +53,14 @@
       </nav>
       <div class="cart"><a href="shopping_cart1.html"><img src="img/header/cart.svg"></a></div>
       <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
-      <<<<<<< HEAD <div class="logout"><span v-text="losituation" @click="logout"></span>
-    </div>
-    =======
-    <!-- <div class="logout"><span>登出</span></div> -->
-    >>>>>>> b4515dda4502806a63e284ff1ce0b3270cb70c78
-    <div class="outerHb">
-      <div class="hb" id="hb">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="logout"><span v-text="losituation" @click="logout"></span></div>
+      <div class="outerHb">
+        <div class="hb" @click="hb">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
-    </div>
     </div>
   </header>
   <div class="mainpageSec" id="app">
@@ -107,15 +107,10 @@
       </p>
     </div>
   </footer>
-
   <script>
     Vue.component('section1', {
       template: `
-<<<<<<< HEAD
-      <section class="mainpage slogan">
-=======
     <section class="mainpage slogan">
->>>>>>> chingyee
         <h1 class="sloganTitle">用BOBIO就有保庇</h1>
         <div class="scrollDown">
           <img class="mouse" src="img/mainpage/mouse.svg" alt="滑鼠">
@@ -270,46 +265,54 @@
           location.href = "onlinepomes.html";
         },
       },
-    })
+    });
     //header 
-    let header = new Vue({
+    new Vue({
       el: '#mainheader',
       data() {
         return {
           screenWidth: null,
+          personaldata: [],
           losituation: "",
         }
       },
       created() {
-        this.screenWidth = document.body.clientWidth;
-        let array = JSON.parse(localStorage.getItem('personallogin'));
-        this.losituation = null;
+        this.screenWidth = document.body.clientWidth;//營幕寬
+        //以下讀取會員資料
+        let array = JSON.parse(localStorage.getItem('personallogin'));//抓localStorage存入變數
+        this.losituation = null;//登入登出狀態
         if (array != null) {
-          axios.post('phps/memberExist.php', {
+          axios.post('phps/memberExbody.php', {
             mem_no: array[0].mem_no,
             mem_id: array[0].mem_id,
             headers: {
               'Content-Type': 'multipart/form-data'
             }
           }).then((res) => {
-            this.losituation = "登出";
+            this.losituation = "登出";//登入登出狀態
             this.personaldata = res.data[0];
           }).catch(error => this.personaldata = res.data);
         };
+        //以上讀取會員資料
         window.onresize = () => {
           return (() => {
             this.screenWidth = document.body.clientWidth;
           })()
-        },
-          $(`header .headerWrap ul li:nth-child(4) a`).addClass('bottomnavline');
+        }
       },
       watch: {
         screenWidth: {
           handler: function (newval, oldval) {
             if (newval >= 1200) {
               $(`header>.headerWrap>nav`).removeClass('navPostion');
+              $(`header>.headerWrap>nav li:first-child`).css('display', 'none');
+              $(`header>.headerWrap>.member`).css('display', 'flex');
+              $(`header>.headerWrap>.logout`).css('display', 'block');
             } else if (newval < 1200) {
               $(`header>.headerWrap>nav`).addClass('navPostion');
+              $(`header>.headerWrap>nav li:first-child`).css('display', 'flex');
+              $(`header>.headerWrap>.member`).css('display', 'none');
+              $(`header>.headerWrap>.logout`).css('display', 'none');
             }
           },
           immediate: true,
@@ -328,9 +331,19 @@
             }, 1200, 'easeOutBounce')
           }
         },
+<<<<<<< HEAD
 
       },
     });
+=======
+        logout() {
+          localStorage.removeItem('personallogin');
+          location.href = "mainpage.html";
+        },
+      },
+    });
+
+>>>>>>> b65cd15a3dca706a2e73553ab157dbc6bf4fea0d
     let app = new Vue({
       el: "#app",
       methods: {
@@ -401,7 +414,7 @@
       mounted() {
         this.$nextTick(this.ani)
       },
-    })
+    });
   </script>
 </body>
 
