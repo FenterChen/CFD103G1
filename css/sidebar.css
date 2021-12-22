@@ -72,6 +72,7 @@ table {
   background-color: #FDBF52;
 }
 
+<<<<<<< HEAD
 .prayRecorder,
 .cardManage,
 .supplyManage,
@@ -85,6 +86,14 @@ table {
 .memberDetail,
 .moneyRecorder,
 .adminList {
+=======
+.containerbox1,
+.containerbox2,
+.containerbox3,
+.pomescontainerbox1,
+.pomescontainerbox2,
+.pomescontainerbox3 {
+>>>>>>> chingyee
   margin: 20px auto;
   width: 80%;
   -webkit-box-orient: vertical;

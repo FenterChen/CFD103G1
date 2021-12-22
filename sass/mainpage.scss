@@ -68,8 +68,8 @@ body{
     background-position: center;
 	  background-size: cover;
     font-family: NotoSansTC, serif;
-    display: flex;
     justify-content: space-between;
+    overflow: hidden;
     @include tabletH(){
       background-image: none;
       margin: auto;
@@ -79,6 +79,8 @@ body{
       color: map-get($color, mainyellow);
       font-weight: map-get($fontWeight, titleWeight);
       font-size: map-get($fontSize, weblp);
+      position: relative;
+      flex-wrap: wrap;
       .number{
         color: map-get($color, orange);
       }
