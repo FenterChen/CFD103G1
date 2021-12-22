@@ -20,41 +20,46 @@
 
     <header id="mainheader">
         <div class="headerWrap">
-            <div class="logo">
-                <a href="mainpage.html">
-                    <img src="img/header/BOBIO_logo.svg">
-                </a>
+          <div class="logo">
+            <a href="mainpage.html">
+              <img src="img/header/BOBIO_logo.svg">
+            </a>
+          </div>
+          <nav class="navPostion">
+            <ul>
+              <li>
+                <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
+                <div class="logout"><span v-text="losituation" @click="logout"></span></div>
+              </li>
+              <li>
+                <a href="pray.html">立即祈願</a>
+              </li>
+              <li>
+                <a href="onlinepomes.html">線上求籤</a>
+              </li>
+              <li>
+                <a href="amulet.html">平安符願</a>
+              </li>
+              <li>
+                <a href="money.html">立即結緣</a>
+              </li>
+              <li>
+                <a href="Abouts.html">關於我們</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="cart"><a href="shopping_cart1.html"><img src="img/header/cart.svg"></a></div>
+          <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
+          <div class="logout"><span v-text="losituation" @click="logout"></span></div>
+          <div class="outerHb">
+            <div class="hb" @click="hb">
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
-            <nav class="navPostion">
-                <ul>
-                    <li>
-                        <a href="pray.html">立即祈願</a>
-                    </li>
-                    <li>
-                        <a href="onlinepomes.html">線上求籤</a>
-                    </li>
-                    <li>
-                        <a href="amulet.html">平安符願</a>
-                    </li>
-                    <li>
-                        <a href="money.html">立即結緣</a>
-                    </li>
-                    <li>
-                        <a href="Abouts.html">關於我們</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="cart"><a href="shopping_cart1.html"><img src="img/header/cart.svg"></a></div>
-            <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
-            <div class="outerHb">
-                <div class="hb" @click="hb">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
+          </div>
         </div>
-    </header>
+      </header>
 
     <div id="app">
         <!-- HTML DOM template -->
@@ -88,49 +93,75 @@
     <script>
         //headerVue
         new Vue({
-            el: '#mainheader',
-            data() {
-                return {
-                    screenWidth: null,
-                }
-            },
-            mounted() {
-                this.screenWidth = document.body.clientWidth;
-                window.onresize = () => {
-                    return (() => {
-                        this.screenWidth = document.body.clientWidth;
-                    })()
-                },
-                    $(`header .headerWrap ul li:nth-child(5) a`).addClass('bottomnavline');
-            },
-            watch: {
-                screenWidth: {
-                    handler: function (newval, oldval) {
-                        if (newval >= 1200) {
-                            $(`header>.headerWrap>nav`).removeClass('navPostion');
-                        } else if (newval < 1200) {
-                            $(`header>.headerWrap>nav`).addClass('navPostion');
-                        }
-                    },
-                    immediate: true,
-                }
-            },
-            methods: {
-                hb() {
-                    let place = $("nav").css("right");
-                    if (place < "0px") {
-                        $("nav").animate({
-                            right: 0,
-                        }, 1200, 'easeInBounce')
-                    } else {
-                        $("nav").animate({
-                            right: "-30%",
-                        }, 1200, 'easeOutBounce')
-                    }
-                }
-            },
-        });
-
+      el: '#mainheader',
+      data() {
+        return {
+          screenWidth: null,
+          personaldata: [],
+          losituation: "",
+        }
+      },
+      created() {
+        this.screenWidth = document.body.clientWidth;//營幕寬
+        //以下讀取會員資料
+        let array = JSON.parse(localStorage.getItem('personallogin'));//抓localStorage存入變數
+        this.losituation = null;//登入登出狀態
+        if (array != null) {
+          axios.post('phps/memberExbody.php', {
+            mem_no: array[0].mem_no,
+            mem_id: array[0].mem_id,
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }).then((res) => {
+            this.losituation = "登出";//登入登出狀態
+            this.personaldata = res.data[0];
+          }).catch(error => this.personaldata = res.data);
+        };
+        //以上讀取會員資料
+        window.onresize = () => {
+          return (() => {
+            this.screenWidth = document.body.clientWidth;
+          })()
+        }
+      },
+      watch: {
+        screenWidth: {
+          handler: function (newval, oldval) {
+            if (newval >= 1200) {
+              $(`header>.headerWrap>nav`).removeClass('navPostion');
+              $(`header>.headerWrap>nav li:first-child`).css('display', 'none');
+              $(`header>.headerWrap>.member`).css('display', 'flex');
+              $(`header>.headerWrap>.logout`).css('display', 'block');
+            } else if (newval < 1200) {
+              $(`header>.headerWrap>nav`).addClass('navPostion');
+              $(`header>.headerWrap>nav li:first-child`).css('display', 'flex');
+              $(`header>.headerWrap>.member`).css('display', 'none');
+              $(`header>.headerWrap>.logout`).css('display', 'none');
+            }
+          },
+          immediate: true,
+        }
+      },
+      methods: {
+        hb() {
+          let place = $("nav").css("right");
+          if (place < "0px") {
+            $("nav").animate({
+              right: 0,
+            }, 1200, 'easeInBounce')
+          } else {
+            $("nav").animate({
+              right: "-30%",
+            }, 1200, 'easeOutBounce')
+          }
+        },
+        logout() {
+          localStorage.removeItem('personallogin');
+          location.href = "mainpage.html";
+        },
+      },
+    });
 
         Vue.component('page1', {
             template: `<div class="container-third">
