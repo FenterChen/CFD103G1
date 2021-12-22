@@ -173,14 +173,14 @@
                     >商品訂單</a
                   >
                 </li>
-                <li>
+                <!-- <li>
                   <a
                     href="#"
                     class="link-dark rounded"
                     @click="show = 'showbox10'"
                     >訂單明細</a
                   >
-                </li>
+                </li> -->
               </ul>
             </div>
           </li>
@@ -560,154 +560,7 @@
       </div>
       <!-- 商品訂單 -->
       <div class="product-orders" v-if="show =='showbox09'">
-        <div class="products-man">
-          <span class="order">商品訂單</span>
-          <div class="icon1">
-            <img src="img/backdata/backFix.svg" alt="" />
-          </div>
-        </div>
-
-        <div class="second">
-          <div class="search">
-            <input type="search" placeholder="搜尋關鍵字" />
-            <button>
-              <img src="img/backdata/search.svg" alt="" />
-            </button>
-          </div>
-          <div class="page">
-            <span class="each">每頁顯示</span>
-            <select>
-              <option value="" style="color: #927858">10</option>
-              <option value="" style="color: #927858">20</option>
-              <option value="" style="color: #927858">30</option>
-            </select>
-            <span class="each">頁</span>
-          </div>
-        </div>
-
-        <!-- first-row_end---------- -->
-        <!-- table_start---------- -->
-        <table class="table" rules="all" cellpadding="5">
-          <thead>
-            <tr>
-              <th>訂單編號</th>
-              <th>會員編號</th>
-              <th>訂單時間</th>
-              <th>訂單總金額</th>
-              <th>配送方式</th>
-              <th>訂單狀態</th>
-            </tr>
-          </thead>
-
-          <tbody class="white whiteline">
-            <tr>
-              <td class="arrow">
-                <div class="up">▲</div>
-                00002021
-              </td>
-              <td>00000001</td>
-              <td>2021.11.18</td>
-              <td>NT$459</td>
-              <td>宅配</td>
-              <td>已出貨</td>
-            </tr>
-          </tbody>
-
-          <tfoot>
-            <tr>
-              <td colspan="2">
-                <div class="name">收件人姓名 : 王小明</div>
-                <div class="email">信箱 : wang3ming@gmail.com</div>
-              </td>
-              <td colspan="2">
-                <div class="mobile">收件人電話 : 0900155979</div>
-                <div class="address">
-                  收件人地址 : 新北市中和區中山路二段347號
-                </div>
-              </td>
-
-              <td></td>
-              <td><a href="">訂單明細</a></td>
-            </tr>
-          </tfoot>
-        </table>
-        <!-- table_end---------- -->
-        <!-- table2_start---------- -->
-        <table rules="all" cellpadding="5">
-          <tbody class="yellow">
-            <tr>
-              <td class="arrow">
-                <div class="left">▶</div>
-                00002021
-              </td>
-              <td>00000001</td>
-              <td>2021.11.18</td>
-              <td>NT$459</td>
-              <td>宅配</td>
-              <td>已出貨</td>
-            </tr>
-          </tbody>
-          <tfoot style="display: none">
-            <tr>
-              <td colspan="2">
-                <div class="name"></div>
-                <div class="email"></div>
-              </td>
-              <td colspan="2">
-                <div class="mobile"></div>
-                <div class="address"></div>
-              </td>
-
-              <td></td>
-              <td><a href=""></a></td>
-            </tr>
-          </tfoot>
-        </table>
-        <!-- table2_end---------- -->
-        <!-- table3_start---------- -->
-        <table rules="all" cellpadding="5">
-          <tbody class="white">
-            <tr>
-              <td class="arrow">
-                <div class="left">▶</div>
-                00002021
-              </td>
-              <td>00000001</td>
-              <td>2021.11.18</td>
-              <td>NT$459</td>
-              <td>宅配</td>
-              <td>已出貨</td>
-            </tr>
-          </tbody>
-
-          <tfoot style="display: none">
-            <tr>
-              <td colspan="2">
-                <div class="name"></div>
-                <div class="email"></div>
-              </td>
-              <td colspan="2">
-                <div class="mobile"></div>
-                <div class="address"></div>
-              </td>
-
-              <td></td>
-              <td><a href=""></a></td>
-            </tr>
-          </tfoot>
-        </table>
-        <!-- table3_end---------- -->
-
-        <!-- ------pages -->
-        <div class="pagelist">
-          <a href=""> < </a>
-          <a href="">1</a>
-          <a href="">2</a>
-          <a href="">3</a>
-          <a href="">4</a>
-          <a href="">5</a>
-          <a href=""> > </a>
-        </div>
+          <my-orders></my-orders>
       </div>
       <!-- 訂單明細 -->
       <div class="productOrders" v-if="show =='showbox10'">
@@ -859,6 +712,202 @@
     </div>
 
     <script>
+
+      //訂單管理
+       Vue.component("my-orders",{
+        data(){
+        return{
+           //products-orders ---
+            orders:[],
+            newOrders:[],
+            getFilters:[],
+            Mes:"",
+            //ordersLists ---
+            orderLists:[],
+            currentindex:"",
+            isShow: false,
+            //open-orders ---
+            isOpen: '',
+            process: [],
+            deliver:[],
+            finish:[],
+        };
+      },
+        methods:{
+          showButton() {
+            if (this.button == false) {
+              this.button = true;
+            } else {
+              this.button = false;
+            }
+          },
+          CurrentDetails(index){
+            this.isShow = true;
+            this.currentindex = this.orderLists[index];
+          },
+          onProcess(){
+              this.isOpen = 'Open1';
+              this.process = this.orders.filter(item =>(item.order_status == 0 ))
+          },
+          delivering(){
+            this.isOpen = 'Open2';
+            this.deliver = this.orders.filter(item =>(item.order_status == 1 ))
+          },
+          done(){
+            this.isOpen = 'Open3';
+            this.finish = this.orders.filter(item =>(item.order_status == 2 ))
+          },
+        },
+        mounted(){
+           //products-orders ---
+              axios.get('../phps/orderscopy.php').then(res => this.orders = res.data); 
+            // orderLists----
+            axios.get('../phps/orderslist.php').then(res => this.orderLists = res.data); 
+            },
+          template:`
+      <div>
+          <div class="products-man">
+            <span class="order">商品訂單</span>
+            <div class="icon1">
+              <img src="img/backData/backFix.svg" alt="" />
+            </div>
+          </div>
+
+          <div class="second">
+              <div class="search">
+                <input type="search" placeholder="搜尋關鍵字" />
+                <button>
+                  <img src="img/backData/search.svg" alt="" />
+                </button>
+              </div>
+
+              <div class="page">
+                <span class="each">每頁顯示</span>
+                <select>
+                  <option value="" style="color: #927858">10</option>
+                  <option value="" style="color: #927858">20</option>
+                  <option value="" style="color: #927858">30</option>
+                </select>
+                <span class="each">頁</span>
+            </div>
+        </div>
+        <!-- first-row_end---------- -->
+
+
+        <!-- filter-start -->
+        <div class="listfilter">
+
+          <div class="filters" @click="isOpen=''">
+          <p>全部</p>
+          </div>
+
+          <div class="filters" @click="onProcess">
+          <p>處理中</p>
+          </div>
+
+          <div class="filters" @click="delivering">
+            <p>已出貨</p>
+          </div>
+      
+          <div class="filters" @click="done">
+            <p>完成訂單</p>
+          </div>
+        </div>
+        <!-- filter-end -->
+
+        <!-- table1_start---------- -->
+        <table class="table" rules="all" cellpadding="5">
+          <thead>
+            <tr>
+              <th>訂單編號</th>
+              <th>會員編號</th>
+              <th>訂單時間</th>
+              <th>訂單總金額</th>
+              <th>配送方式</th>
+              <th>訂單狀態</th>
+              <th>訂單明細</th>
+            </tr>
+          </thead>
+          <tbody class=" whiteline colortype" >
+            <tr v-for="(order,index) in orders" :key="order.orders_no" v-if="isOpen==''">
+              <td class="arrow">{{order.orders_no}}</td>
+              <td>{{order.mem_no}}</td>
+              <td>{{order.orders_date}}</td>
+              <td>{{order.orders_total}}</td>
+              <td>{{order.delivery}}</td>
+              <td>{{order.order_status}}</td>
+              <td v-on:click="CurrentDetails(index)" class="listdetails">📒</td>
+            </tr>
+
+            <tr v-for="(order,index) in process" :key="order.orders_no" v-if="isOpen=='Open1'">
+              <td class="arrow">{{order.orders_no}}</td>
+              <td>{{order.mem_no}}</td>
+              <td>{{order.orders_date}}</td>
+              <td>{{order.orders_total}}</td>
+              <td>{{order.delivery}}</td>
+              <td>{{order.order_status}}</td>
+              <td v-on:click="CurrentDetails(index)" class="listdetails">📒</td>
+            </tr>
+
+            <tr v-for="(order,index) in deliver" :key="order.orders_no" v-if="isOpen=='Open2'">
+              <td class="arrow">{{order.orders_no}}</td>
+              <td>{{order.mem_no}}</td>
+              <td>{{order.orders_date}}</td>
+              <td>{{order.orders_total}}</td>
+              <td>{{order.delivery}}</td>
+              <td>{{order.order_status}}</td>
+              <td v-on:click="CurrentDetails(index)" class="listdetails">📒</td>
+            </tr>
+
+            <tr v-for="(order,index) in finish" :key="order.orders_no" v-if="isOpen=='Open3'">
+              <td class="arrow">{{order.orders_no}}</td>
+              <td>{{order.mem_no}}</td>
+              <td>{{order.orders_date}}</td>
+              <td>{{order.orders_total}}</td>
+              <td>{{order.delivery}}</td>
+              <td>{{order.order_status}}</td>
+              <td v-on:click="CurrentDetails(index)" class="listdetails">📒</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- table1_end--------- -->
+        
+        <!-- window_start--------- -->
+
+        <section class="windowspace" v-if="isShow">
+          <div class="detelepic" @click="isShow=false">✘</div>
+          <h3 class="windowdetalis">訂單明細</h3>
+          <hr>
+          <ol class="windowol" >
+           <li>訂單明細編號: {{currentindex.Details_no}} </li>
+           <li>訂單編號: {{currentindex.orders_no}}</li>
+           <li>收件人姓名: {{currentindex.recipient}}</li>
+           <li>收件人電話: {{currentindex.orders_phone}} </li>
+           <li>收件人地址: {{currentindex.orders_add}}</li>
+           <li>收件人信箱: {{currentindex.orders_email}}</li>
+           <li>平安符種類: {{currentindex.type_no}}</li>
+           <li>生肖名稱: {{currentindex.zodiac_no}} </li>
+           <li>客製化文字: {{currentindex.word}}</li>
+           <li>數量 :{{currentindex.amulet_amount}}</li>
+           <li>單價: {{currentindex.price}}</li>
+         </ol>
+        </section>
+        <!-- window_end--------- -->
+         
+        <!-- ------Next-pages -->
+          <div class="pagelist">
+            <a href=""> < </a>
+            <a href="">1</a>
+            <a href="">2</a>
+            <a href="">3</a>
+            <a href="">4</a>
+            <a href="">5</a>
+            <a href=""> > </a>
+          </div>
+    </div>
+          `, 
+    });
+
       Vue.component("my-pomes", {
         data() {
           return {
