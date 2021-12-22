@@ -126,30 +126,25 @@
           <div class="adWeb member">
             <div class="adTitle">累積信眾人數</div>
             <div class="adContent">
-              已達<span class="number">20,210</span>人
+              已達<span class="number">{{memberList.length}}</span>人
             </div>
           </div>
-          <div class="adPhone member">
-            <div class="adTitle">信眾已達 <span class="number">20,210</span>人
-            </div>
-          </div>
+          <marquee class="adPhone direction="right">
+            <span class="adTitle">信眾已達 <span class="number">{{memberList.length}}</span>人
+            <span class="adTitle">結緣已達<span class="number">{{donateList.length}}</span>人</span>
+            <span class="adTitle">平安符願結緣已達<span class="number">{{amuletList.length}}</span>人</span>
+          </marquee>
           <div class="adWeb money">
             <div class="adTitle">累積結緣人數</div>
             <div class="adContent">
-              已達<span class="number">12,020</span>人
+              已達<span class="number">{{donateList.length}}</span>人
             </div>
-          </div>
-          <div class="adPhone money">
-            <div class="adTitle">結緣已達<span class="number">12,020</span>人</div>
           </div>
           <div class="adWeb aumlet">
             <div class="adTitle">平安符願結緣人數</div>
             <div class="adContent">
-              已達<span class="number">9,210</span>人
+              已達<span class="number">{{amuletList.length}}</span>人
             </div>
-          </div>
-          <div class="adPhone aumlet">
-            <div class="adTitle">平安符願結緣已達<span class="number">9,210</span>人</div>
           </div>
         </div>
         <div class="memberContent">
@@ -170,6 +165,21 @@
         </div>
       </section>
     `,
+      data() {
+        return {
+          donateList: [],
+          memberList: [],
+          amuletList: [],
+        }
+      },
+      created() {
+        //donate-money
+        axios.get('../phps/donate.php').then(res => this.donateList = res.data);
+        //total-member
+        axios.get('../phps/donate.php').then(res => this.memberList = res.data);
+        //amulet-number
+        axios.get('../phps/memberAdd.php').then(res => this.amuletList = res.data);
+      },
       methods: {
         joinUs() {
           location.href = "memberAdd.html";

@@ -1,6 +1,6 @@
 <?php 
 try {
-	require_once("connectBOBIO.php");
+	require_once("connectMoney.php");
 	//執行sql指令
 	$alter = file_get_contents('php://input');
   $data = json_decode($alter, true);
