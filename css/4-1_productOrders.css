@@ -118,7 +118,8 @@ body {
 }
 .product-orders .search button{
   border-radius: 0px 20px 20px 0px;
-  border: none;width: 35px;
+  border: none;
+  width: 35px;
   height: 30px; 
   background-color: #927858;
 }
@@ -147,8 +148,8 @@ width: 92%;
 }
 
 .product-orders thead th{
-  text-align: center;
-  width: 16.666666%;
+  text-align: start;
+  width: 14.2857%;
   font-size: 18px;
   color: #573605;
 }
@@ -172,7 +173,7 @@ width: 92%;
   /* border: red solid 2px; */
   text-align: center;
   padding: 30px;
-  width: 16.666666%;
+  width: 14.2857%;
   font-size: 18px;
   color: #573605;
 }
@@ -307,9 +308,9 @@ transform:translateX(10px);
     height:40px;
     margin: 0px 55px;
     padding-left: 20px;
-    background-color: #FFFAE7;
-    border-radius: 10px;
-     
+    border-radius: 20px;
+    background-color:#FDBF52;
+    margin-bottom: 15px;
   }
   
   .product-orders .listfilter .filters:hover{
@@ -318,15 +319,22 @@ transform:translateX(10px);
     border-radius: 10px;
     margin: 0px 55px;
     padding-left: 20px;
-    background-color:#FDBF52;
-    color: #573605;
+    margin-bottom: 15px;
+    
   }
   .product-orders .listfilter .filters p{
-    color: #573605;
+    color:#FFFAE7;
     padding-top: 7px;
+    padding-right: 5px;
     text-align: start;
     width: 80px;
-  
+  }
+  .product-orders .listfilter .filters p:hover{
+    color: #573605;
+    padding-top: 7px;
+    padding-right: 5px;
+    text-align: start;
+    width: 80px;
   }
   .product-orders .listdetails{
     font-size: 20px;
