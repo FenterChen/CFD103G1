@@ -715,7 +715,7 @@
 
     <script>
       //訂單管理
-      Vue.component("my-orders", {
+      var Componentorders = Vue.component("my-orders", {
         data() {
           return {
             //products-orders ---
@@ -1287,6 +1287,9 @@
             types: ["感情", "平安", "健康", "財富", "事業", "學業"],
             button: false,
             show: "showbox0",
+          },
+          components:{
+            'component-orders': Componentorders,
           },
           methods: {
             showButton() {
