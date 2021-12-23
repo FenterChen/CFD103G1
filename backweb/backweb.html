@@ -14,6 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="../js/prayRecorder.js"></script>
     <script src="../js/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
     <style>
       img {
         max-width: 300px;
@@ -560,7 +561,7 @@
       </div>
       <!-- 商品訂單 -->
       <div class="product-orders" v-if="show =='showbox09'">
-          <my-orders></my-orders>
+        <my-orders></my-orders>
       </div>
       <!-- 訂單明細 -->
       <div class="productOrders" v-if="show =='showbox10'">
@@ -712,28 +713,27 @@
     </div>
 
     <script>
-
       //訂單管理
-       Vue.component("my-orders",{
-        data(){
-        return{
-           //products-orders ---
-            orders:[],
-            newOrders:[],
-            getFilters:[],
-            Mes:"",
+      Vue.component("my-orders", {
+        data() {
+          return {
+            //products-orders ---
+            orders: [],
+            newOrders: [],
+            getFilters: [],
+            Mes: "",
             //ordersLists ---
-            orderLists:[],
-            currentindex:"",
+            orderLists: [],
+            currentindex: "",
             isShow: false,
             //open-orders ---
-            isOpen: '',
+            isOpen: "",
             process: [],
-            deliver:[],
-            finish:[],
-        };
-      },
-        methods:{
+            deliver: [],
+            finish: [],
+          };
+        },
+        methods: {
           showButton() {
             if (this.button == false) {
               this.button = true;
@@ -741,30 +741,34 @@
               this.button = false;
             }
           },
-          CurrentDetails(index){
+          CurrentDetails(index) {
             this.isShow = true;
             this.currentindex = this.orderLists[index];
           },
-          onProcess(){
-              this.isOpen = 'Open1';
-              this.process = this.orders.filter(item =>(item.order_status == 0 ))
+          onProcess() {
+            this.isOpen = "Open1";
+            this.process = this.orders.filter((item) => item.order_status == 0);
           },
-          delivering(){
-            this.isOpen = 'Open2';
-            this.deliver = this.orders.filter(item =>(item.order_status == 1 ))
+          delivering() {
+            this.isOpen = "Open2";
+            this.deliver = this.orders.filter((item) => item.order_status == 1);
           },
-          done(){
-            this.isOpen = 'Open3';
-            this.finish = this.orders.filter(item =>(item.order_status == 2 ))
+          done() {
+            this.isOpen = "Open3";
+            this.finish = this.orders.filter((item) => item.order_status == 2);
           },
         },
-        mounted(){
-           //products-orders ---
-              axios.get('../phps/orderscopy.php').then(res => this.orders = res.data); 
-            // orderLists----
-            axios.get('../phps/orderslist.php').then(res => this.orderLists = res.data); 
-            },
-          template:`
+        mounted() {
+          //products-orders ---
+          axios
+            .get("../phps/orderscopy.php")
+            .then((res) => (this.orders = res.data));
+          // orderLists----
+          axios
+            .get("../phps/orderslist.php")
+            .then((res) => (this.orderLists = res.data));
+        },
+        template: `
       <div>
           <div class="products-man">
             <span class="order">商品訂單</span>
@@ -905,19 +909,17 @@
             <a href=""> > </a>
           </div>
     </div>
-          `, 
-    });
+          `,
+      });
 
+      //籤詩管理
       Vue.component("my-pomes", {
         data() {
           return {
             pomeNumber: "1",
-            pomeDetailNumber: "1",
-            image: "",
             image2: "",
-            image3: "",
-            image4: "",
             button: false,
+            pomesList: [],
           };
         },
         methods: {
@@ -932,9 +934,9 @@
             this.image2 = e.target.result;
           },
 
-          changeNum() {
-            this.image = `img/pomes/pomes${this.pomeNumber}.jpg`;
-          },
+          // changeNum() {
+          //   this.image = `img/pomes/pomes${this.pomeNumber}.jpg`;
+          // },
           showButton() {
             if (this.button == false) {
               this.button = true;
@@ -944,7 +946,9 @@
           },
         },
         created() {
-          this.image = `img/pomes/pomes${this.pomeNumber}.jpg`;
+          axios
+            .get("../phps/pomes.php")
+            .then((res) => (this.pomesList = res.data));
         },
         template: `
         <div>
@@ -987,8 +991,7 @@
                   <select
                     v-model="pomeNumber"
                     name="編號"
-                    @change="changeNum"
-                    id=""
+                  
                   >
                     <option v-for="number in 60">{{number}}</option>
                   </select>
@@ -1007,7 +1010,7 @@
             <span>圖檔</span>
             <div class="firstpic">
               <span>原圖檔</span>
-              <img :src="image" alt="原圖檔" />
+              <img :src="pomesList[pomeNumber -1].pomes_content" alt="原圖檔" />
             </div>
 
             <div class="firstpic2">
@@ -1023,13 +1026,14 @@
         `,
       });
 
+      //解籤管理
       Vue.component("my-pomedetail", {
         data() {
           return {
             pomeDetailNumber: "1",
-            image3: "",
             image4: "",
             button: false,
+            pomesList: [],
           };
         },
         methods: {
@@ -1044,9 +1048,6 @@
             this.image4 = e2.target.result;
           },
 
-          changeNum2() {
-            this.image3 = `img/pomesdetail/pomesdetail${this.pomeDetailNumber}.jpg`;
-          },
           showButton() {
             if (this.button == false) {
               this.button = true;
@@ -1056,12 +1057,18 @@
           },
         },
         created() {
-          this.image3 = `img/pomesdetail/pomesdetail${this.pomeDetailNumber}.jpg`;
+          axios
+            .get("../phps/pomes.php")
+            .then((res) => (this.pomesList = res.data));
         },
+
         template: `
         <div>
           <div class="supply">
             <span>解籤內容管理</span>
+
+          
+           
             <img src="img/backdata/backFix.svg" @click=" showButton" />
           </div>
           <div class="searchbox">
@@ -1099,8 +1106,7 @@
                   <select
                     v-model="pomeDetailNumber"
                     name="編號"
-                    @change="changeNum2"
-                    id=""
+                  
                   >
                     <option v-for="number in 60">{{number}}</option>
                   </select>
@@ -1119,7 +1125,7 @@
             <span>圖檔</span>
             <div class="firstpic">
               <span>原圖檔</span>
-              <img :src="image3" alt="原圖檔" />
+              <img :src="pomesList[pomeDetailNumber -1].pomes_det" alt="原圖檔" />
             </div>
 
             <div class="firstpic2">
@@ -1135,9 +1141,12 @@
         `,
       });
 
+      // 求籤紀錄
       Vue.component("my-pomerecorder", {
         data() {
-          return {};
+          return {
+            pomesRecorderList: [],
+          };
         },
         methods: {},
         template: `
@@ -1171,24 +1180,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">00000001b-1</th>
-                <td>00000001</td>
-                <td>六十甲子籤-第十籤</td>
-                <td>2021.11.18</td>
-              </tr>
-              <tr>
-                <th scope="row">00000001b-1</th>
-                <td>00000001</td>
-                <td>六十甲子籤-第十籤</td>
-                <td>2021.11.18</td>
-              </tr>
-              <tr>
-                <th scope="row">00000001b-1</th>
-                <td>00000001</td>
-                <td>六十甲子籤-第十籤</td>
-                <td>2021.11.18</td>
-              </tr>
+              <tr v-for="(Recorder, index) in pomesRecorderList" :key="Recorder.pomes_recno">
+                  <td>{{Recorder.pomes_recno}}</td>
+                  <td>{{Recorder.pomes_no}}</td>
+                  <td>{{Recorder.mem_no}}</td>
+                  <td>{{Recorder.pomes_date}}</td>
+                </tr>
             </tbody>
           </table>
           <!-- 表格內容結束 -->
@@ -1205,6 +1202,12 @@
           </div>
         </div>
         `,
+        created() {
+          //donate-money
+          axios
+            .get("../phps/pomesRecorder.php")
+            .then((res) => (this.pomesRecorderList = res.data));
+        },
       });
 
       //結緣紀錄
