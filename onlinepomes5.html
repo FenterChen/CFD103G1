@@ -24,6 +24,14 @@
         <nav class="navPostion">
           <ul>
             <li>
+              <div class="member">
+                <a href="memberAdd.html"><img src="img/header/member.svg" /></a>
+              </div>
+              <div class="logout">
+                <span v-text="losituation" @click="logout"></span>
+              </div>
+            </li>
+            <li>
               <a href="pray.html">立即祈願</a>
             </li>
             <li>
@@ -45,6 +53,9 @@
         </div>
         <div class="member">
           <a href="memberAdd.html"><img src="img/header/member.svg" /></a>
+        </div>
+        <div class="logout">
+          <span v-text="losituation" @click="logout"></span>
         </div>
         <div class="outerHb">
           <div class="hb" @click="hb">
@@ -363,26 +374,58 @@
         data() {
           return {
             screenWidth: null,
+            personaldata: [],
+            losituation: "",
           };
         },
-        mounted() {
-          this.screenWidth = document.body.clientWidth;
-          (window.onresize = () => {
+        created() {
+          this.screenWidth = document.body.clientWidth; //營幕寬
+          //以下讀取會員資料
+          let array = JSON.parse(localStorage.getItem("personallogin")); //抓localStorage存入變數
+          this.losituation = null; //登入登出狀態
+          if (array != null) {
+            axios
+              .post("phps/memberExist.php", {
+                mem_no: array[0].mem_no,
+                mem_id: array[0].mem_id,
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
+                if (res) {
+                  this.losituation = "登出"; //登入登出狀態
+                  this.personaldata = res.data[0];
+                }
+              })
+              .catch((error) => (this.personaldata = res.data));
+          }
+          //以上讀取會員資料
+          window.onresize = () => {
             return (() => {
               this.screenWidth = document.body.clientWidth;
             })();
-          }),
-            $(`header .headerWrap ul li:nth-child(2) a`).addClass(
-              "bottomnavline"
-            );
+          };
         },
         watch: {
           screenWidth: {
             handler: function (newval, oldval) {
               if (newval >= 1200) {
                 $(`header>.headerWrap>nav`).removeClass("navPostion");
+                $(`header>.headerWrap>nav li:first-child`).css(
+                  "display",
+                  "none"
+                );
+                $(`header>.headerWrap>.member`).css("display", "flex");
+                $(`header>.headerWrap>.logout`).css("display", "block");
               } else if (newval < 1200) {
                 $(`header>.headerWrap>nav`).addClass("navPostion");
+                $(`header>.headerWrap>nav li:first-child`).css(
+                  "display",
+                  "flex"
+                );
+                $(`header>.headerWrap>.member`).css("display", "none");
+                $(`header>.headerWrap>.logout`).css("display", "none");
               }
             },
             immediate: true,
@@ -408,6 +451,10 @@
                 "easeOutBounce"
               );
             }
+          },
+          logout() {
+            localStorage.removeItem("personallogin");
+            location.href = "mainpage.html";
           },
         },
       });
