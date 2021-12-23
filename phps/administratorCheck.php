@@ -1,13 +1,13 @@
 <?php 
 // 確認登入資料
 try {
-	require_once("connectMoney.php");
+	require_once("connectAd.php");
 	//執行sql指令
   $alter = file_get_contents('php://input');
   $data = json_decode($alter, true);
-  $memId =  $data["mem_id"];
-  $memPsw = $data["mem_psw"];
-	$sql ="select * from member where mem_id='$memId' and mem_psw='$memPsw';";
+  $admin_name = $data["admin_name"];
+  $admin_psw =  $data["admin_psw"];
+	$sql ="select * from administrator where admin_name='$admin_name' and admin_psw='$admin_psw';";
   $member=$pdo->query($sql);
   $member->execute();
 

@@ -22,12 +22,13 @@
   <header id="mainheader">
     <div class="headerWrap">
       <div class="logo">
-        <a href="#">
+        <a href="" @click="show = 'showbox0'">
           <img src="../img/header/BOBIO_logo.svg" />
         </a>
       </div>
       <div class="member">
-        <img src="../img/header/member.svg" @click="go13" />
+        <a href="" @click="show = 'showbox0'">
+          <img src="../img/header/member.svg" /></a>
       </div>
       <span>登出</span>
     </div>
@@ -105,9 +106,14 @@
               <li>
                 <a href="#" class="link-dark rounded" @click="show = 'showbox09'">商品訂單</a>
               </li>
-              <li>
-                <a href="#" class="link-dark rounded" @click="show = 'showbox10'">訂單明細</a>
-              </li>
+              <!-- <li>
+                  <a
+                    href="#"
+                    class="link-dark rounded"
+                    @click="show = 'showbox10'"
+                    >訂單明細</a
+                  >
+                </li> -->
             </ul>
           </div>
         </li>
@@ -130,7 +136,6 @@
     <div class="adminList" v-if="show =='showbox0'">
       <div class="supply">
         <span>管理員</span>
-        <img src="/img/backweb/backFix.svg" class="showBtn" alt="" />
       </div>
 
       <!-- 表格內容 -->
@@ -160,6 +165,7 @@
       </table>
       <!-- 表格內容結束 -->
     </div>
+
     <!-- 祈願紀錄 -->
     <div class="prayRecorder" v-if="show =='showbox01'">
       <prayrecord></prayrecord>
@@ -172,7 +178,7 @@
     <div class="supplyManage" v-if="show =='showbox03'">
       <div class="supply">
         <span>供品管理</span>
-        <img src="img/backData/backFix.svg" @click="showButton" alt="" />
+        <img src="img/backdata/backFix.svg" @click="showButton" alt="" />
       </div>
 
       <table class="table table-supply">
@@ -224,190 +230,21 @@
     </div>
     <!-- 籤詩 -->
     <div class="pomes" v-if="show =='showbox04'">
-      <div class="supply">
-        <span>籤詩管理</span>
-        <img src="img/backData/backFix.svg" @click="showButton" />
-      </div>
-      <div class="searchbox">
-        <div class="search">
-          <input type="text" placeholder="搜尋關鍵字" />
-          <button><img src="img/backData/search.svg" alt="" /></button>
-        </div>
-        <div class="page">
-          <span class="each">每頁顯示</span>
-          <select>
-            <option value="" style="color: #927858">10</option>
-            <option value="" style="color: #927858">20</option>
-            <option value="" style="color: #927858">30</option>
-          </select>
-          <span class="each">頁</span>
-        </div>
-      </div>
-      <!-- 表格內容 -->
-      <table class="table table-pomemange">
-        <thead>
-          <tr>
-            <th scope="col">種類</th>
-            <th scope="col">編號</th>
-            <th scope="col">籤詩圖檔</th>
-            <th scope="col">新籤詩圖檔</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="vertical-align: middle">
-              <select name="籤詩" id="">
-                <option value="" style="color: #927858">六十甲子籤</option>
-              </select>
-            </td>
-            <td style="vertical-align: middle">
-              <select name="編號" id="">
-                <option value="" style="color: #927858">1</option>
-              </select>
-            </td>
-            <td style="vertical-align: middle">
-              <input type="file" @change="fileChange" />
-            </td>
-            <td style="vertical-align: middle">
-              <input type="file" @change="fileChange2" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- 表格內容結束 -->
-
-      <!-- 圖檔 -->
-      <div class="picbox">
-        <span>圖檔</span>
-        <div class="firstpic">
-          <span>原圖檔</span>
-          <img :src="image" alt="原圖檔" />
-        </div>
-        <div class="firstpic2" v-if="button">
-          <span>新圖檔</span>
-          <img :src="image2" alt="新圖檔" />
-        </div>
-      </div>
-      <div class="saveBtn" v-if="button">
-        <button class="cancle" data-hover="取消">取消</button>
-        <button class="save" data-hover="確認">確認</button>
-      </div>
+      <my-pomes></my-pomes>
     </div>
     <!-- 解籤管理 -->
     <div class="pomeDetail" v-if="show =='showbox05'">
-      <div class="supply">
-        <span>解籤內容管理</span>
-        <img src="img/backData/backFix.svg" @click="showButton" alt="" />
-      </div>
-
-      <!-- 表格內容 -->
-      <table class="table table-unpomes">
-        <thead>
-          <tr>
-            <th scope="col">種類</th>
-            <th scope="col">編號</th>
-            <th scope="col">解籤內容</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="vertical-align: middle">
-              <select name="籤詩" id="">
-                <option value="" style="color: #927858">六十甲子籤</option>
-              </select>
-            </td>
-            <td style="vertical-align: middle">
-              <select name="編號" id="">
-                <option value="" style="color: #927858">1</option>
-              </select>
-            </td>
-            <td>
-              <textarea name="" id="" cols="10" rows="10">
-此籤不宜遠行。只宜守舊。自有超達。時運漸亨。
-財祿俱發。訟不宜。財自至。婚可求。名利高。
-病獲安。孕生貴子。風水利順。家宅昌隆也。
-
-                </textarea>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- 表格內容結束 -->
-      <div class="saveBtn" v-if="button">
-        <button class="cancle" data-hover="取消">取消</button>
-        <button class="save" data-hover="確認">確認</button>
-      </div>
+      <my-pomedetail></my-pomedetail>
     </div>
     <!-- 籤詩紀錄 -->
     <div class="pomeRecorder" v-if="show =='showbox06'">
-      <div class="supply">
-        <span>求籤紀錄</span>
-      </div>
-      <div class="searchbox">
-        <div class="search">
-          <input type="text" placeholder="搜尋關鍵字" />
-          <button><img src="img/backData/search.svg" alt="" /></button>
-        </div>
-        <div class="page">
-          <span class="each">每頁顯示</span>
-          <select>
-            <option value="" style="color: #927858">10</option>
-            <option value="" style="color: #927858">20</option>
-            <option value="" style="color: #927858">30</option>
-          </select>
-          <span class="each">頁</span>
-        </div>
-      </div>
-      <!-- 表格內容 -->
-      <table class="table table-pray table-hover">
-        <thead>
-          <tr>
-            <th scope="col">求籤紀錄編號</th>
-            <th scope="col">會員編號</th>
-            <th scope="col">籤詩</th>
-            <th scope="col">求籤日期</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">00000001b-1</th>
-            <td>00000001</td>
-            <td>六十甲子籤-第十籤</td>
-            <td>2021.11.18</td>
-          </tr>
-          <tr>
-            <th scope="row">00000001b-1</th>
-            <td>00000001</td>
-            <td>六十甲子籤-第十籤</td>
-            <td>2021.11.18</td>
-          </tr>
-          <tr>
-            <th scope="row">00000001b-1</th>
-            <td>00000001</td>
-            <td>六十甲子籤-第十籤</td>
-            <td>2021.11.18</td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- 表格內容結束 -->
-
-      <!-- 頁簽 -->
-      <div class="pagelist">
-        <a href="">
-          < </a>
-            <a href="">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">4</a>
-            <a href="">5</a>
-            <a href=""> > </a>
-      </div>
+      <my-pomerecorder></my-pomerecorder>
     </div>
     <!-- 平安符管理 -->
     <div class="amuletManage" v-if="show =='showbox07'">
       <div class="supply">
         <span>平安符願管理</span>
-        <img src="img/backData/backFix.svg" @click="showButton" alt="" />
+        <img src="img/backdata/backFix.svg" @click="showButton" alt="" />
       </div>
 
       <!-- 表格內容 -->
@@ -443,7 +280,7 @@
         </tbody>
       </table>
       <!-- 表格內容結束 -->
-      <div class="saveBtn" v-if="button">
+      <div class="saveBtn">
         <button class="cancle" data-hover="取消">取消</button>
         <button class="save" data-hover="確認">確認</button>
       </div>
@@ -453,7 +290,7 @@
       <div class="products-man">
         <span class="order">生肖管理</span>
         <div class="icon1">
-          <img src="img/backData/backFix.svg" @click="showButton" alt="" />
+          <img src="img/backdata/backFix.svg" @click="showButton" alt="" />
         </div>
       </div>
 
@@ -502,155 +339,7 @@
     </div>
     <!-- 商品訂單 -->
     <div class="product-orders" v-if="show =='showbox09'">
-      <div class="products-man">
-        <span class="order">商品訂單</span>
-        <div class="icon1">
-          <img src="img/backData/backFix.svg" alt="" />
-        </div>
-      </div>
-
-      <div class="second">
-        <div class="search">
-          <input type="search" placeholder="搜尋關鍵字" />
-          <button>
-            <img src="img/backData/search.svg" alt="" />
-          </button>
-        </div>
-        <div class="page">
-          <span class="each">每頁顯示</span>
-          <select>
-            <option value="" style="color: #927858">10</option>
-            <option value="" style="color: #927858">20</option>
-            <option value="" style="color: #927858">30</option>
-          </select>
-          <span class="each">頁</span>
-        </div>
-      </div>
-
-      <!-- first-row_end---------- -->
-      <!-- table_start---------- -->
-      <table class="table" rules="all" cellpadding="5">
-        <thead>
-          <tr>
-            <th>訂單編號</th>
-            <th>會員編號</th>
-            <th>訂單時間</th>
-            <th>訂單總金額</th>
-            <th>配送方式</th>
-            <th>訂單狀態</th>
-          </tr>
-        </thead>
-
-        <tbody class="white whiteline">
-          <tr>
-            <td class="arrow">
-              <div class="up">▲</div>
-              00002021
-            </td>
-            <td>00000001</td>
-            <td>2021.11.18</td>
-            <td>NT$459</td>
-            <td>宅配</td>
-            <td>已出貨</td>
-          </tr>
-        </tbody>
-
-        <tfoot>
-          <tr>
-            <td colspan="2">
-              <div class="name">收件人姓名 : 王小明</div>
-              <div class="email">信箱 : wang3ming@gmail.com</div>
-            </td>
-            <td colspan="2">
-              <div class="mobile">收件人電話 : 0900155979</div>
-              <div class="address">
-                收件人地址 : 新北市中和區中山路二段347號
-              </div>
-            </td>
-
-            <td></td>
-            <td><a href="">訂單明細</a></td>
-          </tr>
-        </tfoot>
-      </table>
-      <!-- table_end---------- -->
-      <!-- table2_start---------- -->
-      <table rules="all" cellpadding="5">
-        <tbody class="yellow">
-          <tr>
-            <td class="arrow">
-              <div class="left">▶</div>
-              00002021
-            </td>
-            <td>00000001</td>
-            <td>2021.11.18</td>
-            <td>NT$459</td>
-            <td>宅配</td>
-            <td>已出貨</td>
-          </tr>
-        </tbody>
-        <tfoot style="display: none">
-          <tr>
-            <td colspan="2">
-              <div class="name"></div>
-              <div class="email"></div>
-            </td>
-            <td colspan="2">
-              <div class="mobile"></div>
-              <div class="address"></div>
-            </td>
-
-            <td></td>
-            <td><a href=""></a></td>
-          </tr>
-        </tfoot>
-      </table>
-      <!-- table2_end---------- -->
-      <!-- table3_start---------- -->
-      <table rules="all" cellpadding="5">
-        <tbody class="white">
-          <tr>
-            <td class="arrow">
-              <div class="left">▶</div>
-              00002021
-            </td>
-            <td>00000001</td>
-            <td>2021.11.18</td>
-            <td>NT$459</td>
-            <td>宅配</td>
-            <td>已出貨</td>
-          </tr>
-        </tbody>
-
-        <tfoot style="display: none">
-          <tr>
-            <td colspan="2">
-              <div class="name"></div>
-              <div class="email"></div>
-            </td>
-            <td colspan="2">
-              <div class="mobile"></div>
-              <div class="address"></div>
-            </td>
-
-            <td></td>
-            <td><a href=""></a></td>
-          </tr>
-        </tfoot>
-      </table>
-      <!-- table3_end---------- -->
-
-      <!-- ------pages -->
-      <div class="pagelist">
-        <a href="">
-          < </a>
-            <a href="">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">4</a>
-            <a href="">5</a>
-            <a href=""> > </a>
-      </div>
+      <my-orders></my-orders>
     </div>
     <!-- 訂單明細 -->
     <div class="productOrders" v-if="show =='showbox10'">
@@ -661,7 +350,7 @@
         <div class="search">
           <input type="text" placeholder="搜尋關鍵字" />
           <button>
-            <img src="img/backData/search.svg" alt="" />
+            <img src="img/backdata/search.svg" alt="" />
           </button>
         </div>
         <div class="page">
@@ -729,69 +418,12 @@
     </div>
     <!-- 結緣紀錄 -->
     <div class="moneyRecorder" v-if="show =='showbox12'">
-      <div class="supply">
-        <span>結緣紀錄</span>
-      </div>
-      <div class="searchbox">
-        <div class="search">
-          <input type="text" placeholder="搜尋關鍵字" />
-          <button>
-            <img src="img/backData/search.svg" alt="" />
-          </button>
-        </div>
-        <div class="page">
-          <span class="each">每頁顯示</span>
-          <select>
-            <option value="" style="color: #927858">10</option>
-            <option value="" style="color: #927858">20</option>
-            <option value="" style="color: #927858">30</option>
-          </select>
-          <span class="each">頁</span>
-        </div>
-      </div>
-      <!-- 表格內容 -->
-
-      <table class="table table-hover table-pray">
-        <thead>
-          <tr>
-            <th>結緣編號</th>
-            <th>會員編號</th>
-            <th>結緣日期</th>
-            <th>結緣金額</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>00002021</td>
-            <td>00000001</td>
-            <td>2021.11.18</td>
-            <td>NT$100</td>
-          </tr>
-          <tr>
-            <td>00002021</td>
-            <td>00000001</td>
-            <td>2021.11.18</td>
-            <td>NT$100</td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- 表格內容結束 -->
-
-      <!-- 頁簽 -->
-      <div class="pagelist">
-        <a href="">
-          < </a>
-            <a href="">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">4</a>
-            <a href="">5</a>
-            <a href=""> > </a>
-      </div>
+      <donate-record></donate-record>
     </div>
   </div>
 
   <script>
+    //小卡
     var Componentcardmanage = Vue.component('cardmanage', {
       data() {
         return {
@@ -832,7 +464,7 @@
       </div>
       `
     })
-
+    //祈願紀錄
     var Componentprayrecord = Vue.component('prayrecord', {
       data() {
         return {
@@ -860,6 +492,7 @@
       },
       methods: {
         list() {//搜尋
+          this.pno = 1;
           let search = this.searchval;
           this.prayerdata = this.prayerdata.filter(function (index) {
             return Object.keys(index).some(function (key) {
@@ -1007,7 +640,7 @@
       </div>
       `
     })
-
+    //會員
     var Componentmember = Vue.component('personaldata', {
       data() {
         return {
@@ -1066,6 +699,7 @@
       },
       methods: {
         list() {//搜尋
+          this.pno = 1;
           let search = this.searchval;
           this.personaldata = this.personaldata.filter(function (index) {
             return Object.keys(index).some(function (key) {
@@ -1205,18 +839,25 @@
               </div>`
     });
 
-    new Vue({
-      el: "#app",
-      data: {
-        numbers: ["A", "B", "C", "D", "E", "F"],
-        types: ["感情", "平安", "健康", "財富", "事業", "學業"],
-        button: false,
-        show: "showbox01",
-      },
-      components: {
-        'component-member': Componentmember,
-        'component-prayrecorder': Componentprayrecord,
-        'component-cardmanage': Componentcardmanage,
+    //訂單管理
+    var Componentorders = Vue.component("my-orders", {
+      data() {
+        return {
+          //products-orders ---
+          orders: [],
+          newOrders: [],
+          getFilters: [],
+          Mes: "",
+          //ordersLists ---
+          orderLists: [],
+          currentindex: "",
+          isShow: false,
+          //open-orders ---
+          isOpen: "",
+          process: [],
+          deliver: [],
+          finish: [],
+        };
       },
       methods: {
         showButton() {
@@ -1226,8 +867,572 @@
             this.button = false;
           }
         },
+        CurrentDetails(index) {
+          this.isShow = true;
+          this.currentindex = this.orderLists[index];
+        },
+        onProcess() {
+          this.isOpen = "Open1";
+          this.process = this.orders.filter((item) => item.order_status == 0);
+        },
+        delivering() {
+          this.isOpen = "Open2";
+          this.deliver = this.orders.filter((item) => item.order_status == 1);
+        },
+        done() {
+          this.isOpen = "Open3";
+          this.finish = this.orders.filter((item) => item.order_status == 2);
+        },
+      },
+      mounted() {
+        //products-orders ---
+        axios
+          .get("../phps/orderscopy.php")
+          .then((res) => (this.orders = res.data));
+        // orderLists----
+        axios
+          .get("../phps/orderslist.php")
+          .then((res) => (this.orderLists = res.data));
+      },
+      template: `
+      <div>
+          <div class="products-man">
+            <span class="order">商品訂單</span>
+            <div class="icon1">
+              <img src="img/backdata/backFix.svg" alt="" />
+            </div>
+          </div>
+
+          <div class="second">
+              <div class="search">
+                <input type="search" placeholder="搜尋關鍵字" />
+                <button>
+                  <img src="img/backData/search.svg" alt="" />
+                </button>
+              </div>
+
+              <div class="page">
+                <span class="each">每頁顯示</span>
+                <select>
+                  <option value="" style="color: #927858">10</option>
+                  <option value="" style="color: #927858">20</option>
+                  <option value="" style="color: #927858">30</option>
+                </select>
+                <span class="each">頁</span>
+            </div>
+        </div>
+        <!-- first-row_end---------- -->
+
+
+        <!-- filter-start -->
+        <div class="listfilter">
+
+          <div class="filters" @click="isOpen=''">
+          <p>全部</p>
+          </div>
+
+          <div class="filters" @click="onProcess">
+          <p>處理中</p>
+          </div>
+
+          <div class="filters" @click="delivering">
+            <p>已出貨</p>
+          </div>
+      
+          <div class="filters" @click="done">
+            <p>完成訂單</p>
+          </div>
+        </div>
+        <!-- filter-end -->
+
+        <!-- table1_start---------- -->
+        <table class="table" rules="all" cellpadding="5">
+          <thead>
+            <tr>
+              <th>訂單編號</th>
+              <th>會員編號</th>
+              <th>訂單時間</th>
+              <th>訂單總金額</th>
+              <th>配送方式</th>
+              <th>訂單狀態</th>
+              <th>訂單明細</th>
+            </tr>
+          </thead>
+          <tbody class=" whiteline colortype" >
+            <tr v-for="(order,index) in orders" :key="order.orders_no" v-if="isOpen==''">
+              <td class="arrow">{{order.orders_no}}</td>
+              <td>{{order.mem_no}}</td>
+              <td>{{order.orders_date}}</td>
+              <td>{{order.orders_total}}</td>
+              <td>{{order.delivery}}</td>
+              <td>{{order.order_status}}</td>
+              <td v-on:click="CurrentDetails(index)" class="listdetails">📒</td>
+            </tr>
+
+            <tr v-for="(order,index) in process" :key="order.orders_no" v-if="isOpen=='Open1'">
+              <td class="arrow">{{order.orders_no}}</td>
+              <td>{{order.mem_no}}</td>
+              <td>{{order.orders_date}}</td>
+              <td>{{order.orders_total}}</td>
+              <td>{{order.delivery}}</td>
+              <td>{{order.order_status}}</td>
+              <td v-on:click="CurrentDetails(index)" class="listdetails">📒</td>
+            </tr>
+
+            <tr v-for="(order,index) in deliver" :key="order.orders_no" v-if="isOpen=='Open2'">
+              <td class="arrow">{{order.orders_no}}</td>
+              <td>{{order.mem_no}}</td>
+              <td>{{order.orders_date}}</td>
+              <td>{{order.orders_total}}</td>
+              <td>{{order.delivery}}</td>
+              <td>{{order.order_status}}</td>
+              <td v-on:click="CurrentDetails(index)" class="listdetails">📒</td>
+            </tr>
+
+            <tr v-for="(order,index) in finish" :key="order.orders_no" v-if="isOpen=='Open3'">
+              <td class="arrow">{{order.orders_no}}</td>
+              <td>{{order.mem_no}}</td>
+              <td>{{order.orders_date}}</td>
+              <td>{{order.orders_total}}</td>
+              <td>{{order.delivery}}</td>
+              <td>{{order.order_status}}</td>
+              <td v-on:click="CurrentDetails(index)" class="listdetails">📒</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- table1_end--------- -->
+        
+        <!-- window_start--------- -->
+
+        <section class="windowspace" v-if="isShow">
+          <div class="detelepic" @click="isShow=false">✘</div>
+          <h3 class="windowdetalis">訂單明細</h3>
+          <hr>
+          <ol class="windowol" >
+           <li>訂單明細編號: {{currentindex.Details_no}} </li>
+           <li>訂單編號: {{currentindex.orders_no}}</li>
+           <li>收件人姓名: {{currentindex.recipient}}</li>
+           <li>收件人電話: {{currentindex.orders_phone}} </li>
+           <li>收件人地址: {{currentindex.orders_add}}</li>
+           <li>收件人信箱: {{currentindex.orders_email}}</li>
+           <li>平安符種類: {{currentindex.type_no}}</li>
+           <li>生肖名稱: {{currentindex.zodiac_no}} </li>
+           <li>客製化文字: {{currentindex.word}}</li>
+           <li>數量 :{{currentindex.amulet_amount}}</li>
+           <li>單價: {{currentindex.price}}</li>
+         </ol>
+        </section>
+        <!-- window_end--------- -->
+         
+        <!-- ------Next-pages -->
+          <div class="pagelist">
+            <a href=""> < </a>
+            <a href="">1</a>
+            <a href="">2</a>
+            <a href="">3</a>
+            <a href="">4</a>
+            <a href="">5</a>
+            <a href=""> > </a>
+          </div>
+    </div>
+          `,
+    });
+
+    //籤詩管理
+    var Componentpomes = Vue.component("my-pomes", {
+      data() {
+        return {
+          pomeNumber: "1",
+          image2: "",
+          button: false,
+          pomesList: [],
+        };
+      },
+      methods: {
+        //籤詩管理
+        fileChange(e) {
+          let file = e.target.files[0];
+          let readFile = new FileReader();
+          readFile.readAsDataURL(file);
+          readFile.addEventListener("load", this.loadImage);
+        },
+        loadImage(e) {
+          this.image2 = e.target.result;
+        },
+
+        // changeNum() {
+        //   this.image = `img/pomes/pomes${this.pomeNumber}.jpg`;
+        // },
+        showButton() {
+          if (this.button == false) {
+            this.button = true;
+          } else {
+            this.button = false;
+          }
+        },
+      },
+      created() {
+        axios
+          .get("../phps/pomes.php")
+          .then((res) => (this.pomesList = res.data));
+      },
+      template: `
+        <div>
+          <div class="supply">
+            <span>籤詩管理</span>
+            <img src="img/backdata/backFix.svg" @click=" showButton"  />
+          </div>
+          <div class="searchbox">
+            <div class="search">
+              <input type="text" placeholder="搜尋關鍵字" />
+              <button><img src="img/backdata/search.svg" alt="" /></button>
+            </div>
+            <div class="page">
+              <span class="each">每頁顯示</span>
+              <select>
+                <option value="" style="color: #927858">10</option>
+                <option value="" style="color: #927858">20</option>
+                <option value="" style="color: #927858">30</option>
+              </select>
+              <span class="each">頁</span>
+            </div>
+          </div>
+          <!-- 表格內容 -->
+          <table class="table table-pomemange">
+            <thead>
+              <tr>
+                <th scope="col">種類</th>
+                <th scope="col">編號</th>
+                <th scope="col">新籤詩圖檔</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="vertical-align: middle">
+                  <select name="籤詩" id="">
+                    <option value="">六十甲子籤</option>
+                  </select>
+                </td>
+                <td style="vertical-align: middle">
+                  <select
+                    v-model="pomeNumber"
+                    name="編號"
+                  
+                  >
+                    <option v-for="number in 60">{{number}}</option>
+                  </select>
+                </td>
+
+                <td style="vertical-align: middle">
+                  <input type="file" @change="fileChange" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- 表格內容結束 -->
+
+          <!-- 圖檔 -->
+          <div class="picbox">
+            <span>圖檔</span>
+            <div class="firstpic">
+              <span>原圖檔</span>
+              <img :src="pomesList[pomeNumber -1].pomes_content" alt="原圖檔" />
+            </div>
+
+            <div class="firstpic2">
+              <span>新圖檔</span>
+              <img :src="image2" alt="新圖檔" />
+            </div>
+          </div>
+          <div class="saveBtn" v-if="button">
+            <button class="cancle" data-hover="取消">取消</button>
+            <button class="save" data-hover="確認">確認</button>
+          </div>
+        </div>
+        `,
+    });
+
+    //解籤管理
+    var Componentpomesdetail = Vue.component("my-pomedetail", {
+      data() {
+        return {
+          pomeDetailNumber: "1",
+          image4: "",
+          button: false,
+          pomesList: [],
+        };
+      },
+      methods: {
+        //解籤內容管理
+        fileChange2(e2) {
+          let file2 = e2.target.files[0];
+          let readFile2 = new FileReader();
+          readFile2.readAsDataURL(file2);
+          readFile2.addEventListener("load", this.loadImage2);
+        },
+        loadImage2(e2) {
+          this.image4 = e2.target.result;
+        },
+
+        showButton() {
+          if (this.button == false) {
+            this.button = true;
+          } else {
+            this.button = false;
+          }
+        },
+      },
+      created() {
+        axios
+          .get("../phps/pomes.php")
+          .then((res) => (this.pomesList = res.data));
+      },
+
+      template: `
+        <div>
+          <div class="supply">
+            <span>解籤內容管理</span>
+
+          
+           
+            <img src="img/backdata/backFix.svg" @click=" showButton" />
+          </div>
+          <div class="searchbox">
+            <div class="search">
+              <input type="text" placeholder="搜尋關鍵字" />
+              <button><img src="img/backdata/search.svg" alt="" /></button>
+            </div>
+            <div class="page">
+              <span class="each">每頁顯示</span>
+              <select>
+                <option value="" style="color: #927858">10</option>
+                <option value="" style="color: #927858">20</option>
+                <option value="" style="color: #927858">30</option>
+              </select>
+              <span class="each">頁</span>
+            </div>
+          </div>
+          <!-- 表格內容 -->
+          <table class="table table-pomemange">
+            <thead>
+              <tr>
+                <th scope="col">種類</th>
+                <th scope="col">編號</th>
+                <th scope="col">新籤詩圖檔</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="vertical-align: middle">
+                  <select name="籤詩" id="">
+                    <option value="">六十甲子籤</option>
+                  </select>
+                </td>
+                <td style="vertical-align: middle">
+                  <select
+                    v-model="pomeDetailNumber"
+                    name="編號"
+                  
+                  >
+                    <option v-for="number in 60">{{number}}</option>
+                  </select>
+                </td>
+
+                <td style="vertical-align: middle">
+                  <input type="file" @change="fileChange2" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- 表格內容結束 -->
+
+          <!-- 圖檔 -->
+          <div class="picbox">
+            <span>圖檔</span>
+            <div class="firstpic">
+              <span>原圖檔</span>
+              <img :src="pomesList[pomeDetailNumber -1].pomes_det" alt="原圖檔" />
+            </div>
+
+            <div class="firstpic2">
+              <span>新圖檔</span>
+              <img :src="image4" alt="新圖檔" />
+            </div>
+          </div>
+          <div class="saveBtn" v-if="button">
+            <button class="cancle" data-hover="取消">取消</button>
+            <button class="save" data-hover="確認">確認</button>
+          </div>
+        </div>
+        `,
+    });
+
+    // 求籤紀錄
+    var Componentpomesrecorder = Vue.component("my-pomerecorder", {
+      data() {
+        return {
+          pomesRecorderList: [],
+        };
+      },
+      methods: {},
+      template: `
+        <div>
+          <div class="supply">
+            <span>求籤紀錄</span>
+          </div>
+          <div class="searchbox">
+            <div class="search">
+              <input type="text" placeholder="搜尋關鍵字" />
+              <button><img src="img/backdata/search.svg" alt="" /></button>
+            </div>
+            <div class="page">
+              <span class="each">每頁顯示</span>
+              <select>
+                <option value="" style="color: #927858">10</option>
+                <option value="" style="color: #927858">20</option>
+                <option value="" style="color: #927858">30</option>
+              </select>
+              <span class="each">頁</span>
+            </div>
+          </div>
+          <!-- 表格內容 -->
+          <table class="table table-pray table-hover">
+            <thead>
+              <tr>
+                <th scope="col">求籤紀錄編號</th>
+                <th scope="col">會員編號</th>
+                <th scope="col">籤詩</th>
+                <th scope="col">求籤日期</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(Recorder, index) in pomesRecorderList" :key="Recorder.pomes_recno">
+                  <td>{{Recorder.pomes_recno}}</td>
+                  <td>{{Recorder.pomes_no}}</td>
+                  <td>{{Recorder.mem_no}}</td>
+                  <td>{{Recorder.pomes_date}}</td>
+                </tr>
+            </tbody>
+          </table>
+          <!-- 表格內容結束 -->
+
+          <!-- 頁簽 -->
+          <div class="pagelist">
+            <a href=""> < </a>
+            <a href="">1</a>
+            <a href="">2</a>
+            <a href="">3</a>
+            <a href="">4</a>
+            <a href="">5</a>
+            <a href=""> > </a>
+          </div>
+        </div>
+        `,
+      created() {
+        //donate-money
+        axios
+          .get("../phps/pomesRecorder.php")
+          .then((res) => (this.pomesRecorderList = res.data));
       },
     });
+
+    //結緣紀錄
+    Vue.component("donate-record", {
+      data() {
+        return {
+          donateList: [],
+        };
+      },
+      template: ` <div>
+            <div class="supply">
+              <span>結緣紀錄</span>
+            </div>
+            <div class="searchbox">
+              <div class="search">
+                <input type="text" placeholder="搜尋關鍵字" />
+                <button>
+                  <img src="img/backdata/search.svg" alt="" />
+                </button>
+              </div>
+              <div class="page">
+                <span class="each">每頁顯示</span>
+                <select>
+                  <option value="" style="color: #927858">10</option>
+                  <option value="" style="color: #927858">20</option>
+                  <option value="" style="color: #927858">30</option>
+                </select>
+                <span class="each">頁</span>
+              </div>
+            </div>
+            <!-- 表格內容 -->
+
+            <table class="table table-hover table-pray">
+              <thead>
+                <tr>
+                  <th>結緣編號</th>
+                  <th>會員編號</th>
+                  <th>結緣日期</th>
+                  <th>結緣金額</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(donate, index) in donateList" :key="donate.donate_no">
+                  <td>{{donate.donate_no}}</td>
+                  <td>{{donate.mem_no}}</td>
+                  <td>{{donate.donate_date}}</td>
+                  <td>{{donate.donate_total}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- 表格內容結束 -->
+
+            <!-- 頁簽 -->
+            <div class="pagelist">
+              <a href=""> < </a>
+              <a href="">1</a>
+              <a href="">2</a>
+              <a href="">3</a>
+              <a href="">4</a>
+              <a href="">5</a>
+              <a href=""> > </a>
+            </div>
+          </div>
+      `,
+      created() {
+        //donate-money
+        axios
+          .get("../phps/donatephp.php")
+          .then((res) => (this.donateList = res.data));
+      },
+    }),
+      new Vue({
+        el: "#app",
+        data: {
+          numbers: ["A", "B", "C", "D", "E", "F"],
+          types: ["感情", "平安", "健康", "財富", "事業", "學業"],
+          button: false,
+          show: "showbox0",
+        },
+        components: {
+          'component-member': Componentmember,
+          'component-prayrecorder': Componentprayrecord,
+          'component-cardmanage': Componentcardmanage,
+          "component-orders": Componentorders,
+          "component-pomes": Componentpomes,
+          "component-pomesdet": Componentpomesdetail,
+          "component-pomesrec": Componentpomesrecorder,
+        },
+        methods: {
+          showButton() {
+            if (this.button == false) {
+              this.button = true;
+            } else {
+              this.button = false;
+            }
+          },
+        },
+        created() { },
+      });
   </script>
 </body>
 

@@ -1,11 +1,11 @@
 <?php 
 try {
-	require_once("connectMoney.php");
+	require_once("connectAd.php");
 	//執行sql指令
 	$alter = file_get_contents('php://input');
   $data = json_decode($alter, true);
-	$sql = "INSERT INTO member (mem_name, mem_id, mem_psw,phone,email,mem_date,mem_status) 
-	VALUES ('$data[mem_name]','$data[mem_id]','$data[mem_psw]','$data[phone]','$data[email]','$data[mem_date]','$data[mem_status]')";
+	$sql = "INSERT INTO administrator (admin_name, admin_psw) 
+	VALUES ('$data[admin_name]','$data[admin_psw]')";
 	$member = $pdo->prepare($sql);
 	$member->execute();
 	echo "異動成功~";

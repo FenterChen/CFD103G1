@@ -4,42 +4,145 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/front-back-bobio.css">
+    <link rel="stylesheet" href="css/front-back-bobio.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-    <script src="js/front-back.js"></script>
-    
+    <!-- <script src="js/front-back.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
     <title>BoBio前後台</title>
-
-     
   </head>
   <body>
-   
-     
-      <div class="wrapp">
-        <div class="bobioimg">
-          <!-- 廟宇 -->
-          <img src="img/front-back-bobio/front-back-bobio.png" alt="" />
-          <div class="button">
-            <!-- 樹葉 -->
-            
-            <img id="leftTree" src="img/front-back-bobio/tree.svg" alt="" />
-           
-            <img id="rightTree" src="img/front-back-bobio/tree.svg" alt="" />
-            <div>
-              
-            </div>
-           <p class="front">前台</p>
-            <p class="back">後台</p>
-            
-            <div class="brash">
-              <!-- 樹幹 -->
-              <img src="img/front-back-bobio/brash.svg" alt="" />
-              <img src="img/front-back-bobio/brash.svg" alt="" />
-            </div>
-        
+    <div class="wrapp" id="app">
+      <div class="bobioimg">
+        <!-- 廟宇 -->
+        <img src="img/front-back-bobio/front-back-bobio.png" alt="" />
+        <div class="button">
+          <!-- 樹葉 -->
+
+          <img id="leftTree" src="img/front-back-bobio/tree.svg" alt="" />
+
+          <img id="rightTree" src="img/front-back-bobio/tree.svg" alt="" />
+          <div></div>
+          <p class="front">前台</p>
+          <p class="back" @click="show">後台</p>
+
+          <div class="brash">
+            <!-- 樹幹 -->
+            <img src="img/front-back-bobio/brash.svg" alt="" />
+            <img src="img/front-back-bobio/brash.svg" alt="" />
+          </div>
         </div>
       </div>
+      <div v-if="apear" class="loginbox">
+        <div class="loginContent">
+          <div class="logo">
+            <img src="./img/header/BOBIO_logo.svg" alt="" />
+          </div>
+          <div class="title">管理員登入</div>
+          <div class="boxLogin">
+            <div class="textEmail">
+              <span>帳號</span>
+              <input type="email" v-model="email" placeholder="" width="300" />
+            </div>
+            <div class="textPwd">
+              <span>密碼</span>
+              <input type="password" v-model="psw" placeholder="" width="300" />
+              <p>忘記密碼</p>
+            </div>
+          </div>
+          <div class="boxBtn">
+            <button class="btnCancel" data-hover="取消" @click="close">
+              取消
+            </button>
+            <button class="btnAdd" data-hover="登入" @click="logincheck">
+              登入
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data() {
+          return {
+            apear: false,
+            email: null,
+            psw: null,
+            personaldata: [],
+          };
+        },
+        methods: {
+          show() {
+            this.apear = true;
+          },
+          close() {
+            this.apear = false;
+          },
+          logi() {
+            this.registerframe = false;
+            this.loginframe = true;
+          },
+          regist() {
+            this.loginframe = false;
+            this.registerframe = true;
+          },
+          btnAdd() {
+            var m = new Date();
+            this.addtime =
+              m.getFullYear() +
+              "-" +
+              (m.getMonth() + 1) +
+              "-" +
+              m.getDate() +
+              " " +
+              m.getHours() +
+              ":" +
+              m.getMinutes() +
+              ":" +
+              m.getSeconds();
 
+            axios
+              .post("phps/administratorAdd.php", {
+                admin_name: this.email,
+                admin_psw: this.psw,
+                mem_status: "0",
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then(function (response) {
+                console.log(response);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          },
+          logincheck() {
+            axios
+              .post("phps/administratorCheck.php", {
+                admin_name: this.email,
+                admin_psw: this.psw,
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
+                this.personaldata = res.data;
+                if (res.data == "erro") {
+                  alert("輸入錯誤");
+                } else {
+                  location.href = "backweb/backweb.html";
+                  localStorage.setItem(
+                    "personallogin",
+                    JSON.stringify(res.data)
+                  );
+                }
+              })
+              .catch((error) => (this.personaldata = res.data));
+          },
+        },
+      });
+    </script>
   </body>
- 
 </html>

@@ -1,11 +1,11 @@
 <?php 
 try {
-	require_once("connectBOBIO.php");
-	//執行sql指令
-	$sql = "select * from member";
-  $member=$pdo->query($sql);
-  $prodRows = $member->fetchAll(PDO::FETCH_ASSOC);
-	echo(json_encode($prodRows));
+	require_once("connectMoney.php");
+
+	$sql = "select * from donate";
+  	$money=$pdo->query($sql);
+  	$moneyRows = $money->fetchAll(PDO::FETCH_ASSOC);
+	echo(json_encode($moneyRows));
 
 } catch (PDOException $e) {
 	echo "錯誤行號 : ", $e->getLine(), "<br>";

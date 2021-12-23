@@ -1,13 +1,13 @@
 <?php 
 // 確認登入資料
 try {
-	require_once("connectMoney.php");
+	require_once("connectAd.php");
 	//執行sql指令
   $alter = file_get_contents('php://input');
   $data = json_decode($alter, true);
-  $memId =  $data["mem_id"];
-  $memPsw = $data["mem_psw"];
-	$sql ="select * from member where mem_id='$memId' and mem_psw='$memPsw';";
+  $admin_name = $data["admin_name"];
+  $admin_psw =  $data["admin_psw"];
+	$sql ="select * from administrater where admin_name='$admin_name' and admin_psw='$admin_psw';";
   $member=$pdo->query($sql);
   $member->execute();
 
@@ -16,7 +16,6 @@ try {
   exit();
   }else{
 	$memRow = $member ->fetchAll(PDO::FETCH_ASSOC);
-  unset($memRow[0]['mem_name'],$memRow[0]['mem_psw'],$memRow[0]['phone'],$memRow[0]['email'],$memRow[0]['mem_date'],$memRow[0]['mem_status']);
 	echo(json_encode($memRow));
   }
 } catch (PDOException $e) {

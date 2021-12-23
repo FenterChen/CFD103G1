@@ -86,6 +86,7 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -100,17 +101,21 @@ nav,
 section {
   display: block;
 }
+
 body {
   line-height: 1;
 }
+
 ol,
 ul {
   list-style: none;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -118,13 +123,16 @@ q:after {
   content: "";
   content: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 body {
   background-color: #fffae7;
 }
+
 /* section {
   margin: auto;
 } */
@@ -138,76 +146,79 @@ body {
   text-align: center;
   position: relative;
 }
+
 .bobioimg {
   max-width: 1200px;
   position: relative;
   margin: auto;
   margin-top: 50px;
 }
-.bobioimg > img {
+
+.bobioimg>img {
   width: 70%;
 }
 
 /* 左樹葉 */
-.button > img:nth-child(1) {
+.button>img:nth-child(1) {
   width: 10%;
   position: absolute;
   bottom: 19%;
   left: 17.5%;
-  
+
 }
 
 /* 右樹葉 */
-.button > img:nth-child(2) {
+.button>img:nth-child(2) {
   width: 10%;
   position: absolute;
   bottom: 19%;
   right: 17.5%;
- 
+
 }
 
-.button > .front {
+.button>.front {
   position: absolute;
   color: #573605;
   font-size: 40px;
   bottom: 20%;
   left: 17%;
- 
+
   padding: 40px 25px;
   border-radius: 50%;
 }
-.button > .back {
+
+.button>.back {
   position: absolute;
   color: #573605;
   font-size: 40px;
   bottom: 20%;
-
   right: 17%;
- 
-
   padding: 40px 25px;
   border-radius: 50%;
 }
-.back:hover{
+
+.back:hover {
   color: rgb(221, 27, 27);
   cursor: pointer;
 }
-.front:hover{
-    color: rgb(221, 27, 27);
-    cursor: pointer;
+
+.front:hover {
+  color: rgb(221, 27, 27);
+  cursor: pointer;
 }
 
 
 /* 左樹幹 */
-.brash > img:nth-child(1) {
+.brash>img:nth-child(1) {
   width: 3%;
   position: absolute;
   bottom: 7%;
   left: 21%;
   z-index: -2;
 }
+
 /* 右樹幹 */
-.brash > img:nth-child(2) {
+.brash>img:nth-child(2) {
   width: 3%;
   position: absolute;
   bottom: 7%;
@@ -217,64 +228,172 @@ body {
 
 
 
+#app .loginbox {
+  background-color: rgba(92, 91, 88, 0.3);
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+}
+
+#app .loginbox .loginContent {
+  background-color: #fffae7;
+  padding: 20px;
+  border-radius: 20px;
+  width: 300px;
+  height: 250px;
+  margin: auto;
+  ;
+}
+
+.title {
+  color: #573605;
+  font-weight: 900;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.textEmail input {
+  width: 260px;
+  border: none;
+  border-bottom: 1px solid #573605;
+  background: none;
+  margin-bottom: 10px;
+}
+
+.textEmail span {
+  color: #573605;
+}
+
+.textPwd input {
+  width: 260px;
+  border: none;
+  border-bottom: 1px solid #573605;
+  background: none;
+  margin-bottom: 10px;
+}
+
+.textPwd span {
+  color: #573605;
+}
+
+.textPwd p {
+  text-align: right;
+  margin-bottom: 30px;
+  color: #927858;
+}
+
+#app .btnCancel {
+  margin-right: 20px;
+  cursor: pointer;
+  width: 120px;
+  height: 42px;
+  background-color: #FDBF52;
+  line-height: 21px;
+  text-align: center;
+  border: 0px;
+  border-radius: 20px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+#app .btnAdd {
+  width: 120px;
+  height: 42px;
+  cursor: pointer;
+  background-color: #FDBF52;
+  line-height: 21px;
+  text-align: center;
+  border: 0px;
+  border-radius: 20px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.loginContent .logo {
+  width: 100%;
+}
+
+.loginContent .logo img {
+  width: 50px;
+  margin-bottom: 30px;
+}
+
+
 
 @media screen and (max-width: 1024px) {
-  .button > .front {
+  .button>.front {
     padding: 30px 20px;
   }
-  .button > .back{
+
+  .button>.back {
     padding: 30px 20px;
-   
+
   }
 }
+
 @media screen and (max-width: 900px) {
-  .button > .front {
+  .button>.front {
     padding: 20px 15px;
     font-size: 32px;
   }
-  .button > .back{
+
+  .button>.back {
     padding: 20px 15px;
     font-size: 32px;
   }
 }
+
 @media screen and (max-width: 768px) {
-  .button > .front {
+  .button>.front {
     padding: 20px 15px;
     font-size: 25px;
   }
-  .button > .back{
+
+  .button>.back {
     padding: 20px 15px;
     font-size: 25px;
   }
 }
+
 @media screen and (max-width: 500px) {
-  .button > .front {
+  .button>.front {
     bottom: 17%;
     left: 15%;
     font-size: 18px;
   }
-  .button > .back{
+
+  .button>.back {
     bottom: 17%;
     right: 15%;
     font-size: 18px;
   }
 }
+
 @media screen and (max-width: 450px) {
-  .button > .front {
+  .button>.front {
     font-size: 16px;
   }
-  .button > .back {
-  
+
+  .button>.back {
+
     font-size: 16px;
   }
 }
+
 @media screen and (max-width: 375px) {
-  .button > .front {
+  .button>.front {
     font-size: 16px;
     bottom: 13%;
     left: 14%;
   }
-  .button > .back {
+
+  .button>.back {
     bottom: 13%;
     right: 14%;
     font-size: 16px;
