@@ -1,5 +1,5 @@
 <?php 
-	$dbname = "bobio";
+	$dbname = "tibamefe_cfd103g1";
 	$user = "root";
 	$password = "11221122";
 
