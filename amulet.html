@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
 
 </head>
 
@@ -85,7 +86,7 @@
                 </div>
             </div>
         </section>
-
+        
         <section class="container">
             <div class="content-wrap">
                 <div class="title">
@@ -96,7 +97,7 @@
                     <div class="introWrap">
                         <div class="select-type">
                             <h4>種類</h4>
-                            <select name="種類" id="" v-model="type" @change="typeClick">
+                            <select name="種類" id="" v-model="type" @change="typeClick()">
                                 <option value="感情" selected>感情</option>
                                 <option value="事業">事業</option>
                                 <option value="財富">財富</option>
@@ -110,9 +111,9 @@
                                 簡介
                             </button>
                             <transition name="fade" appear>
-                                <div class="modal-overlay" v-if="introClick" @click="introClick = false"></div>
+                                <div class="modal-overlay" v-if="introClick"  @click="introClick = false"></div>
                             </transition>
-
+                    
                             <transition name="slide" appear>
                                 <div class="modal" v-if="introClick">
                                     <h1 v-text="type"></h1>
@@ -122,15 +123,15 @@
                                             返回
                                         </button>
                                     </div>
-
+                                   
                                 </div>
                             </transition>
                         </div>
                     </div>
-
+                    
                     <div class="intro">
                         <textarea name="簡介" id="" v-model="typeIntro" cols="30" rows="5">
-                            <p v-text="typeIntro"></p>
+                            <p></p>
                         </textarea>
                     </div>
                 </div>
@@ -162,8 +163,8 @@
                 </div>
                 <div class="customiz">
                     <h3>客製化文字</h3>
-                    <textarea v-model="message" @click="diyclick" cols="30" rows="5"
-                        placeholder="請輸入客製化文字（8字），如:吉祥如意萬事安康" maxlength="8"></textarea>
+                    <textarea v-model="message" @click="diyclick" cols="30" rows="5" placeholder="請輸入客製化文字（8字），如:吉祥如意萬事安康"
+                        maxlength="8"></textarea>
                 </div>
                 <div class="shop">
                     <button data-hover="立即購買" @click="add">立即購買</button>
@@ -172,7 +173,6 @@
             </div>
         </section>
     </div>
-
     <footer>
         <div class="footer-wrap">
             <div class="footer-logo">
@@ -184,82 +184,112 @@
             <div class="footer-info">
                 <div class="list">
                     <ul>
-                        <li><a href="pray.html">立即祈願</a></li>
-                        <li><a href="onlinepomes.html">線上求籤</a></li>
-                        <li><a href="amulet.html">平安符願</a></li>
-                        <li><a href="money.html">立即結緣</a></li>
-                        <li><a href="Abouts.html">關於我們</a></li>
+                      <li><a href="pray.html">立即祈願</a></li>
+                      <li><a href="onlinepomes.html">線上求籤</a></li>
+                      <li><a href="amulet.html">平安符願</a></li>
+                      <li><a href="money.html">立即結緣</a></li>
+                      <li><a href="Abouts.html">關於我們</a></li>
                     </ul>
                 </div>
                 <div class="conn">
                     <p>
                         bobio@temple.com<br>
-                        02-1090-1090
+                        02-1090-1090                    
                     </p>
                     <div class="info-icon">
                         <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook"></a>
                         <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram"></a>
-                        <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube"></a>
+                        <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube"></a>                      
                     </div>
                 </div>
             </div>
         </div>
         <div class="copyright">
             <p>
-                Copyright © 2021Bobio
-                本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+                Copyright © 2021Bobio 本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
             </p>
         </div>
     </footer>
 
+    
+    
+    
 </body>
+
 <script>
+    //header 
     new Vue({
-        el: '#mainheader',
-        data() {
-            return {
-                screenWidth: null,
-                loname: null,
+      el: '#mainheader',
+      data() {
+        return {
+          screenWidth: null,
+          personaldata: [],
+          losituation: "",
+        }
+      },
+      created() {
+        this.screenWidth = document.body.clientWidth;//營幕寬
+        //以下讀取會員資料
+        let array = JSON.parse(localStorage.getItem('personallogin'));//抓localStorage存入變數
+        this.losituation = null;//登入登出狀態
+        if (array != null) {
+          axios.post('phps/memberExbody.php', {
+            mem_no: array[0].mem_no,
+            mem_id: array[0].mem_id,
+            headers: {
+              'Content-Type': 'multipart/form-data'
             }
-        },
-        mounted() {
+          }).then((res) => {
+            this.losituation = "登出";//登入登出狀態
+            this.personaldata = res.data[0];
+          }).catch(error => this.personaldata = res.data);
+        };
+        //以上讀取會員資料
+        window.onresize = () => {
+          return (() => {
             this.screenWidth = document.body.clientWidth;
-            window.onresize = () => {
-                return (() => {
-                    this.screenWidth = document.body.clientWidth;
-                })()
-            },
-                $(`header .headerWrap ul li:nth-child(3) a`).addClass('bottomnavline');
-        },
-        watch: {
-            screenWidth: {
-                handler: function (newval, oldval) {
-                    if (newval >= 1200) {
-                        $(`header>.headerWrap>nav`).removeClass('navPostion');
-                    } else if (newval < 1200) {
-                        $(`header>.headerWrap>nav`).addClass('navPostion');
-                    }
-                },
-                immediate: true,
+          })()
+        }
+      },
+      watch: {
+        screenWidth: {
+          handler: function (newval, oldval) {
+            if (newval >= 1200) {
+              $(`header>.headerWrap>nav`).removeClass('navPostion');
+              $(`header>.headerWrap>nav li:first-child`).css('display', 'none');
+              $(`header>.headerWrap>.member`).css('display', 'flex');
+              $(`header>.headerWrap>.logout`).css('display', 'block');
+            } else if (newval < 1200) {
+              $(`header>.headerWrap>nav`).addClass('navPostion');
+              $(`header>.headerWrap>nav li:first-child`).css('display', 'flex');
+              $(`header>.headerWrap>.member`).css('display', 'none');
+              $(`header>.headerWrap>.logout`).css('display', 'none');
             }
+          },
+          immediate: true,
+        }
+      },
+      methods: {
+        hb() {
+          let place = $("nav").css("right");
+          if (place < "0px") {
+            $("nav").animate({
+              right: 0,
+            }, 1200, 'easeInBounce')
+          } else {
+            $("nav").animate({
+              right: "-30%",
+            }, 1200, 'easeOutBounce')
+          }
         },
-        methods: {
-            hb() {
-                let place = $("nav").css("right");
-                if (place < "0px") {
-                    $("nav").animate({
-                        right: 0,
-                    }, 1200, 'easeInBounce')
-                } else {
-                    $("nav").animate({
-                        right: "-30%",
-                    }, 1200, 'easeOutBounce')
-                }
-            }
+        logout() {
+          localStorage.removeItem('personallogin');
+          location.href = "mainpage.html";
         },
+      },
     });
-
-
+    
+    
     new Vue({
         el: "#app",
         data() {
@@ -275,89 +305,64 @@
                 type: '感情',
                 animal: '鼠',
                 count: 1,
-                introClick: false,
+                introClick:false,
+                amuletType:[],
+                zodiac:[],            
+    
             }
         },
+
+        created(){
+            //接PHP資料出來
+            axios.post('phps/amulet.php' ,{
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }  
+                }).then((res) => {
+                    this.amuletType = res.data;   
+                    // console.log(this.amuletType);                
+                })      
+                
+            axios.post('phps/zodiac.php' ,{
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }  
+                }).then((res) => {
+                    this.zodiac = res.data;   
+                    // console.log(this.zodiac);                
+                })          
+        },
+
+
         mounted() {
             if (localStorage.productno) {
                 this.cart = JSON.parse(localStorage.getItem("productno"));
             }
         },
         methods: {
-            // introClick(){
-            //     this.intro= true;
-            //     this.close= false;
-            // },
             typeClick() {
                 this.front = true;
                 this.back = false;
-                if (this.type == "感情") {
-                    this.typeIntro = "月下老人，簡稱月老，為掌管男女姻緣之神，幫助痴男怨女獲得真愛。";
-                    this.imageSrc = "./backweb/img/amulet/1.png";
+       
+                //this.amuletType.length
+                for( let i=0; i<6; i++) {
+                    if(this.type == this.amuletType[i].type_name){
+                        this.typeIntro = this.amuletType[i].type_text;
+                        this.imageSrc = "./backweb/"+ this.amuletType[i].type_img;
+                    }
                 }
-                if (this.type == "事業") {
-                    this.typeIntro = "關公講究義氣、信守承諾的形象，貴為五文昌之一守護各行各業的人工作順利。";
-                    this.imageSrc = "./backweb/img/amulet/2.png";
-                }
-                if (this.type == "財富") {
-                    this.typeIntro = "財神爺，負責迎祥納福，庇佑財源滾滾，為生活帶來財富。";
-                    this.imageSrc = "./backweb/img/amulet/3.png";
-                }
-                if (this.type == "平安") {
-                    this.typeIntro = "媽祖保佑平安順利，生活中遇見難題時的信仰守護。";
-                    this.imageSrc = "./backweb/img/amulet/4.png";
-                }
-                if (this.type == "健康") {
-                    this.typeIntro = "保生大帝，尊稱為「醫神」，保佑身體健康防疫安全。";
-                    this.imageSrc = "./backweb/img/amulet/5.png";
-                }
-                if (this.type == "學業") {
-                    this.typeIntro = "文昌帝君，主管考試，保佑各路學子應考順利取得佳績。";
-                    this.imageSrc = "./backweb/img/amulet/6.png";
-                }
+            }, 
+
+            showModel(){
+                this.showModal=true;
             },
 
-            showModel() {
-                this.showModal = true;
-            },
+
             animalClick() {
-                // this.front = true;
-                // this.back = false;
-                if (this.animal == "鼠") {
-                    return this.imageSrcAnimal = "./backweb/img/amulet/amulet_2.jpg";
-                }
-                if (this.animal == "牛") {
-                    return this.imageSrcAnimal = "./backweb/img/amulet/amulet_3.jpg";
-                }
-                if (this.animal == "虎") {
-                    return this.imageSrcAnimal = "./backweb/img/amulet/amulet_4.jpg";
-                }
-                if (this.animal == "兔") {
-                    return this.imageSrcAnimal = "./backweb/img/amulet/amulet_5.jpg";
-                }
-                if (this.animal == "龍") {
-                    return this.imageSrcAnimal = "./backweb/img/amulet/amulet_6.jpg";
-                }
-                if (this.animal == "蛇") {
-                    return this.imageSrcAnimal = "./backweb/img/amulet/amulet_7.jpg";
-                }
-                if (this.animal == "馬") {
-                    return this.imageSrcAnimal = "./backweb/img/amulet/amulet_8.jpg";
-                }
-                if (this.animal == "羊") {
-                    return this.imageSrcAnimal = "./backweb/img/amulet/amulet_9.jpg";
-                }
-                if (this.animal == "猴") {
-                    return this.imageSrcAnimal = "./backweb/img/amulet/amulet_10.jpg";
-                }
-                if (this.animal == "雞") {
-                    return this.imageSrcAnimal = "./backweb/img/amulet/amulet_11.jpg";
-                }
-                if (this.animal == "狗") {
-                    return this.imageSrcAnimal = "./backweb/img/amulet/amulet_12.jpg";
-                }
-                if (this.animal == "豬") {
-                    return this.imageSrcAnimal = "./backweb/img/amulet/amulet_13.jpg";
+                for(i=0; i<12; i++){
+                    if(this.animal == this.zodiac[i].zodiac_name){
+                        this.imageSrcAnimal = "./backweb/" + this.zodiac[i].zodiac_img;
+                    }
                 }
             },
 
