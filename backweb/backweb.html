@@ -27,12 +27,14 @@
     <header id="mainheader">
       <div class="headerWrap">
         <div class="logo">
-          <a href="#">
+          <a href="" @click="show = 'showbox0'">
             <img src="../img/header/BOBIO_logo.svg" />
           </a>
         </div>
         <div class="member">
-          <img src="../img/header/member.svg" @click="go13" />
+          <a href="" @click="show = 'showbox0'">
+            <img src="../img/header/member.svg"
+          /></a>
         </div>
         <span>登出</span>
       </div>
@@ -206,7 +208,6 @@
       <div class="adminList" v-if="show =='showbox0'">
         <div class="supply">
           <span>管理員</span>
-          <img src="/img/backweb/backFix.svg" class="showBtn" alt="" />
         </div>
 
         <!-- 表格內容 -->
@@ -773,7 +774,7 @@
           <div class="products-man">
             <span class="order">商品訂單</span>
             <div class="icon1">
-              <img src="img/backData/backFix.svg" alt="" />
+              <img src="img/backdata/backFix.svg" alt="" />
             </div>
           </div>
 
@@ -1285,7 +1286,7 @@
             numbers: ["A", "B", "C", "D", "E", "F"],
             types: ["感情", "平安", "健康", "財富", "事業", "學業"],
             button: false,
-            show: "showbox04",
+            show: "showbox0",
           },
           methods: {
             showButton() {
@@ -1296,9 +1297,7 @@
               }
             },
           },
-          created() {
-            this.image3 = `img/pomesdetail/pomesdetail${this.pomeDetailNumber}.jpg`;
-          },
+          created() {},
         });
     </script>
   </body>
