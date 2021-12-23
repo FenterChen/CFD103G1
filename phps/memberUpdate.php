@@ -1,5 +1,5 @@
-<?php 
 // 確認登入資料
+<?php 
 try {
 	require_once("connectBOBIO.php");
 	//執行sql指令

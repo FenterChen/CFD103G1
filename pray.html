@@ -1,137 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BOBIO｜立即祈願</title>
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/pray.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-  </head>
 
-  <body>
-    <header id="mainheader">
-      <div class="headerWrap">
-        <div class="logo">
-          <a href="mainpage.html">
-            <img src="img/header/BOBIO_logo.svg" />
-          </a>
-        </div>
-        <nav class="navPostion">
-          <ul>
-            <li>
-              <a href="pray.html">立即祈願</a>
-            </li>
-            <li>
-              <a href="onlinepomes.html">線上求籤</a>
-            </li>
-            <li>
-              <a href="amulet.html">平安符願</a>
-            </li>
-            <li>
-              <a href="money.html">立即結緣</a>
-            </li>
-            <li>
-              <a href="Abouts.html">關於我們</a>
-            </li>
-          </ul>
-        </nav>
-        <div class="cart">
-          <a href="shopping_cart1.html"><img src="img/header/cart.svg" /></a>
-        </div>
-        <div class="member">
-          <a href="memberAdd.html"><img src="img/header/member.svg" /></a>
-        </div>
-        <div class="outerHb">
-          <div class="hb" @click="hb">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOBIO｜立即祈願</title>
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/pray.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+  <header id="mainheader">
+    <div class="headerWrap">
+      <div class="logo">
+        <a href="mainpage.html">
+          <img src="img/header/BOBIO_logo.svg">
+        </a>
       </div>
-    </header>
-    <div class="bobioPray" id="app">
-      <component
-        :is="section[currentIdx -1]"
-        @plus-slides="plusSlides"
-        @minus-slides="minusSlides"
-        :cate="cate"
-        :god="god"
-        :focus-img="focusImg"
-        :god-img="godImg"
-        @update-cate="cate = $event"
-        @update-god="god = $event"
-        @add-slide="plusSlides(1)"
-        :class="{fadeRight:rightActivated, fadeLeft:leftActivated}"
-      >
-      </component>
-      <div class="btnStep">
-        <button class="btn previous" @click="minusSlides(1)">
-          <img src="img/pray/preArrow.svg" alt="上一步" />
-          <p class="previousStep">上一步</p>
-        </button>
-        <button class="btn next" @click="plusSlides(1)">
-          <p class="nextStep">下一步</p>
-          <img src="img/pray/nextArrow.svg" alt="下一步" />
-        </button>
-      </div>
-      <div class="goMainpage">
-        <button data-hover="返回首頁" @click="goHome">返回首頁</button>
+      <nav class="navPostion">
+        <ul>
+          <li>
+            <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
+            <div class="logout"><span v-text="losituation" @click="logout"></span></div>
+          </li>
+          <li>
+            <a href="pray.html">立即祈願</a>
+          </li>
+          <li>
+            <a href="onlinepomes.html">線上求籤</a>
+          </li>
+          <li>
+            <a href="amulet.html">平安符願</a>
+          </li>
+          <li>
+            <a href="money.html">立即結緣</a>
+          </li>
+          <li>
+            <a href="Abouts.html">關於我們</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="cart"><a href="shopping_cart1.html"><img src="img/header/cart.svg"></a></div>
+      <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
+      <div class="logout"><span v-text="losituation" @click="logout"></span></div>
+      <div class="outerHb">
+        <div class="hb" @click="hb">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </div>
-    <footer>
-      <div class="footer-wrap">
-        <div class="footer-logo">
-          <img src="./img/header/BOBIO_logo.svg" alt="bobio" />
+  </header>
+  <div class="bobioPray" id="app">
+    <component :is="section[currentIdx -1]" @plus-slides="plusSlides" @minus-slides="minusSlides" :cate="cate"
+      :god="god" :focus-img="focusImg" :god-img="godImg" @update-cate="cate = $event" @update-god="god = $event"
+      @add-slide="plusSlides(1)" :class="{fadeRight:rightActivated, fadeLeft:leftActivated}">
+    </component>
+    <div class="btnStep">
+      <button class="btn previous" @click="minusSlides(1)">
+        <img src="img/pray/preArrow.svg" alt="上一步" />
+        <p class="previousStep">上一步</p>
+      </button>
+      <button class="btn next" @click="plusSlides(1)">
+        <p class="nextStep">下一步</p>
+        <img src="img/pray/nextArrow.svg" alt="下一步" />
+      </button>
+    </div>
+    <div class="goMainpage">
+      <button data-hover="返回首頁" @click="goHome">返回首頁</button>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-logo">
+        <img src="./img/header/BOBIO_logo.svg" alt="bobio" />
+      </div>
+      <div class="footer-slog">
+        <span>用BOBIO就有保佑</span>
+      </div>
+      <div class="footer-info">
+        <div class="list">
+          <ul>
+            <li><a href="pray.html">立即祈願</a></li>
+            <li><a href="onlinepomes.html">線上求籤</a></li>
+            <li><a href="amulet.html">平安符願</a></li>
+            <li><a href="money.html">立即結緣</a></li>
+            <li><a href="Abouts.html">關於我們</a></li>
+          </ul>
         </div>
-        <div class="footer-slog">
-          <span>用BOBIO就有保佑</span>
-        </div>
-        <div class="footer-info">
-          <div class="list">
-            <ul>
-              <li><a href="pray.html">立即祈願</a></li>
-              <li><a href="onlinepomes.html">線上求籤</a></li>
-              <li><a href="amulet.html">平安符願</a></li>
-              <li><a href="money.html">立即結緣</a></li>
-              <li><a href="Abouts.html">關於我們</a></li>
-            </ul>
-          </div>
-          <div class="conn">
-            <p>
-              bobio@temple.com<br />
-              02-1090-1090
-            </p>
-            <div class="info-icon">
-              <a href="#"
-                ><img src="./img/footer/Group 415.svg" alt="facebook"
-              /></a>
-              <a href="#"
-                ><img src="./img/footer/Group 295.svg" alt="instagram"
-              /></a>
-              <a href="#"
-                ><img src="./img/footer/Group 296.svg" alt="youtube"
-              /></a>
-            </div>
+        <div class="conn">
+          <p>
+            bobio@temple.com<br />
+            02-1090-1090
+          </p>
+          <div class="info-icon">
+            <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook" /></a>
+            <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram" /></a>
+            <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube" /></a>
           </div>
         </div>
       </div>
-      <div class="copyright">
-        <p>
-          Copyright © 2021Bobio
-          本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
-        </p>
-      </div>
-    </footer>
-    <script>
-      Vue.component("pray", {
-        props: ["cate", "focusImg", "godImg"],
-        template: `
+    </div>
+    <div class="copyright">
+      <p>
+        Copyright © 2021Bobio
+        本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+      </p>
+    </div>
+  </footer>
+  <script>
+    Vue.component("pray", {
+      props: ["cate", "focusImg", "godImg"],
+      template: `
           <section class='section praySection'>
           <div class="pray">
             <p class="choose">請選擇</p>
@@ -182,149 +168,149 @@
           </div>
         </section>
       `,
-        computed: {
-          cateModel: {
-            get() {
-              return this.cate;
-            },
-            set(value) {
-              this.$emit("update-cate", value);
-              this.$emit("update-god", value);
-            },
+      computed: {
+        cateModel: {
+          get() {
+            return this.cate;
+          },
+          set(value) {
+            this.$emit("update-cate", value);
+            this.$emit("update-god", value);
           },
         },
-        methods: {
-          loveMouseOver() {
-            $(".love").css("background-color", "#FDBF52");
-            $(".prayImg img").attr("src", "img/pray/loveGod.png");
-            $(".godTitle").text("月老");
-            $(".love>.cateTitle").css("color", "#573605");
-            $(".love img").attr("src", "img/pray/loveBrown.svg");
-          },
-          loveMouseOut() {
-            $(".love").css("background-color", "#927858");
-            $(".prayImg img").attr("src", "img/pray/unknownGod.png");
-            $(".godTitle").text("祈願神明");
-            $(".love>.cateTitle").css("color", "#ffffff");
-            $(".love img").attr("src", "img/pray/love.svg");
-          },
-          loveClick() {
-            let godimg = $(".prayGod");
-            godimg.css("transform", "translateX(43px);");
-            this.$emit("plus-slides", 1);
-            this.$emit("update-god", "感情");
-            this.$emit("update-cate", "感情");
-          },
-          studyMouseOver() {
-            $(".study").css("background-color", "#FDBF52");
-            $(".prayImg img").attr("src", "img/pray/studyGod.png");
-            $(".godTitle").text("文昌帝君");
-            $(".study>.cateTitle").css("color", "#573605");
-            $(".study img").attr("src", "img/pray/studyBrown.svg");
-          },
-          studyMouseOut() {
-            $(".study").css("background-color", "#927858");
-            $(".prayImg img").attr("src", "img/pray/unknownGod.png");
-            $(".godTitle").text("祈願神明");
-            $(".study>.cateTitle").css("color", "#ffffff");
-            $(".study img").attr("src", "img/pray/study.svg");
-          },
-          studyClick() {
-            let godimg = $(".prayGod");
-            godimg.css("transform", "translateX(20px);");
-            this.$emit("plus-slides", 1);
-            this.$emit("update-god", "學業");
-            this.$emit("update-cate", "學業");
-          },
-          healthMouseOver() {
-            $(".health").css("background-color", "#FDBF52");
-            $(".prayImg img").attr("src", "img/pray/healthGod.png");
-            $(".godTitle").text("保生大帝");
-            $(".health>.cateTitle").css("color", "#573605");
-            $(".health img").attr("src", "img/pray/healthBrown.svg");
-          },
-          healthMouseOut() {
-            $(".health").css("background-color", "#927858");
-            $(".prayImg img").attr("src", "img/pray/unknownGod.png");
-            $(".godTitle").text("祈願神明");
-            $(".health>.cateTitle").css("color", "#ffffff");
-            $(".health img").attr("src", "img/pray/health.svg");
-          },
-          healthClick() {
-            let godimg = $(".prayGod");
-            godimg.css("transform", "translateX(38px);");
-            this.$emit("plus-slides", 1);
-            this.$emit("update-god", "健康");
-            this.$emit("update-cate", "健康");
-          },
-          safetyMouseOver() {
-            $(".safety").css("background-color", "#FDBF52");
-            $(".prayImg img").attr("src", "img/pray/safetyGod.png");
-            $(".godTitle").text("媽祖");
-            $(".safety>.cateTitle").css("color", "#573605");
-            $(".safety img").attr("src", "img/pray/safetyBrown.svg");
-          },
-          safetyMouseOut() {
-            $(".safety").css("background-color", "#927858");
-            $(".prayImg img").attr("src", "img/pray/unknownGod.png");
-            $(".godTitle").text("祈願神明");
-            $(".safety>.cateTitle").css("color", "#ffffff");
-            $(".safety img").attr("src", "img/pray/safety.svg");
-          },
-          safetyClick() {
-            let godimg = $(".prayGod");
-            godimg.css("transform", "translateX(38px);");
-            this.$emit("plus-slides", 1);
-            this.$emit("update-god", "平安");
-            this.$emit("update-cate", "平安");
-          },
-          wealthMouseOver() {
-            $(".wealth").css("background-color", "#FDBF52");
-            $(".prayImg img").attr("src", "img/pray/moneyGod.png");
-            $(".godTitle").text("財神");
-            $(".wealth>.cateTitle").css("color", "#573605");
-            $(".wealth img").attr("src", "img/pray/moneyBrown.svg");
-          },
-          wealthMouseOut() {
-            $(".wealth").css("background-color", "#927858");
-            $(".prayImg img").attr("src", "img/pray/unknownGod.png");
-            $(".godTitle").text("祈願神明");
-            $(".wealth>.cateTitle").css("color", "#ffffff");
-            $(".wealth img").attr("src", "img/pray/wealth.svg");
-          },
-          wealthClick() {
-            let godimg = $(".prayGod");
-            godimg.css("transform", "translateX(20px);");
-            this.$emit("plus-slides", 1);
-            this.$emit("update-god", "財富");
-            this.$emit("update-cate", "財富");
-          },
-          workMouseOver() {
-            $(".work").css("background-color", "#FDBF52");
-            $(".prayImg img").attr("src", "img/pray/workGod.png");
-            $(".godTitle").text("關公");
-            $(".work>.cateTitle").css("color", "#573605");
-            $(".work img").attr("src", "img/pray/workBrown.svg");
-          },
-          workMouseOut() {
-            $(".work").css("background-color", "#927858");
-            $(".prayImg img").attr("src", "img/pray/unknownGod.png");
-            $(".godTitle").text("祈願神明");
-            $(".work>.cateTitle").css("color", "#ffffff");
-            $(".work img").attr("src", "img/pray/work.svg");
-          },
-          workClick() {
-            let godimg = $(".prayGod");
-            godimg.css("transform", "translateX(38px);");
-            this.$emit("plus-slides", 1);
-            this.$emit("update-god", "事業");
-            this.$emit("update-cate", "事業");
-          },
+      },
+      methods: {
+        loveMouseOver() {
+          $(".love").css("background-color", "#FDBF52");
+          $(".prayImg img").attr("src", "img/pray/loveGod.png");
+          $(".godTitle").text("月老");
+          $(".love>.cateTitle").css("color", "#573605");
+          $(".love img").attr("src", "img/pray/loveBrown.svg");
         },
-      });
-      Vue.component("prayintro", {
-        props: ["focusImg", "god", "godImg"],
-        template: `
+        loveMouseOut() {
+          $(".love").css("background-color", "#927858");
+          $(".prayImg img").attr("src", "img/pray/unknownGod.png");
+          $(".godTitle").text("祈願神明");
+          $(".love>.cateTitle").css("color", "#ffffff");
+          $(".love img").attr("src", "img/pray/love.svg");
+        },
+        loveClick() {
+          let godimg = $(".prayGod");
+          godimg.css("transform", "translateX(43px);");
+          this.$emit("plus-slides", 1);
+          this.$emit("update-god", "感情");
+          this.$emit("update-cate", "感情");
+        },
+        studyMouseOver() {
+          $(".study").css("background-color", "#FDBF52");
+          $(".prayImg img").attr("src", "img/pray/studyGod.png");
+          $(".godTitle").text("文昌帝君");
+          $(".study>.cateTitle").css("color", "#573605");
+          $(".study img").attr("src", "img/pray/studyBrown.svg");
+        },
+        studyMouseOut() {
+          $(".study").css("background-color", "#927858");
+          $(".prayImg img").attr("src", "img/pray/unknownGod.png");
+          $(".godTitle").text("祈願神明");
+          $(".study>.cateTitle").css("color", "#ffffff");
+          $(".study img").attr("src", "img/pray/study.svg");
+        },
+        studyClick() {
+          let godimg = $(".prayGod");
+          godimg.css("transform", "translateX(20px);");
+          this.$emit("plus-slides", 1);
+          this.$emit("update-god", "學業");
+          this.$emit("update-cate", "學業");
+        },
+        healthMouseOver() {
+          $(".health").css("background-color", "#FDBF52");
+          $(".prayImg img").attr("src", "img/pray/healthGod.png");
+          $(".godTitle").text("保生大帝");
+          $(".health>.cateTitle").css("color", "#573605");
+          $(".health img").attr("src", "img/pray/healthBrown.svg");
+        },
+        healthMouseOut() {
+          $(".health").css("background-color", "#927858");
+          $(".prayImg img").attr("src", "img/pray/unknownGod.png");
+          $(".godTitle").text("祈願神明");
+          $(".health>.cateTitle").css("color", "#ffffff");
+          $(".health img").attr("src", "img/pray/health.svg");
+        },
+        healthClick() {
+          let godimg = $(".prayGod");
+          godimg.css("transform", "translateX(38px);");
+          this.$emit("plus-slides", 1);
+          this.$emit("update-god", "健康");
+          this.$emit("update-cate", "健康");
+        },
+        safetyMouseOver() {
+          $(".safety").css("background-color", "#FDBF52");
+          $(".prayImg img").attr("src", "img/pray/safetyGod.png");
+          $(".godTitle").text("媽祖");
+          $(".safety>.cateTitle").css("color", "#573605");
+          $(".safety img").attr("src", "img/pray/safetyBrown.svg");
+        },
+        safetyMouseOut() {
+          $(".safety").css("background-color", "#927858");
+          $(".prayImg img").attr("src", "img/pray/unknownGod.png");
+          $(".godTitle").text("祈願神明");
+          $(".safety>.cateTitle").css("color", "#ffffff");
+          $(".safety img").attr("src", "img/pray/safety.svg");
+        },
+        safetyClick() {
+          let godimg = $(".prayGod");
+          godimg.css("transform", "translateX(38px);");
+          this.$emit("plus-slides", 1);
+          this.$emit("update-god", "平安");
+          this.$emit("update-cate", "平安");
+        },
+        wealthMouseOver() {
+          $(".wealth").css("background-color", "#FDBF52");
+          $(".prayImg img").attr("src", "img/pray/moneyGod.png");
+          $(".godTitle").text("財神");
+          $(".wealth>.cateTitle").css("color", "#573605");
+          $(".wealth img").attr("src", "img/pray/moneyBrown.svg");
+        },
+        wealthMouseOut() {
+          $(".wealth").css("background-color", "#927858");
+          $(".prayImg img").attr("src", "img/pray/unknownGod.png");
+          $(".godTitle").text("祈願神明");
+          $(".wealth>.cateTitle").css("color", "#ffffff");
+          $(".wealth img").attr("src", "img/pray/wealth.svg");
+        },
+        wealthClick() {
+          let godimg = $(".prayGod");
+          godimg.css("transform", "translateX(20px);");
+          this.$emit("plus-slides", 1);
+          this.$emit("update-god", "財富");
+          this.$emit("update-cate", "財富");
+        },
+        workMouseOver() {
+          $(".work").css("background-color", "#FDBF52");
+          $(".prayImg img").attr("src", "img/pray/workGod.png");
+          $(".godTitle").text("關公");
+          $(".work>.cateTitle").css("color", "#573605");
+          $(".work img").attr("src", "img/pray/workBrown.svg");
+        },
+        workMouseOut() {
+          $(".work").css("background-color", "#927858");
+          $(".prayImg img").attr("src", "img/pray/unknownGod.png");
+          $(".godTitle").text("祈願神明");
+          $(".work>.cateTitle").css("color", "#ffffff");
+          $(".work img").attr("src", "img/pray/work.svg");
+        },
+        workClick() {
+          let godimg = $(".prayGod");
+          godimg.css("transform", "translateX(38px);");
+          this.$emit("plus-slides", 1);
+          this.$emit("update-god", "事業");
+          this.$emit("update-cate", "事業");
+        },
+      },
+    });
+    Vue.component("prayintro", {
+      props: ["focusImg", "god", "godImg"],
+      template: `
           <section class="section prayIntro">
           <div class="mainSec">
             <div class="prayGod">
@@ -346,28 +332,28 @@
           </div>
         </section>
       `,
-        computed: {
-          godModel: {
-            get() {
-              return this.god;
-            },
-            set(value) {
-              this.$emit("update-god", value);
-              this.$emit("update-cate", value);
-            },
+      computed: {
+        godModel: {
+          get() {
+            return this.god;
           },
-          // imgWithDifWidth() {
-          //   return window.innerWidth < 1024 ? this.focusImg : this.godImg
-          // },
-        },
-        methods: {
-          plusSlides() {
-            this.$emit("plus-slides", 1);
+          set(value) {
+            this.$emit("update-god", value);
+            this.$emit("update-cate", value);
           },
         },
-      });
-      Vue.component("prayattr", {
-        template: `
+        // imgWithDifWidth() {
+        //   return window.innerWidth < 1024 ? this.focusImg : this.godImg
+        // },
+      },
+      methods: {
+        plusSlides() {
+          this.$emit("plus-slides", 1);
+        },
+      },
+    });
+    Vue.component("prayattr", {
+      template: `
           <section class="section attrIntro">
           <div class="attrSec">
             <div class="stepMethod" @click="minusSlides">
@@ -410,17 +396,17 @@
           </div>
         </section>
       `,
-        methods: {
-          plusSlides() {
-            this.$emit("plus-slides", 1);
-          },
-          minusSlides() {
-            this.$emit("minus-slides", 1);
-          },
+      methods: {
+        plusSlides() {
+          this.$emit("plus-slides", 1);
         },
-      });
-      Vue.component("praystart", {
-        template: `
+        minusSlides() {
+          this.$emit("minus-slides", 1);
+        },
+      },
+    });
+    Vue.component("praystart", {
+      template: `
           <section class="section byeBye">
           <div class="byeSec">
             <div class="byeTitle">
@@ -443,17 +429,17 @@
           </div>
         </section>
       `,
-        methods: {
-          plusSlides() {
-            this.$emit("plus-slides", 1);
-          },
-          minusSlides() {
-            this.$emit("minus-slides", 1);
-          },
+      methods: {
+        plusSlides() {
+          this.$emit("plus-slides", 1);
         },
-      });
-      Vue.component("praydone", {
-        template: `
+        minusSlides() {
+          this.$emit("minus-slides", 1);
+        },
+      },
+    });
+    Vue.component("praydone", {
+      template: `
           <section class="section Finish">
           <div class="doneSec">
             <div class="doneTitle">
@@ -476,247 +462,268 @@
           </div>
         </section>
       `,
-        methods: {},
-      });
-      //header
-      new Vue({
-        el: "#mainheader",
-        data() {
-          return {
-            screenWidth: null,
-          };
-        },
-        mounted() {
-          this.screenWidth = document.body.clientWidth;
-          (window.onresize = () => {
-            return (() => {
-              this.screenWidth = document.body.clientWidth;
-            })();
-          }),
-            $(`header .headerWrap ul li:nth-child(4) a`).addClass(
-              "bottomnavline"
-            );
-        },
-        watch: {
-          screenWidth: {
-            handler: function (newval, oldval) {
-              if (newval >= 1200) {
-                $(`header>.headerWrap>nav`).removeClass("navPostion");
-              } else if (newval < 1200) {
-                $(`header>.headerWrap>nav`).addClass("navPostion");
-              }
-            },
-            immediate: true,
-          },
-        },
-        methods: {
-          hb() {
-            let place = $("nav").css("right");
-            if (place < "0px") {
-              $("nav").animate(
-                {
-                  right: 0,
-                },
-                1200,
-                "easeInBounce"
-              );
-            } else {
-              $("nav").animate(
-                {
-                  right: "-30%",
-                },
-                1200,
-                "easeOutBounce"
-              );
+      methods: {},
+    });
+    //header 
+    new Vue({
+      el: '#mainheader',
+      data() {
+        return {
+          screenWidth: null,
+          personaldata: [],
+          losituation: "",
+        }
+      },
+      created() {
+        this.screenWidth = document.body.clientWidth;//營幕寬
+        //以下讀取會員資料
+        let array = JSON.parse(localStorage.getItem('personallogin'));//抓localStorage存入變數
+        this.losituation = null;//登入登出狀態
+        if (array != null) {
+          axios.post('phps/memberExbody.php', {
+            mem_no: array[0].mem_no,
+            mem_id: array[0].mem_id,
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }).then((res) => {
+            this.losituation = "登出";//登入登出狀態
+            this.personaldata = res.data[0];
+          }).catch(error => this.personaldata = res.data);
+        };
+        //以上讀取會員資料
+        window.onresize = () => {
+          return (() => {
+            this.screenWidth = document.body.clientWidth;
+          })()
+        }
+        $(`header .headerWrap ul li:nth-child(2) a`).addClass(
+          "bottomnavline"
+        );
+      },
+      watch: {
+        screenWidth: {
+          handler: function (newval, oldval) {
+            if (newval >= 1200) {
+              $(`header>.headerWrap>nav`).removeClass('navPostion');
+              $(`header>.headerWrap>nav li:first-child`).css('display', 'none');
+              $(`header>.headerWrap>.member`).css('display', 'flex');
+              $(`header>.headerWrap>.logout`).css('display', 'block');
+            } else if (newval < 1200) {
+              $(`header>.headerWrap>nav`).addClass('navPostion');
+              $(`header>.headerWrap>nav li:first-child`).css('display', 'flex');
+              $(`header>.headerWrap>.member`).css('display', 'none');
+              $(`header>.headerWrap>.logout`).css('display', 'none');
             }
           },
+          immediate: true,
+        }
+      },
+      methods: {
+        hb() {
+          let place = $("nav").css("right");
+          if (place < "0px") {
+            $("nav").animate({
+              right: 0,
+            }, 1200, 'easeInBounce')
+          } else {
+            $("nav").animate({
+              right: "-30%",
+            }, 1200, 'easeOutBounce')
+          }
         },
-      });
-      new Vue({
-        el: "#app",
-        data: {
-          currentIdx: 1,
-          section: ["pray", "prayintro", "prayattr", "praystart", "praydone"],
-          cate: "種類",
-          god: "",
-          leftActivated: false,
-          rightActivated: false,
-          imgList: [
-            { key: "種類", img: "img/pray/unknownGod.png" },
-            { key: "學業", img: "img/pray/studyGod.png" },
-            { key: "健康", img: "img/pray/healthGod.png" },
-            { key: "平安", img: "img/pray/safetyGod.png" },
-            { key: "財富", img: "img/pray/moneyGod.png" },
-            { key: "事業", img: "img/pray/workGod.png" },
-            { key: "感情", img: "img/pray/loveGod.png" },
-          ],
-          godList: [
-            { key: "學業", img: "img/pray/studyGodShadow.png" },
-            { key: "健康", img: "img/pray/healthGodShadow.png" },
-            { key: "平安", img: "img/pray/safetyGodShadow.png" },
-            { key: "財富", img: "img/pray/moneyGodShadow.png" },
-            { key: "事業", img: "img/pray/workGodShadow.png" },
-            { key: "感情", img: "img/pray/loveGodShadow.png" },
-          ],
+        logout() {
+          localStorage.removeItem('personallogin');
+          location.href = "mainpage.html";
         },
-        computed: {
-          focusImg() {
-            const focusObj = this.imgList.find((item) => item.key == this.cate);
-            return focusObj?.img || "img/pray/unknownGod.png";
-          },
-          godImg() {
-            const focusObj = this.godList.find((item) => item.key == this.god);
-            return focusObj?.img || "img/pray/unknownGod.png";
-          },
+      },
+    });
+    new Vue({
+      el: "#app",
+      data: {
+        currentIdx: 1,
+        section: ["pray", "prayintro", "prayattr", "praystart", "praydone"],
+        cate: "種類",
+        god: "",
+        leftActivated: false,
+        rightActivated: false,
+        imgList: [
+          { key: "種類", img: "img/pray/unknownGod.png" },
+          { key: "學業", img: "img/pray/studyGod.png" },
+          { key: "健康", img: "img/pray/healthGod.png" },
+          { key: "平安", img: "img/pray/safetyGod.png" },
+          { key: "財富", img: "img/pray/moneyGod.png" },
+          { key: "事業", img: "img/pray/workGod.png" },
+          { key: "感情", img: "img/pray/loveGod.png" },
+        ],
+        godList: [
+          { key: "學業", img: "img/pray/studyGodShadow.png" },
+          { key: "健康", img: "img/pray/healthGodShadow.png" },
+          { key: "平安", img: "img/pray/safetyGodShadow.png" },
+          { key: "財富", img: "img/pray/moneyGodShadow.png" },
+          { key: "事業", img: "img/pray/workGodShadow.png" },
+          { key: "感情", img: "img/pray/loveGodShadow.png" },
+        ],
+      },
+      computed: {
+        focusImg() {
+          const focusObj = this.imgList.find((item) => item.key == this.cate);
+          return focusObj?.img || "img/pray/unknownGod.png";
         },
-        watch: {
-          currentIdx() {
-            this.btnHandler();
-          },
+        godImg() {
+          const focusObj = this.godList.find((item) => item.key == this.god);
+          return focusObj?.img || "img/pray/unknownGod.png";
         },
-        methods: {
-          goHome() {
-            location.href = "mainpage.html";
-          },
-          plusSlides(n) {
-            this.currentIdx += n;
-            this.rightActivated = false;
-            this.leftActivated = true;
-          },
-          minusSlides(n) {
-            this.currentIdx -= n;
-            this.rightActivated = true;
-            this.leftActivated = false;
-          },
-          currentSlide(n) {
-            this.showSlides((this.currentIdx = n));
-          },
-          btnHandler() {
-            if (this.currentIdx == 1) {
-              $(".btnStep").css("display", "none");
-              $(".goMainpage").css("display", "none");
-              $(".bobioPray").addClass("no-line");
-            } else if (this.currentIdx >= 5) {
-              $(".btnStep").css("display", "none");
-              $(".goMainpage").css("display", "flex");
-              $(".bobioPray").removeClass("no-line");
-            } else if (this.currentIdx == 3) {
-              $(".next").css("opacity", "0");
-            } else {
-              $(".btnStep").css("display", "flex");
-              $(".goMainpage").css("display", "none");
-              $(".bobioPray").removeClass("no-line");
-              $(".next").css("opacity", "1");
-            }
-          },
-        },
-        mounted() {
+      },
+      watch: {
+        currentIdx() {
           this.btnHandler();
         },
-      });
-      new Vue({
-        el: "#app",
-        data() {
-          return {
-            registerframe: true,
-            loginframe: false,
-            name: null,
-            phone: null,
-            email: null,
-            psw: null,
-            confirmpsw: null,
-            addtime: null,
-            personaldata: [],
-          };
+      },
+      methods: {
+        goHome() {
+          location.href = "mainpage.html";
         },
-        created() {
-          let array = JSON.parse(localStorage.getItem("personallogin"));
+        plusSlides(n) {
+          this.currentIdx += n;
+          this.rightActivated = false;
+          this.leftActivated = true;
+        },
+        minusSlides(n) {
+          this.currentIdx -= n;
+          this.rightActivated = true;
+          this.leftActivated = false;
+        },
+        currentSlide(n) {
+          this.showSlides((this.currentIdx = n));
+        },
+        btnHandler() {
+          if (this.currentIdx == 1) {
+            $(".btnStep").css("display", "none");
+            $(".goMainpage").css("display", "none");
+            $(".bobioPray").addClass("no-line");
+          } else if (this.currentIdx >= 5) {
+            $(".btnStep").css("display", "none");
+            $(".goMainpage").css("display", "flex");
+            $(".bobioPray").removeClass("no-line");
+          } else if (this.currentIdx == 3) {
+            $(".next").css("opacity", "0");
+          } else {
+            $(".btnStep").css("display", "flex");
+            $(".goMainpage").css("display", "none");
+            $(".bobioPray").removeClass("no-line");
+            $(".next").css("opacity", "1");
+          }
+        },
+      },
+      mounted() {
+        this.btnHandler();
+      },
+    });
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          registerframe: true,
+          loginframe: false,
+          name: null,
+          phone: null,
+          email: null,
+          psw: null,
+          confirmpsw: null,
+          addtime: null,
+          personaldata: [],
+        };
+      },
+      created() {
+        let array = JSON.parse(localStorage.getItem("personallogin"));
+        axios
+          .post("phps/memberExist.php", {
+            mem_no: array[0].mem_no,
+            mem_id: array[0].mem_id,
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          })
+          .then((res) => {
+            if (res.data == "erro") {
+              location.href = "mainpage.html";
+            } else {
+              location.href = "memeberFix.html";
+            }
+          })
+          .catch((error) => (this.personaldata = res.data));
+      },
+      methods: {
+        logi() {
+          this.registerframe = false;
+          this.loginframe = true;
+        },
+        regist() {
+          this.loginframe = false;
+          this.registerframe = true;
+        },
+        btnAdd() {
+          var m = new Date();
+          this.addtime =
+            m.getFullYear() +
+            "-" +
+            (m.getMonth() + 1) +
+            "-" +
+            m.getDate() +
+            " " +
+            m.getHours() +
+            ":" +
+            m.getMinutes() +
+            ":" +
+            m.getSeconds();
+
           axios
-            .post("phps/memberExist.php", {
-              mem_no: array[0].mem_no,
-              mem_id: array[0].mem_id,
+            .post("phps/memberAdd.php", {
+              mem_name: this.name,
+              mem_id: this.email,
+              mem_psw: this.psw,
+              phone: this.phone,
+              email: this.email,
+              mem_date: this.addtime,
+              mem_status: "0",
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then(function (response) {
+              console.log(response);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        },
+        logincheck() {
+          axios
+            .post("phps/memberCheck.php", {
+              mem_id: this.email,
+              mem_psw: this.psw,
               headers: {
                 "Content-Type": "multipart/form-data",
               },
             })
             .then((res) => {
+              this.personaldata = res.data;
               if (res.data == "erro") {
-                location.href = "mainpage.html";
+                alert("輸入錯誤");
               } else {
-                location.href = "memeberFix.html";
+                location.href = "mainpage.html";
+                localStorage.setItem(
+                  "personallogin",
+                  JSON.stringify(res.data)
+                );
               }
             })
             .catch((error) => (this.personaldata = res.data));
         },
-        methods: {
-          logi() {
-            this.registerframe = false;
-            this.loginframe = true;
-          },
-          regist() {
-            this.loginframe = false;
-            this.registerframe = true;
-          },
-          btnAdd() {
-            var m = new Date();
-            this.addtime =
-              m.getFullYear() +
-              "-" +
-              (m.getMonth() + 1) +
-              "-" +
-              m.getDate() +
-              " " +
-              m.getHours() +
-              ":" +
-              m.getMinutes() +
-              ":" +
-              m.getSeconds();
+      },
+    });
+  </script>
+</body>
 
-            axios
-              .post("phps/memberAdd.php", {
-                mem_name: this.name,
-                mem_id: this.email,
-                mem_psw: this.psw,
-                phone: this.phone,
-                email: this.email,
-                mem_date: this.addtime,
-                mem_status: "0",
-                headers: {
-                  "Content-Type": "multipart/form-data",
-                },
-              })
-              .then(function (response) {
-                console.log(response);
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
-          },
-          logincheck() {
-            axios
-              .post("phps/memberCheck.php", {
-                mem_id: this.email,
-                mem_psw: this.psw,
-                headers: {
-                  "Content-Type": "multipart/form-data",
-                },
-              })
-              .then((res) => {
-                this.personaldata = res.data;
-                if (res.data == "erro") {
-                  alert("輸入錯誤");
-                } else {
-                  location.href = "mainpage.html";
-                  localStorage.setItem(
-                    "personallogin",
-                    JSON.stringify(res.data)
-                  );
-                }
-              })
-              .catch((error) => (this.personaldata = res.data));
-          },
-        },
-      });
-    </script>
-  </body>
 </html>

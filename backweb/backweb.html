@@ -160,166 +160,13 @@
       </table>
       <!-- 表格內容結束 -->
     </div>
-
     <!-- 祈願紀錄 -->
     <div class="prayRecorder" v-if="show =='showbox01'">
-      <div class="supply">
-        <span>祈願紀錄</span>
-      </div>
-      <div class="searchbox">
-        <div class="search">
-          <input type="text" placeholder="搜尋關鍵字" />
-          <button><img src="img/backData/search.svg" alt="" /></button>
-        </div>
-        <div class="page">
-          <span class="each">每頁顯示</span>
-          <select>
-            <option value="" style="color: #927858">10</option>
-            <option value="" style="color: #927858">20</option>
-            <option value="" style="color: #927858">30</option>
-          </select>
-          <span class="each">頁</span>
-        </div>
-      </div>
-      <!-- 表格內容 -->
-      <table class="table table-hover table-pray">
-        <thead>
-          <tr>
-            <th scope="col">祈願紀錄編號</th>
-            <th scope="col">會員編號</th>
-            <th scope="col">供品</th>
-            <th scope="col">小卡</th>
-            <th scope="col">祈願日期</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>00000001a-1</th>
-            <td>00000001</td>
-            <td>組合三-甜食</td>
-            <td>感情-小卡一</td>
-            <td>2021.11.18</td>
-          </tr>
-          <tr>
-            <th>00000001a-1</th>
-            <td>00000001</td>
-            <td>組合三-甜食</td>
-            <td>感情-小卡一</td>
-            <td>2021.11.18</td>
-          </tr>
-          <tr>
-            <th>00000001a-1</th>
-            <td>00000001</td>
-            <td>組合三-甜食</td>
-            <td>感情-小卡一</td>
-            <td>2021.11.18</td>
-          </tr>
-          <tr>
-            <th scope="row">00000001a-1</th>
-            <td>00000001</td>
-            <td>組合三-甜食</td>
-            <td>感情-小卡一</td>
-            <td>2021.11.18</td>
-          </tr>
-          <tr>
-            <th scope="row">00000001a-1</th>
-            <td>00000001</td>
-            <td>組合三-甜食</td>
-            <td>感情-小卡一</td>
-            <td>2021.11.18</td>
-          </tr>
-          <tr>
-            <th scope="row">00000001a-1</th>
-            <td>00000001</td>
-            <td>組合三-甜食</td>
-            <td>感情-小卡一</td>
-            <td>2021.11.18</td>
-          </tr>
-          <tr>
-            <th scope="row">00000001a-1</th>
-            <td>00000001</td>
-            <td>組合三-甜食</td>
-            <td>感情-小卡一</td>
-            <td>2021.11.18</td>
-          </tr>
-          <tr>
-            <th scope="row">00000001a-1</th>
-            <td>00000001</td>
-            <td>組合三-甜食</td>
-            <td>感情-小卡一</td>
-            <td>2021.11.18</td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- 表格內容結束 -->
-
-      <!-- 頁簽 -->
-      <div class="pagelist">
-        <a href="">
-          < </a>
-            <a href="">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">4</a>
-            <a href="">5</a>
-            <a href=""> > </a>
-      </div>
+      <prayrecord></prayrecord>
     </div>
     <!-- 小卡管理 -->
     <div class="cardManage" v-if="show =='showbox02'">
-      <div class="supply">
-        <span>小卡管理</span>
-        <img src="img/backData/backFix.svg" @click="showButton" />
-      </div>
-      <div class="prayTable">
-        <table class="table table-card">
-          <thead>
-            <tr>
-              <th scope="col">種類</th>
-              <th scope="col">感情</th>
-              <th scope="col">學業</th>
-              <th scope="col">健康</th>
-              <th scope="col">平安</th>
-              <th scope="col">財富</th>
-              <th scope="col">事業</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">卡片一內容</th>
-              <td><input value="美滿婚姻" /></td>
-              <td><input value="金榜題名" /></td>
-              <td><input value="健康長壽" /></td>
-              <td><input value="吉祥如意" /></td>
-              <td><input value="財源廣進" /></td>
-              <td><input value="錦繡前程" /></td>
-            </tr>
-            <tr>
-              <th scope="row">卡片二內容</th>
-              <td><input value="美滿婚姻" /></td>
-              <td><input value="金榜題名" /></td>
-              <td><input value="健康長壽" /></td>
-              <td><input value="吉祥如意" /></td>
-              <td><input value="財源廣進" /></td>
-              <td><input value="錦繡前程" /></td>
-            </tr>
-            <tr>
-              <th scope="row">卡片三內容</th>
-              <td><input value="美滿婚姻" /></td>
-              <td><input value="金榜題名" /></td>
-              <td><input value="健康長壽" /></td>
-              <td><input value="吉祥如意" /></td>
-              <td><input value="財源廣進" /></td>
-              <td><input value="錦繡前程" /></td>
-            </tr>
-            <tr></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="saveBtn" v-if="button">
-        <button class="cancle" data-hover="取消">取消</button>
-        <button class="save" data-hover="確認">確認</button>
-      </div>
+      <cardmanage></cardmanage>
     </div>
     <!-- 供品管理 -->
     <div class="supplyManage" v-if="show =='showbox03'">
@@ -878,77 +725,7 @@
     </div>
     <!-- 會員資料 -->
     <div class="memberDetail" v-if="show =='showbox11'">
-      <div class="supply">
-        <span>會員資料</span>
-      </div>
-      <div class="searchbox">
-        <div class="search">
-          <input type="text" placeholder="搜尋關鍵字" />
-          <button>
-            <img src="img/backData/search.svg" alt="" />
-          </button>
-        </div>
-        <div class="page">
-          <span class="each">每頁顯示</span>
-          <select>
-            <option value="" style="color: #927858">10</option>
-            <option value="" style="color: #927858">20</option>
-            <option value="" style="color: #927858">30</option>
-          </select>
-          <span class="each">頁</span>
-        </div>
-      </div>
-      <!-- 表格內容 -->
-
-      <table class="table table-hover table-pray">
-        <thead>
-          <tr>
-            <th>編號</th>
-            <th>姓名</th>
-            <th>會員帳號</th>
-            <th>會員密碼</th>
-            <th>手機號碼</th>
-            <th>信箱</th>
-            <th>加入日期</th>
-            <th>會員狀態</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>00000001</td>
-            <td>王小明</td>
-            <td>wang3ming</td>
-            <td>birthday1207</td>
-            <td>0900155979</td>
-            <td>wang3ming@gmail.com</td>
-            <td>2021.11.18</td>
-            <td>正常</td>
-          </tr>
-          <tr>
-            <td>00000001</td>
-            <td>王小明</td>
-            <td>wang3ming</td>
-            <td>birthday1207</td>
-            <td>0900155979</td>
-            <td>wang3ming@gmail.com</td>
-            <td>2021.11.18</td>
-            <td>正常</td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- 表格內容結束 -->
-
-      <!-- 頁簽 -->
-      <div class="pagelist">
-        <a href="">
-          < </a>
-            <a href="">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">4</a>
-            <a href="">5</a>
-            <a href=""> > </a>
-      </div>
+      <personaldata></personaldata>
     </div>
     <!-- 結緣紀錄 -->
     <div class="moneyRecorder" v-if="show =='showbox12'">
@@ -1015,6 +792,419 @@
   </div>
 
   <script>
+    var Componentcardmanage = Vue.component('cardmanage', {
+      data() {
+        return {
+
+        }
+      },
+      template: `
+      <div class="supply">
+        <span>小卡管理</span>
+        <img src="img/backData/backFix.svg"/>
+      <div class="prayTable">
+        <table class="table table-card">
+          <thead>
+            <tr>
+              <th scope="col">種類</th>
+              <th scope="col">小卡</th>
+              <th scope="col">新小卡圖檔</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <select>
+                  <option value="編號1"></option>
+                  <option value="編號2"></option>
+                  <option value="標號3"></option>
+                 </select></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="saveBtn">
+        <button class="cancle" data-hover="取消">取消</button>
+        <button class="save" data-hover="確認">確認</button>
+      </div>
+      </div>
+      `
+    })
+
+    var Componentprayrecord = Vue.component('prayrecord', {
+      data() {
+        return {
+          prayerdata: [],
+          searchData: '',
+          searchval: '',
+          pno: 1,//目前頁數
+          psize: 3,//頁面筆數
+          currentPage: 1,//目前頁面
+          totalPage: 0,//總頁數
+          num: 0,//表格數量
+        }
+      },
+      created() {
+        axios.post('phps/prayerrecordShow.php', {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((res) => {
+          this.prayerdata = res.data;
+        }
+        ).catch(function (error) {
+          console.log(error);
+        });
+      },
+      methods: {
+        list() {//搜尋
+          let search = this.searchval;
+          this.prayerdata = this.prayerdata.filter(function (index) {
+            return Object.keys(index).some(function (key) {
+              return String(index[key]).indexOf(search) != -1;
+            })
+          });
+        },
+        nextpage() {
+          this.currentPage = this.pno;//目前頁數
+          let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+          let endRow = this.currentPage * this.psize;//結束顯示行
+          endRow = (endRow > this.num) ? this.num : endRow;
+          if (this.currentPage < this.totalPage) {
+            this.pno += 1;
+          }
+        },
+        previouspage() {
+          this.currentPage = this.pno;//目前頁數
+          let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+          let endRow = this.currentPage * this.psize;//結束顯示行
+          endRow = (endRow > this.num) ? this.num : endRow;
+          if (this.currentPage > 1) {
+            this.pno -= 1;
+          } else if (this.currentPage == 1) {
+            this.pno = 1;
+          }
+        },
+        first() {
+          this.pno = 1;
+        },
+        end() {
+          this.pno = this.totalPage;
+        },
+      },
+      updated() {
+        this.num = this.prayerdata.length;//表格數量
+        //總共分幾頁
+        if (this.num / this.psize > parseInt(this.num / this.psize)) {
+          this.totalPage = parseInt(this.num / this.psize) + 1;
+        } else {
+          this.totalPage = parseInt(this.num / this.psize);
+        }
+        this.currentPage = this.pno;//目前頁數
+        let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+        let endRow = this.currentPage * this.psize;//結束顯示行
+        endRow = (endRow > this.num) ? this.num : endRow;
+        for (let i = 1; i < (this.num + 1); i++) {
+          if (i >= startRow && i <= endRow) {
+            $('#tablepray tbody tr:nth-child(' + i + ')').css({ display: "table-row" });
+          } else {
+            $('#tablepray tbody tr:nth-child(' + i + ')').css({ display: "none" });
+          }
+        }
+      },
+      watch: {
+        searchval() {
+          if (this.searchval == '') {
+            axios.post('phps/prayerrecordShow.php', {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            }).then((res) => {
+              this.prayerdata = res.data;
+            }
+            ).catch(function (error) {
+              console.log(error);
+            });
+          }
+        },
+        pno() {
+          if (this.num / this.psize > parseInt(this.num / this.psize)) {
+            this.totalPage = parseInt(this.num / this.psize) + 1;
+          } else {
+            this.totalPage = parseInt(this.num / this.psize);
+          }
+          this.currentPage = this.pno;//目前頁數
+          let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+          let endRow = this.currentPage * this.psize;//結束顯示行
+          endRow = (endRow > this.num) ? this.num : endRow;
+          for (let i = 1; i < (this.num + 1); i++) {
+            if (i >= startRow && i <= endRow) {
+              $('#tablepray tbody tr:nth-child(' + i + ')').css({ display: "table-row" });
+            } else {
+              $('#tablepray tbody tr:nth-child(' + i + ')').css({ display: "none" });
+            }
+          }
+        },
+        psize() {
+          this.pno = 1;
+        }
+      },
+      template:
+        `
+      <div class="supply">
+        <span>祈願紀錄</span>
+      <div class="searchbox">
+        <div class="search">
+          <input type="text" placeholder="搜尋關鍵字"  v-model="searchval" />
+          <button @click="list">
+            <img src="img/backData/search.svg" alt="" />
+          </button>
+      </div>
+          <div class="page">
+            <span class="each">每頁顯示</span>
+            <select v-model="psize">
+              <option value="3" style="color: #927858">3</option>
+              <option value="5" style="color: #927858">5</option>
+              <option value="10" style="color: #927858">10</option>
+            </select>
+            <span class="each">筆</span>
+          </div>
+      </div>
+      <!-- 表格內容 -->
+      <table class="table table-hover table-pray" id="tablepray">
+        <thead>
+          <tr>
+            <th scope="col">祈願紀錄編號</th>
+            <th scope="col">會員編號</th>
+            <th scope="col">供品</th>
+            <th scope="col">小卡</th>
+            <th scope="col">祈願日期</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item,index) in prayerdata">
+            <th>{{item.pray_rec}}</th>
+            <td>{{item.mem_no}}</td>
+            <td>{{item.off_name+'-'+item.off_cont}}</td>
+            <td><img :src="item.card_cont+'.png'"></td>
+            <td>{{item.pray_date}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- 表格內容結束 -->
+
+      <!-- 頁簽 -->
+      <div class="pagelist">
+          <h4> 總共{{num}}筆，{{totalPage}}頁 </h4>
+          <a href="#"@click="first">首頁</a>
+          <a href="#"@click="previouspage"> < </a>
+          <a>{{currentPage}}</a>
+          <a href="#" @click="nextpage"> > </a>
+          <a href="#"@click="end">末頁</a>
+      </div>
+      </div>
+      `
+    })
+
+    var Componentmember = Vue.component('personaldata', {
+      data() {
+        return {
+          personaldata: [],
+          searchData: '',
+          searchval: '',
+          pno: 1,//目前頁數
+          psize: 10,//頁面筆數
+          currentPage: 1,//目前頁面
+          totalPage: 0,//總頁數
+          num: 0,//表格數量
+        }
+      },
+      created() {
+        axios.post('phps/memberShow.php', {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((res) => {
+          for (i = 0; i < res.data.length; i++) {
+            let add = res.data[i].mem_status;
+            if (add == "0") {
+              add = "正常";
+            } else if (add == "1") {
+              add = "待驗證";
+            } else if (add == "2") {
+              add = "停權";
+            };
+            res.data[i].mem_status = add;
+          };
+          this.personaldata = res.data;
+        }
+        ).catch(function (error) {
+          console.log(error);
+        });
+      },
+      updated() {
+        this.num = this.personaldata.length;//表格數量
+        //總共分幾頁
+        if (this.num / this.psize > parseInt(this.num / this.psize)) {
+          this.totalPage = parseInt(this.num / this.psize) + 1;
+        } else {
+          this.totalPage = parseInt(this.num / this.psize);
+        }
+        this.currentPage = this.pno;//目前頁數
+        let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+        let endRow = this.currentPage * this.psize;//結束顯示行
+        endRow = (endRow > this.num) ? this.num : endRow;
+        for (let i = 1; i < (this.num + 1); i++) {
+          if (i >= startRow && i <= endRow) {
+            $('#membertable tbody tr:nth-child(' + i + ')').css({ display: "table-row" });
+          } else {
+            $('#membertable tbody tr:nth-child(' + i + ')').css({ display: "none" });
+          }
+        }
+      },
+      methods: {
+        list() {//搜尋
+          let search = this.searchval;
+          this.personaldata = this.personaldata.filter(function (index) {
+            return Object.keys(index).some(function (key) {
+              return String(index[key]).indexOf(search) != -1;
+            })
+          });
+        },
+        nextpage() {
+          this.currentPage = this.pno;//目前頁數
+          let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+          let endRow = this.currentPage * this.psize;//結束顯示行
+          endRow = (endRow > this.num) ? this.num : endRow;
+          if (this.currentPage < this.totalPage) {
+            this.pno += 1;
+          }
+        },
+        previouspage() {
+          this.currentPage = this.pno;//目前頁數
+          let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+          let endRow = this.currentPage * this.psize;//結束顯示行
+          endRow = (endRow > this.num) ? this.num : endRow;
+          if (this.currentPage > 1) {
+            this.pno -= 1;
+          } else if (this.currentPage == 1) {
+            this.pno = 1;
+          }
+        },
+        first() {
+          this.pno = 1;
+        },
+        end() {
+          this.pno = this.totalPage;
+        },
+      },
+      watch: {
+        searchval() {
+          if (this.searchval == '') {
+            axios.post('phps/memberShow.php', {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            }).then((res) => {
+              for (i = 0; i < res.data.length; i++) {
+                let add = res.data[i].mem_status;
+                if (add == "0") {
+                  add = "正常";
+                } else if (add == "1") {
+                  add = "待驗證";
+                } else if (add == "2") {
+                  add = "停權";
+                };
+                res.data[i].mem_status = add;
+              };
+              this.personaldata = res.data;
+            }
+            ).catch(function (error) {
+              console.log(error);
+            });
+          }
+        },
+        pno() {
+          if (this.num / this.psize > parseInt(this.num / this.psize)) {
+            this.totalPage = parseInt(this.num / this.psize) + 1;
+          } else {
+            this.totalPage = parseInt(this.num / this.psize);
+          }
+          this.currentPage = this.pno;//目前頁數
+          let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+          let endRow = this.currentPage * this.psize;//結束顯示行
+          endRow = (endRow > this.num) ? this.num : endRow;
+          for (let i = 1; i < (this.num + 1); i++) {
+            if (i >= startRow && i <= endRow) {
+              $('#membertable tbody tr:nth-child(' + i + ')').css({ display: "table-row" });
+            } else {
+              $('#membertable tbody tr:nth-child(' + i + ')').css({ display: "none" });
+            }
+          }
+        },
+        psize() {
+          this.pno = 1;
+        }
+      },
+      template:
+        `<div class="supply">
+                  <span>會員資料</span>
+                <div class="searchbox">
+                  <div class="search">
+                    <input type="text" placeholder="搜尋關鍵字"  v-model="searchval" />
+                    <button @click="list">
+                      <img src="img/backData/search.svg" alt="" />
+                    </button>
+                  </div>
+                  <div class="page">
+                    <span class="each">每頁顯示</span>
+                    <select v-model="psize">
+                      <option value="10" style="color: #927858">10</option>
+                      <option value="20" style="color: #927858">20</option>
+                      <option value="30" style="color: #927858">30</option>
+                    </select>
+                    <span class="each">筆</span>
+                  </div>
+                </div>
+                <table class="table table-hover table-pray" id="membertable">
+                  <thead>
+                    <tr>
+                      <th>會員編號</th>
+                      <th>姓名</th>
+                      <th>會員帳號</th>
+                      <th>會員密碼</th>
+                      <th>手機號碼</th>
+                      <th>信箱</th>
+                      <th>加入日期</th>
+                      <th>會員狀態</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(item,index) in personaldata">
+                      <td>{{item.mem_no}}</td>
+                      <td>{{item.mem_name}}</td>
+                      <td>{{item.mem_id}}</td>
+                      <td>{{item.mem_psw}}</td>
+                      <td>{{item.phone}}</td>
+                      <td>{{item.email}}</td>
+                      <td>{{item.mem_date}}</td>
+                      <td >{{item.mem_status}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="pagelist">
+                  <h4> 總共{{num}}筆，{{totalPage}}頁 </h4>
+                  <a href="#"@click="first">首頁</a>
+                  <a href="#"@click="previouspage"> < </a>
+                  <a>{{currentPage}}</a>
+                  <a href="#" @click="nextpage"> > </a>
+                  <a href="#"@click="end">末頁</a>
+                </div>
+              </div>`
+    });
+
     new Vue({
       el: "#app",
       data: {
@@ -1022,6 +1212,11 @@
         types: ["感情", "平安", "健康", "財富", "事業", "學業"],
         button: false,
         show: "showbox01",
+      },
+      components: {
+        'component-member': Componentmember,
+        'component-prayrecorder': Componentprayrecord,
+        'component-cardmanage': Componentcardmanage,
       },
       methods: {
         showButton() {

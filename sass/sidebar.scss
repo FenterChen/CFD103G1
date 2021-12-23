@@ -3,8 +3,6 @@
 @import 'mixin/modules';
 @include NotoSansTC();
 
-
-
 .wrapp {
     width: 100%;
     display: flex;
@@ -108,6 +106,8 @@
     .page .each {
         color: #927858;
         font-size: 18px;
+        font-family: NotoSansTC, serif;
+        font-weight: 700;
     }
 
     select {
@@ -126,7 +126,9 @@
     background-color: white;
 }
 
-//祈願紀錄表格
+.table-pray tbody td img {
+    width: 150px;
+}
 
 //小卡管理表格
 .table-card>tbody>tr>td>input {
@@ -273,4 +275,40 @@
 .table-unpomes>tbody>tr>td>select {
     background-color: #fdbf52;
     border-radius: 20px;
+}
+
+//會員/祈願紀錄
+.memberDetail,
+.prayRecorder {
+    .pagelist {
+
+        padding-top: 30px;
+
+        a {
+            width: 30px;
+            height: 40px;
+            font-size: 16px;
+
+
+            &:nth-child(2) {
+                border-radius: 20px 0px 0px 20px;
+                width: 50px;
+            }
+
+            &:last-child {
+                width: 50px;
+            }
+        }
+
+
+        h4 {
+            color: #927858;
+            font-size: 18px;
+            font-family: NotoSansTC, serif;
+            font-weight: 700;
+            padding-right: 20px;
+            @include flexCenter();
+            height: 40px;
+        }
+    }
 }
