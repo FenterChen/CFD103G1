@@ -427,8 +427,26 @@
     var Componentcardmanage = Vue.component('cardmanage', {
       data() {
         return {
-
+          card: [],
+          cards: '',
+          pngimg: ".png",
         }
+      },
+      created() {
+        axios.post('phps/praycard.php', {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((res) => {
+          this.card = res.data;
+          this.cards = this.card[0].card_cont;
+        }
+        ).catch(function (error) {
+          console.log(error);
+        });
+      },
+      methods: {
+
       },
       template: `
       <div class="supply">
@@ -446,13 +464,12 @@
           <tbody>
             <tr>
               <td>
-                <select>
-                  <option value="編號1"></option>
-                  <option value="編號2"></option>
-                  <option value="標號3"></option>
-                 </select></td>
-              <td></td>
-              <td></td>
+                <select v-model="cards">
+                  <option v-for="(item,index) in card" :value="item.card_cont">第{{item.card_no}}張</option>
+                 </select>
+              </td>
+              <td><img class="cardimg" :src="cards + pngimg"></td>
+              <td><img class="cardimg"><<input type="file"></td>
             </tr>
           </tbody>
         </table>

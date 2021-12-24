@@ -261,6 +261,11 @@
     border-radius: 20px;
 }
 
+.table-card>tbody>tr>td>select {
+    background-color: #FDBF52;
+    border-radius: 20px;
+}
+
 .table-unpomes>tbody>tr>td>textarea {
     width: 380px;
     height: 120px;
@@ -310,5 +315,17 @@
             @include flexCenter();
             height: 40px;
         }
+    }
+}
+
+//小卡 
+.table-card {
+    input {
+        background-color: #fdbf52;
+        border-radius: 20px;
+    }
+
+    .cardimg {
+        width: 300px;
     }
 }
