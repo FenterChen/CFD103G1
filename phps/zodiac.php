@@ -4,7 +4,7 @@ try {
 	require_once("connectBOBIO.php");
 	//執行sql指令
 
-	$sql = "select zodiac_name,zodiac_img from zodiac";
+	$sql = "select * from zodiac";
 	$zodiac = $pdo->query($sql);
 	$zodiacRow = $zodiac ->fetchAll(PDO::FETCH_ASSOC);
 	echo (json_encode($zodiacRow));
