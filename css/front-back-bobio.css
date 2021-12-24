@@ -141,6 +141,8 @@ body {
 
 
 .wrapp {
+  margin: 0 auto;
+  padding: 0;
   width: 100%;
   height: 100%;
   text-align: center;
@@ -152,6 +154,7 @@ body {
   position: relative;
   margin: auto;
   margin-top: 50px;
+  z-index: 2;
 }
 
 .bobioimg>img {
@@ -164,6 +167,7 @@ body {
   position: absolute;
   bottom: 19%;
   left: 17.5%;
+ 
 
 }
 
@@ -173,6 +177,7 @@ body {
   position: absolute;
   bottom: 19%;
   right: 17.5%;
+  
 
 }
 
@@ -182,9 +187,9 @@ body {
   font-size: 40px;
   bottom: 20%;
   left: 17%;
-
   padding: 40px 25px;
   border-radius: 50%;
+
 }
 
 .button>.back {
@@ -195,6 +200,7 @@ body {
   right: 17%;
   padding: 40px 25px;
   border-radius: 50%;
+ 
 }
 
 .back:hover {
@@ -250,7 +256,6 @@ body {
   width: 300px;
   height: 250px;
   margin: auto;
-  ;
 }
 
 .title {
@@ -325,6 +330,58 @@ body {
 }
 
 
+/* 雲動畫 */
+
+
+.tagcloud {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: -250px;
+
+}
+
+.tagcloud a {
+}
+
+.b01 img {
+  width: 200px;
+  height: 200px;
+  line-height: 0px;
+}
+
+.b02 img {
+  width: 300px;
+  height: 300px;
+  line-height: 130px;
+}
+
+.b03 img {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+}
+
+.b04 img {
+  width: 200px;
+  height: 200px;
+  line-height: 80px;
+}
+
+.co01 {}
+
+.co02 {}
+
+.co03 {}
+
+.co04 {}
+
+.co05 {}
+
+.co06 {}
+
+.co07 {}
 
 @media screen and (max-width: 1024px) {
   .button>.front {
