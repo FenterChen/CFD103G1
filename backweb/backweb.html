@@ -370,64 +370,64 @@
 
     <script>
       //生肖圖
-     var Componentzodiacmanage = Vue.component('zodiacmanage', {
-      data() {
-        return{
-          pomeNumber: "1",
-          image2: "",
-          button: false,
-          zodiac_no:1,
-          zodiac:[],
-          zodiacName:"鼠",
-          zodiacImg:"./img/amulet/amulet_2.jpg",
-
-        }
-      },
-      created() {
-        axios.post('../phps/zodiac.php', {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            }).then((res) => {
-                this.zodiac = res.data;            
-            }
-            ).catch(function (error) {
+      var Componentzodiacmanage = Vue.component("zodiacmanage", {
+        data() {
+          return {
+            pomeNumber: "1",
+            image2: "",
+            button: false,
+            zodiac_no: 1,
+            zodiac: [],
+            zodiacName: "鼠",
+            zodiacImg: "./img/amulet/amulet_2.jpg",
+          };
+        },
+        created() {
+          axios
+            .post("../phps/zodiac.php", {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              this.zodiac = res.data;
+            })
+            .catch(function (error) {
               console.log(error);
             });
-      },
-   
-      methods: {
-        //更新圖片
-        fileChange(e) {
-          let file = e.target.files[0];
-          let readFile = new FileReader();
-          readFile.readAsDataURL(file);
-          readFile.addEventListener("load", this.loadImage);
-        },
-        loadImage(e) {
-          this.image2 = e.target.result;
-        },
-        
-        showButton() {
-          if (this.button == false) {
-            this.button = true;
-          } else {
-            this.button = false;
-          }
         },
 
-        zodiacClick() {
-          for (i = 0; i < 12; i++) {
+        methods: {
+          //更新圖片
+          fileChange(e) {
+            let file = e.target.files[0];
+            let readFile = new FileReader();
+            readFile.readAsDataURL(file);
+            readFile.addEventListener("load", this.loadImage);
+          },
+          loadImage(e) {
+            this.image2 = e.target.result;
+          },
+
+          showButton() {
+            if (this.button == false) {
+              this.button = true;
+            } else {
+              this.button = false;
+            }
+          },
+
+          zodiacClick() {
+            for (i = 0; i < 12; i++) {
               if (this.zodiac_no == this.zodiac[i].zodiac_no) {
                 this.zodiacName = this.zodiac[i].zodiac_name;
                 this.zodiacImg = this.zodiac[i].zodiac_img;
               }
-          }
+            }
+          },
         },
-        
-      },
 
-      template: `
+        template: `
         <div>
           <div class="supply">
             <span>生肖圖管理</span>
@@ -475,68 +475,68 @@
           </div>
         </div>
         `,
+      });
 
-   
-    });
-     
-     //平安符
-    var Componentamuletmanage = Vue.component('amuletmanage', {
-      data() {
-        return{
-          button: false,
-          image2: '',
-          typeNo:1,
-          amuletType:[],
-          amuletTypeText:'月下老人簡稱月老，為掌管男女姻緣之神幫助痴男怨女獲得真愛。',
-          amuletTypeName:'感情',
-          amuletTypeImg:'./img/amulet/1.png',
-
-        }
-      },
-      created() {
-        axios.post('../phps/amulet.php', {
-                headers: {
-                  'Content-Type': 'multipart/form-data'
-                }
-            }).then((res) => {
-                this.amuletType = res.data;                       
-            }
-            ).catch(function (error) {
+      //平安符
+      var Componentamuletmanage = Vue.component("amuletmanage", {
+        data() {
+          return {
+            button: false,
+            image2: "",
+            typeNo: 1,
+            amuletType: [],
+            amuletTypeText:
+              "月下老人簡稱月老，為掌管男女姻緣之神幫助痴男怨女獲得真愛。",
+            amuletTypeName: "感情",
+            amuletTypeImg: "./img/amulet/1.png",
+          };
+        },
+        created() {
+          axios
+            .post("../phps/amulet.php", {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              this.amuletType = res.data;
+            })
+            .catch(function (error) {
               console.log(error);
             });
-      },
-   
-      methods: {
-        showButton() {
-          if (this.button == false) {
-            this.button = true;
-          } else {
-            this.button = false;
-          }
         },
 
-        typeClick() {
-          for (i = 0; i < 6; i++){
-            if(this.typeNo == this.amuletType[i].type_no){
-              this.amuletTypeName = this.amuletType[i].type_name
-              this.amuletTypeText = this.amuletType[i].type_text
-              this.amuletTypeImg = this.amuletType[i].type_img
+        methods: {
+          showButton() {
+            if (this.button == false) {
+              this.button = true;
+            } else {
+              this.button = false;
             }
-          }
+          },
+
+          typeClick() {
+            for (i = 0; i < 6; i++) {
+              if (this.typeNo == this.amuletType[i].type_no) {
+                this.amuletTypeName = this.amuletType[i].type_name;
+                this.amuletTypeText = this.amuletType[i].type_text;
+                this.amuletTypeImg = this.amuletType[i].type_img;
+              }
+            }
+          },
+
+          fileChange(e) {
+            let file = e.target.files[0];
+            let readFile = new FileReader();
+            readFile.readAsDataURL(file);
+            readFile.addEventListener("load", this.loadImage);
+          },
+          loadImage(e) {
+            this.image2 = e.target.result;
+          },
         },
 
-        fileChange(e) {
-          let file = e.target.files[0];
-          let readFile = new FileReader();
-          readFile.readAsDataURL(file);
-          readFile.addEventListener("load", this.loadImage);
-        },
-        loadImage(e) {
-          this.image2 = e.target.result;
-        },
-      },
-
-      template:`
+        template: `
         <div>
           <div class="supply">
             <span>平安符願管理</span>
@@ -587,8 +587,7 @@
           </div>
         </div>
       `,
-
-    });
+      });
       //小卡
       var Componentcardmanage = Vue.component("cardmanage", {
         data() {
@@ -1301,6 +1300,11 @@
             }
           },
         },
+        computed: {
+          pomeconImg() {
+            return this.pomesList[this.pomeNumber - 1]?.pomes_content;
+          },
+        },
         created() {
           axios
             .get("../phps/pomes.php")
@@ -1410,6 +1414,11 @@
             } else {
               this.button = false;
             }
+          },
+        },
+        computed: {
+          pomedetImg() {
+            return this.pomesList[this.pomeDetailNumber - 1]?.pomes_det;
           },
         },
         created() {
@@ -1651,8 +1660,8 @@
             "component-pomes": Componentpomes,
             "component-pomesdet": Componentpomesdetail,
             "component-pomesrec": Componentpomesrecorder,
-            "component-amuletmanage":Componentamuletmanage,
-            "component-zodiacmanage":Componentzodiacmanage,
+            "component-amuletmanage": Componentamuletmanage,
+            "component-zodiacmanage": Componentzodiacmanage,
           },
           methods: {
             showButton() {
