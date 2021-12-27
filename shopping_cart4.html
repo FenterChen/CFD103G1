@@ -267,24 +267,6 @@
                     price: 399,
                     freight: 60,
                 };
-            },
-            created() {
-          let array = JSON.parse(localStorage.getItem("personallogin"));
-          axios
-            .post("phps/ordersInsert.php", { //同一個
-              mem_no: array[0].mem_no,
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            })
-            .then((res) => {
-              if (res.data == "erro") {
-               this.orderInsert = res.data
-              } else {
-                location.href = "memeberFix.html";
-              }
-            })
-            .catch((error) => (this.orderInsert = res.data));
         },
             mounted() {
                 let array = JSON.parse(localStorage.getItem('productno'));
