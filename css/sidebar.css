@@ -426,6 +426,8 @@ table {
 .table-card > tbody > tr > td > select {
   background-color: #FDBF52;
   border-radius: 20px;
+  font-family: NotoSansTC, serif;
+  color: #573605;
 }
 
 .table-unpomes > tbody > tr > td > textarea {
@@ -444,31 +446,110 @@ table {
   border-radius: 20px;
 }
 
+.memberDetail .updatefile,
+.prayRecorder .updatefile,
+.cardManage .updatefile,
+.supply .updatefile {
+  text-align: center;
+  background-color: #fdbf52;
+  font-family: NotoSansTC, serif;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100px;
+  height: 30px;
+}
+
+.memberDetail input[type="file"],
+.prayRecorder input[type="file"],
+.cardManage input[type="file"],
+.supply input[type="file"] {
+  display: none;
+}
+
+.memberDetail span,
+.prayRecorder span,
+.cardManage span,
+.supply span {
+  font-family: NotoSansTC, serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #573605;
+}
+
+.memberDetail .table-supply > tbody > tr > th > input,
+.prayRecorder .table-supply > tbody > tr > th > input,
+.cardManage .table-supply > tbody > tr > th > input,
+.supply .table-supply > tbody > tr > th > input {
+  border: 0px;
+  border-radius: 20px;
+  background-color: #fcdba3;
+  width: 80px;
+  font-family: NotoSansTC, serif;
+  color: #573605;
+  width: 70px;
+  text-align: center;
+}
+
+.memberDetail .table-supply > tbody > tr > td > input,
+.prayRecorder .table-supply > tbody > tr > td > input,
+.cardManage .table-supply > tbody > tr > td > input,
+.supply .table-supply > tbody > tr > td > input {
+  border: 0px;
+  border-radius: 20px;
+  background-color: #fcdba3;
+  width: 80px;
+  text-align: center;
+  font-family: NotoSansTC, serif;
+  color: #573605;
+  width: 150px;
+}
+
 .memberDetail .pagelist,
-.prayRecorder .pagelist {
-  padding-top: 30px;
+.prayRecorder .pagelist,
+.cardManage .pagelist,
+.supply .pagelist {
+  padding-top: 10px;
 }
 
 .memberDetail .pagelist a,
-.prayRecorder .pagelist a {
+.prayRecorder .pagelist a,
+.cardManage .pagelist a,
+.supply .pagelist a {
   width: 30px;
   height: 40px;
   font-size: 16px;
 }
 
 .memberDetail .pagelist a:nth-child(2),
-.prayRecorder .pagelist a:nth-child(2) {
+.prayRecorder .pagelist a:nth-child(2),
+.cardManage .pagelist a:nth-child(2),
+.supply .pagelist a:nth-child(2) {
   border-radius: 20px 0px 0px 20px;
   width: 50px;
 }
 
 .memberDetail .pagelist a:last-child,
-.prayRecorder .pagelist a:last-child {
+.prayRecorder .pagelist a:last-child,
+.cardManage .pagelist a:last-child,
+.supply .pagelist a:last-child {
   width: 50px;
 }
 
 .memberDetail .pagelist h4,
-.prayRecorder .pagelist h4 {
+.prayRecorder .pagelist h4,
+.cardManage .pagelist h4,
+.supply .pagelist h4 {
   color: #927858;
   font-size: 18px;
   font-family: NotoSansTC, serif;
@@ -493,5 +574,13 @@ table {
 
 .table-card .cardimg {
   width: 300px;
+}
+
+.table-card td:nth-child(1) {
+  width: 20%;
+}
+
+.table-card td:nth-child(2) {
+  width: 40%;
 }
 /*# sourceMappingURL=sidebar.css.map */

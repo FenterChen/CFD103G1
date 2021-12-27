@@ -1,9 +1,9 @@
 <?php 
 try {
-	require_once("connectMoney.php");
+	require_once("connectBOBIO.php");
 	//執行sql指令
 	$alter = file_get_contents('php://input');
-  $data = json_decode($alter, true);
+ $data = json_decode($alter, true);
 	$sql = "INSERT INTO member (mem_name, mem_id, mem_psw,phone,email,mem_date,mem_status) 
 	VALUES ('$data[mem_name]','$data[mem_id]','$data[mem_psw]','$data[phone]','$data[email]','$data[mem_date]','$data[mem_status]')";
 	$member = $pdo->prepare($sql);

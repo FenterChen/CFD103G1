@@ -264,6 +264,8 @@
 .table-card>tbody>tr>td>select {
     background-color: #FDBF52;
     border-radius: 20px;
+    font-family: NotoSansTC, serif;
+    color: #573605;
 }
 
 .table-unpomes>tbody>tr>td>textarea {
@@ -282,12 +284,60 @@
     border-radius: 20px;
 }
 
-//會員/祈願紀錄
+//會員/祈願紀錄/小卡/供品
 .memberDetail,
-.prayRecorder {
-    .pagelist {
+.prayRecorder,
+.cardManage,
+.supply {
+    .updatefile {
+        text-align: center;
+        background-color: #fdbf52;
+        font-family: NotoSansTC, serif;
+        font-size: map-get($fontSize, navfont);
+        cursor: pointer;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100px;
+        height: 30px;
+    }
 
-        padding-top: 30px;
+    input[type="file"] {
+        display: none;
+    }
+
+    span {
+        font-family: NotoSansTC, serif;
+        font-size: map-get($fontSize, weblp);
+        font-weight: 700;
+        color: #573605;
+    }
+
+    .table-supply>tbody>tr>th>input {
+        border: 0px;
+        border-radius: 20px;
+        background-color: #fcdba3;
+        width: 80px;
+        font-family: NotoSansTC, serif;
+        color: #573605;
+        width: 70px;
+        text-align: center;
+    }
+
+    .table-supply>tbody>tr>td>input {
+        border: 0px;
+        border-radius: 20px;
+        background-color: #fcdba3;
+        width: 80px;
+        text-align: center;
+        font-family: NotoSansTC, serif;
+        color: #573605;
+        width: 150px;
+    }
+
+    .pagelist {
+        padding-top: 10px;
 
         a {
             width: 30px;
@@ -315,11 +365,13 @@
             @include flexCenter();
             height: 40px;
         }
+
     }
 }
 
 //小卡 
 .table-card {
+
     input {
         background-color: #fdbf52;
         border-radius: 20px;
@@ -327,5 +379,13 @@
 
     .cardimg {
         width: 300px;
+    }
+
+    td:nth-child(1) {
+        width: 20%;
+    }
+
+    td:nth-child(2) {
+        width: 40%;
     }
 }

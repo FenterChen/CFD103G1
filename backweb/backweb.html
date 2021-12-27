@@ -176,57 +176,7 @@
     </div>
     <!-- 供品管理 -->
     <div class="supplyManage" v-if="show =='showbox03'">
-      <div class="supply">
-        <span>供品管理</span>
-        <img src="img/backdata/backFix.svg" @click="showButton" alt="" />
-      </div>
-
-      <table class="table table-supply">
-        <thead>
-          <tr>
-            <th scope="col">組合</th>
-            <th scope="col">組合一</th>
-            <th scope="col">組合二</th>
-            <th scope="col">組合三</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>種類</th>
-            <td>
-              <input type="text" value="三牲" />
-            </td>
-            <td>
-              <input type="text" value="鮮果" />
-            </td>
-            <td><input type="text" value="甜食" /></td>
-          </tr>
-          <tr>
-            <th>內容</th>
-            <td>
-              <input type="text" value="1. 豬" />
-            </td>
-            <td><input type="text" value="1. 香蕉" /></td>
-            <td><input type="text" value="1. 糕餅" /></td>
-          </tr>
-          <tr>
-            <th></th>
-            <td><input type="text" value="2. 雞" /></td>
-            <td><input type="text" value="2. 蔬果" /></td>
-            <td><input type="text" value="2. 餅乾" /></td>
-          </tr>
-          <tr>
-            <th></th>
-            <td><input type="text" value="3. 魚" /></td>
-            <td><input type="text" value="3. 水梨" /></td>
-            <td><input type="text" value="3. 糖果" /></td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="saveBtn" v-if="button">
-        <button class="cancle" data-hover="取消">取消</button>
-        <button class="save" data-hover="確認">確認</button>
-      </div>
+      <supplymanage></supplymanage>
     </div>
     <!-- 籤詩 -->
     <div class="pomes" v-if="show =='showbox04'">
@@ -423,13 +373,90 @@
   </div>
 
   <script>
+    //供品
+    var Componentsupplymanage = Vue.component('supplymanage', {
+      data() {
+        return {
+          supply: [],
+        }
+      },
+      created() {
+        axios.post('phps/offering.php', {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((res) => {
+          this.supply = res.data;
+        }
+        ).catch(function (error) {
+          console.log(error);
+        })
+      },
+      methods: {
+        cancell() {
+          axios.post('phps/offering.php', {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }).then((res) => {
+            this.supply = res.data;
+          }
+          ).catch(function (error) {
+            console.log(error);
+          })
+        },
+        confirm() {
+          axios.post('phps/offeringUpdate.php', {
+            supply: this.supply,
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }).then((res) => {
+            alert(res.data);
+            location.href = "backweb.html";
+          }
+          ).catch(function (error) {
+            console.log(error);
+          })
+        },
+      },
+      template: `
+      <div class="supply">
+        <span>供品管理</span>
+        <img src="img/backdata/backFix.svg" alt="" />
+      <table class="table table-supply">
+        <thead>
+          <tr>
+            <th scope="col">組合</th>
+            <th scope="col">內容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item,index) in supply">
+            <th><input type="text" v-model="item.off_name" /></th>
+            <td>
+              <input type="text" v-model="item.off_cont" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="saveBtn">
+        <button class="cancle" data-hover="取消" @click="cancell">取消</button>
+        <button class="save" data-hover="確認" @click="confirm">確認</button>
+      </div>
+      </div>
+      `
+    })
     //小卡
     var Componentcardmanage = Vue.component('cardmanage', {
       data() {
         return {
           card: [],
-          cards: '',
-          pngimg: ".png",
+          newcardname: '',
+          cardimg: '',
+          cards: '1',
+          cardalter: '',
+          file: '',
         }
       },
       created() {
@@ -439,14 +466,54 @@
           }
         }).then((res) => {
           this.card = res.data;
-          this.cards = this.card[0].card_cont;
+          this.cardimg = this.card[0].card_cont + ".png";
         }
         ).catch(function (error) {
           console.log(error);
-        });
+        })
       },
       methods: {
-
+        selectFile() {
+          this.cardalter = "img/pray/" + this.$refs.file.files[0].name;
+          this.newcardname = this.$refs.file.files[0].name;
+          this.cardalter = this.cardalter.replace('.png', '');
+          this.$forceUpdate();
+        },
+        uploadimg() {
+          this.file = this.$refs.file.files[0];
+          var formDate = new FormData();
+          formDate.append('file', this.file);
+          axios.post('phps/uploadprayfile.php', formDate, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }).then((res) => {
+            alert(res.data);
+          }
+          ).catch(function (error) {
+            alert("上傳失敗");
+          });
+          axios.post('phps/cardUpdate.php', {
+            card_no: this.cards,
+            card_cont: this.cardalter,
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }).then((res) => {
+            alert(res.data);
+            location.href = "backweb.html";
+          }
+          ).catch(function (error) {
+            console.log(error);
+          });
+        },
+        upcardimg() {
+          this.cardimg = this.card[this.cards - 1].card_cont + ".png";
+        },
+        cancell() {
+          this.$refs.file.value = '';
+          this.newcardname = '';
+        },
       },
       template: `
       <div class="supply">
@@ -464,19 +531,27 @@
           <tbody>
             <tr>
               <td>
-                <select v-model="cards">
-                  <option v-for="(item,index) in card" :value="item.card_cont">第{{item.card_no}}張</option>
+                <select v-model="cards" @change="upcardimg">
+                  <option v-for="(item,index) in card" :value="item.card_no">
+                    第{{item.card_no}}張
+                  </option>
                  </select>
               </td>
-              <td><img class="cardimg" :src="cards + pngimg"></td>
-              <td><img class="cardimg"><<input type="file"></td>
+              <td><img class="cardimg" :src="cardimg"></td>
+              <td>
+                <label class="updatefile" @change="selectFile">
+                <input id="upload_img" type="file" ref="file">
+                <i></i> 上傳圖片
+                </label>
+                <span>{{newcardname}}</span>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="saveBtn">
-        <button class="cancle" data-hover="取消">取消</button>
-        <button class="save" data-hover="確認">確認</button>
+        <button class="cancle" data-hover="取消" @click="cancell">取消</button>
+        <button class="save" data-hover="確認" @click="uploadimg">確認</button>
       </div>
       </div>
       `
@@ -486,7 +561,6 @@
       data() {
         return {
           prayerdata: [],
-          searchData: '',
           searchval: '',
           pno: 1,//目前頁數
           psize: 3,//頁面筆數
@@ -603,7 +677,7 @@
       },
       template:
         `
-      <div class="supply">
+      <div>
         <span>祈願紀錄</span>
       <div class="searchbox">
         <div class="search">
@@ -662,7 +736,6 @@
       data() {
         return {
           personaldata: [],
-          searchData: '',
           searchval: '',
           pno: 1,//目前頁數
           psize: 10,//頁面筆數
@@ -800,60 +873,60 @@
         }
       },
       template:
-        `<div class="supply">
-                  <span>會員資料</span>
-                <div class="searchbox">
-                  <div class="search">
-                    <input type="text" placeholder="搜尋關鍵字"  v-model="searchval" />
-                    <button @click="list">
-                      <img src="img/backData/search.svg" alt="" />
-                    </button>
-                  </div>
-                  <div class="page">
-                    <span class="each">每頁顯示</span>
-                    <select v-model="psize">
-                      <option value="10" style="color: #927858">10</option>
-                      <option value="20" style="color: #927858">20</option>
-                      <option value="30" style="color: #927858">30</option>
-                    </select>
-                    <span class="each">筆</span>
-                  </div>
-                </div>
-                <table class="table table-hover table-pray" id="membertable">
-                  <thead>
-                    <tr>
-                      <th>會員編號</th>
-                      <th>姓名</th>
-                      <th>會員帳號</th>
-                      <th>會員密碼</th>
-                      <th>手機號碼</th>
-                      <th>信箱</th>
-                      <th>加入日期</th>
-                      <th>會員狀態</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="(item,index) in personaldata">
-                      <td>{{item.mem_no}}</td>
-                      <td>{{item.mem_name}}</td>
-                      <td>{{item.mem_id}}</td>
-                      <td>{{item.mem_psw}}</td>
-                      <td>{{item.phone}}</td>
-                      <td>{{item.email}}</td>
-                      <td>{{item.mem_date}}</td>
-                      <td >{{item.mem_status}}</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="pagelist">
-                  <h4> 總共{{num}}筆，{{totalPage}}頁 </h4>
-                  <a href="#"@click="first">首頁</a>
-                  <a href="#"@click="previouspage"> < </a>
-                  <a>{{currentPage}}</a>
-                  <a href="#" @click="nextpage"> > </a>
-                  <a href="#"@click="end">末頁</a>
-                </div>
-              </div>`
+        `<div>
+            <span>會員資料</span>
+          <div class="searchbox">
+            <div class="search">
+              <input type="text" placeholder="搜尋關鍵字"  v-model="searchval" />
+              <button @click="list">
+                <img src="img/backData/search.svg" alt="" />
+              </button>
+            </div>
+            <div class="page">
+              <span class="each">每頁顯示</span>
+              <select v-model="psize">
+                <option value="10" style="color: #927858">10</option>
+                <option value="20" style="color: #927858">20</option>
+                <option value="30" style="color: #927858">30</option>
+              </select>
+              <span class="each">筆</span>
+            </div>
+          </div>
+          <table class="table table-hover table-pray" id="membertable">
+            <thead>
+              <tr>
+                <th>會員編號</th>
+                <th>姓名</th>
+                <th>會員帳號</th>
+                <th>會員密碼</th>
+                <th>手機號碼</th>
+                <th>信箱</th>
+                <th>加入日期</th>
+                <th>會員狀態</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(item,index) in personaldata">
+                <td>{{item.mem_no}}</td>
+                <td>{{item.mem_name}}</td>
+                <td>{{item.mem_id}}</td>
+                <td>{{item.mem_psw}}</td>
+                <td>{{item.phone}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.mem_date}}</td>
+                <td >{{item.mem_status}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="pagelist">
+            <h4> 總共{{num}}筆，{{totalPage}}頁 </h4>
+            <a href="#"@click="first">首頁</a>
+            <a href="#"@click="previouspage"> < </a>
+            <a>{{currentPage}}</a>
+            <a href="#" @click="nextpage"> > </a>
+            <a href="#"@click="end">末頁</a>
+          </div>
+        </div>`
     });
 
     //訂單管理
@@ -1421,35 +1494,36 @@
           .get("../phps/donatephp.php")
           .then((res) => (this.donateList = res.data));
       },
-    }),
-      new Vue({
-        el: "#app",
-        data: {
-          numbers: ["A", "B", "C", "D", "E", "F"],
-          types: ["感情", "平安", "健康", "財富", "事業", "學業"],
-          button: false,
-          show: "showbox0",
+    });
+    new Vue({
+      el: "#app",
+      data: {
+        numbers: ["A", "B", "C", "D", "E", "F"],
+        types: ["感情", "平安", "健康", "財富", "事業", "學業"],
+        button: false,
+        show: "showbox0",
+      },
+      components: {
+        'component-member': Componentmember,
+        'component-prayrecorder': Componentprayrecord,
+        'component-cardmanage': Componentcardmanage,
+        "Component-supplymanage": Componentsupplymanage,
+        "component-orders": Componentorders,
+        "component-pomes": Componentpomes,
+        "component-pomesdet": Componentpomesdetail,
+        "component-pomesrec": Componentpomesrecorder,
+      },
+      methods: {
+        showButton() {
+          if (this.button == false) {
+            this.button = true;
+          } else {
+            this.button = false;
+          }
         },
-        components: {
-          'component-member': Componentmember,
-          'component-prayrecorder': Componentprayrecord,
-          'component-cardmanage': Componentcardmanage,
-          "component-orders": Componentorders,
-          "component-pomes": Componentpomes,
-          "component-pomesdet": Componentpomesdetail,
-          "component-pomesrec": Componentpomesrecorder,
-        },
-        methods: {
-          showButton() {
-            if (this.button == false) {
-              this.button = true;
-            } else {
-              this.button = false;
-            }
-          },
-        },
-        created() { },
-      });
+      },
+      created() { },
+    });
   </script>
 </body>
 

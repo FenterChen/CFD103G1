@@ -1,7 +1,7 @@
 <?php 
 // 確認登入資料
 try {
-	require_once("connectMoney.php");
+	require_once("connectBOBIO.php");
 	//執行sql指令
   $alter = file_get_contents('php://input');
   $data = json_decode($alter, true);

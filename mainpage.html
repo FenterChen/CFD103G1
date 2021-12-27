@@ -269,7 +269,7 @@
           }).then((res) => {
             this.losituation = "登出";//登入登出狀態
             this.personaldata = res.data[0];
-          }).catch(error => this.personaldata = res.data);
+          }).catch(error => console.log(error));
         };
         //以上讀取會員資料
         window.onresize = () => {
