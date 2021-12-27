@@ -2,7 +2,7 @@
 //1-使用變數POST叫出的資料 -正常寫法html 
 
 try{
-  require_once("connectorders.php"); //1-連線資料庫
+  require_once("connectBOBIO.php"); //1-連線資料庫
   
   $sql = "select * from orders "; //2-選擇SQL的資料
   $orders = $pdo->query($sql);  //3-查詢準備SQl的變數
