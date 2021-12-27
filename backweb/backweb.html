@@ -1,176 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/sidebar.css" />
-    <link rel="stylesheet" href="../css/backheader.css" />
-    <link rel="stylesheet" href="../css/3-2ZodiacManage.css" />
-    <link rel="stylesheet" href="../css/4-1_productOrders.css" />
-    <link href="../css/bootstrap.min.css" rel="stylesheet" />
-    <script src="../js/bootstrap.bundle.min.js"></script>
-    <script src="../js/sidebars.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-    <script src="../js/prayRecorder.js"></script>
-    <script src="../js/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
-  </head>
 
-  <body>
-    <header id="mainheader">
-      <div class="headerWrap">
-        <div class="logo">
-          <a href="" @click="show = 'showbox0'">
-            <img src="../img/header/BOBIO_logo.svg" />
-          </a>
-        </div>
-        <div class="member">
-          <a href="" @click="show = 'showbox0'">
-            <img src="../img/header/member.svg"
-          /></a>
-        </div>
-        <span>登出</span>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/sidebar.css" />
+  <link rel="stylesheet" href="../css/backheader.css" />
+  <!-- <link rel="stylesheet" href="../css/3-2ZodiacManage.css" /> -->
+  <link rel="stylesheet" href="../css/4-1_productOrders.css" />
+  <link href="../css/bootstrap.min.css" rel="stylesheet" />
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/sidebars.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script src="../js/prayRecorder.js"></script>
+  <script src="../js/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
+</head>
+
+<body>
+  <header id="mainheader">
+    <div class="headerWrap">
+      <div class="logo">
+        <a href="" @click="show = 'showbox0'">
+          <img src="../img/header/BOBIO_logo.svg" />
+        </a>
       </div>
-    </header>
-    <div class="wrapp" id="app">
-      <!-- sidebar -->
-      <div class="sidebar flex-shrink-0 p-3">
-        <ul class="list-unstyled ps-0">
-          <!-- 祈願項目 -->
-          <li class="mb-1">
-            <button
-              class="btn btn-toggle align-items-center rounded collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#home-collapse"
-              aria-expanded="true"
-            >
-              祈願
-            </button>
-            <div class="collapse" id="home-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li>
-                  <a
-                    href="#"
-                    class="link-dark rounded"
-                    @click="show = 'showbox01'"
-                    >祈願紀錄</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="link-dark rounded"
-                    @click="show = 'showbox02'"
-                    >小卡管理</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="link-dark rounded"
-                    @click="show = 'showbox03'"
-                    >供品管理</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </li>
-          <!-- 求籤管理 -->
-          <li class="mb-1">
-            <button
-              class="btn btn-toggle align-items-center rounded collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#dashboard-collapse"
-              aria-expanded="false"
-            >
-              求籤
-            </button>
-            <div class="collapse" id="dashboard-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li>
-                  <a
-                    href="#"
-                    class="link-dark rounded"
-                    id="bpomes"
-                    @click="show = 'showbox04'"
-                    >籤詩管理</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="link-dark rounded"
-                    id="brecorder"
-                    @click="show = 'showbox05'"
-                    >解籤內容管理</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="link-dark rounded"
-                    id="pomecontent"
-                    @click="show = 'showbox06'"
-                    >求籤紀錄</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </li>
+      <div class="member">
+        <a href="" @click="show = 'showbox0'">
+          <img src="../img/header/member.svg" /></a>
+      </div>
+      <span>登出</span>
+    </div>
+  </header>
+  <div class="wrapp" id="app">
+    <!-- sidebar -->
+    <div class="sidebar flex-shrink-0 p-3">
+      <ul class="list-unstyled ps-0">
+        <!-- 祈願項目 -->
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+            data-bs-target="#home-collapse" aria-expanded="true">
+            祈願
+          </button>
+          <div class="collapse" id="home-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li>
+                <a href="#" class="link-dark rounded" @click="show = 'showbox01'">祈願紀錄</a>
+              </li>
+              <li>
+                <a href="#" class="link-dark rounded" @click="show = 'showbox02'">小卡管理</a>
+              </li>
+              <li>
+                <a href="#" class="link-dark rounded" @click="show = 'showbox03'">供品管理</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <!-- 求籤管理 -->
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+            data-bs-target="#dashboard-collapse" aria-expanded="false">
+            求籤
+          </button>
+          <div class="collapse" id="dashboard-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li>
+                <a href="#" class="link-dark rounded" id="bpomes" @click="show = 'showbox04'">籤詩管理</a>
+              </li>
+              <li>
+                <a href="#" class="link-dark rounded" id="brecorder" @click="show = 'showbox05'">解籤內容管理</a>
+              </li>
+              <li>
+                <a href="#" class="link-dark rounded" id="pomecontent" @click="show = 'showbox06'">求籤紀錄</a>
+              </li>
+            </ul>
+          </div>
+        </li>
 
-          <!-- 平安符管理 -->
-          <li class="mb-1">
-            <button
-              class="btn btn-toggle align-items-center rounded collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#orders-collapse"
-              aria-expanded="false"
-            >
-              平安符
-            </button>
-            <div class="collapse" id="orders-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li>
-                  <a
-                    href="#"
-                    class="link-dark rounded"
-                    @click="show = 'showbox07'"
-                    >平安符願管理</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="link-dark rounded"
-                    @click="show = 'showbox08'"
-                    >生肖管理</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </li>
+        <!-- 平安符管理 -->
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+            data-bs-target="#orders-collapse" aria-expanded="false">
+            平安符
+          </button>
+          <div class="collapse" id="orders-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li>
+                <a href="#" class="link-dark rounded" @click="show = 'showbox07'">平安符願管理</a>
+              </li>
+              <li>
+                <a href="#" class="link-dark rounded" @click="show = 'showbox08'">生肖管理</a>
+              </li>
+            </ul>
+          </div>
+        </li>
 
-          <li class="mb-1">
-            <button
-              class="btn btn-toggle align-items-center rounded collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#account-collapse"
-              aria-expanded="false"
-            >
-              訂單管理
-            </button>
-            <div class="collapse" id="account-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li>
-                  <a
-                    href="#"
-                    class="link-dark rounded"
-                    @click="show = 'showbox09'"
-                    >商品訂單</a
-                  >
-                </li>
-                <!-- <li>
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+            data-bs-target="#account-collapse" aria-expanded="false">
+            訂單管理
+          </button>
+          <div class="collapse" id="account-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li>
+                <a href="#" class="link-dark rounded" @click="show = 'showbox09'">商品訂單</a>
+              </li>
+              <!-- <li>
                   <a
                     href="#"
                     class="link-dark rounded"
@@ -178,256 +114,286 @@
                     >訂單明細</a
                   >
                 </li> -->
-              </ul>
-            </div>
-          </li>
-
-          <li class="mb-1">
-            <a href="#" @click="show = 'showbox11'">
-              <button class="btn" style="padding-left: 30px">
-                會員資料
-              </button></a
-            >
-          </li>
-          <li class="mb-1">
-            <a href="#" @click="show = 'showbox12'">
-              <button class="btn" style="padding-left: 30px">
-                結緣紀錄
-              </button></a
-            >
-          </li>
-        </ul>
-      </div>
-      <!-- 管理員 -->
-      <div class="adminList" v-if="show =='showbox0'">
-        <my-admin></my-admin>
-      </div>
-      <!-- 祈願紀錄 -->
-      <div class="prayRecorder" v-if="show =='showbox01'">
-        <prayrecord></prayrecord>
-      </div>
-      <!-- 小卡管理 -->
-      <div class="cardManage" v-if="show =='showbox02'">
-        <cardmanage></cardmanage>
-      </div>
-      <!-- 供品管理 -->
-      <div class="supplyManage" v-if="show =='showbox03'">
-        <div class="supply">
-          <span>供品管理</span>
-          <img src="img/backdata/backFix.svg" @click="showButton" alt="" />
-        </div>
-
-        <table class="table table-supply">
-          <thead>
-            <tr>
-              <th scope="col">組合</th>
-              <th scope="col">組合一</th>
-              <th scope="col">組合二</th>
-              <th scope="col">組合三</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>種類</th>
-              <td>
-                <input type="text" value="三牲" />
-              </td>
-              <td>
-                <input type="text" value="鮮果" />
-              </td>
-              <td><input type="text" value="甜食" /></td>
-            </tr>
-            <tr>
-              <th>內容</th>
-              <td>
-                <input type="text" value="1. 豬" />
-              </td>
-              <td><input type="text" value="1. 香蕉" /></td>
-              <td><input type="text" value="1. 糕餅" /></td>
-            </tr>
-            <tr>
-              <th></th>
-              <td><input type="text" value="2. 雞" /></td>
-              <td><input type="text" value="2. 蔬果" /></td>
-              <td><input type="text" value="2. 餅乾" /></td>
-            </tr>
-            <tr>
-              <th></th>
-              <td><input type="text" value="3. 魚" /></td>
-              <td><input type="text" value="3. 水梨" /></td>
-              <td><input type="text" value="3. 糖果" /></td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="saveBtn" v-if="button">
-          <button class="cancle" data-hover="取消">取消</button>
-          <button class="save" data-hover="確認">確認</button>
-        </div>
-      </div>
-      <!-- 籤詩 -->
-      <div class="pomes" v-if="show =='showbox04'">
-        <my-pomes></my-pomes>
-      </div>
-      <!-- 解籤管理 -->
-      <div class="pomeDetail" v-if="show =='showbox05'">
-        <my-pomedetail></my-pomedetail>
-      </div>
-      <!-- 籤詩紀錄 -->
-      <div class="pomeRecorder" v-if="show =='showbox06'">
-        <my-pomerecorder></my-pomerecorder>
-      </div>
-      <!-- 平安符管理 -->
-      <div class="amuletManage" v-if="show =='showbox07'">
-        <amuletmanage></amuletmanage>
-      </div>
-      <!-- 生肖管理 -->
-      <div class="zodiac-Manage-second" v-if="show =='showbox08'">
-        <zodiacmanage></zodiacmanage>
-      </div>
-      <!-- 商品訂單 -->
-      <div class="product-orders" v-if="show =='showbox09'">
-        <my-orders></my-orders>
-      </div>
-      <!-- 訂單明細 -->
-      <div class="productOrders" v-if="show =='showbox10'">
-        <div class="supply">
-          <span>訂單明細</span>
-        </div>
-        <div class="searchbox">
-          <div class="search">
-            <input type="text" placeholder="搜尋關鍵字" />
-            <button>
-              <img src="img/backdata/search.svg" alt="" />
-            </button>
+            </ul>
           </div>
-          <div class="page">
-            <span class="each">每頁顯示</span>
-            <select>
-              <option value="" style="color: #927858">10</option>
-              <option value="" style="color: #927858">20</option>
-              <option value="" style="color: #927858">30</option>
-            </select>
-            <span class="each">頁</span>
-          </div>
-        </div>
-        <!-- 表格內容 -->
+        </li>
 
-        <table class="table table-hover table-pray">
-          <thead>
-            <tr>
-              <th>訂單明細編號</th>
-              <th>訂單編號</th>
-              <th>平安符種類</th>
-              <th>生肖名稱</th>
-              <th>客製化文字</th>
-              <th>數量</th>
-              <th>單價</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>00000001</td>
-              <td>00002021</td>
-              <td>感情</td>
-              <td>牛</td>
-              <td>早生貴子平安幸福</td>
-              <td>1</td>
-              <td>NT$399</td>
-            </tr>
-            <tr>
-              <td>00000001</td>
-              <td>00002021</td>
-              <td>感情</td>
-              <td>牛</td>
-              <td>早生貴子平安幸福</td>
-              <td>1</td>
-              <td>NT$399</td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- 表格內容結束 -->
+        <li class="mb-1">
+          <a href="#" @click="show = 'showbox11'">
+            <button class="btn" style="padding-left: 30px">
+              會員資料
+            </button></a>
+        </li>
+        <li class="mb-1">
+          <a href="#" @click="show = 'showbox12'">
+            <button class="btn" style="padding-left: 30px">
+              結緣紀錄
+            </button></a>
+        </li>
+      </ul>
+    </div>
+    <!-- 管理員頁面 -->
+    <div class="adminList" v-if="show =='showbox0'">
+      <div class="supply">
+        <span>管理員</span>
+      </div>
 
-        <!-- 頁簽 -->
-        <div class="pagelist">
-          <a href=""> < </a>
-          <a href="">1</a>
-          <a href="">2</a>
-          <a href="">3</a>
-          <a href="">4</a>
-          <a href="">5</a>
-          <a href=""> > </a>
-        </div>
-      </div>
-      <!-- 會員資料 -->
-      <div class="memberDetail" v-if="show =='showbox11'">
-        <personaldata></personaldata>
-      </div>
-      <!-- 結緣紀錄 -->
-      <div class="moneyRecorder" v-if="show =='showbox12'">
-        <donate-record></donate-record>
-      </div>
+      <!-- 表格內容 -->
+      <table class="table table-hover table-pray">
+        <thead>
+          <tr>
+            <th>編號</th>
+            <th>名稱</th>
+            <th>密碼</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01</td>
+            <td>李小龍</td>
+            <td>imbrucelee</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>02</td>
+            <td>李小龍</td>
+            <td>imbrucelee</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- 表格內容結束 -->
     </div>
 
-    <script>
-      //生肖圖
-      var Componentzodiacmanage = Vue.component("zodiacmanage", {
-        data() {
-          return {
-            pomeNumber: "1",
-            image2: "",
-            button: false,
-            zodiac_no: 1,
-            zodiac: [],
-            zodiacName: "鼠",
-            zodiacImg: "./img/amulet/amulet_2.jpg",
-          };
-        },
-        created() {
-          axios
-            .post("../phps/zodiac.php", {
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            })
-            .then((res) => {
-              this.zodiac = res.data;
-            })
-            .catch(function (error) {
+    <!-- 祈願紀錄 -->
+    <div class="prayRecorder" v-if="show =='showbox01'">
+      <prayrecord></prayrecord>
+    </div>
+    <!-- 小卡管理 -->
+    <div class="cardManage" v-if="show =='showbox02'">
+      <cardmanage></cardmanage>
+    </div>
+    <!-- 供品管理 -->
+    <div class="supplyManage" v-if="show =='showbox03'">
+      <div class="supply">
+        <span>供品管理</span>
+        <img src="img/backdata/backFix.svg" @click="showButton" alt="" />
+      </div>
+
+      <table class="table table-supply">
+        <thead>
+          <tr>
+            <th scope="col">組合</th>
+            <th scope="col">組合一</th>
+            <th scope="col">組合二</th>
+            <th scope="col">組合三</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>種類</th>
+            <td>
+              <input type="text" value="三牲" />
+            </td>
+            <td>
+              <input type="text" value="鮮果" />
+            </td>
+            <td><input type="text" value="甜食" /></td>
+          </tr>
+          <tr>
+            <th>內容</th>
+            <td>
+              <input type="text" value="1. 豬" />
+            </td>
+            <td><input type="text" value="1. 香蕉" /></td>
+            <td><input type="text" value="1. 糕餅" /></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><input type="text" value="2. 雞" /></td>
+            <td><input type="text" value="2. 蔬果" /></td>
+            <td><input type="text" value="2. 餅乾" /></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><input type="text" value="3. 魚" /></td>
+            <td><input type="text" value="3. 水梨" /></td>
+            <td><input type="text" value="3. 糖果" /></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="saveBtn" v-if="button">
+        <button class="cancle" data-hover="取消">取消</button>
+        <button class="save" data-hover="確認">確認</button>
+      </div>
+    </div>
+    <!-- 籤詩 -->
+    <div class="pomes" v-if="show =='showbox04'">
+      <my-pomes></my-pomes>
+    </div>
+    <!-- 解籤管理 -->
+    <div class="pomeDetail" v-if="show =='showbox05'">
+      <my-pomedetail></my-pomedetail>
+    </div>
+    <!-- 籤詩紀錄 -->
+    <div class="pomeRecorder" v-if="show =='showbox06'">
+      <my-pomerecorder></my-pomerecorder>
+    </div>
+    <!-- 平安符管理 -->
+    <div class="amuletManage" v-if="show =='showbox07'">
+      <amuletmanage></amuletmanage>
+    </div>
+    <!-- 生肖管理 -->
+    <div class="zodiac-Manage-second" v-if="show =='showbox08'">
+      <zodiacmanage></zodiacmanage>
+    </div>
+    <!-- 商品訂單 -->
+    <div class="product-orders" v-if="show =='showbox09'">
+      <my-orders></my-orders>
+    </div>
+    <!-- 訂單明細 -->
+    <div class="productOrders" v-if="show =='showbox10'">
+      <div class="supply">
+        <span>訂單明細</span>
+      </div>
+      <div class="searchbox">
+        <div class="search">
+          <input type="text" placeholder="搜尋關鍵字" />
+          <button>
+            <img src="img/backdata/search.svg" alt="" />
+          </button>
+        </div>
+        <div class="page">
+          <span class="each">每頁顯示</span>
+          <select>
+            <option value="" style="color: #927858">10</option>
+            <option value="" style="color: #927858">20</option>
+            <option value="" style="color: #927858">30</option>
+          </select>
+          <span class="each">頁</span>
+        </div>
+      </div>
+      <!-- 表格內容 -->
+      
+
+      <table class="table table-hover table-pray">
+        <thead>
+          <tr>
+            <th>訂單明細編號</th>
+            <th>訂單編號</th>
+            <th>平安符種類</th>
+            <th>生肖名稱</th>
+            <th>客製化文字</th>
+            <th>數量</th>
+            <th>單價</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>00000001</td>
+            <td>00002021</td>
+            <td>感情</td>
+            <td>牛</td>
+            <td>早生貴子平安幸福</td>
+            <td>1</td>
+            <td>NT$399</td>
+          </tr>
+          <tr>
+            <td>00000001</td>
+            <td>00002021</td>
+            <td>感情</td>
+            <td>牛</td>
+            <td>早生貴子平安幸福</td>
+            <td>1</td>
+            <td>NT$399</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- 表格內容結束 -->
+
+      <!-- 頁簽 -->
+      <div class="pagelist">
+        <a href="">
+          < </a>
+            <a href="">1</a>
+            <a href="">2</a>
+            <a href="">3</a>
+            <a href="">4</a>
+            <a href="">5</a>
+            <a href=""> > </a>
+      </div>
+    </div>
+    <!-- 會員資料 -->
+    <div class="memberDetail" v-if="show =='showbox11'">
+      <personaldata></personaldata>
+    </div>
+    <!-- 結緣紀錄 -->
+    <div class="moneyRecorder" v-if="show =='showbox12'">
+      <donate-record></donate-record>
+    </div>
+  </div>
+
+  <script>
+     //生肖圖
+     var Componentzodiacmanage = Vue.component('zodiacmanage', {
+      data() {
+        return{
+          pomeNumber: "1",
+          image2: "",
+          button: false,
+          zodiac_no:1,
+          zodiac:[],
+          zodiacName:"鼠",
+          zodiacImg:"./img/amulet/amulet_2.jpg",
+
+        }
+      },
+      created() {
+        axios.post('../phps/zodiac.php', {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then((res) => {
+                this.zodiac = res.data;            
+            }
+            ).catch(function (error) {
               console.log(error);
             });
+      },
+   
+      methods: {
+        //更新圖片
+        fileChange(e) {
+          let file = e.target.files[0];
+          let readFile = new FileReader();
+          readFile.readAsDataURL(file);
+          readFile.addEventListener("load", this.loadImage);
+        },
+        loadImage(e) {
+          this.image2 = e.target.result;
+        },
+        
+        showButton() {
+          if (this.button == false) {
+            this.button = true;
+          } else {
+            this.button = false;
+          }
         },
 
-        methods: {
-          //更新圖片
-          fileChange(e) {
-            let file = e.target.files[0];
-            let readFile = new FileReader();
-            readFile.readAsDataURL(file);
-            readFile.addEventListener("load", this.loadImage);
-          },
-          loadImage(e) {
-            this.image2 = e.target.result;
-          },
-
-          showButton() {
-            if (this.button == false) {
-              this.button = true;
-            } else {
-              this.button = false;
-            }
-          },
-
-          zodiacClick() {
-            for (i = 0; i < 12; i++) {
+        zodiacClick() {
+          for (i = 0; i < 12; i++) {
               if (this.zodiac_no == this.zodiac[i].zodiac_no) {
                 this.zodiacName = this.zodiac[i].zodiac_name;
                 this.zodiacImg = this.zodiac[i].zodiac_img;
               }
-            }
-          },
+          }
         },
+        
+      },
 
-        template: `
+      template: `
         <div>
           <div class="supply">
             <span>生肖圖管理</span>
@@ -435,108 +401,151 @@
           </div>
           
           <!-- 表格內容 -->
-          <table class="table table-pomemange">
+          <table class="table table-zodiac">
             <thead>
               <tr>
                 <th scope="col">編號</th>
                 <th scope="col">生肖</th>
                 <th scope="col">原圖檔</th>
-                <th scope="col">新圖檔</th>
+                <th scope="col">新圖檔
+                  <label class="btn">上傳檔案
+                      <input type="file" @change="fileChange"/><br>
+                  </label>
+                  
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                
                 <td style="vertical-align: middle">
                   <select name="生肖" id="" v-model="zodiac_no" @change="zodiacClick">
                     <option v-for="number in 12">{{number}}</option>
                   </select>
                 </td>
-                <td>
-                <h5>{{this.zodiacName}}</h5>
+                <td style="vertical-align: middle">
+                  <h5>{{this.zodiacName}}</h5>
                 </td>
 
                 <td style="vertical-align: middle">
-                  <img :src="zodiacImg" alt="amulet">
+                  <div class="zodiacImg">
+                    <img :src="zodiacImg" alt="amulet">
+                  </div>
                 </td>
                 <td style="vertical-align: middle">
-                  <input type="file" @change="fileChange"/><br>
-                  <img :src="image2" alt="新圖檔">
+                  <div class="zodiacImg"><img :src="image2" alt="新圖檔"/></div>
                 </td>
               </tr>
             </tbody>
           </table>
-          <!-- 表格內容結束 -->
-
-          
+          <!-- 表格內容結束 -->          
           <div class="saveBtn" v-if="button">
             <button class="cancle" data-hover="取消">取消</button>
             <button class="save" data-hover="確認">確認</button>
           </div>
         </div>
         `,
-      });
+    });
+     //平安符
+    var Componentamuletmanage = Vue.component('amuletmanage', {
+      data() {
+        return{
+          button: false,
+          image2: '',
+          typeNo:1,
+          amuletType:[],
+          amuletTypeText:'月下老人簡稱月老，為掌管男女姻緣之神幫助痴男怨女獲得真愛。',
+          amuletTypeName:'感情',
+          amuletTypeImg:'./img/amulet/1.png',
 
-      //平安符
-      var Componentamuletmanage = Vue.component("amuletmanage", {
-        data() {
-          return {
-            button: false,
-            image2: "",
-            typeNo: 1,
-            amuletType: [],
-            amuletTypeText:
-              "月下老人簡稱月老，為掌管男女姻緣之神幫助痴男怨女獲得真愛。",
-            amuletTypeName: "感情",
-            amuletTypeImg: "./img/amulet/1.png",
-          };
-        },
-        created() {
-          axios
-            .post("../phps/amulet.php", {
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            })
-            .then((res) => {
-              this.amuletType = res.data;
-            })
-            .catch(function (error) {
+        }
+      },
+      created() {
+        axios.post('../phps/amulet.php', {
+                headers: {
+                  'Content-Type': 'multipart/form-data'
+                }
+            }).then((res) => {
+                this.amuletType = res.data;                       
+            }
+            ).catch(function (error) {
               console.log(error);
             });
+      },
+   
+      methods: {
+        showButton() {
+          if (this.button == false) {
+            this.button = true;
+          } else {
+            this.button = false;
+          }
         },
 
-        methods: {
-          showButton() {
-            if (this.button == false) {
-              this.button = true;
-            } else {
-              this.button = false;
+        typeClick() {
+          for (i = 0; i < 6; i++){
+            if(this.typeNo == this.amuletType[i].type_no){
+              this.amuletTypeName = this.amuletType[i].type_name
+              this.amuletTypeText = this.amuletType[i].type_text
+              this.amuletTypeImg = this.amuletType[i].type_img
             }
-          },
+          }
+        },
 
-          typeClick() {
-            for (i = 0; i < 6; i++) {
-              if (this.typeNo == this.amuletType[i].type_no) {
-                this.amuletTypeName = this.amuletType[i].type_name;
-                this.amuletTypeText = this.amuletType[i].type_text;
-                this.amuletTypeImg = this.amuletType[i].type_img;
+        fileChange(e) {
+          let file = e.target.files[0];
+          let readFile = new FileReader();
+          readFile.readAsDataURL(file);
+          readFile.addEventListener("load", this.loadImage);
+        },
+        loadImage(e) {
+          this.image2 = e.target.result;
+        },
+
+        
+       
+
+        // 更改簡介2
+        // changedata(){
+        //   for(i=0; i<6; i++){
+        //     if(this.typeNo == this.amuletType[i].type_no){
+        //       if (this.amuletTypeText != this.amuletType.type_text ){
+        //         axios.post('../phps/amuletUpdate.php', {
+        //         amuletTypeText: this.amuletType.type_text,
+        //         headers: {
+        //           'Content-Type': 'multipart/form-data'
+        //         }
+        //       }).then(function (response) {
+        //         alert(response.data);
+        //       }).catch(function (error) {
+        //         console.log(error);
+        //       });
+        //       };
+        //     };
+        //   };
+        // },
+
+
+        //更改簡介1
+        changedata() {
+          if (this.amuletTypeText != this.amuletType.type_text ){
+            // console.log(this.amuletTypeText);
+            axios.post('../phps/amuletUpdate.php', {
+              amuletTypeText: this.amuletType.type_text,
+              headers: {
+                'Content-Type': 'multipart/form-data'
               }
-            }
-          },
-
-          fileChange(e) {
-            let file = e.target.files[0];
-            let readFile = new FileReader();
-            readFile.readAsDataURL(file);
-            readFile.addEventListener("load", this.loadImage);
-          },
-          loadImage(e) {
-            this.image2 = e.target.result;
-          },
+            }).then(function (response) {
+              alert(response.data);
+            }).catch(function (error) {
+              console.log(error);
+            });
+          }
         },
+      
 
-        template: `
+      },
+
+      template:`
         <div>
           <div class="supply">
             <span>平安符願管理</span>
@@ -544,14 +553,18 @@
           </div>
 
           <!-- 表格內容 -->
-          <table class="table table-unpomes">
+          <table class="table table-amulet">
             <thead>
               <tr>
                 <th scope="col">編號</th>
                 <th scope="col">種類</th>
                 <th scope="col">簡介</th>
                 <th scope="col">原圖檔</th>
-                <th scope="col">新圖檔</th>
+                <th scope="col">新圖檔
+                    <label class="btn">上傳檔案
+                      <input type="file" @change="fileChange"/>
+                    </label>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -564,18 +577,16 @@
                 <td style="vertical-align: middle">
                   <h5>{{this.amuletTypeName}}</h5>
                 </td>
-                <td>
-                  <textarea name="" id="" cols="10" rows="10">
+                <td style="vertical-align: middle">
+                  <textarea name="簡介" id="" cols="10" rows="10">
                     <p>{{this.amuletTypeText}}</p>
                   </textarea>
                 </td>
-                <td>
-                  
-                  <img :src="amuletTypeImg" alt="amulet">
+                <td style="vertical-align: middle">
+                  <div class="godImg"><img :src="amuletTypeImg" alt="amulet"></div>
                 </td>
-                <td>
-                  <input type="file" @change="fileChange"/><br>
-                  <img :src="image2" alt="新圖檔" />
+                <td style="vertical-align: middle">
+                  <div class="godImg"><img :src="image2" alt="新圖檔"/></div>
                 </td>
               </tr>
             </tbody>
@@ -583,17 +594,38 @@
           <!-- 表格內容結束 -->
           <div class="saveBtn" v-if="button">
             <button class="cancle" data-hover="取消">取消</button>
-            <button class="save" data-hover="確認">確認</button>
+            <button class="save" data-hover="修改" @click="changedata">修改</button>
           </div>
         </div>
       `,
-      });
-      //小卡
-      var Componentcardmanage = Vue.component("cardmanage", {
-        data() {
-          return {};
-        },
-        template: `
+
+    });
+    //小卡
+    var Componentcardmanage = Vue.component('cardmanage', {
+      data() {
+        return {
+          card: [],
+          cards: '',
+          pngimg: ".png",
+        }
+      },
+      created() {
+        axios.post('phps/praycard.php', {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((res) => {
+          this.card = res.data;
+          this.cards = this.card[0].card_cont;
+        }
+        ).catch(function (error) {
+          console.log(error);
+        });
+      },
+      methods: {
+
+      },
+      template: `
       <div class="supply">
         <span>小卡管理</span>
         <img src="img/backData/backFix.svg"/>
@@ -624,142 +656,130 @@
         <button class="save" data-hover="確認">確認</button>
       </div>
       </div>
-      `,
-      });
-      //祈願紀錄
-      var Componentprayrecord = Vue.component("prayrecord", {
-        data() {
-          return {
-            prayerdata: [],
-            searchData: "",
-            searchval: "",
-            pno: 1, //目前頁數
-            psize: 3, //頁面筆數
-            currentPage: 1, //目前頁面
-            totalPage: 0, //總頁數
-            num: 0, //表格數量
-          };
+      `
+    })
+    //祈願紀錄
+    var Componentprayrecord = Vue.component('prayrecord', {
+      data() {
+        return {
+          prayerdata: [],
+          searchData: '',
+          searchval: '',
+          pno: 1,//目前頁數
+          psize: 3,//頁面筆數
+          currentPage: 1,//目前頁面
+          totalPage: 0,//總頁數
+          num: 0,//表格數量
+        }
+      },
+      created() {
+        axios.post('phps/prayerrecordShow.php', {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((res) => {
+          this.prayerdata = res.data;
+        }
+        ).catch(function (error) {
+          console.log(error);
+        });
+      },
+      methods: {
+        list() {//搜尋
+          this.pno = 1;
+          let search = this.searchval;
+          this.prayerdata = this.prayerdata.filter(function (index) {
+            return Object.keys(index).some(function (key) {
+              return String(index[key]).indexOf(search) != -1;
+            })
+          });
         },
-        created() {
-          axios
-            .post("phps/prayerrecordShow.php", {
+        nextpage() {
+          this.currentPage = this.pno;//目前頁數
+          let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+          let endRow = this.currentPage * this.psize;//結束顯示行
+          endRow = (endRow > this.num) ? this.num : endRow;
+          if (this.currentPage < this.totalPage) {
+            this.pno += 1;
+          }
+        },
+        previouspage() {
+          this.currentPage = this.pno;//目前頁數
+          let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+          let endRow = this.currentPage * this.psize;//結束顯示行
+          endRow = (endRow > this.num) ? this.num : endRow;
+          if (this.currentPage > 1) {
+            this.pno -= 1;
+          } else if (this.currentPage == 1) {
+            this.pno = 1;
+          }
+        },
+        first() {
+          this.pno = 1;
+        },
+        end() {
+          this.pno = this.totalPage;
+        },
+      },
+      updated() {
+        this.num = this.prayerdata.length;//表格數量
+        //總共分幾頁
+        if (this.num / this.psize > parseInt(this.num / this.psize)) {
+          this.totalPage = parseInt(this.num / this.psize) + 1;
+        } else {
+          this.totalPage = parseInt(this.num / this.psize);
+        }
+        this.currentPage = this.pno;//目前頁數
+        let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+        let endRow = this.currentPage * this.psize;//結束顯示行
+        endRow = (endRow > this.num) ? this.num : endRow;
+        for (let i = 1; i < (this.num + 1); i++) {
+          if (i >= startRow && i <= endRow) {
+            $('#tablepray tbody tr:nth-child(' + i + ')').css({ display: "table-row" });
+          } else {
+            $('#tablepray tbody tr:nth-child(' + i + ')').css({ display: "none" });
+          }
+        }
+      },
+      watch: {
+        searchval() {
+          if (this.searchval == '') {
+            axios.post('phps/prayerrecordShow.php', {
               headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            })
-            .then((res) => {
+                'Content-Type': 'multipart/form-data'
+              }
+            }).then((res) => {
               this.prayerdata = res.data;
-            })
-            .catch(function (error) {
+            }
+            ).catch(function (error) {
               console.log(error);
             });
+          }
         },
-        methods: {
-          list() {
-            //搜尋
-            this.pno = 1;
-            let search = this.searchval;
-            this.prayerdata = this.prayerdata.filter(function (index) {
-              return Object.keys(index).some(function (key) {
-                return String(index[key]).indexOf(search) != -1;
-              });
-            });
-          },
-          nextpage() {
-            this.currentPage = this.pno; //目前頁數
-            let startRow = (this.currentPage - 1) * this.psize + 1; //開始顯示行
-            let endRow = this.currentPage * this.psize; //結束顯示行
-            endRow = endRow > this.num ? this.num : endRow;
-            if (this.currentPage < this.totalPage) {
-              this.pno += 1;
-            }
-          },
-          previouspage() {
-            this.currentPage = this.pno; //目前頁數
-            let startRow = (this.currentPage - 1) * this.psize + 1; //開始顯示行
-            let endRow = this.currentPage * this.psize; //結束顯示行
-            endRow = endRow > this.num ? this.num : endRow;
-            if (this.currentPage > 1) {
-              this.pno -= 1;
-            } else if (this.currentPage == 1) {
-              this.pno = 1;
-            }
-          },
-          first() {
-            this.pno = 1;
-          },
-          end() {
-            this.pno = this.totalPage;
-          },
-        },
-        updated() {
-          this.num = this.prayerdata.length; //表格數量
-          //總共分幾頁
+        pno() {
           if (this.num / this.psize > parseInt(this.num / this.psize)) {
             this.totalPage = parseInt(this.num / this.psize) + 1;
           } else {
             this.totalPage = parseInt(this.num / this.psize);
           }
-          this.currentPage = this.pno; //目前頁數
-          let startRow = (this.currentPage - 1) * this.psize + 1; //開始顯示行
-          let endRow = this.currentPage * this.psize; //結束顯示行
-          endRow = endRow > this.num ? this.num : endRow;
-          for (let i = 1; i < this.num + 1; i++) {
+          this.currentPage = this.pno;//目前頁數
+          let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+          let endRow = this.currentPage * this.psize;//結束顯示行
+          endRow = (endRow > this.num) ? this.num : endRow;
+          for (let i = 1; i < (this.num + 1); i++) {
             if (i >= startRow && i <= endRow) {
-              $("#tablepray tbody tr:nth-child(" + i + ")").css({
-                display: "table-row",
-              });
+              $('#tablepray tbody tr:nth-child(' + i + ')').css({ display: "table-row" });
             } else {
-              $("#tablepray tbody tr:nth-child(" + i + ")").css({
-                display: "none",
-              });
+              $('#tablepray tbody tr:nth-child(' + i + ')').css({ display: "none" });
             }
           }
         },
-        watch: {
-          searchval() {
-            if (this.searchval == "") {
-              axios
-                .post("phps/prayerrecordShow.php", {
-                  headers: {
-                    "Content-Type": "multipart/form-data",
-                  },
-                })
-                .then((res) => {
-                  this.prayerdata = res.data;
-                })
-                .catch(function (error) {
-                  console.log(error);
-                });
-            }
-          },
-          pno() {
-            if (this.num / this.psize > parseInt(this.num / this.psize)) {
-              this.totalPage = parseInt(this.num / this.psize) + 1;
-            } else {
-              this.totalPage = parseInt(this.num / this.psize);
-            }
-            this.currentPage = this.pno; //目前頁數
-            let startRow = (this.currentPage - 1) * this.psize + 1; //開始顯示行
-            let endRow = this.currentPage * this.psize; //結束顯示行
-            endRow = endRow > this.num ? this.num : endRow;
-            for (let i = 1; i < this.num + 1; i++) {
-              if (i >= startRow && i <= endRow) {
-                $("#tablepray tbody tr:nth-child(" + i + ")").css({
-                  display: "table-row",
-                });
-              } else {
-                $("#tablepray tbody tr:nth-child(" + i + ")").css({
-                  display: "none",
-                });
-              }
-            }
-          },
-          psize() {
-            this.pno = 1;
-          },
-        },
-        template: `
+        psize() {
+          this.pno = 1;
+        }
+      },
+      template:
+        `
       <div class="supply">
         <span>祈願紀錄</span>
       <div class="searchbox">
@@ -812,30 +832,110 @@
           <a href="#"@click="end">末頁</a>
       </div>
       </div>
-      `,
-      });
-      //會員
-      var Componentmember = Vue.component("personaldata", {
-        data() {
-          return {
-            personaldata: [],
-            searchData: "",
-            searchval: "",
-            pno: 1, //目前頁數
-            psize: 10, //頁面筆數
-            currentPage: 1, //目前頁面
-            totalPage: 0, //總頁數
-            num: 0, //表格數量
+      `
+    })
+    //會員
+    var Componentmember = Vue.component('personaldata', {
+      data() {
+        return {
+          personaldata: [],
+          searchData: '',
+          searchval: '',
+          pno: 1,//目前頁數
+          psize: 10,//頁面筆數
+          currentPage: 1,//目前頁面
+          totalPage: 0,//總頁數
+          num: 0,//表格數量
+        }
+      },
+      created() {
+        axios.post('phps/memberShow.php', {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((res) => {
+          for (i = 0; i < res.data.length; i++) {
+            let add = res.data[i].mem_status;
+            if (add == "0") {
+              add = "正常";
+            } else if (add == "1") {
+              add = "待驗證";
+            } else if (add == "2") {
+              add = "停權";
+            };
+            res.data[i].mem_status = add;
           };
-        },
-        created() {
-          axios
-            .post("phps/memberShow.php", {
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
+          this.personaldata = res.data;
+        }
+        ).catch(function (error) {
+          console.log(error);
+        });
+      },
+      updated() {
+        this.num = this.personaldata.length;//表格數量
+        //總共分幾頁
+        if (this.num / this.psize > parseInt(this.num / this.psize)) {
+          this.totalPage = parseInt(this.num / this.psize) + 1;
+        } else {
+          this.totalPage = parseInt(this.num / this.psize);
+        }
+        this.currentPage = this.pno;//目前頁數
+        let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+        let endRow = this.currentPage * this.psize;//結束顯示行
+        endRow = (endRow > this.num) ? this.num : endRow;
+        for (let i = 1; i < (this.num + 1); i++) {
+          if (i >= startRow && i <= endRow) {
+            $('#membertable tbody tr:nth-child(' + i + ')').css({ display: "table-row" });
+          } else {
+            $('#membertable tbody tr:nth-child(' + i + ')').css({ display: "none" });
+          }
+        }
+      },
+      methods: {
+        list() {//搜尋
+          this.pno = 1;
+          let search = this.searchval;
+          this.personaldata = this.personaldata.filter(function (index) {
+            return Object.keys(index).some(function (key) {
+              return String(index[key]).indexOf(search) != -1;
             })
-            .then((res) => {
+          });
+        },
+        nextpage() {
+          this.currentPage = this.pno;//目前頁數
+          let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+          let endRow = this.currentPage * this.psize;//結束顯示行
+          endRow = (endRow > this.num) ? this.num : endRow;
+          if (this.currentPage < this.totalPage) {
+            this.pno += 1;
+          }
+        },
+        previouspage() {
+          this.currentPage = this.pno;//目前頁數
+          let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+          let endRow = this.currentPage * this.psize;//結束顯示行
+          endRow = (endRow > this.num) ? this.num : endRow;
+          if (this.currentPage > 1) {
+            this.pno -= 1;
+          } else if (this.currentPage == 1) {
+            this.pno = 1;
+          }
+        },
+        first() {
+          this.pno = 1;
+        },
+        end() {
+          this.pno = this.totalPage;
+        },
+      },
+      watch: {
+        searchval() {
+          if (this.searchval == '') {
+            axios.post('phps/memberShow.php', {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            }).then((res) => {
               for (i = 0; i < res.data.length; i++) {
                 let add = res.data[i].mem_status;
                 if (add == "0") {
@@ -844,132 +944,40 @@
                   add = "待驗證";
                 } else if (add == "2") {
                   add = "停權";
-                }
+                };
                 res.data[i].mem_status = add;
-              }
+              };
               this.personaldata = res.data;
-            })
-            .catch(function (error) {
+            }
+            ).catch(function (error) {
               console.log(error);
             });
+          }
         },
-        updated() {
-          this.num = this.personaldata.length; //表格數量
-          //總共分幾頁
+        pno() {
           if (this.num / this.psize > parseInt(this.num / this.psize)) {
             this.totalPage = parseInt(this.num / this.psize) + 1;
           } else {
             this.totalPage = parseInt(this.num / this.psize);
           }
-          this.currentPage = this.pno; //目前頁數
-          let startRow = (this.currentPage - 1) * this.psize + 1; //開始顯示行
-          let endRow = this.currentPage * this.psize; //結束顯示行
-          endRow = endRow > this.num ? this.num : endRow;
-          for (let i = 1; i < this.num + 1; i++) {
+          this.currentPage = this.pno;//目前頁數
+          let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+          let endRow = this.currentPage * this.psize;//結束顯示行
+          endRow = (endRow > this.num) ? this.num : endRow;
+          for (let i = 1; i < (this.num + 1); i++) {
             if (i >= startRow && i <= endRow) {
-              $("#membertable tbody tr:nth-child(" + i + ")").css({
-                display: "table-row",
-              });
+              $('#membertable tbody tr:nth-child(' + i + ')').css({ display: "table-row" });
             } else {
-              $("#membertable tbody tr:nth-child(" + i + ")").css({
-                display: "none",
-              });
+              $('#membertable tbody tr:nth-child(' + i + ')').css({ display: "none" });
             }
           }
         },
-        methods: {
-          list() {
-            //搜尋
-            this.pno = 1;
-            let search = this.searchval;
-            this.personaldata = this.personaldata.filter(function (index) {
-              return Object.keys(index).some(function (key) {
-                return String(index[key]).indexOf(search) != -1;
-              });
-            });
-          },
-          nextpage() {
-            this.currentPage = this.pno; //目前頁數
-            let startRow = (this.currentPage - 1) * this.psize + 1; //開始顯示行
-            let endRow = this.currentPage * this.psize; //結束顯示行
-            endRow = endRow > this.num ? this.num : endRow;
-            if (this.currentPage < this.totalPage) {
-              this.pno += 1;
-            }
-          },
-          previouspage() {
-            this.currentPage = this.pno; //目前頁數
-            let startRow = (this.currentPage - 1) * this.psize + 1; //開始顯示行
-            let endRow = this.currentPage * this.psize; //結束顯示行
-            endRow = endRow > this.num ? this.num : endRow;
-            if (this.currentPage > 1) {
-              this.pno -= 1;
-            } else if (this.currentPage == 1) {
-              this.pno = 1;
-            }
-          },
-          first() {
-            this.pno = 1;
-          },
-          end() {
-            this.pno = this.totalPage;
-          },
-        },
-        watch: {
-          searchval() {
-            if (this.searchval == "") {
-              axios
-                .post("phps/memberShow.php", {
-                  headers: {
-                    "Content-Type": "multipart/form-data",
-                  },
-                })
-                .then((res) => {
-                  for (i = 0; i < res.data.length; i++) {
-                    let add = res.data[i].mem_status;
-                    if (add == "0") {
-                      add = "正常";
-                    } else if (add == "1") {
-                      add = "待驗證";
-                    } else if (add == "2") {
-                      add = "停權";
-                    }
-                    res.data[i].mem_status = add;
-                  }
-                  this.personaldata = res.data;
-                })
-                .catch(function (error) {
-                  console.log(error);
-                });
-            }
-          },
-          pno() {
-            if (this.num / this.psize > parseInt(this.num / this.psize)) {
-              this.totalPage = parseInt(this.num / this.psize) + 1;
-            } else {
-              this.totalPage = parseInt(this.num / this.psize);
-            }
-            this.currentPage = this.pno; //目前頁數
-            let startRow = (this.currentPage - 1) * this.psize + 1; //開始顯示行
-            let endRow = this.currentPage * this.psize; //結束顯示行
-            endRow = endRow > this.num ? this.num : endRow;
-            for (let i = 1; i < this.num + 1; i++) {
-              if (i >= startRow && i <= endRow) {
-                $("#membertable tbody tr:nth-child(" + i + ")").css({
-                  display: "table-row",
-                });
-              } else {
-                $("#membertable tbody tr:nth-child(" + i + ")").css({
-                  display: "none",
-                });
-              }
-            }
-          },
-          psize() {
-            this.pno = 1;
-          },
-        },
-        template: `<div class="supply">
+        psize() {
+          this.pno = 1;
+        }
+      },
+      template:
+        `<div class="supply">
                   <span>會員資料</span>
                 <div class="searchbox">
                   <div class="search">
@@ -1022,65 +1030,65 @@
                   <a href="#" @click="nextpage"> > </a>
                   <a href="#"@click="end">末頁</a>
                 </div>
-              </div>`,
-      });
+              </div>`
+    });
 
-      //訂單管理
-      var Componentorders = Vue.component("my-orders", {
-        data() {
-          return {
-            //products-orders ---
-            orders: [],
-            newOrders: [],
-            getFilters: [],
-            Mes: "",
-            //ordersLists ---
-            orderLists: [],
-            currentindex: "",
-            isShow: false,
-            //open-orders ---
-            isOpen: "",
-            process: [],
-            deliver: [],
-            finish: [],
-          };
-        },
-        methods: {
-          showButton() {
-            if (this.button == false) {
-              this.button = true;
-            } else {
-              this.button = false;
-            }
-          },
-          CurrentDetails(index) {
-            this.isShow = true;
-            this.currentindex = this.orderLists[index];
-          },
-          onProcess() {
-            this.isOpen = "Open1";
-            this.process = this.orders.filter((item) => item.order_status == 0);
-          },
-          delivering() {
-            this.isOpen = "Open2";
-            this.deliver = this.orders.filter((item) => item.order_status == 1);
-          },
-          done() {
-            this.isOpen = "Open3";
-            this.finish = this.orders.filter((item) => item.order_status == 2);
-          },
-        },
-        mounted() {
+    //訂單管理
+    var Componentorders = Vue.component("my-orders", {
+      data() {
+        return {
           //products-orders ---
-          axios
-            .get("../phps/orderscopy.php")
-            .then((res) => (this.orders = res.data));
-          // orderLists----
-          axios
-            .get("../phps/orderslist.php")
-            .then((res) => (this.orderLists = res.data));
+          orders: [],
+          newOrders: [],
+          getFilters: [],
+          Mes: "",
+          //ordersLists ---
+          orderLists: [],
+          currentindex: "",
+          isShow: false,
+          //open-orders ---
+          isOpen: "",
+          process: [],
+          deliver: [],
+          finish: [],
+        };
+      },
+      methods: {
+        showButton() {
+          if (this.button == false) {
+            this.button = true;
+          } else {
+            this.button = false;
+          }
         },
-        template: `
+        CurrentDetails(index) {
+          this.isShow = true;
+          this.currentindex = this.orderLists[index];
+        },
+        onProcess() {
+          this.isOpen = "Open1";
+          this.process = this.orders.filter((item) => item.order_status == 0);
+        },
+        delivering() {
+          this.isOpen = "Open2";
+          this.deliver = this.orders.filter((item) => item.order_status == 1);
+        },
+        done() {
+          this.isOpen = "Open3";
+          this.finish = this.orders.filter((item) => item.order_status == 2);
+        },
+      },
+      mounted() {
+        //products-orders ---
+        axios
+          .get("../phps/orderscopy.php")
+          .then((res) => (this.orders = res.data));
+        // orderLists----
+        axios
+          .get("../phps/orderslist.php")
+          .then((res) => (this.orderLists = res.data));
+      },
+      template: `
       <div>
           <div class="products-man">
             <span class="order">商品訂單</span>
@@ -1222,95 +1230,47 @@
           </div>
     </div>
           `,
-      });
-      //管理員
-      var Componentadmin = Vue.component("my-admin", {
-        data() {
-          return {
-            administratorList: [],
-          };
-        },
-        methods: {},
-        template: ` 
-        <div>
-          <div class="supply">
-            <span>管理員</span>
-          </div>
+    });
 
-        <!-- 表格內容 -->
-        <table class="table table-hover table-admin">
-          <thead>
-            <tr>
-              <th scope="col">編號</th>
-              <th scope="col">名稱</th>
-              <th scope="col">密碼</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(administrator, index) in  administratorList" :key=" administrator.admin_no">
-              <td>{{administrator.admin_no}}</td>
-              <td>{{administrator.admin_name}}</td>
-              <td>{{administrator.admin_psw}}</td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- 表格內容結束 -->
-        
-          </div>
-      `,
-        created() {
-          //admin
-          axios
-            .get("../phps/admin.php")
-            .then((res) => (this.administratorList = res.data));
+    //籤詩管理
+    var Componentpomes = Vue.component("my-pomes", {
+      data() {
+        return {
+          pomeNumber: "1",
+          image2: "",
+          button: false,
+          pomesList: [],
+        };
+      },
+      methods: {
+        //籤詩管理
+        fileChange(e) {
+          let file = e.target.files[0];
+          let readFile = new FileReader();
+          readFile.readAsDataURL(file);
+          readFile.addEventListener("load", this.loadImage);
         },
-      });
-      //籤詩管理
-      var Componentpomes = Vue.component("my-pomes", {
-        data() {
-          return {
-            pomeNumber: "1",
-            image2: "",
-            button: false,
-            pomesList: [],
-          };
+        loadImage(e) {
+          this.image2 = e.target.result;
         },
-        methods: {
-          //籤詩管理
-          fileChange(e) {
-            let file = e.target.files[0];
-            let readFile = new FileReader();
-            readFile.readAsDataURL(file);
-            readFile.addEventListener("load", this.loadImage);
-          },
-          loadImage(e) {
-            this.image2 = e.target.result;
-          },
 
-          // changeNum() {
-          //   this.image = `img/pomes/pomes${this.pomeNumber}.jpg`;
-          // },
-          showButton() {
-            if (this.button == false) {
-              this.button = true;
-            } else {
-              this.button = false;
-            }
-          },
+        // changeNum() {
+        //   this.image = `img/pomes/pomes${this.pomeNumber}.jpg`;
+        // },
+        showButton() {
+          if (this.button == false) {
+            this.button = true;
+          } else {
+            this.button = false;
+          }
         },
-        computed: {
-          pomeconImg() {
-            return this.pomesList[this.pomeNumber - 1]?.pomes_content;
-          },
-        },
-        created() {
-          axios
-            .get("../phps/pomes.php")
-            .then((res) => (this.pomesList = res.data));
-        },
-        template: `
+      },
+      created() {
+        axios
+          .get("../phps/pomes.php")
+          .then((res) => (this.pomesList = res.data));
+      },
+      template: `
         <div>
           <div class="supply">
             <span>籤詩管理</span>
@@ -1370,7 +1330,7 @@
             <span>圖檔</span>
             <div class="firstpic">
               <span>原圖檔</span>
-              <img :src="pomeconImg" alt="原圖檔" />
+              <img :src="pomesList[pomeNumber -1].pomes_content" alt="原圖檔" />
             </div>
 
             <div class="firstpic2">
@@ -1384,50 +1344,45 @@
           </div>
         </div>
         `,
-      });
+    });
 
-      //解籤管理
-      var Componentpomesdetail = Vue.component("my-pomedetail", {
-        data() {
-          return {
-            pomeDetailNumber: "1",
-            image4: "",
-            button: false,
-            pomesList: [],
-          };
+    //解籤管理
+    var Componentpomesdetail = Vue.component("my-pomedetail", {
+      data() {
+        return {
+          pomeDetailNumber: "1",
+          image4: "",
+          button: false,
+          pomesList: [],
+        };
+      },
+      methods: {
+        //解籤內容管理
+        fileChange2(e2) {
+          let file2 = e2.target.files[0];
+          let readFile2 = new FileReader();
+          readFile2.readAsDataURL(file2);
+          readFile2.addEventListener("load", this.loadImage2);
         },
-        methods: {
-          //解籤內容管理
-          fileChange2(e2) {
-            let file2 = e2.target.files[0];
-            let readFile2 = new FileReader();
-            readFile2.readAsDataURL(file2);
-            readFile2.addEventListener("load", this.loadImage2);
-          },
-          loadImage2(e2) {
-            this.image4 = e2.target.result;
-          },
-
-          showButton() {
-            if (this.button == false) {
-              this.button = true;
-            } else {
-              this.button = false;
-            }
-          },
-        },
-        computed: {
-          pomedetImg() {
-            return this.pomesList[this.pomeDetailNumber - 1]?.pomes_det;
-          },
-        },
-        created() {
-          axios
-            .get("../phps/pomes.php")
-            .then((res) => (this.pomesList = res.data));
+        loadImage2(e2) {
+          this.image4 = e2.target.result;
         },
 
-        template: `
+        showButton() {
+          if (this.button == false) {
+            this.button = true;
+          } else {
+            this.button = false;
+          }
+        },
+      },
+      created() {
+        axios
+          .get("../phps/pomes.php")
+          .then((res) => (this.pomesList = res.data));
+      },
+
+      template: `
         <div>
           <div class="supply">
             <span>解籤內容管理</span>
@@ -1490,7 +1445,7 @@
             <span>圖檔</span>
             <div class="firstpic">
               <span>原圖檔</span>
-              <img :src="pomedetImg" alt="原圖檔" />
+              <img :src="pomesList[pomeDetailNumber -1].pomes_det" alt="原圖檔" />
             </div>
 
             <div class="firstpic2">
@@ -1504,17 +1459,17 @@
           </div>
         </div>
         `,
-      });
+    });
 
-      // 求籤紀錄
-      var Componentpomesrecorder = Vue.component("my-pomerecorder", {
-        data() {
-          return {
-            pomesRecorderList: [],
-          };
-        },
-        methods: {},
-        template: `
+    // 求籤紀錄
+    var Componentpomesrecorder = Vue.component("my-pomerecorder", {
+      data() {
+        return {
+          pomesRecorderList: [],
+        };
+      },
+      methods: {},
+      template: `
         <div>
           <div class="supply">
             <span>求籤紀錄</span>
@@ -1567,22 +1522,22 @@
           </div>
         </div>
         `,
-        created() {
-          //donate-money
-          axios
-            .get("../phps/pomesRecorder.php")
-            .then((res) => (this.pomesRecorderList = res.data));
-        },
-      });
+      created() {
+        //donate-money
+        axios
+          .get("../phps/pomesRecorder.php")
+          .then((res) => (this.pomesRecorderList = res.data));
+      },
+    });
 
-      //結緣紀錄
-      Vue.component("donate-record", {
-        data() {
-          return {
-            donateList: [],
-          };
-        },
-        template: ` <div>
+    //結緣紀錄
+    Vue.component("donate-record", {
+      data() {
+        return {
+          donateList: [],
+        };
+      },
+      template: ` <div>
             <div class="supply">
               <span>結緣紀錄</span>
             </div>
@@ -1637,43 +1592,42 @@
             </div>
           </div>
       `,
-        created() {
-          //donate-money
-          axios
-            .get("../phps/donatephp.php")
-            .then((res) => (this.donateList = res.data));
+      created() {
+        //donate-money
+        axios
+          .get("../phps/donatephp.php")
+          .then((res) => (this.donateList = res.data));
+      },
+    }),
+      new Vue({
+        el: "#app",
+        data: {
+          button: false,
+          show: "showbox07",
         },
-      }),
-        new Vue({
-          el: "#app",
-          data: {
-            numbers: ["A", "B", "C", "D", "E", "F"],
-            types: ["感情", "平安", "健康", "財富", "事業", "學業"],
-            button: false,
-            show: "showbox0",
+        components: {
+          'component-member': Componentmember,
+          'component-prayrecorder': Componentprayrecord,
+          'component-cardmanage': Componentcardmanage,
+          "component-orders": Componentorders,
+          "component-pomes": Componentpomes,
+          "component-pomesdet": Componentpomesdetail,
+          "component-pomesrec": Componentpomesrecorder,
+          "component-amuletmanage":Componentamuletmanage,
+          "component-zodiacmanage":Componentzodiacmanage,
+        },
+        methods: {
+          showButton() {
+            if (this.button == false) {
+              this.button = true;
+            } else {
+              this.button = false;
+            }
           },
-          components: {
-            "component-member": Componentmember,
-            "component-prayrecorder": Componentprayrecord,
-            "component-cardmanage": Componentcardmanage,
-            "component-orders": Componentorders,
-            "component-pomes": Componentpomes,
-            "component-pomesdet": Componentpomesdetail,
-            "component-pomesrec": Componentpomesrecorder,
-            "component-amuletmanage": Componentamuletmanage,
-            "component-zodiacmanage": Componentzodiacmanage,
-          },
-          methods: {
-            showButton() {
-              if (this.button == false) {
-                this.button = true;
-              } else {
-                this.button = false;
-              }
-            },
-          },
-          created() {},
-        });
-    </script>
-  </body>
+        },
+        created() { },
+      });
+  </script>
+</body>
+
 </html>
