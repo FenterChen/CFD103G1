@@ -12,6 +12,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
 </head>
 
 <body>
@@ -480,15 +481,17 @@
         let array = JSON.parse(localStorage.getItem('personallogin'));//抓localStorage存入變數
         this.losituation = null;//登入登出狀態
         if (array != null) {
-          axios.post('phps/memberExbody.php', {
+          axios.post('phps/memberExist.php', {
             mem_no: array[0].mem_no,
             mem_id: array[0].mem_id,
             headers: {
               'Content-Type': 'multipart/form-data'
             }
           }).then((res) => {
-            this.losituation = "登出";//登入登出狀態
-            this.personaldata = res.data[0];
+            if (res) {
+              this.losituation = "登出";//登入登出狀態
+              this.personaldata = res.data[0];
+            }
           }).catch(error => this.personaldata = res.data);
         };
         //以上讀取會員資料
@@ -497,9 +500,7 @@
             this.screenWidth = document.body.clientWidth;
           })()
         }
-        $(`header .headerWrap ul li:nth-child(2) a`).addClass(
-          "bottomnavline"
-        );
+        $(`header .headerWrap ul li:nth-child(2) a`).addClass('bottomnavline');
       },
       watch: {
         screenWidth: {
@@ -646,11 +647,6 @@
             },
           })
           .then((res) => {
-            if (res.data == "erro") {
-              location.href = "mainpage.html";
-            } else {
-              location.href = "memeberFix.html";
-            }
           })
           .catch((error) => console.log(error));
       },
