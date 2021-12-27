@@ -494,4 +494,90 @@ table {
 .table-card .cardimg {
   width: 300px;
 }
+
+.table-amulet textarea {
+  width: 280px;
+  height: 120px;
+  padding: 10px 5px 0 10px;
+  overflow: hidden;
+  background-color: #fdbf52;
+  border: 0px;
+  border-radius: 20px;
+  text-align: left;
+}
+
+.table-amulet select {
+  width: 60px;
+  height: 30px;
+  line-height: 15px;
+  padding: 0 0 0 10px;
+  overflow: hidden;
+  background-color: #fdbf52;
+  border: 0px;
+  border-radius: 20px;
+  text-align: left;
+}
+
+.table-amulet .godImg {
+  width: 180px;
+  margin-bottom: 10px;
+}
+
+.table-amulet .godImg img {
+  width: 100%;
+}
+
+.table-amulet input {
+  margin-left: 15px;
+  display: none;
+}
+
+.table-amulet .btn {
+  width: 90px;
+  height: 30px;
+  line-height: 17px;
+  background-color: #fdbf52;
+  border-radius: 16px;
+  margin-left: 30px;
+}
+
+.zodiac-Manage-second {
+  width: 80%;
+}
+
+.table-zodiac select {
+  width: 60px;
+  height: 30px;
+  line-height: 15px;
+  padding: 0 0 0 10px;
+  overflow: hidden;
+  background-color: #fdbf52;
+  border: 0px;
+  border-radius: 20px;
+  text-align: left;
+}
+
+.table-zodiac .zodiacImg {
+  width: 250px;
+  margin-bottom: 10px;
+}
+
+.table-zodiac .zodiacImg img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.table-zodiac input {
+  margin-left: 15px;
+  display: none;
+}
+
+.table-zodiac .btn {
+  width: 90px;
+  height: 30px;
+  line-height: 17px;
+  background-color: #fdbf52;
+  border-radius: 16px;
+  margin-left: 30px;
+}
 /*# sourceMappingURL=sidebar.css.map */
