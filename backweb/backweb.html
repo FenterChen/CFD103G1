@@ -1118,13 +1118,18 @@
           //ordersLists ---
           orderLists: [],
           currentindex: "",
+          currentDetailsNo: 1,
           isShow: false,
           //open-orders ---
           isOpen: "",
           process: [],
           deliver: [],
           finish: [],
+          //optionChanges
+          optionLists:[10,20,30],
+          optionNum:10,
         };
+        
       },
       methods: {
         showButton() {
@@ -1136,7 +1141,12 @@
         },
         CurrentDetails(index) {
           this.isShow = true;
+          this.currentDetailsNo = num;
           this.currentindex = this.orderLists[index];
+        },
+        setCurrentDetailsNo(num) {
+          this.isShow = true;
+          this.currentDetailsNo = num;
         },
         onProcess() {
           this.isOpen = "Open1";
@@ -1150,17 +1160,45 @@
           this.isOpen = "Open3";
           this.finish = this.orders.filter((item) => item.order_status == 2);
         },
+        amountChange(e){
+              this.optionNum = e.target.value ;
+              console.log(e.target.value)
+          },
       },
+        watch:{
+          optionNum(n,o){
+            console.log(n,o)
+            if(n==this.optionNum){
+              this.newOrders=this.orders.slice(0,n)
+            }
+          },
+     },
+     computed: {
+       rendorList() {
+         return this.newOrders.slice(0,this.optionNum);
+       },
+       currentObj() {
+         return this.orderLists.find(v => v.Details_no == this.currentDetailsNo);
+       },
+       filterList() {
+         return this.rendorList.filter(v => v.status == this.status);
+       },
+     },
       mounted() {
         //products-orders ---
         axios
           .get("../phps/orderscopy.php")
-          .then((res) => (this.orders = res.data));
+          .then((res) => {
+            this.orders = res.data
+            this.newOrders = res.data
+          });
         // orderLists----
         axios
           .get("../phps/orderslist.php")
           .then((res) => (this.orderLists = res.data));
       },
+
+    
       template: `
       <div>
           <div class="products-man">
@@ -1180,13 +1218,13 @@
 
               <div class="page">
                 <span class="each">每頁顯示</span>
-                <select>
-                  <option value="" style="color: #927858">10</option>
-                  <option value="" style="color: #927858">20</option>
-                  <option value="" style="color: #927858">30</option>
+                <select @change="amountChange($event)">
+                  <option :value="optionLists[index]" style="color: #927858"  v-for=" (option,index) in optionLists ">{{option}}</option>
                 </select>
                 <span class="each">頁</span>
             </div>
+
+             
         </div>
         <!-- first-row_end---------- -->
 
@@ -1226,14 +1264,14 @@
             </tr>
           </thead>
           <tbody class=" whiteline colortype" >
-            <tr v-for="(order,index) in orders" :key="order.orders_no" v-if="isOpen==''">
+            <tr v-for="(order,index) in newOrders" :key="order.orders_no" v-if="isOpen==''">
               <td class="arrow">{{order.orders_no}}</td>
               <td>{{order.mem_no}}</td>
               <td>{{order.orders_date}}</td>
               <td>{{order.orders_total}}</td>
               <td>{{order.delivery}}</td>
               <td>{{order.order_status}}</td>
-              <td v-on:click="CurrentDetails(index)" class="listdetails">📒</td>
+              <td v-on:click="setCurrentDetailsNo(order.orders_no)" class="listdetails">📒</td>
             </tr>
 
             <tr v-for="(order,index) in process" :key="order.orders_no" v-if="isOpen=='Open1'">
@@ -1243,7 +1281,7 @@
               <td>{{order.orders_total}}</td>
               <td>{{order.delivery}}</td>
               <td>{{order.order_status}}</td>
-              <td v-on:click="CurrentDetails(index)" class="listdetails">📒</td>
+              <td v-on:click="setCurrentDetailsNo(order.orders_no)" class="listdetails">📒</td>
             </tr>
 
             <tr v-for="(order,index) in deliver" :key="order.orders_no" v-if="isOpen=='Open2'">
@@ -1253,7 +1291,7 @@
               <td>{{order.orders_total}}</td>
               <td>{{order.delivery}}</td>
               <td>{{order.order_status}}</td>
-              <td v-on:click="CurrentDetails(index)" class="listdetails">📒</td>
+              <td v-on:click="setCurrentDetailsNo(order.orders_no)" class="listdetails">📒</td>
             </tr>
 
             <tr v-for="(order,index) in finish" :key="order.orders_no" v-if="isOpen=='Open3'">
@@ -1263,7 +1301,7 @@
               <td>{{order.orders_total}}</td>
               <td>{{order.delivery}}</td>
               <td>{{order.order_status}}</td>
-              <td v-on:click="CurrentDetails(index)" class="listdetails">📒</td>
+              <td v-on:click="setCurrentDetailsNo(order.orders_no)" class="listdetails">📒</td>
             </tr>
           </tbody>
         </table>
@@ -1276,17 +1314,17 @@
           <h3 class="windowdetalis">訂單明細</h3>
           <hr>
           <ol class="windowol" >
-           <li>訂單明細編號: {{currentindex.Details_no}} </li>
-           <li>訂單編號: {{currentindex.orders_no}}</li>
-           <li>收件人姓名: {{currentindex.recipient}}</li>
-           <li>收件人電話: {{currentindex.orders_phone}} </li>
-           <li>收件人地址: {{currentindex.orders_add}}</li>
-           <li>收件人信箱: {{currentindex.orders_email}}</li>
-           <li>平安符種類: {{currentindex.type_no}}</li>
-           <li>生肖名稱: {{currentindex.zodiac_no}} </li>
-           <li>客製化文字: {{currentindex.word}}</li>
-           <li>數量 :{{currentindex.amulet_amount}}</li>
-           <li>單價: {{currentindex.price}}</li>
+           <li>訂單明細編號: {{currentObj.Details_no}} </li>
+           <li>訂單編號: {{currentObj.orders_no}}</li>
+           <li>收件人姓名: {{currentObj.recipient}}</li>
+           <li>收件人電話: {{currentObj.orders_phone}} </li>
+           <li>收件人地址: {{currentObj.orders_add}}</li>
+           <li>收件人信箱: {{currentObj.orders_email}}</li>
+           <li>平安符種類: {{currentObj.type_no}}</li>
+           <li>生肖名稱: {{currentObj.zodiac_no}} </li>
+           <li>客製化文字: {{currentObj.word}}</li>
+           <li>數量 :{{currentObj.amulet_amount}}</li>
+           <li>單價: {{currentObj.price}}</li>
          </ol>
         </section>
         <!-- window_end--------- -->
@@ -1304,6 +1342,7 @@
     </div>
           `,
     });
+
 
     //籤詩管理
     var Componentpomes = Vue.component("my-pomes", {
