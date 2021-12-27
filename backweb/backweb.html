@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../css/sidebar.css" />
   <link rel="stylesheet" href="../css/backheader.css" />
-  <link rel="stylesheet" href="../css/3-2ZodiacManage.css" />
-  <link rel="stylesheet" href="../css/4-1_productOrders.css" />
+  <!-- <link rel="stylesheet" href="../css/3-2ZodiacManage.css" /> -->
+  <link rel="stylesheet" href="../css/4_productOrders.css">
   <link href="../css/bootstrap.min.css" rel="stylesheet" />
   <script src="../js/bootstrap.bundle.min.js"></script>
   <script src="../js/sidebars.js"></script>
@@ -192,100 +192,11 @@
     </div>
     <!-- 平安符管理 -->
     <div class="amuletManage" v-if="show =='showbox07'">
-      <div class="supply">
-        <span>平安符願管理</span>
-        <img src="img/backdata/backFix.svg" @click="showButton" alt="" />
-      </div>
-
-      <!-- 表格內容 -->
-      <table class="table table-unpomes">
-        <thead>
-          <tr>
-            <th scope="col">編號</th>
-            <th scope="col">種類</th>
-            <th scope="col">簡介</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="vertical-align: middle">
-              <select name="編號" id="">
-                <option v-for="number in numbers">{{number}}</option>
-              </select>
-            </td>
-            <td style="vertical-align: middle">
-              <select name="種類" id="">
-                <option v-for="type in types ">{{type}}</option>
-              </select>
-            </td>
-            <td>
-              <textarea name="" id="" cols="10" rows="10">
-此籤不宜遠行。只宜守舊。自有超達。時運漸亨。
-財祿俱發。訟不宜。財自至。婚可求。名利高。
-病獲安。孕生貴子。風水利順。家宅昌隆也。
-
-                </textarea>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- 表格內容結束 -->
-      <div class="saveBtn">
-        <button class="cancle" data-hover="取消">取消</button>
-        <button class="save" data-hover="確認">確認</button>
-      </div>
+      <amuletmanage></amuletmanage>
     </div>
     <!-- 生肖管理 -->
     <div class="zodiac-Manage-second" v-if="show =='showbox08'">
-      <div class="products-man">
-        <span class="order">生肖管理</span>
-        <div class="icon1">
-          <img src="img/backdata/backFix.svg" @click="showButton" alt="" />
-        </div>
-      </div>
-
-      <div class="zodiac-list-second">
-        <h1 class="type-txt-second">種類</h1>
-        <div class="type">鼠</div>
-        <div class="type">牛</div>
-        <div class="type">虎</div>
-        <div class="type">兔</div>
-        <div class="type">龍</div>
-        <div class="type">蛇</div>
-        <div class="type">馬</div>
-        <div class="type">羊</div>
-        <div class="type">猴</div>
-        <div class="type">雞</div>
-        <div class="type">狗</div>
-        <div class="type">豬</div>
-      </div>
-
-      <div class="txt-area">
-        <div class="zodiac-one">
-          <h1>圖檔</h1>
-        </div>
-
-        <div class="zodiac-two">
-          <h2>原圖檔</h2>
-          <div class="pic">
-            <img src="" />
-          </div>
-          <!-- <input type="file" class="old-pic"> -->
-        </div>
-
-        <div class="zodiac-three" v-if="button">
-          <h1 class="new">新圖檔</h1>
-          <div class="pic">
-            <img src="" />
-          </div>
-          <input type="file" class="new-pic" />
-        </div>
-      </div>
-
-      <div class="saveBtn showbtnbox">
-        <button class="cancle" data-hover="取消">取消</button>
-        <button class="save" data-hover="確認">確認</button>
-      </div>
+      <zodiacmanage></zodiacmanage>
     </div>
     <!-- 商品訂單 -->
     <div class="product-orders" v-if="show =='showbox09'">
@@ -314,6 +225,7 @@
         </div>
       </div>
       <!-- 表格內容 -->
+
 
       <table class="table table-hover table-pray">
         <thead>
@@ -447,6 +359,271 @@
       </div>
       `
     })
+    //生肖圖
+    var Componentzodiacmanage = Vue.component('zodiacmanage', {
+      data() {
+        return {
+          pomeNumber: "1",
+          image2: "",
+          button: false,
+          zodiac_no: 1,
+          zodiac: [],
+          zodiacName: "鼠",
+          zodiacImg: "./img/amulet/amulet_2.jpg",
+
+        }
+      },
+      created() {
+        axios.post('../phps/zodiac.php', {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((res) => {
+          this.zodiac = res.data;
+        }
+        ).catch(function (error) {
+          console.log(error);
+        });
+      },
+
+      methods: {
+        //更新圖片
+        fileChange(e) {
+          let file = e.target.files[0];
+          let readFile = new FileReader();
+          readFile.readAsDataURL(file);
+          readFile.addEventListener("load", this.loadImage);
+        },
+        loadImage(e) {
+          this.image2 = e.target.result;
+        },
+
+        showButton() {
+          if (this.button == false) {
+            this.button = true;
+          } else {
+            this.button = false;
+          }
+        },
+
+        zodiacClick() {
+          for (i = 0; i < 12; i++) {
+            if (this.zodiac_no == this.zodiac[i].zodiac_no) {
+              this.zodiacName = this.zodiac[i].zodiac_name;
+              this.zodiacImg = this.zodiac[i].zodiac_img;
+            }
+          }
+        },
+
+      },
+
+      template: `
+        <div>
+          <div class="supply">
+            <span>生肖圖管理</span>
+            <img src="img/backdata/backFix.svg" @click=" showButton"  />
+          </div>
+          
+          <!-- 表格內容 -->
+          <table class="table table-zodiac">
+            <thead>
+              <tr>
+                <th scope="col">編號</th>
+                <th scope="col">生肖</th>
+                <th scope="col">原圖檔</th>
+                <th scope="col">新圖檔
+                  <label class="btn">上傳檔案
+                      <input type="file" @change="fileChange"/><br>
+                  </label>
+                  
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="vertical-align: middle">
+                  <select name="生肖" id="" v-model="zodiac_no" @change="zodiacClick">
+                    <option v-for="number in 12">{{number}}</option>
+                  </select>
+                </td>
+                <td style="vertical-align: middle">
+                  <h5>{{this.zodiacName}}</h5>
+                </td>
+
+                <td style="vertical-align: middle">
+                  <div class="zodiacImg">
+                    <img :src="zodiacImg" alt="amulet">
+                  </div>
+                </td>
+                <td style="vertical-align: middle">
+                  <div class="zodiacImg"><img :src="image2" alt="新圖檔"/></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- 表格內容結束 -->          
+          <div class="saveBtn" v-if="button">
+            <button class="cancle" data-hover="取消">取消</button>
+            <button class="save" data-hover="確認">確認</button>
+          </div>
+        </div>
+        `,
+    });
+    //平安符
+    var Componentamuletmanage = Vue.component('amuletmanage', {
+      data() {
+        return {
+          button: false,
+          image2: '',
+          typeNo: 1,
+          amuletType: [],
+          amuletTypeText: '月下老人簡稱月老，為掌管男女姻緣之神幫助痴男怨女獲得真愛。',
+          amuletTypeName: '感情',
+          amuletTypeImg: './img/amulet/1.png',
+
+        }
+      },
+      created() {
+        axios.post('../phps/amulet.php', {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((res) => {
+          this.amuletType = res.data;
+        }
+        ).catch(function (error) {
+          console.log(error);
+        });
+      },
+
+      methods: {
+        showButton() {
+          if (this.button == false) {
+            this.button = true;
+          } else {
+            this.button = false;
+          }
+        },
+
+        typeClick() {
+          for (i = 0; i < 6; i++) {
+            if (this.typeNo == this.amuletType[i].type_no) {
+              this.amuletTypeName = this.amuletType[i].type_name
+              this.amuletTypeText = this.amuletType[i].type_text
+              this.amuletTypeImg = this.amuletType[i].type_img
+            }
+          }
+        },
+
+        fileChange(e) {
+          let file = e.target.files[0];
+          let readFile = new FileReader();
+          readFile.readAsDataURL(file);
+          readFile.addEventListener("load", this.loadImage);
+        },
+        loadImage(e) {
+          this.image2 = e.target.result;
+        },
+
+
+
+
+        // 更改簡介2
+        // changedata(){
+        //   for(i=0; i<6; i++){
+        //     if(this.typeNo == this.amuletType[i].type_no){
+        //       if (this.amuletTypeText != this.amuletType.type_text ){
+        //         axios.post('../phps/amuletUpdate.php', {
+        //         amuletTypeText: this.amuletType.type_text,
+        //         headers: {
+        //           'Content-Type': 'multipart/form-data'
+        //         }
+        //       }).then(function (response) {
+        //         alert(response.data);
+        //       }).catch(function (error) {
+        //         console.log(error);
+        //       });
+        //       };
+        //     };
+        //   };
+        // },
+
+
+        //更改簡介1
+        changedata() {
+          if (this.amuletTypeText != this.amuletType.type_text) {
+            // console.log(this.amuletTypeText);
+            axios.post('../phps/amuletUpdate.php', {
+              amuletTypeText: this.amuletType.type_text,
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            }).then(function (response) {
+              alert(response.data);
+            }).catch(function (error) {
+              console.log(error);
+            });
+          }
+        },
+
+
+      },
+
+      template: `
+        <div>
+          <div class="supply">
+            <span>平安符願管理</span>
+            <img src="img/backdata/backFix.svg" @click="showButton" alt="" />
+          </div>
+
+          <!-- 表格內容 -->
+          <table class="table table-amulet">
+            <thead>
+              <tr>
+                <th scope="col">編號</th>
+                <th scope="col">種類</th>
+                <th scope="col">簡介</th>
+                <th scope="col">原圖檔</th>
+                <th scope="col">新圖檔
+                    <label class="btn" >上傳檔案
+                      <input type="file" @change="fileChange"/>
+                    </label>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="vertical-align: middle">
+                  <select name="編號" id="" v-model=typeNo @change="typeClick">
+                    <option v-for="number in 6">{{number}}</option>
+                  </select>
+                </td>
+                <td style="vertical-align: middle">
+                  <h5>{{this.amuletTypeName}}</h5>
+                </td>
+                <td style="vertical-align: middle">
+                  <textarea name="簡介" id="" cols="10" rows="10">
+                    <p>{{this.amuletTypeText}}</p>
+                  </textarea>
+                </td>
+                <td style="vertical-align: middle">
+                  <div class="godImg"><img :src="amuletTypeImg" alt="amulet"></div>
+                </td>
+                <td style="vertical-align: middle">
+                  <div class="godImg"><img :src="image2" alt="新圖檔"/></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- 表格內容結束 -->
+          <div class="saveBtn" v-if="button">
+            <button class="cancle" data-hover="取消">取消</button>
+            <button class="save" data-hover="修改" @click="changedata">修改</button>
+          </div>
+        </div>
+      `,
+
+    });
     //小卡
     var Componentcardmanage = Vue.component('cardmanage', {
       data() {
@@ -1494,36 +1671,35 @@
           .get("../phps/donatephp.php")
           .then((res) => (this.donateList = res.data));
       },
-    });
-    new Vue({
-      el: "#app",
-      data: {
-        numbers: ["A", "B", "C", "D", "E", "F"],
-        types: ["感情", "平安", "健康", "財富", "事業", "學業"],
-        button: false,
-        show: "showbox0",
-      },
-      components: {
-        'component-member': Componentmember,
-        'component-prayrecorder': Componentprayrecord,
-        'component-cardmanage': Componentcardmanage,
-        "Component-supplymanage": Componentsupplymanage,
-        "component-orders": Componentorders,
-        "component-pomes": Componentpomes,
-        "component-pomesdet": Componentpomesdetail,
-        "component-pomesrec": Componentpomesrecorder,
-      },
-      methods: {
-        showButton() {
-          if (this.button == false) {
-            this.button = true;
-          } else {
-            this.button = false;
-          }
+    }),
+      new Vue({
+        el: "#app",
+        data: {
+          button: false,
+          show: "showbox07",
         },
-      },
-      created() { },
-    });
+        components: {
+          'component-member': Componentmember,
+          'component-prayrecorder': Componentprayrecord,
+          'component-cardmanage': Componentcardmanage,
+          "component-orders": Componentorders,
+          "component-pomes": Componentpomes,
+          "component-pomesdet": Componentpomesdetail,
+          "component-pomesrec": Componentpomesrecorder,
+          "component-amuletmanage": Componentamuletmanage,
+          "component-zodiacmanage": Componentzodiacmanage,
+        },
+        methods: {
+          showButton() {
+            if (this.button == false) {
+              this.button = true;
+            } else {
+              this.button = false;
+            }
+          },
+        },
+        created() { },
+      });
   </script>
 </body>
 

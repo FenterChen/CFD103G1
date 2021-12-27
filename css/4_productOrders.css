@@ -76,45 +76,44 @@ body {
 .lh-tight { line-height: 1.25; }
 
 
+/* start from here  */
 
-
-
-/* start from here ------ */
 
 .product-orders{
   width: 100%;
  
 }
 .product-orders .products-man{
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 20px;
   display: flex;
 }
 .product-orders .order{
-  margin: 0px 55px;
+  margin: 0px 20px;
   color: #573605; 
-  font-size: 24px;
+  font-size: 24px;  
   font-weight: bold;
 }
 .product-orders .icon1{
-  margin-left: -40px;
+  margin-left: -10px;
 }
 .product-orders .icon2{
   margin-left: 20px;
 }
 .product-orders .second{
   display: flex;
-  margin: 40px 0px; 
+  margin: 10px 0px; 
   justify-content: space-between;
 }
 .product-orders .search{
   display: flex;
-  padding: 0px 60px;
+  padding: 0px 20px;
 }
 .product-orders .search input {
   border-radius: 20px 0px 0px 20px;
   border: none;width: 200px;
-  height: 30px;background-color: #FCDBA3;
+  height: 30px;
+  background-color: #FCDBA3;
 }
 .product-orders .search button{
   border-radius: 0px 20px 20px 0px;
@@ -140,41 +139,32 @@ body {
   height: 25px;
 }
 .product-orders table{
-margin: auto;
-width: 92%;
+  margin: auto;
+  width: 92%;
 }
 .product-orders thead{
-  height: 50px;
+  height: 40px;
 }
 
 .product-orders thead th{
+  background-color: #FFFAE7;  ;
   text-align: start;
   width: 14.2857%;
   font-size: 18px;
   color: #573605;
 }
 
-.product-orders .white{
-  background: #FFFFFF;
-}
-
 .product-orders .whiteline{
   border-top: 1px solid #573605;
 }
 
-.product-orders .yellow{
-  background: #FFFAE7;
-  
-}
 .product-orders .white tr{
-  height: 80px; 
+  height: 20px; 
 }
 .product-orders tbody td{
-  /* border: red solid 2px; */
-  text-align: center;
-  padding: 30px;
+  text-align: start;
   width: 14.2857%;
-  font-size: 18px;
+  font-size: 12px;
   color: #573605;
 }
 .product-orders tbody .arrow{
@@ -191,18 +181,9 @@ width: 92%;
   padding-right: 22px;
   cursor: pointer;
 }
-.product-orders tfoot{
-  height: 132px; 
-  background: #FCDBA3;
-  color: #927858;
 
-}
 .product-orders .name,.mobile{
   padding-bottom: 30px; 
-}
-.product-orders tfoot td{
-margin: auto;
-padding: 40px 14px 40px 64px;
 }
 
 .product-orders ::placeholder{
@@ -276,7 +257,6 @@ transform:translateX(10px);
   
   .product-orders .windowol li{
     font-size: 14px;
-  
   }
   
   .product-orders .windowol li{
@@ -340,8 +320,19 @@ transform:translateX(10px);
     font-size: 20px;
     color: #FCDBA3;
   }
+
+  .product-orders tr:nth-child(odd){
+    background-color: #FFFFFF;
+  }
+  .product-orders tr:nth-child(even){
+    background-color:#FFFAE7;;
+  }
+  
+  .product-orders tr:hover{
+   background-color: #212529;
+   background-color: rgba(0, 0, 0, 0.075);;
+  }
   
   
 
 /* end*/
-

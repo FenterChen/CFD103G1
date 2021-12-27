@@ -6,13 +6,265 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/front-back-bobio.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-    <!-- <script src="js/front-back.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
+    <script src="js/front-back.js"></script>
+
     <title>BoBio前後台</title>
   </head>
   <body>
     <div class="wrapp" id="app">
+      <div
+        class="tagcloud"
+        style="
+          visibility: visible;
+          position: fixed;
+          min-height: 336px;
+          min-width: 700px;
+        "
+      >
+        <!-- bo大小 co颜色 -->
+        <a
+          class="b01"
+          href="#"
+          style="
+            z-index: 3;
+            opacity: 0.681561;
+            position: absolute;
+            left: 182.687px;
+            top: -44.9456px;
+          "
+          ><img src="./img/front-back-bobio/cloud1.png" alt=""
+        /></a>
+        <a
+          class="b02"
+          href="#"
+          style="
+            left: 103.416px;
+            top: 21.8517px;
+            z-index: 6;
+            opacity: 1.0018;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud2.png" alt=""
+        /></a>
+        <a
+          class="b03"
+          href="#"
+          style="
+            left: 219.186px;
+            top: 45.5981px;
+            z-index: 33;
+            opacity: 5.17829;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud3.png" alt=""
+        /></a>
+        <a
+          class="b04"
+          href="#"
+          style="
+            left: 124.515px;
+            top: 225.175px;
+            z-index: 17;
+            opacity: 2.65264;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud4.png" alt=""
+        /></a>
+        <a
+          class="b03"
+          href="#"
+          style="
+            left: 353.185px;
+            top: -61.0922px;
+            z-index: 3;
+            opacity: 0.61731;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud5.png" alt=""
+        /></a>
+        <a
+          class="b02"
+          href="#"
+          style="
+            left: 220.068px;
+            top: 23.7331px;
+            z-index: 2;
+            opacity: 0.406531;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud1.png" alt=""
+        /></a>
+        <a
+          class="b03"
+          href="#"
+          style="
+            left: 114.23px;
+            top: 169.099px;
+            z-index: 3;
+            opacity: 0.655314;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud2.png" alt=""
+        /></a>
+        <a
+          class="b04"
+          href="#"
+          style="
+            left: 131.02px;
+            top: 231.666px;
+            z-index: 7;
+            opacity: 1.22361;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud3.png" alt=""
+        /></a>
+        <a
+          class="b03"
+          href="#"
+          style="
+            left: 247.353px;
+            top: 263.427px;
+            z-index: 16;
+            opacity: 2.54466;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud4.png" alt=""
+        /></a>
+        <a
+          class="b04"
+          href="#"
+          style="
+            left: 431.857px;
+            top: 224.362px;
+            z-index: 16;
+            opacity: 2.52808;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud5.png" alt=""
+        /></a>
+        <a
+          class="b03"
+          href="#"
+          style="
+            left: 284.104px;
+            top: -6.23813px;
+            z-index: 21;
+            opacity: 3.26882;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud2.png" alt=""
+        /></a>
+        <a
+          class="b04"
+          href="#"
+          style="
+            left: 475.235px;
+            top: 7.57134px;
+            z-index: 4;
+            opacity: 0.780888;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud1.png" alt=""
+        /></a>
+        <a
+          class="b04"
+          href="#"
+          style="
+            left: 358.908px;
+            top: 13.8592px;
+            z-index: 2;
+            opacity: 0.434681;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud3.png" alt="" />
+        </a>
+        <a
+          class="b02"
+          href="#"
+          style="
+            left: 236.411px;
+            top: 240.063px;
+            z-index: 2;
+            opacity: 0.473344;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud1.png" alt=""
+        /></a>
+        <a
+          class="b03"
+          href="#"
+          style="
+            left: 196.671px;
+            top: 262.423px;
+            z-index: 3;
+            opacity: 0.571173;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud4.png" alt=""
+        /></a>
+        <a
+          class="b04"
+          href="#"
+          style="
+            left: 278.631px;
+            top: 335.577px;
+            z-index: 6;
+            opacity: 1.02878;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud1.png" alt=""
+        /></a>
+        <a
+          class="b01"
+          href="#"
+          style="
+            left: 99.7657px;
+            top: 208.985px;
+            z-index: 5;
+            opacity: 0.890851;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud5.png" alt=""
+        /></a>
+        <a
+          class="b03"
+          href="#"
+          style="
+            left: 501.471px;
+            top: 162.532px;
+            z-index: 4;
+            opacity: 0.81632;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud1.png" alt=""
+        /></a>
+        <a
+          class="b03"
+          href="#"
+          style="
+            left: 412.055px;
+            top: 147.405px;
+            z-index: 2;
+            opacity: 0.422765;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud1.png" alt=""
+        /></a>
+        <a
+          class="b04"
+          href="#"
+          style="
+            left: 358.401px;
+            top: 284.51px;
+            z-index: 2;
+            opacity: 0.520942;
+            position: absolute;
+          "
+          ><img src="./img/front-back-bobio/cloud1.png" alt=""
+        /></a>
+      </div>
       <div class="bobioimg">
         <!-- 廟宇 -->
         <img src="img/front-back-bobio/front-back-bobio.png" alt="" />
@@ -142,6 +394,18 @@
               .catch((error) => (this.personaldata = res.data));
           },
         },
+      });
+    </script>
+    <script type="text/javascript">
+      /*3D标签云*/
+      tagcloud({
+        selector: ".tagcloud", //元素选择器
+        fontsize: 16, //基本字体大小, 单位px
+        radius: 400, //滚动半径, 单位px 页面宽度和高度的五分之一
+        mspeed: "slow", //滚动最大速度, 取值: slow, normal(默认), fast
+        ispeed: "slow", //滚动初速度, 取值: slow, normal(默认), fast
+        direction: 360, //初始滚动方向, 取值角度(顺时针360): 0对应top, 90对应left, 135对应right-bottom(默认)...
+        keep: false, //鼠标移出组件后是否继续随鼠标滚动, 取值: false, true(默认) 对应 减速至初速度滚动, 随鼠标滚动
       });
     </script>
   </body>
