@@ -193,8 +193,28 @@
           cardid: '',
           carddate: '',
           cardsafe: '',
+          orderInsert: '',
         }
       },
+      created() {
+          let array = JSON.parse(localStorage.getItem("personallogin"));
+          axios
+            .post("phps/memberExist.php", { 
+              mem_no: array[0].mem_no,
+              mem_id: array[0].mem_id,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              if (res.data == "error") {
+                alert("會員資料錯誤");
+              } else {
+                this.orderInsert = res.data
+              }
+            })
+            .catch((error) => console.log(error));
+        },
       methods: {
         confirmCreditcard() {
           let val = /^[\u4E00-\u9FA5]+$/;
