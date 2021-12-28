@@ -100,7 +100,12 @@
             </div>
           </div>
           <div class="onlineBtn">
-            <button @click="loadNum" class="throw" data-hover="擲筊">
+            <button
+              :disabled="!isActive"
+              @click="loadNum"
+              class="throw"
+              data-hover="擲筊"
+            >
               擲筊
             </button>
           </div>
@@ -168,6 +173,7 @@
         data: {
           believer: "",
           type: 0,
+          isActive: true,
         },
         mounted() {
           this.believer = localStorage.onlinename;
@@ -195,6 +201,7 @@
               }
             }, 1000);
             this.type = num;
+            this.isActive = false;
           },
         },
       });
