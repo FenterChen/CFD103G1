@@ -1,7 +1,8 @@
 <?php 
 try {
-	require_once("connectMoney.php");
-
+	require_once("connectBOBIO.php");
+	$alter = file_get_contents('php://input');
+	$data = json_decode($alter, true);
 	$sql = "select * from donate";
   	$money=$pdo->query($sql);
   	$moneyRows = $money->fetchAll(PDO::FETCH_ASSOC);
