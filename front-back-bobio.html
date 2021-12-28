@@ -355,7 +355,7 @@
               m.getSeconds();
 
             axios
-              .post("phps/administratorAdd.php", {
+              .post("backweb/phps/administratorAdd.php", {
                 admin_name: this.email,
                 admin_psw: this.psw,
                 mem_status: "0",
@@ -372,7 +372,7 @@
           },
           logincheck() {
             axios
-              .post("phps/administratorCheck.php", {
+              .post("backweb/phps/administratorCheck.php", {
                 admin_name: this.email,
                 admin_psw: this.psw,
                 headers: {

@@ -198,40 +198,10 @@
           </li>
         </ul>
       </div>
-      <!-- 管理員頁面 -->
+      <!-- 管理員 -->
       <div class="adminList" v-if="show =='showbox0'">
-        <div class="supply">
-          <span>管理員</span>
-        </div>
-
-        <!-- 表格內容 -->
-        <table class="table table-hover table-pray">
-          <thead>
-            <tr>
-              <th>編號</th>
-              <th>名稱</th>
-              <th>密碼</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>01</td>
-              <td>李小龍</td>
-              <td>imbrucelee</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>02</td>
-              <td>李小龍</td>
-              <td>imbrucelee</td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- 表格內容結束 -->
+        <my-admin></my-admin>
       </div>
-
       <!-- 祈願紀錄 -->
       <div class="prayRecorder" v-if="show =='showbox01'">
         <prayrecord></prayrecord>
@@ -1438,7 +1408,50 @@
     </div>
           `,
       });
+      //管理員
+      var Componentadmin = Vue.component("my-admin", {
+        data() {
+          return {
+            administratorList: [],
+          };
+        },
+        methods: {},
+        template: ` 
+        <div>
+          <div class="supply">
+            <span>管理員</span>
+          </div>
 
+        <!-- 表格內容 -->
+        <table class="table table-hover table-admin">
+          <thead>
+            <tr>
+              <th scope="col">編號</th>
+              <th scope="col">名稱</th>
+              <th scope="col">密碼</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(administrator, index) in  administratorList" :key=" administrator.admin_no">
+              <td>{{administrator.admin_no}}</td>
+              <td>{{administrator.admin_name}}</td>
+              <td>{{administrator.admin_psw}}</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- 表格內容結束 -->
+        
+          </div>
+      `,
+        created() {
+          //admin
+          axios
+            .get("./phps/admin.php")
+            .then((res) => (this.administratorList = res.data));
+        },
+      });
       //籤詩管理
       var Componentpomes = Vue.component("my-pomes", {
         data() {
