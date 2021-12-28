@@ -1126,10 +1126,10 @@
           deliver: [],
           finish: [],
           //optionChanges
-          optionLists:[10,20,30],
-          optionNum:10,
+          optionLists: [10, 20, 30],
+          optionNum: 10,
         };
-        
+
       },
       methods: {
         showButton() {
@@ -1160,30 +1160,30 @@
           this.isOpen = "Open3";
           this.finish = this.orders.filter((item) => item.order_status == 2);
         },
-        amountChange(e){
-              this.optionNum = e.target.value ;
-              console.log(e.target.value)
-          },
+        amountChange(e) {
+          this.optionNum = e.target.value;
+          console.log(e.target.value)
+        },
       },
-        watch:{
-          optionNum(n,o){
-            console.log(n,o)
-            if(n==this.optionNum){
-              this.newOrders=this.orders.slice(0,n)
-            }
-          },
-     },
-     computed: {
-       rendorList() {
-         return this.newOrders.slice(0,this.optionNum);
-       },
-       currentObj() {
-         return this.orderLists.find(v => v.Details_no == this.currentDetailsNo);
-       },
-       filterList() {
-         return this.rendorList.filter(v => v.status == this.status);
-       },
-     },
+      watch: {
+        optionNum(n, o) {
+          console.log(n, o)
+          if (n == this.optionNum) {
+            this.newOrders = this.orders.slice(0, n)
+          }
+        },
+      },
+      computed: {
+        rendorList() {
+          return this.newOrders.slice(0, this.optionNum);
+        },
+        currentObj() {
+          return this.orderLists.find(v => v.Details_no == this.currentDetailsNo);
+        },
+        filterList() {
+          return this.rendorList.filter(v => v.status == this.status);
+        },
+      },
       mounted() {
         //products-orders ---
         axios
@@ -1198,7 +1198,7 @@
           .then((res) => (this.orderLists = res.data));
       },
 
-    
+
       template: `
       <div>
           <div class="products-man">
@@ -1643,11 +1643,109 @@
     });
 
     //結緣紀錄
-    Vue.component("donate-record", {
+    var Componentdonate = Vue.component("donate-record", {
       data() {
         return {
           donateList: [],
+          searchData: '',
+          searchval: '',
+          pno: 1,//目前頁數
+          psize: 10,//頁面筆數
+          currentPage: 1,//目前頁面
+          totalPage: 0,//總頁數
+          num: 0,//表格數量
         };
+      },
+      watch: {
+        searchval(newValue) {
+          if (this.searchval !== '') {
+            axios.get(`phps/memberShow.php?mem_no=${newValue}`).then((res) => {
+              console.log(res.data)
+              this.donateList = res.data;
+            }
+            ).catch(function (error) {
+              console.log(error);
+            });
+          }
+        },
+        pno() {
+          if (this.num / this.psize > parseInt(this.num / this.psize)) {
+            this.totalPage = parseInt(this.num / this.psize) + 1;
+          } else {
+            this.totalPage = parseInt(this.num / this.psize);
+          }
+          this.currentPage = this.pno;//目前頁數
+          let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+          let endRow = this.currentPage * this.psize;//結束顯示行
+          endRow = (endRow > this.num) ? this.num : endRow;
+          for (let i = 1; i < (this.num + 1); i++) {
+            if (i >= startRow && i <= endRow) {
+              $('#donatetable tbody tr:nth-child(' + i + ')').css({ display: "table-row" });
+            } else {
+              $('#donatetable tbody tr:nth-child(' + i + ')').css({ display: "none" });
+            }
+          }
+        },
+        psize() {
+          this.pno = 1;
+        }
+      },
+      updated() {
+        this.num = this.donateList.length;//表格數量
+        //總共分幾頁
+        if (this.num / this.psize > parseInt(this.num / this.psize)) {
+          this.totalPage = parseInt(this.num / this.psize) + 1;
+        } else {
+          this.totalPage = parseInt(this.num / this.psize);
+        }
+        this.currentPage = this.pno;//目前頁數
+        let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+        let endRow = this.currentPage * this.psize;//結束顯示行
+        endRow = (endRow > this.num) ? this.num : endRow;
+        for (let i = 1; i < (this.num + 1); i++) {
+          if (i >= startRow && i <= endRow) {
+            $('#donatetable tbody tr:nth-child(' + i + ')').css({ display: "table-row" });
+          } else {
+            $('#donatetable tbody tr:nth-child(' + i + ')').css({ display: "none" });
+          }
+        }
+      },
+      methods: {
+        list() {//搜尋
+          this.pno = 1;
+          let search = this.searchval;
+          this.donateList = this.donateList.filter(function (index) {
+            return Object.keys(index).some(function (key) {
+              return String(index[key]).indexOf(search) != -1;
+            })
+          });
+        },
+        nextpage() {
+          this.currentPage = this.pno;//目前頁數
+          let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+          let endRow = this.currentPage * this.psize;//結束顯示行
+          endRow = (endRow > this.num) ? this.num : endRow;
+          if (this.currentPage < this.totalPage) {
+            this.pno += 1;
+          }
+        },
+        previouspage() {
+          this.currentPage = this.pno;//目前頁數
+          let startRow = (this.currentPage - 1) * this.psize + 1;//開始顯示行
+          let endRow = this.currentPage * this.psize;//結束顯示行
+          endRow = (endRow > this.num) ? this.num : endRow;
+          if (this.currentPage > 1) {
+            this.pno -= 1;
+          } else if (this.currentPage == 1) {
+            this.pno = 1;
+          }
+        },
+        first() {
+          this.pno = 1;
+        },
+        end() {
+          this.pno = this.totalPage;
+        },
       },
       template: ` <div>
             <div class="supply">
@@ -1655,24 +1753,24 @@
             </div>
             <div class="searchbox">
               <div class="search">
-                <input type="text" placeholder="搜尋關鍵字" />
-                <button>
+                <input type="text" placeholder="搜尋關鍵字" v-model="searchval"/>
+                <button @click="list">
                   <img src="img/backdata/search.svg" alt="" />
                 </button>
               </div>
               <div class="page">
                 <span class="each">每頁顯示</span>
-                <select>
-                  <option value="" style="color: #927858">10</option>
-                  <option value="" style="color: #927858">20</option>
-                  <option value="" style="color: #927858">30</option>
+                <select v-model="psize">
+                  <option value="10" style="color: #927858">10</option>
+                  <option value="20" style="color: #927858">20</option>
+                  <option value="30" style="color: #927858">30</option>
                 </select>
                 <span class="each">頁</span>
               </div>
             </div>
             <!-- 表格內容 -->
 
-            <table class="table table-hover table-pray">
+            <table id="donatetable" class="table table-hover table-pray">
               <thead>
                 <tr>
                   <th>結緣編號</th>
@@ -1694,14 +1792,13 @@
 
             <!-- 頁簽 -->
             <div class="pagelist">
-              <a href=""> < </a>
-              <a href="">1</a>
-              <a href="">2</a>
-              <a href="">3</a>
-              <a href="">4</a>
-              <a href="">5</a>
-              <a href=""> > </a>
-            </div>
+                  <h4> 總共{{num}}筆，{{totalPage}}頁 </h4>
+                  <a href="#"@click="first">首頁</a>
+                  <a href="#"@click="previouspage"> < </a>
+                  <a>{{currentPage}}</a>
+                  <a href="#" @click="nextpage"> > </a>
+                  <a href="#"@click="end">末頁</a>
+             </div>
           </div>
       `,
       created() {
@@ -1710,35 +1807,35 @@
           .get("../phps/donatephp.php")
           .then((res) => (this.donateList = res.data));
       },
-    }),
-      new Vue({
-        el: "#app",
-        data: {
-          button: false,
-          show: "showbox0",
+    })
+    new Vue({
+      el: "#app",
+      data: {
+        button: false,
+        show: "showbox0",
+      },
+      components: {
+        'component-member': Componentmember,
+        'component-prayrecorder': Componentprayrecord,
+        'component-cardmanage': Componentcardmanage,
+        "component-orders": Componentorders,
+        "component-pomes": Componentpomes,
+        "component-pomesdet": Componentpomesdetail,
+        "component-pomesrec": Componentpomesrecorder,
+        "component-amuletmanage": Componentamuletmanage,
+        "component-zodiacmanage": Componentzodiacmanage,
+        "component-donate": Componentdonate,
+      },
+      methods: {
+        showButton() {
+          if (this.button == false) {
+            this.button = true;
+          } else {
+            this.button = false;
+          }
         },
-        components: {
-          'component-member': Componentmember,
-          'component-prayrecorder': Componentprayrecord,
-          'component-cardmanage': Componentcardmanage,
-          "component-orders": Componentorders,
-          "component-pomes": Componentpomes,
-          "component-pomesdet": Componentpomesdetail,
-          "component-pomesrec": Componentpomesrecorder,
-          "component-amuletmanage": Componentamuletmanage,
-          "component-zodiacmanage": Componentzodiacmanage,
-        },
-        methods: {
-          showButton() {
-            if (this.button == false) {
-              this.button = true;
-            } else {
-              this.button = false;
-            }
-          },
-        },
-        created() { },
-      });
+      },
+    });
   </script>
 </body>
 
