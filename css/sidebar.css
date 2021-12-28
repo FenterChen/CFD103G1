@@ -576,6 +576,25 @@ table {
   width: 300px;
 }
 
+.table-pomemange input {
+  margin-left: 15px;
+  display: none;
+}
+
+.table-pomemange .btn {
+  width: 90px;
+  height: 30px;
+  line-height: 17px;
+  background-color: #fdbf52;
+  border-radius: 16px;
+  margin-left: 30px;
+}
+
+.picbox img {
+  width: 300px;
+  height: 385px;
+}
+
 .table-amulet textarea {
   width: 280px;
   height: 120px;

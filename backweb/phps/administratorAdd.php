@@ -1,12 +1,14 @@
 <?php 
 try {
 	require_once("connectBOBIO.php");
+	//執行sql指令
 	$alter = file_get_contents('php://input');
-	$data = json_decode($alter, true);
-	$sql = "select * from donate";
-  	$money=$pdo->query($sql);
-  	$moneyRows = $money->fetchAll(PDO::FETCH_ASSOC);
-	echo(json_encode($moneyRows));
+  $data = json_decode($alter, true);
+	$sql = "INSERT INTO administrator (admin_name, admin_psw) 
+	VALUES ('$data[admin_name]','$data[admin_psw]')";
+	$member = $pdo->prepare($sql);
+	$member->execute();
+	echo "異動成功~";
 
 } catch (PDOException $e) {
 	echo "錯誤行號 : ", $e->getLine(), "<br>";

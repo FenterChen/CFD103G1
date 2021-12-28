@@ -1,12 +1,11 @@
 <?php 
 try {
 	require_once("connectBOBIO.php");
-	$alter = file_get_contents('php://input');
-	$data = json_decode($alter, true);
-	$sql = "select * from donate";
-  	$money=$pdo->query($sql);
-  	$moneyRows = $money->fetchAll(PDO::FETCH_ASSOC);
-	echo(json_encode($moneyRows));
+
+	$sql = "select * from administrator";
+  	$admin=$pdo->query($sql);
+  	$adminRow = $admin->fetchAll(PDO::FETCH_ASSOC);
+	echo(json_encode($adminRow));
 
 } catch (PDOException $e) {
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
