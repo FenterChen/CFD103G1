@@ -157,6 +157,14 @@ section {
     max-width: 335px;
     text-align: center;
 
+    table tr td img {
+        width: 180px;
+    }
+
+    table {
+        width: 100%;
+    }
+
     @include tabletV() {
         max-width: 768px;
         display: flex;
@@ -173,12 +181,18 @@ section {
     }
 
 
-    img {
-        vertical-align: top;
+    table tr td {
+        vertical-align: middle;
         padding: 25px 65px;
     }
 
-    p {
+    tr:nth-of-type(even)>* {
+        background-color: rgba(255, 250, 231, 0.85);
+    }
+
+
+    table tr td {
+
         padding: 30px 0px;
         color: #573605;
         border-top: 1px solid #573605;
@@ -188,7 +202,6 @@ section {
         @include tabletV() {
             flex-grow: 1;
             text-align: center;
-            padding: 0px 0px;
             border-top: none;
 
         }

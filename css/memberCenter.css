@@ -250,6 +250,14 @@ section {
   text-align: center;
 }
 
+.boxItem table tr td img {
+  width: 180px;
+}
+
+.boxItem table {
+  width: 100%;
+}
+
 @media screen and (min-width: 768px) {
   .boxItem {
     max-width: 768px;
@@ -274,12 +282,16 @@ section {
   }
 }
 
-.boxItem img {
-  vertical-align: top;
+.boxItem table tr td {
+  vertical-align: middle;
   padding: 25px 65px;
 }
 
-.boxItem p {
+.boxItem tr:nth-of-type(even) > * {
+  background-color: rgba(255, 250, 231, 0.85);
+}
+
+.boxItem table tr td {
   padding: 30px 0px;
   color: #573605;
   border-top: 1px solid #573605;
@@ -288,12 +300,11 @@ section {
 }
 
 @media screen and (min-width: 768px) {
-  .boxItem p {
+  .boxItem table tr td {
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
             flex-grow: 1;
     text-align: center;
-    padding: 0px 0px;
     border-top: none;
   }
 }

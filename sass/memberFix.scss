@@ -181,7 +181,7 @@
 .boxBtn .btnSave {
   margin-top: 15px;
   margin-bottom: 10px;
-  @include btnLogin;
+  @include btnlocal;
   @include flexCenter;
   width: 250px;
   cursor: pointer;
@@ -195,7 +195,7 @@
 
 .boxBtn .btnCancel {
   margin-bottom: 30px;
-  @include btnLogin;
+  @include btnlocal;
   @include flexCenter;
   width: 250px;
   cursor: pointer;
@@ -269,7 +269,7 @@ section {
 .boxRec3 {
   width: 100%;
   max-width: 335px;
-
+  background-color: rgb(255, 255, 255);
   border: 1px solid #573605;
   @include smallBorderR;
   margin: auto;
@@ -350,9 +350,15 @@ section {
 .boxItem {
   width: 100%;
   max-width: 335px;
-  background-color: #fff;
   text-align: center;
-  @include smallBorderR;
+
+  table tr td img {
+    width: 180px;
+  }
+
+  table {
+    width: 100%;
+  }
 
   @include tabletV() {
     max-width: 768px;
@@ -369,15 +375,12 @@ section {
     max-width: 1200px;
   }
 
-
-  img {
-    vertical-align: top;
-    padding: 25px 50px;
-
-
+  tr:nth-of-type(even)>* {
+    background-color: rgba(255, 250, 231, 0.85);
   }
 
-  p {
+  table tr td {
+    vertical-align: middle;
     padding: 30px 0px;
     color: #573605;
     border-top: 1px solid #573605;
@@ -387,7 +390,6 @@ section {
     @include tabletV() {
       flex-grow: 1;
       text-align: center;
-      padding: 0px 0px;
       border-top: none;
 
     }

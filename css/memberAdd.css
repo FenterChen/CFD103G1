@@ -329,7 +329,7 @@ table {
   position: absolute;
   top: 0;
   left: 0px;
-  padding-top: 12px;
+  padding-top: 10px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   opacity: 0;
@@ -343,7 +343,7 @@ table {
   position: absolute;
   top: 0;
   left: 0;
-  padding-top: 12px;
+  padding-top: 10px;
   opacity: 1;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -364,10 +364,6 @@ table {
   .boxBtn .btnAdd {
     width: 300px;
   }
-}
-
-.boxBtn > a {
-  text-decoration: none;
 }
 
 .boxBtn .btnLogin {
@@ -410,7 +406,7 @@ table {
   position: absolute;
   top: 0;
   left: 0px;
-  padding-top: 12px;
+  padding-top: 10px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   opacity: 0;
@@ -424,7 +420,7 @@ table {
   position: absolute;
   top: 0;
   left: 0;
-  padding-top: 12px;
+  padding-top: 10px;
   opacity: 1;
   -webkit-transition: 0.3s;
   transition: 0.3s;

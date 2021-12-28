@@ -59,9 +59,10 @@
     </div>
   </header>
   <div class="bobioPray" id="app">
-    <component :is="section[currentIdx -1]" @plus-slides="plusSlides" @minus-slides="minusSlides" :cate="cate"
-      :god="god" :focus-img="focusImg" :god-img="godImg" @update-cate="cate = $event" @update-god="god = $event"
-      @add-slide="plusSlides(1)" :class="{fadeRight:rightActivated, fadeLeft:leftActivated}">
+    <component :is="section[currentIdx -1]" @offering="offer =$event" :offer="offer" :personaldata="personaldata"
+      @plus-slides="plusSlides" @minus-slides="minusSlides" :cate="cate" :god="god" :focus-img="focusImg"
+      :god-img="godImg" @update-cate="cate = $event" @update-god="god = $event" @add-slide="plusSlides(1)"
+      :class="{fadeRight:rightActivated, fadeLeft:leftActivated}">
     </component>
     <div class="btnStep">
       <button class="btn previous" @click="minusSlides(1)">
@@ -354,6 +355,28 @@
       },
     });
     Vue.component("prayattr", {
+      data() {
+        return {
+          offering: [],
+          cont: [],
+        }
+      },
+      created() {
+        axios.post('backweb/phps/offering.php', {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((res) => {
+          this.offering = res.data;
+          for (let i = 0; i < this.offering.length; i++) {
+            let arr = this.offering[i].off_cont.split(',');
+            this.cont.push(arr);
+          }
+        }
+        ).catch(function (error) {
+          console.log(error);
+        })
+      },
       template: `
           <section class="section attrIntro">
           <div class="attrSec">
@@ -362,24 +385,24 @@
             </div>
             <div class="chooseAttr">
               <div class="attr meat">
-                <h2>三牲</h2>
+                <h2 v-if="offering[0]">{{offering[0].off_name}}</h2>
                 <div class="detail">
-                  <p>豬<br>雞<br>魚</p>
-                  <button class="choose" data-hover="選擇" @click="plusSlides">選擇</button>
+                  <p v-if="cont[0]">{{cont[0][0]}}<br>{{cont[0][1]}}<br>{{cont[0][2]}}</p>
+                  <button class="choose" data-hover="選擇" @click="plusSlides1">選擇</button>
                 </div>
               </div>
               <div class="attr fruit">
-                <h2>鮮果</h2>
+                <h2 v-if="offering[1]">{{offering[1].off_name}}</h2>
                 <div class="detail">
-                  <p>香蕉<br>蘋果<br>水梨</p>
-                  <button class="choose" data-hover="選擇" @click="plusSlides">選擇</button>
+                  <p v-if="cont[1]">{{cont[1][0]}}<br>{{cont[1][1]}}<br>{{cont[1][2]}}</p>
+                  <button class="choose" data-hover="選擇" @click="plusSlides2">選擇</button>
                 </div>
               </div>
               <div class="attr sweet">
-                <h2>甜食</h2>
+                <h2 v-if="offering[2]">{{offering[2].off_name}}</h2>
                 <div class="detail">
-                  <p>糕餅<br>餅乾<br>糖果</p>
-                  <button class="choose" data-hover="選擇" @click="plusSlides">選擇</button>
+                  <p v-if="cont[2]">{{cont[2][0]}}<br>{{cont[2][1]}}<br>{{cont[2][2]}}</p>
+                  <button class="choose" data-hover="選擇" @click="plusSlides3">選擇</button>
                 </div>
               </div>
             </div>
@@ -398,8 +421,17 @@
         </section>
       `,
       methods: {
-        plusSlides() {
+        plusSlides1() {
           this.$emit("plus-slides", 1);
+          this.$emit("offering", 1);
+        },
+        plusSlides2() {
+          this.$emit("plus-slides", 1);
+          this.$emit("offering", 2);
+        },
+        plusSlides3() {
+          this.$emit("plus-slides", 1);
+          this.$emit("offering", 3);
         },
         minusSlides() {
           this.$emit("minus-slides", 1);
@@ -440,6 +472,88 @@
       },
     });
     Vue.component("praydone", {
+      props: ["cate", "offer", "personaldata"],
+      data() {
+        return {
+          situation: '',
+          card: [],
+          cardimg: '',
+          card_no: '',
+        }
+      },
+      created() {
+        axios.post('backweb/phps/praycard.php', {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((res) => {
+          this.card = res.data;
+          this.situation = this.cate;
+        }
+        ).catch(function (error) {
+          console.log(error);
+        })
+      },
+      watch: {
+        card() {
+          if (this.situation == "學業") {
+            let min = 9;
+            let max = 12;
+            var ran = Math.floor(Math.random() * (max - min) + min);
+          } else if (this.situation == "健康") {
+            let min = 3;
+            let max = 6;
+            var ran = Math.floor(Math.random() * (max - min) + min);
+          } else if (this.situation == "平安") {
+            let min = 6;
+            let max = 9;
+            var ran = Math.floor(Math.random() * (max - min) + min);
+          } else if (this.situation == "財富") {
+            let min = 12;
+            let max = 15;
+            var ran = Math.floor(Math.random() * (max - min) + min);
+          } else if (this.situation == "事業") {
+            let min = 15;
+            let max = 18;
+            var ran = Math.floor(Math.random() * (max - min) + min);
+          } else if (this.situation == "感情") {
+            let min = 0;
+            let max = 3;
+            var ran = Math.floor(Math.random() * (max - min) + min);
+          }
+          this.cardimg = "backweb/" + this.card[ran].card_cont + ".png";
+          this.card_no = this.card[ran].card_no;
+        }
+      },
+      updated() {
+        var m = new Date();
+        var addtime =
+          m.getFullYear() +
+          "-" +
+          (m.getMonth() + 1) +
+          "-" +
+          m.getDate() +
+          " " +
+          m.getHours() +
+          ":" +
+          m.getMinutes() +
+          ":" +
+          m.getSeconds();
+        axios.post('phps/prayAdd.php', {
+          mem_no: this.personaldata.mem_no,
+          off_no: this.offer,
+          card_no: this.card_no,
+          pray_date: addtime,
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((res) => {
+
+        }
+        ).catch(function (error) {
+          console.log(error);
+        })
+      },
       template: `
           <section class="section Finish">
           <div class="doneSec">
@@ -457,7 +571,7 @@
             </div>
             <div class="prayCard">
               <div class="cradDetail">
-                <img src="img/pray/prayCard.png" alt="雞湯小卡">
+                <img :src="cardimg" alt="雞湯小卡">
               </div>
             </div>
           </div>
@@ -492,7 +606,7 @@
               this.losituation = "登出";//登入登出狀態
               this.personaldata = res.data[0];
             }
-          }).catch(error => this.personaldata = res.data);
+          }).catch(error => console.log(error));
         };
         //以上讀取會員資料
         window.onresize = () => {
@@ -542,6 +656,8 @@
     new Vue({
       el: "#app",
       data: {
+        offer: '',
+        personaldata: [],
         currentIdx: 1,
         section: ["pray", "prayintro", "prayattr", "praystart", "praydone"],
         cate: "種類",
@@ -575,6 +691,20 @@
           const focusObj = this.godList.find((item) => item.key == this.god);
           return focusObj?.img || "img/pray/unknownGod.png";
         },
+      },
+      created() {
+        let array = JSON.parse(localStorage.getItem('personallogin'));//抓localStorage存入變數
+        if (array != null) {
+          axios.post('phps/memberExbody.php', {
+            mem_no: array[0].mem_no,
+            mem_id: array[0].mem_id,
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }).then((res) => {
+            this.personaldata = res.data[0];
+          }).catch(error => console.log(error));
+        };
       },
       watch: {
         currentIdx() {
@@ -621,104 +751,7 @@
         this.btnHandler();
       },
     });
-    new Vue({
-      el: "#app",
-      data() {
-        return {
-          registerframe: true,
-          loginframe: false,
-          name: null,
-          phone: null,
-          email: null,
-          psw: null,
-          confirmpsw: null,
-          addtime: null,
-          personaldata: [],
-        };
-      },
-      created() {
-        let array = JSON.parse(localStorage.getItem("personallogin"));
-        axios
-          .post("phps/memberExist.php", {
-            mem_no: array[0].mem_no,
-            mem_id: array[0].mem_id,
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          })
-          .then((res) => {
-          })
-          .catch((error) => console.log(error));
-      },
-      methods: {
-        logi() {
-          this.registerframe = false;
-          this.loginframe = true;
-        },
-        regist() {
-          this.loginframe = false;
-          this.registerframe = true;
-        },
-        btnAdd() {
-          var m = new Date();
-          this.addtime =
-            m.getFullYear() +
-            "-" +
-            (m.getMonth() + 1) +
-            "-" +
-            m.getDate() +
-            " " +
-            m.getHours() +
-            ":" +
-            m.getMinutes() +
-            ":" +
-            m.getSeconds();
 
-          axios
-            .post("phps/memberAdd.php", {
-              mem_name: this.name,
-              mem_id: this.email,
-              mem_psw: this.psw,
-              phone: this.phone,
-              email: this.email,
-              mem_date: this.addtime,
-              mem_status: "0",
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            })
-            .then(function (response) {
-              console.log(response);
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-        },
-        logincheck() {
-          axios
-            .post("phps/memberCheck.php", {
-              mem_id: this.email,
-              mem_psw: this.psw,
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            })
-            .then((res) => {
-              this.personaldata = res.data;
-              if (res.data == "erro") {
-                alert("輸入錯誤");
-              } else {
-                location.href = "mainpage.html";
-                localStorage.setItem(
-                  "personallogin",
-                  JSON.stringify(res.data)
-                );
-              }
-            })
-            .catch((error) => (this.personaldata = res.data));
-        },
-      },
-    });
   </script>
 </body>
 

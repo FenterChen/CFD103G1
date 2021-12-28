@@ -12,7 +12,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
-  <script src="./js/member.js"></script>
   <title>BOBIO|會員資料修改</title>
 </head>
 
@@ -59,121 +58,133 @@
       </div>
     </div>
   </header>
-
-  <div class="containerId" id="app">
-    <form action="member.php" method="post">
-      <div class="boxContainer">
-        <div class="boxMember">
-          <a class="textId bold"> 會員資料</a>
-          <a class="textFixpwd">密碼修改</a>
-        </div>
-        <div class="boxData">
-          <div class="textName">
-            <span>姓名</span>
-            <input type="text" v-model="personaldata.mem_name" />
+  <section id="app">
+    <div class="containerId" v-if="showId =='showId1'">
+      <form action="member.php" method="post">
+        <div class="boxContainer">
+          <div class="boxMember">
+            <a class="textId bold"> 會員資料</a>
+            <a class="textFixpwd" @click="showId ='showId2'">密碼修改</a>
           </div>
-          <div class="textPhone">
-            <span>手機</span>
-            <input type="number" v-model="personaldata.phone" />
+          <div class="boxData">
+            <div class="textName">
+              <span>姓名</span>
+              <input type="text" v-model="personaldata.mem_name" />
+            </div>
+            <div class="textPhone">
+              <span>手機</span>
+              <input type="number" v-model="personaldata.phone" />
+            </div>
+            <div class="textEmail">
+              <span>信箱</span>
+              <input type="email" v-model="personaldata.email" />
+            </div>
           </div>
-          <div class="textEmail">
-            <span>信箱</span>
-            <input type="email" v-model="personaldata.email" />
+          <div class="boxBtn">
+            <button class="btnSave" data-hover=" 儲存變更">儲存變更</button>
+            <button class="btnCancel" data-hover=" 取消">取消</button>
           </div>
-        </div>
-        <div class="boxBtn">
-          <button class="btnSave" data-hover=" 儲存變更">儲存變更</button>
-          <button class="btnCancel" data-hover=" 取消">取消</button>
-        </div>
-    </form>
-  </div>
-  </div>
-
-  <div class="containerId2">
-    <form action="member.php" method="post">
-      <div class="boxContainer2 showAdd">
-        <div class="boxMember">
-          <a class="textId textId2">會員資料</a>
-          <a class="textFixpwd textFixpwd2">密碼修改</a>
-        </div>
-        <div class="boxData">
-          <div class="textPwd">
-            <span>目前密碼</span>
-            <input type="password" />
+      </form>
+    </div>
+    </div>
+    <div class="containerId2" v-if="showId =='showId2'">
+      <form action="member.php" method="post">
+        <div class="boxContainer2 ">
+          <div class="boxMember">
+            <a class="textId textId2" @click="showId ='showId1'">會員資料</a>
+            <a class="textFixpwd textFixpwd2">密碼修改</a>
           </div>
-          <div class="textPwd">
-            <span>修改密碼</span>
-            <input type="password" />
+          <div class="boxData">
+            <div class="textPwd">
+              <span>目前密碼</span>
+              <input type="password" />
+            </div>
+            <div class="textPwd">
+              <span>修改密碼</span>
+              <input type="password" />
+            </div>
+            <div class="textPwd">
+              <span>確認密碼</span>
+              <input type="password" />
+            </div>
           </div>
-          <div class="textPwd">
-            <span>確認密碼</span>
-            <input type="password" />
+          <div class="boxBtn">
+            <button class="btnSave" data-hover=" 儲存變更">儲存變更</button>
+            <button class="btnCancel" data-hover=" 取消">取消</button>
           </div>
-        </div>
-        <div class="boxBtn">
-          <button class="btnSave" data-hover=" 儲存變更">儲存變更</button>
-          <button class="btnCancel" data-hover=" 取消">取消</button>
-        </div>
-    </form>
-  </div>
-  </div>
-  <section>
+      </form>
+    </div>
+    </div>
     <div class="wrapp">
-      <!-- 第一組祈願 -->
       <h2>個人紀錄</h2>
-      <div class="boxRec1">
+      <!-- 第一組祈願 -->
+      <div class="boxRec1" v-if="show =='showbox1'">
         <div class="boxMem">
           <button class="mPray mBg bold">祈願</button>
-          <button class="mPomes">求籤</button>
-          <button class="mOrder">訂單</button>
+          <button class="mPomes" @click="show ='showbox2'">求籤</button>
+          <button class="mOrder" @click="show ='showbox3'">訂單</button>
         </div>
-        <div class="boxItem">
-          <img src="./img/member/memTempgod.svg" alt="" />
-          <p>學業</p>
-          <p>供品三</p>
-          <p>查看雞湯小卡</p>
-          <p>2021.11.18</p>
-          <div class="arrow">
-            <img src="img/mainpage/arrow.svg" alt="箭頭" />
-            <img src="img/mainpage/arrow.svg" alt="箭頭" />
-          </div>
-        </div>
+        <praydata></praydata>
       </div>
       <!-- 第二組求籤 -->
-      <div class="boxRec2 showRec2">
+      <div class="boxRec2" v-if="show =='showbox2'">
         <div class="boxMem">
-          <button class="mPray">祈願</button>
-          <button class="mPomes mBg">求籤</button>
-          <button class="mOrder">訂單</button>
+          <button class="mPray" @click="show ='showbox1'">祈願</button>
+          <button class="mPomes mBg bold">求籤</button>
+          <button class="mOrder" @click="show ='showbox3'">訂單</button>
         </div>
         <div class="boxItem">
-          <img src="./img/member/memSticks.svg" alt="" />
-          <p>健康</p>
-          <p>第70號籤</p>
-          <p>查看籤詩</p>
-          <p>2021.11.18</p>
+          <table>
+            <tr>
+              <td><img src="./img/member/memSticks.svg" alt=""></td>
+              <td>
+                <p>健康</p>
+              </td>
+              <td>
+                <p>第70號籤</p>
+              </td>
+              <td>
+                <p>查看籤詩</p>
+              </td>
+              <td>
+                <p>2021.11.18</p>
+              </td>
+            </tr>
+          </table>
           <div class="arrow">
-            <img src="img/mainpage/arrow.svg" alt="箭頭" />
-            <img src="img/mainpage/arrow.svg" alt="箭頭" />
+            <img src="img/mainpage/arrow.svg" alt="箭頭" @click="show ='showbox1'" />
+            <img src="img/mainpage/arrow.svg" alt="箭頭" @click="show ='showbox3'" />
           </div>
         </div>
       </div>
 
       <!-- 第三組 -->
-      <div class="boxRec3 showRec3">
+      <div class="boxRec3" v-if="show =='showbox3'">
         <div class="boxMem">
-          <button class="mPray">祈願</button>
-          <button class="mPomes">求籤</button>
-          <button class="mOrder mBg">訂單</button>
+          <button class="mPray" @click="show ='showbox1'">祈願</button>
+          <button class="mPomes" @click="show ='showbox2'">求籤</button>
+          <button class="mOrder mBg bold">訂單</button>
         </div>
         <div class="boxItem">
-          <img src="./img/member/memAmulet.svg" alt="" />
-          <p class="order">客製化平安符<br>感情－生肖牛</p>
-          <p>數量：1</p>
-          <p>總計：NT$459</p>
-          <p>2021.11.18</p>
+          <table>
+            <tr>
+              <td><img src="./img/member/memAmulet.svg" alt=""></td>
+              <td>
+                <p>客製化平安符</p>
+              </td>
+              <td>
+                <p>數量：1</p>
+              </td>
+              <td>
+                <p>總計：NT$459</p>
+              </td>
+              <td>
+                <p>2021.11.18</p>
+              </td>
+            </tr>
+          </table>
           <div class="arrow">
-            <img src="img/mainpage/arrow.svg" alt="箭頭" />
+            <img src="img/mainpage/arrow.svg" alt="箭頭" @click="show ='showbox2'" />
             <img src="img/mainpage/arrow.svg" alt="箭頭" />
           </div>
         </div>
@@ -245,7 +256,7 @@
         let array = JSON.parse(localStorage.getItem('personallogin'));//抓localStorage存入變數
         this.losituation = null;//登入登出狀態
         if (array != null) {
-          axios.post('phps/memberExist.php', {
+          axios.post('phps/memberExbody.php', {
             mem_no: array[0].mem_no,
             mem_id: array[0].mem_id,
             headers: {
@@ -303,12 +314,78 @@
       },
     });
 
+    var Componentprayrecord = Vue.component('praydata', {
+      data() {
+        return {
+          pray: [],
+          type: {
+            1: "感情",
+            2: "感情",
+            3: "感情",
+            4: "健康",
+            5: "健康",
+            6: "健康",
+            7: "平安",
+            8: "平安",
+            9: "平安",
+            10: "學業",
+            11: "學業",
+            12: "學業",
+            13: "財富",
+            14: "財富",
+            15: "財富",
+            16: "事業",
+            17: "事業",
+            18: "事業",
+          }
+        }
+      },
+      created() {
+        let array = JSON.parse(localStorage.getItem('personallogin'));
+        axios.post('phps/prayrecord.php', {
+          mem_no: array[0].mem_no,
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((res) => {
+          if (res.data == "erro") {
+
+          } else {
+            this.pray = res.data;
+          }
+        }).catch(error => console.log(error));
+      },
+      template:
+        `
+        <div class="boxItem">
+          <table>
+            <tr v-for="(item,index) in pray">
+              <td><img :src='"backweb/"+item.card_cont+".png"' /></td>
+              <td><p>祈願種類:{{type[item.card_no]}}</p></td>
+              <td><p>供品套餐:{{item.off_name}}</p></td>
+              <td><p>小卡編號:{{item.card_no}}</p></td>
+              <td><p>{{item.pray_date}}</p></td>
+            </tr>
+          </table>
+            <div class="arrow">
+            <img src="img/mainpage/arrow.svg" alt="箭頭"/>
+            <img src="img/mainpage/arrow.svg" alt="箭頭"  @click="show ='showbox2'"/>
+          </div>
+        </div>
+        `
+    });
+
     new Vue({
       el: '#app',
       data() {
         return {
           personaldata: {},
+          show: "showbox1",
+          showId: 'showId1',
         }
+      },
+      components: {
+        'component-prayrecorder': Componentprayrecord,
       },
       created() {
         let array = JSON.parse(localStorage.getItem('personallogin'));

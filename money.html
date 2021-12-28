@@ -231,7 +231,7 @@
               this.losituation = "登出";//登入登出狀態
               this.personaldata = res.data[0];
             }
-          }).catch(error => this.personaldata = res.data);
+          }).catch(error => console.log(error));
         };
         //以上讀取會員資料
         window.onresize = () => {
@@ -302,7 +302,7 @@
         let array = JSON.parse(localStorage.getItem('personallogin'));//抓localStorage存入變數
         this.losituation = null;//登入登出狀態
         if (array != null) {
-          axios.post('phps/memberExist.php', {
+          axios.post('phps/memberExbody.php', {
             mem_no: array[0].mem_no,
             mem_id: array[0].mem_id,
             headers: {
