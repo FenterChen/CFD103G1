@@ -1,6 +1,6 @@
 <?php
 try {
-	require_once("connectPomes.php");
+	require_once("connectBOBIO.php");
 	$sql = "select  pomes_content,pomes_det from pomes";
 	$pomes = $pdo->query($sql);
 	$pomesRow = $pomes->fetchAll(PDO::FETCH_ASSOC);

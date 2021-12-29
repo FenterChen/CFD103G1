@@ -177,10 +177,14 @@
 
 .firstpic,
 .firstpic2 {
+    width: 280px;
     display: flex;
     flex-direction: column;
     margin: 0 30px;
 
+    span>img {
+        width: 100%;
+    }
 }
 
 
