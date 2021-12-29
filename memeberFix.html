@@ -134,30 +134,7 @@
           <button class="mPomes mBg bold">求籤</button>
           <button class="mOrder" @click="show ='showbox3'">訂單</button>
         </div>
-        <div class="boxItem">
-          <table>
-            <tr>
-              <td><img src="./img/member/memSticks.svg" alt=""></td>
-              <td>
-                <p>健康</p>
-              </td>
-              <td>
-                <p>第70號籤</p>
-              </td>
-              <td>
-                <p>查看籤詩</p>
-              </td>
-              <td>
-                <p>2021.11.18</p>
-              </td>
-            </tr>
-          </table>
-          <div class="arrow">
-            <img src="img/mainpage/arrow.svg" alt="箭頭" @click="show ='showbox1'" />
-            <img src="img/mainpage/arrow.svg" alt="箭頭" @click="show ='showbox3'" />
-            
-          </div>
-        </div>
+        <pomesdata></pomesdata>
       </div>
 
       <!-- 第三組 -->
@@ -360,6 +337,75 @@
         `
     });
 
+    var Componentpomes = Vue.component("pomesdata", {
+        data() {
+          return {
+            pomes: [],
+            apear: false,
+          };
+        },
+        methods: {
+          // boxshow() {
+          //   this.apear = true;
+          // },
+          // close() {
+          //   this.apear = false;
+          // },
+        },
+        computed: {
+          pomesImg() {
+            return this.pomes[0].pomes_no;
+          },
+        },
+        created() {
+          let array = JSON.parse(localStorage.getItem("personallogin"));
+          axios
+            .post("phps/pomesrecord.php", {
+              mem_no: array[0].mem_no,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              if (res.data == "erro") {
+              } else {
+                this.pomes = res.data;
+              }
+            })
+            .catch((error) => console.log(error));
+        },
+
+        template: `
+        <div class="boxItem">
+          <table>
+            <tr v-for="(item,index) in pomes">
+              <td><img src='./img/member/memSticks.svg' /></td>
+
+              <td><p>第{{item.pomes_no}}號籤</p></td>
+              <td ><p @click="apear = 'true'" style="cursor: pointer" >查看籤詩</p></td>
+              <td><p>{{item.pomes_date}}</p></td>
+            </tr>
+          </table>
+            <div class="arrow">
+            <img src="img/mainpage/arrow.svg" alt="箭頭"/>
+            <img src="img/mainpage/arrow.svg" alt="箭頭"  @click="show ='showbox2'"/>
+          </div>
+
+        <!-- 彈窗 -->
+        <div class="loginbox" v-if="apear">
+          <div class="loginContent">
+           
+            <img :src="'./backweb/img/pomes/pomes'+pomesImg+'.jpg'" alt="" />
+            <button class="btnCancel" data-hover="返回" @click="apear = false">
+              返回
+            </button>
+          </div>
+        </div>
+        </div>
+        `,
+      });
+
+ 
     var Componentorderdata = Vue.component('orderdata', {
       data() {
         return {
@@ -467,6 +513,7 @@
       components: {
         'component-prayrecorder': Componentprayrecord,
         'component-orderdata': Componentorderdata,
+        "component-pomes": Componentpomes,
       },
       created() {
         let array = JSON.parse(localStorage.getItem('personallogin'));
