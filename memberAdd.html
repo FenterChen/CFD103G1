@@ -12,6 +12,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
+  <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
   <title>BOBIO|會員加入</title>
 </head>
 
@@ -109,7 +110,6 @@
 
     <!--   登入頁面 -->
     <div class="boxContainer2" v-if="loginframe">
-      <!-- <form action="login.php" method="post"> -->
       <div class="boxMember">
         <a class="textAdd textAdd2" @click="regist">註冊會員</a>
         <a class="textLogin textLogin2">會員登入</a>
@@ -138,7 +138,24 @@
         <p><span>還不是會員嗎？</span>註冊會員</p>
       </div>
     </div>
-    <!-- </form> -->
+    <!-- email跳窗 -->
+    <div class="onlineEmail" v-if="sendemail =='showboxe'">
+      <div class="sendbox">
+        <div class="x_pic" @click="exit">
+          <img src="./img/onlinepomes/close.png" alt="" />
+        </div>
+        <div class="loginTxt">
+          <div class="ok_pic">
+            <img src="./img/onlinepomes/ok.png" alt="" />
+          </div>
+          <div class="sendTxt">
+            詳細內容已傳送到您的信箱:
+            <p>{{email}}</p>
+          </div>
+          <button @click="exit">確定</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <footer>
@@ -218,7 +235,7 @@
               this.losituation = "登出";//登入登出狀態
               this.personaldata = res.data[0];
             }
-          }).catch(error => this.personaldata = res.data);
+          }).catch(error => (this.personaldata = res.data));
         };
         //以上讀取會員資料
         window.onresize = () => {
@@ -269,6 +286,8 @@
       el: "#app",
       data() {
         return {
+          pomesNum: null,
+          sendemail: '',
           registerframe: true,
           loginframe: false,
           name: null,
@@ -282,22 +301,25 @@
       },
       created() {
         let array = JSON.parse(localStorage.getItem("personallogin"));
-        axios
-          .post("phps/memberExist.php", {
-            mem_no: array[0].mem_no,
-            mem_id: array[0].mem_id,
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          })
-          .then((res) => {
-            if (res.data == "erro") {
-              location.href = "mainpage.html";
-            } else {
-              location.href = "memberCenter.html";
-            }
-          })
-          .catch((error) => (console.log(error)));
+        this.pomesNum = localStorage.onlinedraw;
+        if (array != null) {
+          axios
+            .post("phps/memberExist.php", {
+              mem_no: array[0].mem_no,
+              mem_id: array[0].mem_id,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              if (res.data == "erro") {
+                location.href = "mainpage.html";
+              } else {
+                location.href = "memberCenter.html";
+              }
+            })
+            .catch((error) => (console.log(error)));
+        }
       },
       methods: {
         logi() {
@@ -357,14 +379,40 @@
               if (res.data == "erro") {
                 alert("輸入錯誤");
               } else {
-                location.href = "mainpage.html";
                 localStorage.setItem(
                   "personallogin",
                   JSON.stringify(res.data)
                 );
+                if (this.pomesNum != null) {
+                  this.sendemail = 'showboxe';
+                  this.mailimgsrc = `https://fenterchen.github.io/CFD103G1/backweb/img/pomesdetail/pomesdetail${this.pomesNum}.jpg`;
+                  let templateParams = {
+                    "userMail": this.email,
+                    "user": this.personaldata[0].mem_name,
+                    "img": `<img src='${this.mailimgsrc}'></img>`,
+                  };
+
+                  let service_id = "service_mx74py6";
+                  let template_id = "template_hbvc9et";
+                  let userID = "user_M0xZ336icxs46YS0qvh59";
+                  emailjs.send(service_id, template_id, templateParams, userID)
+                    .then((response) => {
+                      console.log('SUCCESS!', response.status, response.text);
+                    })
+                    .catch((error) => {
+                      console.log('FAILED...', error);
+                    })
+                  localStorage.removeItem("onlinedraw");
+                  localStorage.removeItem("onlinename");
+                } else {
+                  location.href = "mainpage.html";
+                }
               }
             })
-            .catch((error) => (this.personaldata = res.data));
+            .catch((error) => (console.log(error)));
+        },
+        exit() {
+          location.href = "mainpage.html";
         },
       },
     });

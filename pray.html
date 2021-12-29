@@ -539,20 +539,23 @@
           m.getMinutes() +
           ":" +
           m.getSeconds();
-        axios.post('phps/prayAdd.php', {
-          mem_no: this.personaldata.mem_no,
-          off_no: this.offer,
-          card_no: this.card_no,
-          pray_date: addtime,
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        }).then((res) => {
+        if (this.personaldata.length != 0 && this.offer != '' && this.card_no != '') {
+          axios.post('phps/prayAdd.php', {
+            mem_no: this.personaldata.mem_no,
+            off_no: this.offer,
+            card_no: this.card_no,
+            pray_date: addtime,
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }).then((res) => {
 
+          }
+          ).catch(function (error) {
+            console.log(error);
+          })
         }
-        ).catch(function (error) {
-          console.log(error);
-        })
+
       },
       template: `
           <section class="section Finish">

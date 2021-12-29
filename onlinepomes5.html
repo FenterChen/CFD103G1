@@ -1,36 +1,191 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BOBIO|線上求籤</title>
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <link rel="stylesheet" href="css/onlinepomes5.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
-  </head>
 
-  <body>
-    <header id="mainheader">
-      <div class="headerWrap">
-        <div class="logo">
-          <a href="mainpage.html">
-            <img src="img/header/BOBIO_logo.svg" />
-          </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOBIO|線上求籤</title>
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/onlinepomes5.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
+</head>
+
+<body>
+  <header id="mainheader">
+    <div class="headerWrap">
+      <div class="logo">
+        <a href="mainpage.html">
+          <img src="img/header/BOBIO_logo.svg" />
+        </a>
+      </div>
+      <nav class="navPostion">
+        <ul>
+          <li>
+            <div class="member">
+              <a href="memberAdd.html"><img src="img/header/member.svg" /></a>
+            </div>
+            <div class="logout">
+              <span v-text="losituation" @click="logout"></span>
+            </div>
+          </li>
+          <li>
+            <a href="pray.html">立即祈願</a>
+          </li>
+          <li>
+            <a href="onlinepomes.html">線上求籤</a>
+          </li>
+          <li>
+            <a href="amulet.html">平安符願</a>
+          </li>
+          <li>
+            <a href="money.html">立即結緣</a>
+          </li>
+          <li>
+            <a href="Abouts.html">關於我們</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="cart">
+        <a href="shopping_cart1.html"><img src="img/header/cart.svg" /></a>
+      </div>
+      <div class="member">
+        <a href="memberAdd.html"><img src="img/header/member.svg" /></a>
+      </div>
+      <div class="logout">
+        <span v-text="losituation" @click="logout"></span>
+      </div>
+      <div class="outerHb">
+        <div class="hb" @click="hb">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-        <nav class="navPostion">
-          <ul>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="onlinepomesWrap" id="app">
+      <div class="onlinePic">
+        <div class="boxPic">
+          <img src="img/onlinepomes/lickbox6.png" alt="" />
+          <div class="lick">
+            <img src="img/onlinepomes/lots1.png" alt="" />
+            <p>{{pomesNum}}</p>
+          </div>
+          <div class="lickboxPic">
+            <img src="img/onlinepomes/lickbox5.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="onlineContent">
+        <div class="onlineText">
+          <h2>{{believer}}，您抽到第{{pomesNum}}號籤</h2>
+          <p>請誠心詢問擲出三個聖筊，<br />向神明確定籤意。</p>
+        </div>
+        <div class="throwPlace">
+          <div class="throwPic">
+            <div class="result" v-if="type1 == 0">
+              <img src="./img/onlinepomes/throw1.gif" alt="" />
+            </div>
+
+            <div class="result" v-if="type1 == 1">
+              <img src="./img/onlinepomes/agree.png" alt="" />
+              <p>聖筊</p>
+            </div>
+
+            <div class="result" v-if="type1 == 2">
+              <img src="./img/onlinepomes/smile.png" alt="" />
+              <p>笑筊</p>
+            </div>
+
+            <div class="result" v-if="type1 == 3">
+              <img src="./img/onlinepomes/not.png" alt="" />
+              <p>蓋筊</p>
+            </div>
+          </div>
+          <div class="throwPic">
+            <div class="result" v-if="type2 == 0">
+              <img src="./img/onlinepomes/throw.png" alt="" />
+            </div>
+
+            <div class="result" v-if="type2 == 1">
+              <img src="./img/onlinepomes/agree.png" alt="" />
+              <p>聖筊</p>
+            </div>
+
+            <div class="result" v-if="type2 == 2">
+              <img src="./img/onlinepomes/smile.png" alt="" />
+              <p>笑筊</p>
+            </div>
+
+            <div class="result" v-if="type2 == 3">
+              <img src="./img/onlinepomes/not.png" alt="" />
+              <p>蓋筊</p>
+            </div>
+          </div>
+          <div class="throwPic">
+            <div class="result" v-if="type3 == 0">
+              <img src="./img/onlinepomes/throw.png" alt="" />
+            </div>
+
+            <div class="result" v-if="type3 == 1">
+              <img src="./img/onlinepomes/agree.png" alt="" />
+              <p>聖筊</p>
+            </div>
+
+            <div class="result" v-if="type3 == 2">
+              <img src="./img/onlinepomes/smile.png" alt="" />
+              <p>笑筊</p>
+            </div>
+
+            <div class="result" v-if="type3 == 3">
+              <img src="./img/onlinepomes/not.png" alt="" />
+              <p>蓋筊</p>
+            </div>
+          </div>
+          <div class="onlineBtn">
+            <button v-if="loadBtn1" @click="loadNum1" class="throw" data-hover="擲筊">
+              擲筊
+            </button>
+            <button v-if="loadBtn2" @click="loadNum2" class="throw" data-hover="擲筊">
+              擲筊
+            </button>
+            <button v-if="loadBtn3" @click="loadNum3" class="throw" data-hover="擲筊">
+              擲筊
+            </button>
+          </div>
+        </div>
+
+        <div class="onlineNotice">
+          <ol>
             <li>
-              <div class="member">
-                <a href="memberAdd.html"><img src="img/header/member.svg" /></a>
-              </div>
-              <div class="logout">
-                <span v-text="losituation" @click="logout"></span>
-              </div>
+              1.一事一籤。一件事情只能求取一支籤，不可以一籤求多事；求到籤詩後請休息5-10分鐘再請示下一件事。
             </li>
+            <li>
+              2.擲筊會出現三種情況：聖筊是一正一反，表示神明同意你的請求；笑筊是兩個平面向上表示神明在笑，並沒有表示同意；而陰筊則是平面朝下，表示請求駁回。
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-logo">
+        <img src="./img/header/BOBIO_logo.svg" alt="bobio" />
+      </div>
+      <div class="footer-slog">
+        <span>用BOBIO就有保佑</span>
+      </div>
+      <div class="footer-info">
+        <div class="list">
+          <ul>
             <li>
               <a href="pray.html">立即祈願</a>
             </li>
@@ -47,417 +202,245 @@
               <a href="Abouts.html">關於我們</a>
             </li>
           </ul>
-        </nav>
-        <div class="cart">
-          <a href="shopping_cart1.html"><img src="img/header/cart.svg" /></a>
         </div>
-        <div class="member">
-          <a href="memberAdd.html"><img src="img/header/member.svg" /></a>
-        </div>
-        <div class="logout">
-          <span v-text="losituation" @click="logout"></span>
-        </div>
-        <div class="outerHb">
-          <div class="hb" @click="hb">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="conn">
+          <p>
+            bobio@temple.com<br />
+            02-1090-1090
+          </p>
+          <div class="info-icon">
+            <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook" /></a>
+            <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram" /></a>
+            <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube" /></a>
           </div>
         </div>
       </div>
-    </header>
-
-    <section>
-      <div class="onlinepomesWrap" id="app">
-        <div class="onlinePic">
-          <div class="boxPic">
-            <img src="img/onlinepomes/lickbox6.png" alt="" />
-            <div class="lick">
-              <img src="img/onlinepomes/lots1.png" alt="" />
-              <p>{{pomesNum}}</p>
-            </div>
-            <div class="lickboxPic">
-              <img src="img/onlinepomes/lickbox5.png" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="onlineContent">
-          <div class="onlineText">
-            <h2>{{believer}}，您抽到第{{pomesNum}}號籤</h2>
-            <p>請誠心詢問擲出三個聖筊，<br />向神明確定籤意。</p>
-          </div>
-          <div class="throwPlace">
-            <div class="throwPic">
-              <div class="result" v-if="type1 == 0">
-                <img src="./img/onlinepomes/throw1.gif" alt="" />
-              </div>
-
-              <div class="result" v-if="type1 == 1">
-                <img src="./img/onlinepomes/agree.png" alt="" />
-                <p>聖筊</p>
-              </div>
-
-              <div class="result" v-if="type1 == 2">
-                <img src="./img/onlinepomes/smile.png" alt="" />
-                <p>笑筊</p>
-              </div>
-
-              <div class="result" v-if="type1 == 3">
-                <img src="./img/onlinepomes/not.png" alt="" />
-                <p>蓋筊</p>
-              </div>
-            </div>
-            <div class="throwPic">
-              <div class="result" v-if="type2 == 0">
-                <img src="./img/onlinepomes/throw.png" alt="" />
-              </div>
-
-              <div class="result" v-if="type2 == 1">
-                <img src="./img/onlinepomes/agree.png" alt="" />
-                <p>聖筊</p>
-              </div>
-
-              <div class="result" v-if="type2 == 2">
-                <img src="./img/onlinepomes/smile.png" alt="" />
-                <p>笑筊</p>
-              </div>
-
-              <div class="result" v-if="type2 == 3">
-                <img src="./img/onlinepomes/not.png" alt="" />
-                <p>蓋筊</p>
-              </div>
-            </div>
-            <div class="throwPic">
-              <div class="result" v-if="type3 == 0">
-                <img src="./img/onlinepomes/throw.png" alt="" />
-              </div>
-
-              <div class="result" v-if="type3 == 1">
-                <img src="./img/onlinepomes/agree.png" alt="" />
-                <p>聖筊</p>
-              </div>
-
-              <div class="result" v-if="type3 == 2">
-                <img src="./img/onlinepomes/smile.png" alt="" />
-                <p>笑筊</p>
-              </div>
-
-              <div class="result" v-if="type3 == 3">
-                <img src="./img/onlinepomes/not.png" alt="" />
-                <p>蓋筊</p>
-              </div>
-            </div>
-            <div class="onlineBtn">
-              <button
-                v-if="loadBtn1"
-                @click="loadNum1"
-                class="throw"
-                data-hover="擲筊"
-              >
-                擲筊
-              </button>
-              <button
-                v-if="loadBtn2"
-                @click="loadNum2"
-                class="throw"
-                data-hover="擲筊"
-              >
-                擲筊
-              </button>
-              <button
-                v-if="loadBtn3"
-                @click="loadNum3"
-                class="throw"
-                data-hover="擲筊"
-              >
-                擲筊
-              </button>
-            </div>
-          </div>
-
-          <div class="onlineNotice">
-            <ol>
-              <li>
-                1.一事一籤。一件事情只能求取一支籤，不可以一籤求多事；求到籤詩後請休息5-10分鐘再請示下一件事。
-              </li>
-              <li>
-                2.擲筊會出現三種情況：聖筊是一正一反，表示神明同意你的請求；笑筊是兩個平面向上表示神明在笑，並沒有表示同意；而陰筊則是平面朝下，表示請求駁回。
-              </li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </section>
-    <footer>
-      <div class="footer-wrap">
-        <div class="footer-logo">
-          <img src="./img/header/BOBIO_logo.svg" alt="bobio" />
-        </div>
-        <div class="footer-slog">
-          <span>用BOBIO就有保佑</span>
-        </div>
-        <div class="footer-info">
-          <div class="list">
-            <ul>
-              <li>
-                <a href="pray.html">立即祈願</a>
-              </li>
-              <li>
-                <a href="onlinepomes.html">線上求籤</a>
-              </li>
-              <li>
-                <a href="amulet.html">平安符願</a>
-              </li>
-              <li>
-                <a href="money.html">立即結緣</a>
-              </li>
-              <li>
-                <a href="Abouts.html">關於我們</a>
-              </li>
-            </ul>
-          </div>
-          <div class="conn">
-            <p>
-              bobio@temple.com<br />
-              02-1090-1090
-            </p>
-            <div class="info-icon">
-              <a href="#"
-                ><img src="./img/footer/Group 415.svg" alt="facebook"
-              /></a>
-              <a href="#"
-                ><img src="./img/footer/Group 295.svg" alt="instagram"
-              /></a>
-              <a href="#"
-                ><img src="./img/footer/Group 296.svg" alt="youtube"
-              /></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="copyright">
-        <p>
-          Copyright © 2021Bobio
-          本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
-        </p>
-      </div>
-    </footer>
-    <script>
-      const vm = new Vue({
-        el: "#app",
-        data: {
-          believer: "",
-          pomesNum: 0,
-          strike: 0,
-          type1: 0,
-          type2: 0,
-          type3: 0,
-          loadBtn1: true,
-          loadBtn2: false,
-          loadBtn3: false,
+    </div>
+    <div class="copyright">
+      <p>
+        Copyright © 2021Bobio
+        本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+      </p>
+    </div>
+  </footer>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        believer: "",
+        pomesNum: 0,
+        strike: 0,
+        type1: 0,
+        type2: 0,
+        type3: 0,
+        loadBtn1: true,
+        loadBtn2: false,
+        loadBtn3: false,
+      },
+      mounted() {
+        this.believer = localStorage.onlinename;
+        this.pomesNum = localStorage.onlinedraw;
+      },
+      methods: {
+        //第一次擲筊
+        loadNum1() {
+          let min = 1;
+          let max = 4;
+          this.type1 = Math.floor(Math.random() * (max - min) + min);
+          let num = this.type1;
+          var sum = 0;
+          setTimeout(function () {
+            console.log("I am the third log after 2 seconds");
+            if (num == 1) {
+              sum += 1;
+              vm.loadBtn1 = false;
+              vm.loadBtn2 = true;
+              console.log(sum);
+              // alert("聖筊");
+              //  this.$forceUpdate();
+              //  location.href = "onlinepomes6.html";
+            }
+            //條件不成立
+            if (num == 2) {
+              console.log(num);
+              sum = 0;
+              // alert("蓋筊");
+              location.href = "onlinepomes4-1.html";
+            }
+            if (num == 3) {
+              console.log(num);
+              sum = 0;
+              // alert("笑筊");
+              location.href = "onlinepomes4-1.html";
+            }
+            vm.strike += sum;
+            vm.$forceUpdate();
+          }, 1000);
         },
-        mounted() {
-          this.believer = localStorage.onlinename;
-          this.pomesNum = localStorage.onlinedraw;
+        //第二次擲筊
+        loadNum2() {
+          let min = 1;
+          let max = 4;
+          this.type2 = Math.floor(Math.random() * (max - min) + min);
+          let num = this.type2;
+          var sum = 0;
+          setTimeout(function () {
+            console.log("I am the third log after 2 seconds");
+            if (num == 1) {
+              console.log(num);
+              sum += 1;
+              vm.loadBtn2 = false;
+              vm.loadBtn3 = true;
+              console.log(sum);
+              // alert("聖筊");
+              //  location.href = "onlinepomes6.html";
+            }
+            //條件不成立
+            if (num == 2) {
+              console.log(num);
+              sum = 0;
+              // alert("蓋筊");
+              location.href = "onlinepomes4-1.html";
+            }
+            if (num == 3) {
+              console.log(num);
+              sum = 0;
+              // alert("笑筊");
+              location.href = "onlinepomes4-1.html";
+            }
+            // vm.strike += sum;
+            vm.$forceUpdate();
+          }, 1000);
         },
-        methods: {
-          //第一次擲筊
-          loadNum1() {
-            let min = 1;
-            let max = 4;
-            this.type1 = Math.floor(Math.random() * (max - min) + min);
-            let num = this.type1;
-            var sum = 0;
-            setTimeout(function () {
-              console.log("I am the third log after 2 seconds");
-              if (num == 1) {
-                sum += 1;
-                vm.loadBtn1 = false;
-                vm.loadBtn2 = true;
-                console.log(sum);
-                // alert("聖筊");
-                //  this.$forceUpdate();
-                //  location.href = "onlinepomes6.html";
-              }
-              //條件不成立
-              if (num == 2) {
-                console.log(num);
-                sum = 0;
-                // alert("蓋筊");
-                location.href = "onlinepomes4-1.html";
-              }
-              if (num == 3) {
-                console.log(num);
-                sum = 0;
-                // alert("笑筊");
-                location.href = "onlinepomes4-1.html";
-              }
-              vm.strike += sum;
-              vm.$forceUpdate();
-            }, 1000);
-          },
-          //第二次擲筊
-          loadNum2() {
-            let min = 1;
-            let max = 4;
-            this.type2 = Math.floor(Math.random() * (max - min) + min);
-            let num = this.type2;
-            var sum = 0;
-            setTimeout(function () {
-              console.log("I am the third log after 2 seconds");
-              if (num == 1) {
-                console.log(num);
-                sum += 1;
-                vm.loadBtn2 = false;
-                vm.loadBtn3 = true;
-                console.log(sum);
-                // alert("聖筊");
-                //  location.href = "onlinepomes6.html";
-              }
-              //條件不成立
-              if (num == 2) {
-                console.log(num);
-                sum = 0;
-                // alert("蓋筊");
-                location.href = "onlinepomes4-1.html";
-              }
-              if (num == 3) {
-                console.log(num);
-                sum = 0;
-                // alert("笑筊");
-                location.href = "onlinepomes4-1.html";
-              }
-              // vm.strike += sum;
-              vm.$forceUpdate();
-            }, 1000);
-          },
-          //第三次擲筊
-          loadNum3() {
-            let min = 1;
-            let max = 4;
-            this.type3 = Math.floor(Math.random() * (max - min) + min);
-            let num = this.type3;
-            var sum = 0;
-            setTimeout(function () {
-              console.log("I am the third log after 2 seconds");
-              if (num == 1) {
-                console.log(num);
-                sum += 1;
-                console.log(sum);
-                // alert("聖筊");
-                //  this.$forceUpdate();
-                location.href = "onlinepomes6.html";
-              }
-              //條件不成立
-              if (num == 2) {
-                console.log(num);
-                sum = 0;
-                // alert("蓋筊");
-                location.href = "onlinepomes4-1.html";
-              }
-              if (num == 3) {
-                console.log(num);
-                sum = 0;
-                // alert("笑筊");
-                location.href = "onlinepomes4-1.html";
-              }
-              // vm.strike += sum;
-              vm.$forceUpdate();
-            }, 1000);
-          },
+        //第三次擲筊
+        loadNum3() {
+          let min = 1;
+          let max = 4;
+          this.type3 = Math.floor(Math.random() * (max - min) + min);
+          let num = this.type3;
+          var sum = 0;
+          setTimeout(function () {
+            console.log("I am the third log after 2 seconds");
+            if (num == 1) {
+              console.log(num);
+              sum += 1;
+              console.log(sum);
+              // alert("聖筊");
+              //  this.$forceUpdate();
+              location.href = "onlinepomes6.html";
+            }
+            //條件不成立
+            if (num == 2) {
+              console.log(num);
+              sum = 0;
+              // alert("蓋筊");
+              location.href = "onlinepomes4-1.html";
+            }
+            if (num == 3) {
+              console.log(num);
+              sum = 0;
+              // alert("笑筊");
+              location.href = "onlinepomes4-1.html";
+            }
+            // vm.strike += sum;
+            vm.$forceUpdate();
+          }, 1000);
         },
-      });
+      },
+    });
 
-      //headerVue
-      new Vue({
-        el: "#mainheader",
-        data() {
-          return {
-            screenWidth: null,
-            personaldata: [],
-            losituation: "",
-          };
-        },
-        created() {
-          this.screenWidth = document.body.clientWidth; //營幕寬
-          //以下讀取會員資料
-          let array = JSON.parse(localStorage.getItem("personallogin")); //抓localStorage存入變數
-          this.losituation = null; //登入登出狀態
-          if (array != null) {
-            axios
-              .post("phps/memberExist.php", {
-                mem_no: array[0].mem_no,
-                mem_id: array[0].mem_id,
-                headers: {
-                  "Content-Type": "multipart/form-data",
-                },
-              })
-              .then((res) => {
-                if (res) {
-                  this.losituation = "登出"; //登入登出狀態
-                  this.personaldata = res.data[0];
-                }
-              })
-              .catch((error) => (this.personaldata = res.data));
-          }
-          //以上讀取會員資料
-          window.onresize = () => {
-            return (() => {
-              this.screenWidth = document.body.clientWidth;
-            })();
-          };
-        },
-        watch: {
-          screenWidth: {
-            handler: function (newval, oldval) {
-              if (newval >= 1200) {
-                $(`header>.headerWrap>nav`).removeClass("navPostion");
-                $(`header>.headerWrap>nav li:first-child`).css(
-                  "display",
-                  "none"
-                );
-                $(`header>.headerWrap>.member`).css("display", "flex");
-                $(`header>.headerWrap>.logout`).css("display", "block");
-              } else if (newval < 1200) {
-                $(`header>.headerWrap>nav`).addClass("navPostion");
-                $(`header>.headerWrap>nav li:first-child`).css(
-                  "display",
-                  "flex"
-                );
-                $(`header>.headerWrap>.member`).css("display", "none");
-                $(`header>.headerWrap>.logout`).css("display", "none");
+    //headerVue
+    new Vue({
+      el: "#mainheader",
+      data() {
+        return {
+          screenWidth: null,
+          personaldata: [],
+          losituation: "",
+        };
+      },
+      created() {
+        this.screenWidth = document.body.clientWidth; //營幕寬
+        //以下讀取會員資料
+        let array = JSON.parse(localStorage.getItem("personallogin")); //抓localStorage存入變數
+        this.losituation = null; //登入登出狀態
+        if (array != null) {
+          axios
+            .post("phps/memberExist.php", {
+              mem_no: array[0].mem_no,
+              mem_id: array[0].mem_id,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              if (res) {
+                this.losituation = "登出"; //登入登出狀態
+                this.personaldata = res.data[0];
               }
-            },
-            immediate: true,
-          },
-        },
-        methods: {
-          hb() {
-            let place = $("nav").css("right");
-            if (place < "0px") {
-              $("nav").animate(
-                {
-                  right: 0,
-                },
-                1200,
-                "easeInBounce"
+            })
+            .catch((error) => (this.personaldata = res.data));
+        }
+        //以上讀取會員資料
+        window.onresize = () => {
+          return (() => {
+            this.screenWidth = document.body.clientWidth;
+          })();
+        };
+        $(`header .headerWrap ul li:nth-child(3) a`).addClass('bottomnavline');
+      },
+      watch: {
+        screenWidth: {
+          handler: function (newval, oldval) {
+            if (newval >= 1200) {
+              $(`header>.headerWrap>nav`).removeClass("navPostion");
+              $(`header>.headerWrap>nav li:first-child`).css(
+                "display",
+                "none"
               );
-            } else {
-              $("nav").animate(
-                {
-                  right: "-30%",
-                },
-                1200,
-                "easeOutBounce"
+              $(`header>.headerWrap>.member`).css("display", "flex");
+              $(`header>.headerWrap>.logout`).css("display", "block");
+            } else if (newval < 1200) {
+              $(`header>.headerWrap>nav`).addClass("navPostion");
+              $(`header>.headerWrap>nav li:first-child`).css(
+                "display",
+                "flex"
               );
+              $(`header>.headerWrap>.member`).css("display", "none");
+              $(`header>.headerWrap>.logout`).css("display", "none");
             }
           },
-          logout() {
-            localStorage.removeItem("personallogin");
-            location.href = "mainpage.html";
-          },
+          immediate: true,
         },
-      });
-    </script>
-  </body>
+      },
+      methods: {
+        hb() {
+          let place = $("nav").css("right");
+          if (place < "0px") {
+            $("nav").animate(
+              {
+                right: 0,
+              },
+              1200,
+              "easeInBounce"
+            );
+          } else {
+            $("nav").animate(
+              {
+                right: "-30%",
+              },
+              1200,
+              "easeOutBounce"
+            );
+          }
+        },
+        logout() {
+          localStorage.removeItem("personallogin");
+          location.href = "mainpage.html";
+        },
+      },
+    });
+  </script>
+</body>
+
 </html>

@@ -1,10 +1,10 @@
 <?php
 
+$dir ="../img/pray";
 $from=$_FILES["file"]["tmp_name"];
 $to="$dir/" .$_FILES["file"]["name"];
 switch($_FILES["file"]["error"]){
   case UPLOAD_ERR_OK :
-  $dir ="../img/pray";
   if(file_exists($dir) == false){
     mkdir($dir);
   }

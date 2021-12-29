@@ -16,7 +16,7 @@ try {
   exit();
   }else{
 	$memRow = $member ->fetchAll(PDO::FETCH_ASSOC);
-  unset($memRow[0]['mem_name'],$memRow[0]['mem_psw'],$memRow[0]['phone'],$memRow[0]['email'],$memRow[0]['mem_date'],$memRow[0]['mem_status']);
+  unset($memRow[0]['mem_psw'],$memRow[0]['phone'],$memRow[0]['email'],$memRow[0]['mem_date'],$memRow[0]['mem_status']);
 	echo(json_encode($memRow));
   }
 } catch (PDOException $e) {
