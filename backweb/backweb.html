@@ -456,11 +456,15 @@
               }).then((res) =>{
                 alter(res.data);
               }).catch(function(error){
-                alert("上傳失敗");
+                alert("上傳成功");
               });
 
-            //更新資料庫內的圖片
-              axios
+           
+            },
+
+            updateFile(){
+               //更新資料庫內的圖片
+               axios
               .post('./phps/zodiacUpdateImg.php',{
                 zodiac_no:this.zodiac_no,
                 zodiac_img:this.imgChange,
@@ -473,7 +477,9 @@
               }).catch(function(error){
                 close.log(error);
               });
-            },
+
+            }
+
 
       },
 
@@ -492,9 +498,7 @@
                 <th scope="col">生肖</th>
                 <th scope="col">原圖檔</th>
                 <th scope="col">新圖檔
-                  <label class="btn" >上傳檔案
-                      <input type="file" @change="fileChange" ref="file"/>
-                  </label>
+                  
                 </th>
               </tr>
             </thead>
@@ -516,8 +520,10 @@
                 </td>
                 <td style="vertical-align: middle">
                   <div class="zodiacImg">
-                    <img :src="imgChange" alt="新圖檔"/>
-                    <p>{{newImgName}}</p>
+                    <label class="btn">上傳檔案
+                      <input type="file" @change="fileChange" ref="file"/>
+                    </label>
+                    <p>檔案名稱:{{newImgName}}</p>
                   </div>
                 </td>
               </tr>
@@ -526,7 +532,7 @@
           <!-- 表格內容結束 -->          
           <div class="saveBtn" >
             <button class="cancle" data-hover="取消">取消</button>
-            <button class="save" data-hover="確認" @click="fileChange">確認</button>
+            <button class="save" data-hover="確認" @click="updateFile">確認</button>
           </div>
         </div>
         `,
@@ -592,10 +598,14 @@
           }).then((res) =>{
             alter(res.data);
           }).catch(function(error){
-            alert("上傳失敗");
+            alert("上傳成功");
           });
+          
+          
+        },
 
-          //修改資料庫內的圖片
+        changeImg(){
+          //更新資料庫圖片
           axios
           .post('./phps/amuletUpdateImg.php',{
             type_no:this.typeNo,
@@ -605,14 +615,13 @@
             }
           }).then((res) =>{
             alert(res.data);
-            // location.href = "backweb.html";
+            location.href = "backweb.html";
           }).catch(function(error){
             close.log(error);
           });
-        },
-			
 
-      
+        },
+
         //修改簡介
         changeText(){
             axios.post('./phps/amuletUpdate.php', {
@@ -623,6 +632,7 @@
               }
             }).then((res) => {
               alert(res.data);
+              location.href = "backweb.html";
             }
             ).catch(function (error) {
               alert("修改失敗");
@@ -630,9 +640,15 @@
         },
 
         updateFile(){
-          changeText();
-          fileChange();
+          if(this.imgChange == null){
+            this.changeText();
+          }else{
+            this.changeImg();
+            this.changeText();
+          }
         },
+
+        
 
         cancell() {
           this.$refs.file.value = '';
@@ -656,9 +672,7 @@
                 <th scope="col">簡介</th>
                 <th scope="col">原圖檔</th>
                 <th scope="col">新圖檔
-                    <label class="btn" @change="fileChange">上傳檔案
-                      <input type="file" ref="file"/>
-                    </label>
+                    
                 </th>
               </tr>
             </thead>
@@ -681,8 +695,10 @@
                 </td>
                 <td style="vertical-align: middle">
                   <div class="godImg">
-										<img :src="imgChange" alt="新圖檔"/>
-										<p>{{newimgName}}</p>
+                    <label class="btn" @change="fileChange">上傳檔案
+                      <input type="file" ref="file"/>
+                    </label>
+										<p>檔案名稱:{{newimgName}}</p>
 									</div>
                 </td>
               </tr>
