@@ -457,6 +457,7 @@
               })
               .then((res) => {
                 alter(res.data);
+<<<<<<< HEAD
               })
               .catch(function (error) {
                 alert("上傳失敗");
@@ -467,6 +468,21 @@
               .post("./phps/zodiacUpdateImg.php", {
                 zodiac_no: this.zodiac_no,
                 zodiac_img: this.imgChange,
+=======
+              }).catch(function(error){
+                alert("上傳成功");
+              });
+
+           
+            },
+
+            updateFile(){
+               //更新資料庫內的圖片
+               axios
+              .post('./phps/zodiacUpdateImg.php',{
+                zodiac_no:this.zodiac_no,
+                zodiac_img:this.imgChange,
+>>>>>>> fbf69ba9a8563b94ce9c4d4f1e18293a5d60e949
                 headers: {
                   "Content-Type": "multipart/form-data",
                 },
@@ -478,8 +494,16 @@
               .catch(function (error) {
                 close.log(error);
               });
+<<<<<<< HEAD
           },
         },
+=======
+
+            }
+
+
+      },
+>>>>>>> fbf69ba9a8563b94ce9c4d4f1e18293a5d60e949
 
         template: `
         <div>
@@ -496,9 +520,7 @@
                 <th scope="col">生肖</th>
                 <th scope="col">原圖檔</th>
                 <th scope="col">新圖檔
-                  <label class="btn" >上傳檔案
-                      <input type="file" @change="fileChange" ref="file"/>
-                  </label>
+                  
                 </th>
               </tr>
             </thead>
@@ -520,8 +542,10 @@
                 </td>
                 <td style="vertical-align: middle">
                   <div class="zodiacImg">
-                    <img :src="imgChange" alt="新圖檔"/>
-                    <p>{{newImgName}}</p>
+                    <label class="btn">上傳檔案
+                      <input type="file" @change="fileChange" ref="file"/>
+                    </label>
+                    <p>檔案名稱:{{newImgName}}</p>
                   </div>
                 </td>
               </tr>
@@ -530,7 +554,7 @@
           <!-- 表格內容結束 -->          
           <div class="saveBtn" >
             <button class="cancle" data-hover="取消">取消</button>
-            <button class="save" data-hover="確認" @click="fileChange">確認</button>
+            <button class="save" data-hover="確認" @click="updateFile">確認</button>
           </div>
         </div>
         `,
@@ -549,6 +573,7 @@
             newimgName: "",
           };
         },
+<<<<<<< HEAD
         created() {
           axios
             .post("../phps/amulet.php", {
@@ -575,9 +600,66 @@
                 this.amuletTypeText = this.amuletType[i].type_text;
                 this.amuletTypeImg = this.amuletType[i].type_img;
               }
+=======
+        
+        fileChange() {
+          //載入圖片
+          this.imgChange = "img/amulet/" + this.$refs.file.files[0].name;
+          this.newimgName = this.$refs.file.files[0].name;
+          this.$forceUpdate();
+
+					//上傳圖片
+          this.file = this.$refs.file.files[0];
+          let readFile = new FormData();
+          readFile.append('file',this.file);
+          axios
+            .post('./phps/amuletFixImg.php',readFile,{
+            headers:{
+              'Content-Type': 'multipart/form-data'
+            },
+          }).then((res) =>{
+            alter(res.data);
+          }).catch(function(error){
+            alert("上傳成功");
+          });
+          
+          
+        },
+
+        changeImg(){
+          //更新資料庫圖片
+          axios
+          .post('./phps/amuletUpdateImg.php',{
+            type_no:this.typeNo,
+            type_img:this.imgChange,
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }).then((res) =>{
+            alert(res.data);
+            location.href = "backweb.html";
+          }).catch(function(error){
+            close.log(error);
+          });
+
+        },
+
+        //修改簡介
+        changeText(){
+            axios.post('./phps/amuletUpdate.php', {
+              amuletTypeText:this.amuletTypeText,
+              typeNo:this.typeNo,
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            }).then((res) => {
+              alert(res.data);
+              location.href = "backweb.html";
+>>>>>>> fbf69ba9a8563b94ce9c4d4f1e18293a5d60e949
             }
           },
 
+<<<<<<< HEAD
           fileChange() {
             //載入圖片
             this.imgChange = "img/amulet/" + this.$refs.file.files[0].name;
@@ -600,6 +682,22 @@
               .catch(function (error) {
                 alert("上傳失敗");
               });
+=======
+        updateFile(){
+          if(this.imgChange == null){
+            this.changeText();
+          }else{
+            this.changeImg();
+            this.changeText();
+          }
+        },
+
+        
+
+        cancell() {
+          this.$refs.file.value = '';
+        },
+>>>>>>> fbf69ba9a8563b94ce9c4d4f1e18293a5d60e949
 
             //修改資料庫內的圖片
             axios
@@ -663,9 +761,7 @@
                 <th scope="col">簡介</th>
                 <th scope="col">原圖檔</th>
                 <th scope="col">新圖檔
-                    <label class="btn" @change="fileChange">上傳檔案
-                      <input type="file" ref="file"/>
-                    </label>
+                    
                 </th>
               </tr>
             </thead>
@@ -688,8 +784,10 @@
                 </td>
                 <td style="vertical-align: middle">
                   <div class="godImg">
-										<img :src="imgChange" alt="新圖檔"/>
-										<p>{{newimgName}}</p>
+                    <label class="btn" @change="fileChange">上傳檔案
+                      <input type="file" ref="file"/>
+                    </label>
+										<p>檔案名稱:{{newimgName}}</p>
 									</div>
                 </td>
               </tr>
