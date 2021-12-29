@@ -1,37 +1,140 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BOBIO|線上求籤</title>
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <link rel="stylesheet" href="css/onlinepomes6.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
-  </head>
 
-  <body>
-    <header id="mainheader">
-      <div class="headerWrap">
-        <div class="logo">
-          <a href="mainpage.html">
-            <img src="img/header/BOBIO_logo.svg" />
-          </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOBIO|線上求籤</title>
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/onlinepomes6.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
+  <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+</head>
+
+<body>
+  <header id="mainheader">
+    <div class="headerWrap">
+      <div class="logo">
+        <a href="mainpage.html">
+          <img src="img/header/BOBIO_logo.svg" />
+        </a>
+      </div>
+      <nav class="navPostion">
+        <ul>
+          <li>
+            <div class="member">
+              <a href="memberAdd.html"><img src="img/header/member.svg" /></a>
+            </div>
+            <div class="logout">
+              <span v-text="losituation" @click="logout"></span>
+            </div>
+          </li>
+          <li>
+            <a href="pray.html">立即祈願</a>
+          </li>
+          <li>
+            <a href="onlinepomes.html">線上求籤</a>
+          </li>
+          <li>
+            <a href="amulet.html">平安符願</a>
+          </li>
+          <li>
+            <a href="money.html">立即結緣</a>
+          </li>
+          <li>
+            <a href="Abouts.html">關於我們</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="cart">
+        <a href="shopping_cart1.html"><img src="img/header/cart.svg" /></a>
+      </div>
+      <div class="member">
+        <a href="memberAdd.html"><img src="img/header/member.svg" /></a>
+      </div>
+      <div class="logout">
+        <span v-text="losituation" @click="logout"></span>
+      </div>
+      <div class="outerHb">
+        <div class="hb" @click="hb">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-        <nav class="navPostion">
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="onlinepomesWrap" id="app" click="email = 'showbox'">
+      <div class="onlinePic">
+        <img src="img/onlinepomes/lickbox1.png" alt="" />
+        <p>{{pomesNum}}</p>
+      </div>
+      <div class="onlineContent">
+        <div class="onlineText">
+          <h2>您的第{{pomesNum}}號籤詩</h2>
+        </div>
+        <div class="pomesPic">
+          <img :src="orcode" alt="" />
+        </div>
+        <div class="onlineBtn">
+          <button class="filePomes" data-hover="儲存籤詩" @click="pomesApp">
+            儲存籤詩
+          </button>
+
+          <button class="openPomes" data-hover="詳細解籤" @click="emaillog">詳細解籤</button>
+        </div>
+      </div>
+      <!-- 登入跳窗 -->
+      <div class="onlineLogin" v-if="email =='showbox0'">
+        <div class="loginbox">
+          <div class="x_pic" @click="exit">
+            <img src="./img/onlinepomes/close.png" alt="" />
+          </div>
+          <div class="loginTxt">
+            <div class="loginFirst">請先登入會員!</div>
+            <button @click="login">立即登入</button>
+          </div>
+        </div>
+      </div>
+      <!-- email跳窗 -->
+      <div class="onlineEmail" v-if="email =='showbox1'">
+        <div class="sendbox">
+          <div class="x_pic" @click="exit">
+            <img src="./img/onlinepomes/close.png" alt="" />
+          </div>
+          <div class="loginTxt">
+            <div class="ok_pic">
+              <img src="./img/onlinepomes/ok.png" alt="" />
+            </div>
+            <div class="sendTxt">
+              詳細內容已傳送到您的信箱:
+              <p>{{mem_id}}</p>
+            </div>
+            <button @click="exit">確定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-logo">
+        <img src="./img/header/BOBIO_logo.svg" alt="bobio" />
+      </div>
+      <div class="footer-slog">
+        <span>用BOBIO就有保佑</span>
+      </div>
+      <div class="footer-info">
+        <div class="list">
           <ul>
-            <li>
-              <div class="member">
-                <a href="memberAdd.html"><img src="img/header/member.svg" /></a>
-              </div>
-              <div class="logout">
-                <span v-text="losituation" @click="logout"></span>
-              </div>
-            </li>
             <li>
               <a href="pray.html">立即祈願</a>
             </li>
@@ -48,262 +151,232 @@
               <a href="Abouts.html">關於我們</a>
             </li>
           </ul>
-        </nav>
-        <div class="cart">
-          <a href="shopping_cart1.html"><img src="img/header/cart.svg" /></a>
         </div>
-        <div class="member">
-          <a href="memberAdd.html"><img src="img/header/member.svg" /></a>
-        </div>
-        <div class="logout">
-          <span v-text="losituation" @click="logout"></span>
-        </div>
-        <div class="outerHb">
-          <div class="hb" @click="hb">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="conn">
+          <p>
+            bobio@temple.com<br />
+            02-1090-1090
+          </p>
+          <div class="info-icon">
+            <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook" /></a>
+            <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram" /></a>
+            <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube" /></a>
           </div>
         </div>
       </div>
-    </header>
+    </div>
+    <div class="copyright">
+      <p>
+        Copyright © 2021Bobio
+        本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+      </p>
+    </div>
+  </footer>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        email: 'showbox',
+        mem_no: "",
+        mem_id: '',
+        pomesNum: 0,
+        orcode: `./backweb/img/pomes/pomes01.jpg`,
+        mailimgsrc: '',
+      },
 
-    <section>
-      <div class="onlinepomesWrap" id="app">
-        <div class="onlinePic">
-          <img src="img/onlinepomes/lickbox1.png" alt="" />
-          <p>{{pomesNum}}</p>
-        </div>
-        <div class="onlineContent">
-          <div class="onlineText">
-            <h2>您的第{{pomesNum}}號籤詩</h2>
-          </div>
-          <div class="pomesPic">
-            <img :src="orcode" alt="" />
-          </div>
-          <div class="onlineBtn">
-            <button class="filePomes" data-hover="儲存籤詩" @click="pomesApp">
-              儲存籤詩
-            </button>
-
-            <button class="openPomes" data-hover="詳細解籤" @click="show">
-              詳細解籤
-            </button>
-          </div>
-        </div>
-        <!-- 登入跳窗 -->
-        <!-- <div class="onlineLogin">
-          <div class="loginbox">
-            <div class="x_pic">
-              <img src="./img/onlinepomes/close.png" alt="" />
-            </div>
-            <div class="loginTxt">
-              <div class="loginFirst">請先登入會員!</div>
-              <button>立即登入</button>
-            </div>
-          </div>
-        </div> -->
-
-        <!-- email跳窗 -->
-        <div class="onlineEmail">
-          <div class="sendbox">
-            <div class="x_pic">
-              <img src="./img/onlinepomes/close.png" alt="" />
-            </div>
-            <div class="loginTxt">
-              <div class="ok_pic">
-                <img src="./img/onlinepomes/ok.png" alt="" />
-              </div>
-              <div class="sendTxt">詳細內容已傳送到您的信箱</div>
-              <button>確定</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <footer>
-      <div class="footer-wrap">
-        <div class="footer-logo">
-          <img src="./img/header/BOBIO_logo.svg" alt="bobio" />
-        </div>
-        <div class="footer-slog">
-          <span>用BOBIO就有保佑</span>
-        </div>
-        <div class="footer-info">
-          <div class="list">
-            <ul>
-              <li>
-                <a href="pray.html">立即祈願</a>
-              </li>
-              <li>
-                <a href="onlinepomes.html">線上求籤</a>
-              </li>
-              <li>
-                <a href="amulet.html">平安符願</a>
-              </li>
-              <li>
-                <a href="money.html">立即結緣</a>
-              </li>
-              <li>
-                <a href="Abouts.html">關於我們</a>
-              </li>
-            </ul>
-          </div>
-          <div class="conn">
-            <p>
-              bobio@temple.com<br />
-              02-1090-1090
-            </p>
-            <div class="info-icon">
-              <a href="#"
-                ><img src="./img/footer/Group 415.svg" alt="facebook"
-              /></a>
-              <a href="#"
-                ><img src="./img/footer/Group 295.svg" alt="instagram"
-              /></a>
-              <a href="#"
-                ><img src="./img/footer/Group 296.svg" alt="youtube"
-              /></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="copyright">
-        <p>
-          Copyright © 2021Bobio
-          本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
-        </p>
-      </div>
-    </footer>
-    <script>
-      new Vue({
-        el: "#app",
-        data: {
-          pomesNum: 0,
-          orcode: `./backweb/img/pomes/pomes01.jpg`,
+      methods: {
+        pomesApp() {
+          this.downloadImg(this.orcode, "pic");
         },
-        mounted() {
-          this.pomesNum = localStorage.onlinedraw;
-          this.orcode = `./backweb/img/pomes/pomes${this.pomesNum}.jpg`;
-        },
-        methods: {
-          pomesApp() {
-            this.downloadImg(this.orcode, "pic");
-          },
-          downloadImg(imgsrc, name) {
-            var image = new Image();
-            // 解決跨域 Canvas 汙染問題
-            image.setAttribute("crossOrigin", "anonymous");
-            image.onload = function () {
-              var canvas = document.createElement("canvas");
-              canvas.width = image.width;
-              canvas.height = image.height;
-              var context = canvas.getContext("2d");
-              context.drawImage(image, 0, 0, image.width, image.height);
-              var url = canvas.toDataURL(); //得到圖片的base64編碼資料
-              console.log(url);
+        downloadImg(imgsrc, name) {
+          var image = new Image();
+          // 解決跨域 Canvas 汙染問題
+          image.setAttribute("crossOrigin", "anonymous");
+          image.onload = function () {
+            var canvas = document.createElement("canvas");
+            canvas.width = image.width;
+            canvas.height = image.height;
+            var context = canvas.getContext("2d");
+            context.drawImage(image, 0, 0, image.width, image.height);
+            var url = canvas.toDataURL(); //得到圖片的base64編碼資料
+            console.log(url);
 
-              var a = document.createElement("a"); // 生成一個a元素
-              var event = new MouseEvent("click"); // 建立一個單擊事件
-              a.download = name || "photo"; // 設定圖片名稱
-              a.href = url; // 將生成的URL設定為a.href屬性
-              a.dispatchEvent(event); // 觸發a的單擊事件
+            var a = document.createElement("a"); // 生成一個a元素
+            var event = new MouseEvent("click"); // 建立一個單擊事件
+            a.download = name || "photo"; // 設定圖片名稱
+            a.href = url; // 將生成的URL設定為a.href屬性
+            a.dispatchEvent(event); // 觸發a的單擊事件
+          };
+          image.src = imgsrc;
+        },
+        emaillog() {
+          if (this.mem_id != '') {
+            this.email = 'showbox1';
+            this.mailimgsrc = `https://fenterchen.github.io/CFD103G1/backweb/img/pomesdetail/pomesdetail${this.pomesNum}.jpg`;
+            let templateParams = {
+              "userMail": this.mem_id,
+              "user": this.mem_name,
+              "img": `<img src='${this.mailimgsrc}'></img>`,
             };
-            image.src = imgsrc;
-          },
-        },
-      });
 
-      //headerVue
-      new Vue({
-        el: "#mainheader",
-        data() {
-          return {
-            screenWidth: null,
-            personaldata: [],
-            losituation: "",
-          };
-        },
-        created() {
-          this.screenWidth = document.body.clientWidth; //營幕寬
-          //以下讀取會員資料
-          let array = JSON.parse(localStorage.getItem("personallogin")); //抓localStorage存入變數
-          this.losituation = null; //登入登出狀態
-          if (array != null) {
-            axios
-              .post("phps/memberExist.php", {
-                mem_no: array[0].mem_no,
-                mem_id: array[0].mem_id,
-                headers: {
-                  "Content-Type": "multipart/form-data",
-                },
+            let service_id = "service_mx74py6";
+            let template_id = "template_hbvc9et";
+            let userID = "user_M0xZ336icxs46YS0qvh59";
+            emailjs.send(service_id, template_id, templateParams, userID)
+              .then((response) => {
+                console.log('SUCCESS!', response.status, response.text);
               })
-              .then((res) => {
-                if (res) {
-                  this.losituation = "登出"; //登入登出狀態
-                  this.personaldata = res.data[0];
-                }
+              .catch((error) => {
+                console.log('FAILED...', error);
               })
-              .catch((error) => (this.personaldata = res.data));
+            localStorage.removeItem("onlinedraw");
+            localStorage.removeItem("onlinename");
+          } else {
+            this.email = 'showbox0';
           }
-          //以上讀取會員資料
-          window.onresize = () => {
-            return (() => {
-              this.screenWidth = document.body.clientWidth;
-            })();
-          };
         },
-        watch: {
-          screenWidth: {
-            handler: function (newval, oldval) {
-              if (newval >= 1200) {
-                $(`header>.headerWrap>nav`).removeClass("navPostion");
-                $(`header>.headerWrap>nav li:first-child`).css(
-                  "display",
-                  "none"
-                );
-                $(`header>.headerWrap>.member`).css("display", "flex");
-                $(`header>.headerWrap>.logout`).css("display", "block");
-              } else if (newval < 1200) {
-                $(`header>.headerWrap>nav`).addClass("navPostion");
-                $(`header>.headerWrap>nav li:first-child`).css(
-                  "display",
-                  "flex"
-                );
-                $(`header>.headerWrap>.member`).css("display", "none");
-                $(`header>.headerWrap>.logout`).css("display", "none");
-              }
+        exit() {
+          this.email = 'showbox';
+        },
+        login() {
+          location.href = "memberAdd.html";
+        }
+      },
+      mounted() {
+        this.pomesNum = localStorage.onlinedraw;
+        this.orcode = `./backweb/img/pomes/pomes${this.pomesNum}.jpg`;
+      },
+      updated() {
+        let array = JSON.parse(localStorage.getItem("personallogin")); //抓localStorage存入變數
+        if (array != null) {
+          this.mem_no = array[0].mem_no;
+          this.mem_id = array[0].mem_id;
+          this.mem_name = array[0].mem_name;
+        };
+        var m = new Date();
+        this.addtime =
+          m.getFullYear() +
+          "-" +
+          (m.getMonth() + 1) +
+          "-" +
+          m.getDate() +
+          " " +
+          m.getHours() +
+          ":" +
+          m.getMinutes() +
+          ":" +
+          m.getSeconds();
+
+        axios
+          .post("phps/pomesAdd.php", {
+            pomes_no: this.pomesNum,
+            mem_no: this.mem_no,
+            pomes_date: this.addtime,
+            headers: {
+              "Content-Type": "multipart/form-data",
             },
-            immediate: true,
-          },
-        },
-        methods: {
-          hb() {
-            let place = $("nav").css("right");
-            if (place < "0px") {
-              $("nav").animate(
-                {
-                  right: 0,
-                },
-                1200,
-                "easeInBounce"
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      },
+    });
+
+    //headerVue
+    new Vue({
+      el: "#mainheader",
+      data() {
+        return {
+          screenWidth: null,
+          personaldata: [],
+          losituation: "",
+        };
+      },
+      created() {
+        this.screenWidth = document.body.clientWidth; //營幕寬
+        //以下讀取會員資料
+        let array = JSON.parse(localStorage.getItem("personallogin")); //抓localStorage存入變數
+        this.losituation = null; //登入登出狀態
+        if (array != null) {
+          axios
+            .post("phps/memberExist.php", {
+              mem_no: array[0].mem_no,
+              mem_id: array[0].mem_id,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              if (res) {
+                this.losituation = "登出"; //登入登出狀態
+                this.personaldata = res.data[0];
+              }
+            })
+            .catch((error) => (console.log(error)));
+        }
+        //以上讀取會員資料
+        window.onresize = () => {
+          return (() => {
+            this.screenWidth = document.body.clientWidth;
+          })();
+        };
+        $(`header .headerWrap ul li:nth-child(3) a`).addClass('bottomnavline');
+      },
+      watch: {
+        screenWidth: {
+          handler: function (newval, oldval) {
+            if (newval >= 1200) {
+              $(`header>.headerWrap>nav`).removeClass("navPostion");
+              $(`header>.headerWrap>nav li:first-child`).css(
+                "display",
+                "none"
               );
-            } else {
-              $("nav").animate(
-                {
-                  right: "-30%",
-                },
-                1200,
-                "easeOutBounce"
+              $(`header>.headerWrap>.member`).css("display", "flex");
+              $(`header>.headerWrap>.logout`).css("display", "block");
+            } else if (newval < 1200) {
+              $(`header>.headerWrap>nav`).addClass("navPostion");
+              $(`header>.headerWrap>nav li:first-child`).css(
+                "display",
+                "flex"
               );
+              $(`header>.headerWrap>.member`).css("display", "none");
+              $(`header>.headerWrap>.logout`).css("display", "none");
             }
           },
-          logout() {
-            localStorage.removeItem("personallogin");
-            location.href = "mainpage.html";
-          },
+          immediate: true,
         },
-      });
-    </script>
-  </body>
+      },
+      methods: {
+        hb() {
+          let place = $("nav").css("right");
+          if (place < "0px") {
+            $("nav").animate(
+              {
+                right: 0,
+              },
+              1200,
+              "easeInBounce"
+            );
+          } else {
+            $("nav").animate(
+              {
+                right: "-30%",
+              },
+              1200,
+              "easeOutBounce"
+            );
+          }
+        },
+        logout() {
+          localStorage.removeItem("personallogin");
+          location.href = "mainpage.html";
+        },
+      },
+    });
+  </script>
+</body>
+
 </html>

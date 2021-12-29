@@ -1,7 +1,7 @@
 <?php
 
 $from=$_FILES["file"]["tmp_name"];
-$dir ="./img/pomes";
+$dir ="./img/pomesdetail";
 $to="$dir/" .$_FILES["file"]["name"];
 
 switch($_FILES["file"]["error"]){

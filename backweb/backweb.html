@@ -1619,7 +1619,7 @@
             let readFile = new FormData();
             readFile.append("file", this.file);
             axios
-              .post("../phps/pomesFixImg.php", readFile, {
+              .post("./phps/pomesFixImg.php", readFile, {
                 headers: {
                   "Content-Type": "multipart/form-data",
                 },
@@ -1627,13 +1627,11 @@
               .then((res) => {
                 alert(res.data);
               })
-              .catch(function (error) {
-                alert("上傳失敗");
-              });
+              .catch(function (error) {});
 
             //更新資料庫內的圖片
             axios
-              .post("../phps/pomesUpdate.php", {
+              .post("./phps/pomesUpdate.php", {
                 pomes_no: this.pomeNumber,
                 pomes_content: this.imgChange,
 
@@ -1657,7 +1655,7 @@
         },
         created() {
           axios
-            .post("../phps/pomes.php")
+            .post("./phps/pomes.php")
             .then((res) => (this.pomesList = res.data));
         },
         template: `
@@ -1699,7 +1697,9 @@
                 </td>
 
                 <td style="vertical-align: middle">
-                  <input type="file" @change="fileChange" />
+                  <label class="btn">上傳檔案
+                      <input type="file" @change="fileChange" ref="file"/><br>
+                  </label>
                 </td>
               </tr>
             </tbody>
@@ -1754,7 +1754,7 @@
             let readFile = new FormData();
             readFile.append("file", this.file);
             axios
-              .post("../phps/pomesFixImg.php", readFile, {
+              .post("./phps/pomesdetailFixImg.php", readFile, {
                 headers: {
                   "Content-Type": "multipart/form-data",
                 },
@@ -1762,13 +1762,11 @@
               .then((res) => {
                 alert(res.data);
               })
-              .catch(function (error) {
-                alert("上傳失敗");
-              });
+              .catch(function (error) {});
 
             //更新資料庫內的圖片
             axios
-              .post("../phps/pomesdetailUpdate.php", {
+              .post("./phps/pomesdetailUpdate.php", {
                 pomes_no: this.pomeDetailNumber,
                 pomes_det: this.imgChange2,
 
@@ -1792,7 +1790,7 @@
         },
         created() {
           axios
-            .get("../phps/pomes.php")
+            .get("./phps/pomes.php")
             .then((res) => (this.pomesList = res.data));
         },
 
