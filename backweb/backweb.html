@@ -400,84 +400,90 @@
       `,
       });
       //生肖圖
-      var Componentzodiacmanage = Vue.component('zodiacmanage', {
-      data() {
-        return{
-          zodiac:[],
-          zodiac_no:1,
-          zodiacName:"",
-          zodiacImg:"",
-          file:'',
-          imgChange:'',
-          newImgName:'',
-        }
-      },
-      created() {
-        axios.post('../phps/zodiac.php', {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            }).then((res) => {
-                this.zodiac = res.data;
-                this.zodiacName = this.zodiac[0].zodiac_name;
-                this.zodiacImg = this.zodiac[0].zodiac_img;
-
-            }
-            ).catch(function (error) {
+      var Componentzodiacmanage = Vue.component("zodiacmanage", {
+        data() {
+          return {
+            zodiac: [],
+            zodiac_no: 1,
+            zodiacName: "",
+            zodiacImg: "",
+            file: "",
+            imgChange: "",
+            newImgName: "",
+          };
+        },
+        created() {
+          axios
+            .post("../phps/zodiac.php", {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              this.zodiac = res.data;
+              this.zodiacName = this.zodiac[0].zodiac_name;
+              this.zodiacImg = this.zodiac[0].zodiac_img;
+            })
+            .catch(function (error) {
               console.log(error);
             });
-          },
-          
-          methods: {
-            zodiacClick() {
-              for (i = 0; i < 12; i++) {
-                  if (this.zodiac_no == this.zodiac[i].zodiac_no) {
-                    this.zodiacName = this.zodiac[i].zodiac_name;
-                    this.zodiacImg = this.zodiac[i].zodiac_img;
-                  }
-              }
-            },
-            //更新圖片
-            fileChange() {
-              //抓到圖片
-              this.imgChange = "img/amulet/" + this.$refs.file.files[0].name;
-              this.newImgName = this.$refs.file.files[0].name;
-              this.$forceUpdate();
-              
-            //上傳圖片
-              this.file = this.$refs.file.files[0];
-              let readFile = new FormData();
-              readFile.append('file',this.file);
-              axios
-                .post('./phps/amuletFixImg.php',readFile,{
-              headers:{
-                'Content-Type': 'multipart/form-data'
-              },
-              }).then((res) =>{
-                alter(res.data);
-              }).catch(function(error){
-                alert("上傳失敗");
-              });
+        },
 
-            //更新資料庫內的圖片
-              axios
-              .post('./phps/zodiacUpdateImg.php',{
-                zodiac_no:this.zodiac_no,
-                zodiac_img:this.imgChange,
+        methods: {
+          zodiacClick() {
+            for (i = 0; i < 12; i++) {
+              if (this.zodiac_no == this.zodiac[i].zodiac_no) {
+                this.zodiacName = this.zodiac[i].zodiac_name;
+                this.zodiacImg = this.zodiac[i].zodiac_img;
+              }
+            }
+          },
+          //更新圖片
+          fileChange() {
+            //抓到圖片
+            this.imgChange = "img/amulet/" + this.$refs.file.files[0].name;
+            this.newImgName = this.$refs.file.files[0].name;
+            this.$forceUpdate();
+
+            //上傳圖片
+            this.file = this.$refs.file.files[0];
+            let readFile = new FormData();
+            readFile.append("file", this.file);
+            axios
+              .post("./phps/amuletFixImg.php", readFile, {
                 headers: {
-                  'Content-Type': 'multipart/form-data'
-                }
-              }).then((res) =>{
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
+                alter(res.data);
+              })
+              .catch(function (error) {
+                alert("上傳成功");
+              });
+          },
+
+          updateFile() {
+            //更新資料庫內的圖片
+            axios
+              .post("./phps/zodiacUpdateImg.php", {
+                zodiac_no: this.zodiac_no,
+                zodiac_img: this.imgChange,
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
                 alert(res.data);
                 // location.href = "backweb.html";
-              }).catch(function(error){
+              })
+              .catch(function (error) {
                 close.log(error);
               });
-            },
+          },
+        },
 
-      },
-
-      template: `
+        template: `
         <div>
           <div class="supply">
             <span>生肖圖管理</span>
@@ -492,9 +498,7 @@
                 <th scope="col">生肖</th>
                 <th scope="col">原圖檔</th>
                 <th scope="col">新圖檔
-                  <label class="btn" >上傳檔案
-                      <input type="file" @change="fileChange" ref="file"/>
-                  </label>
+                  
                 </th>
               </tr>
             </thead>
@@ -516,8 +520,10 @@
                 </td>
                 <td style="vertical-align: middle">
                   <div class="zodiacImg">
-                    <img :src="imgChange" alt="新圖檔"/>
-                    <p>{{newImgName}}</p>
+                    <label class="btn">上傳檔案
+                      <input type="file" @change="fileChange" ref="file"/>
+                    </label>
+                    <p>檔案名稱:{{newImgName}}</p>
                   </div>
                 </td>
               </tr>
@@ -526,121 +532,131 @@
           <!-- 表格內容結束 -->          
           <div class="saveBtn" >
             <button class="cancle" data-hover="取消">取消</button>
-            <button class="save" data-hover="確認" @click="fileChange">確認</button>
+            <button class="save" data-hover="確認" @click="updateFile">確認</button>
           </div>
         </div>
         `,
-    });
+      });
       //平安符
-      var Componentamuletmanage = Vue.component('amuletmanage', {
-      data() {
-        return{
-          typeNo:1,
-          amuletType:[],
-          amuletTypeText:'',
-          amuletTypeName:'',
-          amuletTypeImg:'',
-          file:'',
-          imgChange:'',
-          newimgName:'',
-
-
-        }
-      },
-      created() {
-        axios.post('../phps/amulet.php', {
-                headers: {
-                  'Content-Type': 'multipart/form-data'
-                }
-            }).then((res) => {
-                this.amuletType = res.data; 
-                this.amuletTypeName = this.amuletType[0].type_name;                      
-                this.amuletTypeText = this.amuletType[0].type_text;                      
-                this.amuletTypeImg = this.amuletType[0].type_img;                                   
-            }
-            ).catch(function (error) {
+      var Componentamuletmanage = Vue.component("amuletmanage", {
+        data() {
+          return {
+            typeNo: 1,
+            amuletType: [],
+            amuletTypeText: "",
+            amuletTypeName: "",
+            amuletTypeImg: "",
+            file: "",
+            imgChange: "",
+            newimgName: "",
+          };
+        },
+        created() {
+          axios
+            .post("../phps/amulet.php", {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              this.amuletType = res.data;
+              this.amuletTypeName = this.amuletType[0].type_name;
+              this.amuletTypeText = this.amuletType[0].type_text;
+              this.amuletTypeImg = this.amuletType[0].type_img;
+            })
+            .catch(function (error) {
               console.log(error);
             });
-      },
-   
-      methods: {
-        typeClick() {
-          for (i = 0; i <6 ; i++){
-            if(this.typeNo == this.amuletType[i].type_no){
-              this.amuletTypeName = this.amuletType[i].type_name
-              this.amuletTypeText = this.amuletType[i].type_text
-              this.amuletTypeImg = this.amuletType[i].type_img
-            }
-          }
         },
-        
-        fileChange() {
-          //載入圖片
-          this.imgChange = "img/amulet/" + this.$refs.file.files[0].name;
-          this.newimgName = this.$refs.file.files[0].name;
-          this.$forceUpdate();
 
-					//上傳圖片
-          this.file = this.$refs.file.files[0];
-          let readFile = new FormData();
-          readFile.append('file',this.file);
-          axios
-            .post('./phps/amuletFixImg.php',readFile,{
-            headers:{
-              'Content-Type': 'multipart/form-data'
-            },
-          }).then((res) =>{
-            alter(res.data);
-          }).catch(function(error){
-            alert("上傳失敗");
-          });
-
-          //修改資料庫內的圖片
-          axios
-          .post('./phps/amuletUpdateImg.php',{
-            type_no:this.typeNo,
-            type_img:this.imgChange,
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          }).then((res) =>{
-            alert(res.data);
-            // location.href = "backweb.html";
-          }).catch(function(error){
-            close.log(error);
-          });
-        },
-			
-
-      
-        //修改簡介
-        changeText(){
-            axios.post('./phps/amuletUpdate.php', {
-              amuletTypeText:this.amuletTypeText,
-              typeNo:this.typeNo,
-              headers: {
-                'Content-Type': 'multipart/form-data'
+        methods: {
+          typeClick() {
+            for (i = 0; i < 6; i++) {
+              if (this.typeNo == this.amuletType[i].type_no) {
+                this.amuletTypeName = this.amuletType[i].type_name;
+                this.amuletTypeText = this.amuletType[i].type_text;
+                this.amuletTypeImg = this.amuletType[i].type_img;
               }
-            }).then((res) => {
-              alert(res.data);
             }
-            ).catch(function (error) {
-              alert("修改失敗");
-            });
+          },
+
+          fileChange() {
+            //載入圖片
+            this.imgChange = "img/amulet/" + this.$refs.file.files[0].name;
+            this.newimgName = this.$refs.file.files[0].name;
+            this.$forceUpdate();
+
+            //上傳圖片
+            this.file = this.$refs.file.files[0];
+            let readFile = new FormData();
+            readFile.append("file", this.file);
+            axios
+              .post("./phps/amuletFixImg.php", readFile, {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
+                alter(res.data);
+              })
+              .catch(function (error) {
+                alert("上傳成功");
+              });
+          },
+
+          changeImg() {
+            //更新資料庫圖片
+            axios
+              .post("./phps/amuletUpdateImg.php", {
+                type_no: this.typeNo,
+                type_img: this.imgChange,
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
+                alert(res.data);
+                location.href = "backweb.html";
+              })
+              .catch(function (error) {
+                close.log(error);
+              });
+          },
+
+          //修改簡介
+          changeText() {
+            axios
+              .post("./phps/amuletUpdate.php", {
+                amuletTypeText: this.amuletTypeText,
+                typeNo: this.typeNo,
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
+                alert(res.data);
+                location.href = "backweb.html";
+              })
+              .catch(function (error) {
+                alert("修改失敗");
+              });
+          },
+
+          updateFile() {
+            if (this.imgChange == null) {
+              this.changeText();
+            } else {
+              this.changeImg();
+              this.changeText();
+            }
+          },
+
+          cancell() {
+            this.$refs.file.value = "";
+          },
         },
 
-        updateFile(){
-          changeText();
-          fileChange();
-        },
-
-        cancell() {
-          this.$refs.file.value = '';
-        },
-
-      },
-
-      template:`
+        template: `
         <div>
           <div class="supply">
             <span>平安符願管理</span>
@@ -656,9 +672,7 @@
                 <th scope="col">簡介</th>
                 <th scope="col">原圖檔</th>
                 <th scope="col">新圖檔
-                    <label class="btn" @change="fileChange">上傳檔案
-                      <input type="file" ref="file"/>
-                    </label>
+                    
                 </th>
               </tr>
             </thead>
@@ -681,8 +695,10 @@
                 </td>
                 <td style="vertical-align: middle">
                   <div class="godImg">
-										<img :src="imgChange" alt="新圖檔"/>
-										<p>{{newimgName}}</p>
+                    <label class="btn" @change="fileChange">上傳檔案
+                      <input type="file" ref="file"/>
+                    </label>
+										<p>檔案名稱:{{newimgName}}</p>
 									</div>
                 </td>
               </tr>
@@ -695,8 +711,7 @@
           </div>
         </div>
       `,
-
-    });
+      });
       //小卡
       var Componentcardmanage = Vue.component("cardmanage", {
         data() {
@@ -1231,6 +1246,13 @@
             //optionChanges
             optionLists: [10, 20, 30],
             optionNum: 10,
+            // page
+            searchval: "",
+            pno: 1, //目前頁數
+            psize: 10, //頁面筆數
+            currentPage: 1, //目前頁面
+            totalPage: 0, //總頁數
+            num: 0, //表格數量
           };
         },
         methods: {
@@ -1266,8 +1288,100 @@
             this.optionNum = e.target.value;
             console.log(e.target.value);
           },
+          // page
+          nextpage() {
+            this.currentPage = this.pno; //目前頁數
+            let startRow = (this.currentPage - 1) * this.psize + 1; //開始顯示行
+            let endRow = this.currentPage * this.psize; //結束顯示行
+            endRow = endRow > this.num ? this.num : endRow;
+            if (this.currentPage < this.totalPage) {
+              this.pno += 1;
+            }
+          },
+          previouspage() {
+            this.currentPage = this.pno; //目前頁數
+            let startRow = (this.currentPage - 1) * this.psize + 1; //開始顯示行
+            let endRow = this.currentPage * this.psize; //結束顯示行
+            endRow = endRow > this.num ? this.num : endRow;
+            if (this.currentPage > 1) {
+              this.pno -= 1;
+            } else if (this.currentPage == 1) {
+              this.pno = 1;
+            }
+          },
+          first() {
+            this.pno = 1;
+          },
+          end() {
+            this.pno = this.totalPage;
+          },
+        },
+        updated() {
+          this.num = this.orders.length; //表格數量
+          //總共分幾頁
+          if (this.num / this.psize > parseInt(this.num / this.psize)) {
+            this.totalPage = parseInt(this.num / this.psize) + 1;
+          } else {
+            this.totalPage = parseInt(this.num / this.psize);
+          }
+          this.currentPage = this.pno; //目前頁數
+          let startRow = (this.currentPage - 1) * this.psize + 1; //開始顯示行
+          let endRow = this.currentPage * this.psize; //結束顯示行
+          endRow = endRow > this.num ? this.num : endRow;
+          for (let i = 1; i < this.num + 1; i++) {
+            if (i >= startRow && i <= endRow) {
+              $("#tablepray tbody tr:nth-child(" + i + ")").css({
+                display: "table-row",
+              });
+            } else {
+              $("#tablepray tbody tr:nth-child(" + i + ")").css({
+                display: "none",
+              });
+            }
+          }
         },
         watch: {
+          searchval() {
+            if (this.searchval == "") {
+              axios
+                .post("../phps/orderscopy.php", {
+                  headers: {
+                    "Content-Type": "multipart/form-data",
+                  },
+                })
+                .then((res) => {
+                  this.orders = res.data;
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+            }
+          },
+          pno() {
+            if (this.num / this.psize > parseInt(this.num / this.psize)) {
+              this.totalPage = parseInt(this.num / this.psize) + 1;
+            } else {
+              this.totalPage = parseInt(this.num / this.psize);
+            }
+            this.currentPage = this.pno; //目前頁數
+            let startRow = (this.currentPage - 1) * this.psize + 1; //開始顯示行
+            let endRow = this.currentPage * this.psize; //結束顯示行
+            endRow = endRow > this.num ? this.num : endRow;
+            for (let i = 1; i < this.num + 1; i++) {
+              if (i >= startRow && i <= endRow) {
+                $("#tablepray tbody tr:nth-child(" + i + ")").css({
+                  display: "table-row",
+                });
+              } else {
+                $("#tablepray tbody tr:nth-child(" + i + ")").css({
+                  display: "none",
+                });
+              }
+            }
+          },
+          psize() {
+            this.pno = 1;
+          },
           optionNum(n, o) {
             console.log(n, o);
             if (n == this.optionNum) {
@@ -1281,7 +1395,8 @@
           },
           currentObj() {
             return this.orderLists.find(
-              (v) => v.Details_no == this.currentDetailsNo
+              // (v) => v.Details_no == this.currentDetailsNo
+              (v) => v.orders_no == this.currentDetailsNo
             );
           },
           filterList() {
@@ -1426,16 +1541,14 @@
          </ol>
         </section>
         <!-- window_end--------- -->
-         
         <!-- ------Next-pages -->
-          <div class="pagelist">
-            <a href=""> < </a>
-            <a href="">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">4</a>
-            <a href="">5</a>
-            <a href=""> > </a>
+        <div class="pagelist">
+            <h4> 總共{{num}}筆，{{totalPage}}頁 </h4>
+            <a href="#"@click="first">首頁</a>
+            <a href="#"@click="previouspage"> < </a>
+            <a>{{currentPage}}</a>
+            <a href="#" @click="nextpage"> > </a>
+            <a href="#"@click="end">末頁</a>
           </div>
     </div>
           `,
@@ -1489,28 +1602,53 @@
         data() {
           return {
             pomeNumber: "1",
-            image2: "",
-            button: false,
             pomesList: [],
+            imgChange: "",
+            newImgName: "",
           };
         },
         methods: {
           //籤詩管理
-          fileChange(e) {
-            let file = e.target.files[0];
-            let readFile = new FileReader();
-            readFile.readAsDataURL(file);
-            readFile.addEventListener("load", this.loadImage);
-          },
-          loadImage(e) {
-            this.image2 = e.target.result;
-          },
-          showButton() {
-            if (this.button == false) {
-              this.button = true;
-            } else {
-              this.button = false;
-            }
+          fileChange() {
+            //抓到圖片
+            this.imgChange = "img/pomes/" + this.$refs.file.files[0].name;
+            this.newImgName = this.$refs.file.files[0].name;
+            this.$forceUpdate();
+
+            //上傳圖片
+            this.file = this.$refs.file.files[0];
+            let readFile = new FormData();
+            readFile.append("file", this.file);
+            axios
+              .post("../phps/pomesFixImg.php", readFile, {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
+                alter(res.data);
+              })
+              .catch(function (error) {
+                alert("上傳失敗");
+              });
+
+            //更新資料庫內的圖片
+            axios
+              .post("../phps/pomesUpdate.php", {
+                pomes_no: this.pomeNumber,
+                pomes_content: this.imgChange,
+
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
+                alert(res.data);
+                // location.href = "backweb.html";
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
           },
         },
         computed: {
@@ -1520,14 +1658,14 @@
         },
         created() {
           axios
-            .get("../phps/pomes.php")
+            .post("../phps/pomes.php")
             .then((res) => (this.pomesList = res.data));
         },
         template: `
         <div>
           <div class="supply">
             <span>籤詩管理</span>
-            <img src="img/backdata/backFix.svg" @click=" showButton"  />
+            <img src="img/backdata/backFix.svg" />
           </div>
           <div class="searchbox">
             <div class="search">
@@ -1542,20 +1680,14 @@
               <tr>
                 <th scope="col">種類</th>
                 <th scope="col">編號</th>
-                <th scope="col">新圖檔
-                  <label class="btn">上傳檔案
-                      <input type="file" @change="fileChange"/><br>
-                  </label>
-                  
-                </th>
+                <th scope="col">新籤詩圖檔</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td style="vertical-align: middle">
-                  <select name="籤詩" id="">
-                    <option value="">六十甲子籤</option>
-                  </select>
+                   <label class="btn" style="width:120px;">六十甲子籤
+                    </label>
                 </td>
                 <td style="vertical-align: middle">
                   <select
@@ -1568,8 +1700,7 @@
                 </td>
 
                 <td style="vertical-align: middle">
-                
-               
+                  <input type="file" @change="fileChange" />
                 </td>
               </tr>
             </tbody>
@@ -1578,7 +1709,7 @@
 
           <!-- 圖檔 -->
           <div class="picbox">
-          
+            <span>圖檔</span>
             <div class="firstpic">
               <span>原圖檔</span>
               <img :src="pomeconImg" alt="原圖檔" />
@@ -1586,12 +1717,13 @@
 
             <div class="firstpic2">
               <span>新圖檔</span>
-              <img :src="image2" alt="新圖檔" />
+            
+              <p>{{newImgName}}</p>
             </div>
           </div>
-          <div class="saveBtn" v-if="button">
+          <div class="saveBtn" >
             <button class="cancle" data-hover="取消">取消</button>
-            <button class="save" data-hover="確認">確認</button>
+            <button class="save" data-hover="確認" @click="fileChange">確認</button>
           </div>
         </div>
         `,
@@ -1605,26 +1737,53 @@
             image4: "",
             button: false,
             pomesList: [],
+            imgChange2: "",
+            newImgName2: "",
           };
         },
         methods: {
           //解籤內容管理
-          fileChange2(e2) {
-            let file2 = e2.target.files[0];
-            let readFile2 = new FileReader();
-            readFile2.readAsDataURL(file2);
-            readFile2.addEventListener("load", this.loadImage2);
-          },
-          loadImage2(e2) {
-            this.image4 = e2.target.result;
-          },
+          fileChange2() {
+            //抓到圖片
+            this.imgChange2 =
+              "img/pomesdetail/" + this.$refs.file.files[0].name;
+            this.newImgName2 = this.$refs.file.files[0].name;
+            this.$forceUpdate();
 
-          showButton() {
-            if (this.button == false) {
-              this.button = true;
-            } else {
-              this.button = false;
-            }
+            //上傳圖片
+            this.file = this.$refs.file.files[0];
+            let readFile = new FormData();
+            readFile.append("file", this.file);
+            axios
+              .post("../phps/pomesFixImg.php", readFile, {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
+                alter(res.data);
+              })
+              .catch(function (error) {
+                alert("上傳失敗");
+              });
+
+            //更新資料庫內的圖片
+            axios
+              .post("../phps/pomesdetailUpdate.php", {
+                pomes_no: this.pomeDetailNumber,
+                pomes_det: this.imgChange2,
+
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
+                alert(res.data);
+                // location.href = "backweb.html";
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
           },
         },
         computed: {
@@ -1642,10 +1801,7 @@
         <div>
           <div class="supply">
             <span>解籤內容管理</span>
-
-          
-           
-            <img src="img/backdata/backFix.svg" @click=" showButton" />
+            <img src="img/backdata/backFix.svg"  />
           </div>
           <div class="searchbox">
             <div class="search">
@@ -1660,18 +1816,14 @@
               <tr>
                 <th scope="col">種類</th>
                 <th scope="col">編號</th>
-                <th scope="col">新籤詩圖檔
-                <label class="btn">上傳檔案
-                      <input type="file" @change="fileChange2"/><br>
-                  </label></th>
+                <th scope="col">新籤詩圖檔</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td style="vertical-align: middle">
-                  <select name="籤詩" id="">
-                    <option value="">六十甲子籤</option>
-                  </select>
+                  <label class="btn" style="width:120px;">六十甲子籤
+                    </label>
                 </td>
                 <td style="vertical-align: middle">
                   <select
@@ -1684,7 +1836,10 @@
                 </td>
 
                 <td style="vertical-align: middle">
-                  <input type="file" @change="fileChange2" />
+                 
+                  <label class="btn">上傳檔案
+                      <input type="file" @change="fileChange2" ref="file"/><br>
+                  </label>
                 </td>
               </tr>
             </tbody>
@@ -1693,7 +1848,7 @@
 
           <!-- 圖檔 -->
           <div class="picbox">
-          
+            <span>圖檔</span>
             <div class="firstpic">
               <span>原圖檔</span>
               <img :src="pomedetImg" alt="原圖檔" />
@@ -1701,12 +1856,13 @@
 
             <div class="firstpic2">
               <span>新圖檔</span>
-              <img :src="image4" alt="新圖檔" />
+         
+              <p>{{newImgName2}}</p>
             </div>
           </div>
-          <div class="saveBtn" v-if="button">
+          <div class="saveBtn" >
             <button class="cancle" data-hover="取消">取消</button>
-            <button class="save" data-hover="確認">確認</button>
+            <button class="save" @click="fileChange2" data-hover="確認">確認</button>
           </div>
         </div>
         `,
@@ -1984,6 +2140,12 @@
               this.button = false;
             }
           },
+        },
+        created() {
+          let array = JSON.parse(localStorage.getItem("personalkey"));
+          if (array == null) {
+            location.href = "../index.html";
+          }
         },
       });
     </script>
