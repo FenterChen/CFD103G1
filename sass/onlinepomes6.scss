@@ -169,71 +169,70 @@ section {
 
 //登入信箱
 
-.onlineLogin {
-  @include jumpBg();
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 10;
-}
+// .onlineLogin {
+//   @include jumpBg();
+//   width: 100%;
+//   height: 100%;
+//   margin: auto;
+//   display: flex;
+//   justify-content: center;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   bottom: 0;
+//   right: 0;
+//   z-index: 10;
+// }
 
-.onlineLogin .loginbox {
-  background-color: #fffae7;
-  border-radius: 20px;
-  width: 350px;
-  height: 200px;
-  margin: auto;
-  // border: 1px solid #000;
-}
+// .onlineLogin .loginbox {
+//   background-color: #fffae7;
+//   border-radius: 20px;
+//   width: 350px;
+//   height: 200px;
+//   margin: auto;
+//   // border: 1px solid #000;
+// }
 
-.loginbox .x_pic {
-  cursor: pointer;
-  text-align: right;
-  border-radius: 20px 20px 0 0;
-  background-color: map-get($color, lightbrown);
-  width: 350px;
-  height: 30px;
-}
+// .loginbox .x_pic {
+//   text-align: right;
+//   border-radius: 20px 20px 0 0;
+//   background-color: map-get($color, lightbrown);
+//   width: 350px;
+//   height: 30px;
+// }
 
-.loginbox .x_pic img {
-  background-color: #fff;
-  border-radius: 100%;
-  margin-top: 5px;
-  margin-right: 10px;
-  width: 20px;
-}
+// .loginbox .x_pic img {
+//   background-color: #fff;
+//   border-radius: 100%;
+//   margin-top: 5px;
+//   margin-right: 10px;
+//   width: 20px;
+// }
 
-.loginbox .loginTxt {
-  margin-top: 50px;
-}
+// .loginbox .loginTxt {
+//   margin-top: 50px;
+// }
 
-.loginTxt .loginFirst {
-  color: #573605;
-  font-size: 18px;
-  font-weight: 500;
-  font-family: NotoSansTC;
-}
+// .loginTxt .loginFirst {
+//   color: #573605;
+//   font-size: 18px;
+//   font-weight: 500;
+//   font-family: NotoSansTC;
+// }
 
-.loginTxt button {
-  margin-top: 30px;
-  font-family: NotoSansTC;
-  cursor: pointer;
-  width: 120px;
-  height: 42px;
-  background-color: #FDBF52;
-  font-size: 15px;
-  text-align: center;
-  border: 0px;
-  border-radius: 20px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
+// .loginTxt button {
+//   margin-top: 30px;
+//   font-family: NotoSansTC;
+//   cursor: pointer;
+//   width: 120px;
+//   height: 42px;
+//   background-color: #FDBF52;
+//   font-size: 15px;
+//   text-align: center;
+//   border: 0px;
+//   border-radius: 20px;
+//   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+// }
 
 // 寄送信箱
 .onlineEmail {
@@ -255,13 +254,12 @@ section {
   background-color: #fffae7;
   border-radius: 20px;
   width: 350px;
-  height: 220px;
+  height: 200px;
   margin: auto;
   // border: 1px solid #000;
 }
 
 .sendbox .x_pic {
-  cursor: pointer;
   text-align: right;
   border-radius: 20px 20px 0 0;
   background-color: map-get($color, lightbrown);
@@ -281,11 +279,11 @@ section {
   margin-top: 20px;
 }
 
-.loginTxt .ok_pic img {
+.loginTxt .ok_pic img{
   width: 30px;
   margin-bottom: 10px;
 }
-
+ 
 .loginTxt .sendTxt {
   color: #573605;
   font-size: 18px;
@@ -293,12 +291,8 @@ section {
   font-family: NotoSansTC;
 }
 
-.loginTxt .sendTxt p {
-  line-height: 30px;
-}
-
 .loginTxt button {
-  margin-top: 20px;
+  margin-top: 30px;
   font-family: NotoSansTC;
   cursor: pointer;
   width: 120px;
