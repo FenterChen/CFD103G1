@@ -449,7 +449,7 @@
               let readFile = new FormData();
               readFile.append('file',this.file);
               axios
-                .post('../phps/amuletFixImg.php',readFile,{
+                .post('./phps/amuletFixImg.php',readFile,{
               headers:{
                 'Content-Type': 'multipart/form-data'
               },
@@ -461,7 +461,7 @@
 
             //更新資料庫內的圖片
               axios
-              .post('../phps/zodiacUpdateImg.php',{
+              .post('./phps/zodiacUpdateImg.php',{
                 zodiac_no:this.zodiac_no,
                 zodiac_img:this.imgChange,
                 headers: {
@@ -585,7 +585,7 @@
           let readFile = new FormData();
           readFile.append('file',this.file);
           axios
-            .post('../phps/amuletFixImg.php',readFile,{
+            .post('./phps/amuletFixImg.php',readFile,{
             headers:{
               'Content-Type': 'multipart/form-data'
             },
@@ -597,7 +597,7 @@
 
           //修改資料庫內的圖片
           axios
-          .post('../phps/amuletUpdateImg.php',{
+          .post('./phps/amuletUpdateImg.php',{
             type_no:this.typeNo,
             type_img:this.imgChange,
             headers: {
@@ -615,7 +615,7 @@
       
         //修改簡介
         changeText(){
-            axios.post('../phps/amuletUpdate.php', {
+            axios.post('./phps/amuletUpdate.php', {
               amuletTypeText:this.amuletTypeText,
               typeNo:this.typeNo,
               headers: {
