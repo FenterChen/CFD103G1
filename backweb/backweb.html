@@ -1510,12 +1510,7 @@
               <tr>
                 <th scope="col">種類</th>
                 <th scope="col">編號</th>
-                <th scope="col">新圖檔
-                  <label class="btn">上傳檔案
-                      <input type="file" @change="fileChange"/><br>
-                  </label>
-                  
-                </th>
+                <th scope="col">新籤詩圖檔</th>
               </tr>
             </thead>
             <tbody>
@@ -1536,8 +1531,7 @@
                 </td>
 
                 <td style="vertical-align: middle">
-                
-               
+                  <input type="file" @change="fileChange" />
                 </td>
               </tr>
             </tbody>
@@ -1546,7 +1540,7 @@
 
           <!-- 圖檔 -->
           <div class="picbox">
-          
+            <span>圖檔</span>
             <div class="firstpic">
               <span>原圖檔</span>
               <img :src="pomeconImg" alt="原圖檔" />
@@ -1628,10 +1622,7 @@
               <tr>
                 <th scope="col">種類</th>
                 <th scope="col">編號</th>
-                <th scope="col">新籤詩圖檔
-                <label class="btn">上傳檔案
-                      <input type="file" @change="fileChange2"/><br>
-                  </label></th>
+                <th scope="col">新籤詩圖檔</th>
               </tr>
             </thead>
             <tbody>
@@ -1661,7 +1652,7 @@
 
           <!-- 圖檔 -->
           <div class="picbox">
-          
+            <span>圖檔</span>
             <div class="firstpic">
               <span>原圖檔</span>
               <img :src="pomedetImg" alt="原圖檔" />
@@ -1952,6 +1943,12 @@
               this.button = false;
             }
           },
+        },
+        created() {
+          let array = JSON.parse(localStorage.getItem("personalkey"));
+          if (array == null) {
+            location.href = "../index.html";
+          }
         },
       });
     </script>

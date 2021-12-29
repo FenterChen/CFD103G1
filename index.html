@@ -339,37 +339,6 @@
             this.loginframe = false;
             this.registerframe = true;
           },
-          btnAdd() {
-            var m = new Date();
-            this.addtime =
-              m.getFullYear() +
-              "-" +
-              (m.getMonth() + 1) +
-              "-" +
-              m.getDate() +
-              " " +
-              m.getHours() +
-              ":" +
-              m.getMinutes() +
-              ":" +
-              m.getSeconds();
-
-            axios
-              .post("backweb/phps/administratorAdd.php", {
-                admin_name: this.email,
-                admin_psw: this.psw,
-                mem_status: "0",
-                headers: {
-                  "Content-Type": "multipart/form-data",
-                },
-              })
-              .then(function (response) {
-                console.log(response);
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
-          },
           logincheck() {
             axios
               .post("backweb/phps/administratorCheck.php", {
@@ -384,11 +353,11 @@
                 if (res.data == "erro") {
                   alert("輸入錯誤");
                 } else {
-                  location.href = "backweb/backweb.html";
                   localStorage.setItem(
-                    "personallogin",
-                    JSON.stringify(res.data)
+                    "personalkey",
+                    JSON.stringify(this.personaldata)
                   );
+                  location.href = "backweb/backweb.html";
                 }
               })
               .catch((error) => (this.personaldata = res.data));
