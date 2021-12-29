@@ -59,6 +59,7 @@
     </div>
   </header>
   <section id="app">
+    
     <div class="containerId" v-if="showId =='showId1'">
       <form action="member.php" method="post">
         <div class="boxContainer">
@@ -154,6 +155,7 @@
           <div class="arrow">
             <img src="img/mainpage/arrow.svg" alt="箭頭" @click="show ='showbox1'" />
             <img src="img/mainpage/arrow.svg" alt="箭頭" @click="show ='showbox3'" />
+            
           </div>
         </div>
       </div>
@@ -165,29 +167,9 @@
           <button class="mPomes" @click="show ='showbox2'">求籤</button>
           <button class="mOrder mBg bold">訂單</button>
         </div>
-        <div class="boxItem">
-          <table>
-            <tr>
-              <td><img src="./img/member/memAmulet.svg" alt=""></td>
-              <td>
-                <p>客製化平安符</p>
-              </td>
-              <td>
-                <p>數量：1</p>
-              </td>
-              <td>
-                <p>總計：NT$459</p>
-              </td>
-              <td>
-                <p>2021.11.18</p>
-              </td>
-            </tr>
-          </table>
-          <div class="arrow">
-            <img src="img/mainpage/arrow.svg" alt="箭頭" @click="show ='showbox2'" />
-            <img src="img/mainpage/arrow.svg" alt="箭頭" />
-          </div>
-        </div>
+
+        <orderdata></orderdata>
+        
       </div>
     </div>
   </section>
@@ -228,6 +210,7 @@
             <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook" /></a>
             <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram" /></a>
             <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube" /></a>
+          
           </div>
         </div>
       </div>
@@ -239,6 +222,8 @@
       </p>
     </div>
   </footer>
+
+
   <script>
     //header 
     new Vue({
@@ -375,6 +360,57 @@
         `
     });
 
+    var Componentorderdata = Vue.component('orderdata', {
+      data() {
+        return {
+          orderDetails: [],
+        }
+      },
+      created() {
+        let array = JSON.parse(localStorage.getItem('personallogin'));
+        axios.post('./phps/orderslist.php', {
+          mem_no: array[0].mem_no,
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((res) => {
+          if (res.data == "error") {
+          } else {
+            this.orderDetails = res.data;
+          }
+        }).catch(error => console.log(error));
+
+      },
+      template:
+        `
+        <div class="boxItem">
+            <table>
+              <tr v-for="item in orderDetails">
+                <td><img src="./img/member/memAmulet.svg">
+                </td>
+                <td>
+                  <p>客製化平安符 {{item.type_no}}－{{item.zodiac_no}}</p>
+                </td>
+                <td>
+                  <p>數量：{{item.amulet_amount}}</p>
+                </td>
+                <td>
+                  <p>總計：NT$ {{item.orders_total}}</p>
+                </td>
+                <td>
+                  <p>{{item.orders_date}}</p>
+                </td>
+              </tr>
+            </table>
+            <div class="arrow">
+              <img src="img/mainpage/arrow.svg" alt="箭頭" @click="show ='showbox2'" />
+              <img src="img/mainpage/arrow.svg" alt="箭頭" />
+            </div>
+        </div>
+
+         `
+    });
+
     new Vue({
       el: '#app',
       data() {
@@ -386,6 +422,7 @@
       },
       components: {
         'component-prayrecorder': Componentprayrecord,
+        'component-orderdata': Componentorderdata,
       },
       created() {
         let array = JSON.parse(localStorage.getItem('personallogin'));
@@ -408,3 +445,4 @@
 </body>
 
 </html>
+
