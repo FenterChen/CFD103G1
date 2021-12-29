@@ -4,18 +4,18 @@ try {
 	$alter = file_get_contents('php://input'); //找到Vue那邊的資料
   	$data = json_decode($alter, true); //轉成JSON檔案
 	//執行sql指令
-	
+
+	$orderNum = time();
+
+
 	$sql = 
-	"INSERT INTO `orders`( `mem_no`, `recipient`, `orders_phone`, `orders_email`, `orders_add`, `delivery`, `orders_date`, `orders_total`, `order_status`) 
-	VALUES ('$data[mem_no]','$data[recipient]','$data[orders_phone]','$data[orders_email]','$data[orders_add]','宅配','$data[orders_date]','399','0')";
+	"INSERT INTO `orders`(`orders_no`, `mem_no`, `recipient`, `orders_phone`, `orders_email`, `orders_add`, `delivery`, `orders_date`, `orders_total`, `order_status`) 
+	VALUES ($orderNum,'$data[mem_no]','$data[recipient]','$data[orders_phone]','$data[orders_email]','$data[orders_add]','宅配','$data[orders_date]','399','0')";
 	
 	$member = $pdo->query($sql);  //準備sqL指令
 
-	if(!$member){
-		die($pdo->error);
-	}
 
-	$sql1 =  "INSERT INTO `orders_list`(`orders_no`, `type_no`, `zodiac_no`, `word`, `amulet_amount`, `price`) VALUES ('1','$data[type_no]', '$data[zodiac_no]', '$data[word]','$data[amulet_amount]', '399')
+	$sql1 =  "INSERT INTO `orders_list`(`orders_no`, `type_no`, `zodiac_no`, `word`, `amulet_amount`, `price`) VALUES ($orderNum ,'$data[type_no]', '$data[zodiac_no]', '$data[word]','$data[amulet_amount]', '399')
 	";
 
 	$member = $pdo->query($sql1);  //準備sqL指令

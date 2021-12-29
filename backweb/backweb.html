@@ -1281,7 +1281,8 @@
           },
           currentObj() {
             return this.orderLists.find(
-              (v) => v.Details_no == this.currentDetailsNo
+              // (v) => v.Details_no == this.currentDetailsNo
+              (v) => v.orders_no == this.currentDetailsNo
             );
           },
           filterList() {
