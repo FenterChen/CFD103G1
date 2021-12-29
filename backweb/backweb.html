@@ -400,90 +400,90 @@
       `,
       });
       //生肖圖
-      var Componentzodiacmanage = Vue.component('zodiacmanage', {
-      data() {
-        return{
-          zodiac:[],
-          zodiac_no:1,
-          zodiacName:"",
-          zodiacImg:"",
-          file:'',
-          imgChange:'',
-          newImgName:'',
-        }
-      },
-      created() {
-        axios.post('../phps/zodiac.php', {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            }).then((res) => {
-                this.zodiac = res.data;
-                this.zodiacName = this.zodiac[0].zodiac_name;
-                this.zodiacImg = this.zodiac[0].zodiac_img;
-
-            }
-            ).catch(function (error) {
+      var Componentzodiacmanage = Vue.component("zodiacmanage", {
+        data() {
+          return {
+            zodiac: [],
+            zodiac_no: 1,
+            zodiacName: "",
+            zodiacImg: "",
+            file: "",
+            imgChange: "",
+            newImgName: "",
+          };
+        },
+        created() {
+          axios
+            .post("../phps/zodiac.php", {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              this.zodiac = res.data;
+              this.zodiacName = this.zodiac[0].zodiac_name;
+              this.zodiacImg = this.zodiac[0].zodiac_img;
+            })
+            .catch(function (error) {
               console.log(error);
             });
-          },
-          
-          methods: {
-            zodiacClick() {
-              for (i = 0; i < 12; i++) {
-                  if (this.zodiac_no == this.zodiac[i].zodiac_no) {
-                    this.zodiacName = this.zodiac[i].zodiac_name;
-                    this.zodiacImg = this.zodiac[i].zodiac_img;
-                  }
+        },
+
+        methods: {
+          zodiacClick() {
+            for (i = 0; i < 12; i++) {
+              if (this.zodiac_no == this.zodiac[i].zodiac_no) {
+                this.zodiacName = this.zodiac[i].zodiac_name;
+                this.zodiacImg = this.zodiac[i].zodiac_img;
               }
-            },
-            //更新圖片
-            fileChange() {
-              //抓到圖片
-              this.imgChange = "img/amulet/" + this.$refs.file.files[0].name;
-              this.newImgName = this.$refs.file.files[0].name;
-              this.$forceUpdate();
-              
+            }
+          },
+          //更新圖片
+          fileChange() {
+            //抓到圖片
+            this.imgChange = "img/amulet/" + this.$refs.file.files[0].name;
+            this.newImgName = this.$refs.file.files[0].name;
+            this.$forceUpdate();
+
             //上傳圖片
-              this.file = this.$refs.file.files[0];
-              let readFile = new FormData();
-              readFile.append('file',this.file);
-              axios
-                .post('./phps/amuletFixImg.php',readFile,{
-              headers:{
-                'Content-Type': 'multipart/form-data'
-              },
-              }).then((res) =>{
+            this.file = this.$refs.file.files[0];
+            let readFile = new FormData();
+            readFile.append("file", this.file);
+            axios
+              .post("./phps/amuletFixImg.php", readFile, {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
                 alter(res.data);
-              }).catch(function(error){
+              })
+              .catch(function (error) {
                 alert("上傳成功");
               });
+          },
 
-           
-            },
-
-            updateFile(){
-               //更新資料庫內的圖片
-               axios
-              .post('./phps/zodiacUpdateImg.php',{
-                zodiac_no:this.zodiac_no,
-                zodiac_img:this.imgChange,
+          updateFile() {
+            //更新資料庫內的圖片
+            axios
+              .post("./phps/zodiacUpdateImg.php", {
+                zodiac_no: this.zodiac_no,
+                zodiac_img: this.imgChange,
                 headers: {
-                  'Content-Type': 'multipart/form-data'
-                }
-              }).then((res) =>{
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
                 alert(res.data);
                 // location.href = "backweb.html";
-              }).catch(function(error){
+              })
+              .catch(function (error) {
                 close.log(error);
               });
+          },
+        },
 
-            }
-
-
-      },
-
-      template: `
+        template: `
         <div>
           <div class="supply">
             <span>生肖圖管理</span>
@@ -536,127 +536,127 @@
           </div>
         </div>
         `,
-    });
+      });
       //平安符
-      var Componentamuletmanage = Vue.component('amuletmanage', {
-      data() {
-        return{
-          typeNo:1,
-          amuletType:[],
-          amuletTypeText:'',
-          amuletTypeName:'',
-          amuletTypeImg:'',
-          file:'',
-          imgChange:'',
-          newimgName:'',
-
-
-        }
-      },
-      created() {
-        axios.post('../phps/amulet.php', {
-                headers: {
-                  'Content-Type': 'multipart/form-data'
-                }
-            }).then((res) => {
-                this.amuletType = res.data; 
-                this.amuletTypeName = this.amuletType[0].type_name;                      
-                this.amuletTypeText = this.amuletType[0].type_text;                      
-                this.amuletTypeImg = this.amuletType[0].type_img;                                   
-            }
-            ).catch(function (error) {
+      var Componentamuletmanage = Vue.component("amuletmanage", {
+        data() {
+          return {
+            typeNo: 1,
+            amuletType: [],
+            amuletTypeText: "",
+            amuletTypeName: "",
+            amuletTypeImg: "",
+            file: "",
+            imgChange: "",
+            newimgName: "",
+          };
+        },
+        created() {
+          axios
+            .post("../phps/amulet.php", {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              this.amuletType = res.data;
+              this.amuletTypeName = this.amuletType[0].type_name;
+              this.amuletTypeText = this.amuletType[0].type_text;
+              this.amuletTypeImg = this.amuletType[0].type_img;
+            })
+            .catch(function (error) {
               console.log(error);
             });
-      },
-   
-      methods: {
-        typeClick() {
-          for (i = 0; i <6 ; i++){
-            if(this.typeNo == this.amuletType[i].type_no){
-              this.amuletTypeName = this.amuletType[i].type_name
-              this.amuletTypeText = this.amuletType[i].type_text
-              this.amuletTypeImg = this.amuletType[i].type_img
-            }
-          }
-        },
-        
-        fileChange() {
-          //載入圖片
-          this.imgChange = "img/amulet/" + this.$refs.file.files[0].name;
-          this.newimgName = this.$refs.file.files[0].name;
-          this.$forceUpdate();
-
-					//上傳圖片
-          this.file = this.$refs.file.files[0];
-          let readFile = new FormData();
-          readFile.append('file',this.file);
-          axios
-            .post('./phps/amuletFixImg.php',readFile,{
-            headers:{
-              'Content-Type': 'multipart/form-data'
-            },
-          }).then((res) =>{
-            alter(res.data);
-          }).catch(function(error){
-            alert("上傳成功");
-          });
-          
-          
         },
 
-        changeImg(){
-          //更新資料庫圖片
-          axios
-          .post('./phps/amuletUpdateImg.php',{
-            type_no:this.typeNo,
-            type_img:this.imgChange,
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          }).then((res) =>{
-            alert(res.data);
-            location.href = "backweb.html";
-          }).catch(function(error){
-            close.log(error);
-          });
-
-        },
-
-        //修改簡介
-        changeText(){
-            axios.post('./phps/amuletUpdate.php', {
-              amuletTypeText:this.amuletTypeText,
-              typeNo:this.typeNo,
-              headers: {
-                'Content-Type': 'multipart/form-data'
+        methods: {
+          typeClick() {
+            for (i = 0; i < 6; i++) {
+              if (this.typeNo == this.amuletType[i].type_no) {
+                this.amuletTypeName = this.amuletType[i].type_name;
+                this.amuletTypeText = this.amuletType[i].type_text;
+                this.amuletTypeImg = this.amuletType[i].type_img;
               }
-            }).then((res) => {
-              alert(res.data);
-              location.href = "backweb.html";
             }
-            ).catch(function (error) {
-              alert("修改失敗");
-            });
+          },
+
+          fileChange() {
+            //載入圖片
+            this.imgChange = "img/amulet/" + this.$refs.file.files[0].name;
+            this.newimgName = this.$refs.file.files[0].name;
+            this.$forceUpdate();
+
+            //上傳圖片
+            this.file = this.$refs.file.files[0];
+            let readFile = new FormData();
+            readFile.append("file", this.file);
+            axios
+              .post("./phps/amuletFixImg.php", readFile, {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
+                alter(res.data);
+              })
+              .catch(function (error) {
+                alert("上傳成功");
+              });
+          },
+
+          changeImg() {
+            //更新資料庫圖片
+            axios
+              .post("./phps/amuletUpdateImg.php", {
+                type_no: this.typeNo,
+                type_img: this.imgChange,
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
+                alert(res.data);
+                location.href = "backweb.html";
+              })
+              .catch(function (error) {
+                close.log(error);
+              });
+          },
+
+          //修改簡介
+          changeText() {
+            axios
+              .post("./phps/amuletUpdate.php", {
+                amuletTypeText: this.amuletTypeText,
+                typeNo: this.typeNo,
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
+                alert(res.data);
+                location.href = "backweb.html";
+              })
+              .catch(function (error) {
+                alert("修改失敗");
+              });
+          },
+
+          updateFile() {
+            if (this.imgChange == null) {
+              this.changeText();
+            } else {
+              this.changeImg();
+              this.changeText();
+            }
+          },
+
+          cancell() {
+            this.$refs.file.value = "";
+          },
         },
 
-        updateFile(){
-          if(this.imgChange == null){
-            this.changeText();
-          }else{
-            this.changeImg();
-            this.changeText();
-          }
-        },
-
-        
-
-        cancell() {
-          this.$refs.file.value = '';
-        },
-
-      },
-
-      template:`
+        template: `
         <div>
           <div class="supply">
             <span>平安符願管理</span>
@@ -711,8 +711,7 @@
           </div>
         </div>
       `,
-
-    });
+      });
       //小卡
       var Componentcardmanage = Vue.component("cardmanage", {
         data() {
@@ -1624,7 +1623,7 @@
 
             <div class="firstpic2">
               <span>新圖檔</span>
-              <img :src="imgChange" alt="新圖檔" />
+            
               <p>{{newImgName}}</p>
             </div>
           </div>
@@ -1763,7 +1762,7 @@
 
             <div class="firstpic2">
               <span>新圖檔</span>
-              <img :src="imgChange2" alt="新圖檔" />
+         
               <p>{{newImgName2}}</p>
             </div>
           </div>
