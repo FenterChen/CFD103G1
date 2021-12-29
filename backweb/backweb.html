@@ -1246,6 +1246,13 @@
             //optionChanges
             optionLists: [10, 20, 30],
             optionNum: 10,
+            // page
+            searchval: "",
+            pno: 1, //目前頁數
+            psize: 10, //頁面筆數
+            currentPage: 1, //目前頁面
+            totalPage: 0, //總頁數
+            num: 0, //表格數量
           };
         },
         methods: {
@@ -1281,8 +1288,100 @@
             this.optionNum = e.target.value;
             console.log(e.target.value);
           },
+          // page
+          nextpage() {
+            this.currentPage = this.pno; //目前頁數
+            let startRow = (this.currentPage - 1) * this.psize + 1; //開始顯示行
+            let endRow = this.currentPage * this.psize; //結束顯示行
+            endRow = endRow > this.num ? this.num : endRow;
+            if (this.currentPage < this.totalPage) {
+              this.pno += 1;
+            }
+          },
+          previouspage() {
+            this.currentPage = this.pno; //目前頁數
+            let startRow = (this.currentPage - 1) * this.psize + 1; //開始顯示行
+            let endRow = this.currentPage * this.psize; //結束顯示行
+            endRow = endRow > this.num ? this.num : endRow;
+            if (this.currentPage > 1) {
+              this.pno -= 1;
+            } else if (this.currentPage == 1) {
+              this.pno = 1;
+            }
+          },
+          first() {
+            this.pno = 1;
+          },
+          end() {
+            this.pno = this.totalPage;
+          },
+        },
+        updated() {
+          this.num = this.orders.length; //表格數量
+          //總共分幾頁
+          if (this.num / this.psize > parseInt(this.num / this.psize)) {
+            this.totalPage = parseInt(this.num / this.psize) + 1;
+          } else {
+            this.totalPage = parseInt(this.num / this.psize);
+          }
+          this.currentPage = this.pno; //目前頁數
+          let startRow = (this.currentPage - 1) * this.psize + 1; //開始顯示行
+          let endRow = this.currentPage * this.psize; //結束顯示行
+          endRow = endRow > this.num ? this.num : endRow;
+          for (let i = 1; i < this.num + 1; i++) {
+            if (i >= startRow && i <= endRow) {
+              $("#tablepray tbody tr:nth-child(" + i + ")").css({
+                display: "table-row",
+              });
+            } else {
+              $("#tablepray tbody tr:nth-child(" + i + ")").css({
+                display: "none",
+              });
+            }
+          }
         },
         watch: {
+          searchval() {
+            if (this.searchval == "") {
+              axios
+                .post("../phps/orderscopy.php", {
+                  headers: {
+                    "Content-Type": "multipart/form-data",
+                  },
+                })
+                .then((res) => {
+                  this.orders = res.data;
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+            }
+          },
+          pno() {
+            if (this.num / this.psize > parseInt(this.num / this.psize)) {
+              this.totalPage = parseInt(this.num / this.psize) + 1;
+            } else {
+              this.totalPage = parseInt(this.num / this.psize);
+            }
+            this.currentPage = this.pno; //目前頁數
+            let startRow = (this.currentPage - 1) * this.psize + 1; //開始顯示行
+            let endRow = this.currentPage * this.psize; //結束顯示行
+            endRow = endRow > this.num ? this.num : endRow;
+            for (let i = 1; i < this.num + 1; i++) {
+              if (i >= startRow && i <= endRow) {
+                $("#tablepray tbody tr:nth-child(" + i + ")").css({
+                  display: "table-row",
+                });
+              } else {
+                $("#tablepray tbody tr:nth-child(" + i + ")").css({
+                  display: "none",
+                });
+              }
+            }
+          },
+          psize() {
+            this.pno = 1;
+          },
           optionNum(n, o) {
             console.log(n, o);
             if (n == this.optionNum) {
@@ -1296,7 +1395,8 @@
           },
           currentObj() {
             return this.orderLists.find(
-              (v) => v.Details_no == this.currentDetailsNo
+              // (v) => v.Details_no == this.currentDetailsNo
+              (v) => v.orders_no == this.currentDetailsNo
             );
           },
           filterList() {
@@ -1441,16 +1541,14 @@
          </ol>
         </section>
         <!-- window_end--------- -->
-         
         <!-- ------Next-pages -->
-          <div class="pagelist">
-            <a href=""> < </a>
-            <a href="">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">4</a>
-            <a href="">5</a>
-            <a href=""> > </a>
+        <div class="pagelist">
+            <h4> 總共{{num}}筆，{{totalPage}}頁 </h4>
+            <a href="#"@click="first">首頁</a>
+            <a href="#"@click="previouspage"> < </a>
+            <a>{{currentPage}}</a>
+            <a href="#" @click="nextpage"> > </a>
+            <a href="#"@click="end">末頁</a>
           </div>
     </div>
           `,
