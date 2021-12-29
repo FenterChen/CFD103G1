@@ -59,6 +59,7 @@
     </div>
   </header>
   <section id="app">
+    
     <div class="containerId" v-if="showId =='showId1'">
       <form action="member.php" method="post">
         <div class="boxContainer">
@@ -133,29 +134,7 @@
           <button class="mPomes mBg bold">求籤</button>
           <button class="mOrder" @click="show ='showbox3'">訂單</button>
         </div>
-        <div class="boxItem">
-          <table>
-            <tr>
-              <td><img src="./img/member/memSticks.svg" alt=""></td>
-              <td>
-                <p>健康</p>
-              </td>
-              <td>
-                <p>第70號籤</p>
-              </td>
-              <td>
-                <p>查看籤詩</p>
-              </td>
-              <td>
-                <p>2021.11.18</p>
-              </td>
-            </tr>
-          </table>
-          <div class="arrow">
-            <img src="img/mainpage/arrow.svg" alt="箭頭" @click="show ='showbox1'" />
-            <img src="img/mainpage/arrow.svg" alt="箭頭" @click="show ='showbox3'" />
-          </div>
-        </div>
+        <pomesdata></pomesdata>
       </div>
 
       <!-- 第三組 -->
@@ -165,29 +144,9 @@
           <button class="mPomes" @click="show ='showbox2'">求籤</button>
           <button class="mOrder mBg bold">訂單</button>
         </div>
-        <div class="boxItem">
-          <table>
-            <tr>
-              <td><img src="./img/member/memAmulet.svg" alt=""></td>
-              <td>
-                <p>客製化平安符</p>
-              </td>
-              <td>
-                <p>數量：1</p>
-              </td>
-              <td>
-                <p>總計：NT$459</p>
-              </td>
-              <td>
-                <p>2021.11.18</p>
-              </td>
-            </tr>
-          </table>
-          <div class="arrow">
-            <img src="img/mainpage/arrow.svg" alt="箭頭" @click="show ='showbox2'" />
-            <img src="img/mainpage/arrow.svg" alt="箭頭" />
-          </div>
-        </div>
+
+        <orderdata></orderdata>
+        
       </div>
     </div>
   </section>
@@ -228,6 +187,7 @@
             <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook" /></a>
             <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram" /></a>
             <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube" /></a>
+          
           </div>
         </div>
       </div>
@@ -239,6 +199,8 @@
       </p>
     </div>
   </footer>
+
+
   <script>
     //header 
     new Vue({
@@ -375,6 +337,170 @@
         `
     });
 
+    var Componentpomes = Vue.component("pomesdata", {
+        data() {
+          return {
+            pomes: [],
+            apear: false,
+          };
+        },
+        methods: {
+          // boxshow() {
+          //   this.apear = true;
+          // },
+          // close() {
+          //   this.apear = false;
+          // },
+        },
+        computed: {
+          pomesImg() {
+            return this.pomes[0].pomes_no;
+          },
+        },
+        created() {
+          let array = JSON.parse(localStorage.getItem("personallogin"));
+          axios
+            .post("phps/pomesrecord.php", {
+              mem_no: array[0].mem_no,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              if (res.data == "erro") {
+              } else {
+                this.pomes = res.data;
+              }
+            })
+            .catch((error) => console.log(error));
+        },
+
+        template: `
+        <div class="boxItem">
+          <table>
+            <tr v-for="(item,index) in pomes">
+              <td><img src='./img/member/memSticks.svg' /></td>
+
+              <td><p>第{{item.pomes_no}}號籤</p></td>
+              <td ><p @click="apear = 'true'" style="cursor: pointer" >查看籤詩</p></td>
+              <td><p>{{item.pomes_date}}</p></td>
+            </tr>
+          </table>
+            <div class="arrow">
+            <img src="img/mainpage/arrow.svg" alt="箭頭"/>
+            <img src="img/mainpage/arrow.svg" alt="箭頭"  @click="show ='showbox2'"/>
+          </div>
+
+        <!-- 彈窗 -->
+        <div class="loginbox" v-if="apear">
+          <div class="loginContent">
+           
+            <img :src="'./backweb/img/pomes/pomes'+pomesImg+'.jpg'" alt="" />
+            <button class="btnCancel" data-hover="返回" @click="apear = false">
+              返回
+            </button>
+          </div>
+        </div>
+        </div>
+        `,
+      });
+
+ 
+    var Componentorderdata = Vue.component('orderdata', {
+      data() {
+        return {
+          orderDetails: [],
+        }
+      },
+      created() {
+        let array = JSON.parse(localStorage.getItem('personallogin'));
+        axios.post('./phps/orderslist.php', {
+          mem_no: array[0].mem_no,
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((res) => {
+          if (res.data == "error") {
+          } else {
+            //種類判斷
+           
+          if(res.data[0].type_no == 1){
+            res.data[0].type_no='感情';
+          }else if(res.data[0].type_no == 2){
+            res.data[0].type_no='事業';
+          }else if(res.data[0].type_no == 3 ){
+            res.data[0].type_no='財富';
+          }else if(res.data[0].type_no == 4){
+            res.data[0].type_no='平安'; 
+          }else if(res.data[0].type_no == 5){
+            res.data[0].type_no='健康'; 
+          }else{
+            res.data[0].type_no='學業';
+          };
+
+            // 生肖判斷
+          
+          if(res.data[0].zodiac_no ==1 ){
+            res.data[0].zodiac_no='鼠';
+          }else if(res.data[0].zodiac_no ==2 ){
+            res.data[0].zodiac_no='牛';
+          }else if(res.data[0].zodiac_no ==3){
+            res.data[0].zodiac_no='虎';
+          }else if(res.data[0].zodiac_no == 4 ){
+            res.data[0].zodiac_no='兔';
+          }else if( res.data[0].zodiac_no == 5 ){
+            res.data[0].zodiac_no='龍';
+          }else if(res.data[0].zodiac_no == 6 ){
+            res.data[0].zodiac_no='蛇';
+          }else if(res.data[0].zodiac_no == 7 ){
+            res.data[0].zodiac_no='馬';
+          }else if(res.data[0].zodiac_no == 8){
+            res.data[0].zodiac_no= '羊';
+          }else if(res.data[0].zodiac_no == 9 ){
+            res.data[0].zodiac_no='猴';
+          }else if(res.data[0].zodiac_no == 10 ){
+            res.data[0].zodiac_no='雞';
+          }else if(res.data[0].zodiac_no == 11 ){
+            res.data[0].zodiac_no='狗';
+          }else{
+            res.data[0].zodiac_no='豬';
+          };
+          
+            this.orderDetails = res.data;
+          }
+        }).catch(error => console.log(error));
+
+      },
+      template:
+        `
+        <div class="boxItem">
+            <table>
+              <tr v-for="item in orderDetails">
+                <td><img src="./img/member/memAmulet.svg">
+                </td>
+                <td>
+                  <p>客製化平安符 {{item.type_no}}－{{item.zodiac_no}}</p>
+                </td>
+                <td>
+                  <p>數量：{{item.amulet_amount}}</p>
+                </td>
+                <td>
+                  <p>總計：NT$ {{item.orders_total}}</p>
+                </td>
+                <td>
+                  <p>{{item.orders_date}}</p>
+                </td>
+              </tr>
+            </table>
+            <div class="arrow">
+              <img src="img/mainpage/arrow.svg" alt="箭頭" @click="show ='showbox2'" />
+              <img src="img/mainpage/arrow.svg" alt="箭頭" />
+            </div>
+        </div>
+
+         `
+    });
+
     new Vue({
       el: '#app',
       data() {
@@ -386,6 +512,8 @@
       },
       components: {
         'component-prayrecorder': Componentprayrecord,
+        'component-orderdata': Componentorderdata,
+        "component-pomes": Componentpomes,
       },
       created() {
         let array = JSON.parse(localStorage.getItem('personallogin'));
@@ -408,3 +536,4 @@
 </body>
 
 </html>
+

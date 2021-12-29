@@ -1,14 +1,28 @@
 <?php 
 try {
-	require_once("connectBOBIO.php");
+	require_once("connectBOBIO.php"); //連線資料庫
+	$alter = file_get_contents('php://input'); //找到Vue那邊的資料
+  	$data = json_decode($alter, true); //轉成JSON檔案
 	//執行sql指令
-	$alter = file_get_contents('php://input');
-  $data = json_decode($alter, true);
-	$sql = "INSERT INTO member (mem_no ,mem_id)
-	VALUES ('$data[mem_no]','$data[mem_id]')";
-	$member = $pdo->prepare($sql);
-	$member->execute();
-	echo "異動成功~";
+	
+	$sql = 
+	"INSERT INTO `orders`( `mem_no`, `recipient`, `orders_phone`, `orders_email`, `orders_add`, `delivery`, `orders_date`, `orders_total`, `order_status`) 
+	VALUES ('$data[mem_no]','$data[recipient]','$data[orders_phone]','$data[orders_email]','$data[orders_add]','宅配','$data[orders_date]','399','0')";
+	
+	$member = $pdo->query($sql);  //準備sqL指令
+
+	if(!$member){
+		die($pdo->error);
+	}
+
+	$sql1 =  "INSERT INTO `orders_list`(`orders_no`, `type_no`, `zodiac_no`, `word`, `amulet_amount`, `price`) VALUES ('1','$data[type_no]', '$data[zodiac_no]', '$data[word]','$data[amulet_amount]', '399')
+	";
+
+	$member = $pdo->query($sql1);  //準備sqL指令
+
+	if(!$member){
+		die($pdo->error);
+	}
 
 } catch (PDOException $e) {
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
