@@ -422,6 +422,50 @@
         }).then((res) => {
           if (res.data == "error") {
           } else {
+            //種類判斷
+           
+          if(res.data[0].type_no == 1){
+            res.data[0].type_no='感情';
+          }else if(res.data[0].type_no == 2){
+            res.data[0].type_no='事業';
+          }else if(res.data[0].type_no == 3 ){
+            res.data[0].type_no='財富';
+          }else if(res.data[0].type_no == 4){
+            res.data[0].type_no='平安'; 
+          }else if(res.data[0].type_no == 5){
+            res.data[0].type_no='健康'; 
+          }else{
+            res.data[0].type_no='學業';
+          };
+
+            // 生肖判斷
+          
+          if(res.data[0].zodiac_no ==1 ){
+            res.data[0].zodiac_no='鼠';
+          }else if(res.data[0].zodiac_no ==2 ){
+            res.data[0].zodiac_no='牛';
+          }else if(res.data[0].zodiac_no ==3){
+            res.data[0].zodiac_no='虎';
+          }else if(res.data[0].zodiac_no == 4 ){
+            res.data[0].zodiac_no='兔';
+          }else if( res.data[0].zodiac_no == 5 ){
+            res.data[0].zodiac_no='龍';
+          }else if(res.data[0].zodiac_no == 6 ){
+            res.data[0].zodiac_no='蛇';
+          }else if(res.data[0].zodiac_no == 7 ){
+            res.data[0].zodiac_no='馬';
+          }else if(res.data[0].zodiac_no == 8){
+            res.data[0].zodiac_no= '羊';
+          }else if(res.data[0].zodiac_no == 9 ){
+            res.data[0].zodiac_no='猴';
+          }else if(res.data[0].zodiac_no == 10 ){
+            res.data[0].zodiac_no='雞';
+          }else if(res.data[0].zodiac_no == 11 ){
+            res.data[0].zodiac_no='狗';
+          }else{
+            res.data[0].zodiac_no='豬';
+          };
+          
             this.orderDetails = res.data;
           }
         }).catch(error => console.log(error));
