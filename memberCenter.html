@@ -1,154 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="./css/memberCenter.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
+    <title>BOBIO|會員中心</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/header.css" />
-  <link rel="stylesheet" href="css/footer.css" />
-  <link rel="stylesheet" href="./css/memberCenter.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
-  <title>BOBIO|會員中心</title>
-</head>
-
-<body>
-  <header id="mainheader">
-    <div class="headerWrap">
-      <div class="logo">
-        <a href="mainpage.html">
-          <img src="img/header/BOBIO_logo.svg">
-        </a>
-      </div>
-      <nav class="navPostion">
-        <ul>
-          <li>
-            <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
-            <div class="logout"><span v-text="losituation" @click="logout"></span></div>
-          </li>
-          <li>
-            <a href="pray.html">立即祈願</a>
-          </li>
-          <li>
-            <a href="onlinepomes.html">線上求籤</a>
-          </li>
-          <li>
-            <a href="amulet.html">平安符願</a>
-          </li>
-          <li>
-            <a href="money.html">立即結緣</a>
-          </li>
-          <li>
-            <a href="Abouts.html">關於我們</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="cart"><a href="shopping_cart1.html"><img src="img/header/cart.svg"></a></div>
-      <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
-      <div class="logout"><span v-text="losituation" @click="logout"></span></div>
-      <div class="outerHb">
-        <div class="hb" @click="hb">
-          <span></span>
-          <span></span>
-          <span></span>
+  <body>
+    <header id="mainheader">
+      <div class="headerWrap">
+        <div class="logo">
+          <a href="mainpage.html">
+            <img src="img/header/BOBIO_logo.svg" />
+          </a>
         </div>
-      </div>
-    </div>
-  </header>
-
-  <section>
-    <div class="wrapp" id="app">
-      <!-- 第一組祈願 -->
-      <h2>個人紀錄</h2>
-      <a href="memeberFix.html"><span>編輯會員資料</span></a>
-      <div class="boxRec1" v-if="show =='showbox1'">
-        <div class="boxMem">
-          <button class="mPray mBg bold">祈願</button>
-          <button class="mPomes" @click="show ='showbox2'">求籤</button>
-          <button class="mOrder" @click="show ='showbox3'">訂單</button>
-        </div>
-        <praydata></praydata>
-      </div>
-      <!-- 第二組求籤 -->
-      <div class="boxRec2" v-if="show =='showbox2'">
-        <div class="boxMem">
-          <button class="mPray" @click="show ='showbox1'">祈願</button>
-          <button class="mPomes mBg bold">求籤</button>
-          <button class="mOrder" @click="show ='showbox3'">訂單</button>
-        </div>
-        <div class="boxItem">
-          <table>
-            <tr>
-              <td><img src="./img/member/memSticks.svg" alt=""></td>
-              <td>
-                <p>健康</p>
-              </td>
-              <td>
-                <p>第70號籤</p>
-              </td>
-              <td>
-                <p>查看籤詩</p>
-              </td>
-              <td>
-                <p>2021.11.18</p>
-              </td>
-            </tr>
-          </table>
-          <div class="arrow">
-            <img src="img/mainpage/arrow.svg" alt="箭頭" @click="show ='showbox1'" />
-            <img src="img/mainpage/arrow.svg" alt="箭頭" @click="show ='showbox3'" />
-          </div>
-        </div>
-      </div>
-
-      <!-- 第三組 -->
-      <div class="boxRec3" v-if="show =='showbox3'">
-        <div class="boxMem">
-          <button class="mPray" @click="show ='showbox1'">祈願</button>
-          <button class="mPomes" @click="show ='showbox2'">求籤</button>
-          <button class="mOrder mBg bold">訂單</button>
-        </div>
-        <div class="boxItem">
-          <table>
-            <tr>
-              <td><img src="./img/member/memAmulet.svg" alt=""></td>
-              <td>
-                <p>客製化平安符</p>
-              </td>
-              <td>
-                <p>數量：1</p>
-              </td>
-              <td>
-                <p>總計：NT$459</p>
-              </td>
-              <td>
-                <p>2021.11.18</p>
-              </td>
-            </tr>
-          </table>
-          <div class="arrow">
-            <img src="img/mainpage/arrow.svg" alt="箭頭" @click="show ='showbox2'" />
-            <img src="img/mainpage/arrow.svg" alt="箭頭" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-wrap">
-      <div class="footer-logo">
-        <img src="./img/header/BOBIO_logo.svg" alt="bobio" />
-      </div>
-      <div class="footer-slog">
-        <span>用BOBIO就有保佑</span>
-      </div>
-      <div class="footer-info">
-        <div class="list">
+        <nav class="navPostion">
           <ul>
+            <li>
+              <div class="member">
+                <a href="memberAdd.html"><img src="img/header/member.svg" /></a>
+              </div>
+              <div class="logout">
+                <span v-text="losituation" @click="logout"></span>
+              </div>
+            </li>
             <li>
               <a href="pray.html">立即祈願</a>
             </li>
@@ -165,145 +48,277 @@
               <a href="Abouts.html">關於我們</a>
             </li>
           </ul>
+        </nav>
+        <div class="cart">
+          <a href="shopping_cart1.html"><img src="img/header/cart.svg" /></a>
         </div>
-        <div class="conn">
-          <p>
-            bobio@temple.com<br />
-            02-1090-1090
-          </p>
-          <div class="info-icon">
-            <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook" /></a>
-            <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram" /></a>
-            <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube" /></a>
+        <div class="member">
+          <a href="memberAdd.html"><img src="img/header/member.svg" /></a>
+        </div>
+        <div class="logout">
+          <span v-text="losituation" @click="logout"></span>
+        </div>
+        <div class="outerHb">
+          <div class="hb" @click="hb">
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
       </div>
-    </div>
-    <div class="copyright">
-      <p>
-        Copyright © 2021Bobio
-        本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
-      </p>
-    </div>
-  </footer>
-  <script>
-    //headerVue
-    new Vue({
-      el: '#mainheader',
-      data() {
-        return {
-          screenWidth: null,
-          personaldata: [],
-          losituation: "",
-        }
-      },
-      created() {
-        this.screenWidth = document.body.clientWidth;//營幕寬
-        //以下讀取會員資料
-        let array = JSON.parse(localStorage.getItem('personallogin'));//抓localStorage存入變數
-        this.losituation = null;//登入登出狀態
-        if (array != null) {
-          axios.post('phps/memberExbody.php', {
-            mem_no: array[0].mem_no,
-            mem_id: array[0].mem_id,
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          }).then((res) => {
-            if (res) {
-              this.losituation = "登出";//登入登出狀態
-              this.personaldata = res.data[0];
-            }
-          }).catch(error => console.log(error));
-        };
-        //以上讀取會員資料
-        window.onresize = () => {
-          return (() => {
-            this.screenWidth = document.body.clientWidth;
-          })()
-        }
-      },
-      watch: {
-        screenWidth: {
-          handler: function (newval, oldval) {
-            if (newval >= 1200) {
-              $(`header>.headerWrap>nav`).removeClass('navPostion');
-              $(`header>.headerWrap>nav li:first-child`).css('display', 'none');
-              $(`header>.headerWrap>.member`).css('display', 'flex');
-              $(`header>.headerWrap>.logout`).css('display', 'block');
-            } else if (newval < 1200) {
-              $(`header>.headerWrap>nav`).addClass('navPostion');
-              $(`header>.headerWrap>nav li:first-child`).css('display', 'flex');
-              $(`header>.headerWrap>.member`).css('display', 'none');
-              $(`header>.headerWrap>.logout`).css('display', 'none');
+    </header>
+
+    <section>
+      <div class="wrapp" id="app">
+        <!-- 第一組祈願 -->
+        <h2>個人紀錄</h2>
+        <a href="memeberFix.html"><span>編輯會員資料</span></a>
+        <div class="boxRec1" v-if="show =='showbox1'">
+          <div class="boxMem">
+            <button class="mPray mBg bold">祈願</button>
+            <button class="mPomes" @click="show ='showbox2'">求籤</button>
+            <button class="mOrder" @click="show ='showbox3'">訂單</button>
+          </div>
+          <praydata></praydata>
+        </div>
+        <!-- 第二組求籤 -->
+        <div class="boxRec2" v-if="show =='showbox2'">
+          <div class="boxMem">
+            <button class="mPray" @click="show ='showbox1'">祈願</button>
+            <button class="mPomes mBg bold">求籤</button>
+            <button class="mOrder" @click="show ='showbox3'">訂單</button>
+          </div>
+          <pomesdata></pomesdata>
+        </div>
+
+        <!-- 第三組 -->
+        <div class="boxRec3" v-if="show =='showbox3'">
+          <div class="boxMem">
+            <button class="mPray" @click="show ='showbox1'">祈願</button>
+            <button class="mPomes" @click="show ='showbox2'">求籤</button>
+            <button class="mOrder mBg bold">訂單</button>
+          </div>
+          <div class="boxItem">
+            <table>
+              <tr>
+                <td><img src="./img/member/memAmulet.svg" alt="" /></td>
+                <td>
+                  <p>客製化平安符</p>
+                </td>
+                <td>
+                  <p>數量：1</p>
+                </td>
+                <td>
+                  <p>總計：NT$459</p>
+                </td>
+                <td>
+                  <p>2021.11.18</p>
+                </td>
+              </tr>
+            </table>
+            <div class="arrow">
+              <img
+                src="img/mainpage/arrow.svg"
+                alt="箭頭"
+                @click="show ='showbox2'"
+              />
+              <img src="img/mainpage/arrow.svg" alt="箭頭" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-wrap">
+        <div class="footer-logo">
+          <img src="./img/header/BOBIO_logo.svg" alt="bobio" />
+        </div>
+        <div class="footer-slog">
+          <span>用BOBIO就有保佑</span>
+        </div>
+        <div class="footer-info">
+          <div class="list">
+            <ul>
+              <li>
+                <a href="pray.html">立即祈願</a>
+              </li>
+              <li>
+                <a href="onlinepomes.html">線上求籤</a>
+              </li>
+              <li>
+                <a href="amulet.html">平安符願</a>
+              </li>
+              <li>
+                <a href="money.html">立即結緣</a>
+              </li>
+              <li>
+                <a href="Abouts.html">關於我們</a>
+              </li>
+            </ul>
+          </div>
+          <div class="conn">
+            <p>
+              bobio@temple.com<br />
+              02-1090-1090
+            </p>
+            <div class="info-icon">
+              <a href="#"
+                ><img src="./img/footer/Group 415.svg" alt="facebook"
+              /></a>
+              <a href="#"
+                ><img src="./img/footer/Group 295.svg" alt="instagram"
+              /></a>
+              <a href="#"
+                ><img src="./img/footer/Group 296.svg" alt="youtube"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>
+          Copyright © 2021Bobio
+          本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+        </p>
+      </div>
+    </footer>
+    <script>
+      //headerVue
+      new Vue({
+        el: "#mainheader",
+        data() {
+          return {
+            screenWidth: null,
+            personaldata: [],
+            losituation: "",
+          };
+        },
+        created() {
+          this.screenWidth = document.body.clientWidth; //營幕寬
+          //以下讀取會員資料
+          let array = JSON.parse(localStorage.getItem("personallogin")); //抓localStorage存入變數
+          this.losituation = null; //登入登出狀態
+          if (array != null) {
+            axios
+              .post("phps/memberExbody.php", {
+                mem_no: array[0].mem_no,
+                mem_id: array[0].mem_id,
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
+                if (res) {
+                  this.losituation = "登出"; //登入登出狀態
+                  this.personaldata = res.data[0];
+                }
+              })
+              .catch((error) => console.log(error));
+          }
+          //以上讀取會員資料
+          window.onresize = () => {
+            return (() => {
+              this.screenWidth = document.body.clientWidth;
+            })();
+          };
+        },
+        watch: {
+          screenWidth: {
+            handler: function (newval, oldval) {
+              if (newval >= 1200) {
+                $(`header>.headerWrap>nav`).removeClass("navPostion");
+                $(`header>.headerWrap>nav li:first-child`).css(
+                  "display",
+                  "none"
+                );
+                $(`header>.headerWrap>.member`).css("display", "flex");
+                $(`header>.headerWrap>.logout`).css("display", "block");
+              } else if (newval < 1200) {
+                $(`header>.headerWrap>nav`).addClass("navPostion");
+                $(`header>.headerWrap>nav li:first-child`).css(
+                  "display",
+                  "flex"
+                );
+                $(`header>.headerWrap>.member`).css("display", "none");
+                $(`header>.headerWrap>.logout`).css("display", "none");
+              }
+            },
+            immediate: true,
+          },
+        },
+        methods: {
+          hb() {
+            let place = $("nav").css("right");
+            if (place < "0px") {
+              $("nav").animate(
+                {
+                  right: 0,
+                },
+                1200,
+                "easeInBounce"
+              );
+            } else {
+              $("nav").animate(
+                {
+                  right: "-30%",
+                },
+                1200,
+                "easeOutBounce"
+              );
             }
           },
-          immediate: true,
-        }
-      },
-      methods: {
-        hb() {
-          let place = $("nav").css("right");
-          if (place < "0px") {
-            $("nav").animate({
-              right: 0,
-            }, 1200, 'easeInBounce')
-          } else {
-            $("nav").animate({
-              right: "-30%",
-            }, 1200, 'easeOutBounce')
-          }
+          logout() {
+            localStorage.removeItem("personallogin");
+            location.href = "mainpage.html";
+          },
         },
-        logout() {
-          localStorage.removeItem('personallogin');
-          location.href = "mainpage.html";
+      });
+
+      var Componentprayrecord = Vue.component("praydata", {
+        data() {
+          return {
+            pray: [],
+            type: {
+              1: "感情",
+              2: "感情",
+              3: "感情",
+              4: "健康",
+              5: "健康",
+              6: "健康",
+              7: "平安",
+              8: "平安",
+              9: "平安",
+              10: "學業",
+              11: "學業",
+              12: "學業",
+              13: "財富",
+              14: "財富",
+              15: "財富",
+              16: "事業",
+              17: "事業",
+              18: "事業",
+            },
+          };
         },
-      },
-    });
-
-    var Componentprayrecord = Vue.component('praydata', {
-      data() {
-        return {
-          pray: [],
-          type: {
-            1: "感情",
-            2: "感情",
-            3: "感情",
-            4: "健康",
-            5: "健康",
-            6: "健康",
-            7: "平安",
-            8: "平安",
-            9: "平安",
-            10: "學業",
-            11: "學業",
-            12: "學業",
-            13: "財富",
-            14: "財富",
-            15: "財富",
-            16: "事業",
-            17: "事業",
-            18: "事業",
-          }
-        }
-      },
-      created() {
-        let array = JSON.parse(localStorage.getItem('personallogin'));
-        axios.post('phps/prayrecord.php', {
-          mem_no: array[0].mem_no,
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        }).then((res) => {
-          if (res.data == "erro") {
-
-          } else {
-            this.pray = res.data;
-          }
-        }).catch(error => console.log(error));
-      },
-      template:
-        `
+        created() {
+          let array = JSON.parse(localStorage.getItem("personallogin"));
+          axios
+            .post("phps/prayrecord.php", {
+              mem_no: array[0].mem_no,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              if (res.data == "erro") {
+              } else {
+                this.pray = res.data;
+              }
+            })
+            .catch((error) => console.log(error));
+        },
+        template: `
         <div class="boxItem">
           <table>
             <tr v-for="(item,index) in pray">
@@ -319,35 +334,108 @@
             <img src="img/mainpage/arrow.svg" alt="箭頭"  @click="show ='showbox2'"/>
           </div>
         </div>
-        `
-    });
-    new Vue({
-      el: "#app",
-      data: {
-        show: "showbox1",
-        personaldata: [],
-      },
-      components: {
-        'component-prayrecorder': Componentprayrecord,
-      },
-      created() {
-        let array = JSON.parse(localStorage.getItem('personallogin'));
-        axios.post('phps/memberExbody.php', {
-          mem_no: array[0].mem_no,
-          mem_id: array[0].mem_id,
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        }).then((res) => {
-          if (res.data == "erro") {
-            location.href = "memeberAdd.html";
-          } else {
-            this.personaldata = res.data[0];
-          }
-        }).catch(error => console.log(error));
-      },
-    });
-  </script>
-</body>
+        `,
+      });
 
+      var Componentpomes = Vue.component("pomesdata", {
+        data() {
+          return {
+            pomes: [],
+            apear: false,
+          };
+        },
+        methods: {
+          // boxshow() {
+          //   this.apear = true;
+          // },
+          // close() {
+          //   this.apear = false;
+          // },
+        },
+        computed: {
+          pomesImg() {
+            return this.pomes[0].pomes_no;
+          },
+        },
+        created() {
+          let array = JSON.parse(localStorage.getItem("personallogin"));
+          axios
+            .post("phps/pomesrecord.php", {
+              mem_no: array[0].mem_no,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              if (res.data == "erro") {
+              } else {
+                this.pomes = res.data;
+              }
+            })
+            .catch((error) => console.log(error));
+        },
+
+        template: `
+        <div class="boxItem">
+          <table>
+            <tr v-for="(item,index) in pomes">
+              <td><img src='./img/member/memSticks.svg' /></td>
+
+              <td><p>第{{item.pomes_no}}號籤</p></td>
+              <td ><p @click="apear = 'true'" style="cursor: pointer" >查看籤詩</p></td>
+              <td><p>{{item.pomes_date}}</p></td>
+            </tr>
+          </table>
+            <div class="arrow">
+            <img src="img/mainpage/arrow.svg" alt="箭頭"/>
+            <img src="img/mainpage/arrow.svg" alt="箭頭"  @click="show ='showbox2'"/>
+          </div>
+
+        <!-- 彈窗 -->
+        <div class="loginbox" v-if="apear">
+          <div class="loginContent">
+           
+            <img :src="'./backweb/img/pomes/pomes'+pomesImg+'.jpg'" alt="" />
+            <button class="btnCancel" data-hover="返回" @click="apear = false">
+              返回
+            </button>
+          </div>
+        </div>
+        </div>
+        `,
+      });
+
+      new Vue({
+        el: "#app",
+        data: {
+          show: "showbox1",
+          personaldata: [],
+        },
+
+        components: {
+          "component-prayrecorder": Componentprayrecord,
+          "component-pomes": Componentpomes,
+        },
+        created() {
+          let array = JSON.parse(localStorage.getItem("personallogin"));
+          axios
+            .post("phps/memberExbody.php", {
+              mem_no: array[0].mem_no,
+              mem_id: array[0].mem_id,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              if (res.data == "erro") {
+                location.href = "memeberAdd.html";
+              } else {
+                this.personaldata = res.data[0];
+              }
+            })
+            .catch((error) => console.log(error));
+        },
+      });
+    </script>
+  </body>
 </html>
