@@ -1628,9 +1628,7 @@
               .then((res) => {
                 alter(res.data);
               })
-              .catch(function (error) {
-                alert("上傳失敗");
-              });
+              .catch(function (error) {});
 
             //更新資料庫內的圖片
             axios
@@ -1757,7 +1755,7 @@
             let readFile = new FormData();
             readFile.append("file", this.file);
             axios
-              .post("./phps/pomesFixImg.php", readFile, {
+              .post("./phps/pomesdetailFixImg.php", readFile, {
                 headers: {
                   "Content-Type": "multipart/form-data",
                 },
@@ -1765,9 +1763,7 @@
               .then((res) => {
                 alter(res.data);
               })
-              .catch(function (error) {
-                alert("上傳失敗");
-              });
+              .catch(function (error) {});
 
             //更新資料庫內的圖片
             axios
