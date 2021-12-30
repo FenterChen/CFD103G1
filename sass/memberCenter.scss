@@ -11,6 +11,7 @@ section {
 .wrapp {
     width: 100%;
     max-width: 375px;
+    min-height: 100vh;
     background-color: #FFFAE7;
     margin: auto;
     margin-top: 40px;
@@ -44,6 +45,7 @@ section {
     color: #573605;
     text-align: center;
     margin-bottom: 30px;
+    margin-top: 15px;
 }
 
 .wrapp span {
@@ -268,7 +270,7 @@ section {
 
 .loginContent img {
     width: 100%;
-   
+
 }
 
 .btnCancel {
