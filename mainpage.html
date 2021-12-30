@@ -125,7 +125,7 @@
           isLoading: true,
         }
       },
-      mounted() {
+      beforeCreate() {
         setTimeout(() => {
           this.isLoading = false;
         }, 1800);
