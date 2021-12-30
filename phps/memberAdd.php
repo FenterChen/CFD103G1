@@ -8,7 +8,7 @@ try {
 	VALUES ('$data[mem_name]','$data[mem_id]','$data[mem_psw]','$data[phone]','$data[email]','$data[mem_date]','$data[mem_status]')";
 	$member = $pdo->prepare($sql);
 	$member->execute();
-	echo "異動成功~";
+	echo "成功註冊，請重新登入~";
 
 } catch (PDOException $e) {
 	echo "錯誤行號 : ", $e->getLine(), "<br>";

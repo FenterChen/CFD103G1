@@ -344,26 +344,30 @@
             m.getMinutes() +
             ":" +
             m.getSeconds();
-
-          axios
-            .post("phps/memberAdd.php", {
-              mem_name: this.name,
-              mem_id: this.email,
-              mem_psw: this.psw,
-              phone: this.phone,
-              email: this.email,
-              mem_date: this.addtime,
-              mem_status: "0",
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            })
-            .then(function (response) {
-              console.log(response);
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
+          if (this.psw != this.confirmpsw || this.psw == null || this.email == null || this.phone == null || this.name == null) {
+            alert("請確認資料");
+          } else {
+            axios
+              .post("phps/memberAdd.php", {
+                mem_name: this.name,
+                mem_id: this.email,
+                mem_psw: this.psw,
+                phone: this.phone,
+                email: this.email,
+                mem_date: this.addtime,
+                mem_status: "0",
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then(function (res) {
+                alert(res.data);
+                location.href = "memberAdd.html";
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          }
         },
         logincheck() {
           axios

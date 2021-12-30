@@ -59,62 +59,58 @@
     </div>
   </header>
   <section id="app">
-    
+
     <div class="containerId" v-if="showId =='showId1'">
-      <form action="member.php" method="post">
-        <div class="boxContainer">
-          <div class="boxMember">
-            <a class="textId bold"> 會員資料</a>
-            <a class="textFixpwd" @click="showId ='showId2'">密碼修改</a>
+      <div class="boxContainer">
+        <div class="boxMember">
+          <a class="textId bold"> 會員資料</a>
+          <a class="textFixpwd" @click="showId ='showId2'">密碼修改</a>
+        </div>
+        <div class="boxData">
+          <div class="textName">
+            <span>姓名</span>
+            <input type="text" v-model="personaldata.mem_name" />
           </div>
-          <div class="boxData">
-            <div class="textName">
-              <span>姓名</span>
-              <input type="text" v-model="personaldata.mem_name" />
-            </div>
-            <div class="textPhone">
-              <span>手機</span>
-              <input type="number" v-model="personaldata.phone" />
-            </div>
-            <div class="textEmail">
-              <span>信箱</span>
-              <input type="email" v-model="personaldata.email" />
-            </div>
+          <div class="textPhone">
+            <span>手機</span>
+            <input type="number" v-model="personaldata.phone" />
           </div>
-          <div class="boxBtn">
-            <button class="btnSave" data-hover=" 儲存變更">儲存變更</button>
-            <button class="btnCancel" data-hover=" 取消">取消</button>
+          <div class="textEmail">
+            <span>信箱</span>
+            <input type="email" v-model="personaldata.email" />
           </div>
-      </form>
-    </div>
+        </div>
+        <div class="boxBtn">
+          <button class="btnSave" data-hover=" 儲存變更" @click="save">儲存變更</button>
+          <button class="btnCancel" data-hover=" 取消" @click="cancell">取消</button>
+        </div>
+      </div>
     </div>
     <div class="containerId2" v-if="showId =='showId2'">
-      <form action="member.php" method="post">
-        <div class="boxContainer2 ">
-          <div class="boxMember">
-            <a class="textId textId2" @click="showId ='showId1'">會員資料</a>
-            <a class="textFixpwd textFixpwd2">密碼修改</a>
+      <div class="boxContainer2 ">
+        <div class="boxMember">
+          <a class="textId textId2" @click="showId ='showId1'">會員資料</a>
+          <a class="textFixpwd textFixpwd2">密碼修改</a>
+        </div>
+        <div class="boxData">
+          <div class="textPwd">
+            <span>目前密碼</span>
+            <input type="password" v-model="cpsw" />
           </div>
-          <div class="boxData">
-            <div class="textPwd">
-              <span>目前密碼</span>
-              <input type="password" />
-            </div>
-            <div class="textPwd">
-              <span>修改密碼</span>
-              <input type="password" />
-            </div>
-            <div class="textPwd">
-              <span>確認密碼</span>
-              <input type="password" />
-            </div>
+          <div class="textPwd">
+            <span>修改密碼</span>
+            <input type="password" v-model="fixpsw" />
           </div>
-          <div class="boxBtn">
-            <button class="btnSave" data-hover=" 儲存變更">儲存變更</button>
-            <button class="btnCancel" data-hover=" 取消">取消</button>
+          <div class="textPwd">
+            <span>確認密碼</span>
+            <input type="password" v-model="confrimpsw" />
           </div>
-      </form>
-    </div>
+        </div>
+        <div class="boxBtn">
+          <button class="btnSave" data-hover=" 儲存變更" @click="savepsw">儲存變更</button>
+          <button class="btnCancel" data-hover=" 取消" @click="recancell">取消</button>
+        </div>
+      </div>
     </div>
     <div class="wrapp">
       <h2>個人紀錄</h2>
@@ -146,7 +142,7 @@
         </div>
 
         <orderdata></orderdata>
-        
+
       </div>
     </div>
   </section>
@@ -187,7 +183,7 @@
             <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook" /></a>
             <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram" /></a>
             <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube" /></a>
-          
+
           </div>
         </div>
       </div>
@@ -338,44 +334,44 @@
     });
 
     var Componentpomes = Vue.component("pomesdata", {
-        data() {
-          return {
-            pomes: [],
-            apear: false,
-          };
+      data() {
+        return {
+          pomes: [],
+          apear: false,
+        };
+      },
+      methods: {
+        // boxshow() {
+        //   this.apear = true;
+        // },
+        // close() {
+        //   this.apear = false;
+        // },
+      },
+      computed: {
+        pomesImg() {
+          return this.pomes[0].pomes_no;
         },
-        methods: {
-          // boxshow() {
-          //   this.apear = true;
-          // },
-          // close() {
-          //   this.apear = false;
-          // },
-        },
-        computed: {
-          pomesImg() {
-            return this.pomes[0].pomes_no;
-          },
-        },
-        created() {
-          let array = JSON.parse(localStorage.getItem("personallogin"));
-          axios
-            .post("phps/pomesrecord.php", {
-              mem_no: array[0].mem_no,
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            })
-            .then((res) => {
-              if (res.data == "erro") {
-              } else {
-                this.pomes = res.data;
-              }
-            })
-            .catch((error) => console.log(error));
-        },
+      },
+      created() {
+        let array = JSON.parse(localStorage.getItem("personallogin"));
+        axios
+          .post("phps/pomesrecord.php", {
+            mem_no: array[0].mem_no,
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          })
+          .then((res) => {
+            if (res.data == "erro") {
+            } else {
+              this.pomes = res.data;
+            }
+          })
+          .catch((error) => console.log(error));
+      },
 
-        template: `
+      template: `
         <div class="boxItem">
           <table>
             <tr v-for="(item,index) in pomes">
@@ -403,9 +399,9 @@
         </div>
         </div>
         `,
-      });
+    });
 
- 
+
     var Componentorderdata = Vue.component('orderdata', {
       data() {
         return {
@@ -423,49 +419,49 @@
           if (res.data == "error") {
           } else {
             //種類判斷
-           
-          if(res.data[0].type_no == 1){
-            res.data[0].type_no='感情';
-          }else if(res.data[0].type_no == 2){
-            res.data[0].type_no='事業';
-          }else if(res.data[0].type_no == 3 ){
-            res.data[0].type_no='財富';
-          }else if(res.data[0].type_no == 4){
-            res.data[0].type_no='平安'; 
-          }else if(res.data[0].type_no == 5){
-            res.data[0].type_no='健康'; 
-          }else{
-            res.data[0].type_no='學業';
-          };
+
+            if (res.data[0].type_no == 1) {
+              res.data[0].type_no = '感情';
+            } else if (res.data[0].type_no == 2) {
+              res.data[0].type_no = '事業';
+            } else if (res.data[0].type_no == 3) {
+              res.data[0].type_no = '財富';
+            } else if (res.data[0].type_no == 4) {
+              res.data[0].type_no = '平安';
+            } else if (res.data[0].type_no == 5) {
+              res.data[0].type_no = '健康';
+            } else {
+              res.data[0].type_no = '學業';
+            };
 
             // 生肖判斷
-          
-          if(res.data[0].zodiac_no ==1 ){
-            res.data[0].zodiac_no='鼠';
-          }else if(res.data[0].zodiac_no ==2 ){
-            res.data[0].zodiac_no='牛';
-          }else if(res.data[0].zodiac_no ==3){
-            res.data[0].zodiac_no='虎';
-          }else if(res.data[0].zodiac_no == 4 ){
-            res.data[0].zodiac_no='兔';
-          }else if( res.data[0].zodiac_no == 5 ){
-            res.data[0].zodiac_no='龍';
-          }else if(res.data[0].zodiac_no == 6 ){
-            res.data[0].zodiac_no='蛇';
-          }else if(res.data[0].zodiac_no == 7 ){
-            res.data[0].zodiac_no='馬';
-          }else if(res.data[0].zodiac_no == 8){
-            res.data[0].zodiac_no= '羊';
-          }else if(res.data[0].zodiac_no == 9 ){
-            res.data[0].zodiac_no='猴';
-          }else if(res.data[0].zodiac_no == 10 ){
-            res.data[0].zodiac_no='雞';
-          }else if(res.data[0].zodiac_no == 11 ){
-            res.data[0].zodiac_no='狗';
-          }else{
-            res.data[0].zodiac_no='豬';
-          };
-          
+
+            if (res.data[0].zodiac_no == 1) {
+              res.data[0].zodiac_no = '鼠';
+            } else if (res.data[0].zodiac_no == 2) {
+              res.data[0].zodiac_no = '牛';
+            } else if (res.data[0].zodiac_no == 3) {
+              res.data[0].zodiac_no = '虎';
+            } else if (res.data[0].zodiac_no == 4) {
+              res.data[0].zodiac_no = '兔';
+            } else if (res.data[0].zodiac_no == 5) {
+              res.data[0].zodiac_no = '龍';
+            } else if (res.data[0].zodiac_no == 6) {
+              res.data[0].zodiac_no = '蛇';
+            } else if (res.data[0].zodiac_no == 7) {
+              res.data[0].zodiac_no = '馬';
+            } else if (res.data[0].zodiac_no == 8) {
+              res.data[0].zodiac_no = '羊';
+            } else if (res.data[0].zodiac_no == 9) {
+              res.data[0].zodiac_no = '猴';
+            } else if (res.data[0].zodiac_no == 10) {
+              res.data[0].zodiac_no = '雞';
+            } else if (res.data[0].zodiac_no == 11) {
+              res.data[0].zodiac_no = '狗';
+            } else {
+              res.data[0].zodiac_no = '豬';
+            };
+
             this.orderDetails = res.data;
           }
         }).catch(error => console.log(error));
@@ -505,6 +501,9 @@
       el: '#app',
       data() {
         return {
+          cpsw: '',
+          fixpsw: '',
+          confrimpsw: '',
           personaldata: {},
           show: "showbox1",
           showId: 'showId1',
@@ -531,9 +530,65 @@
           }
         }).catch(error => console.log(error));
       },
+      methods: {
+        save() {
+          axios.post('phps/memberUpdate.php', {
+            mem_no: this.personaldata.mem_no,
+            mem_name: this.personaldata.mem_name,
+            email: this.personaldata.email,
+            phone: this.personaldata.phone,
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }).then((res) => {
+            alert("會員資料已更新");
+          }).catch(error => console.log(error));
+        },
+        cancell() {
+          let array = JSON.parse(localStorage.getItem('personallogin'));
+          axios.post('phps/memberExist.php', {
+            mem_no: array[0].mem_no,
+            mem_id: array[0].mem_id,
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }).then((res) => {
+            if (res.data == "erro") {
+              location.href = "memeberAdd.html";
+            } else {
+              this.personaldata = res.data[0];
+            }
+          }).catch(error => console.log(error));
+        },
+        recancell() {
+          this.cpsw = '';
+          this.fixpsw = '';
+          this.confrimpsw = '';
+          location.href = "memeberFix.html";
+        },
+        savepsw() {
+          if (this.fixpsw == this.confrimpsw) {
+            axios.post('phps/memberPswcheck.php', {
+              mem_no: this.personaldata.mem_no,
+              memPsw: this.cpsw,
+              confirmPsw: this.confrimpsw,
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            }).then((res) => {
+              alert(res.data);
+            }).catch(error => console.log(error));
+          } else {
+            alert("密碼錯誤，請確認密碼");
+            this.cpsw = '';
+            this.fixpsw = '';
+            this.confrimpsw = '';
+          }
+
+        },
+      }
     });
   </script>
 </body>
 
 </html>
-
