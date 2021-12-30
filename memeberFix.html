@@ -226,7 +226,9 @@
               this.personaldata = res.data[0];
             }
           }).catch(error => this.personaldata = res.data);
-        };
+        } else {
+          location.href = "mainpage.html";
+        }
         //以上讀取會員資料
         window.onresize = () => {
           return (() => {

@@ -168,7 +168,7 @@
             </div>
           </div>
           <marquee class="adPhone" direction="right">
-            <span class="adTitle">信眾已達 <span class="number">{{memberList.length}}</span>人
+            <span class="adTitle">信眾已達 <span class="number">{{memberList.length}}</span>人</span>
             <span class="adTitle">結緣已達<span class="number">{{donateList.length}}</span>人</span>
             <span class="adTitle">平安符願結緣已達<span class="number">{{amuletList.length}}</span>人</span>
           </marquee>
@@ -213,15 +213,15 @@
       created() {
         //donate-money
         axios
-          .get("phps/donate.php")
+          .get("phps/donatephp.php")
           .then((res) => (this.donateList = res.data));
         //total-member
         axios
-          .get("phps/membershow.php")
+          .get("phps/memberShow.php")
           .then((res) => (this.memberList = res.data));
         //amulet-number
         axios
-          .get("phps/zodiac.php")
+          .get("phps/orderslist.php")
           .then((res) => (this.amuletList = res.data));
       },
       methods: {
