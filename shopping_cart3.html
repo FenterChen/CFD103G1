@@ -263,6 +263,9 @@
             this.cardid = '';
             this.carddate = '';
             this.cardsafe = '';
+          } else if (this.memberIInfo == null){
+            alert("請加入會員");
+            location.href = "memberAdd.html";
           } else {
             this.insertShop();
             location.href = "shopping_cart4.html";
@@ -330,8 +333,6 @@
           }else{
             this.shopItem[0][0]=12;
           };
-          
-         
           
           axios.post('./phps/ordersInsert.php',{
           mem_no : this.memberIInfo[0].mem_no,
