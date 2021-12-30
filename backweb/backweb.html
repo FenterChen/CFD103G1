@@ -444,7 +444,9 @@
             this.imgChange = "img/amulet/" + this.$refs.file.files[0].name;
             this.newImgName = this.$refs.file.files[0].name;
             this.$forceUpdate();
+          },
 
+          updateFile() {
             //上傳圖片
             this.file = this.$refs.file.files[0];
             let readFile = new FormData();
@@ -456,14 +458,11 @@
                 },
               })
               .then((res) => {
-                alter(res.data);
+                alert(res.data);
               })
               .catch(function (error) {
-                alert("上傳成功");
+                alert("上傳失敗");
               });
-          },
-
-          updateFile() {
             //更新資料庫內的圖片
             axios
               .post("./phps/zodiacUpdateImg.php", {
@@ -475,10 +474,10 @@
               })
               .then((res) => {
                 alert(res.data);
-                // location.href = "backweb.html";
+                location.href = "backweb.html";
               })
               .catch(function (error) {
-                close.log(error);
+                console.error(error);
               });
           },
         },
@@ -597,10 +596,10 @@
                 },
               })
               .then((res) => {
-                alter(res.data);
+                alert(res.data);
               })
               .catch(function (error) {
-                alert("上傳成功");
+                alert("上傳失敗");
               });
           },
 
@@ -619,7 +618,7 @@
                 location.href = "backweb.html";
               })
               .catch(function (error) {
-                close.log(error);
+                console.log(error);
               });
           },
 
@@ -651,7 +650,7 @@
             }
           },
 
-          cancell() {
+          cancel() {
             this.$refs.file.value = "";
           },
         },
@@ -706,7 +705,7 @@
           </table>
           <!-- 表格內容結束 -->
           <div class="saveBtn" >
-            <button class="cancle" data-hover="取消" @click="cancell">取消</button>
+            <button class="cancle" data-hover="取消" @click="cancel">取消</button>
             <button class="save" data-hover="確定" @click="updateFile">修改</button>
           </div>
         </div>
@@ -1626,7 +1625,7 @@
                 },
               })
               .then((res) => {
-                alter(res.data);
+                alert(res.data);
               })
               .catch(function (error) {});
 
@@ -1642,7 +1641,7 @@
               })
               .then((res) => {
                 alert(res.data);
-                // location.href = "backweb.html";
+                location.href = "backweb.html";
               })
               .catch(function (error) {
                 console.log(error);
@@ -1761,7 +1760,7 @@
                 },
               })
               .then((res) => {
-                alter(res.data);
+                alert(res.data);
               })
               .catch(function (error) {});
 
@@ -1777,7 +1776,7 @@
               })
               .then((res) => {
                 alert(res.data);
-                // location.href = "backweb.html";
+                location.href = "backweb.html";
               })
               .catch(function (error) {
                 console.log(error);

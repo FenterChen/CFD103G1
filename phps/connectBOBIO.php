@@ -2,7 +2,7 @@
 	$dbname = "tibamefe_cfd103g1";
 	//$dbname = "bobio";
 	$user = "root";
-	$password = "09Dj4874415";
+	$password = "miumiu0722";
 
 	$dsn = "mysql:host=localhost;port=3306;dbname=$dbname;charset=utf8";
 
