@@ -22,11 +22,19 @@
     <div class="headerWrap">
       <div class="logo">
         <a href="mainpage.html">
-          <img src="img/header/BOBIO_logo.svg">
+          <img src="img/header/BOBIO_logo.svg" />
         </a>
       </div>
       <nav class="navPostion">
         <ul>
+          <li>
+            <div class="member">
+              <a href="memberCenter.html"><img src="img/header/member.svg" /></a>
+            </div>
+            <div class="logout">
+              <span v-text="losituation" @click="logout"></span>
+            </div>
+          </li>
           <li>
             <a href="pray.html">立即祈願</a>
           </li>
@@ -44,10 +52,17 @@
           </li>
         </ul>
       </nav>
-      <div class="cart"><a href="shopping_cart1.html"><img src="img/header/cart.svg"></a></div>
-      <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
+      <div class="cart">
+        <a href="shopping_cart1.html"><img src="img/header/cart.svg" /></a>
+      </div>
+      <div class="member">
+        <a href="memberCenter.html"><img src="img/header/member.svg" /></a>
+      </div>
+      <div class="logout">
+        <span v-text="losituation" @click="logout"></span>
+      </div>
       <div class="outerHb">
-        <div class="hb" id="hb">
+        <div class="hb" @click="hb">
           <span></span>
           <span></span>
           <span></span>
@@ -143,48 +158,92 @@
   <script>
     //headerVue
     new Vue({
-      el: '#mainheader',
+      el: "#mainheader",
       data() {
         return {
           screenWidth: null,
-        }
+          personaldata: [],
+          losituation: "",
+        };
       },
-      mounted() {
-        this.screenWidth = document.body.clientWidth;
+      created() {
+        this.screenWidth = document.body.clientWidth; //營幕寬
+        //以下讀取會員資料
+        let array = JSON.parse(localStorage.getItem("personallogin")); //抓localStorage存入變數
+        this.losituation = null; //登入登出狀態
+        if (array != null) {
+          axios
+            .post("phps/memberExbody.php", {
+              mem_no: array[0].mem_no,
+              mem_id: array[0].mem_id,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              this.losituation = "登出"; //登入登出狀態
+              this.personaldata = res.data[0];
+            })
+            .catch((error) => (this.personaldata = res.data));
+        }
+        //以上讀取會員資料
         window.onresize = () => {
           return (() => {
             this.screenWidth = document.body.clientWidth;
-          })()
-        }
+          })();
+        };
       },
       watch: {
         screenWidth: {
           handler: function (newval, oldval) {
             if (newval >= 1200) {
-              $(`header>.headerWrap>nav`).removeClass('navPostion');
+              $(`header>.headerWrap>nav`).removeClass("navPostion");
+              $(`header>.headerWrap>nav li:first-child`).css(
+                "display",
+                "none"
+              );
+              $(`header>.headerWrap>.member`).css("display", "flex");
+              $(`header>.headerWrap>.logout`).css("display", "block");
             } else if (newval < 1200) {
-              $(`header>.headerWrap>nav`).addClass('navPostion');
+              $(`header>.headerWrap>nav`).addClass("navPostion");
+              $(`header>.headerWrap>nav li:first-child`).css(
+                "display",
+                "flex"
+              );
+              $(`header>.headerWrap>.member`).css("display", "none");
+              $(`header>.headerWrap>.logout`).css("display", "none");
             }
           },
           immediate: true,
-        }
+        },
       },
       methods: {
         hb() {
           let place = $("nav").css("right");
           if (place < "0px") {
-            $("nav").animate({
-              right: 0,
-            }, 1200, 'easeInBounce')
+            $("nav").animate(
+              {
+                right: 0,
+              },
+              1200,
+              "easeInBounce"
+            );
           } else {
-            $("nav").animate({
-              right: "-30%",
-            }, 1200, 'easeOutBounce')
+            $("nav").animate(
+              {
+                right: "-30%",
+              },
+              1200,
+              "easeOutBounce"
+            );
           }
-        }
+        },
+        logout() {
+          localStorage.removeItem("personallogin");
+          location.href = "mainpage.html";
+        },
       },
     });
-
     Vue.use(VueMask.VueMaskPlugin);
     new Vue({
       el: '#app',
@@ -197,37 +256,37 @@
           orderInsert: '',
           memberIInfo: '',
           shopItem: {},
-          personalUpdate:{},
-          dateTime :null,
+          personalUpdate: {},
+          dateTime: null,
         }
       },
       created() {
-          let array = JSON.parse(localStorage.getItem("personallogin"));
-          axios
-            .post("phps/memberExist.php", { 
-              mem_no: array[0].mem_no,
-              mem_id: array[0].mem_id,
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            })
-            .then((res) => {
-              if (res.data == "error") {
-                alert("會員資料錯誤");
-              } else {
-                this.orderInsert = res.data
-              }
-            })
-            .catch((error) => console.log(error));
-        },
-        mounted() {
+        let array = JSON.parse(localStorage.getItem("personallogin"));
+        axios
+          .post("phps/memberExist.php", {
+            mem_no: array[0].mem_no,
+            mem_id: array[0].mem_id,
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          })
+          .then((res) => {
+            if (res.data == "error") {
+              alert("會員資料錯誤");
+            } else {
+              this.orderInsert = res.data
+            }
+          })
+          .catch((error) => console.log(error));
+      },
+      mounted() {
         //products-orders ---
         let array = JSON.parse(localStorage.getItem("personallogin"));
         let shop = JSON.parse(localStorage.getItem("productno"));
-        let person = JSON.parse(localStorage.getItem("personal")); 
+        let person = JSON.parse(localStorage.getItem("personal"));
         this.shopItem = shop;
-        this.memberIInfo = array;  
-        this.personalUpdate = person;  
+        this.memberIInfo = array;
+        this.personalUpdate = person;
         // console.log(this.memberIInfo)
       },
       methods: {
@@ -263,7 +322,7 @@
             this.cardid = '';
             this.carddate = '';
             this.cardsafe = '';
-          } else if (this.memberIInfo == null){
+          } else if (this.memberIInfo == null) {
             alert("請加入會員");
             location.href = "memberAdd.html";
           } else {
@@ -290,64 +349,64 @@
             ":" +
             m.getSeconds();
 
-            //種類判斷
-            // for (let i = 1; i < this.num + 1; i++) 
-          if(this.shopItem[0][0] == '感情'){
-            this.shopItem[0][0]=1;
-          }else if(this.shopItem[0][0] == '事業'){
-            this.shopItem[0][0]=2;
-          }else if(this.shopItem[0][0] == '財富'){
-            this.shopItem[0][0]=3;
-          }else if(this.shopItem[0][0] == '平安'){
-            this.shopItem[0][0]=4; 
-          }else if(this.shopItem[0][0] == '健康'){
-            this.shopItem[0][0]=5; 
-          }else{
-            this.shopItem[0][0]=6;
+          //種類判斷
+          // for (let i = 1; i < this.num + 1; i++) 
+          if (this.shopItem[0][0] == '感情') {
+            this.shopItem[0][0] = 1;
+          } else if (this.shopItem[0][0] == '事業') {
+            this.shopItem[0][0] = 2;
+          } else if (this.shopItem[0][0] == '財富') {
+            this.shopItem[0][0] = 3;
+          } else if (this.shopItem[0][0] == '平安') {
+            this.shopItem[0][0] = 4;
+          } else if (this.shopItem[0][0] == '健康') {
+            this.shopItem[0][0] = 5;
+          } else {
+            this.shopItem[0][0] = 6;
           };
 
-            //生肖判斷
-             // for (let i = 1; i < this.num + 1; i++) 
-          if( this.shopItem[0][1] == '鼠'){
-            this.shopItem[0][1]=1;
-          }else if( this.shopItem[0][1] == '牛'){
-            this.shopItem[0][1]=2;
-          }else if( this.shopItem[0][1] == '虎'){
-            this.shopItem[0][1]=3;
-          }else if( this.shopItem[0][1] == '兔'){
-            this.shopItem[0][1]=4;
-          }else if( this.shopItem[0][1] == '龍'){
-            this.shopItem[0][1]=5;
-          }else if( this.shopItem[0][1] == '蛇'){
-            this.shopItem[0][1]=6;
-          }else if( this.shopItem[0][1] == '馬'){
-            this.shopItem[0][1]=7;
-          }else if( this.shopItem[0][1] == '羊'){
-            this.shopItem[0][1]=8;
-          }else if( this.shopItem[0][1] == '猴'){
-            this.shopItem[0][1]=9;
-          }else if( this.shopItem[0][1] == '雞'){
-            this.shopItem[0][1]=10;
-          }else if( this.shopItem[0][1] == '狗'){
-            this.shopItem[0][1]=11;
-          }else{
-            this.shopItem[0][0]=12;
+          //生肖判斷
+          // for (let i = 1; i < this.num + 1; i++) 
+          if (this.shopItem[0][1] == '鼠') {
+            this.shopItem[0][1] = 1;
+          } else if (this.shopItem[0][1] == '牛') {
+            this.shopItem[0][1] = 2;
+          } else if (this.shopItem[0][1] == '虎') {
+            this.shopItem[0][1] = 3;
+          } else if (this.shopItem[0][1] == '兔') {
+            this.shopItem[0][1] = 4;
+          } else if (this.shopItem[0][1] == '龍') {
+            this.shopItem[0][1] = 5;
+          } else if (this.shopItem[0][1] == '蛇') {
+            this.shopItem[0][1] = 6;
+          } else if (this.shopItem[0][1] == '馬') {
+            this.shopItem[0][1] = 7;
+          } else if (this.shopItem[0][1] == '羊') {
+            this.shopItem[0][1] = 8;
+          } else if (this.shopItem[0][1] == '猴') {
+            this.shopItem[0][1] = 9;
+          } else if (this.shopItem[0][1] == '雞') {
+            this.shopItem[0][1] = 10;
+          } else if (this.shopItem[0][1] == '狗') {
+            this.shopItem[0][1] = 11;
+          } else {
+            this.shopItem[0][0] = 12;
           };
-          
-          axios.post('./phps/ordersInsert.php',{
-          mem_no : this.memberIInfo[0].mem_no,
-          type_no : this.shopItem[0][0],
-          zodiac_no : this.shopItem[0][1],
-          word : this.shopItem[0][2],
-          amulet_amount : this.shopItem[0][3],
-          recipient : this.personalUpdate[0],
-          orders_phone : this.personalUpdate[1],
-          orders_email : this.personalUpdate[2],
-          orders_add : this.personalUpdate[3],
-          orders_date: this.dateTime,
+
+          axios.post('./phps/ordersInsert.php', {
+            mem_no: this.memberIInfo[0].mem_no,
+            type_no: this.shopItem[0][0],
+            zodiac_no: this.shopItem[0][1],
+            word: this.shopItem[0][2],
+            amulet_amount: this.shopItem[0][3],
+            recipient: this.personalUpdate[0],
+            orders_phone: this.personalUpdate[1],
+            orders_email: this.personalUpdate[2],
+            orders_add: this.personalUpdate[3],
+            orders_date: this.dateTime,
           })
-          .then( (response) => console.log(response))
-          .catch( (error) => console.log(error))
+            .then((response) => console.log(response))
+            .catch((error) => console.log(error))
         },
 
       },

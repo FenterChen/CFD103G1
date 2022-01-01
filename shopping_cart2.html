@@ -12,7 +12,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
 </head>
 
 <body>
@@ -20,11 +20,19 @@
     <div class="headerWrap">
       <div class="logo">
         <a href="mainpage.html">
-          <img src="img/header/BOBIO_logo.svg">
+          <img src="img/header/BOBIO_logo.svg" />
         </a>
       </div>
       <nav class="navPostion">
         <ul>
+          <li>
+            <div class="member">
+              <a href="memberCenter.html"><img src="img/header/member.svg" /></a>
+            </div>
+            <div class="logout">
+              <span v-text="losituation" @click="logout"></span>
+            </div>
+          </li>
           <li>
             <a href="pray.html">立即祈願</a>
           </li>
@@ -42,10 +50,17 @@
           </li>
         </ul>
       </nav>
-      <div class="cart"><a href="shopping_cart1.html"><img src="img/header/cart.svg"></a></div>
-      <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
+      <div class="cart">
+        <a href="shopping_cart1.html"><img src="img/header/cart.svg" /></a>
+      </div>
+      <div class="member">
+        <a href="memberCenter.html"><img src="img/header/member.svg" /></a>
+      </div>
+      <div class="logout">
+        <span v-text="losituation" @click="logout"></span>
+      </div>
       <div class="outerHb">
-        <div class="hb" id="hb">
+        <div class="hb" @click="hb">
           <span></span>
           <span></span>
           <span></span>
@@ -142,45 +157,90 @@
   <script>
     //headerVue
     new Vue({
-      el: '#mainheader',
+      el: "#mainheader",
       data() {
         return {
           screenWidth: null,
-        }
+          personaldata: [],
+          losituation: "",
+        };
       },
-      mounted() {
-        this.screenWidth = document.body.clientWidth;
+      created() {
+        this.screenWidth = document.body.clientWidth; //營幕寬
+        //以下讀取會員資料
+        let array = JSON.parse(localStorage.getItem("personallogin")); //抓localStorage存入變數
+        this.losituation = null; //登入登出狀態
+        if (array != null) {
+          axios
+            .post("phps/memberExbody.php", {
+              mem_no: array[0].mem_no,
+              mem_id: array[0].mem_id,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              this.losituation = "登出"; //登入登出狀態
+              this.personaldata = res.data[0];
+            })
+            .catch((error) => (this.personaldata = res.data));
+        }
+        //以上讀取會員資料
         window.onresize = () => {
           return (() => {
             this.screenWidth = document.body.clientWidth;
-          })()
-        }
+          })();
+        };
       },
       watch: {
         screenWidth: {
           handler: function (newval, oldval) {
             if (newval >= 1200) {
-              $(`header>.headerWrap>nav`).removeClass('navPostion');
+              $(`header>.headerWrap>nav`).removeClass("navPostion");
+              $(`header>.headerWrap>nav li:first-child`).css(
+                "display",
+                "none"
+              );
+              $(`header>.headerWrap>.member`).css("display", "flex");
+              $(`header>.headerWrap>.logout`).css("display", "block");
             } else if (newval < 1200) {
-              $(`header>.headerWrap>nav`).addClass('navPostion');
+              $(`header>.headerWrap>nav`).addClass("navPostion");
+              $(`header>.headerWrap>nav li:first-child`).css(
+                "display",
+                "flex"
+              );
+              $(`header>.headerWrap>.member`).css("display", "none");
+              $(`header>.headerWrap>.logout`).css("display", "none");
             }
           },
           immediate: true,
-        }
+        },
       },
       methods: {
         hb() {
           let place = $("nav").css("right");
           if (place < "0px") {
-            $("nav").animate({
-              right: 0,
-            }, 1200, 'easeInBounce')
+            $("nav").animate(
+              {
+                right: 0,
+              },
+              1200,
+              "easeInBounce"
+            );
           } else {
-            $("nav").animate({
-              right: "-30%",
-            }, 1200, 'easeOutBounce')
+            $("nav").animate(
+              {
+                right: "-30%",
+              },
+              1200,
+              "easeOutBounce"
+            );
           }
-        }
+        },
+        logout() {
+          localStorage.removeItem("personallogin");
+          location.href = "mainpage.html";
+        },
       },
     });
 
@@ -192,7 +252,7 @@
           phone: '',
           email: '',
           address: '',
-          personalInfos:[],
+          personalInfos: [],
         };
       },
       methods: {
@@ -202,7 +262,7 @@
             this.personalInfos.push(this.phone);
             this.personalInfos.push(this.email);
             this.personalInfos.push(this.address);
-            localStorage.setItem("personal",JSON.stringify(this.personalInfos));
+            localStorage.setItem("personal", JSON.stringify(this.personalInfos));
             location.href = "shopping_cart3.html";
           }
         }
