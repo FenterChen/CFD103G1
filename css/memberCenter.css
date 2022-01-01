@@ -147,6 +147,8 @@ section {
   .boxRec2,
   .boxRec3 {
     max-width: 768px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
   }
 }
 

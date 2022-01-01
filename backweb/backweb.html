@@ -1869,7 +1869,7 @@
       created() {
         //donate-money
         axios
-          .get("../phps/pomesRecorder.php")
+          .post("./phps/pomes_recorder-get.php")
           .then((res) => (this.pomesRecorderList = res.data));
       },
     });

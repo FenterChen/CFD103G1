@@ -1,162 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="./css/memberFix.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
+    <title>BOBIO|會員資料修改</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/header.css" />
-  <link rel="stylesheet" href="css/footer.css" />
-  <link rel="stylesheet" href="./css/memberFix.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
-  <title>BOBIO|會員資料修改</title>
-</head>
-
-<body>
-  <header id="mainheader">
-    <div class="headerWrap">
-      <div class="logo">
-        <a href="mainpage.html">
-          <img src="img/header/BOBIO_logo.svg">
-        </a>
-      </div>
-      <nav class="navPostion">
-        <ul>
-          <li>
-            <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
-            <div class="logout"><span v-text="losituation" @click="logout"></span></div>
-          </li>
-          <li>
-            <a href="pray.html">立即祈願</a>
-          </li>
-          <li>
-            <a href="onlinepomes.html">線上求籤</a>
-          </li>
-          <li>
-            <a href="amulet.html">平安符願</a>
-          </li>
-          <li>
-            <a href="money.html">立即結緣</a>
-          </li>
-          <li>
-            <a href="Abouts.html">關於我們</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="cart"><a href="shopping_cart1.html"><img src="img/header/cart.svg"></a></div>
-      <div class="member"><a href="memberAdd.html"><img src="img/header/member.svg"></a></div>
-      <div class="logout"><span v-text="losituation" @click="logout"></span></div>
-      <div class="outerHb">
-        <div class="hb" @click="hb">
-          <span></span>
-          <span></span>
-          <span></span>
+  <body>
+    <header id="mainheader">
+      <div class="headerWrap">
+        <div class="logo">
+          <a href="mainpage.html">
+            <img src="img/header/BOBIO_logo.svg" />
+          </a>
         </div>
-      </div>
-    </div>
-  </header>
-  <section id="app">
-
-    <div class="containerId" v-if="showId =='showId1'">
-      <div class="boxContainer">
-        <div class="boxMember">
-          <a class="textId bold"> 會員資料</a>
-          <a class="textFixpwd" @click="showId ='showId2'">密碼修改</a>
-        </div>
-        <div class="boxData">
-          <div class="textName">
-            <span>姓名</span>
-            <input type="text" v-model="personaldata.mem_name" />
-          </div>
-          <div class="textPhone">
-            <span>手機</span>
-            <input type="number" v-model="personaldata.phone" />
-          </div>
-          <div class="textEmail">
-            <span>信箱</span>
-            <input type="email" v-model="personaldata.email" />
-          </div>
-        </div>
-        <div class="boxBtn">
-          <button class="btnSave" data-hover=" 儲存變更" @click="save">儲存變更</button>
-          <button class="btnCancel" data-hover=" 取消" @click="cancell">取消</button>
-        </div>
-      </div>
-    </div>
-    <div class="containerId2" v-if="showId =='showId2'">
-      <div class="boxContainer2 ">
-        <div class="boxMember">
-          <a class="textId textId2" @click="showId ='showId1'">會員資料</a>
-          <a class="textFixpwd textFixpwd2">密碼修改</a>
-        </div>
-        <div class="boxData">
-          <div class="textPwd">
-            <span>目前密碼</span>
-            <input type="password" v-model="cpsw" />
-          </div>
-          <div class="textPwd">
-            <span>修改密碼</span>
-            <input type="password" v-model="fixpsw" />
-          </div>
-          <div class="textPwd">
-            <span>確認密碼</span>
-            <input type="password" v-model="confrimpsw" />
-          </div>
-        </div>
-        <div class="boxBtn">
-          <button class="btnSave" data-hover=" 儲存變更" @click="savepsw">儲存變更</button>
-          <button class="btnCancel" data-hover=" 取消" @click="recancell">取消</button>
-        </div>
-      </div>
-    </div>
-    <div class="wrapp">
-      <h2>個人紀錄</h2>
-      <!-- 第一組祈願 -->
-      <div class="boxRec1" v-if="show =='showbox1'">
-        <div class="boxMem">
-          <button class="mPray mBg bold">祈願</button>
-          <button class="mPomes" @click="show ='showbox2'">求籤</button>
-          <button class="mOrder" @click="show ='showbox3'">訂單</button>
-        </div>
-        <praydata></praydata>
-      </div>
-      <!-- 第二組求籤 -->
-      <div class="boxRec2" v-if="show =='showbox2'">
-        <div class="boxMem">
-          <button class="mPray" @click="show ='showbox1'">祈願</button>
-          <button class="mPomes mBg bold">求籤</button>
-          <button class="mOrder" @click="show ='showbox3'">訂單</button>
-        </div>
-        <pomesdata></pomesdata>
-      </div>
-
-      <!-- 第三組 -->
-      <div class="boxRec3" v-if="show =='showbox3'">
-        <div class="boxMem">
-          <button class="mPray" @click="show ='showbox1'">祈願</button>
-          <button class="mPomes" @click="show ='showbox2'">求籤</button>
-          <button class="mOrder mBg bold">訂單</button>
-        </div>
-
-        <orderdata></orderdata>
-
-      </div>
-    </div>
-  </section>
-  <footer>
-    <div class="footer-wrap">
-      <div class="footer-logo">
-        <img src="./img/header/BOBIO_logo.svg" alt="bobio" />
-      </div>
-      <div class="footer-slog">
-        <span>用BOBIO就有保佑</span>
-      </div>
-      <div class="footer-info">
-        <div class="list">
+        <nav class="navPostion">
           <ul>
+            <li>
+              <div class="member">
+                <a href="memberAdd.html"><img src="img/header/member.svg" /></a>
+              </div>
+              <div class="logout">
+                <span v-text="losituation" @click="logout"></span>
+              </div>
+            </li>
             <li>
               <a href="pray.html">立即祈願</a>
             </li>
@@ -173,150 +48,312 @@
               <a href="Abouts.html">關於我們</a>
             </li>
           </ul>
+        </nav>
+        <div class="cart">
+          <a href="shopping_cart1.html"><img src="img/header/cart.svg" /></a>
         </div>
-        <div class="conn">
-          <p>
-            bobio@temple.com<br />
-            02-1090-1090
-          </p>
-          <div class="info-icon">
-            <a href="#"><img src="./img/footer/Group 415.svg" alt="facebook" /></a>
-            <a href="#"><img src="./img/footer/Group 295.svg" alt="instagram" /></a>
-            <a href="#"><img src="./img/footer/Group 296.svg" alt="youtube" /></a>
-
+        <div class="member">
+          <a href="memberAdd.html"><img src="img/header/member.svg" /></a>
+        </div>
+        <div class="logout">
+          <span v-text="losituation" @click="logout"></span>
+        </div>
+        <div class="outerHb">
+          <div class="hb" @click="hb">
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
       </div>
-    </div>
-    <div class="copyright">
-      <p>
-        Copyright © 2021Bobio
-        本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
-      </p>
-    </div>
-  </footer>
+    </header>
+    <section id="app">
+      <div class="containerId" v-if="showId =='showId1'">
+        <div class="boxContainer">
+          <div class="boxMember">
+            <a class="textId bold"> 會員資料</a>
+            <a class="textFixpwd" @click="showId ='showId2'">密碼修改</a>
+          </div>
+          <div class="boxData">
+            <div class="textName">
+              <span>姓名</span>
+              <input type="text" v-model="personaldata.mem_name" />
+            </div>
+            <div class="textPhone">
+              <span>手機</span>
+              <input type="number" v-model="personaldata.phone" />
+            </div>
+            <div class="textEmail">
+              <span>信箱</span>
+              <input type="email" v-model="personaldata.email" />
+            </div>
+          </div>
+          <div class="boxBtn">
+            <button class="btnSave" data-hover=" 儲存變更" @click="save">
+              儲存變更
+            </button>
+            <button class="btnCancel" data-hover=" 取消" @click="cancell">
+              取消
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="containerId2" v-if="showId =='showId2'">
+        <div class="boxContainer2">
+          <div class="boxMember">
+            <a class="textId textId2" @click="showId ='showId1'">會員資料</a>
+            <a class="textFixpwd textFixpwd2">密碼修改</a>
+          </div>
+          <div class="boxData">
+            <div class="textPwd">
+              <span>目前密碼</span>
+              <input type="password" v-model="cpsw" />
+            </div>
+            <div class="textPwd">
+              <span>修改密碼</span>
+              <input type="password" v-model="fixpsw" />
+            </div>
+            <div class="textPwd">
+              <span>確認密碼</span>
+              <input type="password" v-model="confrimpsw" />
+            </div>
+          </div>
+          <div class="boxBtn">
+            <button class="btnSave" data-hover=" 儲存變更" @click="savepsw">
+              儲存變更
+            </button>
+            <button class="btnCancel" data-hover=" 取消" @click="recancell">
+              取消
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="wrapp">
+        <h2>個人紀錄</h2>
+        <!-- 第一組祈願 -->
+        <div class="boxRec1" v-if="show =='showbox1'">
+          <div class="boxMem">
+            <button class="mPray mBg bold">祈願</button>
+            <button class="mPomes" @click="show ='showbox2'">求籤</button>
+            <button class="mOrder" @click="show ='showbox3'">訂單</button>
+          </div>
+          <praydata></praydata>
+        </div>
+        <!-- 第二組求籤 -->
+        <div class="boxRec2" v-if="show =='showbox2'">
+          <div class="boxMem">
+            <button class="mPray" @click="show ='showbox1'">祈願</button>
+            <button class="mPomes mBg bold">求籤</button>
+            <button class="mOrder" @click="show ='showbox3'">訂單</button>
+          </div>
+          <pomesdata></pomesdata>
+        </div>
 
+        <!-- 第三組 -->
+        <div class="boxRec3" v-if="show =='showbox3'">
+          <div class="boxMem">
+            <button class="mPray" @click="show ='showbox1'">祈願</button>
+            <button class="mPomes" @click="show ='showbox2'">求籤</button>
+            <button class="mOrder mBg bold">訂單</button>
+          </div>
 
-  <script>
-    //header 
-    new Vue({
-      el: '#mainheader',
-      data() {
-        return {
-          screenWidth: null,
-          personaldata: [],
-          losituation: "",
-        }
-      },
-      created() {
-        this.screenWidth = document.body.clientWidth;//營幕寬
-        //以下讀取會員資料
-        let array = JSON.parse(localStorage.getItem('personallogin'));//抓localStorage存入變數
-        this.losituation = null;//登入登出狀態
-        if (array != null) {
-          axios.post('phps/memberExbody.php', {
-            mem_no: array[0].mem_no,
-            mem_id: array[0].mem_id,
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          }).then((res) => {
-            if (res) {
-              this.losituation = "登出";//登入登出狀態
-              this.personaldata = res.data[0];
-            }
-          }).catch(error => this.personaldata = res.data);
-        } else {
-          location.href = "mainpage.html";
-        }
-        //以上讀取會員資料
-        window.onresize = () => {
-          return (() => {
-            this.screenWidth = document.body.clientWidth;
-          })()
-        }
-      },
-      watch: {
-        screenWidth: {
-          handler: function (newval, oldval) {
-            if (newval >= 1200) {
-              $(`header>.headerWrap>nav`).removeClass('navPostion');
-              $(`header>.headerWrap>nav li:first-child`).css('display', 'none');
-              $(`header>.headerWrap>.member`).css('display', 'flex');
-              $(`header>.headerWrap>.logout`).css('display', 'block');
-            } else if (newval < 1200) {
-              $(`header>.headerWrap>nav`).addClass('navPostion');
-              $(`header>.headerWrap>nav li:first-child`).css('display', 'flex');
-              $(`header>.headerWrap>.member`).css('display', 'none');
-              $(`header>.headerWrap>.logout`).css('display', 'none');
+          <orderdata></orderdata>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="footer-wrap">
+        <div class="footer-logo">
+          <img src="./img/header/BOBIO_logo.svg" alt="bobio" />
+        </div>
+        <div class="footer-slog">
+          <span>用BOBIO就有保佑</span>
+        </div>
+        <div class="footer-info">
+          <div class="list">
+            <ul>
+              <li>
+                <a href="pray.html">立即祈願</a>
+              </li>
+              <li>
+                <a href="onlinepomes.html">線上求籤</a>
+              </li>
+              <li>
+                <a href="amulet.html">平安符願</a>
+              </li>
+              <li>
+                <a href="money.html">立即結緣</a>
+              </li>
+              <li>
+                <a href="Abouts.html">關於我們</a>
+              </li>
+            </ul>
+          </div>
+          <div class="conn">
+            <p>
+              bobio@temple.com<br />
+              02-1090-1090
+            </p>
+            <div class="info-icon">
+              <a href="#"
+                ><img src="./img/footer/Group 415.svg" alt="facebook"
+              /></a>
+              <a href="#"
+                ><img src="./img/footer/Group 295.svg" alt="instagram"
+              /></a>
+              <a href="#"
+                ><img src="./img/footer/Group 296.svg" alt="youtube"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>
+          Copyright © 2021Bobio
+          本網站為緯育TibaMe_前端設計工程師班第71期學員專題成果作品，本平台僅供學習、展示之用。若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。若有侵權疑慮，您可以私訊[緯育TibaMe]，後續會由專人協助處理。
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      //header
+      new Vue({
+        el: "#mainheader",
+        data() {
+          return {
+            screenWidth: null,
+            personaldata: [],
+            losituation: "",
+          };
+        },
+        created() {
+          this.screenWidth = document.body.clientWidth; //營幕寬
+          //以下讀取會員資料
+          let array = JSON.parse(localStorage.getItem("personallogin")); //抓localStorage存入變數
+          this.losituation = null; //登入登出狀態
+          if (array != null) {
+            axios
+              .post("phps/memberExbody.php", {
+                mem_no: array[0].mem_no,
+                mem_id: array[0].mem_id,
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then((res) => {
+                if (res) {
+                  this.losituation = "登出"; //登入登出狀態
+                  this.personaldata = res.data[0];
+                }
+              })
+              .catch((error) => (this.personaldata = res.data));
+          } else {
+            location.href = "mainpage.html";
+          }
+          //以上讀取會員資料
+          window.onresize = () => {
+            return (() => {
+              this.screenWidth = document.body.clientWidth;
+            })();
+          };
+        },
+        watch: {
+          screenWidth: {
+            handler: function (newval, oldval) {
+              if (newval >= 1200) {
+                $(`header>.headerWrap>nav`).removeClass("navPostion");
+                $(`header>.headerWrap>nav li:first-child`).css(
+                  "display",
+                  "none"
+                );
+                $(`header>.headerWrap>.member`).css("display", "flex");
+                $(`header>.headerWrap>.logout`).css("display", "block");
+              } else if (newval < 1200) {
+                $(`header>.headerWrap>nav`).addClass("navPostion");
+                $(`header>.headerWrap>nav li:first-child`).css(
+                  "display",
+                  "flex"
+                );
+                $(`header>.headerWrap>.member`).css("display", "none");
+                $(`header>.headerWrap>.logout`).css("display", "none");
+              }
+            },
+            immediate: true,
+          },
+        },
+        methods: {
+          hb() {
+            let place = $("nav").css("right");
+            if (place < "0px") {
+              $("nav").animate(
+                {
+                  right: 0,
+                },
+                1200,
+                "easeInBounce"
+              );
+            } else {
+              $("nav").animate(
+                {
+                  right: "-30%",
+                },
+                1200,
+                "easeOutBounce"
+              );
             }
           },
-          immediate: true,
-        }
-      },
-      methods: {
-        hb() {
-          let place = $("nav").css("right");
-          if (place < "0px") {
-            $("nav").animate({
-              right: 0,
-            }, 1200, 'easeInBounce')
-          } else {
-            $("nav").animate({
-              right: "-30%",
-            }, 1200, 'easeOutBounce')
-          }
+          logout() {
+            localStorage.removeItem("personallogin");
+            location.href = "mainpage.html";
+          },
         },
-        logout() {
-          localStorage.removeItem('personallogin');
-          location.href = "mainpage.html";
+      });
+
+      var Componentprayrecord = Vue.component("praydata", {
+        data() {
+          return {
+            pray: [],
+            type: {
+              1: "感情",
+              2: "感情",
+              3: "感情",
+              4: "健康",
+              5: "健康",
+              6: "健康",
+              7: "平安",
+              8: "平安",
+              9: "平安",
+              10: "學業",
+              11: "學業",
+              12: "學業",
+              13: "財富",
+              14: "財富",
+              15: "財富",
+              16: "事業",
+              17: "事業",
+              18: "事業",
+            },
+          };
         },
-      },
-    });
-
-    var Componentprayrecord = Vue.component('praydata', {
-      data() {
-        return {
-          pray: [],
-          type: {
-            1: "感情",
-            2: "感情",
-            3: "感情",
-            4: "健康",
-            5: "健康",
-            6: "健康",
-            7: "平安",
-            8: "平安",
-            9: "平安",
-            10: "學業",
-            11: "學業",
-            12: "學業",
-            13: "財富",
-            14: "財富",
-            15: "財富",
-            16: "事業",
-            17: "事業",
-            18: "事業",
-          }
-        }
-      },
-      created() {
-        let array = JSON.parse(localStorage.getItem('personallogin'));
-        axios.post('phps/prayrecord.php', {
-          mem_no: array[0].mem_no,
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        }).then((res) => {
-          if (res.data == "erro") {
-
-          } else {
-            this.pray = res.data;
-          }
-        }).catch(error => console.log(error));
-      },
-      template:
-        `
+        created() {
+          let array = JSON.parse(localStorage.getItem("personallogin"));
+          axios
+            .post("phps/prayrecord.php", {
+              mem_no: array[0].mem_no,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              if (res.data == "erro") {
+              } else {
+                this.pray = res.data;
+              }
+            })
+            .catch((error) => console.log(error));
+        },
+        template: `
         <div class="boxItem">
           <table>
             <tr v-for="(item,index) in pray">
@@ -332,48 +369,48 @@
             <img src="img/mainpage/arrow.svg" alt="箭頭"  @click="show ='showbox2'"/>
           </div>
         </div>
-        `
-    });
+        `,
+      });
 
-    var Componentpomes = Vue.component("pomesdata", {
-      data() {
-        return {
-          pomes: [],
-          apear: false,
-        };
-      },
-      methods: {
-        // boxshow() {
-        //   this.apear = true;
-        // },
-        // close() {
-        //   this.apear = false;
-        // },
-      },
-      computed: {
-        pomesImg() {
-          return this.pomes[0].pomes_no;
+      var Componentpomes = Vue.component("pomesdata", {
+        data() {
+          return {
+            pomes: [],
+            apear: false,
+          };
         },
-      },
-      created() {
-        let array = JSON.parse(localStorage.getItem("personallogin"));
-        axios
-          .post("phps/pomesrecord.php", {
-            mem_no: array[0].mem_no,
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          })
-          .then((res) => {
-            if (res.data == "erro") {
-            } else {
-              this.pomes = res.data;
-            }
-          })
-          .catch((error) => console.log(error));
-      },
+        methods: {
+          // boxshow() {
+          //   this.apear = true;
+          // },
+          // close() {
+          //   this.apear = false;
+          // },
+        },
+        computed: {
+          pomesImg() {
+            return this.pomes[0].pomes_no;
+          },
+        },
+        created() {
+          let array = JSON.parse(localStorage.getItem("personallogin"));
+          axios
+            .post("phps/pomesrecord.php", {
+              mem_no: array[0].mem_no,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              if (res.data == "erro") {
+              } else {
+                this.pomes = res.data;
+              }
+            })
+            .catch((error) => console.log(error));
+        },
 
-      template: `
+        template: `
         <div class="boxItem">
           <table>
             <tr v-for="(item,index) in pomes">
@@ -401,76 +438,76 @@
         </div>
         </div>
         `,
-    });
+      });
 
+      var Componentorderdata = Vue.component("orderdata", {
+        data() {
+          return {
+            orderDetails: [],
+          };
+        },
+        created() {
+          let array = JSON.parse(localStorage.getItem("personallogin"));
+          axios
+            .post("./phps/orderslist.php", {
+              mem_no: array[0].mem_no,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((res) => {
+              if (res.data == "error") {
+              } else {
+                //種類判斷
 
-    var Componentorderdata = Vue.component('orderdata', {
-      data() {
-        return {
-          orderDetails: [],
-        }
-      },
-      created() {
-        let array = JSON.parse(localStorage.getItem('personallogin'));
-        axios.post('./phps/orderslist.php', {
-          mem_no: array[0].mem_no,
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        }).then((res) => {
-          if (res.data == "error") {
-          } else {
-            //種類判斷
+                if (res.data[0].type_no == 1) {
+                  res.data[0].type_no = "感情";
+                } else if (res.data[0].type_no == 2) {
+                  res.data[0].type_no = "事業";
+                } else if (res.data[0].type_no == 3) {
+                  res.data[0].type_no = "財富";
+                } else if (res.data[0].type_no == 4) {
+                  res.data[0].type_no = "平安";
+                } else if (res.data[0].type_no == 5) {
+                  res.data[0].type_no = "健康";
+                } else {
+                  res.data[0].type_no = "學業";
+                }
 
-            if (res.data[0].type_no == 1) {
-              res.data[0].type_no = '感情';
-            } else if (res.data[0].type_no == 2) {
-              res.data[0].type_no = '事業';
-            } else if (res.data[0].type_no == 3) {
-              res.data[0].type_no = '財富';
-            } else if (res.data[0].type_no == 4) {
-              res.data[0].type_no = '平安';
-            } else if (res.data[0].type_no == 5) {
-              res.data[0].type_no = '健康';
-            } else {
-              res.data[0].type_no = '學業';
-            };
+                // 生肖判斷
 
-            // 生肖判斷
+                if (res.data[0].zodiac_no == 1) {
+                  res.data[0].zodiac_no = "鼠";
+                } else if (res.data[0].zodiac_no == 2) {
+                  res.data[0].zodiac_no = "牛";
+                } else if (res.data[0].zodiac_no == 3) {
+                  res.data[0].zodiac_no = "虎";
+                } else if (res.data[0].zodiac_no == 4) {
+                  res.data[0].zodiac_no = "兔";
+                } else if (res.data[0].zodiac_no == 5) {
+                  res.data[0].zodiac_no = "龍";
+                } else if (res.data[0].zodiac_no == 6) {
+                  res.data[0].zodiac_no = "蛇";
+                } else if (res.data[0].zodiac_no == 7) {
+                  res.data[0].zodiac_no = "馬";
+                } else if (res.data[0].zodiac_no == 8) {
+                  res.data[0].zodiac_no = "羊";
+                } else if (res.data[0].zodiac_no == 9) {
+                  res.data[0].zodiac_no = "猴";
+                } else if (res.data[0].zodiac_no == 10) {
+                  res.data[0].zodiac_no = "雞";
+                } else if (res.data[0].zodiac_no == 11) {
+                  res.data[0].zodiac_no = "狗";
+                } else {
+                  res.data[0].zodiac_no = "豬";
+                }
 
-            if (res.data[0].zodiac_no == 1) {
-              res.data[0].zodiac_no = '鼠';
-            } else if (res.data[0].zodiac_no == 2) {
-              res.data[0].zodiac_no = '牛';
-            } else if (res.data[0].zodiac_no == 3) {
-              res.data[0].zodiac_no = '虎';
-            } else if (res.data[0].zodiac_no == 4) {
-              res.data[0].zodiac_no = '兔';
-            } else if (res.data[0].zodiac_no == 5) {
-              res.data[0].zodiac_no = '龍';
-            } else if (res.data[0].zodiac_no == 6) {
-              res.data[0].zodiac_no = '蛇';
-            } else if (res.data[0].zodiac_no == 7) {
-              res.data[0].zodiac_no = '馬';
-            } else if (res.data[0].zodiac_no == 8) {
-              res.data[0].zodiac_no = '羊';
-            } else if (res.data[0].zodiac_no == 9) {
-              res.data[0].zodiac_no = '猴';
-            } else if (res.data[0].zodiac_no == 10) {
-              res.data[0].zodiac_no = '雞';
-            } else if (res.data[0].zodiac_no == 11) {
-              res.data[0].zodiac_no = '狗';
-            } else {
-              res.data[0].zodiac_no = '豬';
-            };
-
-            this.orderDetails = res.data;
-          }
-        }).catch(error => console.log(error));
-
-      },
-      template:
-        `
+                this.orderDetails = res.data;
+              }
+            })
+            .catch((error) => console.log(error));
+        },
+        template: `
         <div class="boxItem">
             <table>
               <tr v-for="item in orderDetails">
@@ -496,101 +533,100 @@
             </div>
         </div>
 
-         `
-    });
+         `,
+      });
 
-    new Vue({
-      el: '#app',
-      data() {
-        return {
-          cpsw: '',
-          fixpsw: '',
-          confrimpsw: '',
-          personaldata: {},
-          show: "showbox1",
-          showId: 'showId1',
-        }
-      },
-      components: {
-        'component-prayrecorder': Componentprayrecord,
-        'component-orderdata': Componentorderdata,
-        "component-pomes": Componentpomes,
-      },
-      created() {
-        let array = JSON.parse(localStorage.getItem('personallogin'));
-        axios.post('phps/memberExist.php', {
-          mem_no: array[0].mem_no,
-          mem_id: array[0].mem_id,
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        }).then((res) => {
-          if (res.data == "erro") {
-            location.href = "memeberAdd.html";
-          } else {
-            this.personaldata = res.data[0];
-          }
-        }).catch(error => console.log(error));
-      },
-      methods: {
-        save() {
-          axios.post('phps/memberUpdate.php', {
-            mem_no: this.personaldata.mem_no,
-            mem_name: this.personaldata.mem_name,
-            email: this.personaldata.email,
-            phone: this.personaldata.phone,
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          }).then((res) => {
-            alert("會員資料已更新");
-          }).catch(error => console.log(error));
+      new Vue({
+        el: "#app",
+        data() {
+          return {
+            cpsw: "",
+            fixpsw: "",
+            confrimpsw: "",
+            personaldata: {},
+            show: "showbox1",
+            showId: "showId1",
+          };
         },
-        cancell() {
-          let array = JSON.parse(localStorage.getItem('personallogin'));
-          axios.post('phps/memberExist.php', {
-            mem_no: array[0].mem_no,
-            mem_id: array[0].mem_id,
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          }).then((res) => {
-            if (res.data == "erro") {
-              location.href = "memeberAdd.html";
-            } else {
-              this.personaldata = res.data[0];
-            }
-          }).catch(error => console.log(error));
+        components: {
+          "component-prayrecorder": Componentprayrecord,
+          "component-orderdata": Componentorderdata,
+          "component-pomes": Componentpomes,
         },
-        recancell() {
-          this.cpsw = '';
-          this.fixpsw = '';
-          this.confrimpsw = '';
-          location.href = "memeberFix.html";
-        },
-        savepsw() {
-          if (this.fixpsw == this.confrimpsw) {
-            axios.post('phps/memberPswcheck.php', {
-              mem_no: this.personaldata.mem_no,
-              memPsw: this.cpsw,
-              confirmPsw: this.confrimpsw,
-              headers: {
-                'Content-Type': 'multipart/form-data'
-              }
-            }).then((res) => {
-              alert(res.data);
-            }).catch(error => console.log(error));
-          } else {
-            alert("密碼錯誤，請確認密碼");
-            this.cpsw = '';
-            this.fixpsw = '';
-            this.confrimpsw = '';
-          }
+        // created() {
+        //   let array = JSON.parse(localStorage.getItem('personallogin'));
+        //   axios.post('phps/memberExist.php', {
+        //     mem_no: array[0].mem_no,
+        //     mem_id: array[0].mem_id,
+        //     headers: {
+        //       'Content-Type': 'multipart/form-data'
+        //     }
+        //   }).then((res) => {
+        //     if (res.data == "erro") {
+        //       location.href = "memeberAdd.html";
+        //     } else {
+        //       this.personaldata = res.data[0];
+        //     }
+        //   }).catch(error => console.log(error));
+        // },
+        // methods: {
+        //   save() {
+        //     axios.post('phps/memberUpdate.php', {
+        //       mem_no: this.personaldata.mem_no,
+        //       mem_name: this.personaldata.mem_name,
+        //       email: this.personaldata.email,
+        //       phone: this.personaldata.phone,
+        //       headers: {
+        //         'Content-Type': 'multipart/form-data'
+        //       }
+        //     }).then((res) => {
+        //       alert("會員資料已更新");
+        //     }).catch(error => console.log(error));
+        //   },
+        //   cancell() {
+        //     let array = JSON.parse(localStorage.getItem('personallogin'));
+        //     axios.post('phps/memberExist.php', {
+        //       mem_no: array[0].mem_no,
+        //       mem_id: array[0].mem_id,
+        //       headers: {
+        //         'Content-Type': 'multipart/form-data'
+        //       }
+        //     }).then((res) => {
+        //       if (res.data == "erro") {
+        //         location.href = "memeberAdd.html";
+        //       } else {
+        //         this.personaldata = res.data[0];
+        //       }
+        //     }).catch(error => console.log(error));
+        //   },
+        //   recancell() {
+        //     this.cpsw = '';
+        //     this.fixpsw = '';
+        //     this.confrimpsw = '';
+        //     location.href = "memeberFix.html";
+        //   },
+        //   savepsw() {
+        //     if (this.fixpsw == this.confrimpsw) {
+        //       axios.post('phps/memberPswcheck.php', {
+        //         mem_no: this.personaldata.mem_no,
+        //         memPsw: this.cpsw,
+        //         confirmPsw: this.confrimpsw,
+        //         headers: {
+        //           'Content-Type': 'multipart/form-data'
+        //         }
+        //       }).then((res) => {
+        //         alert(res.data);
+        //       }).catch(error => console.log(error));
+        //     } else {
+        //       alert("密碼錯誤，請確認密碼");
+        //       this.cpsw = '';
+        //       this.fixpsw = '';
+        //       this.confrimpsw = '';
+        //     }
 
-        },
-      }
-    });
-  </script>
-</body>
-
+        //   },
+        // }
+      });
+    </script>
+  </body>
 </html>
