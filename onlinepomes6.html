@@ -245,8 +245,6 @@
       mounted() {
         this.pomesNum = localStorage.onlinedraw;
         this.orcode = `./backweb/img/pomes/pomes${this.pomesNum}.jpg`;
-      },
-      updated() {
         let array = JSON.parse(localStorage.getItem("personallogin")); //抓localStorage存入變數
         if (array != null) {
           this.mem_no = array[0].mem_no;
@@ -283,6 +281,7 @@
             console.log(error);
           });
       },
+
     });
 
     //headerVue

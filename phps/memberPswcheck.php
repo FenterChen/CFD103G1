@@ -19,7 +19,6 @@ try {
 	$sql ="UPDATE member SET mem_psw='$confirmPsw' WHERE mem_no='$mem_no';";
   $member=$pdo->query($sql);
   $member->execute();
-	$memRow = $member ->fetchAll(PDO::FETCH_ASSOC);
 	echo"密碼更改成功!";
   }
 

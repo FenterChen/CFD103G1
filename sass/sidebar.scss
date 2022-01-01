@@ -74,6 +74,8 @@
     margin-top: 20px;
 
     input {
+        font-family: NotoSansTC, serif;
+        font-size: map-get($fontSize, navfont);
         background-color: #FCDBA3;
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
@@ -293,6 +295,29 @@
 .prayRecorder,
 .cardManage,
 .supply {
+    .searchbox .search {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .searchbox .search .searchtextinput {
+        width: 170px;
+        margin-right: -5px;
+
+    }
+
+    .searchbox .search .membersearch {
+        color: #927858;
+        font-family: NotoSansTC, serif;
+        font-size: map-get($fontSize, navfont);
+        width: 90px;
+        margin-right: 5px;
+        box-sizing: border-box;
+        border-radius: 0;
+        height: 27px;
+    }
+
     .updatefile {
         text-align: center;
         background-color: #fdbf52;

@@ -134,6 +134,8 @@ table {
 }
 
 .searchbox input {
+  font-family: NotoSansTC, serif;
+  font-size: 16px;
   background-color: #FCDBA3;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
@@ -450,6 +452,45 @@ table {
 .table-unpomes > tbody > tr > td > select {
   background-color: #fdbf52;
   border-radius: 20px;
+}
+
+.memberDetail .searchbox .search,
+.prayRecorder .searchbox .search,
+.cardManage .searchbox .search,
+.supply .searchbox .search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.memberDetail .searchbox .search .searchtextinput,
+.prayRecorder .searchbox .search .searchtextinput,
+.cardManage .searchbox .search .searchtextinput,
+.supply .searchbox .search .searchtextinput {
+  width: 170px;
+  margin-right: -5px;
+}
+
+.memberDetail .searchbox .search .membersearch,
+.prayRecorder .searchbox .search .membersearch,
+.cardManage .searchbox .search .membersearch,
+.supply .searchbox .search .membersearch {
+  color: #927858;
+  font-family: NotoSansTC, serif;
+  font-size: 16px;
+  width: 90px;
+  margin-right: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 0;
+  height: 27px;
 }
 
 .memberDetail .updatefile,
