@@ -303,8 +303,18 @@
 
     .searchbox .search .searchtextinput {
         width: 170px;
-        margin-right: -5px;
 
+    }
+
+    .searchbox .search .searchrest {
+        font-family: NotoSansTC, serif;
+        font-size: map-get($fontSize, navfont);
+        color: map-get($color, navColor);
+        background-color: #fdbf52;
+        width: 60px;
+        border-radius: 5px;
+        padding-left: 5px;
+        margin-left: 10px;
     }
 
     .searchbox .search .membersearch {
@@ -315,7 +325,7 @@
         margin-right: 5px;
         box-sizing: border-box;
         border-radius: 0;
-        height: 27px;
+        height: 27.5px;
     }
 
     .updatefile {
