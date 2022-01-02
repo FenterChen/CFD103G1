@@ -37,8 +37,10 @@ body{
     justify-content: space-between;
     padding: 20px 20px 20px 20px;
     margin-top: 25px;
+    cursor: pointer;
     @include tabletH(){
-        transform: translateY(-130px)
+        transform: translateY(-130px);
+        cursor: pointer;
     
     }
 }
@@ -244,6 +246,7 @@ body{
 .container-fpage .phone_aboutus_arrow {
     margin-top: 7px;
     padding-left: 15px;
+    cursor: pointer;
     @include laptop(){
         display: none;
     }
@@ -352,7 +355,7 @@ padding-left: 0px;
 padding-right: 0px;
 margin-left: 0px;
 margin-bottom: 0px;
-cursor: pointer;
+
 }
 .container-fpage .picitem .hide img{
     display: none;
@@ -415,6 +418,7 @@ cursor: pointer;
 .container-Spage .phone_aboutus_arrow {
     margin-top: 7px;
     padding-left: 15px;
+    cursor: pointer;
     @include laptop(){
         display: none;
     }
@@ -532,7 +536,7 @@ cursor: pointer;
             img{
                 width: 100%;
                 vertical-align: bottom;
-                cursor: pointer;
+                
             }
 }
 .container-Spage .picitem .pic{
@@ -547,7 +551,7 @@ padding-left: 0px;
 padding-right: 0px;
 margin-left: 0px;
 margin-bottom: 0px;
-cursor: pointer;
+
 }
 .container-Spage .picitem .col-6 .god4{
     animation-name: flip;
