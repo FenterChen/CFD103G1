@@ -751,7 +751,6 @@ body {
 .container-fpage .picitem img {
   width: 100%;
   vertical-align: bottom;
-  cursor: pointer;
 }
 
 .container-fpage .picitem .pic {
@@ -1464,7 +1463,6 @@ body {
 .container-third .picitem img {
   width: 100%;
   vertical-align: bottom;
-  cursor: pointer;
 }
 
 .container-third .picitem .col-4 {
